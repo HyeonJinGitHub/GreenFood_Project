@@ -1,0 +1,12 @@
+------------------------
+/* 계정 생성 */
+------------------------
+
+create user green
+identified by food
+default tablespace users;
+
+grant connect, resource to green;
+
+alter user green
+quota unlimited on users;
