@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F70E3087-E220-6758-3FE2-D501AF79BA2E" name="COMMENT">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:29:57 UTC</createdTime>
+<ownerDesignName>ERD</ownerDesignName>
+<engineerTo>
+<item key="30C8B40A-286A-CD53-B162-5C594730FB18" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="NO" id="DF87F030-C542-E454-4BD7-E723B5945A2B">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:37:05 UTC</createdTime>
+<ownerDesignName>ERD</ownerDesignName>
+<engineerTo>
+<item key="30C8B40A-286A-CD53-B162-5C594730FB18" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CONTENT" id="2091C945-413F-B5D2-D527-E2600F5F1207">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:39:29 UTC</createdTime>
+<ownerDesignName>ERD</ownerDesignName>
+<engineerTo>
+<item key="30C8B40A-286A-CD53-B162-5C594730FB18" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT028</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NO1" id="06B4C2B8-BFA0-9010-2BBA-6B36F1C3E4EC">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:48:37 UTC</createdTime>
+<generatorID>301676F9-6EA3-E13A-AA67-AC5622342CD6</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<engineerTo>
+<item key="30C8B40A-286A-CD53-B162-5C594730FB18" value="true"/>
+</engineerTo>
+<referedAttribute>0BCA8AE7-ECD2-0B25-B732-8E49B5A3A4A3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="D4826385-59DF-AD7C-9150-B76D897BBAAE" name="COMMENT PK">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:37:11 UTC</createdTime>
+<ownerDesignName>ERD</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="30C8B40A-286A-CD53-B162-5C594730FB18" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>DF87F030-C542-E454-4BD7-E723B5945A2B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

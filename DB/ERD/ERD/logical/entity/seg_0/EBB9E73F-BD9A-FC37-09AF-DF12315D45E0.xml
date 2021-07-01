@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EBB9E73F-BD9A-FC37-09AF-DF12315D45E0" name="VIDEO">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:26:46 UTC</createdTime>
+<ownerDesignName>ERD</ownerDesignName>
+<engineerTo>
+<item key="30C8B40A-286A-CD53-B162-5C594730FB18" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="NO" id="3F32D1DE-BA09-71F9-DFD6-8EE3C9151383">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:26:53 UTC</createdTime>
+<ownerDesignName>ERD</ownerDesignName>
+<engineerTo>
+<item key="30C8B40A-286A-CD53-B162-5C594730FB18" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NO1" id="D2C9259F-4B86-7BF9-5CF5-A5A49A264A24">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:32:27 UTC</createdTime>
+<generatorID>FB50A3A5-15D9-2E80-A8C7-F1B97E5F7AF2</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<engineerTo>
+<item key="30C8B40A-286A-CD53-B162-5C594730FB18" value="true"/>
+</engineerTo>
+<referedAttribute>0BCA8AE7-ECD2-0B25-B732-8E49B5A3A4A3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="URL" id="E1AE6AB1-769C-78D6-4E25-7429C033E2C2">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 05:50:15 UTC</createdTime>
+<ownerDesignName>ERD</ownerDesignName>
+<engineerTo>
+<item key="30C8B40A-286A-CD53-B162-5C594730FB18" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="F31E4161-8FD0-3810-CE1B-4FA8FC10A65F" name="VIDEO PK">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:26:58 UTC</createdTime>
+<ownerDesignName>ERD</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="30C8B40A-286A-CD53-B162-5C594730FB18" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>3F32D1DE-BA09-71F9-DFD6-8EE3C9151383</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

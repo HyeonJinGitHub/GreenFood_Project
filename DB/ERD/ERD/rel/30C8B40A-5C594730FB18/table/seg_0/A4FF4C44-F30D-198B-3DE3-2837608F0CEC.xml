@@ -1,0 +1,90 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A4FF4C44-F30D-198B-3DE3-2837608F0CEC" name="COMMENT">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>F70E3087-E220-6758-3FE2-D501AF79BA2E</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="NO" id="222E043C-2A2C-55C0-07E7-ABB4489296B7">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>DF87F030-C542-E454-4BD7-E723B5945A2B</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CONTENT" id="8D2520B2-8D0E-4070-C8C3-9A524599E6DD">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>2091C945-413F-B5D2-D527-E2600F5F1207</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT028</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ARTICLE_NO" id="CEF1AD2E-3AF2-4BC6-7776-383372E35AEC">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 05:12:53 UTC</createdTime>
+<generatorID>06B4C2B8-BFA0-9010-2BBA-6B36F1C3E4EC</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="329A150C-36FF-536B-4F8F-8FDECD76DBEB" referredColumn="AD4497AB-23B0-D727-4C1C-5D74C766F7A3"/>
+</associations>
+</Column>
+<Column name="ARTICLE_USER_NO" id="B3CA1F2A-7B6F-5D40-9E3D-D9287B834A19">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 05:12:53 UTC</createdTime>
+<generatorID>F0328B3C-3E9B-EE6D-F3A8-BD92E1CC1D69</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="329A150C-36FF-536B-4F8F-8FDECD76DBEB" referredColumn="45B8150C-67DD-D039-53AC-39F370EBDCFC"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1C0D4D82-6A48-C5AB-8BFC-F9D98041A908" name="COMMENT_PK">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>D4826385-59DF-AD7C-9150-B76D897BBAAE</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="222E043C-2A2C-55C0-07E7-ABB4489296B7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="74A52ACD-0B56-E2C0-3E5B-3ED23289CB18" name="COMMENT_ARTICLE_FK">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 05:12:53 UTC</createdTime>
+<generatorID>301676F9-6EA3-E13A-AA67-AC5622342CD6</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CEF1AD2E-3AF2-4BC6-7776-383372E35AEC"/>
+<colUsage columnID="B3CA1F2A-7B6F-5D40-9E3D-D9287B834A19"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

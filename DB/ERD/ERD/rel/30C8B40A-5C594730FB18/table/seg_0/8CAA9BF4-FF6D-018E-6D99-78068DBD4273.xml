@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8CAA9BF4-FF6D-018E-6D99-78068DBD4273" name="USER">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>28ACC477-DADA-BD00-7472-AAD300473FCC</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="NO" id="BC0299D6-8A29-54C2-8EDC-9188C4C5C6E5">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>9095C9BF-4CBC-E0DA-FA28-9E3E77E12511</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID" id="5DF5E2E6-D1AA-D171-73D5-6B70775B3CCA">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>7757A8C5-CE96-BDC1-DFFD-E1F0656F94B6</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>16</dataTypeSize>
+<ownDataTypeParameters>16,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NAME" id="EC8F92A9-C25E-911A-06BF-BCE2D71D245D">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>63E83313-913D-6BF5-E52F-22A1F630CC55</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PASSWORD" id="90088027-54A9-007E-79A5-445C6C6DDD27">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>C4FF6F2A-D001-C79D-1FB4-B93099693736</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="06649782-8C0D-FD27-DFF4-3F9F3302C20B" name="USER_PK">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>6AC6C96D-EE98-39AA-1DEB-443B33875B09</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BC0299D6-8A29-54C2-8EDC-9188C4C5C6E5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

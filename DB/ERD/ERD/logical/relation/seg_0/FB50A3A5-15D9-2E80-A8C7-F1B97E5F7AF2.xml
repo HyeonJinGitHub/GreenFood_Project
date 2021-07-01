@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="ARTICLE_VIDEO" directorySegmentName="seg_0" id="FB50A3A5-15D9-2E80-A8C7-F1B97E5F7AF2">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:32:27 UTC</createdTime>
+<ownerDesignName>ERD</ownerDesignName>
+<engineerTo>
+<item key="30C8B40A-286A-CD53-B162-5C594730FB18" value="true"/>
+</engineerTo>
+<sourcePk>C0CEE450-ECD4-2601-2900-A8FF1E8F7D52</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>4B5EFE80-29B3-E850-9540-4D05F8D24B35</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>EBB9E73F-BD9A-FC37-09AF-DF12315D45E0</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

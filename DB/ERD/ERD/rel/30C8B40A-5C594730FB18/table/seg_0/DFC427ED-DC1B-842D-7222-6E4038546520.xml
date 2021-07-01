@@ -1,0 +1,82 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DFC427ED-DC1B-842D-7222-6E4038546520" name="FOODINGREDIENT">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>80BE9DCD-C7AD-BEA5-3783-E4BDD016BB13</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ARTICLE_NO" id="65E2076E-74F7-F608-F7C3-EB320B5E46B8">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>C594096D-9624-E2CE-A734-FDE31E109895</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="31DD09E3-7575-D645-3FC7-D51D1B9AE350" referredColumn="AD4497AB-23B0-D727-4C1C-5D74C766F7A3"/>
+</associations>
+</Column>
+<Column name="ARTICLE_USER_NO" id="BE4C75DD-E6BA-9E56-61EA-36F05DAC3068">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>3BE94512-A3EC-4C3F-4191-9DE0987E927C</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="31DD09E3-7575-D645-3FC7-D51D1B9AE350" referredColumn="45B8150C-67DD-D039-53AC-39F370EBDCFC"/>
+</associations>
+</Column>
+<Column name="INGREDIENT_NO" id="66879B95-6ACF-0A1F-62CF-04868EDC1276">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>721F6E0C-6AC4-BD8B-D1F0-EC48806F5853</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3D491D25-62FD-C38A-6DC1-A6E44AF0D392" referredColumn="2C614B3E-0C33-3E5A-D38C-560D2AF19C88"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="62887EEB-BE4C-1F3F-EE96-C7A257FA8D39" name="FOODINGREDIENT_ARTICLE_FK">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>437968B0-30BC-BDD7-D0AF-E96799CC2FE9</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="65E2076E-74F7-F608-F7C3-EB320B5E46B8"/>
+<colUsage columnID="BE4C75DD-E6BA-9E56-61EA-36F05DAC3068"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3C6EC53E-B012-28E1-CDDD-8786413BE0C6" name="FOODINGREDIENT_INGREDIENT_FK">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>8DFAB8F2-F733-B342-9F57-5F89655E98A2</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="66879B95-6ACF-0A1F-62CF-04868EDC1276"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
