@@ -1,6 +1,11 @@
 ------------------------
 /* 계정 생성 */
 ------------------------
+sqlplus / as sysdba
+alter session set container = xepdb1;
+exit
+
+sqlplus system/oracle@localhost:1521/xepdb1
 
 create user green
 identified by food
