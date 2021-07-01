@@ -23,6 +23,12 @@ public class MemberController {
 		System.out.println("home controller start"); 
 		return "index"; 
 	}
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String home2() { 
+		System.out.println("test controller start"); 
+		return "test"; 
+	}
+	
 	
 	@GetMapping("/member/list")
 	public @ResponseBody List<MemberDTO> getMemberList() {
