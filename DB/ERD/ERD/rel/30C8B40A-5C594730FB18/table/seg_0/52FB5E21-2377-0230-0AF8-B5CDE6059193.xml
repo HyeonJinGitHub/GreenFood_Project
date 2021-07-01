@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="52FB5E21-2377-0230-0AF8-B5CDE6059193" name="INGREDIENT">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>604FBF31-2CEB-9D9F-7FC8-A83038D038A2</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="NO" id="2C614B3E-0C33-3E5A-D38C-560D2AF19C88">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>3DFE7E94-DA6C-D7CC-A5F5-D03F3F7F3DEF</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NAME" id="C262644A-5570-AF0F-40E2-5CD41803793F">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>1ECF787D-2288-5628-80F0-3809C6A222F1</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BF257777-DCD7-8A6C-15B8-46748C2DD4FA" name="INGREDIENT_PK">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 00:47:47 UTC</createdTime>
+<generatorID>4BDADA5A-A442-B389-B5A7-0657691AAABA</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2C614B3E-0C33-3E5A-D38C-560D2AF19C88"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

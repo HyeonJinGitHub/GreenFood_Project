@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="6AFBE44C-3D7C-B055-372B-CCF177137555" name="USER_ARTICLE">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 05:21:04 UTC</createdTime>
+<ownerDesignName>ERD</ownerDesignName>
+<engineerTo>
+<item key="30C8B40A-286A-CD53-B162-5C594730FB18" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="NO" id="2B690210-68BA-23E6-E307-2C13033B0F2A">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 05:25:31 UTC</createdTime>
+<generatorID>BB86FF16-254F-712A-9095-A40A5F1E048A</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<engineerTo>
+<item key="30C8B40A-286A-CD53-B162-5C594730FB18" value="true"/>
+</engineerTo>
+<referedAttribute>9095C9BF-4CBC-E0DA-FA28-9E3E77E12511</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NO1" id="907D77F2-9F68-5BCE-8967-A970DC662704">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 05:25:39 UTC</createdTime>
+<generatorID>B263B8E8-F4F7-3D87-598F-0F9B3534AFED</generatorID>
+<ownerDesignName>ERD</ownerDesignName>
+<engineerTo>
+<item key="30C8B40A-286A-CD53-B162-5C594730FB18" value="true"/>
+</engineerTo>
+<referedAttribute>0BCA8AE7-ECD2-0B25-B732-8E49B5A3A4A3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="D984EFDD-979A-BF5B-F437-50406B386DEF" name="USER_ARTICLE PK">
+<createdBy>KSY</createdBy>
+<createdTime>2021-06-28 05:21:32 UTC</createdTime>
+<ownerDesignName>ERD</ownerDesignName>
+<engineerTo>
+<item key="30C8B40A-286A-CD53-B162-5C594730FB18" value="true"/>
+</engineerTo>
+<pk>true</pk>
+</identifier>
+</identifiers>
+</Entity>
