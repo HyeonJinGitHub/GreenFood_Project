@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.developia.greenfood.dao.MemberDAO">
+	<parameterMap type="java.util.HashMap" id="IdParam">
+		<parameter property="ID" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="MemberList" jdbcType="CURSOR"
+			mode="OUT" resultMap="IdResultMap" />
+	</parameterMap>
+	<resultMap type="MemberDTO" id="IdResultMap">
+		<result property="id" column="ID" />
+		<result property="password" column="PASSWORD" />
+	</resultMap>
+	<select id="selectMember" statementType="CALLABLE"
+		parameterMap="IdParam" resultMap="IdResultMap">
+	<![CDATA[
+          {
+             call member_pkg.select_member(
+				?, ?
+			)
+          }
+       ]]>
+	</select>
+</mapper>
