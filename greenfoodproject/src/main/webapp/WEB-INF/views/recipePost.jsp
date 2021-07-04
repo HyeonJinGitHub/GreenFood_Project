@@ -1124,27 +1124,31 @@
 									
 							});
 							
-/* 							$(document).on(
+							$(document).on(
 									"click",
 									"#hashtagView",
 									function(e) {
 										$.ajax({
-											url : "getHashtag",
+											url : "${pageContext.request.contextPath}/mytag",
 											type : "post",
-											dataType : "json",
+											dataType : "text",
 											data : {
-												var title = document.getElementsByName("title")[0].value
-												var subscript = document.getElementsByName("subscript")[0].value
-												var foodname = document.getElementsByName("foodname")[0].value
-												
-												"content" : $('.ql-editor').find('p').text(),
-												"subject" : $('#m-subject').val()
+												"total_string" : document.getElementsByName("title")[0].value+ " "+ document.getElementsByName("subscript")[0].value +" "+ document.getElementsByName("foodname")[0].value
 											}, // 서블릿으로 넘어가는 파라미터값
 											success : function(data) {
-												console.log("성공");
+												var res = JSON.parse(data);
+												console.log(res);
+												if (res.length != 0) {
+													for (var i = 0; i < res.length; i++) {
+														var str = '';
+														str += '<a href="#" id="tagSelect" class="btn btn-large  btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" style="margin-bottom: 20px">'
+															+ res[i]
+															+ '<span class="bg-black"></span></a>'
+														$('#myFood').append(str);
+												}}
 											}
 										});
-									}); */
+									}); 
 									
 									
 							$(document).on(
@@ -1388,19 +1392,6 @@
 			
 			reader.readAsDataURL(event.target.files[0]);
 		}
-		
-		/* function setStepImage(event){
-			var reader = new FileReader();
-			console.log($(this).parent().attr('name'));
-			reader.onload = function(event){
-				var img = document.createElement("img");
-				img.setAttribute("src", event.target.result);
-				img.setAttribute("class", "col-lg-12");
-				document.querySelector("div#stepimage_container").appendChild(img);
-			};
-			
-			reader.readAsDataURL(event.target.files[0]);
-		} */
 		
 		function appendForm() {
 			var content = '';
