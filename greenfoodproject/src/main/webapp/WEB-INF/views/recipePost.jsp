@@ -56,18 +56,18 @@
                             </div>
                             <div class="col-12 col-lg-auto text-center text-lg-right padding-20px-lr lg-padding-10px-lr md-padding-15px-lr md-margin-20px-bottom wow animate__fadeIn">
                                 <ul class="nav nav-tabs justify-content-center text-center">
-                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
-                                    <li class="nav-item"><a data-toggle="tab" href="#planning-tab" class="active alt-font font-weight-500 text-uppercase line-height-18px d-block ">기본설명</a></li> 
-                                </div>
-                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
-                                    <li class="nav-item"><a data-toggle="tab" href="#research-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">레시피 정보</a></li> 
-                                </div>
-                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
-                                   <li class="nav-item"><a data-toggle="tab" href="#target-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">해시태그 설정</a></li> 
-                                </div>
-                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle lg-padding-15px-lr">
-                                    <li class="nav-item"><a data-toggle="tab" href="#campaign-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">미리보기</a></li> 
-                                </div>
+                                <li class="nav-item"><a data-toggle="tab" href="#planning-tab" class="active alt-font font-weight-500 text-uppercase line-height-18px d-block ">
+                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">기본설명</div>
+                                </a></li> 
+                                <li class="nav-item"><a data-toggle="tab" href="#research-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">
+                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom" style="margin-left:-30px">레시피 정보</div>
+                                </a></li>
+                                <li class="nav-item"><a data-toggle="tab" href="#target-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block "> 
+                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom" style="margin-left:-30px">해시태그 설정</div>
+                                </a></li>
+                                <li class="nav-item"><a data-toggle="tab" href="#campaign-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block " style="margin-left:-30px"> 
+                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle lg-padding-15px-lr">미리보기</div>
+                                </a></li> 
                                 </ul>
                             </div>
                             <div class="col-12 col-lg-auto text-center text-lg-right">
@@ -211,11 +211,11 @@
 															추가</a>
 													</div>
 												</div>
-												<div class="row justify-content-center">
+												<!-- <div class="row justify-content-center">
 							                    <div class="col-12 btn-dual text-center" style="margin-top: 100px">
 							                         <a data-toggle="tab" href="#research-tab"  class="btn btn-extra-large btn-expand-ltr alt-font font-weight-500 text-uppercase line-height-18px d-block btn-rounded d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr font-weight-500">다음 페이지<span class="bg-very-light-pink"></span></a>
                        				          </div>
-							                </div>		
+							                </div>		 -->
 											</div>			
 							                <!-- end tab item -->
 											<!-- start tab item -->
@@ -316,12 +316,12 @@
 														</div>
 													</div>
 												</div>
-												<div class="row justify-content-center">
+												<!-- <div class="row justify-content-center">
 							                    <div class="col-12 btn-dual text-center" style="margin-top: 100px">
 							                    	<a data-toggle="tab" href="#planning-tab"  class="btn btn-extra-large btn-expand-ltr alt-font font-weight-500 text-uppercase line-height-18px d-block btn-rounded d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr font-weight-500">이전 페이지<span class="bg-very-light-pink"></span></a>
 							                        <a data-toggle="tab" href="#target-tab"  class="btn btn-extra-large btn-expand-ltr alt-font font-weight-500 text-uppercase line-height-18px d-block btn-rounded d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr font-weight-500">다음 페이지<span class="bg-very-light-pink"></span></a>
                        				          </div>
-											</div>
+											</div> -->
 											</div>
 											<!-- end tab item -->
 											<!-- start tab item -->
@@ -685,12 +685,12 @@
 														</div>
 													</div>
 												</div>
-												<div class="row justify-content-center">
+												<!-- <div class="row justify-content-center">
 							                    <div class="col-12 btn-dual text-center" style="margin-top: 100px">
 							                    	<a data-toggle="tab" href="#research-tab"  class="btn btn-extra-large btn-expand-ltr alt-font font-weight-500 text-uppercase line-height-18px d-block btn-rounded d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr font-weight-500">이전 페이지<span class="bg-very-light-pink"></span></a>
 							                        <a data-toggle="tab" href="#campaign-tab"  class="btn btn-extra-large btn-expand-ltr alt-font font-weight-500 text-uppercase line-height-18px d-block btn-rounded d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr font-weight-500">다음 페이지<span class="bg-very-light-pink"></span></a>
                        				          </div>
-											</div>
+											</div> -->
 											</div>
 											<!-- end tab item -->
 											<!-- start tab item -->

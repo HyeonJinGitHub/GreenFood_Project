@@ -56,20 +56,30 @@
                             </div>
                             <div class="col-12 col-lg-auto text-center text-lg-right padding-20px-lr lg-padding-10px-lr md-padding-15px-lr md-margin-20px-bottom wow animate__fadeIn">
                                 <ul class="nav nav-tabs justify-content-center text-center">
+                                <li class="nav-item">
+                                <a data-toggle="tab" href="#planning-tab" class="active alt-font font-weight-500 text-uppercase line-height-18px d-block ">
                                 <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
-                                    <li class="nav-item"><a data-toggle="tab" href="#planning-tab" class="active alt-font font-weight-500 text-uppercase line-height-18px d-block ">기본설명</a></li> 
+                                    기본설명
                                 </div>
+                                </a></li>
+                                <li class="nav-item"><a data-toggle="tab" href="#research-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block "> 
                                 <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
-                                    <li class="nav-item"><a data-toggle="tab" href="#research-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">레시피 정보</a></li> 
+                                    레시피 정보
                                 </div>
+                                </a></li>
+                                <li class="nav-item"><a data-toggle="tab" href="#target-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block "> 
                                 <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
-                                   <li class="nav-item"><a data-toggle="tab" href="#target-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">해시태그 설정</a></li> 
+                                   해시태그 설정
                                 </div>
+                                </a></li>
+                                <li class="nav-item"><a data-toggle="tab" href="#campaign-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block "> 
                                 <div class="padding-30px-lr d-block d-sm-inline-block align-middle lg-padding-15px-lr">
-                                    <li class="nav-item"><a data-toggle="tab" href="#campaign-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">미리보기</a></li> 
+                                    미리보기
                                 </div>
+                                </a></li>
                                 </ul>
                             </div>
+                            
                             <div class="col-12 col-lg-auto text-center text-lg-right">
                                 <a href="#classes" class="section-link btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge "><span class="line-height-25px">레시피 등록</span></a>
                             </div>
@@ -717,7 +727,7 @@
 											</div>
 											<!-- end tab item -->
 										</div>
-										</form>
+						</form>
                     </div>
                 </div>
             </div>
