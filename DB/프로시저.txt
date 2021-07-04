@@ -1,0 +1,20 @@
+drop package member_pkg;
+
+create or replace package member_pkg
+is
+    procedure select_member(input_id in varchar2,
+    res_cur out sys_refcursor);
+end member_pkg;
+
+
+create or replace package body member_pkg
+is
+    procedure select_member(input_id in varchar2,
+    res_cur out sys_refcursor)
+    as
+    begin
+        open res_cur for
+        select * from member
+        where id = input_id;
+    end select_member;
+end member_pkg;
