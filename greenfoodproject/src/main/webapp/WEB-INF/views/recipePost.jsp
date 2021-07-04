@@ -279,7 +279,7 @@
 															<div class="col-lg-10 sm-margin-25px-bottom">
 																<ul id="sortable"
 																	class="list-style-02 alt-font font-weight-500 text-small text-uppercase text-extra-dark-gray">
-																	<li style="width: 100%">
+																	<li style="width: 100%" value="1">
 																		<!-- start blog item -->
 																		<div
 																			class="blog-post bg-white box-shadow-medium margin-30px-bottom wow animate__fadeIn"
@@ -844,7 +844,8 @@
 															<div class="col-lg-2 sm-margin-25px-bottom">
 																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>대표사진</span>
 															</div>
-															<div class="col-lg-10 sm-margin-25px-bottom" id="inputThumb">
+															<div class="col-lg-10 sm-margin-25px-bottom" id="inputThumbdiv">
+															
 															</div>
 														</div>
 														<div class="row">
@@ -1151,6 +1152,8 @@
 									"#preView",
 									function(e) {
 										
+										
+										
 										var title = document.getElementsByName("title")[0].value
 										document.getElementById("inputTitle").innerText = title;
 										
@@ -1169,6 +1172,9 @@
 										else  document.getElementById("inputFoodtime").innerText = foodtime +'분 소요예상';
 										
 										$('#inputmyTag').html($('#myTag').html());
+										$('#inputVideo').empty(); 	
+										$('#sortable2').empty();
+										$('#inputThumbdiv').empty();
 										
 										var foodcategory = $("select[name=foodcategory]").val();
 										document.getElementById("inputCategory").innerText = foodcategory;
@@ -1185,25 +1191,12 @@
 											video.setAttribute("src", videourl); video.play();
 										}
 										
-										
-										/* const inputFile = document.getElementById("product_image"); 
-										var img = document.createElement("img");
-										img.setAttribute("src", '');
-										img.setAttribute("class", "col-lg-6");
-										img.setAttribute("id", "thumbtmp");
-										document.querySelector("div#inputThumb").appendChild(img);
-										
-										if ( inputFile.files[0] ) {
-									        var reader = new FileReader();
-									        reader.onload = function (e) {
-									           
-									            $( '#thumbtmp').attr('src', e.target.result );
-									        }
-									        reader.readAsDataURL( inputFile.files[0] );
-									    } */
-										
-								 	    for(var i =1; i<= count; i++)
-									    {
+										var cnttmp = 1;
+										$("#sortable").children().each(function(){ 
+											var i = $(this).attr("value"); 
+											var steptitle = document.getElementsByName("steptitle"+i)[0].value;
+								 	    	if(steptitle != ''){
+								 	    	console.log(i);
 									    	var contents = '';
 											contents += '<li style="width:100%">'
 													+ '<div class="blog-post bg-white box-shadow-medium margin-30px-bottom wow animate__fadeIn" style="width:100%">'
@@ -1211,9 +1204,9 @@
 													+ '<div class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding" style="width:100%; padding:0">'
 													+ '<div class="row row-cols-1 row-cols-md-2" style="width:100%;">'
 													+ '<div class="col-lg-5">'
-													+ '<div id="inputstepimage_container'+ i +'" class="stepimage_size"></div>'
+													+ '<div id="inputstepimage_container'+ i +'" class="stepimage_size"><img src="" id="stepimg_tmp'+i+'"/></div>'
 													+ '</div>'
-													+ '<div class="col-lg-7" style="margin-top:20px; margin-bottom:20px">'
+													+ '<div class="col-lg-7" style="margin-top:20px; margin-bottom:20px; height:100%; vertical-align:middle">'
 													+ '<div id="inputsteptitle'+i+'" class="text-left"></div>'
 													+ '<div id="inputstepsubscript'+i+'"></div>'
 													+ '</div>'
@@ -1222,15 +1215,36 @@
 
 											$('#sortable2').append(contents);
 											
-											var steptitle = document.getElementsByName("steptitle"+i)[0].value
-											document.getElementById("inputsteptitle"+i).innerText = '['+i+'단계] '+steptitle;
+											var steptitle = document.getElementsByName("steptitle"+i)[0].value;
+											document.getElementById("inputsteptitle"+i).innerText = '['+cnttmp+'단계] '+steptitle;
 											document.getElementById("inputsteptitle"+i).style.fontWeight = "bold";
 											
-											var stepsubscript = document.getElementsByName("stepsubscript"+i)[0].value
+											var stepsubscript = document.getElementsByName("stepsubscript"+i)[0].value;
 											document.getElementById("inputstepsubscript"+i).innerText = stepsubscript;
-													
-									    } 
+											
+											var elem = document.getElementsByName('stepimage'+i); //파일 선택 필드 요소 얻기
+											if(elem[0].files[0]){ // 파일 확장자 체크해서 이미지 파일이면
+											  let preview = document.querySelector('#stepimg_tmp'+i); // 미리보기 썸네일 <img> 엘리먼트 얻기
+											  preview.src = URL.createObjectURL(elem[0].files[0]); //파일 객체에서 이미지 데이터 가져옴.
+											}else{
+											  console.log('이미지 파일이 아닙니다.');
+											}
+											cnttmp += 1;
+								 	    	}
+										});
+
 										
+								 	   var elem1 = document.getElementsByName('product_image'); //파일 선택 필드 요소 얻기
+										if(elem1[0].files[0]){ // 파일 확장자 체크해서 이미지 파일이면
+										  var tmpstr ='<img src="" id="inputThumb" style="margin-top:20px; margin-bottom:20px"/>';
+										  $('#inputThumbdiv').append(tmpstr);
+										  let preview = document.querySelector('#inputThumb'); // 미리보기 썸네일 <img> 엘리먼트 얻기
+										  preview.src = URL.createObjectURL(elem1[0].files[0]); //파일 객체에서 이미지 데이터 가져옴.
+										}else{
+										  console.log('이미지 파일이 아닙니다.');
+										}
+									    
+								 	   inputThumb
 									});
 									
 							$(document).on("change","#stepimage",function(event){
@@ -1245,7 +1259,6 @@
 									document.querySelector(container_name).appendChild(img);
 								};
 								reader.readAsDataURL(event.target.files[0]);
-
 							});
 							
 							
@@ -1334,7 +1347,7 @@
 							var contents = '';
 							var cnttemp = count + 1;
 							count += 1;
-							contents += '<li style="width:100%">'
+							contents += '<li value="'+cnttemp+'" style="width:100%">'
 									+ '<div class="blog-post bg-white box-shadow-medium margin-30px-bottom wow animate__fadeIn" style="width:100%">'
 									+ '<div class="d-flex flex-column flex-md-row align-items-center" style="width:100%">'
 									+ '<div class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding" style="width:100%; padding:0">'
