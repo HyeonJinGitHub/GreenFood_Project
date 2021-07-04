@@ -26,4 +26,18 @@
 		p:sqlSessionFactory-ref="MemberSqlSession"
 		p:mapperInterface="net.developia.greenfood.dao.MemberDAO" />
 	<!-- userDAO end -->
+	
+	<!--  recipeDAO start -->
+	<bean id="RecipeSqlSession"
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource"
+		p:typeAliasesPackage="net.developia.greenfood.dto" />
+		
+	<bean
+		id="RecipeDAO" 
+		class="org.mybatis.spring.mapper.MapperFactoryBean" 
+		p:sqlSessionFactory-ref="RecipeSqlSession"
+		p:mapperInterface="net.developia.greenfood.dao.RecipeDAO"
+		/>
+	<!--  recupeDAO end -->
 </beans>
