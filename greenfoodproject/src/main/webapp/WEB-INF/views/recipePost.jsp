@@ -23,11 +23,7 @@
 	href="${images}/apple-touch-icon-72x72.png">
 <link rel="apple-touch-icon" sizes="114x114"
 	href="${images}/apple-touch-icon-114x114.png">
-<!-- style sheets and font icons  -->
-<link rel="stylesheet" type="text/css" href="${css }/font-icons.min.css">
-<link rel="stylesheet" type="text/css" href="${css }/theme-vendors.min.css">
-<link rel="stylesheet" type="text/css" href="${css }/style.css" />
-<link rel="stylesheet" type="text/css" href="${css }/responsive.css" />
+
 </head>
 <style>
 
@@ -145,10 +141,13 @@
 															<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:10px">
 																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>음식이름</span>
 															</div>
-															<div class="col-lg-8 sm-margin-25px-bottom">
+															<div class="col-lg-5 sm-margin-25px-bottom">
 																<input
 																	class="medium-input bg-white margin-25px-bottom required"
 																	type="text" name="foodname" placeholder="음식 이름을 입력하세요" required>
+															</div>
+															<div class="col-lg-2" style="margin-left:-10px;padding 0; height:100%;; margin-top:5px">
+																<a href="#contact-form" class="btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge popup-with-form" id="searchFoodName">검색</a>
 															</div>
 															<div class="col-lg-2 sm-margin-25px-bottom">
 																<input
@@ -760,9 +759,9 @@
 															<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:10px">
 																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>음식이름</span>
 															</div>
-															<div class="col-lg-8 sm-margin-25px-bottom text-left" id="inputFoodname">
+															<div class="col-lg-4 sm-margin-25px-bottom text-left" id="inputFoodname">
 															</div>
-															<div class="col-lg-2 sm-margin-25px-bottom text-left" id="inputHowmuch">
+															<div class="col-lg-6 sm-margin-25px-bottom text-left" id="inputHowmuch">
 															</div>
 														</div>
 														<div class="row">
@@ -815,10 +814,35 @@
 																</ul>
 															</div>
 														</div>
+														<div class="row" style="margin-top:10px; margin-bottom:10px">
+															<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:10px">
+																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>영양정보</span>
+															</div>
+															<div class="col-lg-10 sm-margin-25px-bottom text-center" style="width:100%; padding:0; margin:0">
+												                <div class="row row-cols-1 "  style="width:100%; padding:0; margin:0" id="foodIngredientInputinfo">
+												                
+												                    <!-- start pie charts item -->
+												                    <div class="col-lg-3">
+												                        <div class="chart-percent">
+												                            <span id="pohwa" class="pie-chart-style-02" data-line-width="6" data-percent="85" data-track-color="#f5f5f5" data-start-color="#fc9297" data-end-color="#be85f5">
+												                                <span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>
+												                            </span>
+												                        </div>
+												                        <div class="last-paragraph-no-margin wow animate__fadeIn" data-wow-duration="0.2" style="margin-top:10px; margin-bottom:10px">
+												                            <span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block">포화지방산</span>
+												                        </div>
+												                    </div>
+												                    <!-- end pie charts item -->
+												                    
+												                </div>
+															</div>
+														</div>
 													</div>
 												</div>
 												
 									                    	<!-- step1 end -->
+									                    	
+									           
 									                    	<!-- step2 start -->
 									                    	
 									                    	<div class="row row-cols-1 row-cols-md-2">
@@ -1064,6 +1088,12 @@
 		src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript"
 		src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<!-- style sheets and font icons  -->
+	<link rel="stylesheet" type="text/css" href="${css }/font-icons.min.css">
+	<link rel="stylesheet" type="text/css" href="${css }/theme-vendors.min.css">
+	<link rel="stylesheet" type="text/css" href="${css }/style.css" />
+	<link rel="stylesheet" type="text/css" href="${css }/responsive.css" />
+	
 	<script>
 	var count = 1;
 		$(document)
@@ -1073,6 +1103,7 @@
 						function() {
 							appendForm();
 
+							
 							$.ajax({
 								url: "${pageContext.request.contextPath}/taglist",
 								type: "post",
@@ -1167,9 +1198,6 @@
 										var foodname = document.getElementsByName("foodname")[0].value
 										document.getElementById("inputFoodname").innerText = foodname;
 										
-										var howmuch = document.getElementsByName("howmuch")[0].value
-										if(howmuch =='') document.getElementById("inputHowmuch").innerText = '(0인분)';
-										else  document.getElementById("inputHowmuch").innerText = '('+howmuch + '인분)';
 										
 										var foodtime = document.getElementsByName("foodtime")[0].value
 										if(foodtime =='') document.getElementById("inputFoodtime").innerText = '0분 소요예상';
@@ -1194,6 +1222,50 @@
 											console.log(videourl);
 											video.setAttribute("src", videourl); video.play();
 										}
+										
+										$.ajax({
+											url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/5'+'/DESC_KOR='+document.getElementsByName("foodname")[0].value,  
+											type : 'get',
+											dataType : 'json',
+											success : function(data){
+												var kcal = '';
+												kcal = data.I2790.row[0].NUTR_CONT1;
+												kcal *= document.getElementsByName("howmuch")[0].value;
+												var howmuch = document.getElementsByName("howmuch")[0].value
+												document.getElementById("inputHowmuch").innerText = '('+kcal+'kcal / '+howmuch + '인분)';
+										
+												if(howmuch =='') document.getElementById("inputHowmuch").innerText = '(0kcal / 0인분)';
+												
+										 	/* 	$('#trans').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT1/1987.7*100));
+												$('#tansu').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT2/287.9*100));
+												$('#danbaek').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT3/72.4*100));
+												$('#jibang').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT4/49.5*100));
+												$('#dang').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT5/60.2*100));
+												$('#natryum').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT6/3255.0*100));
+												$('#coles').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT7/260.4*100));
+												$('#pohwa').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT8/16.6*100));  */
+												
+									 			var farr = ['열량', '탄수화물', '단백질', '지방', '당류','나트륨', '콜레스테롤', '포화지방산']; 
+												var iarr = [parseInt(data.I2790.row[0].NUTR_CONT1/1987.7*100), parseInt(data.I2790.row[0].NUTR_CONT2/287.9*100), parseInt(data.I2790.row[0].NUTR_CONT3/72.4*100), parseInt(data.I2790.row[0].NUTR_CONT4/49.5*100), parseInt(data.I2790.row[0].NUTR_CONT5/60.2*100),parseInt(data.I2790.row[0].NUTR_CONT6/3255.0*100), parseInt(data.I2790.row[0].NUTR_CONT7/260.4*100), parseInt(data.I2790.row[0].NUTR_CONT8/16.6*100)]; 
+												for(var k = 0; k< 8; k++)
+												{
+													var ftemp = '';
+													ftemp += '<div class="col-lg-3"><div class="chart-percent">'
+									                      + '<span class="pie-chart-style-02" data-line-width="6" data-percent="'
+									                      + iarr[k]
+									                      + '" data-track-color="#f5f5f5" data-start-color="#fc9297" data-end-color="#be85f5">'
+									                      + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+									                      + '</div><div class="last-paragraph-no-margin wow animate__fadeIn" data-wow-duration="0.2" style="margin-top: 10px; margin-bottom: 10px;">'
+									                      + '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block">'
+									                      + farr[k]
+									                      + '</span></div></div>'
+									                $('#foodIngredientInputinfo').append(ftemp);
+												} 
+
+												
+											}
+										}); 
+										
 										
 										var cnttmp = 1;
 										$("#sortable").children().each(function(){ 
@@ -1248,7 +1320,6 @@
 										  console.log('이미지 파일이 아닙니다.');
 										}
 									    
-								 	   inputThumb
 									});
 									
 							$(document).on("change","#stepimage",function(event){
@@ -1277,7 +1348,7 @@
 								document.getElementById('video_container').style.margin='30px';
 							});
 
-							
+							//searchFoodName
 							$(document).on(
 									"click",
 									"#removeIngredient",
@@ -1395,16 +1466,22 @@
 		
 		function appendForm() {
 			var content = '';
-			content += '<form id="contact-form" action="${email-templates}/contact-form.php" method="post" class="white-popup-block col-xl-4 col-lg-7 col-sm-9  p-0 mx-auto mfp-hide">'
+			content += '<form id="contact-form" onsubmit="searchFoodFunction()" method="post" class="white-popup-block col-xl-4 col-lg-7 col-sm-9  p-0 mx-auto mfp-hide">'
 					+ '<div class="padding-fifteen-all bg-white border-radius-6px xs-padding-six-all">'
-					+ '<h6 class="text-extra-dark-gray font-weight-500 margin-35px-bottom xs-margin-15px-bottom">Looking for a excellent business idea?</h6>'
-					+ '<div>'
-					+ '<input class="medium-input margin-25px-bottom xs-margin-10px-bottom required" type="text" name="name" placeholder="Your name">'
-					+ '<input class="medium-input margin-25px-bottom xs-margin-10px-bottom required" type="email" name="email" placeholder="Your email address">'
-					+ '<input class="medium-input margin-25px-bottom xs-margin-10px-bottom" type="tel" name="phone" placeholder="Your mobile">'
-					+ '<textarea class="medium-textarea xs-h-100px xs-margin-10px-bottom" rows="6" name="comment" placeholder="Your message"></textarea>'
-					+ '<input type="hidden" name="redirect" value="">'
-					+ '<button class="btn btn-medium btn-gradient-sky-blue-pink mb-0 submit" type="submit">Send Message</button>'
+					+ '<h6 class="text-extra-dark-gray font-weight-500 margin-35px-bottom xs-margin-15px-bottom">어떤 건강식을 만들어주실 건가요?</h6>'
+					+ '<div class="row" style="width:100%; margin:0; padding:0" >'
+					+ '<div class="col-lg-10">'
+					+ '<input class="medium-input margin-25px-bottom xs-margin-10px-bottom required" type="text" name="foodnamesearch" placeholder="요리 이름을 검색하세요">'
+					+ '</div>'
+					+ '<div class="col-lg-2" style="width:100%; margin-top:5px; padding:0">'
+					+ '<button class="btn btn-small btn-round-edge btn-gradient-sky-blue-pink mb-0 submit" type="검색">검색</button>'
+					+ '</div>'
+					+ '</div>'
+					+ '<div class="row">'
+					+ '<div class="col-lg-12">'
+					+ '<div id="searchResults">'
+					+ '</div>'
+					+ '</div>'
 					+ '<div class="form-results d-none"></div>'
 					+ '</div></div></form>'
 			$('#formOfmodal').append(content);
