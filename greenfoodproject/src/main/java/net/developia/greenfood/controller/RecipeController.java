@@ -37,6 +37,12 @@ public class RecipeController {
 		return "recipePage"; 
 	}
 	
+	@RequestMapping(value = "/recipe2", method = RequestMethod.GET)
+	public String home2() { 
+		System.out.println("recipe page start"); 
+		return "recipePage2"; 
+	}
+	
 	@RequestMapping(value = "/recipePost", method = RequestMethod.GET)
 	public String recipePost() { 
 		System.out.println("recipe page start"); 
