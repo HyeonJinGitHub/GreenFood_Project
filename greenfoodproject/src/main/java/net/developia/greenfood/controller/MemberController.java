@@ -1,19 +1,24 @@
 package net.developia.greenfood.controller;
 
 import java.util.HashMap;
-import java.util.List;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import net.developia.greenfood.dto.MemberDTO;
 import net.developia.greenfood.service.MemberService;
 
 @Controller
+@RequestMapping("/")
 public class MemberController {
 
 	@Autowired
@@ -21,43 +26,56 @@ public class MemberController {
 
 	private static Logger logger = LoggerFactory.getLogger(MemberController.class);
 
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public String home() { 
-//		System.out.println("home controller start"); 
-//		return "index"; 
-//	}
-//	@RequestMapping(value = "/test", method = RequestMethod.GET)
-//	public ModelAndView home2() {
-//		System.out.println("test controller start");
-//		ModelAndView mav = new ModelAndView("test");
-//		mav.addObject("key", "value!!");
-//		return mav;
-//	}
-
 	@GetMapping("/test")
-	public ModelAndView home2() { 
-		System.out.println("test controller start"); 
-		return new ModelAndView("test"); 
+	public ModelAndView home2() {
+		System.out.println("test controller start");
+		return new ModelAndView("test");
 	}
-	
-	@GetMapping("/member/list")
-	public ModelAndView getMemberList() {
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("ID", "aaa");
-		try {
-			memberService.selectMember(map);
-			List<MemberDTO> output = (List) map.get("MemberList");
-			for (MemberDTO dto : output) {
-				System.out.println(dto.getId());
-				System.out.println(dto.getEmail());
-			}
-			ModelAndView mav = new ModelAndView("home");
 
+	@GetMapping("/registerAction")
+	public String tmp(@RequestParam(required = true) String uid, @RequestParam(required = true) String pwd,
+			@RequestParam(required = true) String name, @RequestParam(required = true) String uemail,
+			@RequestParam(required = true) String phone) {
+		System.out.println("Get으로 왔어요");
+		return "login";
+	}
+
+	@PostMapping("/registerAction")
+	public ModelAndView registerAction(@RequestParam(required = true) String uid,
+			@RequestParam(required = true) String pwd, @RequestParam(required = true) String name,
+			@RequestParam(required = true) String uemail, @RequestParam(required = true) String phone) {
+		System.out.println("POST로 왔어요");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("ID", uid);
+		map.put("PWD", DigestUtils.sha512Hex(pwd));
+		map.put("NAME", name);
+		map.put("EMAIL", uemail);
+		map.put("PHONE", phone);
+		ModelAndView mav = new ModelAndView("result");
+		try {
+			memberService.register(map);
+			mav.addObject("url", "/greenfood/login");
 			return mav;
 		} catch (Exception e) {
 			e.printStackTrace();
-			ModelAndView mav = new ModelAndView("home");
+			mav.addObject("url", "javascript:history.back();");
 			return mav;
 		}
 	}
+
+	@GetMapping("/login")
+	public ModelAndView move_login_get() {
+		return new ModelAndView("login");
+	}
+
+	@PostMapping("/login")
+	public ModelAndView move_login_post() {
+		return new ModelAndView("login");
+	}
+
+	@GetMapping("/register")
+	public ModelAndView move_register() {
+		return new ModelAndView("register");
+	}
+
 }

@@ -21,4 +21,86 @@
           }
        ]]>
 	</select>
+	
+	<parameterMap type="java.util.HashMap"
+		id="registerParam">
+		<parameter property="ID" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="PWD" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="NAME" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="EMAIL" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="PHONE" jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+
+	<select id="register" statementType="CALLABLE"
+		parameterMap="registerParam" >
+	<![CDATA[
+          {
+             call member_pkg.insert_member(
+				?, ?, ?, ?, ?
+			)
+          }
+       ]]>
+	</select>
+	
+	<parameterMap type="java.util.HashMap" id="EmailParam">
+		<parameter property="EMAIL" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="MemberList" jdbcType="CURSOR"
+			mode="OUT" resultMap="EmailResultMap" />
+	</parameterMap>
+		<resultMap type="MemberDTO" id="EmailResultMap">
+		<result property="id" column="ID" />
+		<result property="password" column="PASSWORD" />
+	</resultMap>
+	<select id="selectMemberByEmail" statementType="CALLABLE"
+		parameterMap="EmailParam" resultMap="EmailResultMap">
+	<![CDATA[
+          {
+             call member_pkg.select_memberByEmail(
+				?, ?
+			)
+          }
+       ]]>
+	</select>
+	
+	<parameterMap type="java.util.HashMap" id="PhoneParam">
+		<parameter property="PHONE" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="MemberList" jdbcType="CURSOR"
+			mode="OUT" resultMap="PhoneResultMap" />
+	</parameterMap>
+		<resultMap type="MemberDTO" id="PhoneResultMap">
+		<result property="id" column="ID" />
+		<result property="password" column="PASSWORD" />
+	</resultMap>
+	<select id="selectMemberByPhone" statementType="CALLABLE"
+		parameterMap="PhoneParam" resultMap="PhoneResultMap">
+	<![CDATA[
+          {
+             call member_pkg.select_memberByPhone(
+				?, ?
+			)
+          }
+       ]]>
+	</select>
+	
+	<parameterMap type="java.util.HashMap" id="MemberParam">
+		<parameter property="ID" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="PASSWORD" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="MemberList" jdbcType="CURSOR"
+			mode="OUT" resultMap="MemberResultMap" />
+	</parameterMap>
+	<resultMap type="MemberDTO" id="MemberResultMap">
+		<result property="id" column="ID" />
+		<result property="password" column="PASSWORD" />
+	</resultMap>
+	<select id="login" statementType="CALLABLE"
+		parameterMap="MemberParam" resultMap="MemberResultMap">
+	<![CDATA[
+          {
+             call member_pkg.login_member(
+				?, ?, ?
+			)
+          }
+       ]]>
+	</select>
+	
 </mapper>
