@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
- <head>
-        <title>Litho</title>
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <title>오구의 레시피 – 오구오구</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="author" content="ThemeZaa">
@@ -24,7 +25,7 @@
         <link rel="stylesheet" type="text/css" href="resources/revolution/css/layers.css">
         <link rel="stylesheet" type="text/css" href="resources/revolution/css/navigation.css">
     </head>
- <body data-mobile-nav-style="classic">
+    <body data-mobile-nav-style="classic">
         <!-- start header -->
         <header>
             <!-- start navigation -->
@@ -46,436 +47,52 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                             <ul class="navbar-nav alt-font">
-                                <li class="nav-item dropdown megamenu">
-                                    <a href="#" class="nav-link">Home</a>
+                               <li class="nav-item dropdown megamenu">
+                                    <a href="#" class="nav-link">카테고리</a>
                                     <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                     <div class="menu-back-div dropdown-menu megamenu-content" role="menu">
                                         <div class="d-lg-flex justify-content-center">
                                             <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">Corporate</li>
+                                                <li class="dropdown-header">음식 카테고리</li>
                                                 <li><a href="home-startup.html">Startup</a></li>
                                                 <li><a href="home-business.html">Business</a></li>
                                                 <li><a href="home-corporate.html">Corporate</a></li>
-                                                <li><a href="home-finance.html">Finance</a></li>
-                                                <li><a href="home-application.html">Application</a></li>
-                                                <li><a href="home-consulting.html">Consulting</a></li>
-                                                <li><a href="home-digital-agency.html">Digital agency</a></li>
-                                                <li><a href="home-seo-agency.html">SEO agency</a></li>
-                                                <li><a href="home-events-conference.html">Events & conference</a></li>
-                                                <li><a href="home-marketing-agency.html">Marketing agency</a></li>
                                             </ul>
                                             <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">Specialized</li>
+                                                <li class="dropdown-header">레시피</li>
                                                 <li><a href="home-restaurant.html">Restaurant</a></li>
                                                 <li><a href="home-architecture.html">Architecture</a></li>
                                                 <li><a href="home-hotel-resort.html">Hotel & resort</a></li>
-                                                <li><a href="home-travel-agency.html">Travel agency</a></li>
-                                                <li><a href="home-yoga-meditation.html">Yoga & meditation</a></li>
-                                                <li><a href="home-gym-fitness.html">Gym & fitness</a></li>
-                                                <li><a href="home-spa-salon.html">Spa salon</a></li>
-                                                <li><a href="home-cafe.html">Cafe</a></li>
-                                                <li><a href="home-decor.html">Home decor</a></li>
-                                                <li><a href="home-dentist.html">Dentist</a></li>
-                                                <li><a href="home-interior-design.html">Interior design</a></li>
                                             </ul>
                                             <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">Portfolio</li>
+                                                <li class="dropdown-header">상품 카테고리</li>
                                                 <li><a href="home-design-agency.html">Design agency</a></li>
                                                 <li><a href="home-web-agency.html">Web agency</a></li>
-                                                <li><a href="home-creative-agency.html">Creative agency</a></li>
-                                                <li><a href="home-freelancer.html">Freelancer</a></li>
-                                                <li><a href="home-branding-agency.html">Branding agency</a></li>
-                                                <li><a href="home-photography.html">Photography</a></li>
-                                                <li><a href="home-personal-portfolio.html">Personal portfolio</a></li>
-                                                <li><a href="home-vertical-portfolio.html">Vertical portfolio</a></li>
-                                                <li><a href="home-interactive-portfolio.html">Interactive portfolio</a></li>
-                                                <li><a href="home-split-portfolio.html">Split portfolio</a></li>
-                                                <li><a href="home-creative-portfolio.html">Creative portfolio</a></li>
                                             </ul>
                                             <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">Other</li>
+                                                <li class="dropdown-header">고객센터</li>
                                                 <li><a href="home-furniture-shop.html">Furniture shop</a></li>
                                                 <li><a href="home-fashion-shop.html">Fashion shop</a></li>
                                                 <li><a href="home-magazine.html">Magazine</a></li>
-                                                <li><a href="home-lifestyle-blog.html">Lifestyle blog</a></li>
-                                                <li><a href="home-classic-blog.html">Classic blog</a></li>
-                                                <li><a href="home-blog-metro.html">Blog metro</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="#" class="nav-link">Pages</a>
+                                    <a href="#" class="nav-link">음식 카테고리</a>
                                     <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">About<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="about-me.html">About me</a></li>
-                                                <li><a href="about-us.html">About us</a></li>
-                                                <li><a href="our-story.html">Our story</a></li>
-                                                <li><a href="who-we-are.html">Who we are</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Services<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="our-services.html">Our services</a></li>
-                                                <li><a href="what-we-offers.html">What we offer</a></li>
-                                                <li><a href="our-process.html">Our process</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Contact<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="contact-us-simple.html">Contact simple</a></li>
-                                                <li><a href="contact-us-classic.html">Contact classic</a></li>
-                                                <li><a href="contact-us-modern.html">Contact modern</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Additional pages<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="our-team.html">Our team</a></li>
-                                                <li><a href="latest-news.html">Latest news</a></li>
-                                                <li><a href="pricing-packages.html">Pricing packages</a></li>
-                                                <li><a href="404.html">Error 404</a></li>
-                                                <li><a href="maintenance.html">Maintenance</a></li>
-                                                <li><a href="coming-soon.html">Coming soon</a></li>
-                                                <li><a href="coming-soon-v2.html">Coming soon - V2</a></li>
-                                                <li><a href="faq.html">FAQ's</a></li>
-                                                <li><a href="search-result.html">Search result</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="#" class="nav-link">Portfolio</a>
+                                    <a href="#" class="nav-link">레시피</a>
                                     <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Portfolio classic<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="portfolio-classic-two-column.html">Classic 2 column</a></li>
-                                                <li><a href="portfolio-classic-three-column.html">Classic 3 column</a></li>
-                                                <li><a href="portfolio-classic-four-column.html">Classic 4 column</a></li>
-                                                <li><a href="portfolio-classic-masonry.html">Classic masonry</a></li>
-                                                <li><a href="portfolio-classic-metro.html">Classic metro</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Portfolio boxed<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="portfolio-boxed-two-column.html">Boxed 2 column</a></li>
-                                                <li><a href="portfolio-boxed-three-column.html">Boxed 3 column</a></li>
-                                                <li><a href="portfolio-boxed-four-column.html">Boxed 4 column</a></li>
-                                                <li><a href="portfolio-boxed-masonry.html">Boxed masonry</a></li>
-                                                <li><a href="portfolio-boxed-metro.html">Boxed metro</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Portfolio colorful<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="portfolio-colorful-two-column.html">Colorful 2 column</a></li>
-                                                <li><a href="portfolio-colorful-three-column.html">Colorful 3 column</a></li>
-                                                <li><a href="portfolio-colorful-four-column.html">Colorful 4 column</a></li>
-                                                <li><a href="portfolio-colorful-masonry.html">Colorful masonry</a></li>
-                                                <li><a href="portfolio-colorful-metro.html">Colorful metro</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Portfolio bordered<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="portfolio-bordered-two-column.html">Bordered 2 column</a></li>
-                                                <li><a href="portfolio-bordered-three-column.html">Bordered 3 column</a></li>
-                                                <li><a href="portfolio-bordered-four-column.html">Bordered 4 column</a></li>
-                                                <li><a href="portfolio-bordered-masonry.html">Bordered masonry</a></li>
-                                                <li><a href="portfolio-bordered-metro.html">Bordered metro</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Portfolio overlay<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="portfolio-overlay-two-column.html">Overlay 2 column</a></li>
-                                                <li><a href="portfolio-overlay-three-column.html">Overlay 3 column</a></li>
-                                                <li><a href="portfolio-overlay-four-column.html">Overlay 4 column</a></li>
-                                                <li><a href="portfolio-overlay-masonry.html">Overlay masonry</a></li>
-                                                <li><a href="portfolio-overlay-metro.html">Overlay metro</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Portfolio switch image<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="portfolio-switch-image-two-column.html">Switch image 2 column</a></li>
-                                                <li><a href="portfolio-switch-image-three-column.html">Switch image 3 column</a></li>
-                                                <li><a href="portfolio-switch-image-four-column.html">Switch image 4 column</a></li>
-                                                <li><a href="portfolio-switch-image-masonry.html">Switch image masonry</a></li>
-                                                <li><a href="portfolio-switch-image-metro.html">Switch image metro</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Portfolio other<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="portfolio-scattered.html">Portfolio scattered</a></li>
-                                                <li><a href="portfolio-justified-gallery.html">Justified gallery</a></li>
-                                                <li><a href="portfolio-slider.html">Portfolio slider</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Single project page<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="single-project-page-01.html">Single project page 01</a></li>
-                                                <li><a href="single-project-page-02.html">Single project page 02</a></li>
-                                                <li><a href="single-project-page-03.html">Single project page 03</a></li>
-                                                <li><a href="single-project-page-04.html">Single project page 04</a></li>
-                                                <li><a href="single-project-page-05.html">Single project page 05</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
                                 </li>
                                 <li class="nav-item dropdown megamenu">
-                                    <a href="javascript:void(0);" class="nav-link">Elements</a>
+                                    <a href="javascript:void(0);" class="nav-link">상품 카테고리</a>
                                     <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                    <div class="menu-back-div dropdown-menu megamenu-content" role="menu">
-                                        <div class="d-lg-flex justify-content-center">
-                                            <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">General</li>
-                                                <li><a href="accordions.html"><i class="ti-layout-accordion-separated"></i>Accordions</a></li>
-                                                <li><a href="buttons.html"><i class="ti-mouse"></i>Buttons</a></li>
-                                                <li><a href="team.html"><i class="ti-user"></i>Team</a></li>
-                                                <li><a href="team-carousel.html"><i class="ti-layout-slider-alt"></i>Team carousel</a></li>
-                                                <li><a href="clients.html"><i class="ti-id-badge"></i>Clients</a></li>
-                                                <li><a href="client-carousel.html"><i class="ti-layout-slider"></i>Client carousel</a></li>
-                                                <li><a href="subscribe.html"><i class="ti-crown"></i>Subscribe</a></li>
-                                                <li><a href="call-to-action.html"><i class="ti-eye"></i>Call to action</a></li>
-                                                <li><a href="tab.html"><i class="ti-layout-tab"></i>Tab</a></li>
-                                                <li><a href="google-map.html"><i class="ti-location-pin"></i>Google map</a></li>
-                                                <li><a href="contact-form.html"><i class="ti-clipboard"></i>Contact form</a></li>
-                                                <li><a href="image-gallery.html"><i class="ti-gallery"></i>Image gallery</a></li>
-                                            </ul>
-                                            <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">Content & infographics</li>
-                                                <li><a href="progress-bar.html"><i class="icon-hourglass"></i>Progress bar</a></li>
-                                                <li><a href="icon-with-text.html"><i class="ti-layout-media-left"></i>Icon with text</a></li>
-                                                <li><a href="overline-icon-box.html"><i class="ti-write"></i>Over line icon box</a></li>
-                                                <li><a href="custom-icon-with-text.html"><i class="ti-vector"></i>Custom icon with text</a></li>
-                                                <li><a href="counters.html"><i class="ti-timer"></i>Counters</a></li>
-                                                <li><a href="countdown.html"><i class="ti-alarm-clock"></i>Countdown</a></li>
-                                                <li><a href="pie-charts.html"><i class="ti-pie-chart"></i>Pie charts</a></li>
-                                                <li><a href="fancy-text-box.html"><i class="ti-layout-cta-center"></i>Fancy text box</a></li>
-                                                <li><a href="text-box.html"><i class="ti-layout-cta-left"></i>Text box</a></li>
-                                                <li><a href="fancy-text.html"><i class="ti-text"></i>Fancy text</a></li>
-                                            </ul>
-                                            <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">Interactive</li>
-                                                <li><a href="testimonials.html"><i class="ti-thought"></i>Testimonials</a></li>
-                                                <li><a href="testimonials-carousel.html"><i class="ti-comments"></i>Testimonials carousel</a></li>
-                                                <li><a href="video.html"><i class="ti-video-camera"></i>Video</a></li>
-                                                <li><a href="interactive-banners.html"><i class="ti-image"></i>Interactive banners</a></li>
-                                                <li><a href="services.html"><i class="ti-bookmark-alt"></i>Services</a></li>
-                                                <li><a href="info-banner.html"><i class="ti-layout-slider"></i>Info banner</a></li>
-                                                <li><a href="rotate-box.html"><i class="ti-package"></i>Rotate box</a></li>
-                                                <li><a href="process-step.html"><i class="ti-layers"></i>Process step</a></li>
-                                                <li><a href="instagram.html"><i class="ti-instagram"></i>Instagram</a></li>
-                                                <li><a href="parallax-scrolling.html"><i class="ti-exchange-vertical"></i>Parallax scrolling</a></li>
-                                                <li><a href="text-slider.html"><i class="ti-layout-media-overlay"></i>Text slider</a></li>
-                                            </ul>
-                                            <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">Text & containers</li>
-                                                <li><a href="heading.html"><i class="ti-text"></i>Heading</a></li>
-                                                <li><a href="dropcaps.html"><i class="ti-smallcap"></i>Drop caps</a></li>
-                                                <li><a href="columns.html"><i class="ti-layout"></i>Columns</a></li>
-                                                <li><a href="blockquote.html"><i class="ti-quote-left"></i>Blockquote</a></li>
-                                                <li><a href="highlights.html"><i class="ti-underline"></i>Highlights</a></li>
-                                                <li><a href="message-box.html"><i class="ti-layout-media-right-alt"></i>Message box</a></li>
-                                                <li><a href="social-icons.html"><i class="ti-user"></i>Social icons</a></li>
-                                                <li><a href="lists.html"><i class="ti-list"></i>Lists</a></li>
-                                                <li><a href="seperators.html"><i class="ti-layout-line-solid"></i>Separators</a></li>
-                                                <li><a href="pricing-table.html"><i class="ti-layout-column2"></i>Pricing table</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="#" class="nav-link">Features</a>
+                                    <a href="#" class="nav-link">고객센터</a>
                                     <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Header and menu<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="transparent-header.html">Transparent header</a></li>
-                                                <li><a href="white-header.html">White header</a></li>
-                                                <li><a href="dark-header.html">Dark header</a></li>
-                                                <li><a href="header-with-top-bar.html">Header with top bar</a></li>
-                                                <li><a href="header-with-push.html">Header with push</a></li>
-                                                <li><a href="center-navigation.html">Center navigation</a></li>
-                                                <li><a href="center-logo.html">Center logo</a></li>
-                                                <li><a href="top-logo.html">Top logo</a></li>
-                                                <li><a href="one-page-navigation.html">One page navigation</a></li>
-                                                <li class="dropdown">
-                                                    <a data-toggle="dropdown" href="javascript:void(0);">Hamburger menu<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="hamburger-menu.html">Hamburger menu</a></li>
-                                                        <li><a href="hamburger-menu-modern.html">Hamburger menu modern</a></li>
-                                                        <li><a href="hamburger-menu-half.html">Hamburger menu half</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="dropdown">
-                                                    <a data-toggle="dropdown" href="javascript:void(0);">Left menu<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="left-menu-classic.html">Left menu classic</a></li>
-                                                        <li><a href="left-menu-modern.html">Left menu modern</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="dropdown">
-                                                    <a data-toggle="dropdown" href="javascript:void(0);">Header type<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="header-always-fixed.html">Always fixed</a></li>
-                                                        <li><a href="header-disable-fixed.html">Disable fixed</a></li>
-                                                        <li><a href="header-reverse-scroll.html">Reverse scroll</a></li>
-                                                        <li><a href="header-responsive-sticky.html">Responsive sticky</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="dropdown">
-                                                    <a data-toggle="dropdown" href="javascript:void(0);">Mobile menu<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="mobile-menu-classic.html">Classic</a></li>
-                                                        <li><a href="mobile-menu-modern.html">Modern</a></li>
-                                                        <li><a href="mobile-menu-full-screen.html">Full screen</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Footer<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="footer-style-01.html">Footer style 01</a></li>
-                                                <li><a href="footer-style-02.html">Footer style 02</a></li>
-                                                <li><a href="footer-style-03.html">Footer style 03</a></li>
-                                                <li><a href="footer-style-04.html">Footer style 04</a></li>
-                                                <li><a href="footer-style-05.html">Footer style 05</a></li>
-                                                <li><a href="footer-style-06.html">Footer style 06</a></li>
-                                                <li><a href="footer-style-07.html">Footer style 07</a></li>
-                                                <li><a href="footer-style-08.html">Footer style 08</a></li>
-                                                <li><a href="footer-style-09.html">Footer style 09</a></li>
-                                                <li><a href="footer-style-10.html">Footer style 10</a></li>
-                                                <li><a href="footer-style-11.html">Footer style 11</a></li>
-                                                <li><a href="footer-style-12.html">Footer style 12</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Page title<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="page-title-left-alignment.html">Left alignment</a></li>
-                                                <li><a href="page-title-right-alignment.html">Right alignment</a></li>
-                                                <li><a href="page-title-center-alignment.html">Center alignment</a></li>
-                                                <li><a href="page-title-colorful-style.html">Colorful style</a></li>
-                                                <li><a href="page-title-big-typography.html">Big typography</a></li>
-                                                <li><a href="page-title-parallax-background.html">Parallax background</a></li>
-                                                <li><a href="page-title-separate-breadcrumbs.html">Separate breadcrumbs</a></li>
-                                                <li><a href="page-title-gallery-background.html">Gallery background</a></li>
-                                                <li><a href="page-title-background-video.html">Background video</a></li>
-                                                <li><a href="page-title-mini-version.html">Mini version</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Modal popup<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="modal-simple.html">Simple modal</a></li>
-                                                <li><a href="modal-subscription.html">Subscription</a></li>
-                                                <li><a href="modal-contact-form.html">Contact form</a></li>
-                                                <li><a href="modal-youtube-video.html">Youtube video</a></li>
-                                                <li><a href="modal-vimeo-video.html">Vimeo video</a></li>
-                                                <li><a href="modal-google-map.html">Google map</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Icon packs<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="icon-packs-icons-mind-line.html">Icons mind line</a></li>
-                                                <li><a href="icon-packs-icons-mind-solid.html">Icons mind solid</a></li>
-                                                <li><a href="icon-packs-feather.html">Feather</a></li>
-                                                <li><a href="icon-packs-font-awesome.html">Font awesome</a></li>
-                                                <li><a href="icon-packs-et-line.html">ET line</a></li>
-                                                <li><a href="icon-packs-themify.html">Themify</a></li>
-                                                <li><a href="icon-packs-simple-line.html">Simple line</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="animations.html">Animations</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown simple-dropdown">
-                                    <a href="#" class="nav-link">Blog</a>
-                                    <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li class="dropdown"><a href="blog-grid.html">Blog grid</a></li>
-                                        <li class="dropdown"><a href="blog-masonry.html">Blog masonry</a></li>
-                                        <li class="dropdown"><a href="blog-classic.html">Blog classic</a></li>
-                                        <li class="dropdown"><a href="blog-simple.html">Blog simple</a></li>
-                                        <li class="dropdown"><a href="blog-side-image.html">Blog side image</a></li>
-                                        <li class="dropdown"><a href="blog-metro.html">Blog metro</a></li>
-                                        <li class="dropdown"><a href="blog-overlay-image.html">Blog overlay image</a></li>
-                                        <li class="dropdown"><a href="blog-modern.html">Blog modern</a></li>
-                                        <li class="dropdown"><a href="blog-clean.html">Blog clean</a></li>
-                                        <li class="dropdown"><a href="blog-widget.html">Blog widget</a></li>
-                                        <li class="dropdown"><a href="blog-standard.html">Blog standard</a></li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Post layout<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="blog-post-layout-01.html">Blog post layout 01</a></li>
-                                                <li><a href="blog-post-layout-02.html">Blog post layout 02</a></li>
-                                                <li><a href="blog-post-layout-03.html">Blog post layout 03</a></li>
-                                                <li><a href="blog-post-layout-04.html">Blog post layout 04</a></li>
-                                                <li><a href="blog-post-layout-05.html">Blog post layout 05</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a data-toggle="dropdown" href="javascript:void(0);">Post types<i class="fas fa-angle-right dropdown-toggle"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="blog-standard-post.html">Standard post</a></li>
-                                                <li><a href="blog-gallery-post.html">Gallery post</a></li>
-                                                <li><a href="blog-slider-post.html">Slider post</a></li>
-                                                <li><a href="blog-html5-video-post.html">HTML5 video post</a></li>
-                                                <li><a href="blog-youtube-video-post.html">Youtube video post</a></li>
-                                                <li><a href="blog-vimeo-video-post.html">Vimeo video post</a></li>
-                                                <li><a href="blog-audio-post.html">Audio post</a></li>
-                                                <li><a href="blog-blockquote-post.html">Blockquote post</a></li>
-                                                <li><a href="blog-full-width-post.html">Full width post</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown megamenu">
-                                    <a href="javascript:void(0);" class="nav-link">Shop</a>
-                                    <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                    <div class="menu-back-div dropdown-menu megamenu-content" role="menu">
-                                        <div class="d-lg-flex justify-content-center">
-                                            <ul class="d-lg-inline-block md-margin-15px-bottom">
-                                                <li class="dropdown-header">Shop layout</li>
-                                                <li><a href="shop-wide.html">Shop wide</a></li>
-                                                <li><a href="shop-left-sidebar.html">Left sidebar</a></li>
-                                                <li><a href="shop-right-sidebar.html">Right sidebar</a></li>
-                                                <li><a href="shop-only-categories.html">Only categories</a></li>
-                                                <li><a href="single-product.html">Single product</a></li>
-                                                <li class="dropdown-header">Utility pages</li>
-                                                <li><a href="shopping-cart.html">Shopping cart</a></li>
-                                                <li><a href="checkout.html">Checkout</a></li>
-                                                <li><a href="login-register.html">Login / Register</a></li>
-                                            </ul>
-                                            <ul class="d-lg-inline-block d-none small-gap">
-                                                <li>
-                                                    <a href="index.html" class="menu-banner-image"><img src="resources/images/menu-banner-01.jpg" alt=""/></a>
-                                                </li>
-                                            </ul>
-                                            <ul class="d-lg-inline-block d-none no-padding-right">
-                                                <li>
-                                                    <a href="index.html" class="menu-banner-image"><img src="resources/images/menu-banner-02.jpg" alt=""/></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -488,26 +105,25 @@
                                 <button title="Close" type="button" class="search-close alt-font">×</button>
                                 <form id="search-form" role="search" method="get" class="search-form text-left" action="search-result.html">
                                     <div class="search-form-box">
-                                        <span class="search-label alt-font text-small text-uppercase text-medium-gray">What are you looking for?</span>
-                                        <input class="search-input alt-font" id="search-form-input5e219ef164995" placeholder="Enter your keywords..." name="s" value="" type="text" autocomplete="off">
+                                        <span class="search-label alt-font text-small text-uppercase text-medium-gray">어떤 레시피가 궁금하신가요?</span>
+                                        <input class="search-input alt-font" id="search-form-input5e219ef164995" placeholder="냠냠~" name="s" value="" type="text" autocomplete="off">
                                         <button type="submit" class="search-button">
                                             <i class="feather icon-feather-search" aria-hidden="true"></i>
                                         </button>
+                                        <div>
+                                        <span> #해시태그1</span> <span> #해시태그1</span> <span>  #해시태그1</span> <span>  #해시태그1</span>
+                                    	</div>
                                     </div>
+                                    
                                 </form>
                             </div>
                             <!-- end search input --> 
                         </div>
                         <div class="header-language dropdown d-lg-inline-block">
-                        
-                       
                             <a href="javascript:void(0);"><i class="feather icon-feather-globe"></i></a>
                             <ul class="dropdown-menu alt-font">
-                                <li><a href="javascript:void(0);" title="English"><span class="icon-country"><img src="resources/images/country-flag-16X16/usa.png" alt=""></span>English</a></li>
-                                <li><a href="javascript:void(0);" title="England"><span class="icon-country"><img src="resources/images/country-flag-16X16/england.png" alt=""></span>England</a></li>
-                                <li><a href="javascript:void(0);" title="France"><span class="icon-country"><img src="resources/images/country-flag-16X16/france.png" alt=""></span>France</a></li>
-                                <li><a href="javascript:void(0);" title="Russian"><span class="icon-country"><img src="resources/images/country-flag-16X16/russian.png" alt=""></span>Russian</a></li>
-                                <li><a href="javascript:void(0);" title="Spain"><span class="icon-country"><img src="resources/images/country-flag-16X16/spain.png" alt=""></span>Spain</a></li>
+                                <li><a href="javascript:void(0);" title="로그인"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>로그인</a></li>
+                                <li><a href="javascript:void(0);" title="회원가입"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>회원가입</a></li>
                             </ul>
                         </div>
                         <div class="header-cart-icon dropdown">
@@ -516,27 +132,27 @@
                                 <li class="cart-item align-items-center">
                                     <a href="javascript:void(0);" class="alt-font close">×</a>
                                     <div class="product-image">
-                                        <a href="single-product.html"><img src="https://placehold.it/150x191" class="cart-thumb" alt="" /></a>
+                                        <a href="single-product.html"><img src="resources/images/c.jpg"" class="cart-thumb" alt="" /></a>
                                     </div>
                                     <div class="product-detail alt-font">
-                                        <a href="single-product.html">Delica Omtantur</a>
-                                        <span class="item-ammount">$100.00</span> 
+                                        <a href="single-product.html">치킨 샐러드</a>
+                                        <span class="item-ammount">10,000원</span> 
                                     </div>
                                 </li>
                                 <li class="cart-item align-items-center">
                                     <a href="javascript:void(0);" class="alt-font close">×</a>
                                     <div class="product-image">
-                                        <a href="single-product.html"><img src="https://placehold.it/150x191" class="cart-thumb" alt="" /></a>
+                                        <a href="single-product.html"><img src="resources/images/c.jpg"" class="cart-thumb" alt="" /></a>
                                     </div>
                                     <div class="product-detail alt-font">
-                                        <a href="single-product.html">Gianvito Rossi</a>
-                                        <span class="item-ammount">$99.99</span> 
+                                        <a href="single-product.html">치킨 샐러드</a>
+                                        <span class="item-ammount">9,999원</span> 
                                     </div>
                                 </li>
                                 <li class="cart-item cart-total">
-                                    <div class="alt-font margin-15px-bottom"><span class="w-50 d-inline-block text-medium text-uppercase">Subtotal:</span><span class="w-50 d-inline-block text-right text-medium font-weight-500">$199.99</span></div>
-                                    <a href="shopping-cart.html" class="btn btn-small btn-dark-gray">view cart</a>
-                                    <a href="checkout.html" class="btn btn-small btn-neon-orange">checkout</a>
+                                    <div class="alt-font margin-15px-bottom"><span class="w-50 d-inline-block text-medium text-uppercase">합계:</span><span class="w-50 d-inline-block text-right text-medium font-weight-500">19,999원</span></div>
+                                    <a href="shopping-cart.html" class="btn btn-small btn-dark-gray">장바구니</a>
+                                    <a href="checkout.html" class="btn btn-small btn-neon-orange">결제하기</a>
                                 </li>
                             </ul>
                         </div>
@@ -545,7 +161,8 @@
             </nav>
         </header>
         <!-- end header -->
-        <!-- start subscription popup -->
+        
+        <!-- start subscription popup
         <div id="subscribe-popup" class="mfp-hide subscribe-popup">
             <div class="container">
                 <div class="row justify-content-center">
@@ -573,7 +190,8 @@
                 </div>
             </div>
         </div>
-        <!-- end subscription popup -->
+         end subscription popup -->
+         
         <!-- SLIDER EXAMPLE -->
         <section class="p-0 home-furniture-shop">
             <article class="content">
@@ -617,7 +235,7 @@
                                      data-paddingright="[20,20,20,20]"
                                      data-paddingbottom="[10,10,10,10]"
                                      data-paddingleft="[20,20,20,20]"
-                                     style="z-index: 7; text-transform: uppercase; letter-spacing: 2px;">furniture design</div>
+                                     style="z-index: 7; text-transform: uppercase; letter-spacing: 2px;">치킨</div>
 
                                 <!-- LAYER NR. 4 -->
                                 <div class="tp-caption alt-font text-extra-dark-gray"
@@ -637,7 +255,7 @@
                                      data-paddingright="[20,20,20,20]"
                                      data-paddingbottom="[30,30,30,30]"
                                      data-paddingleft="[20,20,20,20]"
-                                     style="z-index: 8;letter-spacing: -3px;"><strong>Ormond</strong> <br/> armchair</div>    
+                                     style="z-index: 8;letter-spacing: -3px;"><strong>치킨</strong> <br/> 로스팅구이</div>    
 
                                 <!-- LAYER NR. 1 -->
                                 <a class="tp-caption tp-resizeme btn btn-medium btn-white btn-box-shadow lg-margin-15px-bottom md-no-margin-bottom md-margin-auto-lr"
@@ -657,7 +275,7 @@
                                    data-paddingright="[27,25,25,22]"
                                    data-paddingbottom="[11,10,10,10]"
                                    data-paddingleft="[27,25,25,22]"
-                                   style="z-index: 6;box-shadow: 0 0 15px rgba(0,0,0,.1);">Discover now</a>
+                                   style="z-index: 6;box-shadow: 0 0 15px rgba(0,0,0,.1);">자세히 보기</a>
 
                                 <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme rs-parallaxlevel-10"
                                      data-x="['center','center','center','center']" data-hoffset="['300','190','0','0']" 
@@ -691,7 +309,7 @@
                                      data-paddingright="[0,0,0,0]"
                                      data-paddingbottom="[0,0,0,0]"
                                      data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 6;"><img src="https://placehold.it/529x594" alt="" data-ww="['529px','420px','420px','290px']" data-hh="['auto','auto','auto','auto']" width="529" height="594" data-no-retina></div>
+                                     style="z-index: 6;"><img src="resources/images/c.jpg" alt="" data-ww="['529px','420px','420px','290px']" data-hh="['auto','auto','auto','auto']" width="529" height="594" data-no-retina></div>
 
                                 <!-- LAYER NR. 32 -->
                                 <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme rs-parallaxlevel-1"
@@ -745,7 +363,7 @@
                                      data-paddingright="[0,0,0,0]"
                                      data-paddingbottom="[0,0,0,0]"
                                      data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 20; letter-spacing: -2px;">$89</div>
+                                     style="z-index: 20; letter-spacing: -2px;">8,900원</div>
                             </li>
 
                             <li data-index="rs-74" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="300"  data-thumb="http://works.themepunch.com/revolution_5_3/wp-content/"  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
@@ -1090,17 +708,23 @@
         <!-- start section -->
         <section class="padding-8-half-rem-lr xl-padding-3-rem-lr lg-no-padding-lr">
             <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6 text-center margin-5-half-rem-bottom md-margin-3-rem-bottom wow animate__fadeIn">
+                        <span class="alt-font font-weight-500 text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom">음식 카테고리</span>
+                        <h4 class="alt-font font-weight-600 text-extra-dark-gray mb-0 letter-spacing-minus-1px">오늘은 이 레시피 어떠세요?</h4>
+                    </div>
+                </div>
                 <div class="row row-cols-1 row-cols-xl-3 row-cols-lg-2 justify-content-center margin-3-rem-tb md-no-margin-tb">
                     <!-- start category item -->
                     <div class="col col-md-6 col-sm-10 shop-category-style-02 lg-margin-4-rem-bottom sm-margin-6-rem-bottom">
                         <div class="shop-product align-items-center d-flex padding-30px-lr xs-no-padding-lr">
                             <div class="shop-product-image text-center d-flex justify-content-center align-items-center wow animate__zoomIn">
-                                <img src="resources/images/home-shop-classic-01.png" alt=""/>
+                                <img src="resources/images/c.jpg" alt=""/>
                                 <a href="shop-wide.html" class="d-inline-block line-height-65px rounded-circle bg-extra-dark-gray box-shadow-extra-large h-60px w-60px position-absolute product-view-link"><i class="feather icon-feather-arrow-right text-white icon-extra-small"></i></a>
                             </div>
                             <div class="shop-product-overlay position-relative wow animate__fadeIn" data-wow-delay="0.2s">
-                                <span class="alt-font font-weight-500 margin-10px-bottom d-inline-block text-uppercase letter-spacing-1px text-dark-orange text-dark-orange-hover xs-margin-5px-bottom">Innovative</span>
-                                <h4 class="alt-font text-extra-dark-gray mb-0 letter-spacing-minus-1px line-height-40px sm-line-height-30px">Morden <span class="font-weight-600">chair</span></h4>
+                                <span class="alt-font font-weight-500 margin-10px-bottom d-inline-block text-uppercase letter-spacing-1px text-dark-orange text-dark-orange-hover xs-margin-5px-bottom">음식 카테고리1</span>
+                                <h4 class="alt-font text-extra-dark-gray mb-0 letter-spacing-minus-1px line-height-40px sm-line-height-30px">음식 <span class="font-weight-600">카테고리1</span></h4>
                             </div>
                         </div>
                     </div>
@@ -1109,12 +733,12 @@
                     <div class="col col-md-6 col-sm-10 shop-category-style-02 lg-margin-4-rem-bottom sm-margin-6-rem-bottom">
                         <div class="shop-product align-items-center d-flex padding-30px-lr xs-no-padding-lr">
                             <div class="shop-product-image text-center d-flex justify-content-center align-items-center wow animate__zoomIn" data-wow-delay="0.4s">
-                                <img src="https://placehold.it/600x610" alt=""/>
+                                <img src="resources/images/c.jpg" alt=""/>
                                 <a href="shop-wide.html" class="d-inline-block line-height-65px rounded-circle bg-extra-dark-gray box-shadow-extra-large h-60px w-60px position-absolute product-view-link"><i class="feather icon-feather-arrow-right text-white icon-extra-small"></i></a>
                             </div>
                             <div class="shop-product-overlay position-relative wow animate__fadeIn" data-wow-delay="0.5s">
-                                <span class="alt-font font-weight-500 margin-10px-bottom d-inline-block text-uppercase letter-spacing-1px text-dark-orange text-dark-orange-hover xs-margin-5px-bottom">Trending</span>
-                                <h4 class="alt-font text-extra-dark-gray mb-0 letter-spacing-minus-1px line-height-40px sm-line-height-30px">Classic <span class="font-weight-600">sofaset</span></h4>
+                                <span class="alt-font font-weight-500 margin-10px-bottom d-inline-block text-uppercase letter-spacing-1px text-dark-orange text-dark-orange-hover xs-margin-5px-bottom">음식 카테고리2</span>
+                                <h4 class="alt-font text-extra-dark-gray mb-0 letter-spacing-minus-1px line-height-40px sm-line-height-30px">음식 <span class="font-weight-600">카테고리2</span></h4>
                             </div>
                         </div>
                     </div>
@@ -1123,12 +747,12 @@
                     <div class="col col-md-6 col-sm-10 shop-category-style-02">
                         <div class="shop-product align-items-center d-flex padding-30px-lr xs-no-padding-lr">
                             <div class="shop-product-image text-center d-flex justify-content-center align-items-center wow animate__zoomIn" data-wow-delay="0.7s">
-                                <img src="https://placehold.it/600x610" alt=""/>
+                                <img src="resources/images/c.jpg" alt=""/>
                                 <a href="shop-wide.html" class="d-inline-block line-height-65px rounded-circle bg-extra-dark-gray box-shadow-extra-large h-60px w-60px position-absolute product-view-link"><i class="feather icon-feather-arrow-right text-white icon-extra-small"></i></a>
                             </div>
                             <div class="shop-product-overlay position-relative wow animate__fadeIn" data-wow-delay="0.8s">
-                                <span class="alt-font font-weight-500 margin-10px-bottom d-inline-block text-uppercase letter-spacing-1px text-dark-orange text-dark-orange-hover xs-margin-5px-bottom">Designer</span>
-                                <h4 class="alt-font text-extra-dark-gray mb-0 letter-spacing-minus-1px line-height-40px sm-line-height-30px">Wooden <span class="font-weight-600">stools</span></h4>
+                                <span class="alt-font font-weight-500 margin-10px-bottom d-inline-block text-uppercase letter-spacing-1px text-dark-orange text-dark-orange-hover xs-margin-5px-bottom">음식 카테고리3</span>
+                                <h4 class="alt-font text-extra-dark-gray mb-0 letter-spacing-minus-1px line-height-40px sm-line-height-30px">음식 <span class="font-weight-600">카테고리3</span></h4>
                             </div>
                         </div>
                     </div>
@@ -1142,8 +766,8 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-6 text-center margin-5-half-rem-bottom md-margin-3-rem-bottom wow animate__fadeIn">
-                        <span class="alt-font font-weight-500 text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom">Living interior</span>
-                        <h4 class="alt-font font-weight-600 text-extra-dark-gray mb-0 letter-spacing-minus-1px">New products</h4>
+                        <span class="alt-font font-weight-500 text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom">레시피</span>
+                        <h4 class="alt-font font-weight-600 text-extra-dark-gray mb-0 letter-spacing-minus-1px">HOT 레시피</h4>
                     </div>
                 </div>
             </div>
@@ -1152,16 +776,17 @@
                     <div class="col-12 filter-content">
                         <ul class="product-listing shop-wrapper grid grid-loading grid-5col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
                             <li class="grid-sizer"></li>
+                            
                             <!-- start product item -->
                             <li class="grid-item wow animate__fadeIn">
                                 <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
                                     <div class="product-image">
                                         <a href="single-product.html">
-                                            <img src="https://placehold.it/600x765" alt=""/>
-                                            <img class="hover-img" src="https://placehold.it/600x765" alt=""/>
+                                            <img src="resources/images/c.jpg" alt=""/>
+                                            <img class="hover-img" src="resources/images/b.jpg" alt=""/>
                                         </a>
                                         <div class="product-hover-details">
-                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>Add to cart</a>
+                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>레시피 살펴보기</a>
                                         </div>
                                         <div class="product-hover-right padding-20px-tb padding-15px-right w-65px">
                                             <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
@@ -1169,123 +794,8 @@
                                         </div>
                                     </div>
                                     <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">Hanging Light</a>
-                                        <div class="product-price text-medium">$470.00</div>
-                                    </div>  
-                                </div>
-                            </li>
-                            <!-- end product item -->
-                            <!-- start product item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.2s">
-                                <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
-                                    <div class="product-image">
-                                        <a href="single-product.html">
-                                            <img src="https://placehold.it/600x765" alt=""/>
-                                            <img class="hover-img" src="https://placehold.it/600x765" alt=""/>
-                                        </a>
-                                        <div class="product-hover-details">
-                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>Add to cart</a>
-                                        </div>
-                                        <div class="product-hover-right padding-20px-tb padding-15px-right w-65px">
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to wishlist"><i class="feather icon-feather-heart"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">Study Lamp</a>
-                                        <div class="product-price text-medium">£510.00</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end product item -->
-                            <!-- start product item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.4s">
-                                <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
-                                    <div class="product-image">
-                                        <a href="single-product.html">
-                                            <img src="https://placehold.it/600x765" alt=""/>
-                                            <img class="hover-img" src="https://placehold.it/600x765" alt=""/>
-                                        </a>
-                                        <div class="product-hover-details">
-                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>Add to cart</a>
-                                        </div>
-                                        <div class="product-hover-right padding-20px-tb padding-15px-right w-65px">
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to wishlist"><i class="feather icon-feather-heart"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">Classic Lamp</a>
-                                        <div class="product-price text-medium"><del>£20.00</del> £50.00</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end product item -->
-                            <!-- start product item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.6s">
-                                <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
-                                    <div class="product-image">
-                                        <a href="single-product.html">
-                                            <img src="https://placehold.it/600x765" alt=""/>
-                                            <img class="hover-img" src="https://placehold.it/600x765" alt=""/>
-                                        </a>
-                                        <div class="product-hover-details">
-                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>Add to cart</a>
-                                        </div>
-                                        <div class="product-hover-right padding-20px-tb padding-15px-right w-65px">
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to wishlist"><i class="feather icon-feather-heart"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">Brown Crystal</a>
-                                        <div class="product-price text-medium"><del>$200.00</del> £50.00</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end product item -->
-                            <!-- start product item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.8s">
-                                <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
-                                    <div class="product-image">
-                                        <a href="single-product.html">
-                                            <img src="https://placehold.it/600x765" alt=""/>
-                                            <img class="hover-img" src="https://placehold.it/600x765" alt=""/>
-                                        </a>
-                                        <div class="product-hover-details">
-                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>Add to cart</a>
-                                        </div>
-                                        <div class="product-hover-right padding-20px-tb padding-15px-right w-65px">
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to wishlist"><i class="feather icon-feather-heart"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">Wooden Stool</a>
-                                        <div class="product-price text-medium">£350.00</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end product item -->
-                            <!-- start product item -->
-                            <li class="grid-item wow animate__fadeIn">
-                                <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
-                                    <div class="product-image">
-                                        <a href="single-product.html">
-                                            <img src="https://placehold.it/600x765" alt=""/>
-                                            <img class="hover-img" src="https://placehold.it/600x765" alt=""/>
-                                        </a>
-                                        <div class="product-hover-details">
-                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>Add to cart</a>
-                                        </div>
-                                        <div class="product-hover-right padding-20px-tb padding-15px-right w-65px">
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to wishlist"><i class="feather icon-feather-heart"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">Aether Vasee</a>
-                                        <div class="product-price text-medium"><del>$140.00</del> £120.00</div>
+                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">치킨 샐러드</a>
+                                        <div class="product-price text-medium"><del>14,000원</del> 12,000원</div>
                                     </div>
                                 </div>
                             </li>
@@ -1295,11 +805,11 @@
                                 <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
                                     <div class="product-image">
                                         <a href="single-product.html">
-                                            <img src="https://placehold.it/600x765" alt=""/>
-                                            <img class="hover-img" src="https://placehold.it/600x765" alt=""/>
+                                            <img src="resources/images/c.jpg" alt=""/>
+                                            <img class="hover-img" src="resources/images/b.jpg" alt=""/>
                                         </a>
                                         <div class="product-hover-details">
-                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>Add to cart</a>
+                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>레시피 살펴보기</a>
                                         </div>
                                         <div class="product-hover-right padding-20px-tb padding-15px-right w-65px">
                                             <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
@@ -1307,8 +817,8 @@
                                         </div>
                                     </div>
                                     <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">Wooden Bowl</a>
-                                        <div class="product-price text-medium">£410.00</div>
+                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">치킨 샐러드</a>
+                                        <div class="product-price text-medium">41,000원</div>
                                     </div>
                                 </div>
                             </li>
@@ -1318,11 +828,11 @@
                                 <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
                                     <div class="product-image">
                                         <a href="single-product.html">
-                                            <img src="https://placehold.it/600x765" alt=""/>
-                                            <img class="hover-img" src="https://placehold.it/600x765" alt=""/>
+                                            <img src="resources/images/c.jpg" alt=""/>
+                                            <img class="hover-img" src="resources/images/b.jpg" alt=""/>
                                         </a>
                                         <div class="product-hover-details">
-                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>Add to cart</a>
+                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>레시피 살펴보기</a>
                                         </div>
                                         <div class="product-hover-right padding-20px-tb padding-15px-right w-65px">
                                             <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
@@ -1330,8 +840,8 @@
                                         </div>
                                     </div>
                                     <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">Top With Pleated</a>
-                                        <div class="product-price text-medium">£250.00</div>
+                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">치킨 샐러드</a>
+                                        <div class="product-price text-medium">25,000원</div>
                                     </div>
                                 </div>
                             </li>
@@ -1341,11 +851,11 @@
                                 <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
                                     <div class="product-image">
                                         <a href="single-product.html">
-                                            <img src="https://placehold.it/600x765" alt=""/>
-                                            <img class="hover-img" src="https://placehold.it/600x765" alt=""/>
+                                            <img src="resources/images/c.jpg" alt=""/>
+                                            <img class="hover-img" src="resources/images/b.jpg" alt=""/>
                                         </a>
                                         <div class="product-hover-details">
-                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>Add to cart</a>
+                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>레시피 살펴보기</a>
                                         </div>
                                         <div class="product-hover-right padding-20px-tb padding-15px-right w-65px">
                                             <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
@@ -1353,8 +863,8 @@
                                         </div>
                                     </div>
                                     <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">Fabric Table Lamp</a>
-                                        <div class="product-price text-medium">£155.00</div>
+                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">치킨 샐러드</a>
+                                        <div class="product-price text-medium">15,500원</div>
                                     </div>
                                 </div>
                             </li>
@@ -1364,11 +874,11 @@
                                 <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
                                     <div class="product-image">
                                         <a href="single-product.html">
-                                            <img src="https://placehold.it/600x765" alt=""/>
-                                            <img class="hover-img" src="https://placehold.it/600x765" alt=""/>
+                                            <img src="resources/images/c.jpg" alt=""/>
+                                            <img class="hover-img" src="resources/images/b.jpg" alt=""/>
                                         </a>
                                         <div class="product-hover-details">
-                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>Add to cart</a>
+                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>레시피 살펴보기</a>
                                         </div>
                                         <div class="product-hover-right padding-20px-tb padding-15px-right w-65px">
                                             <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
@@ -1376,8 +886,8 @@
                                         </div>
                                     </div>
                                     <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">Texture Mirror</a>
-                                        <div class="product-price text-medium">£70.00</div>
+                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">치킨 샐러드</a>
+                                        <div class="product-price text-medium">7,000원</div>
                                     </div>
                                 </div>
                             </li>
@@ -1385,7 +895,7 @@
                         </ul>
                     </div>
                     <div class="col-12 text-center margin-3-rem-top wow animate__fadeIn" data-wow-delay="0.2s">
-                        <a href="shop-left-sidebar.html" class="btn btn-medium btn-fancy btn-transparent-black">More collection</a>
+                        <a href="shop-left-sidebar.html" class="btn btn-medium btn-fancy btn-transparent-black">More recipe</a>
                     </div>
                 </div>
             </div>
@@ -1399,12 +909,12 @@
                     <div class="col bg-very-light-orange padding-5-rem-tb padding-eight-lr xl-padding-six-lr lg-padding-three-lr md-padding-eight-lr wow animate__fadeIn" data-wow-delay="0.2s">
                         <div class="row align-items-center">
                             <div class="col-12 col-sm-7 xs-margin-30px-bottom">
-                                <a href="single-product.html"><img src="https://placehold.it/600x640" alt=""></a>
+                                <a href="single-product.html"><img src="resources/images/c.jpg" alt=""></a>
                             </div>
                             <div class="col-12 col-sm-5 padding-ten-left xl-padding-three-left md-padding-nine-left xs-padding-15px-left">
-                                <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span> Flat 50% off</span>
-                                <h4 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">Wooden <span class="font-weight-600">armchair</span></h4>
-                                <a href="single-product.html" class="btn btn-small btn-fancy btn-box-shadow btn-white margin-5px-top">Discover now</a>
+                                <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span> 최대 50% 할인</span>
+                                <h4 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">치킨 <span class="font-weight-600">샐러드</span></h4>
+                                <a href="single-product.html" class="btn btn-small btn-fancy btn-box-shadow btn-white margin-5px-top">자세히 보기</a>
                             </div>
                         </div>
                     </div>
@@ -1413,12 +923,12 @@
                     <div class="col bg-very-light-pink padding-5-rem-tb padding-eight-lr xl-padding-six-lr lg-padding-three-lr md-padding-eight-lr wow animate__fadeIn" data-wow-delay="0.4s">
                         <div class="row align-items-center">
                             <div class="col-12 col-sm-7 xs-margin-30px-bottom">
-                                <a href="single-product.html"><img src="https://placehold.it/600x640" alt=""></a>
+                                <a href="single-product.html"><img src="resources/images/c.jpg" alt=""></a>
                             </div>
                             <div class="col-12 col-sm-5 padding-ten-left xl-padding-three-left md-padding-nine-left xs-padding-15px-left">
-                                <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span> Flat 40% off</span>
-                                <h4 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">Modern <span class="font-weight-600">retro stool</span></h4>
-                                <a href="single-product.html" class="btn btn-small btn-fancy btn-box-shadow btn-white margin-5px-top">Discover now</a>
+                                <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span> 최대 50% 할인</span>
+                                <h4 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">치킨 <span class="font-weight-600"> 샐러드</span></h4>
+                                <a href="single-product.html" class="btn btn-small btn-fancy btn-box-shadow btn-white margin-5px-top">자세히 보기</a>
                             </div>
                         </div>
                     </div>
@@ -1432,8 +942,8 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-6 text-center margin-5-half-rem-bottom md-margin-3-rem-bottom wow animate__fadeIn">
-                        <span class="alt-font font-weight-500 text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom">Updated blog</span>
-                        <h4 class="alt-font font-weight-600 text-extra-dark-gray mb-0 letter-spacing-minus-1px">Latest blogs</h4>
+                        <span class="alt-font font-weight-500 text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom">레시퍼</span>
+                        <h4 class="alt-font font-weight-600 text-extra-dark-gray mb-0 letter-spacing-minus-1px">이 레시퍼의 레시피는 어떠세요?</h4>
                     </div>
                 </div>
                 <div class="row">
@@ -1444,11 +954,11 @@
                             <li class="grid-item wow animate__fadeIn">
                                 <div class="blog-post">
                                     <div class="blog-post-image margin-40px-bottom md-margin-35px-bottom xs-margin-25px-bottom">
-                                        <a href="blog-post-layout-01.html"><img src="https://placehold.it/526x368" alt=""/></a>
+                                        <a href="blog-post-layout-01.html"><img src="resources/images/c.jpg" alt=""/></a>
                                     </div>
                                     <div class="post-details">
-                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom">The best way to predict the future is to create it</a>
-                                        <p class="w-95">Lorem ipsum is simply dummy text printing typesetting industry...</p>
+                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom">레시퍼1</a>
+                                        <p class="w-95">#해시태그1 #해시태그2 #해시태그3 #해시태그4</p>
                                     </div>
                                 </div>
                             </li>
@@ -1457,11 +967,11 @@
                             <li class="grid-item wow animate__fadeIn" data-wow-delay="0.2s">
                                 <div class="blog-post">
                                     <div class="blog-post-image margin-40px-bottom md-margin-35px-bottom xs-margin-25px-bottom">
-                                        <a href="blog-post-layout-02.html"><img src="https://placehold.it/526x368" alt=""/></a>
+                                        <a href="blog-post-layout-02.html"><img src="resources/images/c.jpg" alt=""/></a>
                                     </div>
                                     <div class="post-details">
-                                        <a href="blog-post-layout-02.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom">Winners make a habit of facturing positivev</a>
-                                        <p class="w-95">Lorem ipsum is simply dummy text printing typesetting industry...</p>
+                                        <a href="blog-post-layout-02.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom">레시퍼2</a>
+                                        <p class="w-95">#해시태그1 #해시태그2 #해시태그3 #해시태그4</p>
                                     </div>
                                 </div>
                             </li>
@@ -1470,11 +980,11 @@
                             <li class="grid-item wow animate__fadeIn" data-wow-delay="0.4s">
                                 <div class="blog-post">
                                     <div class="blog-post-image margin-40px-bottom md-margin-35px-bottom xs-margin-25px-bottom">
-                                        <a href="blog-post-layout-03.html"><img src="https://placehold.it/526x368" alt=""/></a>
+                                        <a href="blog-post-layout-03.html"><img src="resources/images/c.jpg" alt=""/></a>
                                     </div>
                                     <div class="post-details">
-                                        <a href="blog-post-layout-03.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom">Computers are to design as microwaves are to cooking</a>
-                                        <p class="w-95">Lorem ipsum is simply dummy text printing typesetting industry...</p>
+                                        <a href="blog-post-layout-03.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom">레시퍼3</a>
+                                        <p class="w-95">#해시태그1 #해시태그2 #해시태그3 #해시태그4</p>
                                     </div>
                                 </div>
                             </li>
@@ -1483,62 +993,16 @@
                             <li class="grid-item wow animate__fadeIn" data-wow-delay="0.6s">
                                 <div class="blog-post">
                                     <div class="blog-post-image margin-40px-bottom md-margin-35px-bottom xs-margin-25px-bottom">
-                                        <a href="blog-post-layout-05.html"><img src="https://placehold.it/526x368" alt=""/></a>
+                                        <a href="blog-post-layout-05.html"><img src="resources/images/c.jpg" alt=""/></a>
                                     </div>
                                     <div class="post-details">
-                                        <a href="blog-post-layout-05.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"> A company is only as good as the people it keeps</a>
-                                        <p class="w-95">Lorem ipsum is simply dummy text printing typesetting industry...</p>
+                                        <a href="blog-post-layout-05.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom">레시퍼4</a>
+                                        <p class="w-95">#해시태그1 #해시태그2 #해시태그3 #해시태그4</p>
                                     </div>
                                 </div>
                             </li>
                             <!-- end blog item -->
                         </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
-        <!-- start section -->
-        <section class="border-top border-color-medium-gray border-width-1px padding-5-rem-tb">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2 client-logo-style-03">
-                    <!-- start client logo item -->
-                    <div class="col text-center sm-no-margin wow animate__fadeIn" data-wow-delay="0.2s">
-                        <a href="#" class="client-logo"><img alt="" src="https://placehold.it/225x110"></a>
-                    </div>
-                    <!-- end client logo item -->
-                    <!-- start client logo item -->
-                    <div class="col text-center sm-no-margin wow animate__fadeIn" data-wow-delay="0.4s">
-                        <a href="#" class="client-logo"><img alt="" src="https://placehold.it/225x110"></a>
-                    </div>
-                    <!-- end client logo item -->
-                    <!-- start client logo item -->
-                    <div class="col text-center sm-no-margin wow animate__fadeIn" data-wow-delay="0.6s">
-                        <a href="#" class="client-logo"><img alt="" src="https://placehold.it/225x110"></a>
-                    </div>
-                    <!-- end client logo item -->
-                    <!-- start client logo item -->
-                    <div class="col text-center sm-no-margin wow animate__fadeIn" data-wow-delay="0.8s">
-                        <a href="#" class="client-logo"><img alt="" src="https://placehold.it/225x110"></a>
-                    </div>
-                    <!-- end client logo item -->
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
-        <!-- start section -->
-        <section class="overflow-visible position-relative pt-0 pb-md-0">
-            <div class="container">
-                <div class="z-index-6 overlap-section-bottom">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-12 text-center">
-                            <div class="instagram-follow-api swiper-container">
-                                <div class="swiper-wrapper instafeed-grid instafeed-wrapper" data-total="8" data-slider-options='{"loop": true, "slidesPerView": 2, "spaceBetween": 15, "autoplay": { "delay": 3500, "disableOnInteraction": false },  "keyboard": { "enabled": true, "onlyInViewport": true }, "pagination": { "el": ".swiper-pagination", "clickable": true, "dynamicBullets": true }, "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }, "breakpoints": { "1200": { "slidesPerView": 6 }, "992": { "slidesPerView": 4 }, "768": { "slidesPerView": 3 } } }'>
-                                    <div class="swiper-slide"><figure><a href="#" data-href="{{link}}" target="_blank"><img src="#" data-src="{{image}}" class="insta-image" alt="" /><span class="insta-counts"><i class="fab fa-instagram"></i>{{likes}}</span></a></figure></div>
-                                </div>
-                                <div class="instagram-title alt-font absolute-middle-center bg-white text-extra-dark-gray border-radius-2px letter-spacing-1px font-weight-500 text-medium text-uppercase">#Instagram decor</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1551,7 +1015,7 @@
                     <div class="row justify-content-center">
                         <!-- start footer column -->
                         <div class="col-12 col-lg col-md-3 col-sm-4 md-margin-40px-bottom xs-margin-25px-bottom">
-                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">Categories</span>
+                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">현대백화점</span>
                             <ul>
                                 <li><a href="shop-wide.html">For men</a></li>
                                 <li><a href="shop-wide.html">For woman</a></li>
@@ -1562,7 +1026,7 @@
                         <!-- end footer column -->
                         <!-- start footer column -->
                         <div class="col-12 col-lg col-md-3 col-sm-4 md-margin-40px-bottom xs-margin-25px-bottom">
-                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">Company</span>
+                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">현대그린푸드</span>
                             <ul>
                                 <li><a href="about-us.html">About company</a></li>
                                 <li><a href="our-services.html">Our services</a></li>
@@ -1573,7 +1037,7 @@
                         <!-- end footer column -->
                         <!-- start footer column -->
                         <div class="col-12 col-lg col-md-3 col-sm-4 md-margin-40px-bottom xs-margin-25px-bottom">
-                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">Resources</span>
+                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">현대홈쇼핑</span>
                             <ul>                           
                                 <li><a href="faq.html">Theme guide</a></li>
                                 <li><a href="faq.html">Support desk</a></li>
@@ -1584,7 +1048,7 @@
                         <!-- end footer column -->
                         <!-- start footer column -->
                         <div class="col-12 col-lg col-md-3 col-sm-6 xs-margin-25px-bottom">
-                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">Adavantages</span>
+                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">현대면세점</span>
                             <ul>
                                 <li><a href="faq.html">Free delivery</a></li>
                                 <li><a href="faq.html">100 days refund</a></li>
@@ -1616,7 +1080,7 @@
                             <a href="index.html" class="footer-logo"><img src="resources/images/logo-white.png" data-at2x="resources/images/logo-white@2x.png" alt=""></a>
                         </div>
                         <div class="col-12 col-lg-4 col-md-6 text-center text-md-left text-lg-center last-paragraph-no-margin sm-margin-20px-bottom">
-                            <p>&copy; 2021 Litho is Proudly Powered by <a href="https://www.themezaa.com/" class="text-decoration-line-bottom" target="_blank">ThemeZaa</a></p>
+                            <p>&copy; 2021 현대IT&E & KOSA Powered by NumberFive <a href="https://www.themezaa.com/" class="text-decoration-line-bottom" target="_blank">NumberFive</a></p>
                         </div>
                         <div class="col-12 col-lg-4 col-md-6 text-center text-md-right last-paragraph-no-margin">
                             <img src="resources/images/footer-payment-icon.png" alt="">
@@ -1669,7 +1133,7 @@
                         var revOffset = tpj(window).width() <= 991 ? '73px' : '';
                         revapi263 = tpj("#rev_slider_34_1").show().revolution({
                             sliderType: "standard",
-                            jsFileLocation: "revolution/js/",
+                            jsFileLocation: "resources/revolution/js/",
                             sliderLayout: "fullscreen",
                             dottedOverlay: "none",
                             delay: 9000,
