@@ -146,13 +146,16 @@
 																	class="medium-input bg-white margin-25px-bottom required"
 																	type="text" name="foodname" placeholder="음식 이름을 입력하세요" required>
 															</div>
-															<div class="col-lg-2" style="margin-left:-10px;padding 0; height:100%;; margin-top:5px">
-																<a href="#contact-form" class="btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge popup-with-form" id="searchFoodName">검색</a>
+															<div class="col-lg-2" style="margin-left:-20px;padding 0; margin-top:-15px">
+																<button type="button" class="btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge" data-toggle="modal" data-target="#myModal" style="margin:15px; padding:15px;" id="foodsearchbuttonf">검색</button>
+																 <input type="hidden" id="FOOD_CD" name="FOOD_CD" value="">
 															</div>
 															<div class="col-lg-2 sm-margin-25px-bottom">
 																<input
 																	class="medium-input bg-white margin-25px-bottom required"
 																	type="text" name="howmuch" placeholder="음식분량" required>
+															</div>
+															<div class="col-lg-1" style="margin-top:10px; margin-left:-10px">인분
 															</div>
 														</div>
 														<div class="row">
@@ -708,7 +711,7 @@
 														<div class="row justify-content-center">
 															 <div class="col-12 btn-dual text-center" style="margin-top: -80px;">
 									                    	<!-- step1 start-->
-									                    <div class="row row-cols-1 row-cols-md-2" style="padding:0px">
+									                    <div class="row row-cols-1 row-cols-md-2" style="margin-top:20px; margin-bottom:20px">
 													<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:10px; padding:0px">
 														<div class="col md-margin-40px-bottom">
 									                        <div class="feature-box feature-box-left-icon-middle last-paragraph-no-margin">
@@ -724,7 +727,7 @@
 													<div class="col-lg-10 sm-margin-25px-bottom text-left" id="inputTitle">
 													</div>
 												</div>
-												<div class="row row-cols-1 row-cols-md-2" style="padding:0px">
+												<div class="row row-cols-1 row-cols-md-2" style="padding:0px; margin-top:20px; margin-bottom:20px">
 													<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:10px; padding:0px">
 														<div class="col md-margin-40px-bottom" >
 									                        <div class="feature-box feature-box-left-icon-middle last-paragraph-no-margin">
@@ -740,7 +743,7 @@
 													<div class="col-lg-10 sm-margin-25px-bottom text-left" id="inputSubscript">
 													</div>
 												</div>
-												<div class="row row-cols-1 row-cols-md-2">
+												<div class="row row-cols-1 row-cols-md-2" style="margin-top:20px; margin-bottom:20px">
 													<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:10px ; padding:0px">
 														<div class="col md-margin-40px-bottom" >
 									                        <div class="feature-box feature-box-left-icon-middle last-paragraph-no-margin">
@@ -814,7 +817,7 @@
 																</ul>
 															</div>
 														</div>
-														<div class="row" style="margin-top:10px; margin-bottom:10px">
+														<div class="row" style="margin-top:20px; margin-bottom:20px">
 															<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:10px">
 																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>영양정보</span>
 															</div>
@@ -845,7 +848,7 @@
 									           
 									                    	<!-- step2 start -->
 									                    	
-									                    	<div class="row row-cols-1 row-cols-md-2">
+									                    	<div class="row row-cols-1 row-cols-md-2" style="margin-top:20px; margin-bottom:20px">
 													<div class="col-lg-2 sm-margin-25px-bottom">
 														<div class="feature-box feature-box-left-icon-middle last-paragraph-no-margin">
 									                            <div class="feature-box-icon margin-25px-right">
@@ -857,29 +860,29 @@
 									                        </div>
 													</div>
 													<div class="col-lg-10 sm-margin-25px-bottom">
-														<div class="row">
+														<div class="row" style="margin-top:20px; margin-bottom:20px">
 															<div class="col-lg-2 sm-margin-25px-bottom">
 																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>조리영상</span>
 															</div>
 															<div class="col-lg-10 sm-margin-25px-bottom" id="inputVideo">
 															</div>
 														</div>
-														<div class="row">
+														<div class="row" class="text-center" style="margin-top:20px; margin-bottom:20px">
 															<div class="col-lg-2 sm-margin-25px-bottom">
 																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>대표사진</span>
 															</div>
-															<div class="col-lg-10 sm-margin-25px-bottom" id="inputThumbdiv">
+															<div class="col-lg-10 sm-margin-25px-bottom text-left" style="text-align:left" id="inputThumbdiv">
 															
 															</div>
 														</div>
-														<div class="row">
+														<div class="row" style="margin-top:20px; margin-bottom:20px">
 															<div class="col-lg-2 sm-margin-25px-bottom">
 																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>조리시간</span>
 															</div>
 															<div class="col-lg-10 sm-margin-25px-bottom text-left" id="inputFoodtime">
 															</div>
 														</div>
-														<div class="row">
+														<div class="row" style="margin-top:20px; margin-bottom:20px">
 															<div class="col-lg-2 sm-margin-25px-bottom">
 																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>조리과정</span>
 															</div>
@@ -896,7 +899,7 @@
 									                    	<!-- step2 end -->
 									                    	<!-- step3 start -->
 									                    	
-									                    	<div class="row row-cols-1">
+									                    	<div class="row row-cols-1" style="margin-top:20px; margin-bottom:20px">
 													<div class="col-lg-2 sm-margin-25px-bottom">
 														<div class="feature-box feature-box-left-icon-middle last-paragraph-no-margin">
 									                            <div class="feature-box-icon margin-25px-right">
@@ -916,7 +919,7 @@
 													<div class="col-lg-2 sm-margin-25px-bottom">
 													</div>
 													<div class="col-lg-10 sm-margin-25px-bottom">
-														<div class="row">
+														<div class="row" style="margin-top:20px; margin-bottom:20px">
 														<div class="col-lg-2">
 															<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>음식분류</span>
 														</div>
@@ -957,7 +960,30 @@
     
     <!-- end test -->
 	<!-- start contact form -->
-	<div id="formOfmodal"></div>
+	<div class="modal fade zoom-anim-dialog text-center  padding-4-half-rem-all border-radius-6px sm-padding-2-half-rem-lr border-radius-0px border-color-black-transparent" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document" style="width : 1000px; height:1000px">
+	    <div class="modal-content">
+	      <div class="modal-header">
+            <h6 class="modal-title alt-font text-extra-dark-gray letter-spacing-minus-1px " style="margin-left:45px; margin-bottom: 30px; margin-top:30px" id="myModalLabel">어떤 <span class="font-weight-600">건강식</span>을 만들어주실 건가요?</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="text-align:right" id="closeforce"><span aria-hidden="true">&times;</span></button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="row" style="width:100%; margin:0; padding:0" >
+			<div class="col-lg-10">
+			<input class="medium-input margin-25px-bottom xs-margin-10px-bottom required" type="text" name="foodnamesearch" placeholder="요리 이름을 검색하세요">
+			</div>
+			<div class="col-lg-2" style="width:100%; margin-top:5px; padding:0">
+			<button class="btn btn-small btn-round-edge btn-gradient-tan-geraldine mb-0" id="searchFoodName" type="검색">검색</button>
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-lg-12">
+			<div id="searchResults" class="border-color-medium-gray border-top border-right border-left border-bottom" style="padding:10px">
+			</div>
+			</div>
+	      </div>
+	    </div>
+	  </div></div></div>
 	<!-- start footer -->
 	<footer class="footer-dark bg-slate-blue">
 		<div
@@ -1101,7 +1127,6 @@
 						
 						
 						function() {
-							appendForm();
 
 							
 							$.ajax({
@@ -1222,9 +1247,9 @@
 											console.log(videourl);
 											video.setAttribute("src", videourl); video.play();
 										}
-										
+										var sk = document.getElementsByName("FOOD_CD")[0].value.replace(/(\s*)/g, "");
 										$.ajax({
-											url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/5'+'/DESC_KOR='+document.getElementsByName("foodname")[0].value,  
+											url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/1'+'/FOOD_CD='+sk,  
 											type : 'get',
 											dataType : 'json',
 											success : function(data){
@@ -1275,16 +1300,16 @@
 								 	    	console.log(i);
 									    	var contents = '';
 											contents += '<li style="width:100%">'
-													+ '<div class="blog-post bg-white box-shadow-medium margin-30px-bottom wow animate__fadeIn" style="width:100%">'
+													+ '<div class="blog-pos margin-30px-bottom wow animate__fadeIn" style="width:100%">'
 													+ '<div class="d-flex flex-column flex-md-row align-items-center" style="width:100%">'
 													+ '<div class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding" style="width:100%; padding:0">'
 													+ '<div class="row row-cols-1 row-cols-md-2" style="width:100%;">'
 													+ '<div class="col-lg-5">'
 													+ '<div id="inputstepimage_container'+ i +'" class="stepimage_size"><img src="" id="stepimg_tmp'+i+'"/></div>'
 													+ '</div>'
-													+ '<div class="col-lg-7" style="margin-top:20px; margin-bottom:20px; height:100%; vertical-align:middle">'
-													+ '<div id="inputsteptitle'+i+'" class="text-left"></div>'
-													+ '<div id="inputstepsubscript'+i+'"></div>'
+													+ '<div class="col-lg-7" style="margin-bottom:20px; height:100%; vertical-align:middle">'
+													+ '<div id="inputsteptitle'+i+'" class="text-left alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"></div>'
+													+ '<div id="inputstepsubscript'+i+'" class="text-left"></div>'
 													+ '</div>'
 													+ '</div></div>'
 													+ '</div></div></li>'
@@ -1312,7 +1337,7 @@
 										
 								 	   var elem1 = document.getElementsByName('product_image'); //파일 선택 필드 요소 얻기
 										if(elem1[0].files[0]){ // 파일 확장자 체크해서 이미지 파일이면
-										  var tmpstr ='<img src="" id="inputThumb" style="margin-top:20px; margin-bottom:20px"/>';
+										  var tmpstr ='<img src="" id="inputThumb" style="margin-top:20px; margin-bottom:20px; text-align:left"/>';
 										  $('#inputThumbdiv').append(tmpstr);
 										  let preview = document.querySelector('#inputThumb'); // 미리보기 썸네일 <img> 엘리먼트 얻기
 										  preview.src = URL.createObjectURL(elem1[0].files[0]); //파일 객체에서 이미지 데이터 가져옴.
@@ -1348,7 +1373,67 @@
 								document.getElementById('video_container').style.margin='30px';
 							});
 
-							//searchFoodName
+							$(document).on(
+									"click",
+									"#searchFoodName",
+									function(e) {
+										console.log("search");
+										 $('#searchResults').empty();
+										 var foodname = document.getElementsByName("foodnamesearch")[0].value;
+										 $("input[name=foodname]").val(foodname);
+										 var sk = document.getElementsByName("foodnamesearch")[0].value.replace(/(\s*)/g, "");
+										$.ajax({
+											url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/20'+'/DESC_KOR='+sk,  
+											type : 'get',
+											dataType : 'json',
+											success : function(data){
+												for(var k = 0; k<data.I2790.row.length; k++)
+												{
+													var ftemp = '';
+													ftemp += '<button class="btn btn-medium  btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" id="searchFoodNameResults" name="'+data.I2790.row[k].DESC_KOR+'" style="margin-left:10px;  margin-bottom :10px">'+data.I2790.row[k].DESC_KOR +'</button>'
+									                $('#searchResults').append(ftemp);
+												} 
+												
+											}
+										}); 
+									});
+							
+							$(document).on(
+									"click",
+									"#foodsearchbuttonf",
+									function(e) {
+										console.log("search");
+										 $('#searchResults').empty();
+										 var foodname = document.getElementsByName("foodname")[0].value;
+										 $("input[name=foodnamesearch]").val(foodname);
+										 var sk = document.getElementsByName("foodname")[0].value.replace(/(\s*)/g, "");
+										$.ajax({
+											url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/20'+'/DESC_KOR='+sk,  
+											type : 'get',
+											dataType : 'json',
+											success : function(data){
+												for(var k = 0; k<data.I2790.row.length; k++)
+												{
+													var ftemp = '';
+													ftemp += '<button class="btn btn-medium btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" id="searchFoodNameResults" name="'+data.I2790.row[k].DESC_KOR+'" style="margin-left:10px; margin-bottom :10px" data ="'+data.I2790.row[k].FOOD_CD +'">'+data.I2790.row[k].DESC_KOR +'</button>'
+									                $('#searchResults').append(ftemp);
+												} 
+
+											}
+										}); 
+									});
+
+							$(document).on(
+									"click",
+									"#searchFoodNameResults",
+									function(e) {
+										var foodname =$(this).attr('name');
+										 $("input[name=foodname]").val(foodname);
+										 document.getElementById("FOOD_CD").setAttribute("value", $(this).attr('data'));
+										console.log($(this).attr('name'));
+										$("#closeforce").trigger("click");
+									});
+							
 							$(document).on(
 									"click",
 									"#removeIngredient",
@@ -1463,29 +1548,7 @@
 			
 			reader.readAsDataURL(event.target.files[0]);
 		}
-		
-		function appendForm() {
-			var content = '';
-			content += '<form id="contact-form" onsubmit="searchFoodFunction()" method="post" class="white-popup-block col-xl-4 col-lg-7 col-sm-9  p-0 mx-auto mfp-hide">'
-					+ '<div class="padding-fifteen-all bg-white border-radius-6px xs-padding-six-all">'
-					+ '<h6 class="text-extra-dark-gray font-weight-500 margin-35px-bottom xs-margin-15px-bottom">어떤 건강식을 만들어주실 건가요?</h6>'
-					+ '<div class="row" style="width:100%; margin:0; padding:0" >'
-					+ '<div class="col-lg-10">'
-					+ '<input class="medium-input margin-25px-bottom xs-margin-10px-bottom required" type="text" name="foodnamesearch" placeholder="요리 이름을 검색하세요">'
-					+ '</div>'
-					+ '<div class="col-lg-2" style="width:100%; margin-top:5px; padding:0">'
-					+ '<button class="btn btn-small btn-round-edge btn-gradient-sky-blue-pink mb-0 submit" type="검색">검색</button>'
-					+ '</div>'
-					+ '</div>'
-					+ '<div class="row">'
-					+ '<div class="col-lg-12">'
-					+ '<div id="searchResults">'
-					+ '</div>'
-					+ '</div>'
-					+ '<div class="form-results d-none"></div>'
-					+ '</div></div></form>'
-			$('#formOfmodal').append(content);
-		}
+	
 
 		/** 아이템 체크 */
 		function validateItem() {
