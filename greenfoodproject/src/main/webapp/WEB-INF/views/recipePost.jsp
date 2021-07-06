@@ -185,13 +185,15 @@
 																						<div class="col-lg-10"
 																							stsyle="margin-right:0px; padding:0px">
 																							<input class="medium-input bg-white" type="text"
-																								name="ingredients" placeholder="사용된 재료를 입력하세요">
+																								name="ingredients1" placeholder="사용된 재료를 입력하세요">
+																							<input id="FOOD_CD_i1" name="FOOD_CD_i1" type="hidden" value="">
 																						</div>
-																						<div id="viewIngredient" class="col-lg-1"
+																						<div id="viewIngredient" name="viewIngredient1" class="col-lg-1"
 																							style="margin-left: 0px; padding: 0px; margin-top: 3px">
-																							<a href="#contact-form"
-																								class="btn btn-fancy btn-very-small btn-gradient-tan-geraldine btn-round-edge popup-with-form"><i
+																							<a href="" data-toggle="modal" data-target="#myiModal" 
+																								class="btn btn-fancy btn-very-small btn-gradient-tan-geraldine btn-round-edge"><i
 																								class="fas fa-plus"></i></a>
+																							<!-- <button type="button" class="btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge" data-toggle="modal" data-target="#myModal" style="margin:15px; padding:15px;" id="foodsearchbuttonf">검색</button> -->
 																						</div>
 																					</div>
 																					<!-- end contact form -->
@@ -797,7 +799,7 @@
 																							<input class="medium-input bg-white" type="text"
 																								name="ingredients" placeholder="사용된 재료를 입력하세요">
 																						</div>
-																						<div id="viewIngredient" class="col-lg-1"
+																						<div class="col-lg-1"
 																							style="margin-left: 0px; padding: 0px; margin-top: 3px">
 																							<a href="#contact-form"
 																								class="btn btn-fancy btn-very-small btn-gradient-tan-geraldine btn-round-edge popup-with-form"><i
@@ -980,7 +982,37 @@
 			</div>
 			<div class="row">
 			<div class="col-lg-12">
-			<div id="searchResults" class="border-color-medium-gray border-top border-right border-left border-bottom" style="padding:10px">
+			<div class="border-color-medium-gray border-top border-right border-left border-bottom" style="padding:10px">
+				 <ul class="list-style-03" id="searchResults"  style="width: 100%; height:500px; overflow: auto">
+                </ul>
+			</div>
+			</div>
+	      </div>
+	    </div>
+	  </div></div></div>
+	<!-- start footer -->
+	<!-- start contact form -->
+	<div class="modal fade zoom-anim-dialog text-center  padding-4-half-rem-all border-radius-6px sm-padding-2-half-rem-lr border-radius-0px border-color-white" id="myiModal" tabindex="-1" role="dialog" data="" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document" style="width : 1000px; height:1000px">
+	    <div class="modal-content">
+	      <div class="modal-header border-radius-0px border-color-white">
+            <h6 class="modal-title alt-font text-extra-dark-gray letter-spacing-minus-1px " style="margin-left:90px; margin-bottom: 30px; margin-top:30px" id="myModalLabel">어떤 <span class="font-weight-600">재료</span>가 필요하신가요?</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="text-align:right" id="closeiforce"><span aria-hidden="true">&times;</span></button>
+	      </div>
+	      <div class="modal-body border-radius-0px border-color-white">
+	        <div class="row" style="width:100%; margin:0; padding:0" >
+			<div class="col-lg-10">
+			<input class="medium-input margin-25px-bottom xs-margin-10px-bottom required" type="text" name="ifoodnamesearch" placeholder="재료 이름을 검색하세요">
+			</div>
+			<div class="col-lg-2" style="width:100%; margin-top:5px; padding:0">
+			<button class="btn btn-small btn-round-edge btn-gradient-tan-geraldine mb-0" id="searchiFoodName" type="검색">검색</button>
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-lg-12">
+			<div class="border-color-medium-gray border-top border-right border-left border-bottom" style="padding:10px">
+				 <ul class="list-style-03" id="searchiResults"  style="width: 100%; height:500px; overflow: auto">
+                </ul>
 			</div>
 			</div>
 	      </div>
@@ -1124,6 +1156,7 @@
 	
 	<script>
 	var count = 1;
+	var icount = 1;
 		$(document)
 				.ready(
 						
@@ -1448,15 +1481,26 @@
 										 $("input[name=foodname]").val(foodname);
 										 var sk = document.getElementsByName("foodnamesearch")[0].value.replace(/(\s*)/g, "");
 										$.ajax({
-											url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/20'+'/DESC_KOR='+sk,  
+											url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/50'+'/DESC_KOR='+sk,  
 											type : 'get',
 											dataType : 'json',
 											success : function(data){
 												for(var k = 0; k<data.I2790.row.length; k++)
 												{
 													var ftemp = '';
-													ftemp += '<button class="btn btn-medium  btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" id="searchFoodNameResults" name="'+data.I2790.row[k].DESC_KOR+'" style="margin-left:10px;  margin-bottom :10px">'+data.I2790.row[k].DESC_KOR +'</button>'
-									                $('#searchResults').append(ftemp);
+													ftemp += '<li id="searchFoodNameResults" name="'+data.I2790.row[k].DESC_KOR+'" data="'+data.I2790.row[k].FOOD_CD+'">'
+							                              + '<div class="row margin-5px-left margin-5px-right">'
+							                              + '<div class="col-6 text-left">'
+							                              + data.I2790.row[k].DESC_KOR
+							                              + '</div>'
+							                              + '<div class="col-3 text-center">'
+							                              + data.I2790.row[k].SERVING_SIZE+'g'
+							                              + '</div>'
+							                              + '<div class="col-3 text-right">'
+							                              + data.I2790.row[k].NUTR_CONT1+'kcal'
+							                              + '</div>'
+							                              + '</div></li>'
+													$('#searchResults').append(ftemp);
 												} 
 												
 											}
@@ -1473,21 +1517,95 @@
 										 $("input[name=foodnamesearch]").val(foodname);
 										 var sk = document.getElementsByName("foodname")[0].value.replace(/(\s*)/g, "");
 										$.ajax({
-											url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/20'+'/DESC_KOR='+sk,  
+											url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/50'+'/DESC_KOR='+sk,  
 											type : 'get',
 											dataType : 'json',
 											success : function(data){
 												for(var k = 0; k<data.I2790.row.length; k++)
 												{
 													var ftemp = '';
-													ftemp += '<button class="btn btn-medium btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" id="searchFoodNameResults" name="'+data.I2790.row[k].DESC_KOR+'" style="margin-left:10px; margin-bottom :10px" data ="'+data.I2790.row[k].FOOD_CD +'">'+data.I2790.row[k].DESC_KOR +'</button>'
-									                $('#searchResults').append(ftemp);
+													//ftemp += '<button class="btn btn-medium btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" id="searchFoodNameResults" name="'+data.I2790.row[k].DESC_KOR+'" style="margin-left:10px; margin-bottom :10px" data ="'+data.I2790.row[k].FOOD_CD +'">'+data.I2790.row[k].DESC_KOR +'</button>'
+									                ftemp += '<li id="searchFoodNameResults" name="'+data.I2790.row[k].DESC_KOR+'" data="'+data.I2790.row[k].FOOD_CD+'">'
+							                              + '<div class="row margin-5px-left margin-5px-right">'
+							                              + '<div class="col-6 text-left">'
+							                              + data.I2790.row[k].DESC_KOR
+							                              + '</div>'
+							                              + '<div class="col-3 text-center">'
+							                              + data.I2790.row[k].SERVING_SIZE+'g'
+							                              + '</div>'
+							                              + '<div class="col-3 text-right">'
+							                              + data.I2790.row[k].NUTR_CONT1+'kcal'
+							                              + '</div>'
+							                              + '</div></li>'
+													$('#searchResults').append(ftemp);
 												} 
 
 											}
 										}); 
 									});
 
+							//수정//////////////////////////////////////////////////////////
+							$(document).on(
+									"click",
+									"#searchiFoodName",
+									function(e) {
+										 $('#searchiResults').empty();
+										 var sk = document.getElementsByName("ifoodnamesearch")[0].value.replace(/(\s*)/g, "");
+										$.ajax({
+											url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/50'+'/DESC_KOR='+sk,  
+											type : 'get',
+											dataType : 'json',
+											success : function(data){
+
+												var num = $('#myiModal').attr('data');
+												for(var k = 0; k<data.I2790.row.length; k++)
+												{
+													if(data.I2790.row[k].MAKER_NAME !='') 
+													{
+														continue;
+													}
+													var ftemp = '';
+													ftemp += '<li id="searchiNameResults" iid="searchiNameResults'+num+'" name="'+data.I2790.row[k].DESC_KOR+'" data="'+data.I2790.row[k].FOOD_CD+'">'
+							                              + '<div class="row margin-5px-left margin-5px-right">'
+							                              + '<div class="col-6 text-left">'
+							                              + data.I2790.row[k].DESC_KOR
+							                              + '</div>'
+							                              + '<div class="col-3 text-center">'
+							                              + data.I2790.row[k].SERVING_SIZE+'g'
+							                              + '</div>'
+							                              + '<div class="col-3 text-right">'
+							                              + data.I2790.row[k].NUTR_CONT1+'kcal'
+							                              + '</div>'
+							                              + '</div></li>'
+							                        //$("input[name=FOOD_CD_i'++']").val(data.I2790.row[k].FOOD_CD);
+													$('#searchiResults ').append(ftemp);
+												} 
+												
+											}
+										}); 
+									});
+							$(document).on(
+									"click",
+									"#viewIngredient",
+									function(e) {
+										var num = $(this).attr('name').split('viewIngredient')[1];
+										document.getElementById("myiModal").setAttribute("data", "");
+										document.getElementById("myiModal").setAttribute('data', num);
+									});
+							$(document).on(
+									"click",
+									"#searchiNameResults",
+									function(e) {
+										var num = $(this).attr('iid').split('searchiNameResults')[1];
+										console.log(num);
+										var foodname =$(this).attr('name');
+										$("input[name=ingredients"+num+"]").val(foodname);
+										console.log($(this).attr('data'));
+										 //document.getElementById("FOOD_CD_i"+num).setAttribute("value", $(this).attr('data'));
+										$("#closeiforce").trigger("click");
+									});
+							
+							///////////////////////////////////////////////////////////////////////////
 							$(document).on(
 									"click",
 									"#searchFoodNameResults",
@@ -1555,6 +1673,7 @@
 											"click",
 											"#addIngredient",
 											function(e) {
+												var cnttmp = icount + 1;
 												var str = '';
 												str += '<li style="width: 100%">'
 														+ '<div class="blog-post bg-white box-shadow-medium margin-10px-bottom wow animate__fadeIn" style="width: 100% ; padding: 0;" >'
@@ -1565,15 +1684,17 @@
 														+ '<div class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding" style="width: 100%; padding: 0">'
 														+ '<div class="row row-cols-1 row-cols-md-2" style="width: 100%">'
 														+ '<div class="col-lg-10" stsyle="margin-right:0px; padding:0px">'
-														+ '<input class="medium-input bg-white" type="text" name="ingredients" placeholder="사용된 재료를 입력하세요">'
+														+ '<input class="medium-input bg-white" type="text" name="ingredients'+cnttmp+'" placeholder="사용된 재료를 입력하세요">'
+														+ '<input id="FOOD_CD_i'+cnttmp+'" name="FOOD_CD_i'+cnttmp+'" type="hidden" value="">'
 														+ '</div>'
-														+ '<div id="viewIngredient" class="col-lg-1" style="margin-left:0px; padding:0px; margin-top:3px">'
-														+ '<a href="#contact-form" class="btn btn-very-small btn-round-edge btn-gradient-tan-geraldine popup-with-form"><i class="fas fa-plus"></i></a>'
+														+ '<div id="viewIngredient" name="viewIngredient'+cnttmp+'" class="col-lg-1" style="margin-left:0px; padding:0px; margin-top:3px">'
+														+ '<a href="" data-toggle="modal" data-target="#myiModal"  class="btn btn-very-small btn-round-edge btn-gradient-tan-geraldine"><i class="fas fa-plus"></i></a>'
 														+ '</div></div></div>'
 														+ '<div class="font-weight-500 text-extra-medium text-medium-gray" id="removeIngredient" style="margin-right: 20px; margin-top:-10px">'
 														+ '<i class="fas fa-times"></i></div></div></div></li>'
 
 												$('#sortable1').append(str);
+												icount += 1;
 											});
 							
 							
