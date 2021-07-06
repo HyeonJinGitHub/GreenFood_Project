@@ -23,12 +23,14 @@
 	href="${images}/apple-touch-icon-72x72.png">
 <link rel="apple-touch-icon" sizes="114x114"
 	href="${images}/apple-touch-icon-114x114.png">
-<!-- style sheets and font icons  -->
-<link rel="stylesheet" type="text/css" href="${css }/font-icons.min.css">
-<link rel="stylesheet" type="text/css" href="${css }/theme-vendors.min.css">
-<link rel="stylesheet" type="text/css" href="${css }/style.css" />
-<link rel="stylesheet" type="text/css" href="${css }/responsive.css" />
+
 </head>
+<style>
+
+.stepimage_size{height:100%; font-size:0;}  
+.stepimage_size:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
+.stepimage_size img{vertical-align:middle;}
+</style>
 <body data-mobile-nav-style="classic">
 	<!-- start header -->
 
@@ -56,18 +58,18 @@
                             </div>
                             <div class="col-12 col-lg-auto text-center text-lg-right padding-20px-lr lg-padding-10px-lr md-padding-15px-lr md-margin-20px-bottom wow animate__fadeIn">
                                 <ul class="nav nav-tabs justify-content-center text-center">
-                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
-                                    <li class="nav-item"><a data-toggle="tab" href="#planning-tab" class="active alt-font font-weight-500 text-uppercase line-height-18px d-block ">기본설명</a></li> 
-                                </div>
-                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
-                                    <li class="nav-item"><a data-toggle="tab" href="#research-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">레시피 정보</a></li> 
-                                </div>
-                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
-                                   <li class="nav-item"><a data-toggle="tab" href="#target-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">해시태그 설정</a></li> 
-                                </div>
-                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle lg-padding-15px-lr">
-                                    <li class="nav-item"><a data-toggle="tab" href="#campaign-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">미리보기</a></li> 
-                                </div>
+                                <li class="nav-item"><a id="titleView" data-toggle="tab" href="#planning-tab" class="active alt-font font-weight-500 text-uppercase line-height-18px d-block ">
+                                <div id="titleText" class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right font-weight-600 xs-margin-10px-bottom">기본설명</div>
+                                </a></li> 
+                                <li class="nav-item"><a id="videioView" data-toggle="tab" href="#research-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">
+                                <div id="videoText" class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom" style="margin-left:-30px">레시피 정보</div>
+                                </a></li>
+                                <li class="nav-item"><a id="hashtagView" data-toggle="tab" href="#target-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block "> 
+                                <div id="hashtagText" class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom" style="margin-left:-30px">해시태그 설정</div>
+                                </a></li>
+                                <li class="nav-item"><a id="preView" data-toggle="tab" href="#campaign-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block " style="margin-left:-30px"> 
+                                <div id="previewText" class="padding-30px-lr d-block d-sm-inline-block align-middle lg-padding-15px-lr">미리보기</div>
+                                </a></li> 
                                 </ul>
                             </div>
                             <div class="col-12 col-lg-auto text-center text-lg-right">
@@ -139,15 +141,21 @@
 															<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:10px">
 																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>음식이름</span>
 															</div>
-															<div class="col-lg-8 sm-margin-25px-bottom">
+															<div class="col-lg-5 sm-margin-25px-bottom">
 																<input
 																	class="medium-input bg-white margin-25px-bottom required"
 																	type="text" name="foodname" placeholder="음식 이름을 입력하세요" required>
+															</div>
+															<div class="col-lg-2" style="margin-left:-20px;padding 0; margin-top:-15px">
+																<button type="button" class="btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge" data-toggle="modal" data-target="#myModal" style="margin:15px; padding:15px;" id="foodsearchbuttonf">검색</button>
+																 <input type="hidden" id="FOOD_CD" name="FOOD_CD" value="">
 															</div>
 															<div class="col-lg-2 sm-margin-25px-bottom">
 																<input
 																	class="medium-input bg-white margin-25px-bottom required"
 																	type="text" name="howmuch" placeholder="음식분량" required>
+															</div>
+															<div class="col-lg-1" style="margin-top:10px; margin-left:-10px">인분
 															</div>
 														</div>
 														<div class="row">
@@ -177,13 +185,15 @@
 																						<div class="col-lg-10"
 																							stsyle="margin-right:0px; padding:0px">
 																							<input class="medium-input bg-white" type="text"
-																								name="ingredients" placeholder="사용된 재료를 입력하세요">
+																								name="ingredients1" placeholder="사용된 재료를 입력하세요">
+																							<input id="FOOD_CD_i1" name="FOOD_CD_i1" type="hidden" value="">
 																						</div>
-																						<div id="viewIngredient" class="col-lg-1"
+																						<div id="viewIngredient" name="viewIngredient1" class="col-lg-1"
 																							style="margin-left: 0px; padding: 0px; margin-top: 3px">
-																							<a href="#contact-form"
-																								class="btn btn-fancy btn-very-small btn-gradient-tan-geraldine btn-round-edge popup-with-form"><i
+																							<a href="" data-toggle="modal" data-target="#myiModal" 
+																								class="btn btn-fancy btn-very-small btn-gradient-tan-geraldine btn-round-edge"><i
 																								class="fas fa-plus"></i></a>
+																							<!-- <button type="button" class="btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge" data-toggle="modal" data-target="#myModal" style="margin:15px; padding:15px;" id="foodsearchbuttonf">검색</button> -->
 																						</div>
 																					</div>
 																					<!-- end contact form -->
@@ -211,11 +221,11 @@
 															추가</a>
 													</div>
 												</div>
-												<div class="row justify-content-center">
+												<!-- <div class="row justify-content-center">
 							                    <div class="col-12 btn-dual text-center" style="margin-top: 100px">
 							                         <a data-toggle="tab" href="#research-tab"  class="btn btn-extra-large btn-expand-ltr alt-font font-weight-500 text-uppercase line-height-18px d-block btn-rounded d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr font-weight-500">다음 페이지<span class="bg-very-light-pink"></span></a>
                        				          </div>
-							                </div>		
+							                </div>		 -->
 											</div>			
 							                <!-- end tab item -->
 											<!-- start tab item -->
@@ -237,7 +247,8 @@
 																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>조리영상</span>
 															</div>
 															<div class="col-lg-10 sm-margin-25px-bottom">
-																<input type="file" value="조리영상 선택" name="videofile" required/>
+																<input type="file" value="조리영상 선택" name="videofile" id="videofile" accept="video/*" required/>
+																<div id="video_container"></div>
 															</div>
 														</div>
 														<div class="row">
@@ -245,7 +256,11 @@
 																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>대표사진</span>
 															</div>
 															<div class="col-lg-10 sm-margin-25px-bottom">
-																<input type="file" value="대표사진 선택" name="thumbfile" required/>
+																<div class="form-group">
+																	<input type="file" class="" 
+																	name="product_image" id="product_image" accept="image/*" onchange="setThumbnail(event);"value="대표사진 선택" required>
+																</div>
+																<div id="image_container" style="margin-bottom:30px"></div>
 															</div>
 														</div>
 														<div class="row">
@@ -268,7 +283,7 @@
 															<div class="col-lg-10 sm-margin-25px-bottom">
 																<ul id="sortable"
 																	class="list-style-02 alt-font font-weight-500 text-small text-uppercase text-extra-dark-gray">
-																	<li style="width: 100%">
+																	<li style="width: 100%" value="1">
 																		<!-- start blog item -->
 																		<div
 																			class="blog-post bg-white box-shadow-medium margin-30px-bottom wow animate__fadeIn"
@@ -276,25 +291,21 @@
 																			<div
 																				class="d-flex flex-column flex-md-row align-items-center"
 																				style="width: 100%">
-																				<div class="blog-post-image sm-margin-25px-bottom">
-																					<img src="https://placehold.it/1200x840" alt="" /></a>
-																				</div>
 																				<div
 																					class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding"
 																					style="width: 100%; padding: 0">
 																					<!-- start contact form -->
 																					<div class="row row-cols-1 row-cols-md-2"
-																						style="width: 100%;  margin-top:25px">
+																						style="width: 100%; ">
 																						<div class="col-lg-5">
-																							<img class="avtar-image"
-																								src="https://placehold.it/149x149" alt="">
+																							<div id="stepimage_container1" class="stepimage_size"></div>
 																						</div>
-																						<div class="col-lg-7">
+																						<div class="col-lg-7" style="margin-top:20px">
 																							<input class="medium-input bg-white" type="text"
-																								name="steptitle" placeholder="단계별 제목을 입력하세요"> <input
-																								type="file" value="단계별 사진 선택" name="stepimage" />
+																								name="steptitle1" placeholder="단계별 제목을 입력하세요"> <input
+																								type="file" value="단계별 사진 선택" name="stepimage1" accept="image/*" id="stepimage"/>
 																							<textarea class="medium-textarea bg-white"
-																								rows="6" name="stepsubscript"
+																								rows="6" name="stepsubscript1"
 																								placeholder="단계별 조리과정 설명을 입력하세요"></textarea>
 																						</div>
 																					</div>
@@ -316,12 +327,12 @@
 														</div>
 													</div>
 												</div>
-												<div class="row justify-content-center">
+												<!-- <div class="row justify-content-center">
 							                    <div class="col-12 btn-dual text-center" style="margin-top: 100px">
 							                    	<a data-toggle="tab" href="#planning-tab"  class="btn btn-extra-large btn-expand-ltr alt-font font-weight-500 text-uppercase line-height-18px d-block btn-rounded d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr font-weight-500">이전 페이지<span class="bg-very-light-pink"></span></a>
 							                        <a data-toggle="tab" href="#target-tab"  class="btn btn-extra-large btn-expand-ltr alt-font font-weight-500 text-uppercase line-height-18px d-block btn-rounded d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr font-weight-500">다음 페이지<span class="bg-very-light-pink"></span></a>
                        				          </div>
-											</div>
+											</div> -->
 											</div>
 											<!-- end tab item -->
 											<!-- start tab item -->
@@ -350,20 +361,21 @@
 														<div class="row justify-content-center">
 															<div class="col-lg-12 sm-margin-25px-bottom">
 																<select name="foodcategory">
-																	<option value="01">밥류</option>
-																	<option value="02">면 및 만두류</option>
-																	<option value="03">죽 및 스프류</option>
-																	<option value="04">국 및 탕류</option>
-																	<option value="05">찌개 및 전골류</option>
-																	<option value="06">찜류</option>
-																	<option value="07">구이류</option>
-																	<option value="08">전, 적 및 부침류</option>
-																	<option value="09">볶음류</option>
-																	<option value="10">조림류</option>
-																	<option value="11">튀김류</option>
-																	<option value="12">나물 및 숙채류</option>
-																	<option value="13">생채 및 무침류</option>
-																	<option value="14">장 및 양념류</option>
+																	<option value=""></option>
+																	<option value="밥류">밥류</option>
+																	<option value="면 및 만두류">면 및 만두류</option>
+																	<option value="죽 및 스프류">죽 및 스프류</option>
+																	<option value="국 및 탕류">국 및 탕류</option>
+																	<option value="찌개 및 전골류">찌개 및 전골류</option>
+																	<option value="찜류">찜류</option>
+																	<option value="구이류">구이류</option>
+																	<option value="전, 적 및 부침류">전, 적 및 부침류</option>
+																	<option value="볶음류">볶음류</option>
+																	<option value="조림류">조림류</option>
+																	<option value="튀김류">튀김류</option>
+																	<option value="나물 및 숙채류">나물 및 숙채류</option>
+																	<option value="생채 및 무침류">생채 및 무침류</option>
+																	<option value="장 및 양념류">장 및 양념류</option>
 																	<!-- <optgroup label="마블코믹스">
 																		<option value="ironman">아이언맨</option>
 																		<option value="deadpool">데드풀</option>
@@ -685,21 +697,247 @@
 														</div>
 													</div>
 												</div>
-												<div class="row justify-content-center">
+												<!-- <div class="row justify-content-center">
 							                    <div class="col-12 btn-dual text-center" style="margin-top: 100px">
 							                    	<a data-toggle="tab" href="#research-tab"  class="btn btn-extra-large btn-expand-ltr alt-font font-weight-500 text-uppercase line-height-18px d-block btn-rounded d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr font-weight-500">이전 페이지<span class="bg-very-light-pink"></span></a>
 							                        <a data-toggle="tab" href="#campaign-tab"  class="btn btn-extra-large btn-expand-ltr alt-font font-weight-500 text-uppercase line-height-18px d-block btn-rounded d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr font-weight-500">다음 페이지<span class="bg-very-light-pink"></span></a>
                        				          </div>
-											</div>
+											</div> -->
 											</div>
 											<!-- end tab item -->
+											</form>
 											<!-- start tab item -->
-											<div id="campaign-tab" class="tab-pane fade">
+											<div id="campaign-tab" class="tab-pane fade" style="width:100%; padding:0px">
 												<!-- start section -->
 												<section class="half-section">
 													<div class="container">
 														<div class="row justify-content-center">
-															<!-- start feature box item-->
+															 <div class="col-12 btn-dual text-center" style="margin-top: -80px;">
+									                    	<!-- step1 start-->
+									                    <div class="row row-cols-1 row-cols-md-2" style="margin-top:20px; margin-bottom:20px">
+													<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:10px; padding:0px">
+														<div class="col md-margin-40px-bottom">
+									                        <div class="feature-box feature-box-left-icon-middle last-paragraph-no-margin">
+									                            <div class="feature-box-icon margin-25px-right">
+									                                <h6 class="alt-font text-neon-orange mb-0">01</h6>
+									                            </div>
+									                            <div class="feature-box-content">
+									                                <span class="alt-font font-weight-600 text-large text-medium-gray text-uppercase d-inline-block w-90 xs-w-70">제목</span>
+									                            </div>
+									                        </div>
+									                    </div>
+													</div>
+													<div class="col-lg-10 sm-margin-25px-bottom text-left" id="inputTitle">
+													</div>
+												</div>
+												<div class="row row-cols-1 row-cols-md-2" style="padding:0px; margin-top:20px; margin-bottom:20px">
+													<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:10px; padding:0px">
+														<div class="col md-margin-40px-bottom" >
+									                        <div class="feature-box feature-box-left-icon-middle last-paragraph-no-margin">
+									                            <div class="feature-box-icon margin-25px-right">
+									                                <h6 class="alt-font text-neon-orange mb-0">02</h6>
+									                            </div>
+									                            <div class="feature-box-content">
+									                                <span class="alt-font font-weight-600 text-large text-medium-gray text-uppercase d-inline-block w-90 xs-w-70">한줄설명</span>
+									                            </div>
+									                        </div>
+									                    </div>
+													</div>
+													<div class="col-lg-10 sm-margin-25px-bottom text-left" id="inputSubscript">
+													</div>
+												</div>
+												<div class="row row-cols-1 row-cols-md-2" style="margin-top:20px; margin-bottom:20px">
+													<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:10px ; padding:0px">
+														<div class="col md-margin-40px-bottom" >
+									                        <div class="feature-box feature-box-left-icon-middle last-paragraph-no-margin">
+									                            <div class="feature-box-icon margin-25px-right">
+									                                <h6 class="alt-font text-neon-orange mb-0">03</h6>
+									                            </div>
+									                            <div class="feature-box-content">
+									                                <span class="alt-font font-weight-600 text-large text-medium-gray text-uppercase d-inline-block w-90 xs-w-70">음식정보</span>
+									                            </div>
+									                        </div>
+									                    </div>
+													</div>
+													<div class="col-lg-10 sm-margin-25px-bottom" id="foodInfo"
+														style="width: 100%">
+														<div class="row">
+															<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:10px">
+																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>음식이름</span>
+															</div>
+															<div class="col-lg-4 sm-margin-25px-bottom text-left" id="inputFoodname">
+															</div>
+															<div class="col-lg-6 sm-margin-25px-bottom text-left" id="inputHowmuch">
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:15px">
+																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>재료정보</span>
+															</div>
+															<div class="col-lg-10 sm-margin-25px-bottom">
+																<ul id="sortable1"
+																	class="list-style-02 alt-font font-weight-500 text-small text-uppercase text-extra-dark-gray">
+																	<li style="width: 100%">
+																		<!-- start blog item -->
+																		<div
+																			class="blog-post bg-white box-shadow-medium margin-10px-bottom wow animate__fadeIn"
+																			style="width: 100%; padding: 0;">
+																			<div
+																				class="d-flex flex-column flex-md-row align-items-center"
+																				style="width: 100%; padding: 0; margin: 10px 10px -5px 10px">
+																				<div class="blog-post-image sm-margin-25px-bottom">
+																					<img src="https://placehold.it/1200x840" alt="" /></a>
+																				</div>
+																				<div
+																					class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding"
+																					style="width: 100%; padding: 0">
+																					<!-- start contact form -->
+																					<div class="row row-cols-1 row-cols-md-2"
+																						style="width: 100%">
+																						<div class="col-lg-10"
+																							stsyle="margin-right:0px; padding:0px">
+																							<input class="medium-input bg-white" type="text"
+																								name="ingredients" placeholder="사용된 재료를 입력하세요">
+																						</div>
+																						<div class="col-lg-1"
+																							style="margin-left: 0px; padding: 0px; margin-top: 3px">
+																							<a href="#contact-form"
+																								class="btn btn-fancy btn-very-small btn-gradient-tan-geraldine btn-round-edge popup-with-form"><i
+																								class="fas fa-plus"></i></a>
+																						</div>
+																					</div>
+																					<!-- end contact form -->
+																				</div>
+																				<div
+																					class="font-weight-500 text-extra-medium text-medium-gray"
+																					id="removeIngredient"
+																					style="margin-right: 20px; margin-top: -10px">
+																					<i class="fas fa-times"></i>
+																				</div>
+																			</div>
+																		</div> <!-- end blog item -->
+																	</li>
+																</ul>
+															</div>
+														</div>
+														<div class="row" style="margin-top:20px; margin-bottom:20px">
+															<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:10px">
+																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>영양정보</span>
+															</div>
+															<div class="col-lg-10 sm-margin-25px-bottom text-center" style="width:100%; padding:0; margin-top:-60px">
+												                <div class="row row-cols-1 "  style="width:100%; padding:0; margin:0">
+												                
+												                    <!-- start pie charts item -->
+												                     <div style="visibility:hidden;">
+												                        <div class="chart-percent">
+												                            <span id="test" class="pie-chart-style-02" data-line-width="6" data-percent="85" data-track-color="#f5f5f5" data-start-color="#fc9297" data-end-color="#be85f5">
+												                                <span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>
+												                            </span>
+												                        </div>
+												                        <div class="last-paragraph-no-margin wow animate__fadeIn" data-wow-duration="0.2" style="margin-top:10px; margin-bottom:10px">
+												                            <span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block"></span>
+												                        </div>
+												                    </div>
+												                    <!-- end pie charts item -->
+												                    <div class="row row-cols" id="foodIngredientInputinfo"></div>
+												                    
+												                </div>
+															</div>
+														</div>
+													</div>
+												</div>
+												
+									                    	<!-- step1 end -->
+									                    	
+									           
+									                    	<!-- step2 start -->
+									                    	
+									                    	<div class="row row-cols-1 row-cols-md-2" style="margin-top:20px; margin-bottom:20px">
+													<div class="col-lg-2 sm-margin-25px-bottom">
+														<div class="feature-box feature-box-left-icon-middle last-paragraph-no-margin">
+									                            <div class="feature-box-icon margin-25px-right">
+									                                <h6 class="alt-font text-neon-orange mb-0">04</h6>
+									                            </div>
+									                            <div class="feature-box-content">
+									                                <span class="alt-font font-weight-600 text-large text-medium-gray text-uppercase d-inline-block w-90 xs-w-70">레시피정보</span>
+									                            </div>
+									                        </div>
+													</div>
+													<div class="col-lg-10 sm-margin-25px-bottom">
+														<div class="row" style="margin-top:20px; margin-bottom:20px">
+															<div class="col-lg-2 sm-margin-25px-bottom">
+																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>조리영상</span>
+															</div>
+															<div class="col-lg-10 sm-margin-25px-bottom" id="inputVideo">
+															</div>
+														</div>
+														<div class="row" class="text-center" style="margin-top:20px; margin-bottom:20px">
+															<div class="col-lg-2 sm-margin-25px-bottom">
+																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>대표사진</span>
+															</div>
+															<div class="col-lg-10 sm-margin-25px-bottom text-left" style="text-align:left" id="inputThumbdiv">
+															
+															</div>
+														</div>
+														<div class="row" style="margin-top:20px; margin-bottom:20px">
+															<div class="col-lg-2 sm-margin-25px-bottom">
+																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>조리시간</span>
+															</div>
+															<div class="col-lg-10 sm-margin-25px-bottom text-left" id="inputFoodtime">
+															</div>
+														</div>
+														<div class="row" style="margin-top:20px; margin-bottom:20px">
+															<div class="col-lg-2 sm-margin-25px-bottom">
+																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>조리과정</span>
+															</div>
+															<div class="col-lg-10 sm-margin-25px-bottom">
+																<ul id="sortable2"
+																	class="list-style-02 alt-font font-weight-500 text-small text-uppercase text-extra-dark-gray">
+																	
+																</ul>
+															</div>
+															
+														</div>
+													</div>
+												</div>
+									                    	<!-- step2 end -->
+									                    	<!-- step3 start -->
+									                    	
+									                    	<div class="row row-cols-1" style="margin-top:20px; margin-bottom:20px">
+													<div class="col-lg-2 sm-margin-25px-bottom">
+														<div class="feature-box feature-box-left-icon-middle last-paragraph-no-margin">
+									                            <div class="feature-box-icon margin-25px-right">
+									                                <h6 class="alt-font text-neon-orange mb-0">05</h6>
+									                            </div>
+									                            <div class="feature-box-content">
+									                                <span class="alt-font font-weight-600 text-large text-medium-gray text-uppercase d-inline-block w-90 xs-w-70">해쉬태그</span>
+									                            </div>
+									                        </div>
+													</div>
+													<div class="col-lg-10 sm-margin-25px-bottom">
+														<div class="col-lg-12 sm-margin-25px-bottom text-left" id="inputmyTag">
+															</div>
+													</div>
+												</div>
+												<div class="row row-cols-1" style="margin-top: 50px">
+													<div class="col-lg-2 sm-margin-25px-bottom">
+													</div>
+													<div class="col-lg-10 sm-margin-25px-bottom">
+														<div class="row" style="margin-top:20px; margin-bottom:20px">
+														<div class="col-lg-2">
+															<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>음식분류</span>
+														</div>
+														<div class="col-lg-10 text-left" id="inputCategory">
+														</div>
+														</div>
+													</div>
+													
+												</div>
+									                    	<!-- step3 end -->
+		                       				          		</div>
+														</div>
+														<div class="row justify-content-center" style="margin-top:150px; margin-bottom:-80px; padding-bottom:0px">
+														<!-- start feature box item-->
 															<div
 																class="col-12 col-sm-auto sm-margin-15px-bottom wow animate__fadeIn"
 																data-wow-delay="0.2s">
@@ -710,14 +948,13 @@
 																</div>
 															</div>
 															<!-- end feature box item-->
-														</div>
+													</div> 
 													</div>
 												</section>
 												<!-- end section -->
 											</div>
 											<!-- end tab item -->
 										</div>
-										</form>
                     </div>
                 </div>
             </div>
@@ -727,7 +964,60 @@
     
     <!-- end test -->
 	<!-- start contact form -->
-	<div id="formOfmodal"></div>
+	<div class="modal fade zoom-anim-dialog text-center  padding-4-half-rem-all border-radius-6px sm-padding-2-half-rem-lr border-radius-0px border-color-white" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document" style="width : 1000px; height:1000px">
+	    <div class="modal-content">
+	      <div class="modal-header border-radius-0px border-color-white">
+            <h6 class="modal-title alt-font text-extra-dark-gray letter-spacing-minus-1px " style="margin-left:45px; margin-bottom: 30px; margin-top:30px" id="myModalLabel">어떤 <span class="font-weight-600">건강식</span>을 만들어주실 건가요?</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="text-align:right" id="closeforce"><span aria-hidden="true">&times;</span></button>
+	      </div>
+	      <div class="modal-body border-radius-0px border-color-white">
+	        <div class="row" style="width:100%; margin:0; padding:0" >
+			<div class="col-lg-10">
+			<input class="medium-input margin-25px-bottom xs-margin-10px-bottom required" type="text" name="foodnamesearch" placeholder="요리 이름을 검색하세요">
+			</div>
+			<div class="col-lg-2" style="width:100%; margin-top:5px; padding:0">
+			<button class="btn btn-small btn-round-edge btn-gradient-tan-geraldine mb-0" id="searchFoodName" type="검색">검색</button>
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-lg-12">
+			<div class="border-color-medium-gray border-top border-right border-left border-bottom" style="padding:10px">
+				 <ul class="list-style-03" id="searchResults"  style="width: 100%; height:500px; overflow: auto">
+                </ul>
+			</div>
+			</div>
+	      </div>
+	    </div>
+	  </div></div></div>
+	<!-- start footer -->
+	<!-- start contact form -->
+	<div class="modal fade zoom-anim-dialog text-center  padding-4-half-rem-all border-radius-6px sm-padding-2-half-rem-lr border-radius-0px border-color-white" id="myiModal" tabindex="-1" role="dialog" data="" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document" style="width : 1000px; height:1000px">
+	    <div class="modal-content">
+	      <div class="modal-header border-radius-0px border-color-white">
+            <h6 class="modal-title alt-font text-extra-dark-gray letter-spacing-minus-1px " style="margin-left:90px; margin-bottom: 30px; margin-top:30px" id="myModalLabel">어떤 <span class="font-weight-600">재료</span>가 필요하신가요?</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="text-align:right" id="closeiforce"><span aria-hidden="true">&times;</span></button>
+	      </div>
+	      <div class="modal-body border-radius-0px border-color-white">
+	        <div class="row" style="width:100%; margin:0; padding:0" >
+			<div class="col-lg-10">
+			<input class="medium-input margin-25px-bottom xs-margin-10px-bottom required" type="text" name="ifoodnamesearch" placeholder="재료 이름을 검색하세요">
+			</div>
+			<div class="col-lg-2" style="width:100%; margin-top:5px; padding:0">
+			<button class="btn btn-small btn-round-edge btn-gradient-tan-geraldine mb-0" id="searchiFoodName" type="검색">검색</button>
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-lg-12">
+			<div class="border-color-medium-gray border-top border-right border-left border-bottom" style="padding:10px">
+				 <ul class="list-style-03" id="searchiResults"  style="width: 100%; height:500px; overflow: auto">
+                </ul>
+			</div>
+			</div>
+	      </div>
+	    </div>
+	  </div></div></div>
 	<!-- start footer -->
 	<footer class="footer-dark bg-slate-blue">
 		<div
@@ -858,14 +1148,22 @@
 		src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript"
 		src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<!-- style sheets and font icons  -->
+	<link rel="stylesheet" type="text/css" href="${css }/font-icons.min.css">
+	<link rel="stylesheet" type="text/css" href="${css }/theme-vendors.min.css">
+	<link rel="stylesheet" type="text/css" href="${css }/style.css" />
+	<link rel="stylesheet" type="text/css" href="${css }/responsive.css" />
+	
 	<script>
+	var count = 1;
+	var icount = 1;
 		$(document)
 				.ready(
 						
 						
 						function() {
-							appendForm();
 
+							
 							$.ajax({
 								url: "${pageContext.request.contextPath}/taglist",
 								type: "post",
@@ -919,6 +1217,443 @@
 							
 							$(document).on(
 									"click",
+									"#hashtagView",
+									function(e) {
+										
+										$( '#hashtagText' ).removeClass( 'font-weight-600' );
+										$( '#hashtagText' ).addClass( 'font-weight-600' );
+										$( '#videoText' ).removeClass( 'font-weight-600' );
+										$( '#titleText' ).removeClass( 'font-weight-600' );
+										$( '#previewText' ).removeClass( 'font-weight-600' );
+										
+										$.ajax({
+											url : "${pageContext.request.contextPath}/mytag",
+											type : "post",
+											dataType : "text",
+											data : {
+												"total_string" : document.getElementsByName("title")[0].value+ " "+ document.getElementsByName("subscript")[0].value +" "+ document.getElementsByName("foodname")[0].value
+											}, // 서블릿으로 넘어가는 파라미터값
+											success : function(data) {
+												var res = JSON.parse(data);
+												console.log(res);
+												if (res.length != 0) {
+													for (var i = 0; i < res.length; i++) {
+														var str = '';
+														str += '<a href="#" id="tagSelect" class="btn btn-large  btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" style="margin-bottom: 20px">'
+															+ res[i]
+															+ '<span class="bg-black"></span></a>'
+														$('#myFood').append(str);
+												}}
+											}
+										});
+									}); 
+									
+									
+							$(document).on(
+									"click",
+									"#preView",
+									function(e) {
+										
+										$( '#hashtagText' ).removeClass( 'font-weight-600' );
+										$( '#videoText' ).removeClass( 'font-weight-600' );
+										$( '#titleText' ).removeClass( 'font-weight-600' );
+										$( '#previewText' ).removeClass( 'font-weight-600' );
+										$( '#previewText' ).addClass( 'font-weight-600' );
+										
+										var title = document.getElementsByName("title")[0].value
+										document.getElementById("inputTitle").innerText = title;
+										
+										var subscript = document.getElementsByName("subscript")[0].value
+										document.getElementById("inputSubscript").innerText = subscript;
+										
+										var foodname = document.getElementsByName("foodname")[0].value
+										document.getElementById("inputFoodname").innerText = foodname;
+										
+										
+										var foodtime = document.getElementsByName("foodtime")[0].value
+										if(foodtime =='') document.getElementById("inputFoodtime").innerText = '0분 소요예상';
+										else  document.getElementById("inputFoodtime").innerText = foodtime +'분 소요예상';
+										
+										$('#inputmyTag').html($('#myTag').html());
+										$('#inputVideo').empty(); 	
+										$('#sortable2').empty();
+										$('#inputThumbdiv').empty();
+										$('#foodIngredientInputinfo').empty();
+										
+										var foodcategory = $("select[name=foodcategory]").val();
+										document.getElementById("inputCategory").innerText = foodcategory;
+
+										const inputFile = document.getElementById("videofile"); 
+										const file = inputFile.files[0];
+										if(file != null)
+										{
+											var str = '<video id="videoTagpre" src="" style="margin-bottom:30px" controls muted loop preload></video>'
+											$('#inputVideo').append(str); 	
+											const video = document.getElementById("videoTagpre"); 
+											const videourl = URL.createObjectURL(file); 
+											console.log(videourl);
+											video.setAttribute("src", videourl); video.play();
+										}
+										var sk = document.getElementsByName("FOOD_CD")[0].value.replace(/(\s*)/g, "");
+										if(sk != '')
+										{
+											$.ajax({
+												url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/1'+'/FOOD_CD='+sk,  
+												type : 'get',
+												dataType : 'json',
+												success : function(data){
+													var kcal = '';
+													kcal = data.I2790.row[0].NUTR_CONT1;
+													kcal *= document.getElementsByName("howmuch")[0].value;
+													var howmuch = document.getElementsByName("howmuch")[0].value
+													document.getElementById("inputHowmuch").innerText = '('+kcal+'kcal / '+howmuch + '인분)';
+											
+													if(howmuch =='') document.getElementById("inputHowmuch").innerText = '(0kcal / 0인분)';
+													
+											 	/* 	$('#trans').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT1/1987.7*100));
+													$('#tansu').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT2/287.9*100));
+													$('#danbaek').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT3/72.4*100));
+													$('#jibang').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT4/49.5*100));
+													$('#dang').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT5/60.2*100));
+													$('#natryum').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT6/3255.0*100));
+													$('#coles').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT7/260.4*100));
+													$('#pohwa').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT8/16.6*100));  */
+													
+										 			var farr = ['열량', '탄수화물', '단백질', '지방', '당류','나트륨', '콜레스테롤', '포화지방산']; 
+													var iarr = [parseInt(data.I2790.row[0].NUTR_CONT1/1987.7*100), parseInt(data.I2790.row[0].NUTR_CONT2/287.9*100), parseInt(data.I2790.row[0].NUTR_CONT3/72.4*100), parseInt(data.I2790.row[0].NUTR_CONT4/49.5*100), parseInt(data.I2790.row[0].NUTR_CONT5/60.2*100),parseInt(data.I2790.row[0].NUTR_CONT6/3255.0*100), parseInt(data.I2790.row[0].NUTR_CONT7/260.4*100), parseInt(data.I2790.row[0].NUTR_CONT8/16.6*100)]; 
+													for(var k = 0; k< 8; k++)
+													{
+														var ftemp = '';
+														ftemp += '<div class="col-lg-3"><div class="chart-percent">'
+										                      + '<span class="pie-chart-style-02" data-line-width="6" data-percent="'
+										                      + iarr[k]
+										                      + '" data-track-color="#f5f5f5" data-start-color="#fc9297" data-end-color="#be85f5">'
+										                      + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+										                      + '</div><div class="last-paragraph-no-margin wow animate__fadeIn" data-wow-duration="0.2" style="margin-top: 10px; margin-bottom: 10px;">'
+										                      + '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block">'
+										                      + farr[k]
+										                      + '</span></div></div>'
+										                $('#foodIngredientInputinfo').append(ftemp);
+													} 
+
+													
+												}
+											}); 
+											
+										}
+										else
+										{
+											var fn = document.getElementsByName("foodname")[0].value.replace(/(\s*)/g, "");
+											$.ajax({
+												url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/1'+'/DESC_KOR='+fn,  
+												type : 'get',
+												dataType : 'json',
+												success : function(data){
+													var kcal = '';
+													kcal = data.I2790.row[0].NUTR_CONT1;
+													kcal *= document.getElementsByName("howmuch")[0].value;
+													var howmuch = document.getElementsByName("howmuch")[0].value
+													document.getElementById("inputHowmuch").innerText = '('+kcal+'kcal / '+howmuch + '인분)';
+											
+													if(howmuch =='') document.getElementById("inputHowmuch").innerText = '(0kcal / 0인분)';
+													
+											 	/* 	$('#trans').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT1/1987.7*100));
+													$('#tansu').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT2/287.9*100));
+													$('#danbaek').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT3/72.4*100));
+													$('#jibang').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT4/49.5*100));
+													$('#dang').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT5/60.2*100));
+													$('#natryum').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT6/3255.0*100));
+													$('#coles').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT7/260.4*100));
+													$('#pohwa').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT8/16.6*100));  */
+													
+										 			var farr = ['열량', '탄수화물', '단백질', '지방', '당류','나트륨', '콜레스테롤', '포화지방산']; 
+													var iarr = [parseInt(data.I2790.row[0].NUTR_CONT1/1987.7*100), parseInt(data.I2790.row[0].NUTR_CONT2/287.9*100), parseInt(data.I2790.row[0].NUTR_CONT3/72.4*100), parseInt(data.I2790.row[0].NUTR_CONT4/49.5*100), parseInt(data.I2790.row[0].NUTR_CONT5/60.2*100),parseInt(data.I2790.row[0].NUTR_CONT6/3255.0*100), parseInt(data.I2790.row[0].NUTR_CONT7/260.4*100), parseInt(data.I2790.row[0].NUTR_CONT8/16.6*100)]; 
+													for(var k = 0; k< 8; k++)
+													{
+														var ftemp = '';
+														ftemp += '<div class="col-lg-3"><div class="chart-percent">'
+										                      + '<span class="pie-chart-style-02" data-line-width="6" data-percent="'
+										                      + iarr[k]
+										                      + '" data-track-color="#f5f5f5" data-start-color="#fc9297" data-end-color="#be85f5">'
+										                      + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+										                      + '</div><div class="last-paragraph-no-margin wow animate__fadeIn" data-wow-duration="0.2" style="margin-top: 10px; margin-bottom: 10px;">'
+										                      + '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block">'
+										                      + farr[k]
+										                      + '</span></div></div>'
+										                $('#foodIngredientInputinfo').append(ftemp);
+													} 
+
+													
+												}
+											}); 
+										}
+										
+										
+										
+										var cnttmp = 1;
+										$("#sortable").children().each(function(){ 
+											var i = $(this).attr("value"); 
+											var steptitle = document.getElementsByName("steptitle"+i)[0].value;
+								 	    	if(steptitle != ''){
+								 	    	console.log(i);
+									    	var contents = '';
+											contents += '<li style="width:100%">'
+													+ '<div class="blog-pos margin-30px-bottom wow animate__fadeIn border-right border-top border-bottom border-left border-color-medium-gray" style="width:100%">'
+													+ '<div class="d-flex flex-column flex-md-row align-items-center" style="width:100%">'
+													+ '<div class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding" style="width:100%; padding:0">'
+													+ '<div class="row row-cols-1 row-cols-md-2" style="width:100%;">'
+													+ '<div class="col-lg-5">'
+													+ '<div id="inputstepimage_container'+ i +'" class="stepimage_size"><img src="" id="stepimg_tmp'+i+'"/></div>'
+													+ '</div>'
+													+ '<div class="col-lg-7" style="margin-top: 10px; margin-bottom:20px; height:100%; vertical-align:middle">'
+													+ '<div id="inputsteptitle'+i+'" class="text-left alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase" style="font-size:15px"></div>'
+													+ '<div id="inputstepsubscript'+i+'" class="text-left"></div>'
+													+ '</div>'
+													+ '</div></div>'
+													+ '</div></div></li>'
+
+											$('#sortable2').append(contents);
+											
+											var steptitle = document.getElementsByName("steptitle"+i)[0].value;
+											document.getElementById("inputsteptitle"+i).innerText = '['+cnttmp+'단계] '+steptitle;
+											document.getElementById("inputsteptitle"+i).style.fontWeight = "bold";
+											
+											var stepsubscript = document.getElementsByName("stepsubscript"+i)[0].value;
+											document.getElementById("inputstepsubscript"+i).innerText = stepsubscript;
+											
+											var elem = document.getElementsByName('stepimage'+i); //파일 선택 필드 요소 얻기
+											if(elem[0].files[0]){ // 파일 확장자 체크해서 이미지 파일이면
+											  let preview = document.querySelector('#stepimg_tmp'+i); // 미리보기 썸네일 <img> 엘리먼트 얻기
+											  preview.src = URL.createObjectURL(elem[0].files[0]); //파일 객체에서 이미지 데이터 가져옴.
+											}else{
+											  console.log('이미지 파일이 아닙니다.');
+											}
+											cnttmp += 1;
+								 	    	}
+										});
+
+										
+								 	   var elem1 = document.getElementsByName('product_image'); //파일 선택 필드 요소 얻기
+										if(elem1[0].files[0]){ // 파일 확장자 체크해서 이미지 파일이면
+										  var tmpstr ='<img src="" id="inputThumb" style="margin-top:20px; margin-bottom:20px; text-align:left"/>';
+										  $('#inputThumbdiv').append(tmpstr);
+										  let preview = document.querySelector('#inputThumb'); // 미리보기 썸네일 <img> 엘리먼트 얻기
+										  preview.src = URL.createObjectURL(elem1[0].files[0]); //파일 객체에서 이미지 데이터 가져옴.
+										}else{
+										  console.log('이미지 파일이 아닙니다.');
+										}
+									    
+									});
+									
+							$(document).on("change","#stepimage",function(event){
+								var reader = new FileReader();
+								var cnt = $(this).attr('name').split('stepimage')[1];
+								reader.onload = function(event){
+									var img = document.createElement("img");
+									img.setAttribute("src", event.target.result);
+									img.setAttribute("class", "col-lg-12");
+									var container_name= "div#stepimage_container" + cnt;
+									
+									document.querySelector(container_name).appendChild(img);
+								};
+								reader.readAsDataURL(event.target.files[0]);
+							});
+							
+							
+							$(document).on("change","#videofile",function(event){
+								var str = '<video id="videoTag" src="" controls muted loop preload></video>'
+								$('#video_container').append(str); 
+								const inputFile = document.getElementById("videofile"); 
+								const video = document.getElementById("videoTag"); 
+								const file = inputFile.files[0]; 
+								const videourl = URL.createObjectURL(file); 
+								video.setAttribute("src", videourl); video.play();
+								document.getElementById('video_container').style.margin='30px';
+							});
+
+							$(document).on(
+									"click",
+									"#searchFoodName",
+									function(e) {
+										console.log("search");
+										 $('#searchResults').empty();
+										 var foodname = document.getElementsByName("foodnamesearch")[0].value;
+										 $("input[name=foodname]").val(foodname);
+										 var sk = document.getElementsByName("foodnamesearch")[0].value.replace(/(\s*)/g, "");
+										$.ajax({
+											url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/50'+'/DESC_KOR='+sk,  
+											type : 'get',
+											dataType : 'json',
+											success : function(data){
+												for(var k = 0; k<data.I2790.row.length; k++)
+												{
+													var ftemp = '';
+													ftemp += '<li id="searchFoodNameResults" name="'+data.I2790.row[k].DESC_KOR+'" data="'+data.I2790.row[k].FOOD_CD+'">'
+							                              + '<div class="row margin-5px-left margin-5px-right">'
+							                              + '<div class="col-6 text-left">'
+							                              + data.I2790.row[k].DESC_KOR
+							                              + '</div>'
+							                              + '<div class="col-3 text-center">'
+							                              + data.I2790.row[k].SERVING_SIZE+'g'
+							                              + '</div>'
+							                              + '<div class="col-3 text-right">'
+							                              + data.I2790.row[k].NUTR_CONT1+'kcal'
+							                              + '</div>'
+							                              + '</div></li>'
+													$('#searchResults').append(ftemp);
+												} 
+												
+											}
+										}); 
+									});
+							
+							$(document).on(
+									"click",
+									"#foodsearchbuttonf",
+									function(e) {
+										console.log("search");
+										 $('#searchResults').empty();
+										 var foodname = document.getElementsByName("foodname")[0].value;
+										 $("input[name=foodnamesearch]").val(foodname);
+										 var sk = document.getElementsByName("foodname")[0].value.replace(/(\s*)/g, "");
+										$.ajax({
+											url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/50'+'/DESC_KOR='+sk,  
+											type : 'get',
+											dataType : 'json',
+											success : function(data){
+												for(var k = 0; k<data.I2790.row.length; k++)
+												{
+													var ftemp = '';
+													//ftemp += '<button class="btn btn-medium btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" id="searchFoodNameResults" name="'+data.I2790.row[k].DESC_KOR+'" style="margin-left:10px; margin-bottom :10px" data ="'+data.I2790.row[k].FOOD_CD +'">'+data.I2790.row[k].DESC_KOR +'</button>'
+									                ftemp += '<li id="searchFoodNameResults" name="'+data.I2790.row[k].DESC_KOR+'" data="'+data.I2790.row[k].FOOD_CD+'">'
+							                              + '<div class="row margin-5px-left margin-5px-right">'
+							                              + '<div class="col-6 text-left">'
+							                              + data.I2790.row[k].DESC_KOR
+							                              + '</div>'
+							                              + '<div class="col-3 text-center">'
+							                              + data.I2790.row[k].SERVING_SIZE+'g'
+							                              + '</div>'
+							                              + '<div class="col-3 text-right">'
+							                              + data.I2790.row[k].NUTR_CONT1+'kcal'
+							                              + '</div>'
+							                              + '</div></li>'
+													$('#searchResults').append(ftemp);
+												} 
+
+											}
+										}); 
+									});
+
+							//수정//////////////////////////////////////////////////////////
+							$(document).on(
+									"click",
+									"#searchiFoodName",
+									function(e) {
+										 $('#searchiResults').empty();
+										 var sk = document.getElementsByName("ifoodnamesearch")[0].value.replace(/(\s*)/g, "");
+										$.ajax({
+											url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/50'+'/DESC_KOR='+sk,  
+											type : 'get',
+											dataType : 'json',
+											success : function(data){
+
+												var num = $('#myiModal').attr('data');
+												for(var k = 0; k<data.I2790.row.length; k++)
+												{
+													if(data.I2790.row[k].MAKER_NAME !='') 
+													{
+														continue;
+													}
+													var ftemp = '';
+													ftemp += '<li id="searchiNameResults" iid="searchiNameResults'+num+'" name="'+data.I2790.row[k].DESC_KOR+'" data="'+data.I2790.row[k].FOOD_CD+'">'
+							                              + '<div class="row margin-5px-left margin-5px-right">'
+							                              + '<div class="col-6 text-left">'
+							                              + data.I2790.row[k].DESC_KOR
+							                              + '</div>'
+							                              + '<div class="col-3 text-center">'
+							                              + data.I2790.row[k].SERVING_SIZE+'g'
+							                              + '</div>'
+							                              + '<div class="col-3 text-right">'
+							                              + data.I2790.row[k].NUTR_CONT1+'kcal'
+							                              + '</div>'
+							                              + '</div></li>'
+							                        //$("input[name=FOOD_CD_i'++']").val(data.I2790.row[k].FOOD_CD);
+													$('#searchiResults ').append(ftemp);
+												} 
+												
+											}
+										}); 
+									});
+							$(document).on(
+									"click",
+									"#viewIngredient",
+									function(e) {
+										var num = $(this).attr('name').split('viewIngredient')[1];
+										document.getElementById("myiModal").setAttribute("data", "");
+										document.getElementById("myiModal").setAttribute('data', num);
+									});
+							$(document).on(
+									"click",
+									"#searchiNameResults",
+									function(e) {
+										var num = $(this).attr('iid').split('searchiNameResults')[1];
+										console.log(num);
+										var foodname =$(this).attr('name');
+										$("input[name=ingredients"+num+"]").val(foodname);
+										console.log($(this).attr('data'));
+										 //document.getElementById("FOOD_CD_i"+num).setAttribute("value", $(this).attr('data'));
+										$("#closeiforce").trigger("click");
+									});
+							
+							///////////////////////////////////////////////////////////////////////////
+							$(document).on(
+									"click",
+									"#searchFoodNameResults",
+									function(e) {
+										var foodname =$(this).attr('name');
+										 $("input[name=foodname]").val(foodname);
+										 document.getElementById("FOOD_CD").setAttribute("value", $(this).attr('data'));
+										console.log($(this).attr('name'));
+										$("#closeforce").trigger("click");
+									});
+							
+							$(document).on(
+									"click",
+									"#titleView",
+									function(e) {
+										$( '#hashtagText' ).removeClass( 'font-weight-600' );
+										$( '#videoText' ).removeClass( 'font-weight-600' );
+										$( '#titleText' ).removeClass( 'font-weight-600' );
+										$( '#previewText' ).removeClass( 'font-weight-600' );
+										$( '#titleText' ).addClass( 'font-weight-600' );
+										
+										/* if($("input[name=title]").val() == '' ||$("input[name=subscript]").val() == ''|| $("input[name=foodname]").val() == '' || $("input[name=howmuch]").val() == '')
+										{
+											var tmp ='<i class="feather icon-feather-alert-triangle icon-medium align-middle text-fast-blue"></i>'
+											$( '#titleText' ).apeend(tmp);
+										}
+										
+										if($("input[name=title]").val()!= '' && $("input[name=subscript]").val() != ''&& $("input[name=foodname]").val() != '' && $("input[name=howmuch]").val() != '')
+										{
+											$( '#titleText' ).empty();
+											$( '#titleText' ).apeend('기본설명');
+										} */
+										
+									});
+							
+							$(document).on(
+									"click",
+									"#videioView",
+									function(e) {
+										$( '#hashtagText' ).removeClass( 'font-weight-600' );
+										$( '#videoText' ).removeClass( 'font-weight-600' );
+										$( '#titleText' ).removeClass( 'font-weight-600' );
+										$( '#previewText' ).removeClass( 'font-weight-600' );
+										$( '#videoText' ).addClass( 'font-weight-600' );
+									});
+							
+							$(document).on(
+									"click",
 									"#removeIngredient",
 									function(e) {
 										$(this).parent().parent().parent()
@@ -938,6 +1673,7 @@
 											"click",
 											"#addIngredient",
 											function(e) {
+												var cnttmp = icount + 1;
 												var str = '';
 												str += '<li style="width: 100%">'
 														+ '<div class="blog-post bg-white box-shadow-medium margin-10px-bottom wow animate__fadeIn" style="width: 100% ; padding: 0;" >'
@@ -948,15 +1684,17 @@
 														+ '<div class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding" style="width: 100%; padding: 0">'
 														+ '<div class="row row-cols-1 row-cols-md-2" style="width: 100%">'
 														+ '<div class="col-lg-10" stsyle="margin-right:0px; padding:0px">'
-														+ '<input class="medium-input bg-white" type="text" name="ingredients" placeholder="사용된 재료를 입력하세요">'
+														+ '<input class="medium-input bg-white" type="text" name="ingredients'+cnttmp+'" placeholder="사용된 재료를 입력하세요">'
+														+ '<input id="FOOD_CD_i'+cnttmp+'" name="FOOD_CD_i'+cnttmp+'" type="hidden" value="">'
 														+ '</div>'
-														+ '<div id="viewIngredient" class="col-lg-1" style="margin-left:0px; padding:0px; margin-top:3px">'
-														+ '<a href="#contact-form" class="btn btn-very-small btn-round-edge btn-gradient-tan-geraldine popup-with-form"><i class="fas fa-plus"></i></a>'
+														+ '<div id="viewIngredient" name="viewIngredient'+cnttmp+'" class="col-lg-1" style="margin-left:0px; padding:0px; margin-top:3px">'
+														+ '<a href="" data-toggle="modal" data-target="#myiModal"  class="btn btn-very-small btn-round-edge btn-gradient-tan-geraldine"><i class="fas fa-plus"></i></a>'
 														+ '</div></div></div>'
 														+ '<div class="font-weight-500 text-extra-medium text-medium-gray" id="removeIngredient" style="margin-right: 20px; margin-top:-10px">'
 														+ '<i class="fas fa-times"></i></div></div></div></li>'
 
 												$('#sortable1').append(str);
+												icount += 1;
 											});
 							
 							
@@ -978,6 +1716,9 @@
 									function(e) {
 										$(this).remove();
 									});
+							
+							
+							
 
 						});
 
@@ -985,21 +1726,20 @@
 				.click(
 						function(e) {
 							var contents = '';
-							contents += '<li style="width:100%">'
+							var cnttemp = count + 1;
+							count += 1;
+							contents += '<li value="'+cnttemp+'" style="width:100%">'
 									+ '<div class="blog-post bg-white box-shadow-medium margin-30px-bottom wow animate__fadeIn" style="width:100%">'
 									+ '<div class="d-flex flex-column flex-md-row align-items-center" style="width:100%">'
-									+ '<div class="blog-post-image sm-margin-25px-bottom" >'
-									+ '<img src="https://placehold.it/1200x840" alt="" /></a>'
-									+ '</div>'
 									+ '<div class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding" style="width:100%; padding:0">'
-									+ '<div class="row row-cols-1 row-cols-md-2" style="width:100%; margin-top:25px">'
+									+ '<div class="row row-cols-1 row-cols-md-2" style="width:100%;">'
 									+ '<div class="col-lg-5">'
-									+ '<img class="avtar-image" src="https://placehold.it/149x149" alt="">'
+									+ '<div id="stepimage_container'+ cnttemp +'" class="stepimage_size"></div>'
 									+ '</div>'
-									+ '<div class="col-lg-7">'
-									+ '<input class="medium-input bg-white" type="text" name="steptitle" placeholder="단계별 제목을 입력하세요">'
-									+ '<input type="file" value="단계별 사진 선택" name="stepimage"/>'
-									+ '<textarea class="medium-textarea bg-white" rows="6" name="stepsubscript" placeholder="단계별 조리과정 설명을 입력하세요"></textarea>'
+									+ '<div class="col-lg-7" style="margin-top:20px">'
+									+ '<input class="medium-input bg-white" type="text" name="steptitle'+cnttemp+'" placeholder="단계별 제목을 입력하세요">'
+									+ '<input type="file" value="단계별 사진 선택" accept="image/*" name="stepimage'+cnttemp+'" id="stepimage"/>'
+									+ '<textarea class="medium-textarea bg-white" rows="6" name="stepsubscript'+cnttemp+'" placeholder="단계별 조리과정 설명을 입력하세요"></textarea>'
 									+ '</div>'
 									+ '</div></div>'
 									+ '<div class="font-weight-500 text-extra-medium text-medium-gray" id="removeProcess" style="margin-right : 15px"><i class="fas fa-times"></i></div></div></div></li>'
@@ -1009,29 +1749,27 @@
 
 		
 		
+		
+		
 		function submitItem() {
 			if (!validateItem()) {
 				return;
 			}
 			alert("등록");
 		}
-
-		function appendForm() {
-			var content = '';
-			content += '<form id="contact-form" action="${email-templates}/contact-form.php" method="post" class="white-popup-block col-xl-4 col-lg-7 col-sm-9  p-0 mx-auto mfp-hide">'
-					+ '<div class="padding-fifteen-all bg-white border-radius-6px xs-padding-six-all">'
-					+ '<h6 class="text-extra-dark-gray font-weight-500 margin-35px-bottom xs-margin-15px-bottom">Looking for a excellent business idea?</h6>'
-					+ '<div>'
-					+ '<input class="medium-input margin-25px-bottom xs-margin-10px-bottom required" type="text" name="name" placeholder="Your name">'
-					+ '<input class="medium-input margin-25px-bottom xs-margin-10px-bottom required" type="email" name="email" placeholder="Your email address">'
-					+ '<input class="medium-input margin-25px-bottom xs-margin-10px-bottom" type="tel" name="phone" placeholder="Your mobile">'
-					+ '<textarea class="medium-textarea xs-h-100px xs-margin-10px-bottom" rows="6" name="comment" placeholder="Your message"></textarea>'
-					+ '<input type="hidden" name="redirect" value="">'
-					+ '<button class="btn btn-medium btn-gradient-sky-blue-pink mb-0 submit" type="submit">Send Message</button>'
-					+ '<div class="form-results d-none"></div>'
-					+ '</div></div></form>'
-			$('#formOfmodal').append(content);
+		function setThumbnail(event){
+			var reader = new FileReader();
+			
+			reader.onload = function(event){
+				var img = document.createElement("img");
+				img.setAttribute("src", event.target.result);
+				img.setAttribute("class", "col-lg-6");
+				document.querySelector("div#image_container").appendChild(img);
+			};
+			
+			reader.readAsDataURL(event.target.files[0]);
 		}
+	
 
 		/** 아이템 체크 */
 		function validateItem() {
