@@ -31,13 +31,9 @@ public class RecipeController {
 	@Autowired
 	RecipeService recipeService;
 	
-	@RequestMapping(value = "/recipe", method = RequestMethod.GET)
-	public String home() { 
-		System.out.println("recipe page start"); 
-		return "recipePage"; 
-	}
 	
-	@RequestMapping(value = "/recipe2", method = RequestMethod.GET)
+	
+	@RequestMapping(value = "/recipe", method = RequestMethod.GET)
 	public String home2() { 
 		System.out.println("recipe page start"); 
 		return "recipePage2"; 
@@ -64,6 +60,25 @@ public class RecipeController {
 		String json = new Gson().toJson(cat_list);
 		
 		return json;
+	}
+	
+	@PostMapping(value="/viewchceck", produces = "application/text; charset=utf8")
+	public @ResponseBody Boolean viewChceck()  throws Exception {
+		boolean chk = true;
+		
+		//titleView
+		String title = null;
+		String subscript = null;
+		String foodname = null;
+		String howmuch = null;
+		//String 
+		//Àç·á
+		
+		if(title.equals("") || subscript.equals("") || foodname.equals("") || howmuch.equals("")) {
+			chk = false;
+		}
+		
+		return chk;
 	}
 	
 	@PostMapping(value="/mytag", produces = "application/text; charset=utf8")

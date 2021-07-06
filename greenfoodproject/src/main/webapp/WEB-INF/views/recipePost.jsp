@@ -153,7 +153,7 @@
 															<div class="col-lg-2 sm-margin-25px-bottom">
 																<input
 																	class="medium-input bg-white margin-25px-bottom required"
-																	type="text" name="howmuch" placeholder="음식분량" required>
+																	type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="howmuch" placeholder="음식분량" required>
 															</div>
 															<div class="col-lg-1" style="margin-top:10px; margin-left:-10px">인분
 															</div>
@@ -167,7 +167,7 @@
 															
 																<ul id="sortable1"
 																	class="list-style-02 alt-font font-weight-500 text-small text-uppercase text-extra-dark-gray">
-																	<li style="width: 100%">
+																	<li style="width: 100%" value="1">
 																		<!-- start blog item -->
 																		<div
 																			class="blog-post bg-white box-shadow-medium margin-10px-bottom wow animate__fadeIn"
@@ -200,7 +200,7 @@
 																							<input id="SERVING_SIZE_i1" name="SERVING_SIZE_i1" type="hidden" value="">
 																						</div>
 																						<div class="col-lg-3" style="margin-left:-20px">
-																							<input class="medium-input bg-white" type="text"
+																							<input class="medium-input bg-white" type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
 																								name="ingredientssize1" placeholder="g 또는 ml">
 																						</div>
 																						<div id="viewIngredient" name="viewIngredient1" class="col-lg-1"
@@ -285,7 +285,7 @@
 															<div class="col-lg-4 sm-margin-25px-bottom">
 																<input
 																	class="medium-input bg-white margin-25px-bottom required"
-																	type="text" name="foodtime" placeholder="예상 조리시간을 입력하세요">
+																	type="text" name="foodtime" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="예상 조리시간을 입력하세요">
 															</div>
 															<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:15px">
 																<h8>분 소요예상</h8>
@@ -718,7 +718,8 @@
 									                        </div>
 									                    </div>
 													</div>
-													<div class="col-lg-10 sm-margin-25px-bottom text-left" id="inputTitle">
+													<div class="col-lg-10 text-left">
+														<div id="inputTitle" style="margin-top:50px"></div>
 													</div>
 												</div>
 												<div class="row row-cols-1 row-cols-md-2" style="padding:0px; margin-top:20px; margin-bottom:20px">
@@ -1278,7 +1279,7 @@
 										var ig7 = 0;
 										var ig8 = 0;
 										
-										for(var t = 1; t<=icount; t++)
+										/* for(var t = 1; t<=icount; t++)
 										{
 											var strli = '';
 											var stmp = ($("input[name=ingredientssize"+t+"]").val()/$("input[id=SERVING_SIZE_i"+t+"]").val());
@@ -1325,8 +1326,59 @@
 											ig6 +=$("input[name=NUTR_CONT6_i"+t+"]").val()*stmp;
 											ig7 +=$("input[name=NUTR_CONT7_i"+t+"]").val()*stmp;
 											ig8 +=$("input[name=NUTR_CONT8_i"+t+"]").val()*stmp;
-										}
+										} */
 										
+										$("#sortable1").children().each(function(){ 
+											var t = $(this).attr("value"); 
+											if($("input[name=ingredients"+t+"]").val() != '')
+											{
+											var strli = '';
+											var stmp = ($("input[name=ingredientssize"+t+"]").val()/$("input[id=SERVING_SIZE_i"+t+"]").val());
+												  strli += '<div class="panel bg-transparent">'
+												  		+ '<div class="panel-heading border-color-medium-gray-transparent">'
+												  		+ '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#accordion-style-02-0'+t+'">'
+												  		+ '<div class="panel-title text-left">'
+												  		+ '<span class="alt-font text-dark-gray d-inline-block">'
+												  		+ $("input[name=ingredients"+t+"]").val()+' (사용량 : '
+												  		+ $("input[name=ingredientssize"+t+"]").val()
+												  		+ 'g 또는 ml)'
+												  		+ '</span>'
+												  		+ '<i class="indicator text-dark-gray feather icon-feather-plus"></i>'
+												  		+ '</div>'
+												  		+ '</a>'
+												  		+ '</div>'
+												  		+ '<div id="accordion-style-02-0'+t+'" class="panel-collapse collapse" data-parent="#accordion2">'
+												  		+ '<div class="panel-body">'
+												  	    + '열량 : '+ $("input[name=NUTR_CONT1_i"+t+"]").val()*stmp +'kcal'
+												  	    + '</br>'
+														+ '탄수화물 : '+ $("input[name=NUTR_CONT2_i"+t+"]").val()*stmp +'g'
+														+ '</br>'
+														+ '단백질 : '+ $("input[name=NUTR_CONT3_i"+t+"]").val()*stmp +'g'
+														+ '</br>'
+														+ '지방 : '+ $("input[name=NUTR_CONT4_i"+t+"]").val()*stmp +'g'
+														+ '</br>'
+														+ '당류 : '+ $("input[name=NUTR_CONT5_i"+t+"]").val()*stmp +'g'
+														+ '</br>'
+														+ '나트륨 : '+ $("input[name=NUTR_CONT6_i"+t+"]").val()*stmp +'mg'
+														+ '</br>'
+														+ '콜레스테롤 : '+ $("input[name=NUTR_CONT7_i"+t+"]").val()*stmp +'mg'
+														+ '</br>'
+														+ '포화지방산 : '+ $("input[name=NUTR_CONT8_i"+t+"]").val()*stmp +'g'
+														+ '</br>'
+												  		+ '</div></div></div>'
+										
+											$('#accordion2').append(strli);	
+												  		
+											ig1 +=$("input[name=NUTR_CONT1_i"+t+"]").val()*stmp;
+											ig2 +=$("input[name=NUTR_CONT2_i"+t+"]").val()*stmp;
+											ig3 +=$("input[name=NUTR_CONT3_i"+t+"]").val()*stmp;
+											ig4 +=$("input[name=NUTR_CONT4_i"+t+"]").val()*stmp;
+											ig5 +=$("input[name=NUTR_CONT5_i"+t+"]").val()*stmp;
+											ig6 +=$("input[name=NUTR_CONT6_i"+t+"]").val()*stmp;
+											ig7 +=$("input[name=NUTR_CONT7_i"+t+"]").val()*stmp;
+											ig8 +=$("input[name=NUTR_CONT8_i"+t+"]").val()*stmp;
+											}
+										});
 										/* var sk = document.getElementsByName("FOOD_CD")[0].value.replace(/(\s*)/g, "");
 										if(sk != '')
 										{
@@ -1703,7 +1755,7 @@
 											function(e) {
 												var cnttmp = icount + 1;
 												var str = '';
-												str += '<li style="width: 100%">'
+												str += '<li style="width: 100%" value="'+cnttmp+'">'
 														+ '<div class="blog-post bg-white box-shadow-medium margin-10px-bottom wow animate__fadeIn" style="width: 100% ; padding: 0;" >'
 														+ '<div class="d-flex flex-column flex-md-row align-items-center" style="width: 100%; padding : 0;  margin: 10px 10px -5px 10px">'
 														+ '<div class="blog-post-image sm-margin-25px-bottom">'
@@ -1724,13 +1776,13 @@
 														+ '<input id="NUTR_CONT8_i'+cnttmp+'" name="NUTR_CONT8_i'+cnttmp+'" type="hidden" value="">'
 														+ '<input id="SERVING_SIZE_i'+cnttmp+'" name="SERVING_SIZE_i'+cnttmp+'" type="hidden" value="">'
 														+ '</div>'
-														+ '<div class="col-lg-3" style="margin-left:-20px"><input class="medium-input bg-white" type="text" name="ingredientssize'+cnttmp+'" placeholder="g 또는 ml"></div>'
+														+ '<div class="col-lg-3" style="margin-left:-20px"><input class="medium-input bg-white" onKeyup="this.value=this.value.replace(/[^0-9]/g,\'\');" type="text" name="ingredientssize'+cnttmp+'" placeholder="g 또는 ml"></div>'
 														+ '<div id="viewIngredient" name="viewIngredient'+cnttmp+'" class="col-lg-1" style="margin-left:0px; padding:0px; margin-top:3px">'
 														+ '<a href="" data-toggle="modal" data-target="#myiModal"  class="btn btn-very-small btn-round-edge btn-gradient-tan-geraldine"><i class="fas fa-plus"></i></a>'
 														+ '</div></div></div>'
 														+ '<div class="font-weight-500 text-extra-medium text-medium-gray" id="removeIngredient" style="margin-right: 20px; margin-top:-10px">'
 														+ '<i class="fas fa-times"></i></div></div></div></li>'
-
+														
 												$('#sortable1').append(str);
 												icount += 1;
 											});
