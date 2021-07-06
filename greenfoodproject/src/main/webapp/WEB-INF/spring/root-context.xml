@@ -29,7 +29,7 @@
 	
 	<!-- 작성자: 이효범
 		작성일자: 2021/07/05 15:31 -->
-	<!-- MainDAO start -->	
+	<!-- MainDAO start -->
 	<bean
 		id="MainSqlSession" 
 		class="org.mybatis.spring.SqlSessionFactoryBean" 
@@ -39,8 +39,8 @@
 	
 	<bean id="MainDAO" 
 		class="org.mybatis.spring.mapper.MapperFactoryBean" 
-		p:sqlSessionFactory-ref="mapSqlSession"
-		p:mapperInterface="net.developia.greenfood.dto" />
-	<!-- MainDAO end -->		
+		p:sqlSessionFactory-ref="MainSqlSession"
+		p:mapperInterface="net.developia.greenfood.dao.MainDAO" />
+	 <!-- MainDAO end -->		
 	
 </beans>

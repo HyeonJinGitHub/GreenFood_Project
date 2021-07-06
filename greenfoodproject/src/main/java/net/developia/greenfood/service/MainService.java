@@ -1,8 +1,12 @@
 package net.developia.greenfood.service;
 
 import java.util.HashMap;
+import java.util.List;
+
+import net.developia.greenfood.dto.MemberDTO;
 
 public interface MainService {
-	public void selectMember(HashMap<String, Object> map) throws Exception;
+	public void selectReciper() throws Exception;
 
+	public List<MemberDTO> getMember() throws Exception;
 }

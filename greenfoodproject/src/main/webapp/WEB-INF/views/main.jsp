@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<c:set var="memberDTO" value="${memberDTO }"></c:set>
+
+
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
@@ -27,139 +31,7 @@
     </head>
     <body data-mobile-nav-style="classic">
         <!-- start header -->
-        <header>
-            <!-- start navigation -->
-            <nav class="navbar navbar-expand-lg navbar-boxed navbar-light bg-transparent header-light fixed-top header-reverse-scroll">
-                <div class="container-fluid nav-header-container">
-                    <div class="col-auto col-sm-6 col-lg-2 mr-auto pl-lg-0">
-                        <a class="navbar-brand" href="index.html">
-                            <img src="resources/images/logo-black.png" data-at2x="resources/images/logo-black@2x.png" alt="" class="default-logo">
-                            <img src="resources/images/logo-neon-orange.png" data-at2x="resources/images/logo-neon-orange@2x.png" alt="" class="alt-logo">
-                            <img src="resources/images/logo-neon-orange.png" data-at2x="resources/images/logo-neon-orange@2x.png" class="mobile-logo" alt="">
-                        </a>
-                    </div>
-                    <div class="col-auto menu-order px-lg-0">
-                        <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-line"></span>
-                            <span class="navbar-toggler-line"></span>
-                            <span class="navbar-toggler-line"></span>
-                            <span class="navbar-toggler-line"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                            <ul class="navbar-nav alt-font">
-                               <li class="nav-item dropdown megamenu">
-                                    <a href="#" class="nav-link">카테고리</a>
-                                    <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                    <div class="menu-back-div dropdown-menu megamenu-content" role="menu">
-                                        <div class="d-lg-flex justify-content-center">
-                                            <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">음식 카테고리</li>
-                                                <li><a href="home-startup.html">Startup</a></li>
-                                                <li><a href="home-business.html">Business</a></li>
-                                                <li><a href="home-corporate.html">Corporate</a></li>
-                                            </ul>
-                                            <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">레시피</li>
-                                                <li><a href="home-restaurant.html">Restaurant</a></li>
-                                                <li><a href="home-architecture.html">Architecture</a></li>
-                                                <li><a href="home-hotel-resort.html">Hotel & resort</a></li>
-                                            </ul>
-                                            <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">상품 카테고리</li>
-                                                <li><a href="home-design-agency.html">Design agency</a></li>
-                                                <li><a href="home-web-agency.html">Web agency</a></li>
-                                            </ul>
-                                            <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">고객센터</li>
-                                                <li><a href="home-furniture-shop.html">Furniture shop</a></li>
-                                                <li><a href="home-fashion-shop.html">Fashion shop</a></li>
-                                                <li><a href="home-magazine.html">Magazine</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown simple-dropdown">
-                                    <a href="#" class="nav-link">음식 카테고리</a>
-                                    <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                </li>
-                                <li class="nav-item dropdown simple-dropdown">
-                                    <a href="#" class="nav-link">레시피</a>
-                                    <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                </li>
-                                <li class="nav-item dropdown megamenu">
-                                    <a href="javascript:void(0);" class="nav-link">상품 카테고리</a>
-                                    <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                </li>
-                                <li class="nav-item dropdown simple-dropdown">
-                                    <a href="#" class="nav-link">고객센터</a>
-                                    <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-auto text-right pr-0 font-size-0">
-                        <div class="header-search-icon search-form-wrapper">
-                            <a href="javascript:void(0)" class="search-form-icon header-search-form"><i class="feather icon-feather-search"></i></a>
-                            <!-- start search input --> 
-                            <div class="form-wrapper">
-                                <button title="Close" type="button" class="search-close alt-font">×</button>
-                                <form id="search-form" role="search" method="get" class="search-form text-left" action="search-result.html">
-                                    <div class="search-form-box">
-                                        <span class="search-label alt-font text-small text-uppercase text-medium-gray">어떤 레시피가 궁금하신가요?</span>
-                                        <input class="search-input alt-font" id="search-form-input5e219ef164995" placeholder="냠냠~" name="s" value="" type="text" autocomplete="off">
-                                        <button type="submit" class="search-button">
-                                            <i class="feather icon-feather-search" aria-hidden="true"></i>
-                                        </button>
-                                        <div>
-                                        <span> #해시태그1</span> <span> #해시태그1</span> <span>  #해시태그1</span> <span>  #해시태그1</span>
-                                    	</div>
-                                    </div>
-                                    
-                                </form>
-                            </div>
-                            <!-- end search input --> 
-                        </div>
-                        <div class="header-language dropdown d-lg-inline-block">
-                            <a href="javascript:void(0);"><i class="feather icon-feather-globe"></i></a>
-                            <ul class="dropdown-menu alt-font">
-                                <li><a href="javascript:void(0);" title="로그인"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>로그인</a></li>
-                                <li><a href="javascript:void(0);" title="회원가입"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>회원가입</a></li>
-                            </ul>
-                        </div>
-                        <div class="header-cart-icon dropdown">
-                            <a href="javascript:void(0);"><i class="feather icon-feather-shopping-bag"></i><span class="cart-count alt-font bg-dark-orange text-white">2</span></a>
-                            <ul class="dropdown-menu cart-item-list">
-                                <li class="cart-item align-items-center">
-                                    <a href="javascript:void(0);" class="alt-font close">×</a>
-                                    <div class="product-image">
-                                        <a href="single-product.html"><img src="resources/images/c.jpg"" class="cart-thumb" alt="" /></a>
-                                    </div>
-                                    <div class="product-detail alt-font">
-                                        <a href="single-product.html">치킨 샐러드</a>
-                                        <span class="item-ammount">10,000원</span> 
-                                    </div>
-                                </li>
-                                <li class="cart-item align-items-center">
-                                    <a href="javascript:void(0);" class="alt-font close">×</a>
-                                    <div class="product-image">
-                                        <a href="single-product.html"><img src="resources/images/c.jpg"" class="cart-thumb" alt="" /></a>
-                                    </div>
-                                    <div class="product-detail alt-font">
-                                        <a href="single-product.html">치킨 샐러드</a>
-                                        <span class="item-ammount">9,999원</span> 
-                                    </div>
-                                </li>
-                                <li class="cart-item cart-total">
-                                    <div class="alt-font margin-15px-bottom"><span class="w-50 d-inline-block text-medium text-uppercase">합계:</span><span class="w-50 d-inline-block text-right text-medium font-weight-500">19,999원</span></div>
-                                    <a href="shopping-cart.html" class="btn btn-small btn-dark-gray">장바구니</a>
-                                    <a href="checkout.html" class="btn btn-small btn-neon-orange">결제하기</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>
+        	<jsp:include page='/WEB-INF/views/layout/header.jsp' />
         <!-- end header -->
         
         <!-- start subscription popup
@@ -403,7 +275,7 @@
                                      data-paddingbottom="[10,10,10,10]"
                                      data-paddingleft="[20,20,20,20]"
 
-                                     style="z-index: 7; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7;">tabletop design</div>
+                                     style="z-index: 7; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7;">치킨</div>
 
                                 <!-- LAYER NR. 4 -->
                                 <div class="tp-caption alt-font text-extra-dark-gray margin-auto-lr"
@@ -422,7 +294,7 @@
                                      data-paddingright="[20,20,20,20]"
                                      data-paddingbottom="[30,30,30,30]"
                                      data-paddingleft="[20,20,20,20]"
-                                     style="z-index: 8;letter-spacing: -3px;"><span class="font-weight-600 d-block">Rockland</span> ceramic</div>
+                                     style="z-index: 8;letter-spacing: -3px;"><span class="font-weight-600 d-block">치킨</span> 샐러드</div>
 
                                 <!-- LAYER NR. 1 -->
                                 <a class="tp-caption tp-resizeme btn btn-medium btn-white btn-box-shadow lg-margin-15px-bottom md-no-margin-bottom md-margin-auto-lr" 
@@ -441,7 +313,7 @@
                                    data-paddingright="[27,25,25,22]"
                                    data-paddingbottom="[11,10,10,10]"
                                    data-paddingleft="[27,25,25,22]"
-                                   style="z-index: 6;box-shadow: 0 0 15px rgba(0,0,0,.1);">Discover now</a>
+                                   style="z-index: 6;box-shadow: 0 0 15px rgba(0,0,0,.1);">자세히 보기</a>
 
                                 <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme rs-parallaxlevel-10"
                                      data-x="['center','center','center','center']" data-hoffset="['300','190','0','0']" 
@@ -475,7 +347,7 @@
                                      data-paddingbottom="[0,0,0,0]"
                                      data-paddingleft="[0,0,0,0]"
 
-                                     style="z-index: 6;"><img src="https://placehold.it/500x555" alt="" data-ww="['500px','420px','420px','279px']" data-hh="['auto','auto','auto','auto']" width="500" height="555"> </div>
+                                     style="z-index: 6;"><img src="resources/images/c.jpg" alt="" data-ww="['500px','420px','420px','279px']" data-hh="['auto','auto','auto','auto']" width="500" height="555"> </div>
 
                                 <!-- LAYER NR. 32 -->
                                 <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme rs-parallaxlevel-1"
@@ -529,7 +401,7 @@
                                      data-paddingright="[0,0,0,0]"
                                      data-paddingbottom="[0,0,0,0]"
                                      data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 20; letter-spacing: -2px;">$89</div>
+                                     style="z-index: 20; letter-spacing: -2px;">8,900원</div>
                             </li>
                             <li data-index="rs-75" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="300"  data-thumb="http://works.themepunch.com/revolution_5_3/wp-content/"  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
                                 <!-- MAIN IMAGE -->
@@ -568,7 +440,7 @@
                                      data-paddingbottom="[10,10,10,10]"
                                      data-paddingleft="[20,20,20,20]"
 
-                                     style="z-index: 7; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7;">Decoration design</div>
+                                     style="z-index: 7; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7;">치킨</div>
 
                                 <!-- LAYER NR. 4 -->
                                 <div class="tp-caption alt-font text-extra-dark-gray margin-auto-lr"
@@ -587,7 +459,7 @@
                                      data-paddingright="[20,20,20,20]"
                                      data-paddingbottom="[30,30,30,30]"
                                      data-paddingleft="[20,20,20,20]"
-                                     style="z-index: 8;letter-spacing: -3px;"><span class="font-weight-600 d-block">Wooden</span> lithology</div>
+                                     style="z-index: 8;letter-spacing: -3px;"><span class="font-weight-600 d-block">치킨</span> 샐러드</div>
 
                                 <!-- LAYER NR. 1 -->
                                 <a class="tp-caption tp-resizeme btn btn-medium btn-white btn-box-shadow lg-margin-15px-bottom md-no-margin-bottom md-margin-auto-lr"
@@ -606,7 +478,7 @@
                                    data-paddingright="[27,25,25,22]"
                                    data-paddingbottom="[11,10,10,10]"
                                    data-paddingleft="[27,25,25,22]"
-                                   style="z-index: 6;box-shadow: 0 0 15px rgba(0,0,0,.1);">Discover now</a>
+                                   style="z-index: 6;box-shadow: 0 0 15px rgba(0,0,0,.1);">자세히 보기</a>
 
                                 <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme rs-parallaxlevel-10"
                                      data-x="['center','center','center','center']" data-hoffset="['300','190','0','0']" 
@@ -697,7 +569,7 @@
                                      data-paddingright="[0,0,0,0]"
                                      data-paddingbottom="[0,0,0,0]"
                                      data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 20; letter-spacing: -2px;">$89</div>
+                                     style="z-index: 20; letter-spacing: -2px;">8,900원</div>
                             </li>
                         </ul>
                     </div>
@@ -951,57 +823,21 @@
                         <ul class="blog-classic blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
                             <li class="grid-sizer"></li>
                             <!-- start blog item -->
+                            <c:forEach var="item" items="${memberDTO }" >
                             <li class="grid-item wow animate__fadeIn">
                                 <div class="blog-post">
                                     <div class="blog-post-image margin-40px-bottom md-margin-35px-bottom xs-margin-25px-bottom">
                                         <a href="blog-post-layout-01.html"><img src="resources/images/c.jpg" alt=""/></a>
                                     </div>
                                     <div class="post-details">
-                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom">레시퍼1</a>
+                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"><c:out value="${item.name}" /></a>
                                         <p class="w-95">#해시태그1 #해시태그2 #해시태그3 #해시태그4</p>
                                     </div>
                                 </div>
                             </li>
-                            <!-- end blog item -->
-                            <!-- start blog item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.2s">
-                                <div class="blog-post">
-                                    <div class="blog-post-image margin-40px-bottom md-margin-35px-bottom xs-margin-25px-bottom">
-                                        <a href="blog-post-layout-02.html"><img src="resources/images/c.jpg" alt=""/></a>
-                                    </div>
-                                    <div class="post-details">
-                                        <a href="blog-post-layout-02.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom">레시퍼2</a>
-                                        <p class="w-95">#해시태그1 #해시태그2 #해시태그3 #해시태그4</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end blog item -->
-                            <!-- start blog item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.4s">
-                                <div class="blog-post">
-                                    <div class="blog-post-image margin-40px-bottom md-margin-35px-bottom xs-margin-25px-bottom">
-                                        <a href="blog-post-layout-03.html"><img src="resources/images/c.jpg" alt=""/></a>
-                                    </div>
-                                    <div class="post-details">
-                                        <a href="blog-post-layout-03.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom">레시퍼3</a>
-                                        <p class="w-95">#해시태그1 #해시태그2 #해시태그3 #해시태그4</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end blog item -->
-                            <!-- start blog item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.6s">
-                                <div class="blog-post">
-                                    <div class="blog-post-image margin-40px-bottom md-margin-35px-bottom xs-margin-25px-bottom">
-                                        <a href="blog-post-layout-05.html"><img src="resources/images/c.jpg" alt=""/></a>
-                                    </div>
-                                    <div class="post-details">
-                                        <a href="blog-post-layout-05.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom">레시퍼4</a>
-                                        <p class="w-95">#해시태그1 #해시태그2 #해시태그3 #해시태그4</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end blog item -->
+                            </c:forEach>
+                            <!-- end blog item   --> 
+                            
                         </ul>
                     </div>
                 </div>
@@ -1009,86 +845,7 @@
         </section>
         <!-- end section -->
         <!-- start footer -->
-        <footer class="footer-furniture-shop footer-dark bg-extra-dark-gray position-relative overlap-gap-section-bottom">
-            <div class="footer-top padding-five-bottom lg-padding-eight-bottom sm-padding-50px-tb">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <!-- start footer column -->
-                        <div class="col-12 col-lg col-md-3 col-sm-4 md-margin-40px-bottom xs-margin-25px-bottom">
-                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">현대백화점</span>
-                            <ul>
-                                <li><a href="shop-wide.html">For men</a></li>
-                                <li><a href="shop-wide.html">For woman</a></li>
-                                <li><a href="shop-wide.html">Accessories</a></li>
-                                <li><a href="shop-wide.html">Collections</a></li>
-                            </ul>
-                        </div>
-                        <!-- end footer column -->
-                        <!-- start footer column -->
-                        <div class="col-12 col-lg col-md-3 col-sm-4 md-margin-40px-bottom xs-margin-25px-bottom">
-                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">현대그린푸드</span>
-                            <ul>
-                                <li><a href="about-us.html">About company</a></li>
-                                <li><a href="our-services.html">Our services</a></li>
-                                <li><a href="blog-grid.html">Latest blogs</a></li>
-                                <li><a href="contact-us-classic.html">Contact us</a></li>
-                            </ul>
-                        </div>
-                        <!-- end footer column -->
-                        <!-- start footer column -->
-                        <div class="col-12 col-lg col-md-3 col-sm-4 md-margin-40px-bottom xs-margin-25px-bottom">
-                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">현대홈쇼핑</span>
-                            <ul>                           
-                                <li><a href="faq.html">Theme guide</a></li>
-                                <li><a href="faq.html">Support desk</a></li>
-                                <li><a href="faq.html">What we offer</a></li>
-                                <li><a href="faq.html">Return</a></li>
-                            </ul>
-                        </div>
-                        <!-- end footer column -->
-                        <!-- start footer column -->
-                        <div class="col-12 col-lg col-md-3 col-sm-6 xs-margin-25px-bottom">
-                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">현대면세점</span>
-                            <ul>
-                                <li><a href="faq.html">Free delivery</a></li>
-                                <li><a href="faq.html">100 days refund</a></li>
-                                <li><a href="faq.html">Multiple payments</a></li>
-                                <li><a href="faq.html">Sustainable</a></li>
-                            </ul>
-                        </div>
-                        <!-- end footer column -->     
-                        <div class="col-12 col-lg-3 col-sm-6 order-5 order-lg-0 text-md-center text-lg-left">
-                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">Subscribe to newsletter</span>
-                            <p>Enter your email address for receiving valuable newsletters.</p>
-                            <form action="email-templates/subscribe-newsletter.php" method="post">
-                                <div class="newsletter-style-03 position-relative margin-25px-bottom xs-margin-15px-bottom">
-                                    <input class="medium-input bg-white m-0 border-radius-4px required" name="email" placeholder="Enter your email address" type="email">
-                                    <input type="hidden" name="redirect" value="">
-                                    <button class="btn no-border text-medium submit"><i class="feather icon-feather-mail m-0"></i></button>
-                                    <div class="form-results border-radius-4px position-absolute d-none"></div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom padding-40px-bottom">
-                <div class="container"> 
-                    <div class="row align-items-center">
-                        <div class="bg-transparent-white3 margin-40px-bottom w-100 h-1px"></div>
-                        <div class="col-12 col-lg-4 text-center text-lg-left md-margin-20px-bottom">
-                            <a href="index.html" class="footer-logo"><img src="resources/images/logo-white.png" data-at2x="resources/images/logo-white@2x.png" alt=""></a>
-                        </div>
-                        <div class="col-12 col-lg-4 col-md-6 text-center text-md-left text-lg-center last-paragraph-no-margin sm-margin-20px-bottom">
-                            <p>&copy; 2021 현대IT&E & KOSA Powered by NumberFive <a href="https://www.themezaa.com/" class="text-decoration-line-bottom" target="_blank">NumberFive</a></p>
-                        </div>
-                        <div class="col-12 col-lg-4 col-md-6 text-center text-md-right last-paragraph-no-margin">
-                            <img src="resources/images/footer-payment-icon.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        	<jsp:include page='/WEB-INF/views/layout/footer.jsp' />
         <!-- end footer -->
         <!-- start scroll to top -->
         <a class="scroll-top-arrow" href="javascript:void(0);"><i class="feather icon-feather-arrow-up"></i></a>
