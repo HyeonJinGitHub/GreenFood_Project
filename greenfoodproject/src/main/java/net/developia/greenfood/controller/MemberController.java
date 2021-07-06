@@ -77,5 +77,14 @@ public class MemberController {
 	public ModelAndView move_register() {
 		return new ModelAndView("register");
 	}
-
+	
+	@PostMapping("/")
+	public ModelAndView move_home_post() {
+		return new ModelAndView("home");
+	}
+	
+	@GetMapping("/myinfo")
+	public ModelAndView move_myinfo() {
+		return new ModelAndView("myinfo");
+	}
 }
