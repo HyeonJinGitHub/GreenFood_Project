@@ -64,7 +64,7 @@
                                 <li class="nav-item"><a id="videioView" data-toggle="tab" href="#research-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">
                                 <div id="videoText" class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom" style="margin-left:-30px">레시피 정보</div>
                                 </a></li>
-                                <li class="nav-item"><a id="hashtagView" data-toggle="tab" href="#target-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block "> 
+                                <li class="nav-item"><a id="hashtagView" data-toggle="tab" href="#target-tab" class=" alt-font font-weight-500 text-uppercase line-height-18px d-block "> 
                                 <div id="hashtagText" class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom" style="margin-left:-30px">해시태그 설정</div>
                                 </a></li>
                                 <li class="nav-item"><a id="preView" data-toggle="tab" href="#campaign-tab" class="alt-font font-weight-500 text-uppercase line-height-18px d-block " style="margin-left:-30px"> 
@@ -1730,6 +1730,44 @@
 										$( '#titleText' ).removeClass( 'font-weight-600' );
 										$( '#previewText' ).removeClass( 'font-weight-600' );
 										$( '#videoText' ).addClass( 'font-weight-600' );
+										
+										 var ingredientsArr = [];
+										 var ingredientssizeArr = [];
+							               
+							                
+							                $("#sortable1").children().each(function(){ 
+												var t = $(this).attr("value"); 
+												ingredientsArr.push($("input[name=ingredients"+t+"]").val() );
+												console.log($("input[name=ingredients"+t+"]").val());
+												ingredientssizeArr.push($("input[name=ingredientssize"+t+"]").val() );
+							                });
+							                
+							                var objParams = {
+							                		"title" : $("input[name=title]").val(),
+													"subscript" : $("input[name=subscript]").val(),
+													"foodname" : $("input[name=foodname]").val(),
+													"howmuch" : $("input[name=howmuch]").val(),
+							                        "ingredients" : ingredientsArr  ,
+							                        "ingredientssize" : ingredientssizeArr
+							                    };
+										
+										$.ajax({
+											url: "${pageContext.request.contextPath}/titleviewchk",
+											type: "post",
+											dataType : "text",
+											data : objParams, 
+											success: function(data) {
+												console.log(data);
+												if(data == '0')
+												{
+													$( '#titleText' ).addClass( 'text-red' );
+												}
+												else
+												{
+													$( '#titleText' ).removeClass( 'text-red' );
+												}
+											}
+										});
 									});
 							
 							$(document).on(

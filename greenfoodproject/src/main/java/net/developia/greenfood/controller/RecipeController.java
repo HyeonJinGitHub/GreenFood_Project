@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
@@ -62,20 +63,37 @@ public class RecipeController {
 		return json;
 	}
 	
-	@PostMapping(value="/viewchceck", produces = "application/text; charset=utf8")
-	public @ResponseBody Boolean viewChceck()  throws Exception {
-		boolean chk = true;
+	@PostMapping(value="/titleviewchk", produces = "application/text; charset=utf8")
+	public @ResponseBody String viewChceck(@RequestParam(value="ingredientssize[]") List<String> ingredientssize, 
+											@RequestParam(value="ingredients[]") List<String> ingredients, 
+											@RequestParam(value="title") String title,
+											@RequestParam(value="subscript") String subscript,
+											@RequestParam(value="foodname") String foodname,
+											@RequestParam(value="howmuch") String howmuch)  throws Exception {
+		String chk = "1";
+		log.info("실행");
+		
 		
 		//titleView
-		String title = null;
-		String subscript = null;
-		String foodname = null;
-		String howmuch = null;
-		//String 
+		
+		for(String is : ingredientssize) {
+			if(is.equals(""))
+			{
+				chk = "0";
+				break;
+			}
+        }
+		for(String ig : ingredients) {
+			if(ig.equals(""))
+			{
+				chk = "0";
+				break;
+			}
+        }
 		//재료
 		
 		if(title.equals("") || subscript.equals("") || foodname.equals("") || howmuch.equals("")) {
-			chk = false;
+			chk = "0";
 		}
 		
 		return chk;
