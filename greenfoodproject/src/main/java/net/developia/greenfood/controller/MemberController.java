@@ -2,6 +2,8 @@ package net.developia.greenfood.controller;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -86,5 +88,23 @@ public class MemberController {
 	@GetMapping("/myinfo")
 	public ModelAndView move_myinfo() {
 		return new ModelAndView("myinfo");
+	}
+	
+	@PostMapping("/profile")
+	public ModelAndView move_profile_post() {
+		return new ModelAndView("profile");
+	}
+	@GetMapping("/profile")
+	public ModelAndView move_profile_get(HttpSession session) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("ID", session.getAttribute("id"));
+		ModelAndView mav = new ModelAndView("profile");
+		try {
+			// memberService.getNickname 구현해야함
+		} catch (Exception e) {
+			e.printStackTrace();
+			mav.addObject("nickname", "");
+		}
+		return mav;
 	}
 }
