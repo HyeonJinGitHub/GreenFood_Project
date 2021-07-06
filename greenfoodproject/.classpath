@@ -43,15 +43,10 @@
 			<attribute name="m2e-apt" value="true"/>
 		</attributes>
 	</classpathentry>
-<<<<<<< Updated upstream
 	<classpathentry kind="lib" path="src/main/resources/lib/javaSDK-2.2.jar"/>
 	<classpathentry kind="lib" path="src/main/resources/lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="src/main/resources/lib/ojdbc8.jar"/>
-=======
-	<classpathentry kind="lib" path="C:/Users/HyeonJin/Downloads/java-sdk-2.2-http-cv52/java-sdk-2.2-http-cv52/lib/javaSDK-2.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/HyeonJin/Downloads/java-sdk-2.2-http-cv52/java-sdk-2.2-http-cv52/lib/json-simple-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/HyeonJin/Downloads/ojdbc8.jar"/>
->>>>>>> Stashed changes
+
 	<classpathentry kind="src" output="target/test-classes" path="target/generated-test-sources/test-annotations">
 		<attributes>
 			<attribute name="optional" value="true"/>
