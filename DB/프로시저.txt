@@ -5,7 +5,8 @@ CREATE TABLE member (
     password  VARCHAR2(1000) NOT NULL,
     name      VARCHAR2(50) NOT NULL,
     email     VARCHAR2(50) NOT NULL,
-    phone     VARCHAR2(50) NOT NULL
+    phone     VARCHAR2(50) NOT NULL,
+    nickname  VARCHAR2(50)
 );
 ALTER TABLE member ADD CONSTRAINT member_pk PRIMARY KEY ( id );
 
