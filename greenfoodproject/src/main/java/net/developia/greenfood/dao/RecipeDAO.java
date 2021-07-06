@@ -7,4 +7,5 @@ import net.developia.greenfood.dto.RecipeDTO;
 
 public interface RecipeDAO {
 	List<RecipeDTO> getHashtagList() throws SQLException;
+	List<RecipeDTO> getFoodcategoryList() throws SQLException;
 }

@@ -163,6 +163,8 @@
 																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>재료정보</span>
 															</div>
 															<div class="col-lg-10 sm-margin-25px-bottom">
+																<p class="alt-font font-weight-500 text-middle-gray d-block margin-15px-bottom text-uppercase margin-15px-top text-right">일반종이컵 (1컵) : 185~195g, 한 큰술 : 6~8g</p>
+															
 																<ul id="sortable1"
 																	class="list-style-02 alt-font font-weight-500 text-small text-uppercase text-extra-dark-gray">
 																	<li style="width: 100%">
@@ -182,11 +184,24 @@
 																					<!-- start contact form -->
 																					<div class="row row-cols-1 row-cols-md-2"
 																						style="width: 100%">
-																						<div class="col-lg-10"
+																						<div class="col-lg-8"
 																							stsyle="margin-right:0px; padding:0px">
 																							<input class="medium-input bg-white" type="text"
 																								name="ingredients1" placeholder="사용된 재료를 입력하세요">
 																							<input id="FOOD_CD_i1" name="FOOD_CD_i1" type="hidden" value="">
+																							<input id="NUTR_CONT1_i1" name="NUTR_CONT1_i1" type="hidden" value="">
+																							<input id="NUTR_CONT2_i1" name="NUTR_CONT2_i1" type="hidden" value="">
+																							<input id="NUTR_CONT3_i1" name="NUTR_CONT3_i1" type="hidden" value="">
+																							<input id="NUTR_CONT4_i1" name="NUTR_CONT4_i1" type="hidden" value="">
+																							<input id="NUTR_CONT5_i1" name="NUTR_CONT5_i1" type="hidden" value="">
+																							<input id="NUTR_CONT6_i1" name="NUTR_CONT6_i1" type="hidden" value="">
+																							<input id="NUTR_CONT7_i1" name="NUTR_CONT7_i1" type="hidden" value="">
+																							<input id="NUTR_CONT8_i1" name="NUTR_CONT8_i1" type="hidden" value="">
+																							<input id="SERVING_SIZE_i1" name="SERVING_SIZE_i1" type="hidden" value="">
+																						</div>
+																						<div class="col-lg-3" style="margin-left:-20px">
+																							<input class="medium-input bg-white" type="text"
+																								name="ingredientssize1" placeholder="g 또는 ml">
 																						</div>
 																						<div id="viewIngredient" name="viewIngredient1" class="col-lg-1"
 																							style="margin-left: 0px; padding: 0px; margin-top: 3px">
@@ -360,32 +375,8 @@
 													<div class="col-lg-10 sm-margin-25px-bottom">
 														<div class="row justify-content-center">
 															<div class="col-lg-12 sm-margin-25px-bottom">
-																<select name="foodcategory">
+																<select name="foodcategory" id="foodcategory" class="list-style-02 alt-font font-weight-500 text-small text-uppercase text-extra-dark-gray">
 																	<option value=""></option>
-																	<option value="밥류">밥류</option>
-																	<option value="면 및 만두류">면 및 만두류</option>
-																	<option value="죽 및 스프류">죽 및 스프류</option>
-																	<option value="국 및 탕류">국 및 탕류</option>
-																	<option value="찌개 및 전골류">찌개 및 전골류</option>
-																	<option value="찜류">찜류</option>
-																	<option value="구이류">구이류</option>
-																	<option value="전, 적 및 부침류">전, 적 및 부침류</option>
-																	<option value="볶음류">볶음류</option>
-																	<option value="조림류">조림류</option>
-																	<option value="튀김류">튀김류</option>
-																	<option value="나물 및 숙채류">나물 및 숙채류</option>
-																	<option value="생채 및 무침류">생채 및 무침류</option>
-																	<option value="장 및 양념류">장 및 양념류</option>
-																	<!-- <optgroup label="마블코믹스">
-																		<option value="ironman">아이언맨</option>
-																		<option value="deadpool">데드풀</option>
-																		<option value="spiderman">스파이더맨</option>
-																	</optgroup>
-																	<optgroup label="디씨코믹스">
-																		<option value="batman">베트맨</option>
-																		<option value="joker">조커</option>
-																		<option value="wonderwoman">원더우먼</option>
-																	</optgroup> -->
 																</select>
 															</div>
 														</div>
@@ -774,50 +765,8 @@
 															<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:15px">
 																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>재료정보</span>
 															</div>
-															<div class="col-lg-10 sm-margin-25px-bottom">
-																<ul id="sortable1"
-																	class="list-style-02 alt-font font-weight-500 text-small text-uppercase text-extra-dark-gray">
-																	<li style="width: 100%">
-																		<!-- start blog item -->
-																		<div
-																			class="blog-post bg-white box-shadow-medium margin-10px-bottom wow animate__fadeIn"
-																			style="width: 100%; padding: 0;">
-																			<div
-																				class="d-flex flex-column flex-md-row align-items-center"
-																				style="width: 100%; padding: 0; margin: 10px 10px -5px 10px">
-																				<div class="blog-post-image sm-margin-25px-bottom">
-																					<img src="https://placehold.it/1200x840" alt="" /></a>
-																				</div>
-																				<div
-																					class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding"
-																					style="width: 100%; padding: 0">
-																					<!-- start contact form -->
-																					<div class="row row-cols-1 row-cols-md-2"
-																						style="width: 100%">
-																						<div class="col-lg-10"
-																							stsyle="margin-right:0px; padding:0px">
-																							<input class="medium-input bg-white" type="text"
-																								name="ingredients" placeholder="사용된 재료를 입력하세요">
-																						</div>
-																						<div class="col-lg-1"
-																							style="margin-left: 0px; padding: 0px; margin-top: 3px">
-																							<a href="#contact-form"
-																								class="btn btn-fancy btn-very-small btn-gradient-tan-geraldine btn-round-edge popup-with-form"><i
-																								class="fas fa-plus"></i></a>
-																						</div>
-																					</div>
-																					<!-- end contact form -->
-																				</div>
-																				<div
-																					class="font-weight-500 text-extra-medium text-medium-gray"
-																					id="removeIngredient"
-																					style="margin-right: 20px; margin-top: -10px">
-																					<i class="fas fa-times"></i>
-																				</div>
-																			</div>
-																		</div> <!-- end blog item -->
-																	</li>
-																</ul>
+															<div class="col-lg-10 sm-margin-25px-bottom" id="accordion2case">
+																
 															</div>
 														</div>
 														<div class="row" style="margin-top:20px; margin-bottom:20px">
@@ -825,8 +774,8 @@
 																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>영양정보</span>
 															</div>
 															<div class="col-lg-10 sm-margin-25px-bottom text-center" style="width:100%; padding:0; margin-top:-60px">
+															<p class="alt-font font-weight-500 text-middle-gray d-block text-uppercase text-right margin-100px-top" style="margin-bottom: -100px">성인 1일 영양소 권장량 기준</p>
 												                <div class="row row-cols-1 "  style="width:100%; padding:0; margin:0">
-												                
 												                    <!-- start pie charts item -->
 												                     <div style="visibility:hidden;">
 												                        <div class="chart-percent">
@@ -1215,6 +1164,26 @@
 									
 							});
 							
+							$.ajax({
+								url: "${pageContext.request.contextPath}/catlist",
+								type: "post",
+								dataType: "text",
+								success: function(data) {
+									var results = JSON.parse(data);
+									console.log(results);
+									if (results.length != 0) {
+										for (var i = 0; i < results.length; i++) {
+											var category = results[i].title;
+											var str = '';
+											str += '<option value="'+category+'">'+category+'</option>'
+											$("#foodcategory").append(str);
+											
+										}
+									}
+								}
+									
+							});
+							
 							$(document).on(
 									"click",
 									"#hashtagView",
@@ -1279,6 +1248,8 @@
 										$('#sortable2').empty();
 										$('#inputThumbdiv').empty();
 										$('#foodIngredientInputinfo').empty();
+										$('#accordion2case').empty();
+										
 										
 										var foodcategory = $("select[name=foodcategory]").val();
 										document.getElementById("inputCategory").innerText = foodcategory;
@@ -1294,7 +1265,69 @@
 											console.log(videourl);
 											video.setAttribute("src", videourl); video.play();
 										}
-										var sk = document.getElementsByName("FOOD_CD")[0].value.replace(/(\s*)/g, "");
+										var strli ='';
+										strli += '<section class="section wow animate__fadeIn" style="margin-top:-100px; margin-bottom:-100px"><div class="container" style="margin:0; padding:0"><div class="panel-group accordion-event accordion-style-02" id="accordion2" data-active-icon="icon-feather-minus" data-inactive-icon="icon-feather-plus"></div></div></div>'
+										$('#accordion2case').append(strli);
+										
+										var ig1 = 0;
+										var ig2 = 0;
+										var ig3 = 0;
+										var ig4 = 0;
+										var ig5 = 0;
+										var ig6 = 0;
+										var ig7 = 0;
+										var ig8 = 0;
+										
+										for(var t = 1; t<=icount; t++)
+										{
+											var strli = '';
+											var stmp = ($("input[name=ingredientssize"+t+"]").val()/$("input[id=SERVING_SIZE_i"+t+"]").val());
+												  strli += '<div class="panel bg-transparent">'
+												  		+ '<div class="panel-heading border-color-medium-gray-transparent">'
+												  		+ '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#accordion-style-02-0'+t+'">'
+												  		+ '<div class="panel-title text-left">'
+												  		+ '<span class="alt-font text-dark-gray d-inline-block">'
+												  		+ $("input[name=ingredients"+t+"]").val()+' (사용량 : '
+												  		+ $("input[name=ingredientssize"+t+"]").val()
+												  		+ 'g 또는 ml)'
+												  		+ '</span>'
+												  		+ '<i class="indicator text-dark-gray feather icon-feather-plus"></i>'
+												  		+ '</div>'
+												  		+ '</a>'
+												  		+ '</div>'
+												  		+ '<div id="accordion-style-02-0'+t+'" class="panel-collapse collapse" data-parent="#accordion2">'
+												  		+ '<div class="panel-body">'
+												  	    + '열량 : '+ $("input[name=NUTR_CONT1_i"+t+"]").val()*stmp +'kcal'
+												  	    + '</br>'
+														+ '탄수화물 : '+ $("input[name=NUTR_CONT2_i"+t+"]").val()*stmp +'g'
+														+ '</br>'
+														+ '단백질 : '+ $("input[name=NUTR_CONT3_i"+t+"]").val()*stmp +'g'
+														+ '</br>'
+														+ '지방 : '+ $("input[name=NUTR_CONT4_i"+t+"]").val()*stmp +'g'
+														+ '</br>'
+														+ '당류 : '+ $("input[name=NUTR_CONT5_i"+t+"]").val()*stmp +'g'
+														+ '</br>'
+														+ '나트륨 : '+ $("input[name=NUTR_CONT6_i"+t+"]").val()*stmp +'mg'
+														+ '</br>'
+														+ '콜레스테롤 : '+ $("input[name=NUTR_CONT7_i"+t+"]").val()*stmp +'mg'
+														+ '</br>'
+														+ '포화지방산 : '+ $("input[name=NUTR_CONT8_i"+t+"]").val()*stmp +'g'
+														+ '</br>'
+												  		+ '</div></div></div>'
+										
+											$('#accordion2').append(strli);	
+												  		
+											ig1 +=$("input[name=NUTR_CONT1_i"+t+"]").val()*stmp;
+											ig2 +=$("input[name=NUTR_CONT2_i"+t+"]").val()*stmp;
+											ig3 +=$("input[name=NUTR_CONT3_i"+t+"]").val()*stmp;
+											ig4 +=$("input[name=NUTR_CONT4_i"+t+"]").val()*stmp;
+											ig5 +=$("input[name=NUTR_CONT5_i"+t+"]").val()*stmp;
+											ig6 +=$("input[name=NUTR_CONT6_i"+t+"]").val()*stmp;
+											ig7 +=$("input[name=NUTR_CONT7_i"+t+"]").val()*stmp;
+											ig8 +=$("input[name=NUTR_CONT8_i"+t+"]").val()*stmp;
+										}
+										
+										/* var sk = document.getElementsByName("FOOD_CD")[0].value.replace(/(\s*)/g, "");
 										if(sk != '')
 										{
 											$.ajax({
@@ -1308,7 +1341,7 @@
 													var howmuch = document.getElementsByName("howmuch")[0].value
 													document.getElementById("inputHowmuch").innerText = '('+kcal+'kcal / '+howmuch + '인분)';
 											
-													if(howmuch =='') document.getElementById("inputHowmuch").innerText = '(0kcal / 0인분)';
+													if(howmuch =='') document.getElementById("inputHowmuch").innerText = '(0kcal / 0인분)'; */
 													
 											 	/* 	$('#trans').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT1/1987.7*100));
 													$('#tansu').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT2/287.9*100));
@@ -1319,8 +1352,9 @@
 													$('#coles').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT7/260.4*100));
 													$('#pohwa').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT8/16.6*100));  */
 													
+													var people = document.getElementsByName("howmuch")[0].value;
 										 			var farr = ['열량', '탄수화물', '단백질', '지방', '당류','나트륨', '콜레스테롤', '포화지방산']; 
-													var iarr = [parseInt(data.I2790.row[0].NUTR_CONT1/1987.7*100), parseInt(data.I2790.row[0].NUTR_CONT2/287.9*100), parseInt(data.I2790.row[0].NUTR_CONT3/72.4*100), parseInt(data.I2790.row[0].NUTR_CONT4/49.5*100), parseInt(data.I2790.row[0].NUTR_CONT5/60.2*100),parseInt(data.I2790.row[0].NUTR_CONT6/3255.0*100), parseInt(data.I2790.row[0].NUTR_CONT7/260.4*100), parseInt(data.I2790.row[0].NUTR_CONT8/16.6*100)]; 
+													var iarr = [parseInt(ig1/(1987.7*people)*100), parseInt(ig2/(287.9*people)*100), parseInt(ig3/(72.4*people)*100), parseInt(ig4/(49.5*people)*100), parseInt(ig5/(60.2*people)*100),parseInt(ig6/(3255.0*people)*100), parseInt(ig7/(260.4*people)*100), parseInt(ig8/(16.6*people)*100)]; 
 													for(var k = 0; k< 8; k++)
 													{
 														var ftemp = '';
@@ -1335,7 +1369,7 @@
 										                      + '</span></div></div>'
 										                $('#foodIngredientInputinfo').append(ftemp);
 													} 
-
+													/* 
 													
 												}
 											}); 
@@ -1356,7 +1390,7 @@
 													document.getElementById("inputHowmuch").innerText = '('+kcal+'kcal / '+howmuch + '인분)';
 											
 													if(howmuch =='') document.getElementById("inputHowmuch").innerText = '(0kcal / 0인분)';
-													
+													 */
 											 	/* 	$('#trans').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT1/1987.7*100));
 													$('#tansu').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT2/287.9*100));
 													$('#danbaek').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT3/72.4*100));
@@ -1366,7 +1400,7 @@
 													$('#coles').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT7/260.4*100));
 													$('#pohwa').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT8/16.6*100));  */
 													
-										 			var farr = ['열량', '탄수화물', '단백질', '지방', '당류','나트륨', '콜레스테롤', '포화지방산']; 
+										/*  			var farr = ['열량', '탄수화물', '단백질', '지방', '당류','나트륨', '콜레스테롤', '포화지방산']; 
 													var iarr = [parseInt(data.I2790.row[0].NUTR_CONT1/1987.7*100), parseInt(data.I2790.row[0].NUTR_CONT2/287.9*100), parseInt(data.I2790.row[0].NUTR_CONT3/72.4*100), parseInt(data.I2790.row[0].NUTR_CONT4/49.5*100), parseInt(data.I2790.row[0].NUTR_CONT5/60.2*100),parseInt(data.I2790.row[0].NUTR_CONT6/3255.0*100), parseInt(data.I2790.row[0].NUTR_CONT7/260.4*100), parseInt(data.I2790.row[0].NUTR_CONT8/16.6*100)]; 
 													for(var k = 0; k< 8; k++)
 													{
@@ -1386,7 +1420,7 @@
 													
 												}
 											}); 
-										}
+										} */
 										
 										
 										
@@ -1551,44 +1585,28 @@
 									function(e) {
 										 $('#searchiResults').empty();
 										 var sk = document.getElementsByName("ifoodnamesearch")[0].value.replace(/(\s*)/g, "");
-										$.ajax({
-											url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/50'+'/DESC_KOR='+sk,  
-											type : 'get',
-											dataType : 'json',
-											success : function(data){
-
-												var num = $('#myiModal').attr('data');
-												for(var k = 0; k<data.I2790.row.length; k++)
-												{
-													if(data.I2790.row[k].MAKER_NAME !='') 
-													{
-														continue;
-													}
-													var ftemp = '';
-													ftemp += '<li id="searchiNameResults" iid="searchiNameResults'+num+'" name="'+data.I2790.row[k].DESC_KOR+'" data="'+data.I2790.row[k].FOOD_CD+'">'
-							                              + '<div class="row margin-5px-left margin-5px-right">'
-							                              + '<div class="col-6 text-left">'
-							                              + data.I2790.row[k].DESC_KOR
-							                              + '</div>'
-							                              + '<div class="col-3 text-center">'
-							                              + data.I2790.row[k].SERVING_SIZE+'g'
-							                              + '</div>'
-							                              + '<div class="col-3 text-right">'
-							                              + data.I2790.row[k].NUTR_CONT1+'kcal'
-							                              + '</div>'
-							                              + '</div></li>'
-							                        //$("input[name=FOOD_CD_i'++']").val(data.I2790.row[k].FOOD_CD);
-													$('#searchiResults ').append(ftemp);
-												} 
-												
-											}
-										}); 
+										 var ttcnt = 0;
+										 $.ajax({
+												url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/1/DESC_KOR='+sk,  
+												type : 'get',
+												dataType : 'json',
+												async : true, 
+												success : function(data){
+													ttcnt = data.I2790.total_count
+													appendResult(ttcnt, sk);
+												}
+											}); 
+										
 									});
+							
+							
 							$(document).on(
 									"click",
 									"#viewIngredient",
 									function(e) {
 										var num = $(this).attr('name').split('viewIngredient')[1];
+										 $("input[name=ifoodnamesearch]").val("");
+										 $('#searchiResults').empty();
 										document.getElementById("myiModal").setAttribute("data", "");
 										document.getElementById("myiModal").setAttribute('data', num);
 									});
@@ -1600,8 +1618,18 @@
 										console.log(num);
 										var foodname =$(this).attr('name');
 										$("input[name=ingredients"+num+"]").val(foodname);
-										console.log($(this).attr('data'));
-										 //document.getElementById("FOOD_CD_i"+num).setAttribute("value", $(this).attr('data'));
+										$("input[name=ingredientssize"+num+"]").val($(this).attr('data9'));
+										console.log($(this).attr('data1'));
+										document.getElementById("FOOD_CD_i"+num).setAttribute("value", $(this).attr('data'));
+										document.getElementById("NUTR_CONT1_i"+num).setAttribute("value", $(this).attr('data1'));
+										document.getElementById("NUTR_CONT2_i"+num).setAttribute("value", $(this).attr('data2'));
+										document.getElementById("NUTR_CONT3_i"+num).setAttribute("value", $(this).attr('data3'));
+										document.getElementById("NUTR_CONT4_i"+num).setAttribute("value", $(this).attr('data4'));
+										document.getElementById("NUTR_CONT5_i"+num).setAttribute("value", $(this).attr('data5'));
+										document.getElementById("NUTR_CONT6_i"+num).setAttribute("value", $(this).attr('data6'));
+										document.getElementById("NUTR_CONT7_i"+num).setAttribute("value", $(this).attr('data7'));
+										document.getElementById("NUTR_CONT8_i"+num).setAttribute("value", $(this).attr('data8'));
+										document.getElementById("SERVING_SIZE_i"+num).setAttribute("value", $(this).attr('data9'));
 										$("#closeiforce").trigger("click");
 									});
 							
@@ -1683,10 +1711,20 @@
 														+ '</div>'
 														+ '<div class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding" style="width: 100%; padding: 0">'
 														+ '<div class="row row-cols-1 row-cols-md-2" style="width: 100%">'
-														+ '<div class="col-lg-10" stsyle="margin-right:0px; padding:0px">'
+														+ '<div class="col-lg-8" stsyle="margin-right:0px; padding:0px">'
 														+ '<input class="medium-input bg-white" type="text" name="ingredients'+cnttmp+'" placeholder="사용된 재료를 입력하세요">'
 														+ '<input id="FOOD_CD_i'+cnttmp+'" name="FOOD_CD_i'+cnttmp+'" type="hidden" value="">'
+														+ '<input id="NUTR_CONT1_i'+cnttmp+'" name="NUTR_CONT1_i'+cnttmp+'" type="hidden" value="">'
+														+ '<input id="NUTR_CONT2_i'+cnttmp+'" name="NUTR_CONT2_i'+cnttmp+'" type="hidden" value="">'
+														+ '<input id="NUTR_CONT3_i'+cnttmp+'" name="NUTR_CONT3_i'+cnttmp+'" type="hidden" value="">'
+														+ '<input id="NUTR_CONT4_i'+cnttmp+'" name="NUTR_CONT4_i'+cnttmp+'" type="hidden" value="">'
+														+ '<input id="NUTR_CONT5_i'+cnttmp+'" name="NUTR_CONT5_i'+cnttmp+'" type="hidden" value="">'
+														+ '<input id="NUTR_CONT6_i'+cnttmp+'" name="NUTR_CONT6_i'+cnttmp+'" type="hidden" value="">'
+														+ '<input id="NUTR_CONT7_i'+cnttmp+'" name="NUTR_CONT7_i'+cnttmp+'" type="hidden" value="">'
+														+ '<input id="NUTR_CONT8_i'+cnttmp+'" name="NUTR_CONT8_i'+cnttmp+'" type="hidden" value="">'
+														+ '<input id="SERVING_SIZE_i'+cnttmp+'" name="SERVING_SIZE_i'+cnttmp+'" type="hidden" value="">'
 														+ '</div>'
+														+ '<div class="col-lg-3" style="margin-left:-20px"><input class="medium-input bg-white" type="text" name="ingredientssize'+cnttmp+'" placeholder="g 또는 ml"></div>'
 														+ '<div id="viewIngredient" name="viewIngredient'+cnttmp+'" class="col-lg-1" style="margin-left:0px; padding:0px; margin-top:3px">'
 														+ '<a href="" data-toggle="modal" data-target="#myiModal"  class="btn btn-very-small btn-round-edge btn-gradient-tan-geraldine"><i class="fas fa-plus"></i></a>'
 														+ '</div></div></div>'
@@ -1749,7 +1787,39 @@
 
 		
 		
-		
+		function appendResult(tcnt, sk){
+			$.ajax({
+				url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/'+tcnt+'/DESC_KOR='+sk,  
+				type : 'get',
+				dataType : 'json',
+				async : true, 
+				success : function(data){
+					var num = $('#myiModal').attr('data');
+					for(var k = 0; k<data.I2790.row.length; k++)
+					{
+						if(data.I2790.row[k].MAKER_NAME !='') 
+						{
+							continue;
+						}
+						var ftemp = '';
+						ftemp += '<li id="searchiNameResults" iid="searchiNameResults'+num+'" name="'+data.I2790.row[k].DESC_KOR+'" data="'+data.I2790.row[k].FOOD_CD+'" data1="'+data.I2790.row[k].NUTR_CONT1+'" data2="'+data.I2790.row[k].NUTR_CONT2+'" data3="'+data.I2790.row[k].NUTR_CONT3+'" data4="'+data.I2790.row[k].NUTR_CONT4+'" data5="'+data.I2790.row[k].NUTR_CONT5+'" data6="'+data.I2790.row[k].NUTR_CONT6+'" data7="'+data.I2790.row[k].NUTR_CONT7+'" data8="'+data.I2790.row[k].NUTR_CONT8+'" data9="'+data.I2790.row[k].SERVING_SIZE+'">'
+                              + '<div class="row margin-5px-left margin-5px-right">'
+                              + '<div class="col-6 text-left">'
+                              + data.I2790.row[k].DESC_KOR
+                              + '</div>'
+                              + '<div class="col-3 text-center">'
+                              + data.I2790.row[k].SERVING_SIZE+'g'
+                              + '</div>'
+                              + '<div class="col-3 text-right">'
+                              + data.I2790.row[k].NUTR_CONT1+'kcal'
+                              + '</div>'
+                              + '</div></li>'
+                        //$("input[name=FOOD_CD_i'++']").val(data.I2790.row[k].FOOD_CD);
+						$('#searchiResults').append(ftemp);
+					}
+				}
+			}); 
+		}
 		
 		function submitItem() {
 			if (!validateItem()) {

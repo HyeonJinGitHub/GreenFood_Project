@@ -12,4 +12,10 @@
 		select * 
 		from hashtag
 	</select>
+	
+	<select id="getFoodcategoryList" resultType="RecipeDTO">
+		select no, title
+		from foodcategory
+	</select>
+	
 </mapper>

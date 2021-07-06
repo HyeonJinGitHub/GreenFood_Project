@@ -20,4 +20,9 @@ public class RecipeServiceImpl implements RecipeService {
 		return recipeDAO.getHashtagList();
 	}
 
+	@Override
+	public List<RecipeDTO> getFoodcategoryList() throws Exception {
+		return recipeDAO.getFoodcategoryList();
+	}
+
 }

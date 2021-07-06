@@ -58,6 +58,14 @@ public class RecipeController {
 		return json;
 	}
 	
+	@PostMapping(value="/catlist", produces = "application/text; charset=utf8")
+	public @ResponseBody String getFoodcategoryList()  throws Exception {
+		List<RecipeDTO> cat_list = recipeService.getFoodcategoryList();
+		String json = new Gson().toJson(cat_list);
+		
+		return json;
+	}
+	
 	@PostMapping(value="/mytag", produces = "application/text; charset=utf8")
 	public @ResponseBody String myHashtahList(HttpServletRequest request, HttpServletResponse response)  throws Exception {
 
