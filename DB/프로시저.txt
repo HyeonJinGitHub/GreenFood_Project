@@ -1,0 +1,92 @@
+DROP TABLE member CASCADE CONSTRAINTS;
+
+CREATE TABLE member (
+    id        VARCHAR2(30) NOT NULL,
+    password  VARCHAR2(1000) NOT NULL,
+    name      VARCHAR2(50) NOT NULL,
+    email     VARCHAR2(50) NOT NULL,
+    phone     VARCHAR2(50) NOT NULL
+);
+ALTER TABLE member ADD CONSTRAINT member_pk PRIMARY KEY ( id );
+
+select * from member;
+
+drop package member_pkg;
+
+create or replace package member_pkg
+is
+    procedure select_member(input_id in varchar2,
+    res_cur out sys_refcursor);
+    
+    procedure insert_member(input_id in varchar2,
+    input_password in varchar2,
+    input_name in varchar2,
+    input_email in varchar2,
+    input_phoneNumber in varchar2);
+    
+    procedure select_memberByEmail(input_email in varchar2,
+    res_cur out sys_refcursor);
+    
+    procedure select_memberByPhone(input_phone in varchar2,
+    res_cur out sys_refcursor);
+    
+    procedure login_member(input_id in varchar2,
+    input_pw in varchar2,
+    res_cur out sys_refcursor);
+end member_pkg;
+
+
+create or replace package body member_pkg
+is
+    procedure select_member(input_id in varchar2,
+    res_cur out sys_refcursor)
+    as
+    begin
+        open res_cur for
+        select * from member
+        where id = input_id;
+    end select_member;
+    
+    procedure insert_member(input_id in varchar2,
+        input_password in varchar2,
+        input_name in varchar2,
+        input_email in varchar2,
+        input_phoneNumber in varchar2)
+    as
+    begin  
+        insert into member(id, password, name, email, phone)
+        values(input_id, input_password, input_name, input_email,
+        input_phoneNumber);
+        commit;
+    end insert_member;
+    
+    procedure select_memberByEmail(input_email in varchar2,
+    res_cur out sys_refcursor)
+    as
+    begin
+        open res_cur for
+        select * from member
+        where email = input_email;
+    end select_memberByEmail;
+    
+    procedure select_memberByPhone(input_phone in varchar2,
+    res_cur out sys_refcursor)
+    as
+    begin
+        open res_cur for
+        select * from member
+        where phone = input_phone;
+    end select_memberByPhone;
+    
+    procedure login_member(input_id in varchar2,
+    input_pw in varchar2,
+    res_cur out sys_refcursor)
+    as
+    begin
+        open res_cur for
+        select * from member
+        where id = input_id and password = input_pw;
+    end login_member;
+    
+end member_pkg;
+
