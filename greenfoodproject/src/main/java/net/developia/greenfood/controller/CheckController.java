@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import net.developia.greenfood.dto.MemberDTO;
 import net.developia.greenfood.service.MemberService;
+import net.developia.greenfood.util.IdFormatterUtil;
 
 @Controller
 @RequestMapping("/check")
@@ -139,10 +139,12 @@ public class CheckController {
 			memberService.login(map);
 			List<MemberDTO> output = (List)map.get("MemberList");
 			MemberDTO memberDTO = output.get(0);
+			IdFormatterUtil masking = new IdFormatterUtil();
+			
 			session.setAttribute("id", memberDTO.getId()); 
-			session.setAttribute("name", memberDTO.getName());
-			session.setAttribute("email", memberDTO.getEmail()); 
-			session.setAttribute("phone", memberDTO.getPhone());
+			session.setAttribute("name", masking.maskingName(memberDTO.getName()));
+			session.setAttribute("email", masking.maskingEmail(memberDTO.getEmail())); 
+			session.setAttribute("phone", masking.maskingPhone(memberDTO.getPhone()));
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
