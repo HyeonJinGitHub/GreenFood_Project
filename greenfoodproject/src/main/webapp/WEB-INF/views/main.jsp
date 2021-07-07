@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="app" value="${pageContext.request.contextPath}" />
 
 <c:set var="memberDTO" value="${memberDTO }"></c:set>
 
@@ -661,8 +662,7 @@
                                             <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>레시피 살펴보기</a>
                                         </div>
                                         <div class="product-hover-right padding-20px-tb padding-15px-right w-65px">
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to wishlist"><i class="feather icon-feather-heart"></i></a>
+                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="찜하기"><i class="feather icon-feather-heart"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-footer text-center padding-25px-top xs-padding-10px-top">

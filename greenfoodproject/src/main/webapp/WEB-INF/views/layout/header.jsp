@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="app" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,10 +92,10 @@
                             <!-- start search input --> 
                             <div class="form-wrapper">
                                 <button title="Close" type="button" class="search-close alt-font">×</button>
-                                <form id="search-form" role="search" method="get" class="search-form text-left" action="search-result.html">
+                                <form id="search-form" role="search" method="get" class="search-form text-left" action="${app}/searchresult">
                                     <div class="search-form-box">
                                         <span class="search-label alt-font text-small text-uppercase text-medium-gray">어떤 레시피가 궁금하신가요?</span>
-                                        <input class="search-input alt-font" id="search-form-input5e219ef164995" placeholder="냠냠~" name="s" value="" type="text" autocomplete="off">
+                                        <input class="search-input alt-font" id="search-form-input5e219ef164995" placeholder="검색어를 입력해 주세요." name="keyword" value="" type="text" autocomplete="off">
                                         <button type="submit" class="search-button">
                                             <i class="feather icon-feather-search" aria-hidden="true"></i>
                                         </button>

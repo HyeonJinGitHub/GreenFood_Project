@@ -12,4 +12,13 @@
 			where rownum <= 4
 		]]>
 	</select>
+	
+	<select id="getRecipe"  resultType="RecipeSearchDTO" parameterType="String">
+		<![CDATA[
+			select *
+			from TestRecipe
+			where title like '%' || #{keyword} || '%'
+			
+		]]>
+	</select>
 </mapper>

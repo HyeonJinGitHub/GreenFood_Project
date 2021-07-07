@@ -4,6 +4,10 @@
 <c:url var="images" value='/resources/images' />
 <c:url var="css" value='/resources/css' />
 <c:url var="email-templates" value='/resources/email-templates' />
+
+<c:set var="RecipeSearchDTO" value="${RecipeSearchDTO }" />
+<c:set var="keyword" value="${keyword }" />
+
 <c:url var="js" value='/resources/js' />
 <!doctype html>
 <html class="no-js" lang="en">
@@ -39,7 +43,7 @@
          <div class="row align-items-center">
              <div class="col-12 col-sm-12 padding-ten-left xl-padding-three-left md-padding-nine-left xs-padding-15px-left  margin-100px-top margin-100px-bottom">
                 <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>건강레시피를 검색해보세요 </span>
-                <h2 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">검색결과 : <span class="font-weight-600">삼계탕</span></h2>
+                <h2 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">검색결과 : <span class="font-weight-600"><c:out value="${keyword }" /></span></h2>
              </div>
          </div>
     </div>
@@ -53,7 +57,7 @@
                     <div class="box-shadow-large bg-white border-radius-6px padding-2-rem-tb padding-1-rem-lr">
                         <div class="row d-flex align-items-center justify-content-center">
                             <div class="col-12 col-lg-auto text-center text-lg-left md-margin-10px-bottom wow animate__fadeIn">
-                                <span class="alt-font text-extra-large font-weight-600 text-gradient-tan-geraldine text-uppercase">레시피 로드맵</span>
+                                <span class="alt-font text-extra-large font-weight-600 text-gradient-tan-geraldine text-uppercase">레시피 해시태그</span>
                             </div>
                             <div class="col-12 col-lg-auto text-center text-lg-right padding-20px-lr lg-padding-10px-lr md-padding-15px-lr md-margin-20px-bottom wow animate__fadeIn">
                                 <ul class="nav nav-tabs justify-content-center text-center">
@@ -84,8 +88,8 @@
 					            <div class="container">
 					                <div class="row justify-content-center">
 					                    <div class="col-12 col-md-6 text-center margin-5-half-rem-bottom md-margin-3-rem-bottom wow animate__fadeIn">
-					                        <span class="alt-font font-weight-500 text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom">레시퍼</span>
-					                        <h4 class="alt-font font-weight-600 text-extra-dark-gray mb-0 letter-spacing-minus-1px">이 레시퍼의 레시피는 어떠세요?</h4>
+					                        <span class="alt-font font-weight-500 text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom">레시피 검색</span>
+					                        <h4 class="alt-font font-weight-600 text-extra-dark-gray mb-0 letter-spacing-minus-1px">찾으시는 레시피가 있나요?</h4>
 					                    </div>
 					                </div>
 					                <div class="row">
@@ -93,18 +97,21 @@
 					                        <ul class="blog-classic blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
 					                            <li class="grid-sizer"></li>
 					                            <!-- start blog item -->
-					                            
+					                            <c:forEach var="item" items="${RecipeSearchDTO }" >
 					                            <li class="grid-item wow animate__fadeIn">
+					                            
 					                                <div class="blog-post">
 					                                    <div class="blog-post-image margin-40px-bottom md-margin-35px-bottom xs-margin-25px-bottom">
 					                                        <a href="blog-post-layout-01.html"><img src="resources/images/c.jpg" alt=""/></a>
 					                                    </div>
 					                                    <div class="post-details">
-					                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"><c:out value="${item.name}" /></a>
+					                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"><c:out value="${item.title}" /></a>
 					                                        <p class="w-95">#해시태그1 #해시태그2 #해시태그3 #해시태그4</p>
 					                                    </div>
 					                                </div>
+				                                 
 					                            </li>
+					                            </c:forEach>
 					                            
 					                            <!-- end blog item   --> 
 					                            
@@ -114,7 +121,6 @@
 					            </div>
 					        </section>
 				        <!-- end section -->
-										
                     </div>
                 </div>
             </div>

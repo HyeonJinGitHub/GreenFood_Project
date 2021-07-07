@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 import net.developia.greenfood.dao.MainDAO;
 import net.developia.greenfood.dto.MemberDTO;
+import net.developia.greenfood.dto.RecipeSearchDTO;
 
 @Service
 @Slf4j
@@ -34,6 +35,20 @@ public class MainServiceImpl implements MainService{
 		
 		return list;
 		
+	}
+
+	@Override
+	public List<RecipeSearchDTO> getRecipe(String keyword) throws Exception {
+		
+		List<RecipeSearchDTO> list;
+		try {
+			list = mainDAO.getRecipe(keyword);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+		
+		return list;
 	}
 
 }
