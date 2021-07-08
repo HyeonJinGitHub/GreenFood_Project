@@ -2257,11 +2257,33 @@
 			processData : false,
 			 success     :   function(retVal){
 					console.log("s insert 실행");
+					setvfunc();
 	           },
 	           error	:	function(retVal){
 	        	   console.log("se insert 실행");
+	        	   setvfunc();
 	           }
 		});
+	}
+	
+	function setvfunc(){
+		
+		var formData = new FormData();
+		formData.append("recipev", $("#videofile")[0].files[0]);
+		
+		 $.ajax({
+			url : "${pageContext.request.contextPath}/VideoUpdate.do",
+			type : "post",
+			data : formData,
+			contentType : false,
+			processData : false,
+			 success     :   function(retVal){
+					console.log("v insert 실행");
+	           },
+	           error	:	function(retVal){
+	        	   console.log("ve insert 실행");
+	           }
+		 });
 	}
 	
 	

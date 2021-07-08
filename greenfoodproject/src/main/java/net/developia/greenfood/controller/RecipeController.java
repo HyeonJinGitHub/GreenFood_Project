@@ -261,6 +261,23 @@ public class RecipeController {
 		recipeService.updateRecipeThumbnail(adto);
 		
 		
+		
+	}
+	
+	@PostMapping("/VideoUpdate.do")
+	public void VideoUpdate(HttpSession session, @ModelAttribute MultipartFile recipev) throws Exception {
+		
+		//updateRecipeViedofile
+		//awsService.s3VideoUpload(f, "recipe")
+		String profile_img = awsService.s3FileUploadVideo(recipev, "eunna8675" , Integer.toString(recipe_no));
+		
+		ArticleDTO adto = new ArticleDTO();
+		adto.setViedofile(profile_img);
+		adto.setNo(recipe_no);
+		recipeService.updateRecipeViedofile(adto);
+		
+	
+		
 	}
 	
 	

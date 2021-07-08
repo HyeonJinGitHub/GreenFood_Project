@@ -27,4 +27,5 @@ public interface RecipeService {
 	void updateStep(Recipe_StepDTO rsdto) throws Exception;
 	int findHashtagCnt(RecipeDTO rtmp) throws Exception;
 	void insertMyHash(Article_My_HashDTO amhdto) throws Exception;
+	void updateRecipeViedofile(ArticleDTO adto) throws Exception;
 }

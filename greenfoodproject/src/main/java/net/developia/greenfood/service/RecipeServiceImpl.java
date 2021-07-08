@@ -136,4 +136,9 @@ public class RecipeServiceImpl implements RecipeService {
 		article_my_hashDAO.insertMyHash(amhdto);
 	}
 
+	@Override
+	public void updateRecipeViedofile(ArticleDTO adto) throws Exception {
+		articleDAO.updateRecipeViedofile(adto);
+	}
+
 }

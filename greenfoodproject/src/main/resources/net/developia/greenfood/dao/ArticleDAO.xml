@@ -37,6 +37,12 @@
 		where no = #{no}
 	</update>
 	
+	<update id="updateRecipeViedofile" parameterType="ArticleDTO">
+		update recipe 
+		set viedofile = #{viedofile}
+		where no = #{no}
+	</update>
+	
 	
 	<select id="findRecipe" parameterType="ArticleDTO" resultType="Integer">
 		select no
