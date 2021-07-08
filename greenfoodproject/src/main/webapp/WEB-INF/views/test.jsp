@@ -32,7 +32,8 @@ body {
 	</video>
 	<script>
 		var player = videojs('video');
-		// player.play();
+		// player.play();type="application/x-mpegURL video/mp4
 	</script>
+	<!-- <video src="https://d3gr4nmrit7xq0.cloudfront.net/ohgu2.mp4" width='400' controls autoplay></video> -->
 </body>
 </html>
