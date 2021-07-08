@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.developia.greenfood.dao.MainDAO">
+	<select id="getMember"  resultType="MemberDTO">
+		<![CDATA[
+			select b.*
+			from(
+			        select * 
+			        from Member
+			    )b
+			where rownum <= 4
+		]]>
+	</select>
+	  
+	<select id="getRecipe"  resultType="RecipeSearchDTO" parameterType="RecipeSearchDTO">
+		<![CDATA[
+				SELECT * 
+				FROM (
+					SELECT ROWNUM RN, A.* 
+						FROM (
+								SELECT * 
+								FROM TestRecipe 
+								where title like '%' || #{keyword} || '%'
+								) A
+						)
+				WHERE RN BETWEEN #{pagingVO.start} AND #{pagingVO.end}
+			
+		]]>
+	</select>
+	
+	<select id="countRecipe"  resultType="int" parameterType="String">
+		<![CDATA[
+			select count(*)
+			from TestRecipe
+			where title like '%' || #{keyword} || '%'
+			
+		]]>
+	</select>
+	
+</mapper>

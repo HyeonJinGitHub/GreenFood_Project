@@ -14,4 +14,8 @@ public interface MemberDAO {
 	public void selectMemberByPhone(HashMap<String, Object> map) throws SQLException;
 
 	public void login(HashMap<String, Object> map) throws SQLException;
+
+	public void selectProfile(HashMap<String, Object> map) throws SQLException;
+
+	public void updateProfile(HashMap<String, Object> map) throws SQLException;
 }

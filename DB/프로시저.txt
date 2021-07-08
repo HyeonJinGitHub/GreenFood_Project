@@ -2,11 +2,14 @@ DROP TABLE member CASCADE CONSTRAINTS;
 
 CREATE TABLE member (
     id        VARCHAR2(30) NOT NULL,
-    password  VARCHAR2(1000) NOT NULL,
+    password  VARCHAR2(1000),
     name      VARCHAR2(50) NOT NULL,
     email     VARCHAR2(50) NOT NULL,
-    phone     VARCHAR2(50) NOT NULL
+    phone     VARCHAR2(50),
+    profile_img VARCHAR2(1000),
+    nickname  VARCHAR2(50)
 );
+
 ALTER TABLE member ADD CONSTRAINT member_pk PRIMARY KEY ( id );
 
 select * from member;
@@ -33,6 +36,14 @@ is
     procedure login_member(input_id in varchar2,
     input_pw in varchar2,
     res_cur out sys_refcursor);
+    
+    procedure select_profile(input_id in varchar2,
+    res_nickname out varchar2,
+    res_profile_img out varchar2);
+    
+    procedure update_profile(input_id in varchar2,
+    input_nickname in varchar2,
+    input_image in varchar2);
 end member_pkg;
 
 
@@ -54,9 +65,9 @@ is
         input_phoneNumber in varchar2)
     as
     begin  
-        insert into member(id, password, name, email, phone)
+        insert into member(id, password, name, email, phone, profile_img)
         values(input_id, input_password, input_name, input_email,
-        input_phoneNumber);
+        input_phoneNumber, 'https://greenfood-bucket.s3.us-east-2.amazonaws.com/default_profile.png');
         commit;
     end insert_member;
     
@@ -88,5 +99,25 @@ is
         where id = input_id and password = input_pw;
     end login_member;
     
+    procedure select_profile(input_id in varchar2,
+    res_nickname out varchar2,
+    res_profile_img out varchar2)
+    as
+    begin
+        select nickname, profile_img into res_nickname, res_profile_img
+        from member
+        where id = input_id;
+    end select_profile;
+    
+    procedure update_profile(input_id in varchar2,
+    input_nickname in varchar2,
+    input_image in varchar2)
+    as
+    begin
+        update member
+        set nickname = input_nickname,  profile_img = input_image
+        where id = input_id;
+        commit;
+    end update_profile;
+    
 end member_pkg;
-

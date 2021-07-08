@@ -83,4 +83,26 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 
+	@Override
+	public void selectProfile(HashMap<String, Object> map) throws Exception {
+		try {
+			memberDAO.selectProfile(map);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+	}
+
+	@Override
+	public void updateProfile(HashMap<String, Object> map) throws Exception {
+		try {
+			memberDAO.updateProfile(map);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+	}
+
+	
+
 }

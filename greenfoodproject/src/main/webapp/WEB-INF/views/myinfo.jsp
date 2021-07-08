@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,41 +24,21 @@
         
       	<style>
 	      	.box {
-			    width: 150px;
-			    height: 150px; 
+			    width: 120px;
+			    height: 120px; 
 			    border-radius: 70%;
 			    overflow: hidden;
+			    margin-left : 20px;
 			}
 			.profile {
 			    width: 100%;
 			    height: 100%;
 			    object-fit: cover;
+			  
 			}
       	</style>
     </head>
  <body data-mobile-nav-style="classic">
-        <!-- start page title -->
-        <section class="bg-extra-dark-gray padding-25px-tb page-title-small">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-12 col-xl-8 col-lg-6">
-                        <!-- start page title -->
-                        <h1 class="alt-font text-white font-weight-500 no-margin-bottom text-center text-lg-left">Columns</h1>
-                        <!-- end page title -->
-                    </div>
-                    <div class="col-12 col-xl-4 col-lg-6 breadcrumb justify-content-center justify-content-lg-end text-small alt-font md-margin-10px-top">
-                        <!-- start breadcrumb -->
-                        <ul class="xs-text-center">
-                            <li><a href="index.html" class="text-white-hover">Home</a></li>
-                            <li><a href="#" class="text-white-hover">Elements</a></li>
-                            <li>Columns</li>
-                        </ul>
-                        <!-- end breadcrumb -->
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end page title -->
         <!-- start section -->
         <section class="big-section bg-light-gray">
             <div class="container">
@@ -70,15 +52,14 @@
                         <div class="bg-white padding-40px-all sm-padding-30px-all last-paragraph-no-margin box-shadow-small">
                             <h6 class="text-extra-dark-gray">찍먹부먹 프로필</h6>
 									<div class="swiper-slide box-shadow-small box-shadow-extra-large-hover">
+									<br>
 									<div class="box" >
-									 <a href="#"><img class="profile" src="https://static.nid.naver.com/images/web/user/default.png" alt="" /></a>
-    									<img class="profile" src="/images/tistory.JPG">
+									 <a href="${contextPath}/profile"><img class="profile" id="profile_img" src="${profile_img }" alt="" /></a>
 									</div>
-                                   
                                     <div class="position-relative bg-white padding-3-rem-all md-padding-4-rem-lr">
-                                        <span class="text-medium text-uppercase d-block margin-5px-bottom">별명</span>
-                                        <span class="alt-font font-weight-500 d-block margin-30px-bottom line-height-24px text-extra-dark-gray text-neon-orange-hover d-block">별명입니다.</span>
-                                        <form action="#">
+                                        <span class="text-medium text-uppercase d-block margin-5px-bottom">닉네임</span>
+                                        <span class="alt-font font-weight-500 d-block margin-30px-bottom line-height-24px text-extra-dark-gray text-neon-orange-hover d-block" >${nickname }</span>
+                                        <form action="${contextPath}/profile">
                                     	<button type="submit" class="btn btn-medium btn-fancy btn-dark-gray">수정</button>
                                     	</form>
                                     </div>
@@ -90,10 +71,26 @@
                             <h6 class="text-extra-dark-gray">연락처</h6>
 									<div class="swiper-slide box-shadow-small box-shadow-extra-large-hover">
                                     <div class="position-relative bg-white padding-3-rem-all md-padding-4-rem-lr">
+                                    <br>
                                         <span class="text-medium text-uppercase d-block margin-5px-bottom">이메일</span>
                                         <span class="alt-font font-weight-500 d-block margin-30px-bottom line-height-24px text-extra-dark-gray text-neon-orange-hover d-block">${email }</span>
                                         <span class="text-medium text-uppercase d-block margin-5px-bottom">휴대전화</span>
                                         <span class="alt-font font-weight-500 d-block margin-30px-bottom line-height-24px text-extra-dark-gray text-neon-orange-hover d-block">${phone }</span>
+                                    	<button type="button" onclick="move_contact()" class="btn btn-medium btn-fancy btn-dark-gray">수정</button>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-12 col-lg-6 md-margin-15px-bottom">
+                       <div class="bg-white padding-40px-all sm-padding-30px-all last-paragraph-no-margin box-shadow-small">
+                            <h6 class="text-extra-dark-gray">비밀번호</h6>
+							 		<div class="swiper-slide box-shadow-small box-shadow-extra-large-hover">
+                                    <div class="position-relative bg-white padding-3-rem-all md-padding-4-rem-lr">
+                                    <br>
+                                        <span class="text-medium text-uppercase d-block margin-5px-bottom">로그인 시 사용하는 비밀번호를 변경할 수 있습니다. 주기적인 비밀번호 변경을 통해 개인정보를 안전하게 보호하세요.</span>
+                                        <span class="alt-font font-weight-500 d-block margin-30px-bottom line-height-24px text-extra-dark-gray text-neon-orange-hover d-block">현재 아이디 : ${id }</span>
                                         <form action="#">
                                     	<button type="submit" class="btn btn-medium btn-fancy btn-dark-gray">수정</button>
                                     	</form>
@@ -185,5 +182,11 @@
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/theme-vendors.min.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
+        
+        <script>
+        	function move_contact() {
+        		location.href="${contextPath}/contact";
+        	}
+        </script>
     </body>
 </html>

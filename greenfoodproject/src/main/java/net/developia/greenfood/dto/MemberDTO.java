@@ -16,4 +16,6 @@ public class MemberDTO implements Serializable{
 	private String name;
 	private String email;
 	private String phone;
+	private String nickname;
+	private String profile_img;
 }
