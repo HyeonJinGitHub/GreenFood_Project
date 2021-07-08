@@ -61,5 +61,19 @@ public class AwsServiceImpl implements AwsService {
 		amazonS3.putObject(putObjectRequest);
 		return BUCKET_URL + "/" + id + "/" + file.getName();
 	}
+	
+	@Override
+	public String s3VideoUpload(File file, String id) throws Exception {
+//		File file = new File(mf.getOriginalFilename());
+//		mf.transferTo(file);
+		// 파일 업로드를 위한 request 객체를 생성 하였다.
+		PutObjectRequest putObjectRequest =
+				// request 객체 안에 BUCKET_NAME + "생성 될 폴더 이름", 파일 원본이름, File 바이너리 데이터 를 설정하였다.ㅏ
+				new PutObjectRequest(BUCKET_NAME + "/" + id, file.getName(), file)
+						.withCannedAcl(CannedAccessControlList.PublicRead);
+		// 실제로 업로드 할 액션이다.
+		amazonS3.putObject(putObjectRequest);
+		return BUCKET_URL + "/" + id + "/" + file.getName();
+	}
 
 }
