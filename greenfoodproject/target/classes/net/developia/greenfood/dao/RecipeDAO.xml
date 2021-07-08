@@ -12,4 +12,22 @@
 		select * 
 		from hashtag
 	</select>
+	
+	<select id="getFoodcategoryList" resultType="RecipeDTO">
+		select no, title
+		from foodcategory
+	</select>
+	
+	<select id="findCategory" parameterType="RecipeDTO" resultType="Integer">
+		select no
+		from foodcategory
+		where title like #{title}
+	</select>
+	
+	<select id="findHashtag" parameterType="RecipeDTO" resultType="Integer">
+		select no
+		from hashtag
+		where TAGNAME == #{TAGNAME}
+	</select>
+	
 </mapper>
