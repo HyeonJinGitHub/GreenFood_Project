@@ -96,6 +96,7 @@
                                     <div class="search-form-box">
                                         <span class="search-label alt-font text-small text-uppercase text-medium-gray">어떤 레시피가 궁금하신가요?</span>
                                         <input class="search-input alt-font" id="search-form-input5e219ef164995" placeholder="검색어를 입력해 주세요." name="keyword" value="" type="text" autocomplete="off">
+                                        <input type ="hidden" name="pg">
                                         <button type="submit" class="search-button">
                                             <i class="feather icon-feather-search" aria-hidden="true"></i>
                                         </button>

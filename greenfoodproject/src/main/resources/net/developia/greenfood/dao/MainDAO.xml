@@ -12,13 +12,30 @@
 			where rownum <= 4
 		]]>
 	</select>
-	
-	<select id="getRecipe"  resultType="RecipeSearchDTO" parameterType="String">
+	  
+	<select id="getRecipe"  resultType="RecipeSearchDTO" parameterType="RecipeSearchDTO">
 		<![CDATA[
-			select *
+				SELECT * 
+				FROM (
+					SELECT ROWNUM RN, A.* 
+						FROM (
+								SELECT * 
+								FROM TestRecipe 
+								where title like '%' || #{keyword} || '%'
+								) A
+						)
+				WHERE RN BETWEEN #{pagingVO.start} AND #{pagingVO.end}
+			
+		]]>
+	</select>
+	
+	<select id="countRecipe"  resultType="int" parameterType="String">
+		<![CDATA[
+			select count(*)
 			from TestRecipe
 			where title like '%' || #{keyword} || '%'
 			
 		]]>
 	</select>
+	
 </mapper>
