@@ -18,4 +18,13 @@
          WHERE MAININGRCATE_NO = #{mainIngredientNo}
        ]]>
 	</select>
+
+	<select id="getIngredientList" parameterType="int"
+		resultType="IngredientDTO">
+	<![CDATA[
+         SELECT *
+         FROM INGREDIENTS
+         WHERE MAININGRCATE_NO = #{mainIngredientNo}
+       ]]>
+	</select>
 </mapper>

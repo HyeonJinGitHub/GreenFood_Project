@@ -156,42 +156,16 @@
 		; /* END OF ON LOAD FUNCTION */
 	}());/* END OF WRAPPING FUNCTION */
 
-	// main 재료를 보여주는 메소드
-	// main category 가 없어졌기 때문에 사용 안함
-	//
-	/* function showMainIngred() {
-		$.ajax({
-			type : 'POST',
-			url : '${pageContext.request.contextPath}/getMainIngredient',
-			contentType : "application/x-www-form-urlencoded; charset=utf-8",
-			dataType : "json",
-			success : function(data) {
-				var mainIngredientList = data.mainIngredientList;
-				var mainIngredientInnerHTML = '';
-
-				$.each(mainIngredientList, function(key, value) {
-
-					mainIngredientInnerHTML += '<div>';
-					mainIngredientInnerHTML += '	<span class=" btn btn-ksy-ingredient  btn-large btn-transparent-white-ksy btn-slide-right-bg d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" onclick="showSubIngred(' + value.no + ')"> '+ value.name +'<span class="bg-white"></span></span>';
-					mainIngredientInnerHTML += '</div>';
-				});
-
-				$("#mainIngredientList").html(mainIngredientInnerHTML);
-			}
-		});
-
-	} */
-
-	// 재료를 보여주는 메소드
-	function showIngred() {
+	// 재료를 가져오는 메소드
+	function getIngred() {
 
 		$.ajax({
 			type : 'POST',
-			url : '${pageContext.request.contextPath}/getSubIngredient',
+			url : '${pageContext.request.contextPath}/getIngredient',
 			contentType : "application/x-www-form-urlencoded; charset=utf-8",
 			dataType : "json",
 			success : function(data) {
-				var ingredientList = data.subIngredientList;
+				var ingredientList = data.ingredientList;
 				var ingredientInnerHTML = '';
 
 				$.each(subIngredientList, function(key, value) {
@@ -276,7 +250,7 @@
 <body data-mobile-nav-style="classic">
 
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ingredientModal" onclick="showMainIngred()">Launch demo modal</button>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ingredientModal" onclick="getIngred()">Launch demo modal</button>
 
 	<!-- Modal -->
 	<div class="modal fade" id="ingredientModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

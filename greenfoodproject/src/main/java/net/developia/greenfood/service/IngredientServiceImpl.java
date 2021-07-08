@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import net.developia.greenfood.dao.IngredientDAO;
-import net.developia.greenfood.dto.MainIngredientDTO;
+import net.developia.greenfood.dto.IngredientDTO;
 import net.developia.greenfood.dto.SubIngredientDTO;
 
 @Slf4j
@@ -20,13 +20,13 @@ public class IngredientServiceImpl implements IngredientService {
 	private IngredientDAO ingredientDAO;
 
 	@Override
-	public List<MainIngredientDTO> getMainIngredientList() throws Exception {
-		return ingredientDAO.getMainIngredientList();
+	public List<SubIngredientDTO> getSubIngredientList(int mainIngredientNo) throws Exception {
+		return ingredientDAO.getSubIngredientList(mainIngredientNo);
 	}
 
 	@Override
-	public List<SubIngredientDTO> getSubIngredientList(int mainIngredientNo) throws Exception {
-		return ingredientDAO.getSubIngredientList(mainIngredientNo);
+	public List<IngredientDTO> getingredientList() throws Exception {
+		return ingredientDAO.getIngredientList();
 	}
 
 }

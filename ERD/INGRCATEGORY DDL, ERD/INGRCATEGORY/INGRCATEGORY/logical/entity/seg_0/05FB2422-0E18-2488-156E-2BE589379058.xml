@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="05FB2422-0E18-2488-156E-2BE589379058" name="SUBINGRCATE">
+<createdBy>KSY</createdBy>
+<createdTime>2021-07-02 01:49:12 UTC</createdTime>
+<ownerDesignName>INGRCATEGORY</ownerDesignName>
+<engineerTo>
+<item key="824805C8-E3DD-027E-913B-6781A68D1C8A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="NO" id="6930908A-8195-5A0B-B66F-2AD83108C8EB">
+<createdBy>KSY</createdBy>
+<createdTime>2021-07-02 01:49:26 UTC</createdTime>
+<ownerDesignName>INGRCATEGORY</ownerDesignName>
+<engineerTo>
+<item key="824805C8-E3DD-027E-913B-6781A68D1C8A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NAME" id="5BD642DF-A17A-6745-E688-8CB50CFACE29">
+<createdBy>KSY</createdBy>
+<createdTime>2021-07-02 01:49:32 UTC</createdTime>
+<ownerDesignName>INGRCATEGORY</ownerDesignName>
+<engineerTo>
+<item key="824805C8-E3DD-027E-913B-6781A68D1C8A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NO1" id="C11AADCC-C529-D7BE-982C-F90BDDBB8D74">
+<createdBy>KSY</createdBy>
+<createdTime>2021-07-02 01:58:55 UTC</createdTime>
+<generatorID>B11AD1D6-CB27-B57A-0F84-C22A907D3419</generatorID>
+<ownerDesignName>INGRCATEGORY</ownerDesignName>
+<engineerTo>
+<item key="824805C8-E3DD-027E-913B-6781A68D1C8A" value="true"/>
+</engineerTo>
+<referedAttribute>20ECD080-69FF-61A2-A54D-4574369ECF3B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="5B68BE34-ECF8-6E35-A6E8-392AE9BF3BBF" name="SUBCATEGORY PK">
+<createdBy>KSY</createdBy>
+<createdTime>2021-07-02 01:49:30 UTC</createdTime>
+<ownerDesignName>INGRCATEGORY</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="824805C8-E3DD-027E-913B-6781A68D1C8A" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>6930908A-8195-5A0B-B66F-2AD83108C8EB</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

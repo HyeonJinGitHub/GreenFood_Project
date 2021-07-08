@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AD66C859-2AB1-4046-BD68-046257B6939B" name="SUBINGRCATE">
+<createdBy>KSY</createdBy>
+<createdTime>2021-07-02 06:37:57 UTC</createdTime>
+<generatorID>05FB2422-0E18-2488-156E-2BE589379058</generatorID>
+<ownerDesignName>INGRCATEGORY</ownerDesignName>
+<ordsAlias>ingrsubcate</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="NO" id="DE614481-30C4-871B-E9D1-F2E171EC4012">
+<createdBy>KSY</createdBy>
+<createdTime>2021-07-02 06:37:57 UTC</createdTime>
+<generatorID>6930908A-8195-5A0B-B66F-2AD83108C8EB</generatorID>
+<ownerDesignName>INGRCATEGORY</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NAME" id="56AD00C9-8C5D-A7DF-42E8-C0A56DE728D8">
+<createdBy>KSY</createdBy>
+<createdTime>2021-07-02 06:37:57 UTC</createdTime>
+<generatorID>5BD642DF-A17A-6745-E688-8CB50CFACE29</generatorID>
+<ownerDesignName>INGRCATEGORY</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="INGRMAINCATE_NO" id="C073C5A2-4E8C-54B0-2751-0A1A2C2ACFDB">
+<createdBy>KSY</createdBy>
+<createdTime>2021-07-02 06:37:57 UTC</createdTime>
+<generatorID>C11AADCC-C529-D7BE-982C-F90BDDBB8D74</generatorID>
+<ownerDesignName>INGRCATEGORY</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E5A29CFA-06E9-8E7E-FF3B-B782B8E42992" referredColumn="EE76A821-FC1D-DF67-AC0C-8D685CB05305"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5D1A6B25-24F7-1CB2-475D-2E65022320AE" name="INGRSUBCATE_PK">
+<createdBy>KSY</createdBy>
+<createdTime>2021-07-02 06:37:57 UTC</createdTime>
+<generatorID>5B68BE34-ECF8-6E35-A6E8-392AE9BF3BBF</generatorID>
+<ownerDesignName>INGRCATEGORY</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DE614481-30C4-871B-E9D1-F2E171EC4012"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4C735A43-E540-A151-9445-E907ED2C136C" name="INGRSUBCATE_INGRMAINCATE_FK">
+<createdBy>KSY</createdBy>
+<createdTime>2021-07-02 06:37:57 UTC</createdTime>
+<generatorID>B11AD1D6-CB27-B57A-0F84-C22A907D3419</generatorID>
+<ownerDesignName>INGRCATEGORY</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C073C5A2-4E8C-54B0-2751-0A1A2C2ACFDB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

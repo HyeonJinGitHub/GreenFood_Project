@@ -1,0 +1,146 @@
+/*CREATE sequence
+=====================================*/
+-- 시퀀스 삭제
+-- 대분류 재료 번호 시퀀스
+DROP SEQUENCE MAININGRCATE_NO_SEQ;
+
+-- 소분류 재료 번호 시퀀스
+DROP SEQUENCE SUBINGRCATE_NO_SEQ;
+
+-- 시퀀스 생성
+-- 대분류 재료 번호 시퀀스
+CREATE SEQUENCE MAININGRCATE_NO_SEQ
+    START WITH 1
+    INCREMENT BY 1
+	NOCACHE;
+	
+-- 소분류 재료 번호 시퀀스
+CREATE SEQUENCE SUBINGRCATE_NO_SEQ
+    START WITH 1
+    INCREMENT BY 1
+	NOCACHE;
+
+/*CREATE TABLE
+===================================*/
+-- 테이블, 제약조건 및 뷰 삭제
+DROP TABLE MAININGRCATE     CASCADE CONSTRAINTS PURGE;
+DROP TABLE SUBINGRCATE  	CASCADE CONSTRAINTS PURGE;
+
+
+
+-- 테이블 생성 
+-- MAININGRCATE 테이블 생성 
+CREATE TABLE MAININGRCATE (
+      no    NUMBER NOT NULL        -- 대분류 번호
+    , name  VARCHAR2(30) NOT NULL  -- 대분류 이름
+/*****************************************************************************
+      TABLE NAME  	: MAININGRCATE
+      DESCRIPTION   : 재료의 대분류를 저장하는 테이블 (MAIN INGREDIENT CATEGORY)
+      PARAMETERS    : no     -- 대분류 번호
+					  name	 -- 대분류 이름
+      특이사항       :
+  ----------------------------------------------------------------------------
+        DATE       AUTHOR           DESCRIPTION
+  ----------------------------------------------------------------------------
+     2021-07-02    김석윤              최초 작성
+******************************************************************************/
+);
+
+ALTER TABLE MAININGRCATE ADD CONSTRAINT mainingrcate_pk PRIMARY KEY ( no );
+
+-- SUBINGRCATE 테이블 생성 
+CREATE TABLE SUBINGRCATE (
+      no               NUMBER NOT NULL        -- 소분류 번호
+    , name             VARCHAR2(30) NOT NULL  -- 소분류 이름
+    , mainingrcate_no  NUMBER NOT NULL        -- 대분류 번호
+/*****************************************************************************
+      TABLE NAME  	: SUBINGRCATE
+      DESCRIPTION   : 재료의 소분류를 저장하는 테이블 (SUB INGREDIENT CATEGORY)
+      PARAMETERS    : no               -- 소분류 번호
+					  name	           -- 소분류 이름
+					  mainingrcate_no  -- 대분류 번호
+      특이사항       :
+  ----------------------------------------------------------------------------
+        DATE       AUTHOR           DESCRIPTION
+  ----------------------------------------------------------------------------
+     2021-07-02    김석윤              최초 작성
+******************************************************************************/
+);
+
+ALTER TABLE SUBINGRCATE ADD CONSTRAINT subingrcate_pk PRIMARY KEY ( no );
+
+
+
+-- FOREIGN KEY
+ALTER TABLE SUBINGRCATE
+    ADD CONSTRAINT subingrcate_mainingrcate_fk FOREIGN KEY ( mainingrcate_no )
+        REFERENCES MAININGRCATE ( no );
+		
+		
+		
+/*INSERT MAININGRCATE
+=====================================*/
+INSERT INTO MAININGRCATE (no, name) VALUES (MAININGRCATE_NO_SEQ.NEXTVAL, '곡류');
+INSERT INTO MAININGRCATE (no, name) VALUES (MAININGRCATE_NO_SEQ.NEXTVAL, '면/만두류');
+INSERT INTO MAININGRCATE (no, name) VALUES (MAININGRCATE_NO_SEQ.NEXTVAL, '빵류');
+INSERT INTO MAININGRCATE (no, name) VALUES (MAININGRCATE_NO_SEQ.NEXTVAL, '과자류');
+INSERT INTO MAININGRCATE (no, name) VALUES (MAININGRCATE_NO_SEQ.NEXTVAL, '떡류');
+INSERT INTO MAININGRCATE (no, name) VALUES (MAININGRCATE_NO_SEQ.NEXTVAL, '감자/고구마류');
+INSERT INTO MAININGRCATE (no, name) VALUES (MAININGRCATE_NO_SEQ.NEXTVAL, '채소류');
+INSERT INTO MAININGRCATE (no, name) VALUES (MAININGRCATE_NO_SEQ.NEXTVAL, '고기류');
+INSERT INTO MAININGRCATE (no, name) VALUES (MAININGRCATE_NO_SEQ.NEXTVAL, '햄/소시지');
+INSERT INTO MAININGRCATE (no, name) VALUES (MAININGRCATE_NO_SEQ.NEXTVAL, '계란류');
+
+
+
+/*INSERT SUBINGRCATE
+=====================================*/
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '귀리', 1);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '밀가루', 1);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '백미', 1);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '쌀밥', 1);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '라면사리', 2);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '떡볶이', 2);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '생면', 2);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '수제비', 2);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '스파게티면', 2);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '모닝빵', 3);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '바게트', 3);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '베이글', 3);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '크로아상', 3);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '나쵸', 4);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '또띠아', 4);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '팦콘', 4);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '프레첼', 4);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '가래떡', 5);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '계피떡', 5);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '절편', 5);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '조랭이떡', 5);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '떡국떡', 5);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '떡볶이떡', 5);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '감자', 6);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '감자전분', 6);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '고구마', 6);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '고구마전분', 6);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '토란', 6);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '가지', 7);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '각종 버섯', 7);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '각종 잎채소', 7);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '각종 채소', 7);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '갓김치', 7);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '깻잎', 7);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '갈매기살', 8);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '닭고기', 8);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '소고기', 8);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '돼지고기', 8);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '오리고기', 8);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '냉동돈가스', 9);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '미트볼', 9);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '베이컨', 9);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '비엔나소시지', 9);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '살라미', 9);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '스팸', 9);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '계란', 10);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '계란후라이', 10);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '삶은계란', 10);
+INSERT INTO SUBINGRCATE (no, name, mainingrcate_no) VALUES (SUBINGRCATE_NO_SEQ.NEXTVAL, '메추리알', 10);

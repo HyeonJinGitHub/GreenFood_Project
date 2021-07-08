@@ -1,0 +1,48 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="ED98A86B-CDAD-661D-333B-78BCCACFC8F3" name="MAININGRCATE">
+<createdBy>KSY</createdBy>
+<createdTime>2021-07-02 06:37:57 UTC</createdTime>
+<generatorID>7B5EBB73-3427-465F-4597-B856CEA14C82</generatorID>
+<ownerDesignName>INGRCATEGORY</ownerDesignName>
+<ordsAlias>ingrmaincate</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="NO" id="EE76A821-FC1D-DF67-AC0C-8D685CB05305">
+<createdBy>KSY</createdBy>
+<createdTime>2021-07-02 06:37:57 UTC</createdTime>
+<generatorID>20ECD080-69FF-61A2-A54D-4574369ECF3B</generatorID>
+<ownerDesignName>INGRCATEGORY</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NAME" id="EB4492CB-D03C-A90D-7C7E-92908003B050">
+<createdBy>KSY</createdBy>
+<createdTime>2021-07-02 06:37:57 UTC</createdTime>
+<generatorID>12B418D3-D80B-AEDD-FD4E-F934B4BD7B52</generatorID>
+<ownerDesignName>INGRCATEGORY</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="54A9E0D8-8895-AD28-49D0-D1D0FD91603D" name="INGRMAINCATE_PK">
+<createdBy>KSY</createdBy>
+<createdTime>2021-07-02 06:37:57 UTC</createdTime>
+<generatorID>D58DD180-0DAB-3391-D18D-2EDC80467616</generatorID>
+<ownerDesignName>INGRCATEGORY</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EE76A821-FC1D-DF67-AC0C-8D685CB05305"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

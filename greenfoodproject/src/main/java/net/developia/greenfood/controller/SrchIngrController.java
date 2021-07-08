@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import net.developia.greenfood.dto.IngredientDTO;
 import net.developia.greenfood.dto.MainIngredientDTO;
 import net.developia.greenfood.dto.SubIngredientDTO;
 import net.developia.greenfood.service.IngredientService;
@@ -39,33 +40,15 @@ public class SrchIngrController {
 		return "searchPage";
 	}
 
-	// DB에서 main ingredient category를 가져온다
+	// DB에서 ingredient 를 가져온다
 	@ResponseBody
-	@PostMapping(value = { "/getMainIngredient" })
-	public Map<String, Object> getMainIngredient(Model model, HttpSession session) {
+	@PostMapping(value = { "/getIngredient" })
+	public Map<String, Object> getIngredient() {
 		try {
-			List<MainIngredientDTO> mainIngredientList = ingredientService.getMainIngredientList();
+			List<IngredientDTO> ingredientList = ingredientService.getingredientList();
 
 			Map<String, Object> result = new HashMap<String, Object>();
-			result.put("mainIngredientList", mainIngredientList);
-
-			return result;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	// DB에서 sub ingredient category를 가져온다
-	@ResponseBody
-	@PostMapping(value = { "/getSubIngredient" })
-	public Map<String, Object> getSubIngredient(String mainIngredientNo) {
-		try {
-			List<SubIngredientDTO> subIngredientList = ingredientService
-					.getSubIngredientList(Integer.parseInt(mainIngredientNo));
-
-			Map<String, Object> result = new HashMap<String, Object>();
-			result.put("subIngredientList", subIngredientList);
+			result.put("ingredientList", ingredientList);
 
 			return result;
 		} catch (Exception e) {
