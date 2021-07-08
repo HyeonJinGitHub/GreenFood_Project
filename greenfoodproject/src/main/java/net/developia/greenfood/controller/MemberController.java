@@ -86,7 +86,7 @@ public class MemberController {
 	
 	@PostMapping("/")
 	public ModelAndView move_home_post() {
-		return new ModelAndView("home");
+		return new ModelAndView("main");
 	}
 	
 	@GetMapping("/myinfo")

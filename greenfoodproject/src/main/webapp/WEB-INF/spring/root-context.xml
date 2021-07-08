@@ -40,4 +40,13 @@
 		p:mapperInterface="net.developia.greenfood.dao.RecipeDAO"
 		/>
 	<!--  recupeDAO end -->
+	<!-- 작성자: 이효범작성일자: 2021/07/05 15:31 -->
+
+
+<!-- MainDAO start -->
+
+		<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="MainSqlSession" p:typeAliasesPackage="net.developia.greenfood.dto" p:dataSource-ref="dataSource"/>
+		<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="MainDAO" p:mapperInterface="net.developia.greenfood.dao.MainDAO" p:sqlSessionFactory-ref="MainSqlSession"/>
+
+<!-- MainDAO end -->
 </beans>
