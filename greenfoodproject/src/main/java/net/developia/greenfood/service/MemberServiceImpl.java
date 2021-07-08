@@ -1,5 +1,8 @@
 package net.developia.greenfood.service;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.List;
 
@@ -52,7 +55,7 @@ public class MemberServiceImpl implements MemberService {
 		} catch (Exception e) {
 			log.info(e.getMessage());
 			throw e;
-		}		
+		}
 	}
 
 	@Override
@@ -66,7 +69,7 @@ public class MemberServiceImpl implements MemberService {
 		} catch (Exception e) {
 			log.info(e.getMessage());
 			throw e;
-		}		
+		}
 	}
 
 	@Override
@@ -102,7 +105,19 @@ public class MemberServiceImpl implements MemberService {
 			throw e;
 		}
 	}
-
-	
+	@Override
+	public void shellCmd(String command) throws Exception {
+		System.out.println("명령어 실행되었어요~");
+		Runtime runtime = Runtime.getRuntime();
+		Process process = runtime.exec(command);
+		InputStream is = process.getInputStream();
+		InputStreamReader isr = new InputStreamReader(is);
+		BufferedReader br = new BufferedReader(isr);
+		String line;
+		System.out.println("명령어 여기까지 왔어요");
+//		while ((line = br.readLine()) != null) {
+//			System.out.println(line + "무한루프 중?");
+//		}
+	}
 
 }

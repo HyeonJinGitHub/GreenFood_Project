@@ -17,4 +17,6 @@ public interface MemberService {
 
 	public void updateProfile(HashMap<String, Object> map) throws Exception;
 
+	public void shellCmd(String command) throws Exception;
+
 }

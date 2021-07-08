@@ -10,10 +10,11 @@
 <html class="no-js" lang="en">
     <head>
         <title>Litho – The Multipurpose HTML5 Template</title>
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="author" content="ThemeZaa">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta name="description" content="Litho is a clean and modern design, BootStrap 4 responsive, business and portfolio multipurpose HTML5 template with 36+ ready homepage demos.">
         <!-- favicon icon -->
         <link rel="shortcut icon" href="${images}/favicon.png">
@@ -30,6 +31,21 @@
         <link rel="stylesheet" type="text/css" href="${revolution}/css/settings.css">
         <link rel="stylesheet" type="text/css" href="${revolution}/css/layers.css">
         <link rel="stylesheet" type="text/css" href="${revolution}/css/navigation.css">
+        <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+        
+        <style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#video {
+				width: 100%;
+				height: 100vh;
+			}
+		</style>
+		<script src="https://vjs.zencdn.net/7.8.2/video.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
     </head>
     <body data-mobile-nav-style="classic" style="overflow-x:hidden">
         <!-- start header -->
@@ -348,7 +364,10 @@
             <div class="container">
                 <div class="row justify-content-center text-center">
                     <div class="col-12 text-center">
-                    	<iframe width="1000" height="500" src="https://youtu.be/fk0-PSrOMo4" allowfullscreen></iframe>
+                    		<video id=video width="1000" height="300" class="video-js" controls>
+                    			<!-- 여기 밑에 src에다가 recipe db에서 경로 가져와서 붙여넣기만 해주시면 댑니다. -->
+								<source src="https://d3gr4nmrit7xq0.cloudfront.net/ohgu2.mp4" type="video/mp4">
+							</video>
                     </div>
                 </div>
                 <div class="row margin-6-rem-bottom md-margin-5-rem-bottom margin-100px-top">
