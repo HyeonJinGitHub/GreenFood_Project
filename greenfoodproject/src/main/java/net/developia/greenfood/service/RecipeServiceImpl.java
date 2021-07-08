@@ -58,8 +58,8 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 
 	@Override
-	public void insertIngredients(String name) throws Exception {
-		ingredientsDAO.insertIngredients(name);
+	public void insertIngredients(IngredientsDTO ingredientsDTO) throws Exception {
+		ingredientsDAO.insertIngredients(ingredientsDTO);
 	}
 
 	@Override
@@ -89,9 +89,9 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 
 	@Override
-	public int findIngredientsOne(String iga) throws Exception {
+	public int findIngredientsOne(IngredientsDTO ingredientsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return ingredientsDAO.findIngredientsOne(iga);
+		return ingredientsDAO.findIngredientsOne(ingredientsDTO);
 	}
 
 	@Override

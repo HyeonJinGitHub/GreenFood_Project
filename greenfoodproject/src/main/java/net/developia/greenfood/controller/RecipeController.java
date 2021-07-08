@@ -11,11 +11,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
@@ -30,6 +32,7 @@ import net.developia.greenfood.dto.Article_HashDTO;
 import net.developia.greenfood.dto.IngredientsDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
+import net.developia.greenfood.service.AwsService;
 import net.developia.greenfood.service.RecipeService;
 
 @Controller
@@ -38,6 +41,8 @@ public class RecipeController {
 
 	@Autowired
 	RecipeService recipeService;
+	@Autowired
+	private AwsService awsService;
 
 	@RequestMapping(value = "/recipe", method = RequestMethod.GET)
 	public String home2() {
@@ -140,8 +145,6 @@ public class RecipeController {
 			@RequestParam(value = "foodname") String foodname, //
 			@RequestParam(value = "howmuch") String howmuch, //
 			@RequestParam(value = "foodtime") String foodtime, //
-			@RequestParam(value = "videofile") String videofile,
-			@RequestParam(value = "product_image") String product_image,
 			@RequestParam(value = "foodcategory") String foodcategory) throws Exception {
 
 		RecipeDTO rdto = new RecipeDTO();
@@ -184,25 +187,41 @@ public class RecipeController {
 			int ino = 0; 
 			int isize =0; 
 			for(int i = 0; i < ingredients_list.size(); i++) { 
-				if(iga.equals(ingredients_list.get(i))) 
+				if(iga.equals(ingredients_list.get(i).getName()))
 				{ 
 					chk = true; 
 					ino = ingredients_list.get(i).getNo(); 
 					isize = i; break; 
 				}
 			} 
+			
+			IngredientsDTO idto = new IngredientsDTO();
+			idto.setName(iga);
 			if(chk == false) {
-		 	   recipeService.insertIngredients(iga); 
+		 	   recipeService.insertIngredients(idto); 
 		 	} 
-			int ingredients_no =recipeService.findIngredientsOne(iga); 
+			int ingredients_no =recipeService.findIngredientsOne(idto); 
 			int howm =Integer.parseInt(ingredientssizeArr.get(isize)); 
+			log.info(ingredients_no+"재료번호");
+			log.info(howm +"재료양");
 			Recipe_IngredientsDTO ridto = new Recipe_IngredientsDTO(); 
 			ridto.setHowmuch(howm);
 		    ridto.setIngredients_no(ingredients_no); 
 		    ridto.setRecipe_no(recipe_no);
 		    recipeService.InsertRecipe_Ingredients(ridto); 
 		  }
-
+		
+			/*
+			 * ModelAndView mav = new ModelAndView("main"); return mav;
+			 */
+	}
+	
+	@PostMapping("/ThumbnailUpdate")
+	public ModelAndView ThumbnailUpdate(HttpSession session, @ModelAttribute MultipartFile product_image) throws Exception {
+		//String profile_img = awsService.s3FileUpload(product_image, session.getAttribute("id").toString());
+		log.info(product_image +" 이미지 경로 프린트");
+		ModelAndView mav = new ModelAndView("main"); 
+		return mav;
 	}
 
 	public static List<String> StringProcess(String str) {
@@ -222,5 +241,7 @@ public class RecipeController {
 		return titleList;
 
 	}
+	
+	
 
 }

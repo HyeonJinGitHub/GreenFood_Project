@@ -5,6 +5,7 @@
 <c:url var="css" value='/resources/css' />
 <c:url var="email-templates" value='/resources/email-templates' />
 <c:url var="js" value='/resources/js' />
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -272,8 +273,11 @@
 															</div>
 															<div class="col-lg-10 sm-margin-25px-bottom">
 																<div class="form-group">
+																<form action='${contextPath}/ThumbnailUpdate' method="POST" enctype="multipart/form-data">
 																	<input type="file" class="" 
 																	name="product_image" id="product_image" accept="image/*" onchange="setThumbnail(event);"value="대표사진 선택" required>
+																	<input type="submit" id="submit_btn_click" /> 
+																</form>
 																</div>
 																<div id="image_container" style="margin-bottom:30px"></div>
 															</div>
@@ -1166,6 +1170,53 @@
 									
 							});
 							
+
+							$(document).on(
+									"keyup",
+									"input",
+									function(e) {
+										checkHash();
+										checkVideo();
+										checkTitle();
+									});
+							
+							$(document).on(
+									"keydown",
+									"input",
+									function(e) {
+										checkHash();
+										checkVideo();
+										checkTitle();
+									});
+							
+							$(document).on(
+									"keypress",
+									"input",
+									function(e) {
+										checkHash();
+										checkVideo();
+										checkTitle();
+									});
+							
+							$(document).on(
+									"click",
+									"input",
+									function(e) {
+										checkHash();
+										checkVideo();
+										checkTitle();
+									});
+							
+							$(document).on(
+									"change",
+									"input",
+									function(e) {
+										checkHash();
+										checkVideo();
+										checkTitle();
+									});
+							
+							
 							$.ajax({
 								url: "${pageContext.request.contextPath}/catlist",
 								type: "post",
@@ -1219,9 +1270,6 @@
 											}
 										});
 								
-										var a= checkVideo();
-										var b= checkTitle();
-					               
 									}); 
 									
 							
@@ -1260,6 +1308,8 @@
 								reader.onload = function(event){
 									var img = document.createElement("img");
 									img.setAttribute("src", event.target.result);
+									console.log("스텝이미지");
+									console.log(event.target.result);
 									img.setAttribute("class", "col-lg-12");
 									var container_name= "div#stepimage_container" + cnt;
 									
@@ -1406,6 +1456,8 @@
 										document.getElementById("NUTR_CONT8_i"+num).setAttribute("value", $(this).attr('data8'));
 										document.getElementById("SERVING_SIZE_i"+num).setAttribute("value", $(this).attr('data9'));
 										$("#closeiforce").trigger("click");
+										
+										checkTitle();
 									});
 							
 							///////////////////////////////////////////////////////////////////////////
@@ -1430,19 +1482,7 @@
 										$( '#previewText' ).removeClass( 'font-weight-600' );
 										$( '#titleText' ).addClass( 'font-weight-600' );
 										
-										var a = checkVideo();
-							            
 										document.getElementById("nowPage").setAttribute("value", 1);
-							            if($("select[name=foodcategory]").val()== ''){
-							            	$( '#hashtagText' ).empty();
-											document.getElementById("hashtagText").innerText = '해쉬태그 설정';
-											var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
-											$('#hashtagText').append(str);
-							            }
-							            else{
-							            	$( '#hashtagText' ).empty();
-											document.getElementById("hashtagText").innerText = '해쉬태그 설정';
-							            }
 										
 									});
 							
@@ -1456,19 +1496,10 @@
 										$( '#previewText' ).removeClass( 'font-weight-600' );
 										$( '#videoText' ).addClass( 'font-weight-600' );
 										
-									var a = checkTitle();
+								
 									document.getElementById("nowPage").setAttribute("value", 2);
 							        
-							        if($("select[name=foodcategory]").val()== ''){
-						            	$( '#hashtagText' ).empty();
-										document.getElementById("hashtagText").innerText = '해쉬태그 설정';
-										var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
-										$('#hashtagText').append(str);
-						            }
-						            else{
-						            	$( '#hashtagText' ).empty();
-										document.getElementById("hashtagText").innerText = '해쉬태그 설정';
-						            }
+							      
 									});
 							
 							$(document).on(
@@ -1477,6 +1508,8 @@
 									function(e) {
 										$(this).parent().parent().parent()
 												.remove();
+										
+										checkHash();
 									});
 
 							$(document).on(
@@ -1524,6 +1557,8 @@
 														
 												$('#sortable1').append(str);
 												icount += 1;
+												
+												checkHash();
 											});
 							
 							
@@ -1679,17 +1714,34 @@
 		function checkHash(){
 			 
 			var chk = false;
-			if($("select[name=foodcategory]").val()== ''){
-            	$( '#hashtagText' ).empty();
-				document.getElementById("hashtagText").innerText = '해쉬태그 설정';
-				var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
-				$('#hashtagText').append(str);
-				chk = true;
-            }
-            else{
-            	$( '#hashtagText' ).empty();
-				document.getElementById("hashtagText").innerText = '해쉬태그 설정';
-            }
+			
+			 console.log( $("#myTag").children().length);
+			
+			 if( $("#myTag").children().length == 0)
+			{
+				 console.log("태그없음")
+				 $( '#hashtagText' ).empty();
+					document.getElementById("hashtagText").innerText = '해쉬태그 설정';
+					var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+					$('#hashtagText').append(str);
+					chk = true;
+			}
+			 else
+			{
+				 if($("select[name=foodcategory]").val()== ''){
+		            	$( '#hashtagText' ).empty();
+						document.getElementById("hashtagText").innerText = '해쉬태그 설정';
+						var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+						$('#hashtagText').append(str);
+						chk = true;
+		            }
+		            else{
+		            	$( '#hashtagText' ).empty();
+						document.getElementById("hashtagText").innerText = '해쉬태그 설정';
+		            }
+			}
+			 
+			
             return chk;
 		}
 		
@@ -2086,8 +2138,6 @@
 		   });
 			
 			var foodtime = $("input[name=foodtime]").val();
-	   		var videofile = $("input[name=videofile]").val();
-	   		var product_image = $("input[name=product_image]").val();
 			var steptitleArr = [];
 			var stepimageArr = [];
 			var stepsubscriptArr = [];
@@ -2120,23 +2170,12 @@
 				   "ingredientsArr" : ingredientsArr,
 				   "ingredientssizeArr" : ingredientssizeArr,
 				   "foodtime" : foodtime,
-				   "videofile" : videofile,
-				   "product_image" : product_image,
 				   "steptitleArr" : steptitleArr,
 				   "stepimageArr" : stepimageArr,
 				   "stepsubscriptArr" : stepsubscriptArr,
 				   "foodcategory" : foodcategory,
 				   "hashtagArr" : hashtagArr
 	           };
-		   
-		   console.log(title);
-		   console.log(subscript);
-		   console.log(foodname);
-		   console.log(howmuch);
-		   console.log(foodtime);
-		   console.log(videofile);
-		   console.log(product_image);
-		   console.log(foodcategory);
 		   
 		   $.ajax({
 	           url         :   "${pageContext.request.contextPath}/postRecipe",
@@ -2145,8 +2184,18 @@
 	           data        :   objParams,
 	           success     :   function(retVal){
 					console.log("insert 실행");
+					
 	           }
 	       });
+		   
+		   $("#submit_btn_click").trigger("click");
+		   
+		 /*   Swal.fire({
+				  title: '동영상 업로드 성공',
+				  text: '동영상이 정상적으로 게시되었습니다',
+				  icon: 'success',
+				  confirmButtonText: '확인'
+				}) */
 		}
 		
 	}

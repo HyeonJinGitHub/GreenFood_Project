@@ -159,6 +159,7 @@ public class MemberController {
 			} else {
 				profile_img = "https://greenfood-bucket.s3.us-east-2.amazonaws.com/default_profile.png";
 			}
+			log.info(profile_img);
 			map.put("NICKNAME", nickname);
 			map.put("PROFILE_IMG", profile_img);
 			memberService.updateProfile(map);

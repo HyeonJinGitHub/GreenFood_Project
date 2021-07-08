@@ -12,14 +12,14 @@
 		from ingredients
 	</select>
 	
-	<insert id="insertIngredients"  parameterType="String">
-		Insert into ingredients (name) values (#{name});
+	<insert id="insertIngredients"  parameterType="IngredientsDTO">
+		Insert into ingredients (name) values (#{name})
 	</insert>
 	
-	<select id="findIngredientsOne" parameterType="String" resultType="Recipe_IngredientsDTO">
+	<select id="findIngredientsOne" parameterType="IngredientsDTO" resultType="Integer">
 		select no
-		from recipe_ingredients
-		where name == #{name}
+		from ingredients
+		where name like #{name}
 	</select>
 	
 </mapper>
