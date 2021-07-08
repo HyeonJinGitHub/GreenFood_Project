@@ -2886,7 +2886,8 @@ input[type="radio"]:checked+label span:after {
 	border-color: #232323;
 	padding-left: 5%;
     padding-right: 5%;
-	width: 107%;
+    margin-left: 3%;
+    margin-right: 3%;
 }
 
 .modal-color-selected-ksy {
@@ -2894,7 +2895,8 @@ input[type="radio"]:checked+label span:after {
 	border-color: #232323;
 	padding-left: 3%;
 	padding-right: 3%;
-	height: 100%;
+	margin-left: 3%;
+    margin-right: 3%;
 }
 
 .selected-text-ksy {

@@ -267,11 +267,12 @@
 				</div>
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-lg-4">
-							<div id="ingredientList" class="modal-color-ksy"></div>
+						<div class="col-lg-6">
+							<div id="ingredientList" class="modal-color-ksy" style="overflow:scroll; height:40%;"></div>
 						</div>
-						<div class="col-lg-4">
-							<div id="selectedIngredientList" class="modal-color-selected-ksy" >
+						<div class="col-lg-6">
+							<div id="selectedIngredientList" class="modal-color-selected-ksy " style="overflow:auto; height:40%;" >
+							
 							</div>
 						</div>
 					</div>
