@@ -1216,6 +1216,126 @@
 												}}
 											}
 										});
+								
+										
+						             /*    $("#sortable1").children().each(function(){ 
+											var t = $(this).attr("value");  */
+											/* ingredientsArr.push($("input[name=ingredients"+t+"]").val() );
+											ingredientssizeArr.push($("input[name=ingredientssize"+t+"]").val() ); */
+											
+									/* 		if($("input[name=ingredients"+t+"]").val() == '' || $("input[name=ingredientssize"+t+"]").val() == '')
+											{
+												console.log('empty');	
+												$( '#titleText' ).empty();
+												document.getElementById("titleText").innerText = '기본설명';
+												var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+												$('#titleText').append(str);
+												chk = true;
+												//break;
+											}
+											else{
+												console.log('not empty');
+											}
+											
+						                });
+								        if(chk == false)
+								        {
+								        	var title : $("input[name=title]").val();
+											var subscript : $("input[name=subscript]").val();
+											var foodname : $("input[name=foodname]").val();
+											var howmuch : $("input[name=howmuch]").val();
+											
+								        	
+											$.ajax({
+												url: "${pageContext.request.contextPath}/titleviewchk",
+												type: "post",
+												dataType : "text",
+												data : objParams, 
+												success: function(data) {
+													console.log(data);
+													if(data == '0')
+													{
+														$( '#titleText' ).empty();
+														document.getElementById("titleText").innerText = '기본설명';
+														var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+														$('#titleText').append(str);
+														
+													}
+													else
+													{
+														$( '#titleText' ).empty();
+														document.getElementById("titleText").innerText = '기본설명';
+													}
+												}
+											});
+								        } */
+								        
+								      /*   chk = false;
+										 var steptitleArr = [];
+										 var stepimageArr = [];
+										 var stepsubscriptArr = [];
+							               
+							                
+							                $("#sortable").children().each(function(){ 
+							                	var i = $(this).attr("value"); 
+							                	var steptitle = document.getElementsByName("steptitle"+i)[0].value;
+							                	var stepimage = document.getElementsByName("stepimage"+i)[0].value;
+							                	var stepsubscript = document.getElementsByName("stepimage"+i)[0].value;
+							                	steptitleArr.push(steptitle);
+							                	stepimageArr.push(stepimage);
+							                	stepsubscriptArr.push(stepsubscript);
+							                	console.log(stepimage);
+												
+												if(steptitle == '' || stepimage == '' || stepsubscript=='')
+												{
+													console.log('empty');	
+													chk = true;
+													$( '#videoText' ).empty();
+													document.getElementById("videoText").innerText = '레시피 정보';
+													var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+													$('#videoText').append(str);
+												}
+												else{
+													console.log('not empty');
+												}
+												
+
+							                }); */
+							           
+							       /*      if(chk == false)
+							            {
+							                var objParams = {
+							                		"foodtime" : $("input[name=foodtime]").val(),
+							                		"videofile" : $("input[name=videofile]").val(),
+							                		"product_image" : $("input[name=product_image]").val(),
+							                        "steptitle" : steptitleArr  ,
+							                        "stepimage" : stepimageArr,
+							                        "stepsubscript" : stepsubscriptArr
+							                    };
+										
+										$.ajax({
+											url: "${pageContext.request.contextPath}/videoviewchk",
+											type: "post",
+											dataType : "text",
+											data : objParams, 
+											success: function(data) {
+												console.log(data);
+												if(data == '0')
+												{
+													$( '#videoText' ).empty();
+													document.getElementById("videoText").innerText = '레시피 정보';
+													var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+													$('#videoText').append(str);
+													
+												}
+												else
+												{
+													$( '#videoText' ).empty();
+													document.getElementById("videoText").innerText = '레시피 정보';
+												}
+											}
+										});
+							            } */
 									}); 
 									
 									
@@ -1707,17 +1827,83 @@
 										$( '#previewText' ).removeClass( 'font-weight-600' );
 										$( '#titleText' ).addClass( 'font-weight-600' );
 										
-										/* if($("input[name=title]").val() == '' ||$("input[name=subscript]").val() == ''|| $("input[name=foodname]").val() == '' || $("input[name=howmuch]").val() == '')
-										{
-											var tmp ='<i class="feather icon-feather-alert-triangle icon-medium align-middle text-fast-blue"></i>'
-											$( '#titleText' ).apeend(tmp);
-										}
+										 var chk = false;
+										 var steptitleArr = [];
+										 var stepimageArr = [];
+										 var stepsubscriptArr = [];
+							               
+							                
+							                $("#sortable").children().each(function(){ 
+							                	var i = $(this).attr("value"); 
+							                	var steptitle = document.getElementsByName("steptitle"+i)[0].value;
+							                	var stepimage = document.getElementsByName("stepimage"+i)[0].value;
+							                	var stepsubscript = document.getElementsByName("stepimage"+i)[0].value;
+							                	steptitleArr.push(steptitle);
+							                	stepimageArr.push(stepimage);
+							                	stepsubscriptArr.push(stepsubscript);
+							                	console.log(stepimage);
+												
+												if(steptitle == '' || stepimage == '' || stepsubscript=='')
+												{
+													console.log('empty');	
+													chk = true;
+													$( '#videoText' ).empty();
+													document.getElementById("videoText").innerText = '레시피 정보';
+													var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+													$('#videoText').append(str);
+												}
+												else{
+													console.log('not empty');
+												}
+												
+
+							                });
+							           
+							            if(chk == false)
+							            {
+							                var objParams = {
+							                		"foodtime" : $("input[name=foodtime]").val(),
+							                		"videofile" : $("input[name=videofile]").val(),
+							                		"product_image" : $("input[name=product_image]").val(),
+							                        "steptitle" : steptitleArr  ,
+							                        "stepimage" : stepimageArr,
+							                        "stepsubscript" : stepsubscriptArr
+							                    };
 										
-										if($("input[name=title]").val()!= '' && $("input[name=subscript]").val() != ''&& $("input[name=foodname]").val() != '' && $("input[name=howmuch]").val() != '')
-										{
-											$( '#titleText' ).empty();
-											$( '#titleText' ).apeend('기본설명');
-										} */
+										$.ajax({
+											url: "${pageContext.request.contextPath}/videoviewchk",
+											type: "post",
+											dataType : "text",
+											data : objParams, 
+											success: function(data) {
+												console.log(data);
+												if(data == '0')
+												{
+													$( '#videoText' ).empty();
+													document.getElementById("videoText").innerText = '레시피 정보';
+													var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+													$('#videoText').append(str);
+													
+												}
+												else
+												{
+													$( '#videoText' ).empty();
+													document.getElementById("videoText").innerText = '레시피 정보';
+												}
+											}
+										});
+							            }
+							            
+							            if($("select[name=foodcategory]").val()== ''){
+							            	$( '#hashtagText' ).empty();
+											document.getElementById("hashtagText").innerText = '해쉬태그 설정';
+											var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+											$('#hashtagText').append(str);
+							            }
+							            else{
+							            	$( '#hashtagText' ).empty();
+											document.getElementById("hashtagText").innerText = '해쉬태그 설정';
+							            }
 										
 									});
 							
@@ -1733,15 +1919,30 @@
 										
 										 var ingredientsArr = [];
 										 var ingredientssizeArr = [];
+										 var chk = false;
 							               
 							                
 							                $("#sortable1").children().each(function(){ 
 												var t = $(this).attr("value"); 
 												ingredientsArr.push($("input[name=ingredients"+t+"]").val() );
-												console.log($("input[name=ingredients"+t+"]").val());
 												ingredientssizeArr.push($("input[name=ingredientssize"+t+"]").val() );
+												
+												if($("input[name=ingredients"+t+"]").val() == '' || $("input[name=ingredientssize"+t+"]").val() == '')
+												{
+													console.log('empty');	
+													$( '#titleText' ).empty();
+													document.getElementById("titleText").innerText = '기본설명';
+													var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+													$('#titleText').append(str);
+													chk = true;
+												}
+												else{
+													console.log('not empty');
+												}
+												
 							                });
-							                
+							        if(chk == false)
+							        {
 							                var objParams = {
 							                		"title" : $("input[name=title]").val(),
 													"subscript" : $("input[name=subscript]").val(),
@@ -1760,14 +1961,31 @@
 												console.log(data);
 												if(data == '0')
 												{
-													$( '#titleText' ).addClass( 'text-red' );
+													$( '#titleText' ).empty();
+													document.getElementById("titleText").innerText = '기본설명';
+													var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+													$('#titleText').append(str);
+													
 												}
 												else
 												{
-													$( '#titleText' ).removeClass( 'text-red' );
+													$( '#titleText' ).empty();
+													document.getElementById("titleText").innerText = '기본설명';
 												}
 											}
 										});
+							        }
+							        
+							        if($("select[name=foodcategory]").val()== ''){
+						            	$( '#hashtagText' ).empty();
+										document.getElementById("hashtagText").innerText = '해쉬태그 설정';
+										var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+										$('#hashtagText').append(str);
+						            }
+						            else{
+						            	$( '#hashtagText' ).empty();
+										document.getElementById("hashtagText").innerText = '해쉬태그 설정';
+						            }
 									});
 							
 							$(document).on(

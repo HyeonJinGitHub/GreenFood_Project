@@ -99,6 +99,45 @@ public class RecipeController {
 		return chk;
 	}
 	
+	
+	@PostMapping(value="/videoviewchk", produces = "application/text; charset=utf8")
+	public @ResponseBody String viewChceck1(@RequestParam(value="steptitle[]") List<String> steptitle, 
+											@RequestParam(value="stepimage[]") List<String> stepimage, 
+											@RequestParam(value="stepsubscript[]") List<String> stepsubscript, 
+											@RequestParam(value="foodtime") String foodtime,
+											@RequestParam(value="videofile") String videofile,
+											@RequestParam(value="product_image") String product_image)  throws Exception {
+		String chk = "1";
+	
+		for(String is : steptitle) {
+			if(is.equals(""))
+			{
+				chk = "0";
+				break;
+			}
+        }
+		for(String ig : stepimage) {
+			if(ig.equals(""))
+			{
+				chk = "0";
+				break;
+			}
+        }
+		for(String ig : stepsubscript) {
+			if(ig.equals(""))
+			{
+				chk = "0";
+				break;
+			}
+        }
+		
+		if(foodtime.equals("") || videofile.equals("") || product_image.equals("")) {
+			chk = "0";
+		}
+		
+		return chk;
+	}
+	
 	@PostMapping(value="/mytag", produces = "application/text; charset=utf8")
 	public @ResponseBody String myHashtahList(HttpServletRequest request, HttpServletResponse response)  throws Exception {
 
