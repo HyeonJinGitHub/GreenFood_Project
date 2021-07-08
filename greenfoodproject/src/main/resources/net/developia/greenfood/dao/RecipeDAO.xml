@@ -30,4 +30,10 @@
 		where tagname like #{tagname}
 	</select>
 	
+	<select id="findHashtagCnt" parameterType="RecipeDTO" resultType="Integer">
+		select count(no)
+		from hashtag
+		where tagname like #{tagname}
+	</select>
+	
 </mapper>

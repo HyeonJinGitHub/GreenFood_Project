@@ -30,6 +30,7 @@ import kr.co.shineware.nlp.komoran.model.Token;
 import lombok.extern.slf4j.Slf4j;
 import net.developia.greenfood.dto.ArticleDTO;
 import net.developia.greenfood.dto.Article_HashDTO;
+import net.developia.greenfood.dto.Article_My_HashDTO;
 import net.developia.greenfood.dto.IngredientsDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
@@ -47,7 +48,8 @@ public class RecipeController {
 	private AwsService awsService;
 	
 	int recipe_no = 0;
-
+	int step_start = 1;
+	int step_last = 1;
 	@RequestMapping(value = "/recipe", method = RequestMethod.GET)
 	public String home2() {
 		System.out.println("recipe page start");
@@ -173,15 +175,29 @@ public class RecipeController {
 		for(String hasht : hashtagArr) { 
 			 RecipeDTO rtmp = new RecipeDTO();
 			 rtmp.setTagname(hasht); 
-			 int hashno = recipeService.findHashtag(rtmp);
-			 log.info(hashno +"해쉬코드 번호");
-			 Article_HashDTO ahdto = new Article_HashDTO(); 
-			 ahdto.setHashtag_no(hashno);
-			 ahdto.setRecipe_no(recipe_no); 
-			 recipeService.insertHash_Recipe(ahdto); 
+			 int existchk = recipeService.findHashtagCnt(rtmp);
+			 if(existchk != 0)
+			 {
+				 int hashno = recipeService.findHashtag(rtmp);
+				 log.info(hashno +"해쉬코드 번호");
+				 Article_HashDTO ahdto = new Article_HashDTO(); 
+				 ahdto.setHashtag_no(hashno);
+				 ahdto.setRecipe_no(recipe_no); 
+				 recipeService.insertHash_Recipe(ahdto); 
+			 }
+			 else
+			 {
+				 Article_My_HashDTO amhdto = new Article_My_HashDTO();
+				 amhdto.setRecipe_no(recipe_no);
+				 amhdto.setTitle(hasht);
+				 recipeService.insertMyHash(amhdto);
+			 }
 		}
 		 
 
+		//insertMyHash
+		
+		
 		// ingredients
 		
 		List<IngredientsDTO> ingredients_list = recipeService.findIngredients(); 
@@ -224,7 +240,9 @@ public class RecipeController {
 			rsdto.setStep_explanation(f);
 			rsdto.setStep_no(i+1);
 			recipeService.InsertStep(rsdto);
+			log.info(s);
 		}
+		step_last = steptitleArr.size();
 		
 		return Integer.toString(recipe_no);
 	}
@@ -247,18 +265,25 @@ public class RecipeController {
 	
 	
 	@PostMapping("/StepUpdate.do")
-	public void StepUpdate(HttpSession session, @ModelAttribute MultipartFile thumb) throws Exception {
+	public void StepUpdate(HttpSession session, @ModelAttribute MultipartFile[] stepimage) throws Exception {
 		
-//		formData.append("thumb", $("#product_image")[0].files[0]);
-//		formData.append("recipe_no", retVal);
+		int start = step_start;
+		for(MultipartFile multipartFile : stepimage) {
+			String profile_img = awsService.s3FileUploadStep(multipartFile, "eunna8675" , Integer.toString(recipe_no), Integer.toString(start));
+			Recipe_StepDTO rsdto = new Recipe_StepDTO();
+			rsdto.setRecipe_no(recipe_no);
+			rsdto.setStep_no(start);
+			rsdto.setStep_img(profile_img);
+			recipeService.updateStep(rsdto);
+			start += 1;
+			if(start > step_last)
+			{
+				break;
+			}
+		 }
 		
-		String profile_img = awsService.s3FileUploadThumbnail(thumb, "eunna8675" , Integer.toString(recipe_no));
-		log.info(recipe_no+"글번호입니다");
-		ArticleDTO adto = new ArticleDTO();
-		adto.setThumbnail(profile_img);
-		adto.setNo(recipe_no);
-		recipeService.updateRecipeThumbnail(adto);
-		
+	
+		log.info("step update");
 		
 	}
 

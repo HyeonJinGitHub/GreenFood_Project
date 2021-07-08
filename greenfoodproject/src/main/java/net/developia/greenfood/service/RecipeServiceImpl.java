@@ -8,12 +8,14 @@ import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import net.developia.greenfood.dao.ArticleDAO;
 import net.developia.greenfood.dao.Article_HashDAO;
+import net.developia.greenfood.dao.Article_My_HashDAO;
 import net.developia.greenfood.dao.IngredientsDAO;
 import net.developia.greenfood.dao.RecipeDAO;
 import net.developia.greenfood.dao.Recipe_IngredientsDAO;
 import net.developia.greenfood.dao.Recipe_StepDAO;
 import net.developia.greenfood.dto.ArticleDTO;
 import net.developia.greenfood.dto.Article_HashDTO;
+import net.developia.greenfood.dto.Article_My_HashDTO;
 import net.developia.greenfood.dto.IngredientsDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
@@ -39,6 +41,10 @@ public class RecipeServiceImpl implements RecipeService {
 	@Autowired
 	@Resource(name="Article_HashDAO")
 	private Article_HashDAO article_hashDAO;
+	
+	@Autowired
+	@Resource(name="Article_My_HashDAO")
+	private Article_My_HashDAO article_my_hashDAO;
 	
 	@Autowired
 	@Resource(name="Recipe_IngredientsDAO")
@@ -113,6 +119,21 @@ public class RecipeServiceImpl implements RecipeService {
 	@Override
 	public void InsertStep(Recipe_StepDTO rsdto) throws Exception {
 		recipe_stepDAO.InsertStep(rsdto);
+	}
+
+	@Override
+	public void updateStep(Recipe_StepDTO rsdto) throws Exception {
+		recipe_stepDAO.updateStep(rsdto);
+	}
+
+	@Override
+	public int findHashtagCnt(RecipeDTO rtmp) throws Exception {
+		return recipeDAO.findHashtagCnt(rtmp);
+	}
+
+	@Override
+	public void insertMyHash(Article_My_HashDTO amhdto) throws Exception {
+		article_my_hashDAO.insertMyHash(amhdto);
 	}
 
 }

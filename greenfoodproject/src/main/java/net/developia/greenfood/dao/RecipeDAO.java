@@ -10,4 +10,5 @@ public interface RecipeDAO {
 	List<RecipeDTO> getFoodcategoryList() throws SQLException;
 	int findCategory(RecipeDTO rdto) throws SQLException;
 	int findHashtag(RecipeDTO rtmp) throws SQLException;
+	int findHashtagCnt(RecipeDTO rtmp) throws SQLException;
 }

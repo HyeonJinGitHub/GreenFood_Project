@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.developia.greenfood.dto.ArticleDTO;
 import net.developia.greenfood.dto.Article_HashDTO;
+import net.developia.greenfood.dto.Article_My_HashDTO;
 import net.developia.greenfood.dto.IngredientsDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
@@ -23,4 +24,7 @@ public interface RecipeService {
 	void InsertRecipe_Ingredients(Recipe_IngredientsDTO ridto) throws Exception;
 	void updateRecipeThumbnail(ArticleDTO adto) throws Exception;
 	void InsertStep(Recipe_StepDTO rsdto) throws Exception;
+	void updateStep(Recipe_StepDTO rsdto) throws Exception;
+	int findHashtagCnt(RecipeDTO rtmp) throws Exception;
+	void insertMyHash(Article_My_HashDTO amhdto) throws Exception;
 }

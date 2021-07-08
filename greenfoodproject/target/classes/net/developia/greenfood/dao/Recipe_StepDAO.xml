@@ -20,4 +20,9 @@
 					#{step_explanation})
 	</insert>
 	
+	<update id="updateStep" parameterType="Recipe_StepDTO">
+		update recipe_step 
+		set step_img = #{step_img}
+		where recipe_no = #{recipe_no} and step_no = #{step_no}
+	</update>
 </mapper>

@@ -2147,8 +2147,9 @@
 		        	var i = $(this).attr("value"); 
 		        	var steptitle = document.getElementsByName("steptitle"+i)[0].value;
 		        	var stepsubscript = document.getElementsByName("stepsubscript"+i)[0].value;
+		        	console.log(steptitle);
 		        	steptitleArr.push(steptitle);
-		        	steptitleArr.push(stepsubscript);
+		        	stepsubscriptArr.push(stepsubscript);
 		        });
 	     
 	       var foodcategory = $("select[name=foodcategory]").val();
@@ -2230,12 +2231,10 @@
 			processData : false,
 			 success     :   function(retVal){
 					console.log("s insert 실행");
-					console.log();
 					setstepfunc();
 	           },
 	           error	:	function(retVal){
 	        	   console.log("se insert 실행");
-	        	   console.log();
 	        	   setstepfunc();
 	           }
 		});
