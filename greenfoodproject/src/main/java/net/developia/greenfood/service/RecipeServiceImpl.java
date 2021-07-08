@@ -27,15 +27,19 @@ public class RecipeServiceImpl implements RecipeService {
 	private RecipeDAO recipeDAO;
 	
 	@Autowired
+	@Resource(name="ArticleDAO")
 	private ArticleDAO articleDAO;
 	
 	@Autowired
+	@Resource(name="IngredientsDAO")
 	private IngredientsDAO ingredientsDAO;
 	
 	@Autowired
+	@Resource(name="Article_HashDAO")
 	private Article_HashDAO article_hashDAO;
 	
 	@Autowired
+	@Resource(name="Recipe_IngredientsDAO")
 	private Recipe_IngredientsDAO recipe_ingredientsDAO;
 
 	@Override

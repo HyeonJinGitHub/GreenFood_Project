@@ -27,7 +27,7 @@
 	<select id="findHashtag" parameterType="RecipeDTO" resultType="Integer">
 		select no
 		from hashtag
-		where TAGNAME == #{TAGNAME}
+		where tagname like #{tagname}
 	</select>
 	
 </mapper>
