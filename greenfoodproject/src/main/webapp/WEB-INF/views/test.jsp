@@ -34,5 +34,6 @@ body {
 		var player = videojs('video');
 		// player.play();
 	</script>
+<!-- 	<video src="https://greenfood-bucket.s3.us-east-2.amazonaws.com/ohgu2.mp4" width='400' controls autoplay></video> -->
 </body>
 </html>
