@@ -61,13 +61,7 @@ public class SrchIngrController {
 	@ResponseBody
 	@PostMapping(value = { "/getSelectedIngredient" })
 	public void getSelectedIngredient(@RequestBody String httpParam) {
-
-		JSONParser jsonParser = new JSONParser();
-		try {
-			JSONArray insertParam = (JSONArray) jsonParser.parse(httpParam);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		System.out.println(httpParam);
 
 	}
 

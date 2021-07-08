@@ -8,6 +8,7 @@
 	<![CDATA[
          SELECT *
          FROM INGREDIENTS
+         ORDER BY ASC
        ]]>
 	</select>
 </mapper>
