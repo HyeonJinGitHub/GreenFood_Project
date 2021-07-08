@@ -63,80 +63,34 @@ public class RecipeController {
 		return json;
 	}
 	
-	@PostMapping(value="/titleviewchk", produces = "application/text; charset=utf8")
-	public @ResponseBody String viewChceck(@RequestParam(value="ingredientssize[]") List<String> ingredientssize, 
-											@RequestParam(value="ingredients[]") List<String> ingredients, 
-											@RequestParam(value="title") String title,
-											@RequestParam(value="subscript") String subscript,
-											@RequestParam(value="foodname") String foodname,
-											@RequestParam(value="howmuch") String howmuch)  throws Exception {
-		String chk = "1";
-		log.info("실행");
-		
-		
-		//titleView
-		
-		for(String is : ingredientssize) {
-			if(is.equals(""))
-			{
-				chk = "0";
-				break;
-			}
-        }
-		for(String ig : ingredients) {
-			if(ig.equals(""))
-			{
-				chk = "0";
-				break;
-			}
-        }
-		//재료
-		
-		if(title.equals("") || subscript.equals("") || foodname.equals("") || howmuch.equals("")) {
-			chk = "0";
-		}
-		
-		return chk;
-	}
-	
-	
-	@PostMapping(value="/videoviewchk", produces = "application/text; charset=utf8")
-	public @ResponseBody String viewChceck1(@RequestParam(value="steptitle[]") List<String> steptitle, 
-											@RequestParam(value="stepimage[]") List<String> stepimage, 
-											@RequestParam(value="stepsubscript[]") List<String> stepsubscript, 
-											@RequestParam(value="foodtime") String foodtime,
-											@RequestParam(value="videofile") String videofile,
-											@RequestParam(value="product_image") String product_image)  throws Exception {
-		String chk = "1";
-	
-		for(String is : steptitle) {
-			if(is.equals(""))
-			{
-				chk = "0";
-				break;
-			}
-        }
-		for(String ig : stepimage) {
-			if(ig.equals(""))
-			{
-				chk = "0";
-				break;
-			}
-        }
-		for(String ig : stepsubscript) {
-			if(ig.equals(""))
-			{
-				chk = "0";
-				break;
-			}
-        }
-		
-		if(foodtime.equals("") || videofile.equals("") || product_image.equals("")) {
-			chk = "0";
-		}
-		
-		return chk;
-	}
+	/*
+	 * @PostMapping(value="/titleviewchk", produces =
+	 * "application/text; charset=utf8") public @ResponseBody String
+	 * viewChceck(@RequestParam(value="ingredientssize[]") List<String>
+	 * ingredientssize,
+	 * 
+	 * @RequestParam(value="ingredients[]") List<String> ingredients,
+	 * 
+	 * @RequestParam(value="title") String title,
+	 * 
+	 * @RequestParam(value="subscript") String subscript,
+	 * 
+	 * @RequestParam(value="foodname") String foodname,
+	 * 
+	 * @RequestParam(value="howmuch") String howmuch) throws Exception { String chk
+	 * = "1"; log.info("실행");
+	 * 
+	 * 
+	 * //titleView
+	 * 
+	 * for(String is : ingredientssize) { if(is.equals("")) { chk = "0"; break; } }
+	 * for(String ig : ingredients) { if(ig.equals("")) { chk = "0"; break; } } //재료
+	 * 
+	 * if(title.equals("") || subscript.equals("") || foodname.equals("") ||
+	 * howmuch.equals("")) { chk = "0"; }
+	 * 
+	 * return chk; }
+	 */
 	
 	@PostMapping(value="/mytag", produces = "application/text; charset=utf8")
 	public @ResponseBody String myHashtahList(HttpServletRequest request, HttpServletResponse response)  throws Exception {

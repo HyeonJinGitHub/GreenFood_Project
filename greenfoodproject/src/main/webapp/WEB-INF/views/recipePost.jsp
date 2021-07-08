@@ -55,6 +55,7 @@
                         <div class="row d-flex align-items-center justify-content-center">
                             <div class="col-12 col-lg-auto text-center text-lg-left md-margin-10px-bottom wow animate__fadeIn">
                                 <span class="alt-font text-extra-large font-weight-600 text-gradient-tan-geraldine text-uppercase">레시피 로드맵</span>
+                                <input type="hidden" id="nowPage" name="nowPage" value="">
                             </div>
                             <div class="col-12 col-lg-auto text-center text-lg-right padding-20px-lr lg-padding-10px-lr md-padding-15px-lr md-margin-20px-bottom wow animate__fadeIn">
                                 <ul class="nav nav-tabs justify-content-center text-center">
@@ -1103,6 +1104,7 @@
 	<link rel="stylesheet" type="text/css" href="${css }/theme-vendors.min.css">
 	<link rel="stylesheet" type="text/css" href="${css }/style.css" />
 	<link rel="stylesheet" type="text/css" href="${css }/responsive.css" />
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	
 	<script>
 	var count = 1;
@@ -1196,6 +1198,7 @@
 										$( '#titleText' ).removeClass( 'font-weight-600' );
 										$( '#previewText' ).removeClass( 'font-weight-600' );
 										
+										document.getElementById("nowPage").setAttribute("value", 3);
 										$.ajax({
 											url : "${pageContext.request.contextPath}/mytag",
 											type : "post",
@@ -1217,125 +1220,9 @@
 											}
 										});
 								
-										
-						             /*    $("#sortable1").children().each(function(){ 
-											var t = $(this).attr("value");  */
-											/* ingredientsArr.push($("input[name=ingredients"+t+"]").val() );
-											ingredientssizeArr.push($("input[name=ingredientssize"+t+"]").val() ); */
-											
-									/* 		if($("input[name=ingredients"+t+"]").val() == '' || $("input[name=ingredientssize"+t+"]").val() == '')
-											{
-												console.log('empty');	
-												$( '#titleText' ).empty();
-												document.getElementById("titleText").innerText = '기본설명';
-												var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
-												$('#titleText').append(str);
-												chk = true;
-												//break;
-											}
-											else{
-												console.log('not empty');
-											}
-											
-						                });
-								        if(chk == false)
-								        {
-								        	var title : $("input[name=title]").val();
-											var subscript : $("input[name=subscript]").val();
-											var foodname : $("input[name=foodname]").val();
-											var howmuch : $("input[name=howmuch]").val();
-											
-								        	
-											$.ajax({
-												url: "${pageContext.request.contextPath}/titleviewchk",
-												type: "post",
-												dataType : "text",
-												data : objParams, 
-												success: function(data) {
-													console.log(data);
-													if(data == '0')
-													{
-														$( '#titleText' ).empty();
-														document.getElementById("titleText").innerText = '기본설명';
-														var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
-														$('#titleText').append(str);
-														
-													}
-													else
-													{
-														$( '#titleText' ).empty();
-														document.getElementById("titleText").innerText = '기본설명';
-													}
-												}
-											});
-								        } */
-								        
-								      /*   chk = false;
-										 var steptitleArr = [];
-										 var stepimageArr = [];
-										 var stepsubscriptArr = [];
-							               
-							                
-							                $("#sortable").children().each(function(){ 
-							                	var i = $(this).attr("value"); 
-							                	var steptitle = document.getElementsByName("steptitle"+i)[0].value;
-							                	var stepimage = document.getElementsByName("stepimage"+i)[0].value;
-							                	var stepsubscript = document.getElementsByName("stepimage"+i)[0].value;
-							                	steptitleArr.push(steptitle);
-							                	stepimageArr.push(stepimage);
-							                	stepsubscriptArr.push(stepsubscript);
-							                	console.log(stepimage);
-												
-												if(steptitle == '' || stepimage == '' || stepsubscript=='')
-												{
-													console.log('empty');	
-													chk = true;
-													$( '#videoText' ).empty();
-													document.getElementById("videoText").innerText = '레시피 정보';
-													var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
-													$('#videoText').append(str);
-												}
-												else{
-													console.log('not empty');
-												}
-												
-
-							                }); */
-							           
-							       /*      if(chk == false)
-							            {
-							                var objParams = {
-							                		"foodtime" : $("input[name=foodtime]").val(),
-							                		"videofile" : $("input[name=videofile]").val(),
-							                		"product_image" : $("input[name=product_image]").val(),
-							                        "steptitle" : steptitleArr  ,
-							                        "stepimage" : stepimageArr,
-							                        "stepsubscript" : stepsubscriptArr
-							                    };
-										
-										$.ajax({
-											url: "${pageContext.request.contextPath}/videoviewchk",
-											type: "post",
-											dataType : "text",
-											data : objParams, 
-											success: function(data) {
-												console.log(data);
-												if(data == '0')
-												{
-													$( '#videoText' ).empty();
-													document.getElementById("videoText").innerText = '레시피 정보';
-													var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
-													$('#videoText').append(str);
-													
-												}
-												else
-												{
-													$( '#videoText' ).empty();
-													document.getElementById("videoText").innerText = '레시피 정보';
-												}
-											}
-										});
-							            } */
+										var a= checkVideo();
+										var b= checkTitle();
+					               
 									}); 
 									
 									
@@ -1344,310 +1231,50 @@
 									"#preView",
 									function(e) {
 										
-										$( '#hashtagText' ).removeClass( 'font-weight-600' );
-										$( '#videoText' ).removeClass( 'font-weight-600' );
-										$( '#titleText' ).removeClass( 'font-weight-600' );
-										$( '#previewText' ).removeClass( 'font-weight-600' );
-										$( '#previewText' ).addClass( 'font-weight-600' );
+										var tv = checkTitle();
+										var vv = checkVideo();
+										var hv = checkHash(); 
 										
-										var title = document.getElementsByName("title")[0].value
-										document.getElementById("inputTitle").innerText = title;
+										var nowp = document.getElementsByName("nowPage")[0].value
 										
-										var subscript = document.getElementsByName("subscript")[0].value
-										document.getElementById("inputSubscript").innerText = subscript;
-										
-										var foodname = document.getElementsByName("foodname")[0].value
-										document.getElementById("inputFoodname").innerText = foodname;
-										
-										
-										var foodtime = document.getElementsByName("foodtime")[0].value
-										if(foodtime =='') document.getElementById("inputFoodtime").innerText = '0분 소요예상';
-										else  document.getElementById("inputFoodtime").innerText = foodtime +'분 소요예상';
-										
-										$('#inputmyTag').html($('#myTag').html());
-										$('#inputVideo').empty(); 	
-										$('#sortable2').empty();
-										$('#inputThumbdiv').empty();
-										$('#foodIngredientInputinfo').empty();
-										$('#accordion2case').empty();
-										
-										
-										var foodcategory = $("select[name=foodcategory]").val();
-										document.getElementById("inputCategory").innerText = foodcategory;
-
-										const inputFile = document.getElementById("videofile"); 
-										const file = inputFile.files[0];
-										if(file != null)
+										if(tv == true || vv == true || hv == true)
 										{
-											var str = '<video id="videoTagpre" src="" style="margin-bottom:30px" controls muted loop preload></video>'
-											$('#inputVideo').append(str); 	
-											const video = document.getElementById("videoTagpre"); 
-											const videourl = URL.createObjectURL(file); 
-											console.log(videourl);
-											video.setAttribute("src", videourl); video.play();
-										}
-										var strli ='';
-										strli += '<section class="section wow animate__fadeIn" style="margin-top:-100px; margin-bottom:-100px"><div class="container" style="margin:0; padding:0"><div class="panel-group accordion-event accordion-style-02" id="accordion2" data-active-icon="icon-feather-minus" data-inactive-icon="icon-feather-plus"></div></div></div>'
-										$('#accordion2case').append(strli);
-										
-										var ig1 = 0;
-										var ig2 = 0;
-										var ig3 = 0;
-										var ig4 = 0;
-										var ig5 = 0;
-										var ig6 = 0;
-										var ig7 = 0;
-										var ig8 = 0;
-										
-										/* for(var t = 1; t<=icount; t++)
-										{
-											var strli = '';
-											var stmp = ($("input[name=ingredientssize"+t+"]").val()/$("input[id=SERVING_SIZE_i"+t+"]").val());
-												  strli += '<div class="panel bg-transparent">'
-												  		+ '<div class="panel-heading border-color-medium-gray-transparent">'
-												  		+ '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#accordion-style-02-0'+t+'">'
-												  		+ '<div class="panel-title text-left">'
-												  		+ '<span class="alt-font text-dark-gray d-inline-block">'
-												  		+ $("input[name=ingredients"+t+"]").val()+' (사용량 : '
-												  		+ $("input[name=ingredientssize"+t+"]").val()
-												  		+ 'g 또는 ml)'
-												  		+ '</span>'
-												  		+ '<i class="indicator text-dark-gray feather icon-feather-plus"></i>'
-												  		+ '</div>'
-												  		+ '</a>'
-												  		+ '</div>'
-												  		+ '<div id="accordion-style-02-0'+t+'" class="panel-collapse collapse" data-parent="#accordion2">'
-												  		+ '<div class="panel-body">'
-												  	    + '열량 : '+ $("input[name=NUTR_CONT1_i"+t+"]").val()*stmp +'kcal'
-												  	    + '</br>'
-														+ '탄수화물 : '+ $("input[name=NUTR_CONT2_i"+t+"]").val()*stmp +'g'
-														+ '</br>'
-														+ '단백질 : '+ $("input[name=NUTR_CONT3_i"+t+"]").val()*stmp +'g'
-														+ '</br>'
-														+ '지방 : '+ $("input[name=NUTR_CONT4_i"+t+"]").val()*stmp +'g'
-														+ '</br>'
-														+ '당류 : '+ $("input[name=NUTR_CONT5_i"+t+"]").val()*stmp +'g'
-														+ '</br>'
-														+ '나트륨 : '+ $("input[name=NUTR_CONT6_i"+t+"]").val()*stmp +'mg'
-														+ '</br>'
-														+ '콜레스테롤 : '+ $("input[name=NUTR_CONT7_i"+t+"]").val()*stmp +'mg'
-														+ '</br>'
-														+ '포화지방산 : '+ $("input[name=NUTR_CONT8_i"+t+"]").val()*stmp +'g'
-														+ '</br>'
-												  		+ '</div></div></div>'
-										
-											$('#accordion2').append(strli);	
-												  		
-											ig1 +=$("input[name=NUTR_CONT1_i"+t+"]").val()*stmp;
-											ig2 +=$("input[name=NUTR_CONT2_i"+t+"]").val()*stmp;
-											ig3 +=$("input[name=NUTR_CONT3_i"+t+"]").val()*stmp;
-											ig4 +=$("input[name=NUTR_CONT4_i"+t+"]").val()*stmp;
-											ig5 +=$("input[name=NUTR_CONT5_i"+t+"]").val()*stmp;
-											ig6 +=$("input[name=NUTR_CONT6_i"+t+"]").val()*stmp;
-											ig7 +=$("input[name=NUTR_CONT7_i"+t+"]").val()*stmp;
-											ig8 +=$("input[name=NUTR_CONT8_i"+t+"]").val()*stmp;
-										} */
-										
-										$("#sortable1").children().each(function(){ 
-											var t = $(this).attr("value"); 
-											if($("input[name=ingredients"+t+"]").val() != '')
+											/* Swal.fire({ icon: 'success', // Alert 타입 
+												title: 'Alert가 실행되었습니다.', // 
+												Alert 제목 text: '이곳은 내용이 나타나는 곳입니다.', // Alert 내용 
+												}); */
+											if(nowp == 1)
 											{
-											var strli = '';
-											var stmp = ($("input[name=ingredientssize"+t+"]").val()/$("input[id=SERVING_SIZE_i"+t+"]").val());
-												  strli += '<div class="panel bg-transparent">'
-												  		+ '<div class="panel-heading border-color-medium-gray-transparent">'
-												  		+ '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#accordion-style-02-0'+t+'">'
-												  		+ '<div class="panel-title text-left">'
-												  		+ '<span class="alt-font text-dark-gray d-inline-block">'
-												  		+ $("input[name=ingredients"+t+"]").val()+' (사용량 : '
-												  		+ $("input[name=ingredientssize"+t+"]").val()
-												  		+ 'g 또는 ml)'
-												  		+ '</span>'
-												  		+ '<i class="indicator text-dark-gray feather icon-feather-plus"></i>'
-												  		+ '</div>'
-												  		+ '</a>'
-												  		+ '</div>'
-												  		+ '<div id="accordion-style-02-0'+t+'" class="panel-collapse collapse" data-parent="#accordion2">'
-												  		+ '<div class="panel-body">'
-												  	    + '열량 : '+ $("input[name=NUTR_CONT1_i"+t+"]").val()*stmp +'kcal'
-												  	    + '</br>'
-														+ '탄수화물 : '+ $("input[name=NUTR_CONT2_i"+t+"]").val()*stmp +'g'
-														+ '</br>'
-														+ '단백질 : '+ $("input[name=NUTR_CONT3_i"+t+"]").val()*stmp +'g'
-														+ '</br>'
-														+ '지방 : '+ $("input[name=NUTR_CONT4_i"+t+"]").val()*stmp +'g'
-														+ '</br>'
-														+ '당류 : '+ $("input[name=NUTR_CONT5_i"+t+"]").val()*stmp +'g'
-														+ '</br>'
-														+ '나트륨 : '+ $("input[name=NUTR_CONT6_i"+t+"]").val()*stmp +'mg'
-														+ '</br>'
-														+ '콜레스테롤 : '+ $("input[name=NUTR_CONT7_i"+t+"]").val()*stmp +'mg'
-														+ '</br>'
-														+ '포화지방산 : '+ $("input[name=NUTR_CONT8_i"+t+"]").val()*stmp +'g'
-														+ '</br>'
-												  		+ '</div></div></div>'
-										
-											$('#accordion2').append(strli);	
-												  		
-											ig1 +=$("input[name=NUTR_CONT1_i"+t+"]").val()*stmp;
-											ig2 +=$("input[name=NUTR_CONT2_i"+t+"]").val()*stmp;
-											ig3 +=$("input[name=NUTR_CONT3_i"+t+"]").val()*stmp;
-											ig4 +=$("input[name=NUTR_CONT4_i"+t+"]").val()*stmp;
-											ig5 +=$("input[name=NUTR_CONT5_i"+t+"]").val()*stmp;
-											ig6 +=$("input[name=NUTR_CONT6_i"+t+"]").val()*stmp;
-											ig7 +=$("input[name=NUTR_CONT7_i"+t+"]").val()*stmp;
-											ig8 +=$("input[name=NUTR_CONT8_i"+t+"]").val()*stmp;
+												$('#titleView').get(0).click();
 											}
-										});
-										/* var sk = document.getElementsByName("FOOD_CD")[0].value.replace(/(\s*)/g, "");
-										if(sk != '')
-										{
-											$.ajax({
-												url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/1'+'/FOOD_CD='+sk,  
-												type : 'get',
-												dataType : 'json',
-												success : function(data){
-													var kcal = '';
-													kcal = data.I2790.row[0].NUTR_CONT1;
-													kcal *= document.getElementsByName("howmuch")[0].value;
-													var howmuch = document.getElementsByName("howmuch")[0].value
-													document.getElementById("inputHowmuch").innerText = '('+kcal+'kcal / '+howmuch + '인분)';
-											
-													if(howmuch =='') document.getElementById("inputHowmuch").innerText = '(0kcal / 0인분)'; */
-													
-											 	/* 	$('#trans').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT1/1987.7*100));
-													$('#tansu').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT2/287.9*100));
-													$('#danbaek').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT3/72.4*100));
-													$('#jibang').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT4/49.5*100));
-													$('#dang').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT5/60.2*100));
-													$('#natryum').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT6/3255.0*100));
-													$('#coles').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT7/260.4*100));
-													$('#pohwa').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT8/16.6*100));  */
-													
-													var people = document.getElementsByName("howmuch")[0].value;
-										 			var farr = ['열량', '탄수화물', '단백질', '지방', '당류','나트륨', '콜레스테롤', '포화지방산']; 
-													var iarr = [parseInt(ig1/(1987.7*people)*100), parseInt(ig2/(287.9*people)*100), parseInt(ig3/(72.4*people)*100), parseInt(ig4/(49.5*people)*100), parseInt(ig5/(60.2*people)*100),parseInt(ig6/(3255.0*people)*100), parseInt(ig7/(260.4*people)*100), parseInt(ig8/(16.6*people)*100)]; 
-													for(var k = 0; k< 8; k++)
-													{
-														var ftemp = '';
-														ftemp += '<div class="col-lg-3"><div class="chart-percent">'
-										                      + '<span class="pie-chart-style-02" data-line-width="6" data-percent="'
-										                      + iarr[k]
-										                      + '" data-track-color="#f5f5f5" data-start-color="#fc9297" data-end-color="#be85f5">'
-										                      + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
-										                      + '</div><div class="last-paragraph-no-margin wow animate__fadeIn" data-wow-duration="0.2" style="margin-top: 10px; margin-bottom: 10px;">'
-										                      + '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block">'
-										                      + farr[k]
-										                      + '</span></div></div>'
-										                $('#foodIngredientInputinfo').append(ftemp);
-													} 
-													/* 
-													
-												}
-											}); 
-											
-										}
-										else
-										{
-											var fn = document.getElementsByName("foodname")[0].value.replace(/(\s*)/g, "");
-											$.ajax({
-												url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/1'+'/DESC_KOR='+fn,  
-												type : 'get',
-												dataType : 'json',
-												success : function(data){
-													var kcal = '';
-													kcal = data.I2790.row[0].NUTR_CONT1;
-													kcal *= document.getElementsByName("howmuch")[0].value;
-													var howmuch = document.getElementsByName("howmuch")[0].value
-													document.getElementById("inputHowmuch").innerText = '('+kcal+'kcal / '+howmuch + '인분)';
-											
-													if(howmuch =='') document.getElementById("inputHowmuch").innerText = '(0kcal / 0인분)';
-													 */
-											 	/* 	$('#trans').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT1/1987.7*100));
-													$('#tansu').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT2/287.9*100));
-													$('#danbaek').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT3/72.4*100));
-													$('#jibang').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT4/49.5*100));
-													$('#dang').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT5/60.2*100));
-													$('#natryum').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT6/3255.0*100));
-													$('#coles').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT7/260.4*100));
-													$('#pohwa').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT8/16.6*100));  */
-													
-										/*  			var farr = ['열량', '탄수화물', '단백질', '지방', '당류','나트륨', '콜레스테롤', '포화지방산']; 
-													var iarr = [parseInt(data.I2790.row[0].NUTR_CONT1/1987.7*100), parseInt(data.I2790.row[0].NUTR_CONT2/287.9*100), parseInt(data.I2790.row[0].NUTR_CONT3/72.4*100), parseInt(data.I2790.row[0].NUTR_CONT4/49.5*100), parseInt(data.I2790.row[0].NUTR_CONT5/60.2*100),parseInt(data.I2790.row[0].NUTR_CONT6/3255.0*100), parseInt(data.I2790.row[0].NUTR_CONT7/260.4*100), parseInt(data.I2790.row[0].NUTR_CONT8/16.6*100)]; 
-													for(var k = 0; k< 8; k++)
-													{
-														var ftemp = '';
-														ftemp += '<div class="col-lg-3"><div class="chart-percent">'
-										                      + '<span class="pie-chart-style-02" data-line-width="6" data-percent="'
-										                      + iarr[k]
-										                      + '" data-track-color="#f5f5f5" data-start-color="#fc9297" data-end-color="#be85f5">'
-										                      + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
-										                      + '</div><div class="last-paragraph-no-margin wow animate__fadeIn" data-wow-duration="0.2" style="margin-top: 10px; margin-bottom: 10px;">'
-										                      + '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block">'
-										                      + farr[k]
-										                      + '</span></div></div>'
-										                $('#foodIngredientInputinfo').append(ftemp);
-													} 
-
-													
-												}
-											}); 
-										} */
-										
-										
-										
-										var cnttmp = 1;
-										$("#sortable").children().each(function(){ 
-											var i = $(this).attr("value"); 
-											var steptitle = document.getElementsByName("steptitle"+i)[0].value;
-								 	    	if(steptitle != ''){
-								 	    	console.log(i);
-									    	var contents = '';
-											contents += '<li style="width:100%">'
-													+ '<div class="blog-pos margin-30px-bottom wow animate__fadeIn border-right border-top border-bottom border-left border-color-medium-gray" style="width:100%">'
-													+ '<div class="d-flex flex-column flex-md-row align-items-center" style="width:100%">'
-													+ '<div class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding" style="width:100%; padding:0">'
-													+ '<div class="row row-cols-1 row-cols-md-2" style="width:100%;">'
-													+ '<div class="col-lg-5">'
-													+ '<div id="inputstepimage_container'+ i +'" class="stepimage_size"><img src="" id="stepimg_tmp'+i+'"/></div>'
-													+ '</div>'
-													+ '<div class="col-lg-7" style="margin-top: 10px; margin-bottom:20px; height:100%; vertical-align:middle">'
-													+ '<div id="inputsteptitle'+i+'" class="text-left alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase" style="font-size:15px"></div>'
-													+ '<div id="inputstepsubscript'+i+'" class="text-left"></div>'
-													+ '</div>'
-													+ '</div></div>'
-													+ '</div></div></li>'
-
-											$('#sortable2').append(contents);
-											
-											var steptitle = document.getElementsByName("steptitle"+i)[0].value;
-											document.getElementById("inputsteptitle"+i).innerText = '['+cnttmp+'단계] '+steptitle;
-											document.getElementById("inputsteptitle"+i).style.fontWeight = "bold";
-											
-											var stepsubscript = document.getElementsByName("stepsubscript"+i)[0].value;
-											document.getElementById("inputstepsubscript"+i).innerText = stepsubscript;
-											
-											var elem = document.getElementsByName('stepimage'+i); //파일 선택 필드 요소 얻기
-											if(elem[0].files[0]){ // 파일 확장자 체크해서 이미지 파일이면
-											  let preview = document.querySelector('#stepimg_tmp'+i); // 미리보기 썸네일 <img> 엘리먼트 얻기
-											  preview.src = URL.createObjectURL(elem[0].files[0]); //파일 객체에서 이미지 데이터 가져옴.
-											}else{
-											  console.log('이미지 파일이 아닙니다.');
+											else if(nowp == 2)
+											{
+												$('#videioView').get(0).click();
 											}
-											cnttmp += 1;
-								 	    	}
-										});
+											else
+											{
+												$('#hashtagView').get(0).click();
+											}
+												
+											Swal.fire({
+												  title: '앗!',
+												  text: '모든 입력창이 채워졌는지 확인해주세요',
+												  icon: 'error',
+												  confirmButtonText: '확인'
+												})
+											
+											
+
+										}
+										
+										else{
+											previewProcess();
+										}
 
 										
-								 	   var elem1 = document.getElementsByName('product_image'); //파일 선택 필드 요소 얻기
-										if(elem1[0].files[0]){ // 파일 확장자 체크해서 이미지 파일이면
-										  var tmpstr ='<img src="" id="inputThumb" style="margin-top:20px; margin-bottom:20px; text-align:left"/>';
-										  $('#inputThumbdiv').append(tmpstr);
-										  let preview = document.querySelector('#inputThumb'); // 미리보기 썸네일 <img> 엘리먼트 얻기
-										  preview.src = URL.createObjectURL(elem1[0].files[0]); //파일 객체에서 이미지 데이터 가져옴.
-										}else{
-										  console.log('이미지 파일이 아닙니다.');
-										}
+										
+										
+										
 									    
 									});
 									
@@ -1827,73 +1454,9 @@
 										$( '#previewText' ).removeClass( 'font-weight-600' );
 										$( '#titleText' ).addClass( 'font-weight-600' );
 										
-										 var chk = false;
-										 var steptitleArr = [];
-										 var stepimageArr = [];
-										 var stepsubscriptArr = [];
-							               
-							                
-							                $("#sortable").children().each(function(){ 
-							                	var i = $(this).attr("value"); 
-							                	var steptitle = document.getElementsByName("steptitle"+i)[0].value;
-							                	var stepimage = document.getElementsByName("stepimage"+i)[0].value;
-							                	var stepsubscript = document.getElementsByName("stepimage"+i)[0].value;
-							                	steptitleArr.push(steptitle);
-							                	stepimageArr.push(stepimage);
-							                	stepsubscriptArr.push(stepsubscript);
-							                	console.log(stepimage);
-												
-												if(steptitle == '' || stepimage == '' || stepsubscript=='')
-												{
-													console.log('empty');	
-													chk = true;
-													$( '#videoText' ).empty();
-													document.getElementById("videoText").innerText = '레시피 정보';
-													var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
-													$('#videoText').append(str);
-												}
-												else{
-													console.log('not empty');
-												}
-												
-
-							                });
-							           
-							            if(chk == false)
-							            {
-							                var objParams = {
-							                		"foodtime" : $("input[name=foodtime]").val(),
-							                		"videofile" : $("input[name=videofile]").val(),
-							                		"product_image" : $("input[name=product_image]").val(),
-							                        "steptitle" : steptitleArr  ,
-							                        "stepimage" : stepimageArr,
-							                        "stepsubscript" : stepsubscriptArr
-							                    };
-										
-										$.ajax({
-											url: "${pageContext.request.contextPath}/videoviewchk",
-											type: "post",
-											dataType : "text",
-											data : objParams, 
-											success: function(data) {
-												console.log(data);
-												if(data == '0')
-												{
-													$( '#videoText' ).empty();
-													document.getElementById("videoText").innerText = '레시피 정보';
-													var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
-													$('#videoText').append(str);
-													
-												}
-												else
-												{
-													$( '#videoText' ).empty();
-													document.getElementById("videoText").innerText = '레시피 정보';
-												}
-											}
-										});
-							            }
+										var a = checkVideo();
 							            
+										document.getElementById("nowPage").setAttribute("value", 1);
 							            if($("select[name=foodcategory]").val()== ''){
 							            	$( '#hashtagText' ).empty();
 											document.getElementById("hashtagText").innerText = '해쉬태그 설정';
@@ -1917,64 +1480,8 @@
 										$( '#previewText' ).removeClass( 'font-weight-600' );
 										$( '#videoText' ).addClass( 'font-weight-600' );
 										
-										 var ingredientsArr = [];
-										 var ingredientssizeArr = [];
-										 var chk = false;
-							               
-							                
-							                $("#sortable1").children().each(function(){ 
-												var t = $(this).attr("value"); 
-												ingredientsArr.push($("input[name=ingredients"+t+"]").val() );
-												ingredientssizeArr.push($("input[name=ingredientssize"+t+"]").val() );
-												
-												if($("input[name=ingredients"+t+"]").val() == '' || $("input[name=ingredientssize"+t+"]").val() == '')
-												{
-													console.log('empty');	
-													$( '#titleText' ).empty();
-													document.getElementById("titleText").innerText = '기본설명';
-													var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
-													$('#titleText').append(str);
-													chk = true;
-												}
-												else{
-													console.log('not empty');
-												}
-												
-							                });
-							        if(chk == false)
-							        {
-							                var objParams = {
-							                		"title" : $("input[name=title]").val(),
-													"subscript" : $("input[name=subscript]").val(),
-													"foodname" : $("input[name=foodname]").val(),
-													"howmuch" : $("input[name=howmuch]").val(),
-							                        "ingredients" : ingredientsArr  ,
-							                        "ingredientssize" : ingredientssizeArr
-							                    };
-										
-										$.ajax({
-											url: "${pageContext.request.contextPath}/titleviewchk",
-											type: "post",
-											dataType : "text",
-											data : objParams, 
-											success: function(data) {
-												console.log(data);
-												if(data == '0')
-												{
-													$( '#titleText' ).empty();
-													document.getElementById("titleText").innerText = '기본설명';
-													var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
-													$('#titleText').append(str);
-													
-												}
-												else
-												{
-													$( '#titleText' ).empty();
-													document.getElementById("titleText").innerText = '기본설명';
-												}
-											}
-										});
-							        }
+									var a = checkTitle();
+									document.getElementById("nowPage").setAttribute("value", 2);
 							        
 							        if($("select[name=foodcategory]").val()== ''){
 						            	$( '#hashtagText' ).empty();
@@ -2148,6 +1655,426 @@
 			reader.readAsDataURL(event.target.files[0]);
 		}
 	
+		function checkVideo(){
+			 
+			 
+			 var chk = false;
+			
+              $("#sortable").children().each(function(){ 
+              	var i = $(this).attr("value"); 
+              	var steptitle = document.getElementsByName("steptitle"+i)[0].value;
+              	var stepimage = document.getElementsByName("stepimage"+i)[0].value;
+              	var stepsubscript = document.getElementsByName("stepimage"+i)[0].value;
+				if(steptitle == '' || stepimage == '' || stepsubscript=='')
+				{
+					console.log('empty');	
+					$( '#videoText' ).empty();
+					document.getElementById("videoText").innerText = '레시피 정보';
+					var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+					$('#videoText').append(str);
+					chk = true;
+					return chk;
+				}
+				else{
+					console.log('not empty');
+				}
+			
+
+              });
+           
+             if(chk == false)
+            {
+            	var foodtime = $("input[name=foodtime]").val();
+         		var videofile = $("input[name=videofile]").val();
+         		var product_image = $("input[name=product_image]").val();
+            	if(foodtime == '' || videofile == ''|| product_image == '') {
+            		$( '#videoText' ).empty();
+					document.getElementById("videoText").innerText = '레시피 정보';
+					var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+					$('#videoText').append(str);
+ 					chk = true;
+ 				}
+				else
+				{
+					$( '#videoText' ).empty();
+					document.getElementById("videoText").innerText = '레시피 정보';
+				}
+                
+		
+            } 
+             
+             return chk;
+		}
+		
+		function checkHash(){
+			 
+			var chk = false;
+			if($("select[name=foodcategory]").val()== ''){
+            	$( '#hashtagText' ).empty();
+				document.getElementById("hashtagText").innerText = '해쉬태그 설정';
+				var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+				$('#hashtagText').append(str);
+				chk = true;
+            }
+            else{
+            	$( '#hashtagText' ).empty();
+				document.getElementById("hashtagText").innerText = '해쉬태그 설정';
+            }
+            return chk;
+		}
+		
+		function checkTitle(){
+			
+			var chk =false;
+			 $("#sortable1").children().each(function(){ 
+					var t = $(this).attr("value"); 
+					
+					if($("input[name=ingredients"+t+"]").val() == '' || $("input[name=ingredientssize"+t+"]").val() == '')
+					{
+						console.log('empty');	
+						$( '#titleText' ).empty();
+						document.getElementById("titleText").innerText = '기본설명';
+						var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+						$('#titleText').append(str);
+						chk = true;
+						return chk;
+					}
+					else{
+						console.log('not empty');
+					}
+						
+	       });
+	        if(chk == false)
+	        {
+	        	var title = $("input[name=title]").val();
+				var subscript = $("input[name=subscript]").val();
+				var foodname = $("input[name=foodname]").val();
+				var howmuch = $("input[name=howmuch]").val();
+	        
+		        if(title== ''|| subscript== '' || foodname== '' || howmuch == '') {
+		        	$( '#titleText' ).empty();
+					document.getElementById("titleText").innerText = '기본설명';
+					var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
+					$('#titleText').append(str);
+					chk = true;
+				}
+		        else
+		        {
+		        	$( '#titleText' ).empty();
+					document.getElementById("titleText").innerText = '기본설명';
+		        }
+		   }
+	        return chk;
+			        
+			       
+		}
+		
+		function previewProcess(){
+			$( '#hashtagText' ).removeClass( 'font-weight-600' );
+			$( '#videoText' ).removeClass( 'font-weight-600' );
+			$( '#titleText' ).removeClass( 'font-weight-600' );
+			$( '#previewText' ).removeClass( 'font-weight-600' );
+			$( '#previewText' ).addClass( 'font-weight-600' );
+			
+			var title = document.getElementsByName("title")[0].value
+			document.getElementById("inputTitle").innerText = title;
+			
+			var subscript = document.getElementsByName("subscript")[0].value
+			document.getElementById("inputSubscript").innerText = subscript;
+			
+			var foodname = document.getElementsByName("foodname")[0].value
+			document.getElementById("inputFoodname").innerText = foodname;
+			
+			
+			var foodtime = document.getElementsByName("foodtime")[0].value
+			if(foodtime =='') document.getElementById("inputFoodtime").innerText = '0분 소요예상';
+			else  document.getElementById("inputFoodtime").innerText = foodtime +'분 소요예상';
+			
+			$('#inputmyTag').html($('#myTag').html());
+			$('#inputVideo').empty(); 	
+			$('#sortable2').empty();
+			$('#inputThumbdiv').empty();
+			$('#foodIngredientInputinfo').empty();
+			$('#accordion2case').empty();
+			
+			
+			var foodcategory = $("select[name=foodcategory]").val();
+			document.getElementById("inputCategory").innerText = foodcategory;
+
+			const inputFile = document.getElementById("videofile"); 
+			const file = inputFile.files[0];
+			if(file != null)
+			{
+				var str = '<video id="videoTagpre" src="" style="margin-bottom:30px" controls muted loop preload></video>'
+				$('#inputVideo').append(str); 	
+				const video = document.getElementById("videoTagpre"); 
+				const videourl = URL.createObjectURL(file); 
+				console.log(videourl);
+				video.setAttribute("src", videourl); video.play();
+			}
+			var strli ='';
+			strli += '<section class="section wow animate__fadeIn" style="margin-top:-100px; margin-bottom:-100px"><div class="container" style="margin:0; padding:0"><div class="panel-group accordion-event accordion-style-02" id="accordion2" data-active-icon="icon-feather-minus" data-inactive-icon="icon-feather-plus"></div></div></div>'
+			$('#accordion2case').append(strli);
+			
+			var ig1 = 0;
+			var ig2 = 0;
+			var ig3 = 0;
+			var ig4 = 0;
+			var ig5 = 0;
+			var ig6 = 0;
+			var ig7 = 0;
+			var ig8 = 0;
+			
+			/* for(var t = 1; t<=icount; t++)
+			{
+				var strli = '';
+				var stmp = ($("input[name=ingredientssize"+t+"]").val()/$("input[id=SERVING_SIZE_i"+t+"]").val());
+					  strli += '<div class="panel bg-transparent">'
+					  		+ '<div class="panel-heading border-color-medium-gray-transparent">'
+					  		+ '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#accordion-style-02-0'+t+'">'
+					  		+ '<div class="panel-title text-left">'
+					  		+ '<span class="alt-font text-dark-gray d-inline-block">'
+					  		+ $("input[name=ingredients"+t+"]").val()+' (사용량 : '
+					  		+ $("input[name=ingredientssize"+t+"]").val()
+					  		+ 'g 또는 ml)'
+					  		+ '</span>'
+					  		+ '<i class="indicator text-dark-gray feather icon-feather-plus"></i>'
+					  		+ '</div>'
+					  		+ '</a>'
+					  		+ '</div>'
+					  		+ '<div id="accordion-style-02-0'+t+'" class="panel-collapse collapse" data-parent="#accordion2">'
+					  		+ '<div class="panel-body">'
+					  	    + '열량 : '+ $("input[name=NUTR_CONT1_i"+t+"]").val()*stmp +'kcal'
+					  	    + '</br>'
+							+ '탄수화물 : '+ $("input[name=NUTR_CONT2_i"+t+"]").val()*stmp +'g'
+							+ '</br>'
+							+ '단백질 : '+ $("input[name=NUTR_CONT3_i"+t+"]").val()*stmp +'g'
+							+ '</br>'
+							+ '지방 : '+ $("input[name=NUTR_CONT4_i"+t+"]").val()*stmp +'g'
+							+ '</br>'
+							+ '당류 : '+ $("input[name=NUTR_CONT5_i"+t+"]").val()*stmp +'g'
+							+ '</br>'
+							+ '나트륨 : '+ $("input[name=NUTR_CONT6_i"+t+"]").val()*stmp +'mg'
+							+ '</br>'
+							+ '콜레스테롤 : '+ $("input[name=NUTR_CONT7_i"+t+"]").val()*stmp +'mg'
+							+ '</br>'
+							+ '포화지방산 : '+ $("input[name=NUTR_CONT8_i"+t+"]").val()*stmp +'g'
+							+ '</br>'
+					  		+ '</div></div></div>'
+			
+				$('#accordion2').append(strli);	
+					  		
+				ig1 +=$("input[name=NUTR_CONT1_i"+t+"]").val()*stmp;
+				ig2 +=$("input[name=NUTR_CONT2_i"+t+"]").val()*stmp;
+				ig3 +=$("input[name=NUTR_CONT3_i"+t+"]").val()*stmp;
+				ig4 +=$("input[name=NUTR_CONT4_i"+t+"]").val()*stmp;
+				ig5 +=$("input[name=NUTR_CONT5_i"+t+"]").val()*stmp;
+				ig6 +=$("input[name=NUTR_CONT6_i"+t+"]").val()*stmp;
+				ig7 +=$("input[name=NUTR_CONT7_i"+t+"]").val()*stmp;
+				ig8 +=$("input[name=NUTR_CONT8_i"+t+"]").val()*stmp;
+			} */
+			
+			$("#sortable1").children().each(function(){ 
+				var t = $(this).attr("value"); 
+				if($("input[name=ingredients"+t+"]").val() != '')
+				{
+				var strli = '';
+				var stmp = ($("input[name=ingredientssize"+t+"]").val()/$("input[id=SERVING_SIZE_i"+t+"]").val());
+					  strli += '<div class="panel bg-transparent">'
+					  		+ '<div class="panel-heading border-color-medium-gray-transparent">'
+					  		+ '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#accordion-style-02-0'+t+'">'
+					  		+ '<div class="panel-title text-left">'
+					  		+ '<span class="alt-font text-dark-gray d-inline-block">'
+					  		+ $("input[name=ingredients"+t+"]").val()+' (사용량 : '
+					  		+ $("input[name=ingredientssize"+t+"]").val()
+					  		+ 'g 또는 ml)'
+					  		+ '</span>'
+					  		+ '<i class="indicator text-dark-gray feather icon-feather-plus"></i>'
+					  		+ '</div>'
+					  		+ '</a>'
+					  		+ '</div>'
+					  		+ '<div id="accordion-style-02-0'+t+'" class="panel-collapse collapse" data-parent="#accordion2">'
+					  		+ '<div class="panel-body">'
+					  	    + '열량 : '+ $("input[name=NUTR_CONT1_i"+t+"]").val()*stmp +'kcal'
+					  	    + '</br>'
+							+ '탄수화물 : '+ $("input[name=NUTR_CONT2_i"+t+"]").val()*stmp +'g'
+							+ '</br>'
+							+ '단백질 : '+ $("input[name=NUTR_CONT3_i"+t+"]").val()*stmp +'g'
+							+ '</br>'
+							+ '지방 : '+ $("input[name=NUTR_CONT4_i"+t+"]").val()*stmp +'g'
+							+ '</br>'
+							+ '당류 : '+ $("input[name=NUTR_CONT5_i"+t+"]").val()*stmp +'g'
+							+ '</br>'
+							+ '나트륨 : '+ $("input[name=NUTR_CONT6_i"+t+"]").val()*stmp +'mg'
+							+ '</br>'
+							+ '콜레스테롤 : '+ $("input[name=NUTR_CONT7_i"+t+"]").val()*stmp +'mg'
+							+ '</br>'
+							+ '포화지방산 : '+ $("input[name=NUTR_CONT8_i"+t+"]").val()*stmp +'g'
+							+ '</br>'
+					  		+ '</div></div></div>'
+			
+				$('#accordion2').append(strli);	
+					  		
+				ig1 +=$("input[name=NUTR_CONT1_i"+t+"]").val()*stmp;
+				ig2 +=$("input[name=NUTR_CONT2_i"+t+"]").val()*stmp;
+				ig3 +=$("input[name=NUTR_CONT3_i"+t+"]").val()*stmp;
+				ig4 +=$("input[name=NUTR_CONT4_i"+t+"]").val()*stmp;
+				ig5 +=$("input[name=NUTR_CONT5_i"+t+"]").val()*stmp;
+				ig6 +=$("input[name=NUTR_CONT6_i"+t+"]").val()*stmp;
+				ig7 +=$("input[name=NUTR_CONT7_i"+t+"]").val()*stmp;
+				ig8 +=$("input[name=NUTR_CONT8_i"+t+"]").val()*stmp;
+				}
+			});
+			/* var sk = document.getElementsByName("FOOD_CD")[0].value.replace(/(\s*)/g, "");
+			if(sk != '')
+			{
+				$.ajax({
+					url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/1'+'/FOOD_CD='+sk,  
+					type : 'get',
+					dataType : 'json',
+					success : function(data){
+						var kcal = '';
+						kcal = data.I2790.row[0].NUTR_CONT1;
+						kcal *= document.getElementsByName("howmuch")[0].value;
+						var howmuch = document.getElementsByName("howmuch")[0].value
+						document.getElementById("inputHowmuch").innerText = '('+kcal+'kcal / '+howmuch + '인분)';
+				
+						if(howmuch =='') document.getElementById("inputHowmuch").innerText = '(0kcal / 0인분)'; */
+						
+				 	/* 	$('#trans').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT1/1987.7*100));
+						$('#tansu').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT2/287.9*100));
+						$('#danbaek').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT3/72.4*100));
+						$('#jibang').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT4/49.5*100));
+						$('#dang').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT5/60.2*100));
+						$('#natryum').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT6/3255.0*100));
+						$('#coles').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT7/260.4*100));
+						$('#pohwa').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT8/16.6*100));  */
+						
+						var people = document.getElementsByName("howmuch")[0].value;
+			 			var farr = ['열량', '탄수화물', '단백질', '지방', '당류','나트륨', '콜레스테롤', '포화지방산']; 
+						var iarr = [parseInt(ig1/(1987.7*people)*100), parseInt(ig2/(287.9*people)*100), parseInt(ig3/(72.4*people)*100), parseInt(ig4/(49.5*people)*100), parseInt(ig5/(60.2*people)*100),parseInt(ig6/(3255.0*people)*100), parseInt(ig7/(260.4*people)*100), parseInt(ig8/(16.6*people)*100)]; 
+						for(var k = 0; k< 8; k++)
+						{
+							var ftemp = '';
+							ftemp += '<div class="col-lg-3"><div class="chart-percent">'
+			                      + '<span class="pie-chart-style-02" data-line-width="6" data-percent="'
+			                      + iarr[k]
+			                      + '" data-track-color="#f5f5f5" data-start-color="#fc9297" data-end-color="#be85f5">'
+			                      + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+			                      + '</div><div class="last-paragraph-no-margin wow animate__fadeIn" data-wow-duration="0.2" style="margin-top: 10px; margin-bottom: 10px;">'
+			                      + '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block">'
+			                      + farr[k]
+			                      + '</span></div></div>'
+			                $('#foodIngredientInputinfo').append(ftemp);
+						} 
+						/* 
+						
+					}
+				}); 
+				
+			}
+			else
+			{
+				var fn = document.getElementsByName("foodname")[0].value.replace(/(\s*)/g, "");
+				$.ajax({
+					url : 'http://openapi.foodsafetykorea.go.kr/api/f172fe9425e4498c9ea2/I2790/json/1/1'+'/DESC_KOR='+fn,  
+					type : 'get',
+					dataType : 'json',
+					success : function(data){
+						var kcal = '';
+						kcal = data.I2790.row[0].NUTR_CONT1;
+						kcal *= document.getElementsByName("howmuch")[0].value;
+						var howmuch = document.getElementsByName("howmuch")[0].value
+						document.getElementById("inputHowmuch").innerText = '('+kcal+'kcal / '+howmuch + '인분)';
+				
+						if(howmuch =='') document.getElementById("inputHowmuch").innerText = '(0kcal / 0인분)';
+						 */
+				 	/* 	$('#trans').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT1/1987.7*100));
+						$('#tansu').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT2/287.9*100));
+						$('#danbaek').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT3/72.4*100));
+						$('#jibang').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT4/49.5*100));
+						$('#dang').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT5/60.2*100));
+						$('#natryum').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT6/3255.0*100));
+						$('#coles').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT7/260.4*100));
+						$('#pohwa').attr('data-percent',  parseInt(data.I2790.row[0].NUTR_CONT8/16.6*100));  */
+						
+			/*  			var farr = ['열량', '탄수화물', '단백질', '지방', '당류','나트륨', '콜레스테롤', '포화지방산']; 
+						var iarr = [parseInt(data.I2790.row[0].NUTR_CONT1/1987.7*100), parseInt(data.I2790.row[0].NUTR_CONT2/287.9*100), parseInt(data.I2790.row[0].NUTR_CONT3/72.4*100), parseInt(data.I2790.row[0].NUTR_CONT4/49.5*100), parseInt(data.I2790.row[0].NUTR_CONT5/60.2*100),parseInt(data.I2790.row[0].NUTR_CONT6/3255.0*100), parseInt(data.I2790.row[0].NUTR_CONT7/260.4*100), parseInt(data.I2790.row[0].NUTR_CONT8/16.6*100)]; 
+						for(var k = 0; k< 8; k++)
+						{
+							var ftemp = '';
+							ftemp += '<div class="col-lg-3"><div class="chart-percent">'
+			                      + '<span class="pie-chart-style-02" data-line-width="6" data-percent="'
+			                      + iarr[k]
+			                      + '" data-track-color="#f5f5f5" data-start-color="#fc9297" data-end-color="#be85f5">'
+			                      + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+			                      + '</div><div class="last-paragraph-no-margin wow animate__fadeIn" data-wow-duration="0.2" style="margin-top: 10px; margin-bottom: 10px;">'
+			                      + '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block">'
+			                      + farr[k]
+			                      + '</span></div></div>'
+			                $('#foodIngredientInputinfo').append(ftemp);
+						} 
+
+						
+					}
+				}); 
+			} */
+			
+			
+			
+			var cnttmp = 1;
+			$("#sortable").children().each(function(){ 
+				var i = $(this).attr("value"); 
+				var steptitle = document.getElementsByName("steptitle"+i)[0].value;
+	 	    	if(steptitle != ''){
+	 	    	console.log(i);
+		    	var contents = '';
+				contents += '<li style="width:100%">'
+						+ '<div class="blog-pos margin-30px-bottom wow animate__fadeIn border-right border-top border-bottom border-left border-color-medium-gray" style="width:100%">'
+						+ '<div class="d-flex flex-column flex-md-row align-items-center" style="width:100%">'
+						+ '<div class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding" style="width:100%; padding:0">'
+						+ '<div class="row row-cols-1 row-cols-md-2" style="width:100%;">'
+						+ '<div class="col-lg-5">'
+						+ '<div id="inputstepimage_container'+ i +'" class="stepimage_size"><img src="" id="stepimg_tmp'+i+'"/></div>'
+						+ '</div>'
+						+ '<div class="col-lg-7" style="margin-top: 10px; margin-bottom:20px; height:100%; vertical-align:middle">'
+						+ '<div id="inputsteptitle'+i+'" class="text-left alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase" style="font-size:15px"></div>'
+						+ '<div id="inputstepsubscript'+i+'" class="text-left"></div>'
+						+ '</div>'
+						+ '</div></div>'
+						+ '</div></div></li>'
+
+				$('#sortable2').append(contents);
+				
+				var steptitle = document.getElementsByName("steptitle"+i)[0].value;
+				document.getElementById("inputsteptitle"+i).innerText = '['+cnttmp+'단계] '+steptitle;
+				document.getElementById("inputsteptitle"+i).style.fontWeight = "bold";
+				
+				var stepsubscript = document.getElementsByName("stepsubscript"+i)[0].value;
+				document.getElementById("inputstepsubscript"+i).innerText = stepsubscript;
+				
+				var elem = document.getElementsByName('stepimage'+i); //파일 선택 필드 요소 얻기
+				if(elem[0].files[0]){ // 파일 확장자 체크해서 이미지 파일이면
+				  let preview = document.querySelector('#stepimg_tmp'+i); // 미리보기 썸네일 <img> 엘리먼트 얻기
+				  preview.src = URL.createObjectURL(elem[0].files[0]); //파일 객체에서 이미지 데이터 가져옴.
+				}else{
+				  console.log('이미지 파일이 아닙니다.');
+				}
+				cnttmp += 1;
+	 	    	}
+			});
+
+			
+	 	   var elem1 = document.getElementsByName('product_image'); //파일 선택 필드 요소 얻기
+			if(elem1[0].files[0]){ // 파일 확장자 체크해서 이미지 파일이면
+			  var tmpstr ='<img src="" id="inputThumb" style="margin-top:20px; margin-bottom:20px; text-align:left"/>';
+			  $('#inputThumbdiv').append(tmpstr);
+			  let preview = document.querySelector('#inputThumb'); // 미리보기 썸네일 <img> 엘리먼트 얻기
+			  preview.src = URL.createObjectURL(elem1[0].files[0]); //파일 객체에서 이미지 데이터 가져옴.
+			}else{
+			  console.log('이미지 파일이 아닙니다.');
+			}
+		}
 
 		/** 아이템 체크 */
 		function validateItem() {
