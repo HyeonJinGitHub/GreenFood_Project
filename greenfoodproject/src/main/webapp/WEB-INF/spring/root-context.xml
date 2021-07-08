@@ -39,5 +39,33 @@
 		p:sqlSessionFactory-ref="RecipeSqlSession"
 		p:mapperInterface="net.developia.greenfood.dao.RecipeDAO"
 		/>
+		
+	<bean
+		id="IngredientsDAO" 
+		class="org.mybatis.spring.mapper.MapperFactoryBean" 
+		p:sqlSessionFactory-ref="RecipeSqlSession"
+		p:mapperInterface="net.developia.greenfood.dao.IngredientsDAO"
+		/>
+		
+	<bean
+		id="Recipe_IngredientsDAO" 
+		class="org.mybatis.spring.mapper.MapperFactoryBean" 
+		p:sqlSessionFactory-ref="RecipeSqlSession"
+		p:mapperInterface="net.developia.greenfood.dao.Recipe_IngredientsDAO"
+		/>
+		
+	<bean
+		id="ArticleDAO" 
+		class="org.mybatis.spring.mapper.MapperFactoryBean" 
+		p:sqlSessionFactory-ref="RecipeSqlSession"
+		p:mapperInterface="net.developia.greenfood.dao.ArticleDAO"
+		/>
+	
+	<bean
+		id="Article_HashDAO" 
+		class="org.mybatis.spring.mapper.MapperFactoryBean" 
+		p:sqlSessionFactory-ref="RecipeSqlSession"
+		p:mapperInterface="net.developia.greenfood.dao.Article_HashDAO"
+		/>
 	<!--  recupeDAO end -->
 </beans>

@@ -74,14 +74,13 @@
                                 </ul>
                             </div>
                             <div class="col-12 col-lg-auto text-center text-lg-right">
-                                <a href="#classes" class="section-link btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge "><span class="line-height-25px">레시피 등록</span></a>
+                                <button class="section-link btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge " onclick="submitProcess()"><span class="line-height-25px">레시피 등록</span></button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row margin-8-rem-top overlap-gap-section md-margin-6-rem-top ">
                     <div class="col-12 col-md-12 wow animate__fadeIn" data-wow-delay="0.1s">
-                     	<form action="${email-templates}/contact-form.php" method="post">
 										<div class="tab-content">
 											<!-- start tab item -->
 											<div id="planning-tab" class="tab-pane fade active show">
@@ -697,7 +696,6 @@
 											</div> -->
 											</div>
 											<!-- end tab item -->
-											</form>
 											<!-- start tab item -->
 											<div id="campaign-tab" class="tab-pane fade" style="width:100%; padding:0px">
 												<!-- start section -->
@@ -894,8 +892,8 @@
 																data-wow-delay="0.2s">
 																<div
 																	class="d-flex justify-content-center align-items-center padding-15px-lr h-100">
-																	<a href="#"
-																		class="section-link btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge">등록</a>
+																	<button onclick="submitProcess()"
+																		class="section-link btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge">등록</button>
 																</div>
 															</div>
 															<!-- end feature box item-->
@@ -1109,6 +1107,7 @@
 	<script>
 	var count = 1;
 	var icount = 1;
+	document.getElementById("nowPage").setAttribute("value", 1);
 		$(document)
 				.ready(
 						
@@ -1225,7 +1224,8 @@
 					               
 									}); 
 									
-									
+							
+							
 							$(document).on(
 									"click",
 									"#preView",
@@ -1236,26 +1236,9 @@
 										var hv = checkHash(); 
 										
 										var nowp = document.getElementsByName("nowPage")[0].value
-										
 										if(tv == true || vv == true || hv == true)
 										{
-											/* Swal.fire({ icon: 'success', // Alert 타입 
-												title: 'Alert가 실행되었습니다.', // 
-												Alert 제목 text: '이곳은 내용이 나타나는 곳입니다.', // Alert 내용 
-												}); */
-											if(nowp == 1)
-											{
-												$('#titleView').get(0).click();
-											}
-											else if(nowp == 2)
-											{
-												$('#videioView').get(0).click();
-											}
-											else
-											{
-												$('#hashtagView').get(0).click();
-											}
-												
+											
 											Swal.fire({
 												  title: '앗!',
 												  text: '모든 입력창이 채워졌는지 확인해주세요',
@@ -1263,19 +1246,12 @@
 												  confirmButtonText: '확인'
 												})
 											
-											
-
 										}
 										
 										else{
 											previewProcess();
 										}
 
-										
-										
-										
-										
-									    
 									});
 									
 							$(document).on("change","#stepimage",function(event){
@@ -1636,12 +1612,6 @@
 			}); 
 		}
 		
-		function submitItem() {
-			if (!validateItem()) {
-				return;
-			}
-			alert("등록");
-		}
 		function setThumbnail(event){
 			var reader = new FileReader();
 			
@@ -1770,6 +1740,14 @@
 		}
 		
 		function previewProcess(){
+			
+			$( '#titleText' ).empty();
+			document.getElementById("titleText").innerText = '기본설명';
+			$( '#hashtagText' ).empty();
+			document.getElementById("hashtagText").innerText = '해쉬태그 설정';
+			$( '#videoText' ).empty();
+			document.getElementById("videoText").innerText = '레시피 정보';
+			
 			$( '#hashtagText' ).removeClass( 'font-weight-600' );
 			$( '#videoText' ).removeClass( 'font-weight-600' );
 			$( '#titleText' ).removeClass( 'font-weight-600' );
@@ -2075,6 +2053,112 @@
 			  console.log('이미지 파일이 아닙니다.');
 			}
 		}
+		
+	function submitProcess(){
+		
+		var tv = checkTitle();
+		var vv = checkVideo();
+		var hv = checkHash(); 
+		
+		if(tv == true || vv == true || hv == true)
+		{
+			/* Swal.fire({ icon: 'success', // Alert 타입 
+				title: 'Alert가 실행되었습니다.', // 
+				Alert 제목 text: '이곳은 내용이 나타나는 곳입니다.', // Alert 내용 
+				}); */
+			if(nowp == 1)
+			{
+				$('#titleView').get(0).click();
+			}
+			else if(nowp == 2)
+			{
+				$('#videioView').get(0).click();
+			}
+			else
+			{
+				$('#hashtagView').get(0).click();
+			}
+				
+			Swal.fire({
+				  title: '앗!',
+				  text: '모든 입력창이 채워졌는지 확인해주세요',
+				  icon: 'error',
+				  confirmButtonText: '확인'
+				})
+		}
+		
+		else{
+			
+			console.log('insert 실행');
+			var title = $("input[name=title]").val();
+			var subscript = $("input[name=subscript]").val();
+			var foodname = $("input[name=foodname]").val();
+			var howmuch = $("input[name=howmuch]").val();
+			var ingredientsArr = [];
+			var ingredientssizeArr = [];
+				
+			$("#sortable1").children().each(function(){ 
+					var t = $(this).attr("value"); 
+					ingredientsArr.push($("input[name=ingredients"+t+"]").val());
+					ingredientssizeArr.push($("input[name=ingredientssize"+t+"]").val());
+						
+		   });
+			
+			var foodtime = $("input[name=foodtime]").val();
+	   		var videofile = $("input[name=videofile]").val();
+	   		var product_image = $("input[name=product_image]").val();
+			var steptitleArr = [];
+			var stepimageArr = [];
+			var stepsubscriptArr = [];
+	       $("#sortable").children().each(function(){ 
+	        	var i = $(this).attr("value"); 
+	        	var steptitle = document.getElementsByName("steptitle"+i)[0].value;
+	        	var stepimage = document.getElementsByName("stepimage"+i)[0].value;
+	        	var stepsubscript = document.getElementsByName("stepimage"+i)[0].value;
+	        	steptitleArr.push(steptitle);
+	        	stepimageArr.push(stepimage);
+	        	stepsubscriptArr.push(stepsubscript);
+	        });
+	     
+	       var foodcategory = $("select[name=foodcategory]").val();
+	       var hashtagArr = [];
+	      
+		   	
+		   $("#myTag").children().each(function(){ 
+	       	var i = $(this).text();
+	       	hashtagArr.push(i);
+	       });
+				
+		
+		   var objParams = {
+				   "title" :title,
+				   "subscript" :subscript,
+				   "foodname" : foodname,
+				   "howmuch" : howmuch,
+				   "ingredientsArr" : ingredientsArr,
+				   "ingredientssizeArr" : ingredientssizeArr,
+				   "foodtime" : foodtime,
+				   "videofile" : videofile,
+				   "product_image" : product_image,
+				   "steptitleArr" : steptitleArr,
+				   "stepimageArr" : stepimageArr,
+				   "stepsubscriptArr" : stepsubscriptArr,
+				   "foodcategory" : foodcategory,
+				   "hashtagArr" : hashtagArr
+	           };
+		   
+		   $.ajax({
+	           url         :   "${pageContext.request.contextPath}/insertRecipe",
+	           dataType    :   "json",
+	           type        :   "post",
+	           data        :   objParams,
+	           success     :   function(retVal){
+					console.log("insert 실행");
+	           }
+	       });
+		}
+		
+	}
 
 		/** 아이템 체크 */
 		function validateItem() {

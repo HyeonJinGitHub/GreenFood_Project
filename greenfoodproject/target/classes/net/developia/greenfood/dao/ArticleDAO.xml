@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.developia.greenfood.dao.ArticleDAO">
+<resultMap id="ArticleDTO" type="ArticleDTO">
+    <result property="no" column="no"/>
+    <result property="id" column="id"/>
+    <result property="title" column="title"/>
+    <result property="explanation" column="explanation"/>
+    <result property="foodname" column="foodname"/>
+    <result property="howmuch" column="howmuch"/>
+    <result property="cookingtime" column="cookingtime"/>
+    <result property="foodcategoryno" column="foodcategoryno"/>
+    <result property="views" column="views"/>
+    <result property="likes" column="likes"/>
+</resultMap>
+
+
+	<insert id="insertRecipe" parameterType="ArticleDTO">
+		Insert into recipe (title, id, explanation, foodname, cookingtime, howmuch, foodcategoryno, views, likes) 
+		values (#{title},
+				#{id},
+				#{explanation},
+				#{foodname},
+				#{cookingtime},
+				#{howmuch},
+				#{foodcategoryno},
+				#{views},
+				#{likes});
+	</insert>
+	
+	
+	<select id="findRecipe" parameterType="ArticleDTO" resultType="Integer">
+		select no
+		from recipe
+		where title == #{title} and explanation == #{explanation}  and foodname== #{foodname} and cookingtime == #{cookingtime} and howmuch == #{howmuch} and id==#{id}
+	</select>
+	
+</mapper>

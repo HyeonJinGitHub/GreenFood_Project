@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.developia.greenfood.dao.Recipe_IngredientsDAO">
+<resultMap id="Recipe_IngredientsDTO" type="Recipe_IngredientsDTO">
+    <result property="no" column="no"/>
+    <result property="ingredients_no" column="ingredients_no"/>
+    <result property="recipe_no" column="recipe_no"/>
+    <result property="howmuch" column="howmuch"/>
+</resultMap>
+
+
+	<insert id="InsertRecipe_Ingredients" parameterType="Recipe_IngredientsDTO">
+			Insert into recipe_ingredients (ingredients_no, recipe_no, howmuch) 
+			values (#{ingredients_no},
+					#{recipe_no},
+					#{howmuch});
+	</insert>
+	
+</mapper>
