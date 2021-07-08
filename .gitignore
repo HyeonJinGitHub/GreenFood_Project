@@ -1,2 +1,4 @@
 /.metadata/
 greenfoodproject/target/m2e-wtp/web-resources/META-INF/maven/net.developia/greenfood/pom.properties
+database.properties
+aws.properties
