@@ -67,7 +67,7 @@ is
     begin  
         insert into member(id, password, name, email, phone, profile_img)
         values(input_id, input_password, input_name, input_email,
-        input_phoneNumber, 'https://greenfood-bucket.s3.us-east-2.amazonaws.com/default_profile.png');
+        input_phoneNumber, 'https://d3gr4nmrit7xq0.cloudfront.net/default_profile.png');
         commit;
     end insert_member;
     
