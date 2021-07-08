@@ -69,7 +69,17 @@
 		/>
 	<!--  recupeDAO end -->
 	<!-- 작성자: 이효범작성일자: 2021/07/05 15:31 -->
+  <!-- ingredientDAO start -->
+   <bean id="ingredientSqlSession"
+      class="org.mybatis.spring.SqlSessionFactoryBean"
+      p:dataSource-ref="dataSource"
+      p:typeAliasesPackage="net.developia.greenfood.dto" />
 
+   <bean id="ingredientDAO"
+      class="org.mybatis.spring.mapper.MapperFactoryBean"
+      p:sqlSessionFactory-ref="ingredientSqlSession"
+      p:mapperInterface="net.developia.greenfood.dao.IngredientDAO" />
+   <!-- ingredientDAO end -->
 
 <!-- MainDAO start -->
 
