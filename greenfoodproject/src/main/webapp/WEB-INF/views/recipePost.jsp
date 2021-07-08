@@ -725,7 +725,7 @@
 									                    </div>
 													</div>
 													<div class="col-lg-10 text-left">
-														<div id="inputTitle" style="margin-top:50px"></div>
+														<div id="inputTitle" style="margin-top:10px"></div>
 													</div>
 												</div>
 												<div class="row row-cols-1 row-cols-md-2" style="padding:0px; margin-top:20px; margin-bottom:20px">
@@ -763,7 +763,7 @@
 															<div class="col-lg-2 sm-margin-25px-bottom" style="margin-top:10px">
 																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>음식이름</span>
 															</div>
-															<div class="col-lg-4 sm-margin-25px-bottom text-left" id="inputFoodname">
+															<div class="col-lg-4 sm-margin-25px-bottom text-left" id="inputFoodname" style="margin-top:10px">
 															</div>
 															<div class="col-lg-6 sm-margin-25px-bottom text-left" id="inputHowmuch">
 															</div>
