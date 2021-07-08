@@ -46,7 +46,6 @@
 	<classpathentry kind="lib" path="src/main/resources/lib/javaSDK-2.2.jar"/>
 	<classpathentry kind="lib" path="src/main/resources/lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="src/main/resources/lib/ojdbc8.jar"/>
-
 	<classpathentry kind="src" output="target/test-classes" path="target/generated-test-sources/test-annotations">
 		<attributes>
 			<attribute name="optional" value="true"/>

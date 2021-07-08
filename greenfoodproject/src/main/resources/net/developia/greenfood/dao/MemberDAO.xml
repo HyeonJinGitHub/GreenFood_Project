@@ -103,4 +103,40 @@
        ]]>
 	</select>
 	
+	<parameterMap type="java.util.HashMap" id="ProfileParam">
+		<parameter property="ID" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="MemberNickname" jdbcType="VARCHAR"
+			mode="OUT" />
+		<parameter property="MemberProfileImg" jdbcType="VARCHAR"
+		mode="OUT" />
+	</parameterMap>
+	<select id="selectProfile" statementType="CALLABLE"
+		parameterMap="ProfileParam" >
+	<![CDATA[
+          {
+             call member_pkg.select_profile(
+				?, ?, ?
+			)
+          }
+       ]]>
+	</select>
+	
+	<parameterMap type="java.util.HashMap"
+		id="updateProfileParam">
+		<parameter property="ID" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="NICKNAME" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="PROFILE_IMG" jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+
+	<select id="updateProfile" statementType="CALLABLE"
+		parameterMap="updateProfileParam" >
+	<![CDATA[
+          {
+             call member_pkg.update_profile(
+				?, ?, ?
+			)
+          }
+       ]]>
+	</select>
+	
 </mapper>
