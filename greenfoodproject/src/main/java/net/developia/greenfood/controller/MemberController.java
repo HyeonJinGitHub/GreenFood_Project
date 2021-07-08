@@ -86,7 +86,7 @@ public class MemberController {
 	
 	@PostMapping("/")
 	public ModelAndView move_home_post() {
-		return new ModelAndView("home");
+		return new ModelAndView("main");
 	}
 	
 	@GetMapping("/myinfo")
@@ -170,5 +170,10 @@ public class MemberController {
 		}
 		return mav;
 		
+	}
+	
+	@PostMapping("/contact")
+	public ModelAndView move_contact_get() {
+		return new ModelAndView("contact");
 	}
 }
