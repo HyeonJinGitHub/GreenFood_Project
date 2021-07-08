@@ -171,4 +171,9 @@ public class MemberController {
 		return mav;
 		
 	}
+	
+	@PostMapping("/contact")
+	public ModelAndView move_contact_get() {
+		return new ModelAndView("contact");
+	}
 }

@@ -76,9 +76,7 @@
                                         <span class="alt-font font-weight-500 d-block margin-30px-bottom line-height-24px text-extra-dark-gray text-neon-orange-hover d-block">${email }</span>
                                         <span class="text-medium text-uppercase d-block margin-5px-bottom">휴대전화</span>
                                         <span class="alt-font font-weight-500 d-block margin-30px-bottom line-height-24px text-extra-dark-gray text-neon-orange-hover d-block">${phone }</span>
-                                        <form action="${contextPath}/profile" method="POST">
-                                    	<button type="submit" class="btn btn-medium btn-fancy btn-dark-gray">수정</button>
-                                    	</form>
+                                    	<button type="button" onclick="move_contact()" class="btn btn-medium btn-fancy btn-dark-gray">수정</button>
                                     </div>
                                 </div>
                         </div>
@@ -185,5 +183,10 @@
         <script type="text/javascript" src="js/theme-vendors.min.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         
+        <script>
+        	function move_contact() {
+        		location.href="${contextPath}/contact";
+        	}
+        </script>
     </body>
 </html>
