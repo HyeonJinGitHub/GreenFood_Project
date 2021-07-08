@@ -2062,23 +2062,6 @@
 		
 		if(tv == true || vv == true || hv == true)
 		{
-			/* Swal.fire({ icon: 'success', // Alert 타입 
-				title: 'Alert가 실행되었습니다.', // 
-				Alert 제목 text: '이곳은 내용이 나타나는 곳입니다.', // Alert 내용 
-				}); */
-			if(nowp == 1)
-			{
-				$('#titleView').get(0).click();
-			}
-			else if(nowp == 2)
-			{
-				$('#videioView').get(0).click();
-			}
-			else
-			{
-				$('#hashtagView').get(0).click();
-			}
-				
 			Swal.fire({
 				  title: '앗!',
 				  text: '모든 입력창이 채워졌는지 확인해주세요',
@@ -2086,10 +2069,8 @@
 				  confirmButtonText: '확인'
 				})
 		}
-		
 		else{
 			
-			console.log('insert 실행');
 			var title = $("input[name=title]").val();
 			var subscript = $("input[name=subscript]").val();
 			var foodname = $("input[name=foodname]").val();
@@ -2126,6 +2107,7 @@
 		   	
 		   $("#myTag").children().each(function(){ 
 	       	var i = $(this).text();
+	       	console.log(i);
 	       	hashtagArr.push(i);
 	       });
 				
@@ -2147,10 +2129,19 @@
 				   "hashtagArr" : hashtagArr
 	           };
 		   
+		   console.log(title);
+		   console.log(subscript);
+		   console.log(foodname);
+		   console.log(howmuch);
+		   console.log(foodtime);
+		   console.log(videofile);
+		   console.log(product_image);
+		   console.log(foodcategory);
+		   
 		   $.ajax({
-	           url         :   "${pageContext.request.contextPath}/insertRecipe",
-	           dataType    :   "json",
+	           url         :   "${pageContext.request.contextPath}/postRecipe",
 	           type        :   "post",
+	           dataType    :   "json",
 	           data        :   objParams,
 	           success     :   function(retVal){
 					console.log("insert 실행");

@@ -26,14 +26,14 @@
 				#{howmuch},
 				#{foodcategoryno},
 				#{views},
-				#{likes});
+				#{likes})
 	</insert>
 	
 	
 	<select id="findRecipe" parameterType="ArticleDTO" resultType="Integer">
 		select no
 		from recipe
-		where title == #{title} and explanation == #{explanation}  and foodname== #{foodname} and cookingtime == #{cookingtime} and howmuch == #{howmuch} and id==#{id}
+		where title like #{title} and explanation like #{explanation}  and foodname like #{foodname} and id like #{id}
 	</select>
 	
 </mapper>

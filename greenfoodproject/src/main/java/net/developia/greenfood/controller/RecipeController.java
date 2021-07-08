@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.google.gson.Gson;
 
 import kr.co.shineware.nlp.komoran.constant.DEFAULT_MODEL;
@@ -93,6 +96,21 @@ public class RecipeController {
 	 * return chk; }
 	 */
 
+	/*
+	 * @GetMapping("/myinfo") public ModelAndView move_myinfo(HttpSession session) {
+	 * HashMap<String, Object> map = new HashMap<String, Object>(); map.put("ID",
+	 * session.getAttribute("id")); ModelAndView mav = new ModelAndView("myinfo");
+	 * try { memberService.selectProfile(map); Object output =
+	 * map.get("MemberNickname"); if(output == null) { mav.addObject("nickname",
+	 * ""); } else { mav.addObject("nickname",
+	 * map.get("MemberNickname").toString()); }
+	 * 
+	 * mav.addObject("profile_img", map.get("MemberProfileImg").toString()); } catch
+	 * (Exception e) { e.printStackTrace(); mav.addObject("nickname", "");
+	 * mav.addObject("profile_img", map.get("MemberProfileImg").toString()); }
+	 * return mav; }
+	 */
+
 	@PostMapping(value = "/mytag", produces = "application/text; charset=utf8")
 	public @ResponseBody String myHashtahList(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
@@ -111,64 +129,80 @@ public class RecipeController {
 		return json;
 	}
 
-	@PostMapping(value = "/insertRecipe", produces = "application/text; charset=utf8")
-	public @ResponseBody void insertRecipe(HttpServletRequest request, HttpServletResponse response, @RequestParam(value="ingredientsArr[]") List<String> ingredientsArr,
-																									 @RequestParam(value="ingredientssizeArr[]") List<String> ingredientssizeArr,
-																									 @RequestParam(value="steptitleArr[]") List<String> steptitleArr,
-																									 @RequestParam(value="stepimageArr[]") List<String> stepimageArr,
-																									 @RequestParam(value="stepsubscriptArr[]") List<String> stepsubscriptArr,
-																									 @RequestParam(value="hashtagArr[]") List<String> hashtagArr,
-			 																						 @RequestParam(value="title") String title,//
-			 																						 @RequestParam(value="subscript") String subscript,//
-			 																						 @RequestParam(value="foodname") String foodname,//
-			 																						 @RequestParam(value="howmuch") String howmuch,//
-			 																						 @RequestParam(value="foodtime") String foodtime,//
-			 																						 @RequestParam(value="videofile") String videofile,
-			 																						 @RequestParam(value="product_image") String product_image,
-			 																						 @RequestParam(value="foodcategory") String foodcategory)throws Exception {
+	@PostMapping(value = "/postRecipe", produces = "application/text; charset=utf8")
+	public @ResponseBody void insertRecipe(@RequestParam(value = "ingredientsArr[]") List<String> ingredientsArr,
+			@RequestParam(value = "ingredientssizeArr[]") List<String> ingredientssizeArr,
+			@RequestParam(value = "steptitleArr[]") List<String> steptitleArr,
+			@RequestParam(value = "stepimageArr[]") List<String> stepimageArr,
+			@RequestParam(value = "stepsubscriptArr[]") List<String> stepsubscriptArr,
+			@RequestParam(value = "hashtagArr[]") List<String> hashtagArr, @RequestParam(value = "title") String title, //
+			@RequestParam(value = "subscript") String subscript, //
+			@RequestParam(value = "foodname") String foodname, //
+			@RequestParam(value = "howmuch") String howmuch, //
+			@RequestParam(value = "foodtime") String foodtime, //
+			@RequestParam(value = "videofile") String videofile,
+			@RequestParam(value = "product_image") String product_image,
+			@RequestParam(value = "foodcategory") String foodcategory) throws Exception {
 
-		 RecipeDTO rdto = new RecipeDTO();
-		 rdto.setTitle(foodcategory);
-		 int cat_no = recipeService.findCategory(rdto);
-		 log.info("글번호" + cat_no);
-			/*
-			 * ArticleDTO adto = new ArticleDTO(); adto.setTitle(title);
-			 * adto.setId("eunna8675"); adto.setExplanation(subscript);
-			 * adto.setCookingtime(Integer.parseInt(foodtime)); adto.setFoodname(foodname);
-			 * adto.setHowmuch(Integer.parseInt(howmuch)); adto.setFoodcategoryno(cat_no);
-			 * adto.setViews(0); adto.setLikes(0);
-			 * 
-			 * recipeService.insertRecipe(adto); int recipe_no =
-			 * recipeService.findRecipe(adto); log.info("글번호" + recipe_no);
-			 */
+		RecipeDTO rdto = new RecipeDTO();
+		rdto.setTitle(foodcategory);
+		int cat_no = recipeService.findCategory(rdto);
+		log.info("글번호" + cat_no);
+		ArticleDTO adto = new ArticleDTO();
+		adto.setTitle(title);
+		adto.setId("eunna8675");
+		adto.setExplanation(subscript);
+		adto.setCookingtime(Integer.parseInt(foodtime));
+		adto.setFoodname(foodname);
+		adto.setHowmuch(Integer.parseInt(howmuch));
+		adto.setFoodcategoryno(cat_no);
+		adto.setViews(0);
+		adto.setLikes(0);
+		recipeService.insertRecipe(adto);
+		int recipe_no = recipeService.findRecipe(adto);
+		log.info("글번호" + recipe_no);
+
+		// recipe_hashtag
+
+		for(String hasht : hashtagArr) { 
+			 RecipeDTO rtmp = new RecipeDTO();
+			 rtmp.setTagname(hasht); 
+			 int hashno = recipeService.findHashtag(rtmp);
+			 log.info(hashno +"해쉬코드 번호");
+			 Article_HashDTO ahdto = new Article_HashDTO(); 
+			 ahdto.setHashtag_no(hashno);
+			 ahdto.setRecipe_no(recipe_no); 
+			 recipeService.insertHash_Recipe(ahdto); 
+		}
 		 
-		 
-		 //recipe_hashtag
-		 
-			/*
-			 * for(String hasht : hashtagArr) { RecipeDTO rtmp = new RecipeDTO();
-			 * rtmp.setTagname(hasht); int hashno = recipeService.findHashtag(rtmp);
-			 * Article_HashDTO ahdto = new Article_HashDTO(); ahdto.setHashtag_no(hashno);
-			 * ahdto.setRecipe_no(recipe_no); recipeService.insertHash_Recipe(ahdto); }
-			 */
-		 
-		 
-		 //ingredients
-			/*
-			 * List<IngredientsDTO> ingredients_list = recipeService.findIngredients(); for
-			 * (String iga : ingredientsArr) { boolean chk = false; int ino = 0; int isize =
-			 * 0; for(int i = 0; i < ingredients_list.size(); i++) { if
-			 * (iga.equals(ingredients_list.get(i))) { chk = true; ino =
-			 * ingredients_list.get(i).getNo(); isize = i; break; } } if(chk == false) {
-			 * recipeService.insertIngredients(iga); } int ingredients_no =
-			 * recipeService.findIngredientsOne(iga); int howm =
-			 * Integer.parseInt(ingredientssizeArr.get(isize)); Recipe_IngredientsDTO ridto
-			 * = new Recipe_IngredientsDTO(); ridto.setHowmuch(howm);
-			 * ridto.setIngredients_no(ingredients_no); ridto.setRecipe_no(recipe_no);
-			 * recipeService.InsertRecipe_Ingredients(ridto); }
-			 */
-		 
-	        
+
+		// ingredients
+		
+		List<IngredientsDTO> ingredients_list = recipeService.findIngredients(); 
+		for(String iga : ingredientsArr) { 
+			boolean chk = false; 
+			int ino = 0; 
+			int isize =0; 
+			for(int i = 0; i < ingredients_list.size(); i++) { 
+				if(iga.equals(ingredients_list.get(i))) 
+				{ 
+					chk = true; 
+					ino = ingredients_list.get(i).getNo(); 
+					isize = i; break; 
+				}
+			} 
+			if(chk == false) {
+		 	   recipeService.insertIngredients(iga); 
+		 	} 
+			int ingredients_no =recipeService.findIngredientsOne(iga); 
+			int howm =Integer.parseInt(ingredientssizeArr.get(isize)); 
+			Recipe_IngredientsDTO ridto = new Recipe_IngredientsDTO(); 
+			ridto.setHowmuch(howm);
+		    ridto.setIngredients_no(ingredients_no); 
+		    ridto.setRecipe_no(recipe_no);
+		    recipeService.InsertRecipe_Ingredients(ridto); 
+		  }
+
 	}
 
 	public static List<String> StringProcess(String str) {

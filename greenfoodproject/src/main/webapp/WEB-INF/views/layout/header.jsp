@@ -72,7 +72,7 @@
                                     <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="#" class="nav-link">레시피 등록</a>
+                                    <a href="recipePost" class="nav-link">레시피 등록</a>
                                     <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                 </li>
                                 <li class="nav-item dropdown megamenu">
@@ -109,8 +109,8 @@
                         <div class="header-language dropdown d-lg-inline-block">
                             <a href="javascript:void(0);"><i class="feather icon-feather-globe"></i></a>
                             <ul class="dropdown-menu alt-font">
-                                <li><a href="javascript:void(0);" title="로그인"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>로그인</a></li>
-                                <li><a href="javascript:void(0);" title="회원가입"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>회원가입</a></li>
+                                <li><a href="login" title="로그인"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>로그인</a></li>
+                                <li><a href="register" title="회원가입"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>회원가입</a></li>
                             </ul>
                         </div>
                         <div class="header-cart-icon dropdown">

@@ -12,7 +12,7 @@
 	<insert id="insertHash_Recipe" parameterType="Article_HashDTO">
 		Insert into recipe_hashtag (recipe_no, hashtag_no) 
 		values (#{recipe_no},
-				#{hashtag_no});
+				#{hashtag_no})
 	</insert>
 	
 </mapper>
