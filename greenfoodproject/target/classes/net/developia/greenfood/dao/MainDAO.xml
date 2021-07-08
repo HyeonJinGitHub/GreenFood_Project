@@ -7,7 +7,7 @@
 			select b.*
 			from(
 			        select * 
-			        from testMember
+			        from Member
 			    )b
 			where rownum <= 4
 		]]>
