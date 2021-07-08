@@ -20,11 +20,6 @@ public class IngredientServiceImpl implements IngredientService {
 	private IngredientDAO ingredientDAO;
 
 	@Override
-	public List<SubIngredientDTO> getSubIngredientList(int mainIngredientNo) throws Exception {
-		return ingredientDAO.getSubIngredientList(mainIngredientNo);
-	}
-
-	@Override
 	public List<IngredientDTO> getingredientList() throws Exception {
 		return ingredientDAO.getIngredientList();
 	}

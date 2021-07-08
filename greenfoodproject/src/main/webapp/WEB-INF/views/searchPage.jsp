@@ -159,6 +159,7 @@
 	// 재료를 가져오는 메소드
 	function getIngred() {
 
+
 		$.ajax({
 			type : 'POST',
 			url : '${pageContext.request.contextPath}/getIngredient',
@@ -168,10 +169,12 @@
 				var ingredientList = data.ingredientList;
 				var ingredientInnerHTML = '';
 
-				$.each(subIngredientList, function(key, value) {
+				$.each(ingredientList, function(key, value) {
 					ingredientInnerHTML += '<div  id="subIngredient' + value.no + '" class = "btn btn-large-ksy btn-dark-gray btn-rounded d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" onclick="isIngredientAlreadyExists(' + value.no + ', \''+ value.name +'\')"> '+ value.name;
 					ingredientInnerHTML += '</div>';
 				});
+				
+				
 
 				$("#ingredientList").html(ingredientInnerHTML);
 			}
@@ -181,22 +184,22 @@
 	
 	// 재료를 선택하는 메소드
 	function selectIngredient(no, name){
-		var selectedSubIngredientNo = no;
-		var selectedSubIngredientName = name;
-		var selectedSubIngredientInnerHTML = '';
+		var selectedIngredientNo = no;
+		var selectedIngredientName = name;
+		var selectedIngredientInnerHTML = '';
 		
-		selectedSubIngredientInnerHTML += '<div  id="' + selectedSubIngredientNo + '" class = "btn btn-large-ksy btn-dark-gray btn-rounded d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" onclick="removeIngredient(' + selectedSubIngredientNo + ', \''+ selectedSubIngredientName +'\')"> '+ selectedSubIngredientName;
-		selectedSubIngredientInnerHTML += '</div>';
+		selectedIngredientInnerHTML += '<div  id="' + selectedIngredientNo + '" class = "btn btn-large-ksy btn-dark-gray btn-rounded d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" onclick="removeIngredient(' + selectedIngredientNo + ', \''+ selectedIngredientName +'\')"> '+ selectedIngredientName;
+		selectedIngredientInnerHTML += '</div>';
 		
-		$("#selectedIngredientList").append(selectedSubIngredientInnerHTML);
+		$("#selectedIngredientList").append(selectedIngredientInnerHTML);
 	}
 	
 	// 재료를 제거하는 메소드
 	function removeIngredient(no, name){
-		var removeSubIngredientNo = no;
-		var removeSubIngredientName = name;
+		var removeIngredientNo = no;
+		var removeIngredientName = name;
 		
-		var removalTarget = document.getElementById(removeSubIngredientNo);
+		var removalTarget = document.getElementById(removeIngredientNo);
 		removalTarget.remove();
 	}
 	
@@ -216,16 +219,16 @@
 	
 	// 선택한 재료의 id 들(selectedIngredientList id 인 div 안의 id들) 모두 가져오기 & 검색
 	function getElementIdAndSearch() {
-		var subIngredientIds = document.getElementById('selectedIngredientList').children;
+		var ingredientIds = document.getElementById('selectedIngredientList').children;
 		var arryId = new Array(); // id 를 담은 array
 		
 		// 반복문을 통해 모든 id 탐색
-		for (i = 0; i <= subIngredientIds.length - 1; i++) {
+		for (i = 0; i <= ingredientIds.length - 1; i++) {
 			var obj = {
 					'no': ''
 					};
 			
-			obj.no=subIngredientIds[i].id;
+			obj.no=ingredientIds[i].id;
 			arryId.push(obj);
 		}
 		

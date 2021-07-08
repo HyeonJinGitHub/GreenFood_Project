@@ -8,9 +8,6 @@ import net.developia.greenfood.dto.MainIngredientDTO;
 import net.developia.greenfood.dto.SubIngredientDTO;
 
 public interface IngredientDAO {
-	public List<MainIngredientDTO> getMainIngredientList() throws SQLException;
-
-	public List<SubIngredientDTO> getSubIngredientList(int mainIngredientNo) throws SQLException;
 
 	public List<IngredientDTO> getIngredientList() throws SQLException;
 

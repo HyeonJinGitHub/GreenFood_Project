@@ -8,7 +8,5 @@ import net.developia.greenfood.dto.SubIngredientDTO;
 
 public interface IngredientService {
 
-	List<SubIngredientDTO> getSubIngredientList(int mainIngredientNo) throws Exception;
-
 	List<IngredientDTO> getingredientList() throws Exception;
 }
