@@ -63,17 +63,17 @@ public class AwsServiceImpl implements AwsService {
 	}
 	
 	@Override
-	public String s3FileUploadThumbnail(MultipartFile mf, String id) throws Exception {
+	public String s3FileUploadThumbnail(MultipartFile mf, String id, String recipe_no) throws Exception {
 		File file = new File(mf.getOriginalFilename());
 		mf.transferTo(file);
 		// �뙆�씪 �뾽濡쒕뱶瑜� �쐞�븳 request 媛앹껜瑜� �깮�꽦 �븯���떎.
 		PutObjectRequest putObjectRequest =
 				// request 媛앹껜 �븞�뿉 BUCKET_NAME + "�깮�꽦 �맆 �뤃�뜑 �씠由�", �뙆�씪 �썝蹂몄씠由�, File 諛붿씠�꼫由� �뜲�씠�꽣 瑜� �꽕�젙�븯���떎.�뀖
-				new PutObjectRequest(BUCKET_NAME + "/" + id, file.getName(), file)
+				new PutObjectRequest(BUCKET_NAME + "/" + id +"/" + recipe_no, file.getName(), file)
 						.withCannedAcl(CannedAccessControlList.PublicRead);
 		// �떎�젣濡� �뾽濡쒕뱶 �븷 �븸�뀡�씠�떎.
 		amazonS3.putObject(putObjectRequest);
-		return BUCKET_URL + "/" + id + "/" + file.getName();
+		return BUCKET_URL + "/" + id + "/" + recipe_no + "/" + file.getName();
 	}
 
 

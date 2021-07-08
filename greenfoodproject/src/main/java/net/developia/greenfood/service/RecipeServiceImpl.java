@@ -11,11 +11,13 @@ import net.developia.greenfood.dao.Article_HashDAO;
 import net.developia.greenfood.dao.IngredientsDAO;
 import net.developia.greenfood.dao.RecipeDAO;
 import net.developia.greenfood.dao.Recipe_IngredientsDAO;
+import net.developia.greenfood.dao.Recipe_StepDAO;
 import net.developia.greenfood.dto.ArticleDTO;
 import net.developia.greenfood.dto.Article_HashDTO;
 import net.developia.greenfood.dto.IngredientsDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
+import net.developia.greenfood.dto.Recipe_StepDTO;
 
 
 @Service
@@ -41,6 +43,10 @@ public class RecipeServiceImpl implements RecipeService {
 	@Autowired
 	@Resource(name="Recipe_IngredientsDAO")
 	private Recipe_IngredientsDAO recipe_ingredientsDAO;
+	
+	@Autowired
+	@Resource(name="Recipe_StepDAO")
+	private Recipe_StepDAO recipe_stepDAO;
 
 	@Override
 	public List<RecipeDTO> getHashtagList() throws Exception {
@@ -97,6 +103,16 @@ public class RecipeServiceImpl implements RecipeService {
 	@Override
 	public void InsertRecipe_Ingredients(Recipe_IngredientsDTO ridto) throws Exception {
 		recipe_ingredientsDAO.InsertRecipe_Ingredients(ridto);
+	}
+
+	@Override
+	public void updateRecipeThumbnail(ArticleDTO adto) throws Exception {
+		articleDAO.updateRecipeThumbnail(adto);
+	}
+
+	@Override
+	public void InsertStep(Recipe_StepDTO rsdto) throws Exception {
+		recipe_stepDAO.InsertStep(rsdto);
 	}
 
 }

@@ -245,7 +245,9 @@
 											</div>			
 							                <!-- end tab item -->
 											<!-- start tab item -->
+											
 											<div id="research-tab" class="tab-pane fade">
+											<form id="setThumb" enctype="multipart/form-data">
 												<div class="row row-cols-1 row-cols-md-2">
 													<div class="col-lg-2 sm-margin-25px-bottom">
 														<div class="feature-box feature-box-left-icon-middle last-paragraph-no-margin">
@@ -273,11 +275,10 @@
 															</div>
 															<div class="col-lg-10 sm-margin-25px-bottom">
 																<div class="form-group">
-																<form action='${contextPath}/ThumbnailUpdate' method="POST" enctype="multipart/form-data">
+																
 																	<input type="file" class="" 
 																	name="product_image" id="product_image" accept="image/*" onchange="setThumbnail(event);"value="대표사진 선택" required>
-																	<input type="submit" id="submit_btn_click" /> 
-																</form>
+																
 																</div>
 																<div id="image_container" style="margin-bottom:30px"></div>
 															</div>
@@ -352,7 +353,9 @@
 							                        <a data-toggle="tab" href="#target-tab"  class="btn btn-extra-large btn-expand-ltr alt-font font-weight-500 text-uppercase line-height-18px d-block btn-rounded d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr font-weight-500">다음 페이지<span class="bg-very-light-pink"></span></a>
                        				          </div>
 											</div> -->
+											</form>
 											</div>
+											
 											<!-- end tab item -->
 											<!-- start tab item -->
 											<div id="target-tab" class="tab-pane fade">
@@ -2139,17 +2142,14 @@
 			
 			var foodtime = $("input[name=foodtime]").val();
 			var steptitleArr = [];
-			var stepimageArr = [];
 			var stepsubscriptArr = [];
-	       $("#sortable").children().each(function(){ 
-	        	var i = $(this).attr("value"); 
-	        	var steptitle = document.getElementsByName("steptitle"+i)[0].value;
-	        	var stepimage = document.getElementsByName("stepimage"+i)[0].value;
-	        	var stepsubscript = document.getElementsByName("stepimage"+i)[0].value;
-	        	steptitleArr.push(steptitle);
-	        	stepimageArr.push(stepimage);
-	        	stepsubscriptArr.push(stepsubscript);
-	        });
+			 $("#sortable").children().each(function(){ 
+		        	var i = $(this).attr("value"); 
+		        	var steptitle = document.getElementsByName("steptitle"+i)[0].value;
+		        	var stepsubscript = document.getElementsByName("stepsubscript"+i)[0].value;
+		        	steptitleArr.push(steptitle);
+		        	steptitleArr.push(stepsubscript);
+		        });
 	     
 	       var foodcategory = $("select[name=foodcategory]").val();
 	       var hashtagArr = [];
@@ -2169,10 +2169,9 @@
 				   "howmuch" : howmuch,
 				   "ingredientsArr" : ingredientsArr,
 				   "ingredientssizeArr" : ingredientssizeArr,
-				   "foodtime" : foodtime,
 				   "steptitleArr" : steptitleArr,
-				   "stepimageArr" : stepimageArr,
 				   "stepsubscriptArr" : stepsubscriptArr,
+				   "foodtime" : foodtime,
 				   "foodcategory" : foodcategory,
 				   "hashtagArr" : hashtagArr
 	           };
@@ -2184,12 +2183,18 @@
 	           data        :   objParams,
 	           success     :   function(retVal){
 					console.log("insert 실행");
-					
+					console.log(retVal);
+					setthumbfunc(retVal);
+	           },
+	           error	:	function(retVal){
+	        	   console.log("e insert 실행");
+	        	   console.log(retVal);
+	        	   setthumbfunc(retVal);
 	           }
 	       });
 		   
-		   $("#submit_btn_click").trigger("click");
-		   
+		   //$("#submit_btn_click").trigger("click");
+		   //setThumb
 		 /*   Swal.fire({
 				  title: '동영상 업로드 성공',
 				  text: '동영상이 정상적으로 게시되었습니다',
@@ -2200,6 +2205,67 @@
 		
 	}
 
+	function setthumbfunc(retVal){
+		var formData = new FormData();
+		formData.append("thumb", $("#product_image")[0].files[0]);
+		formData.append("recipe_no", retVal);
+		/* console.log("실행실행실행");
+       $("#sortable").children().each(function(){ 
+        	var i = $(this).attr("value"); 
+        	var steptitle = document.getElementsByName("steptitle"+i)[0].value;
+        	var stepsubscript = document.getElementsByName("stepsubscript"+i)[0].value;
+        	console.log(steptitle);
+        	formData.append("steptitle"+i, steptitle);
+        	formData.append("stepimage"+i, $("input[name=stepimage"+i+"]")[0].files[0]);
+        	console.log($("input[name=stepimage"+i+"]")[0].files[0]);
+        	formData.append("stepsubscript"+i, stepsubscript);
+        }); */
+       
+		
+		 $.ajax({
+			url : "${pageContext.request.contextPath}/ThumbnailUpdate.do",
+			type : "post",
+			data : formData,
+			contentType : false,
+			processData : false,
+			 success     :   function(retVal){
+					console.log("s insert 실행");
+					console.log();
+					setstepfunc();
+	           },
+	           error	:	function(retVal){
+	        	   console.log("se insert 실행");
+	        	   console.log();
+	        	   setstepfunc();
+	           }
+		});
+	}
+	
+	function setstepfunc(){
+		var formData = new FormData();
+		console.log("실행실행실행");
+       $("#sortable").children().each(function(){ 
+        	var i = $(this).attr("value"); 
+        	formData.append("stepimage", $("input[name=stepimage"+i+"]")[0].files[0]);
+        });
+       
+		
+		 $.ajax({
+			url : "${pageContext.request.contextPath}/StepUpdate.do",
+			type : "post",
+			data : formData,
+			contentType : false,
+			processData : false,
+			 success     :   function(retVal){
+					console.log("s insert 실행");
+	           },
+	           error	:	function(retVal){
+	        	   console.log("se insert 실행");
+	           }
+		});
+	}
+	
+	
 		/** 아이템 체크 */
 		function validateItem() {
 			var items = $("input[type='text'][name='item']");

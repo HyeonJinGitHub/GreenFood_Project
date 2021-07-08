@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.developia.greenfood.dao.Recipe_StepDAO">
+<resultMap id="Recipe_StepDTO" type="Recipe_StepDTO">
+    <result property="no" column="no"/>
+    <result property="recipe_no" column="recipe_no"/>
+    <result property="step_no" column="step_no"/>
+    <result property="step_title" column="step_title"/>
+    <result property="step_img" column="step_img"/>
+    <result property="step_explanation" column="step_explanation"/>
+</resultMap>
+
+
+	<insert id="InsertStep" parameterType="Recipe_StepDTO">
+			Insert into recipe_step (recipe_no,step_no, step_title, step_explanation) 
+			values (#{recipe_no},
+					#{step_no},
+					#{step_title},
+					#{step_explanation})
+	</insert>
+	
+</mapper>

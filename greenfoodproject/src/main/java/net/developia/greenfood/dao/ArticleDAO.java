@@ -10,4 +10,5 @@ import net.developia.greenfood.dto.RecipeDTO;
 public interface ArticleDAO {
 	void insertRecipe(ArticleDTO adto) throws SQLException;
 	int findRecipe(ArticleDTO adto) throws SQLException;
+	void updateRecipeThumbnail(ArticleDTO adto) throws SQLException;
 }

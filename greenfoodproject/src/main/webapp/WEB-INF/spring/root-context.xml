@@ -67,6 +67,14 @@
 		p:sqlSessionFactory-ref="RecipeSqlSession"
 		p:mapperInterface="net.developia.greenfood.dao.Article_HashDAO"
 		/>
+		
+	<bean
+		id="Recipe_StepDAO" 
+		class="org.mybatis.spring.mapper.MapperFactoryBean" 
+		p:sqlSessionFactory-ref="RecipeSqlSession"
+		p:mapperInterface="net.developia.greenfood.dao.Recipe_StepDAO"
+		/>
+		
 	<!--  recupeDAO end -->
 	<!-- 작성자: 이효범작성일자: 2021/07/05 15:31 -->
   <!-- ingredientDAO start -->

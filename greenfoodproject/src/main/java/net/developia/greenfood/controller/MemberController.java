@@ -142,6 +142,7 @@ public class MemberController {
 		String profile_img;
 		ModelAndView mav = new ModelAndView("result");
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		logger.info(images+" 이미지 내용");
 		try {
 			map.put("ID", session.getAttribute("id"));
 			if(flag.equals("0")) {
@@ -159,7 +160,6 @@ public class MemberController {
 			} else {
 				profile_img = "https://greenfood-bucket.s3.us-east-2.amazonaws.com/default_profile.png";
 			}
-			log.info(profile_img);
 			map.put("NICKNAME", nickname);
 			map.put("PROFILE_IMG", profile_img);
 			memberService.updateProfile(map);

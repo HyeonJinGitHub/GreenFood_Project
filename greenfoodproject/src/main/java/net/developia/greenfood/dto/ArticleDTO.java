@@ -18,6 +18,8 @@ public class ArticleDTO{
 	private int howmuch;
 	private int cookingtime;
 	private int foodcategoryno;
+	private String viedofile;
+	private String thumbnail;
 	private int views;
 	private int likes;
 	

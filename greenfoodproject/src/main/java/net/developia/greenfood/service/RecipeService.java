@@ -7,6 +7,7 @@ import net.developia.greenfood.dto.Article_HashDTO;
 import net.developia.greenfood.dto.IngredientsDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
+import net.developia.greenfood.dto.Recipe_StepDTO;
 
 public interface RecipeService {
 	List<RecipeDTO> getHashtagList() throws Exception;
@@ -20,4 +21,6 @@ public interface RecipeService {
 	void insertHash_Recipe(Article_HashDTO ahdto) throws Exception;
 	int findIngredientsOne(IngredientsDTO ingredientsDTO) throws Exception;
 	void InsertRecipe_Ingredients(Recipe_IngredientsDTO ridto) throws Exception;
+	void updateRecipeThumbnail(ArticleDTO adto) throws Exception;
+	void InsertStep(Recipe_StepDTO rsdto) throws Exception;
 }
