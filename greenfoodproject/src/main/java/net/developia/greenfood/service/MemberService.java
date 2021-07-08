@@ -13,4 +13,8 @@ public interface MemberService {
 
 	public void login(HashMap<String, Object> map) throws Exception;
 
+	public void selectProfile(HashMap<String, Object> map) throws Exception;
+
+	public void updateProfile(HashMap<String, Object> map) throws Exception;
+
 }
