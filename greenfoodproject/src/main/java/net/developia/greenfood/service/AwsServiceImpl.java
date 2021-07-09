@@ -25,7 +25,7 @@ public class AwsServiceImpl implements AwsService {
 	private String SECRET_KEY;
 	private String BUCKET_URL;
 
-	private AmazonS3 amazonS3; // 인스턴스를 초기화한다.
+	private AmazonS3 amazonS3; // �씤�뒪�꽩�뒪瑜� 珥덇린�솕�븳�떎.
 
 	public AwsServiceImpl(@Value("${cloud.aws.s3.bucket}") String BUCKET_NAME,
 			@Value("${cloud.aws.credentials.accessKey}") String ACCESS_KEY,
@@ -37,11 +37,11 @@ public class AwsServiceImpl implements AwsService {
 		this.SECRET_KEY = SECRET_KEY;
 		this.BUCKET_URL = BUCKET_URL;
 	
-		// 인증 객체를 생성한다.
+		// �씤利� 媛앹껜瑜� �깮�꽦�븳�떎.
 		AWSCredentials awsCredentials = new BasicAWSCredentials(ACCESS_KEY, SECRET_KEY);
 
-		// 인스턴스에 버킷의 정보를들 설정한다.
-		// Region 의 경우 버킷의 url 에서 확인 할 수 있다.
+		// �씤�뒪�꽩�뒪�뿉 踰꾪궥�쓽 �젙蹂대�쇰뱾 �꽕�젙�븳�떎.
+		// Region �쓽 寃쎌슦 踰꾪궥�쓽 url �뿉�꽌 �솗�씤 �븷 �닔 �엳�떎.
 		// ex)
 		// https://s3.console.aws.amazon.com/s3/buckets/static.preeplus.com/?region=ap-northeast-2&tab=overview
 		amazonS3 = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_2)
@@ -52,16 +52,15 @@ public class AwsServiceImpl implements AwsService {
 	public String s3FileUpload(MultipartFile mf, String id) throws Exception {
 		File file = new File(mf.getOriginalFilename());
 		mf.transferTo(file);
-		// 파일 업로드를 위한 request 객체를 생성 하였다.
+		// �뙆�씪 �뾽濡쒕뱶瑜� �쐞�븳 request 媛앹껜瑜� �깮�꽦 �븯���떎.
 		PutObjectRequest putObjectRequest =
-				// request 객체 안에 BUCKET_NAME + "생성 될 폴더 이름", 파일 원본이름, File 바이너리 데이터 를 설정하였다.ㅏ
+				// request 媛앹껜 �븞�뿉 BUCKET_NAME + "�깮�꽦 �맆 �뤃�뜑 �씠由�", �뙆�씪 �썝蹂몄씠由�, File 諛붿씠�꼫由� �뜲�씠�꽣 瑜� �꽕�젙�븯���떎.�뀖
 				new PutObjectRequest(BUCKET_NAME + "/" + id, file.getName(), file)
 						.withCannedAcl(CannedAccessControlList.PublicRead);
-		// 실제로 업로드 할 액션이다.
+		// �떎�젣濡� �뾽濡쒕뱶 �븷 �븸�뀡�씠�떎.
 		amazonS3.putObject(putObjectRequest);
 		return BUCKET_URL + "/" + id + "/" + file.getName();
 	}
-	
 	@Override
 	public String s3VideoUpload(File file, String id) throws Exception {
 //		File file = new File(mf.getOriginalFilename());
@@ -75,5 +74,49 @@ public class AwsServiceImpl implements AwsService {
 		amazonS3.putObject(putObjectRequest);
 		return BUCKET_URL + "/" + id + "/" + file.getName();
 	}
+	
+	
+	@Override
+	public String s3FileUploadVideo(MultipartFile mf, String id, String recipe_no) throws Exception {
+		File file = new File(mf.getOriginalFilename());
+		mf.transferTo(file);
+		// 파일 업로드를 위한 request 객체를 생성 하였다.
+		PutObjectRequest putObjectRequest =
+				// request 객체 안에 BUCKET_NAME + "생성 될 폴더 이름", 파일 원본이름, File 바이너리 데이터 를 설정하였다.ㅏ
+				new PutObjectRequest(BUCKET_NAME + "/" + id+"/" + recipe_no, file.getName(), file)
+						.withCannedAcl(CannedAccessControlList.PublicRead);
+		// 실제로 업로드 할 액션이다.
+		amazonS3.putObject(putObjectRequest);
+		return BUCKET_URL + "/" + id + "/" + recipe_no + "/" + file.getName();
+	}
+	
+	@Override
+	public String s3FileUploadThumbnail(MultipartFile mf, String id, String recipe_no) throws Exception {
+		File file = new File(mf.getOriginalFilename());
+		mf.transferTo(file);
+		// �뙆�씪 �뾽濡쒕뱶瑜� �쐞�븳 request 媛앹껜瑜� �깮�꽦 �븯���떎.
+		PutObjectRequest putObjectRequest =
+				// request 媛앹껜 �븞�뿉 BUCKET_NAME + "�깮�꽦 �맆 �뤃�뜑 �씠由�", �뙆�씪 �썝蹂몄씠由�, File 諛붿씠�꼫由� �뜲�씠�꽣 瑜� �꽕�젙�븯���떎.�뀖
+				new PutObjectRequest(BUCKET_NAME + "/" + id +"/" + recipe_no, file.getName(), file)
+						.withCannedAcl(CannedAccessControlList.PublicRead);
+		// �떎�젣濡� �뾽濡쒕뱶 �븷 �븸�뀡�씠�떎.
+		amazonS3.putObject(putObjectRequest);
+		return BUCKET_URL + "/" + id + "/" + recipe_no + "/" + file.getName();
+	}
+	
+	@Override
+	public String s3FileUploadStep(MultipartFile mf, String id, String recipe_no, String step_no) throws Exception {
+		File file = new File(mf.getOriginalFilename());
+		mf.transferTo(file);
+		// �뙆�씪 �뾽濡쒕뱶瑜� �쐞�븳 request 媛앹껜瑜� �깮�꽦 �븯���떎.
+		PutObjectRequest putObjectRequest =
+				// request 媛앹껜 �븞�뿉 BUCKET_NAME + "�깮�꽦 �맆 �뤃�뜑 �씠由�", �뙆�씪 �썝蹂몄씠由�, File 諛붿씠�꼫由� �뜲�씠�꽣 瑜� �꽕�젙�븯���떎.�뀖
+				new PutObjectRequest(BUCKET_NAME + "/" + id +"/" + recipe_no + "/" + step_no, file.getName(), file)
+						.withCannedAcl(CannedAccessControlList.PublicRead);
+		// �떎�젣濡� �뾽濡쒕뱶 �븷 �븸�뀡�씠�떎.
+		amazonS3.putObject(putObjectRequest);
+		return BUCKET_URL + "/" + id + "/" + recipe_no + "/" + step_no + "/" + file.getName();
+	}
+
 
 }

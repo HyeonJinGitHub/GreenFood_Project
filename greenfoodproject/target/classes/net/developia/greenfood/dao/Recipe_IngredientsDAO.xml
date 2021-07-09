@@ -14,7 +14,7 @@
 			Insert into recipe_ingredients (ingredients_no, recipe_no, howmuch) 
 			values (#{ingredients_no},
 					#{recipe_no},
-					#{howmuch});
+					#{howmuch})
 	</insert>
 	
 </mapper>

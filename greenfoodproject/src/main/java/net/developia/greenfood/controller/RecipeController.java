@@ -11,11 +11,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
@@ -27,9 +30,12 @@ import kr.co.shineware.nlp.komoran.model.Token;
 import lombok.extern.slf4j.Slf4j;
 import net.developia.greenfood.dto.ArticleDTO;
 import net.developia.greenfood.dto.Article_HashDTO;
+import net.developia.greenfood.dto.Article_My_HashDTO;
 import net.developia.greenfood.dto.IngredientsDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
+import net.developia.greenfood.dto.Recipe_StepDTO;
+import net.developia.greenfood.service.AwsService;
 import net.developia.greenfood.service.RecipeService;
 
 @Controller
@@ -37,8 +43,13 @@ import net.developia.greenfood.service.RecipeService;
 public class RecipeController {
 
 	@Autowired
-	RecipeService recipeService;
-
+	private RecipeService recipeService;
+	@Autowired
+	private AwsService awsService;
+	
+	int recipe_no = 0;
+	int step_start = 1;
+	int step_last = 1;
 	@RequestMapping(value = "/recipe", method = RequestMethod.GET)
 	public String home2() {
 		System.out.println("recipe page start");
@@ -130,18 +141,15 @@ public class RecipeController {
 	}
 
 	@PostMapping(value = "/postRecipe", produces = "application/text; charset=utf8")
-	public @ResponseBody void insertRecipe(@RequestParam(value = "ingredientsArr[]") List<String> ingredientsArr,
+	public @ResponseBody String insertRecipe(@RequestParam(value = "ingredientsArr[]") List<String> ingredientsArr,
 			@RequestParam(value = "ingredientssizeArr[]") List<String> ingredientssizeArr,
-			@RequestParam(value = "steptitleArr[]") List<String> steptitleArr,
-			@RequestParam(value = "stepimageArr[]") List<String> stepimageArr,
-			@RequestParam(value = "stepsubscriptArr[]") List<String> stepsubscriptArr,
 			@RequestParam(value = "hashtagArr[]") List<String> hashtagArr, @RequestParam(value = "title") String title, //
+			@RequestParam(value = "steptitleArr[]") List<String> steptitleArr,
+			@RequestParam(value = "stepsubscriptArr[]") List<String> stepsubscriptArr,
 			@RequestParam(value = "subscript") String subscript, //
 			@RequestParam(value = "foodname") String foodname, //
 			@RequestParam(value = "howmuch") String howmuch, //
 			@RequestParam(value = "foodtime") String foodtime, //
-			@RequestParam(value = "videofile") String videofile,
-			@RequestParam(value = "product_image") String product_image,
 			@RequestParam(value = "foodcategory") String foodcategory) throws Exception {
 
 		RecipeDTO rdto = new RecipeDTO();
@@ -159,7 +167,7 @@ public class RecipeController {
 		adto.setViews(0);
 		adto.setLikes(0);
 		recipeService.insertRecipe(adto);
-		int recipe_no = recipeService.findRecipe(adto);
+		recipe_no = recipeService.findRecipe(adto);
 		log.info("글번호" + recipe_no);
 
 		// recipe_hashtag
@@ -167,15 +175,29 @@ public class RecipeController {
 		for(String hasht : hashtagArr) { 
 			 RecipeDTO rtmp = new RecipeDTO();
 			 rtmp.setTagname(hasht); 
-			 int hashno = recipeService.findHashtag(rtmp);
-			 log.info(hashno +"해쉬코드 번호");
-			 Article_HashDTO ahdto = new Article_HashDTO(); 
-			 ahdto.setHashtag_no(hashno);
-			 ahdto.setRecipe_no(recipe_no); 
-			 recipeService.insertHash_Recipe(ahdto); 
+			 int existchk = recipeService.findHashtagCnt(rtmp);
+			 if(existchk != 0)
+			 {
+				 int hashno = recipeService.findHashtag(rtmp);
+				 log.info(hashno +"해쉬코드 번호");
+				 Article_HashDTO ahdto = new Article_HashDTO(); 
+				 ahdto.setHashtag_no(hashno);
+				 ahdto.setRecipe_no(recipe_no); 
+				 recipeService.insertHash_Recipe(ahdto); 
+			 }
+			 else
+			 {
+				 Article_My_HashDTO amhdto = new Article_My_HashDTO();
+				 amhdto.setRecipe_no(recipe_no);
+				 amhdto.setTitle(hasht);
+				 recipeService.insertMyHash(amhdto);
+			 }
 		}
 		 
 
+		//insertMyHash
+		
+		
 		// ingredients
 		
 		List<IngredientsDTO> ingredients_list = recipeService.findIngredients(); 
@@ -184,25 +206,102 @@ public class RecipeController {
 			int ino = 0; 
 			int isize =0; 
 			for(int i = 0; i < ingredients_list.size(); i++) { 
-				if(iga.equals(ingredients_list.get(i))) 
+				if(iga.equals(ingredients_list.get(i).getName()))
 				{ 
 					chk = true; 
 					ino = ingredients_list.get(i).getNo(); 
 					isize = i; break; 
 				}
 			} 
+			
+			IngredientsDTO idto = new IngredientsDTO();
+			idto.setName(iga);
 			if(chk == false) {
-		 	   recipeService.insertIngredients(iga); 
+		 	   recipeService.insertIngredients(idto); 
 		 	} 
-			int ingredients_no =recipeService.findIngredientsOne(iga); 
+			int ingredients_no =recipeService.findIngredientsOne(idto); 
 			int howm =Integer.parseInt(ingredientssizeArr.get(isize)); 
+			log.info(ingredients_no+"재료번호");
+			log.info(howm +"재료양");
 			Recipe_IngredientsDTO ridto = new Recipe_IngredientsDTO(); 
 			ridto.setHowmuch(howm);
 		    ridto.setIngredients_no(ingredients_no); 
 		    ridto.setRecipe_no(recipe_no);
 		    recipeService.InsertRecipe_Ingredients(ridto); 
 		  }
-
+		
+		 //step
+		for(int i = 0; i< steptitleArr.size(); i++) { 
+			String f = stepsubscriptArr.get(i);
+			String s = steptitleArr.get(i);
+			Recipe_StepDTO rsdto = new Recipe_StepDTO();
+			rsdto.setRecipe_no(recipe_no);
+			rsdto.setStep_title(s);
+			rsdto.setStep_explanation(f);
+			rsdto.setStep_no(i+1);
+			recipeService.InsertStep(rsdto);
+			log.info(s);
+		}
+		step_last = steptitleArr.size();
+		
+		return Integer.toString(recipe_no);
+	}
+	
+	@PostMapping("/ThumbnailUpdate.do")
+	public void ThumbnailUpdate(HttpSession session, @ModelAttribute MultipartFile thumb) throws Exception {
+		
+//		formData.append("thumb", $("#product_image")[0].files[0]);
+//		formData.append("recipe_no", retVal);
+		
+		String profile_img = awsService.s3FileUploadThumbnail(thumb, "eunna8675" , Integer.toString(recipe_no));
+		log.info(recipe_no+"글번호입니다");
+		ArticleDTO adto = new ArticleDTO();
+		adto.setThumbnail(profile_img);
+		adto.setNo(recipe_no);
+		recipeService.updateRecipeThumbnail(adto);
+		
+		
+		
+	}
+	
+	@PostMapping("/VideoUpdate.do")
+	public void VideoUpdate(HttpSession session, @ModelAttribute MultipartFile recipev) throws Exception {
+		
+		//updateRecipeViedofile
+		//awsService.s3VideoUpload(f, "recipe")
+		String profile_img = awsService.s3FileUploadVideo(recipev, "eunna8675" , Integer.toString(recipe_no));
+		
+		ArticleDTO adto = new ArticleDTO();
+		adto.setViedofile(profile_img);
+		adto.setNo(recipe_no);
+		recipeService.updateRecipeViedofile(adto);
+		
+	
+		
+	}
+	
+	
+	@PostMapping("/StepUpdate.do")
+	public void StepUpdate(HttpSession session, @ModelAttribute MultipartFile[] stepimage) throws Exception {
+		
+		int start = step_start;
+		for(MultipartFile multipartFile : stepimage) {
+			String profile_img = awsService.s3FileUploadStep(multipartFile, "eunna8675" , Integer.toString(recipe_no), Integer.toString(start));
+			Recipe_StepDTO rsdto = new Recipe_StepDTO();
+			rsdto.setRecipe_no(recipe_no);
+			rsdto.setStep_no(start);
+			rsdto.setStep_img(profile_img);
+			recipeService.updateStep(rsdto);
+			start += 1;
+			if(start > step_last)
+			{
+				break;
+			}
+		 }
+		
+	
+		log.info("step update");
+		
 	}
 
 	public static List<String> StringProcess(String str) {
@@ -222,5 +321,7 @@ public class RecipeController {
 		return titleList;
 
 	}
+	
+	
 
 }

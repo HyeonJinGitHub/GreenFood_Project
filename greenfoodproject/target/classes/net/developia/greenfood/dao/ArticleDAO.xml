@@ -11,6 +11,8 @@
     <result property="howmuch" column="howmuch"/>
     <result property="cookingtime" column="cookingtime"/>
     <result property="foodcategoryno" column="foodcategoryno"/>
+    <result property="viedofile" column="viedofile"/>
+    <result property="thumbnail" column="thumbnail"/>
     <result property="views" column="views"/>
     <result property="likes" column="likes"/>
 </resultMap>
@@ -28,6 +30,18 @@
 				#{views},
 				#{likes})
 	</insert>
+	
+	<update id="updateRecipeThumbnail" parameterType="ArticleDTO">
+		update recipe 
+		set thumbnail = #{thumbnail}
+		where no = #{no}
+	</update>
+	
+	<update id="updateRecipeViedofile" parameterType="ArticleDTO">
+		update recipe 
+		set viedofile = #{viedofile}
+		where no = #{no}
+	</update>
 	
 	
 	<select id="findRecipe" parameterType="ArticleDTO" resultType="Integer">

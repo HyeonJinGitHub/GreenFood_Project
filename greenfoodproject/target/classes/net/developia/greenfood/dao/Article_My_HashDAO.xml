@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.developia.greenfood.dao.Article_My_HashDAO">
+<resultMap id="Article_My_HashDAO" type="Article_My_HashDTO">
+    <result property="no" column="no"/>
+    <result property="recipe_no" column="recipe_no"/>
+    <result property="title" column="title"/>
+</resultMap>
+
+
+	<insert id="insertMyHash" parameterType="Article_My_HashDTO">
+		Insert into recipe_my_hashtag (recipe_no, title) 
+		values (#{recipe_no},
+				#{title})
+	</insert>
+	
+</mapper>

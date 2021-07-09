@@ -154,6 +154,7 @@ public class MemberController {
 		String profile_img;
 		ModelAndView mav = new ModelAndView("result");
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		logger.info(images+" 이미지 내용");
 		try {
 			map.put("ID", session.getAttribute("id"));
 			if (flag.equals("0")) {
