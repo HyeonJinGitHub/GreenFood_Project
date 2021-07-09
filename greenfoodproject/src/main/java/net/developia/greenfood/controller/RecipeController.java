@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 
+import io.netty.handler.codec.http.Cookie;
 import kr.co.shineware.nlp.komoran.constant.DEFAULT_MODEL;
 import kr.co.shineware.nlp.komoran.core.Komoran;
 import kr.co.shineware.nlp.komoran.model.KomoranResult;
@@ -384,8 +385,10 @@ public class RecipeController {
 		ArticleDTO adto = new ArticleDTO();
 		adto.setNo(Integer.parseInt(noDetail));
 		recipeService.InsertMyLikeToRecipe(adto);
+		int likescnt = recipeService.countMyLikes(adto);
 		
-		return 
+		
+		return Integer.toString(likescnt);
 		
 	}
 	
@@ -406,6 +409,21 @@ public class RecipeController {
 		
 		
 		return Integer.toString(likescnt);
+		
+	}
+	
+	@PostMapping(value = "/UpdateViews", produces = "application/text; charset=utf8")
+	public @ResponseBody void UpdateViews(HttpSession session, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		Cookie[] cookies = request.getCookies();
+		int visitor = 0;
+		
+		for(Cookie cookie: cookies)
+		{
+			
+		}
+		
 		
 	}
 	

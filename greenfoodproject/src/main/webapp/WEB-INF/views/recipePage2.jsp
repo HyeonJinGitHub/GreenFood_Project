@@ -137,7 +137,7 @@
                                 <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
                                     <a href="#ingredientsInfo" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">영양성분</a> 
                                 </div>
-                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
+                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
                                     <a href="#recipeInfo" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">조리방법</a>
                                 </div>
                                 <div class="padding-30px-lr d-block d-sm-inline-block align-middle lg-padding-15px-lr">
@@ -653,6 +653,8 @@
 	    						}, 
 	    		    			success: function(data) {
 	    		    				console.log("insert like");
+	    		    				$("#likes").empty();
+	    		    				$("#likes").append(data);
 	    		    			}
 	    		    				
 	    		    		});
@@ -661,6 +663,7 @@
 	    					$("#liketext").removeClass("text-salmon-rose");
 	    					$("#likeBtn").addClass("text-white");
 	    					$("#liketext").addClass("text-white");
+	    					window.location.reload();
 						}
 						else{
 	    					$.ajax({
@@ -672,6 +675,8 @@
 	    						}, 
 	    		    			success: function(data) {
 	    		    				console.log("delete like");
+	    		    				$("#likes").empty();
+	    		    				$("#likes").append(data);
 	    		    			}
 	    		    				
 	    		    		});
@@ -681,6 +686,7 @@
     					$("#liketext").removeClass("text-white");
     					$("#likeBtn").addClass("text-salmon-rose");
     					$("#liketext").addClass("text-salmon-rose");
+    					window.location.reload();
 					});
         	
         	$.ajax({
@@ -710,6 +716,21 @@
     					$("#liketext").addClass("text-white");
     					
     				}
+    			}
+    				
+    		});
+        	
+        	
+        	$.ajax({
+    			url: "${pageContext.request.contextPath}/UpdateViews",
+    			type: "post",
+    			dataType: "text",
+    			data : {
+					"no" : ${no}
+				}, 
+    			success: function(data) {
+    				console.log(data);
+    				
     			}
     				
     		});

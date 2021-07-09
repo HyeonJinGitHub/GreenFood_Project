@@ -196,4 +196,10 @@ public class RecipeServiceImpl implements RecipeService {
 		recipe_likesDAO.DelMyLikeRecipe(rldto);
 	}
 
+	@Override
+	public int countMyLikes(ArticleDTO adto) throws Exception {
+		// TODO Auto-generated method stub
+		return articleDAO.countMyLikes(adto);
+	}
+
 }
