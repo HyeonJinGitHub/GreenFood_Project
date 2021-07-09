@@ -3,11 +3,14 @@ package net.developia.greenfood.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +27,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 
-import io.netty.handler.codec.http.Cookie;
 import kr.co.shineware.nlp.komoran.constant.DEFAULT_MODEL;
 import kr.co.shineware.nlp.komoran.core.Komoran;
 import kr.co.shineware.nlp.komoran.model.KomoranResult;
@@ -154,6 +156,15 @@ public class RecipeController {
 			@RequestParam(value = "hashtagArr[]") List<String> hashtagArr, @RequestParam(value = "title") String title, //
 			@RequestParam(value = "steptitleArr[]") List<String> steptitleArr,
 			@RequestParam(value = "stepsubscriptArr[]") List<String> stepsubscriptArr,
+			@RequestParam(value = "calorieArr[]") List<String> calorieArr,
+			@RequestParam(value = "carbohydrateArr[]") List<String> carbohydrateArr,
+			@RequestParam(value = "proteinArr[]") List<String> proteinArr,
+			@RequestParam(value = "fatArr[]") List<String> fatArr,
+			@RequestParam(value = "saccharideArr[]") List<String> saccharideArr,
+			@RequestParam(value = "sodiumArr[]") List<String> sodiumArr,
+			@RequestParam(value = "cholesterolArr[]") List<String> cholesterolArr,
+			@RequestParam(value = "fattyacidArr[]") List<String> fattyacidArr,
+			@RequestParam(value = "servingArr[]") List<String> servingArr,
 			@RequestParam(value = "subscript") String subscript, //
 			@RequestParam(value = "foodname") String foodname, //
 			@RequestParam(value = "howmuch") String howmuch, //
@@ -209,7 +220,8 @@ public class RecipeController {
 		// ingredients
 		
 		List<IngredientsDTO> ingredients_list = recipeService.findIngredients(); 
-		for(String iga : ingredientsArr) { 
+		for(int j = 0; j< ingredientsArr.size(); j++) {
+			String iga = ingredientsArr.get(j);
 			boolean chk = false; 
 			int ino = 0; 
 			int isize =0; 
@@ -224,6 +236,16 @@ public class RecipeController {
 			
 			IngredientsDTO idto = new IngredientsDTO();
 			idto.setName(iga);
+			idto.setCalorie(Integer.parseInt(calorieArr.get(j)));
+			idto.setCarbohydrate(Integer.parseInt(carbohydrateArr.get(j)));
+			idto.setProtein(Integer.parseInt(proteinArr.get(j)));
+			idto.setFat(Integer.parseInt(fatArr.get(j)));
+			idto.setSaccharide(Integer.parseInt(saccharideArr.get(j)));
+			idto.setSodium(Integer.parseInt(sodiumArr.get(j)));
+			idto.setCholesterol(Integer.parseInt(cholesterolArr.get(j)));
+			idto.setFattyacid(Integer.parseInt(fattyacidArr.get(j)));
+			idto.setHowmuch(Integer.parseInt(servingArr.get(j)));
+			
 			if(chk == false) {
 		 	   recipeService.insertIngredients(idto); 
 		 	} 
@@ -349,6 +371,83 @@ public class RecipeController {
 		return json;
 	}
 	
+	@PostMapping(value = "/recipeIngredientsInfo", produces = "application/text; charset=utf8")
+	public @ResponseBody String recipeIngredientsInfo(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		String noDetail = request.getParameter("no");
+		List<Recipe_IngredientsDTO> rilist = new ArrayList<>();
+		List<IngredientsDTO> ilist = new ArrayList<>();
+		
+		
+		Recipe_IngredientsDTO ridto = new Recipe_IngredientsDTO();
+		ridto.setRecipe_no(Integer.valueOf(noDetail));
+		rilist = recipeService.findRecipeIngredients(ridto);
+		
+		for(int i =0; i< rilist.size(); i++)
+		{
+			int ino = rilist.get(i).getNo();
+			IngredientsDTO idto = new IngredientsDTO();
+			idto.setNo(ino);
+			IngredientsDTO idtotmp = recipeService.findIngredientsSelect(idto);
+			ilist.add(idtotmp);
+		}
+		
+		ArticleDTO adto = new ArticleDTO();
+		adto.setNo(Integer.parseInt(noDetail));
+		int people = recipeService.findHowMany(adto);
+		
+		
+		IngredientsDTO iresult = new IngredientsDTO();
+		int calorie = 0;
+		int carbohydrate = 0;
+		int protein = 0;
+		int fat = 0;
+		int saccharide = 0;
+		int sodium = 0;
+		int cholesterol = 0;
+		int fattyacid = 0;
+		for(int i = 0; i<ilist.size(); i++)
+		{
+			int serving = rilist.get(i).getHowmuch();
+			int howmuch = ilist.get(i).getHowmuch();
+			
+			int weserving = serving/howmuch;
+			calorie += ilist.get(i).getCalorie()*weserving;
+			carbohydrate += ilist.get(i).getCarbohydrate()*weserving;
+			protein += ilist.get(i).getProtein()*weserving;
+			fat += ilist.get(i).getFat()*weserving;
+			saccharide += ilist.get(i).getSaccharide()*weserving;
+			sodium += ilist.get(i).getSodium()*weserving;
+			cholesterol += ilist.get(i).getCholesterol()*weserving;
+			fattyacid += ilist.get(i).getFattyacid()*weserving;
+			
+		}
+		
+		calorie = (int) (calorie/(1987.7*people)*100);
+		carbohydrate = (int) (carbohydrate/(287.9*people)*100);
+		protein = (int) (protein/(72.4*people)*100);
+		fat = (int) (fat/(49.5*people)*100);
+		saccharide = (int) (saccharide/(60.2*people)*100);
+		sodium = (int) (sodium/(3255.0*people)*100);
+		cholesterol = (int) (cholesterol/(260.4*people)*100);
+		fattyacid = (int) (fattyacid/(16.6*people)*100);
+		
+		iresult.setCalorie(calorie);
+		iresult.setCarbohydrate(carbohydrate);
+		iresult.setCholesterol(cholesterol);
+		iresult.setFat(fat);
+		iresult.setFattyacid(fattyacid);
+		iresult.setProtein(protein);
+		iresult.setSaccharide(saccharide);
+		iresult.setSodium(sodium);
+		
+		
+		String json = new Gson().toJson(iresult);
+		return json;
+	}
+	
+	
 	@PostMapping(value = "/likeschk", produces = "application/text; charset=utf8")
 	public @ResponseBody String likeschk(HttpSession session, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
@@ -413,18 +512,40 @@ public class RecipeController {
 	}
 	
 	@PostMapping(value = "/UpdateViews", produces = "application/text; charset=utf8")
-	public @ResponseBody void UpdateViews(HttpSession session, HttpServletRequest request, HttpServletResponse response)
+	public @ResponseBody String UpdateViews(HttpSession session, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		Cookie[] cookies = request.getCookies();
-		int visitor = 0;
+		String noDetail = request.getParameter("no");
+		ArticleDTO adto = new ArticleDTO();
+		adto.setNo(Integer.parseInt(noDetail));
+		String id = (String) session.getAttribute("id");
 		
-		for(Cookie cookie: cookies)
-		{
-			
-		}
-		
-		
+
+	    Cookie cookies[] = request.getCookies();
+	    Map map = new HashMap();
+	    if(request.getCookies() != null){
+		    for (int i = 0; i < cookies.length; i++) {
+			    Cookie obj = cookies[i];
+			    map.put(obj.getName(),obj.getValue());
+		    }
+	    }
+
+	    // 저장된 쿠키중에 read_count 만 불러오기
+	    String readCount = (String) map.get("read_count");
+	     // 저장될 새로운 쿠키값 생성
+	    String newReadCount = "|" + noDetail;
+
+	    // 저장된 쿠키에 새로운 쿠키값이 존재하는 지 검사
+	    if ( StringUtils.indexOfIgnoreCase(readCount, newReadCount) == -1 ) {
+	          // 없을 경우 쿠키 생성
+	          Cookie cookie = new Cookie("read_count", readCount + newReadCount);
+	         
+	          response.addCookie(cookie);
+	          recipeService.UpdateMyView(adto);
+	    }
+	    
+		int viewscnt = recipeService.chkMyView(adto);
+		return Integer.toString(viewscnt);
 	}
 	
 	

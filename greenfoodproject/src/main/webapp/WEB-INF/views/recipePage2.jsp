@@ -69,28 +69,9 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
     </head>
     <body data-mobile-nav-style="classic" style="overflow-x:hidden">
-<%--     <div id="load">
-    <img src="${images}/Iphone.gif" alt="loading">
-</div> --%>
-        <!-- start header -->
-        
+<!-- start header -->
+        	<jsp:include page='/WEB-INF/views/layout/header.jsp' />
         <!-- end header -->
-      
-<%--          <!-- start hero section -->
-        <section class="parallax p-0 one-fourth-screen lg-h-600px" data-parallax-background-ratio="0.5" style="background-image: url('${images}/img.jpg');">
-            <div class="opacity-extra-medium-2 bg-dark-gray"></div>
-            <div class="container-fluid position-relative h-100">
-                                <div class="h-100 justify-content-center shadow box-shadow-large justify-content-md-start d-flex">
-                                    <div style="border-style:solid; border-color:rgb(242,233,225)"class="shadow align-self-center  bg-white border-radius-6px w-30 lg-w-40 sm-w-70 xs-w-85 padding-7-rem-lr padding-5-half-rem-tb xl-padding-4-rem-lr lg-padding-2-half-rem-lr lg-padding-3-half-rem-tb xs-padding-3-half-rem-all margin-8-rem-left md-margin-6-rem-left sm-no-margin-left box-shadow-extra-large text-center text-sm-left">
-                                        <a href="blog-masonry.html" class="alt-font font-weight-500 text-extra-dark-gray text-black-hover text-medium letter-spacing-2px text-uppercase d-inline-block position-relative z-index-1 margin-25px-bottom xs-margin-20px-bottom"><span class="position-absolute left-0px bottom-2px w-100 h-5px bg-light-peach d-block z-index-minus-1"></span>Winter fashion</a>
-                                        <h4 class="alt-font font-weight-500 text-extra-dark-gray margin-35px-bottom letter-spacing-minus-2px"><a href="blog-post-layout-01.html" class="text-extra-dark-gray text-black-hover">Love can bring back the smile and fashion</a></h4>
-                                        <a href="blog-post-layout-01.html" class="btn btn-medium btn-transparent-dark-gray btn-box-shadow-flat">continue reading</a>
-                                    </div>
-                                </div>
-                            </div>
-        </section>
-        <!-- end hero section --> --%>
-        <!-- start hero section -->
         <section class="p-0 parallax home-events-conference h-70" data-parallax-background-ratio="0.5" style="" id="bgback">
             <div class="opacity-extra-medium-2 bg-black h-70 "></div>
             <div class="container position-relative"  h-70>
@@ -105,7 +86,7 @@
                                     <span class=" text-white alt-font font-weight-500 text-uppercase d-inline-block" id="likes"></span>
                                 </div>
                                 <div class="margin-25px-right xs-no-margin-right sm-margin-15px-right text-large">
-                                    <i class="feather icon-feather-thumbs-down text-white margin-10px-right text-large"></i>
+                                    <i class="feather icon-feather-monitor text-white margin-10px-right text-large"></i>
                                     <span class=" text-white alt-font font-weight-500 text-uppercase d-inline-block" style="margin-right:5px">조회수</span>
                                     <span class=" text-white alt-font font-weight-500 text-uppercase d-inline-block" id="views"></span>
                                 </div>
@@ -236,132 +217,28 @@
                         <span class="alt-font font-weight-500 text-salmon-rose text-uppercase d-block margin-20px-bottom md-margin-10px-bottom">영양성분</span>
                         <h5 class="alt-font font-weight-600 text-dark-purple line-height-46px letter-spacing-minus-1px m-lg-0 d-inline-block md-line-height-36px md-w-60 xs-w-100">영양성분을 알아볼까요?</h5>
                     </div>
+                     <p class="alt-font font-weight-500 text-middle-gray d-block text-uppercase text-right margin-100px-top" style="margin-bottom: -50px; width :100%">성인 1일 영양소 권장량 기준</p>
+						
                 </div>
                 <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2 justify-content-center">
                    <div class="col-lg-12">
+                  				
                    		<section class="pt-0">
 				            <div class="container">
-				                <div class="row row-cols-1 row-cols-md-5 row-cols-sm-2 justify-content-center">
+				            <div class="col" style="visibility:hidden; width: 1%">
+				                        <div class="chart-percent">
+				                            <span class="pie-chart-style-02" >
+				                            </span>
+				                        </div>
+				                        <div class="chart-text text-center" >
+				                        </div>
+				                    </div>
+				                    		             
+				                <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 justify-content-center" style="margin-top:-120px"id="ingreInfo">
 				                    <!-- start pie charts item -->
-				                    <div class="col sm-margin-40px-bottom">
-				                        <div class="chart-percent">
-				                            <span class="pie-chart-style-02" data-line-width="12" data-percent="75" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">
-				                                <span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>
-				                            </span>
-				                        </div>
-				                        <div class="chart-text text-center">
-				                            <span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">칼로리</span>
-				                        </div>
-				                    </div>
+				                    
 				                    <!-- end pie charts item -->
-				                    <!-- start pie charts item -->
-				                    <div class="col sm-margin-40px-bottom">
-				                        <div class="chart-percent">
-				                            <span class="pie-chart-style-02" data-line-width="12" data-percent="80" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">
-				                                <span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>
-				                            </span>
-				                        </div>
-				                        <div class="chart-text text-center">
-				                            <span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom" style="font-size:16px">탄수화물</span>
-				                        </div>
-				                    </div>
-				                    <!-- end pie charts item -->
-				                    <!-- start pie charts item -->
-				                    <div class="col">
-				                        <div class="chart-percent">
-				                            <span class="pie-chart-style-02" data-line-width="12" data-percent="85" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">
-				                                <span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>
-				                            </span>
-				                        </div>
-				                        <div class="chart-text text-center">
-				                            <span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom" style="font-size:16px">단백질</span>
-				                        </div>
-				                    </div>
-				                    <!-- end pie charts item -->
-				                    <!-- start pie charts item -->
-				                    <div class="col">
-				                        <div class="chart-percent">
-				                            <span class="pie-chart-style-02" data-line-width="12" data-percent="85" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">
-				                                <span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>
-				                            </span>
-				                        </div>
-				                        <div class="chart-text text-center">
-				                            <span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom" style="font-size:16px">지질</span>
-				                        </div>
-				                    </div>
-				                    <!-- end pie charts item -->
-				                    <!-- start pie charts item -->
-				                    <div class="col">
-				                        <div class="chart-percent">
-				                            <span class="pie-chart-style-02" data-line-width="12" data-percent="85" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">
-				                                <span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>
-				                            </span>
-				                        </div>
-				                        <div class="chart-text text-center">
-				                            <span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom" style="font-size:16px">나트륨</span>
-				                        </div>
-				                    </div>
-				                    <!-- end pie charts item -->
-				                     <!-- start pie charts item -->
-				                    <div class="col sm-margin-40px-bottom">
-				                        <div class="chart-percent">
-				                            <span class="pie-chart-style-02" data-line-width="12" data-percent="75" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">
-				                                <span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>
-				                            </span>
-				                        </div>
-				                        <div class="chart-text text-center">
-				                            <span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-20px-bottom" style="font-size:16px">칼로리</span>
-				                        </div>
-				                    </div>
-				                    <!-- end pie charts item -->
-				                    <!-- start pie charts item -->
-				                    <div class="col sm-margin-40px-bottom">
-				                        <div class="chart-percent">
-				                            <span class="pie-chart-style-02" data-line-width="12" data-percent="80" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">
-				                                <span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>
-				                            </span>
-				                        </div>
-				                        <div class="chart-text text-center">
-				                            <span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-20px-bottom" style="font-size:16px">탄수화물</span>
-				                        </div>
-				                    </div>
-				                    <!-- end pie charts item -->
-				                    <!-- start pie charts item -->
-				                    <div class="col">
-				                        <div class="chart-percent">
-				                            <span class="pie-chart-style-02" data-line-width="12" data-percent="85" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">
-				                                <span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>
-				                            </span>
-				                        </div>
-				                        <div class="chart-text text-center">
-				                            <span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-20px-bottom" style="font-size:16px">단백질</span>
-				                        </div>
-				                    </div>
-				                    <!-- end pie charts item -->
-				                    <!-- start pie charts item -->
-				                    <div class="col">
-				                        <div class="chart-percent">
-				                            <span class="pie-chart-style-02" data-line-width="12" data-percent="85" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">
-				                                <span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>
-				                            </span>
-				                        </div>
-				                        <div class="chart-text text-center">
-				                            <span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-20px-bottom" style="font-size:16px">지질</span>
-				                        </div>
-				                    </div>
-				                    <!-- end pie charts item -->
-				                    <!-- start pie charts item -->
-				                    <div class="col">
-				                        <div class="chart-percent">
-				                            <span class="pie-chart-style-02" data-line-width="12" data-percent="85" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">
-				                                <span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>
-				                            </span>
-				                        </div>
-				                        <div class="chart-text text-center">
-				                            <span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-20px-bottom" style="font-size:16px">나트륨</span>
-				                        </div>
-				                    </div>
-				                    <!-- end pie charts item -->
+				                   
 				                </div>
 				            </div>
 				        </section>
@@ -425,8 +302,8 @@
         </section>
         <!-- end section -->
         <!-- start section -->
-        <section class="pt-lg-0 pb-0 overflow-visible margin-100px-bottom">
-            <div class="container">
+        <section class="pt-lg-0 pb-0 overflow-visible bg-very-light-desert-storm">
+            <div class="container" style="padding-bottom: 150px">
                 <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 justify-content-center overlap-section">
                     <!-- start rotate box item -->
                     <div class="col col-sm-8 md-margin-30px-bottom xs-margin-15px-bottom wow animate__flipInY" data-wow-delay="0.2s">
@@ -455,7 +332,7 @@
                     </div>
                     <!-- end rotate box item -->
                     <!-- start rotate box item -->
-                    <div class="col col-sm-8 md-margin-30px-bottom xs-margin-15px-bottom wow animate__flipInY" data-wow-delay="0.4s">
+                    <div class="col col-sm-8 md-margin-30px-bottom xs-margin-15px-bottom wow animate__flipInY " data-wow-delay="0.4s">
                         <div class="rm-rotate-box text-center">
                             <div class="flipper to-left">
                                 <div class="thumb-wrap">
@@ -510,8 +387,8 @@
             </div>
         </section>
         <!-- end section -->
-        <!-- start footer -->
-        
+         <!-- start footer -->
+        <jsp:include page='/WEB-INF/views/layout/footer.jsp' />
         <!-- end footer -->
         <!-- start scroll to top -->
         <a class="scroll-top-arrow" href="javascript:void(0);"><i class="feather icon-feather-arrow-up"></i></a>
@@ -571,7 +448,6 @@
     				$("#title").append(str);
     				
     				$("#writer").append(results.id);
-    				$("#views").append(results.views);
     				$("#likes").append(results.likes);
     				$("#foodname").append(results.foodname);
     				$("#explanation").append(results.explanation);
@@ -633,6 +509,118 @@
     					str += '<li class="padding-15px-tb border-bottom border-color-medium-gray"><i class="feather icon-feather-check text-large text-salmon-rose margin-10px-right"></i>'+results[i].name+' ('+results[i].howmuch.toString()+'g)</li>'
     					$("#ingredients_howmuch").append(str);   
     				}
+    			}
+    				
+    		});
+        	
+        	$.ajax({
+    			url: "${pageContext.request.contextPath}/recipeIngredientsInfo",
+    			type: "post",
+    			dataType: "text",
+    			data : {
+					"no" : ${no}
+				}, 
+    			success: function(data) {
+    				var results = JSON.parse(data);
+    				var str1 ='';
+    				var str2 ='';
+    				var str3 ='';
+    				var str4 ='';
+    				var str5 ='';
+    				var str6 ='';
+    				var str7 ='';
+    				var str8 ='';
+    				str1 += '<div class="col sm-margin-40px-bottom">'
+    					+ '<div class="chart-percent">'
+    					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.calorie +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
+                        + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+                    	+ '</span>'
+                		+ '</div>'
+                		+ '<div class="chart-text text-center">'
+                		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
+                		+ '칼로리'
+                		+ '</span></div></div>'
+           		str2 += '<div class="col sm-margin-40px-bottom">'
+   					+ '<div class="chart-percent">'
+   					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.carbohydrate +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
+                    + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+                   	+ '</span>'
+               		+ '</div>'
+               		+ '<div class="chart-text text-center">'
+               		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
+               		+ '탄수화물'
+               		+ '</span></div></div>'
+           		str3 += '<div class="col sm-margin-40px-bottom">'
+   					+ '<div class="chart-percent">'
+   					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.protein +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
+                    + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+                   	+ '</span>'
+               		+ '</div>'
+               		+ '<div class="chart-text text-center">'
+               		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
+               		+ '단백질'
+               		+ '</span></div></div>'
+           		str4 += '<div class="col sm-margin-40px-bottom">'
+   					+ '<div class="chart-percent">'
+   					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.fat +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
+                    + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+                   	+ '</span>'
+               		+ '</div>'
+               		+ '<div class="chart-text text-center">'
+               		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
+               		+ '지방'
+               		+ '</span></div></div>'
+               		
+           		str5 += '<div class="col sm-margin-40px-bottom">'
+   					+ '<div class="chart-percent">'
+   					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.saccharide +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
+                    + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+                   	+ '</span>'
+               		+ '</div>'
+               		+ '<div class="chart-text text-center">'
+               		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
+               		+ '당류'
+               		+ '</span></div></div>'
+           		str6 += '<div class="col sm-margin-40px-bottom">'
+   					+ '<div class="chart-percent">'
+   					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.sodium +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
+                    + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+                   	+ '</span>'
+               		+ '</div>'
+               		+ '<div class="chart-text text-center">'
+               		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
+               		+ '나트륨'
+               		+ '</span></div></div>'
+           		str7 += '<div class="col sm-margin-40px-bottom">'
+   					+ '<div class="chart-percent">'
+   					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.cholesterol +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
+                    + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+                   	+ '</span>'
+               		+ '</div>'
+               		+ '<div class="chart-text text-center">'
+               		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
+               		+ '콜레스테롤'
+               		+ '</span></div></div>'
+           		str8 += '<div class="col sm-margin-40px-bottom">'
+   					+ '<div class="chart-percent">'
+   					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.fattyacid +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
+                    + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+                   	+ '</span>'
+               		+ '</div>'
+               		+ '<div class="chart-text text-center">'
+               		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
+               		+ '포화지방산'
+               		+ '</span></div></div>'
+                   
+    				$("#ingreInfo").append(str1);
+    				$("#ingreInfo").append(str2);
+    				$("#ingreInfo").append(str3);
+    				$("#ingreInfo").append(str4);
+    				$("#ingreInfo").append(str5);
+    				$("#ingreInfo").append(str6);
+    				$("#ingreInfo").append(str7);
+    				$("#ingreInfo").append(str8);
+    				
     			}
     				
     		});
@@ -729,8 +717,8 @@
 					"no" : ${no}
 				}, 
     			success: function(data) {
-    				console.log(data);
-    				
+    				console.log("update view");
+    				$("#views").append(data);
     			}
     				
     		});

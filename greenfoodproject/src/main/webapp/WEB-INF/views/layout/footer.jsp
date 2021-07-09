@@ -9,7 +9,7 @@
 <body>
         <!-- start footer -->
         <footer class="footer-furniture-shop footer-dark bg-extra-dark-gray position-relative overlap-gap-section-bottom">
-            <div class="footer-top padding-five-bottom lg-padding-eight-bottom sm-padding-50px-tb">
+            <div class="footer-top padding-five-bottom lg-padding-eight-bottom sm-padding-50px-tb" style="padding-top:50px">
                 <div class="container">
                     <div class="row justify-content-center">
                         <!-- start footer column -->

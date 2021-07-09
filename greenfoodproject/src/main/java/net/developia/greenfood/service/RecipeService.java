@@ -39,4 +39,8 @@ public interface RecipeService {
 	void DelMyLikeToRecipe(ArticleDTO adto) throws Exception;
 	void DelMyLikeRecipe(Recipe_likesDTO rldto) throws Exception;
 	int countMyLikes(ArticleDTO adto) throws Exception;
+	void UpdateMyView(ArticleDTO adto) throws Exception;
+	int chkMyView(ArticleDTO adto)throws Exception;
+	IngredientsDTO findIngredientsSelect(IngredientsDTO idto)throws Exception;
+	int findHowMany(ArticleDTO adto)throws Exception;
 }

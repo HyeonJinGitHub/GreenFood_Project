@@ -11,4 +11,5 @@ public interface IngredientsDAO {
 	void insertIngredients(IngredientsDTO ingredientsDTO)throws SQLException;
 	int findIngredientsOne(IngredientsDTO ingredientsDTO) throws SQLException;
 	String findIngreName(IngredientsDTO idto) throws SQLException;
+	IngredientsDTO findIngredientsSelect(IngredientsDTO idto)throws SQLException;
 }

@@ -202,4 +202,28 @@ public class RecipeServiceImpl implements RecipeService {
 		return articleDAO.countMyLikes(adto);
 	}
 
+	@Override
+	public void UpdateMyView(ArticleDTO adto) throws Exception {
+		// TODO Auto-generated method stub
+		articleDAO.UpdateMyView(adto);
+	}
+
+	@Override
+	public int chkMyView(ArticleDTO adto) throws Exception {
+		// TODO Auto-generated method stub
+		return articleDAO.chkMyView(adto);
+	}
+
+	@Override
+	public IngredientsDTO findIngredientsSelect(IngredientsDTO idto) throws Exception {
+		// TODO Auto-generated method stub
+		return ingredientsDAO.findIngredientsSelect(idto);
+	}
+
+	@Override
+	public int findHowMany(ArticleDTO adto) throws Exception {
+		// TODO Auto-generated method stub
+		return articleDAO.findHowMany(adto);
+	}
+
 }

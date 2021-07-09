@@ -53,7 +53,18 @@
 		set likes = likes - 1
 		where no = #{no}
 	</update>
+	<update id="UpdateMyView" parameterType="ArticleDTO">
+		update recipe 
+		set views = views + 1
+		where no = #{no}
+	</update>
 	
+	
+	<select id="findHowMany" parameterType="ArticleDTO" resultType="Integer">
+		select howmuch
+		from recipe
+		where no = #{no}
+	</select>
 	
 	<select id="findRecipe" parameterType="ArticleDTO" resultType="Integer">
 		select no
@@ -66,8 +77,11 @@
 		from recipe
 		where no = #{no}
 	</select>
-	
-	
+	<select id="chkMyView" parameterType="ArticleDTO" resultType="Integer">
+		select views
+		from recipe
+		where no = #{no}
+	</select>
 	
 	<select id="findRecipeNo" parameterType="ArticleDTO" resultType="ArticleDTO">
 		select *

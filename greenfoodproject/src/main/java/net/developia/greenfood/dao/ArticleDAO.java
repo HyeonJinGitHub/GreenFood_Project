@@ -16,4 +16,7 @@ public interface ArticleDAO {
 	void InsertMyLikeToRecipe(ArticleDTO adto) throws SQLException;
 	void DelMyLikeToRecipe(ArticleDTO adto) throws SQLException;
 	int countMyLikes(ArticleDTO adto) throws SQLException;
+	void UpdateMyView(ArticleDTO adto) throws SQLException;
+	int chkMyView(ArticleDTO adto) throws SQLException;
+	int findHowMany(ArticleDTO adto) throws SQLException;
 }
