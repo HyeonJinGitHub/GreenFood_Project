@@ -9,7 +9,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-<title>Litho – The Multipurpose HTML5 Template</title>
+<title>건강식 포스팅</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="author" content="ThemeZaa">
@@ -31,8 +31,31 @@
 .stepimage_size{height:100%; font-size:0;}  
 .stepimage_size:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
 .stepimage_size img{vertical-align:middle;}
+
+#load {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: block;
+    opacity: 0.8;
+    background: white;
+    z-index: 99;
+    text-align: center;
+}
+
+#load > img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+}
 </style>
 <body data-mobile-nav-style="classic">
+<div id="load">
+    <img src="${images}/Iphone.gif" alt="loading">
+</div>
 	<!-- start header -->
 
 	<!-- end header -->
@@ -1114,6 +1137,11 @@
 	<script>
 	var count = 1;
 	var icount = 1;
+	$(window).load(function() {
+	    $('#load').hide();
+	});
+	 
+
 	document.getElementById("nowPage").setAttribute("value", 1);
 		$(document)
 				.ready(

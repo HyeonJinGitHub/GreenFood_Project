@@ -12,4 +12,7 @@ public interface ArticleDAO {
 	int findRecipe(ArticleDTO adto) throws SQLException;
 	void updateRecipeThumbnail(ArticleDTO adto) throws SQLException;
 	void updateRecipeViedofile(ArticleDTO adto) throws SQLException;
+	ArticleDTO findRecipeNo(ArticleDTO adtotmp) throws SQLException;
+	void InsertMyLikeToRecipe(ArticleDTO adto) throws SQLException;
+	void DelMyLikeToRecipe(ArticleDTO adto) throws SQLException;
 }

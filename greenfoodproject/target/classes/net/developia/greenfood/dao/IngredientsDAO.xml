@@ -22,4 +22,11 @@
 		where name like #{name}
 	</select>
 	
+	<select id="findIngreName" parameterType="IngredientsDTO" resultType="String">
+		select name
+		from ingredients
+		where no = #{no}
+	</select>
+	
+	
 </mapper>

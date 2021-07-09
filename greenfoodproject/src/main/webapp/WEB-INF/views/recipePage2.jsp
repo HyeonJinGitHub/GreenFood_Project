@@ -9,7 +9,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
-        <title>Litho – The Multipurpose HTML5 Template</title>
+        <title>건강식 레시피</title>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -43,11 +43,35 @@
 				width: 100%;
 				height: 100vh;
 			}
+			
+/* 			#load {
+			    width: 100%;
+			    height: 100%;
+			    top: 0;
+			    left: 0;
+			    position: fixed;
+			    display: block;
+			    opacity: 0.8;
+			    background: white;
+			    z-index: 99;
+			    text-align: center;
+			}
+			
+			#load > img {
+			    position: absolute;
+			    top: 50%;
+			    left: 50%;
+			    z-index: 100;
+			} */
+			
 		</style>
 		<script src="https://vjs.zencdn.net/7.8.2/video.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
     </head>
     <body data-mobile-nav-style="classic" style="overflow-x:hidden">
+<%--     <div id="load">
+    <img src="${images}/Iphone.gif" alt="loading">
+</div> --%>
         <!-- start header -->
         
         <!-- end header -->
@@ -67,26 +91,28 @@
         </section>
         <!-- end hero section --> --%>
         <!-- start hero section -->
-        <section class="p-0 parallax home-events-conference h-70" data-parallax-background-ratio="0.5" style="background-image:url('${images}/img.jpg');">
+        <section class="p-0 parallax home-events-conference h-70" data-parallax-background-ratio="0.5" style="" id="bgback">
             <div class="opacity-extra-medium-2 bg-black h-70 "></div>
             <div class="container position-relative"  h-70>
                 <div class="row justify-content-center">
                     <div class="col-12 col-xl-9 col-lg-10 col-md-11 d-flex flex-column justify-content-center margin-100px-top margin-100px-bottom text-center md-landscape-h-400px xs-padding-15px-lr">
                         <div class="bg-transparent-white-2 border-radius-6px sm-padding-2-rem-lr">
                             <p class="alt-font font-weight-500 text-uppercase letter-spacing-3px text-neon-orange margin-40px-bottom sm-w-100 sm-margin-25px-bottom">어떤 건강레시피를 보러오셨나요?</p>
-                            <h1 class="alt-font font-weight-600 letter-spacing-minus-3px text-white margin-3-half-rem-bottom sm-margin-20px-bottom xs-letter-spacing-minus-1-half">맛있는 콩국수 만드는 법</h1>
+                            <div id="title"> </div>
                             <div class="d-flex flex-column flex-sm-row justify-content-center border-tb border-color-white-transparent text-center padding-15px-tb margin-4-rem-bottom margin-30px-top">
-                                <div class="margin-25px-right xs-no-margin-right sm-margin-15px-right text-large">
-                                    <i class="feather icon-feather-thumbs-up text-white margin-10px-right"></i>
-                                    <span class=" text-white alt-font font-weight-500 text-uppercase d-inline-block">좋아요</span>
+                                <div class="margin-25px-right xs-no-margin-right sm-margin-15px-right text-large" id="likeBtn" value="">
+                                    <a class=" alt-font text-uppercase d-inline-block" id="liketext" style="margin-right:5px"><i class="feather icon-feather-thumbs-up margin-10px-right"></i>좋아요</a>
+                                    <span class=" text-white alt-font font-weight-500 text-uppercase d-inline-block" id="likes"></span>
                                 </div>
                                 <div class="margin-25px-right xs-no-margin-right sm-margin-15px-right text-large">
                                     <i class="feather icon-feather-thumbs-down text-white margin-10px-right text-large"></i>
-                                    <span class=" text-white alt-font font-weight-500 text-uppercase d-inline-block">싫어요</span>
+                                    <span class=" text-white alt-font font-weight-500 text-uppercase d-inline-block" style="margin-right:5px">조회수</span>
+                                    <span class=" text-white alt-font font-weight-500 text-uppercase d-inline-block" id="views"></span>
                                 </div>
                                 <div class="margin-25px-right xs-no-margin-right sm-margin-15px-right text-large">
                                     <i class="feather icon-feather-user text-white margin-10px-right text-large"></i>
-                                    <span class=" text-white alt-font font-weight-500 text-uppercase d-inline-block">작성자</span>
+                                    <span class=" text-white alt-font font-weight-500 text-uppercase d-inline-block margin-5px-right">작성자</span>
+                                    <span class=" text-white alt-font font-weight-500 text-uppercase d-inline-block" id="writer"></span>
                                 </div>
                             </div>
                         </div>
@@ -106,25 +132,25 @@
                             </div>
                             <div class="col-12 col-lg-auto text-center text-lg-right padding-20px-lr lg-padding-10px-lr md-padding-15px-lr md-margin-20px-bottom wow animate__fadeIn">
                                 <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
-                                    <span class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">기본설명</span> 
+                                    <a href="#foodInfo" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">기본설명</a> 
                                 </div>
                                 <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
-                                    <span class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">영양성분</span> 
+                                    <a href="#ingredientsInfo" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">영양성분</a> 
                                 </div>
-                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
-                                    <span class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">조리방법</span>
+                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
+                                    <a href="#recipeInfo" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">조리방법</a>
                                 </div>
                                 <div class="padding-30px-lr d-block d-sm-inline-block align-middle lg-padding-15px-lr">
-                                    <span class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">댓글</span>
+                                    <a href="#relatedPost" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">관련글</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row align-items-center justify-content-center" style="margin-top:50px">
+                <div id="foodInfo" class="row align-items-center justify-content-center" style="margin-top:50px">
                     <div class="col-12 col-lg-5 md-margin-5-rem-bottom xs-margin-5-rem-top wow animate__fadeIn">
                         <span class="alt-font font-weight-500 text-salmon-rose text-uppercase d-block margin-20px-bottom md-margin-10px-bottom">기본설명</span>
-                        <h5 class="alt-font font-weight-600 text-dark-purple line-height-46px margin-4-rem-bottom w-85 letter-spacing-minus-1px lg-w-100 md-margin-10px-bottom xs-line-height-30px">콩국수</h5>
+                        <h5 class="alt-font font-weight-600 text-dark-purple line-height-46px margin-4-rem-bottom w-85 letter-spacing-minus-1px lg-w-100 md-margin-10px-bottom xs-line-height-30px" id="foodname"></h5>
                         <div class="panel-group accordion-event accordion-style-02 w-85 lg-w-100" id="accordion1" data-active-icon="icon-feather-minus" data-inactive-icon="icon-feather-plus">
                             <!-- start accordion item -->
                             <div class="panel bg-transparent">
@@ -137,7 +163,7 @@
                                     </a>
                                 </div>
                                 <div id="collapseOne" class="panel-collapse collapse show text-center" data-parent="#accordion1">
-                                    <div class="panel-body">시원한 여름을 나는데에는 콩국수만한 것이 없죠!</div>
+                                    <div class="panel-body" id="explanation"></div>
                                 </div>
                             </div>
                             <!-- end accordion item -->
@@ -152,7 +178,7 @@
                                     </a>
                                 </div>
                                 <div id="collapseTwo" class="panel-collapse collapse text-center" data-parent="#accordion1">
-                                    <div class="panel-body">2인분 (1400Kcal)</div>
+                                    <div class="panel-body" id="howmuch"></div>
                                 </div>
                             </div>
                             <!-- end accordion item -->
@@ -167,7 +193,7 @@
                                     </a>
                                 </div>
                                 <div id="collapseFour" class="panel-collapse collapse text-center" data-parent="#accordion1">
-                                    <div class="panel-body">20분</div>
+                                    <div class="panel-body" id="cookingtime"></div>
                                 </div>
                             </div>
                             <!-- end accordion item -->
@@ -183,11 +209,8 @@
                                 </div>
                                 <div id="collapseThree" class="panel-collapse collapse" data-parent="#accordion1">
                                     <div class="panel-body">
-                                    	<ul class="list-style-02 alt-font font-weight-500 text-small text-uppercase text-extra-dark-gray">
-				                            <li class="padding-15px-bottom border-bottom border-color-medium-gray"><i class="feather icon-feather-check text-large text-salmon-rose margin-10px-right"></i>Great environment</li>
-				                            <li class="padding-15px-tb border-bottom border-color-medium-gray"><i class="feather icon-feather-check text-large text-salmon-rose margin-10px-right"></i>Free breakfast</li>
-				                            <li class="padding-15px-tb border-bottom border-color-medium-gray"><i class="feather icon-feather-check text-large text-salmon-rose margin-10px-right"></i>Clean room everyday</li>
-				                            <li class="padding-15px-tb"><i class="feather icon-feather-check text-large text-salmon-rose margin-10px-right"></i>No booking fee</li>
+                                    	<ul class="list-style-02 alt-font font-weight-500 text-small text-uppercase text-extra-dark-gray" id="ingredients_howmuch">
+				                            
 				                        </ul>
                                     </div>
                                 </div>
@@ -195,9 +218,9 @@
                             <!-- end accordion item -->
                         </div>
                     </div>
-                    <div class="col-12 col-lg-6 offset-lg-1 home-yoga-meditation wow animate__fadeIn" data-wow-delay="0.4s">
-                        <div class="outside-box-right position-relative">
-                            <img src="${images}/img.jpg" class="overflow-hidden border-radius-4px" alt="" />
+                    <div class="col-12 col-lg-6 wow animate__fadeIn" data-wow-delay="0.4s">
+                        <div class=" position-relative">
+                            <img id="thumb" src="" class="overflow-hidden border-radius-4px" style="width:100%" alt="" />
                         </div>
                     </div>
                 </div>
@@ -207,7 +230,7 @@
         
           <!-- start section -->
         <section id="classes" class="overlap-height" style="margin-top:-50px; margin-bottom:-20px">
-            <div class="container">
+            <div class="container" id="ingredientsInfo">
                 <div class="row margin-6-rem-bottom md-margin-5-rem-bottom ">
                     <div class="col-12 col-lg-6 text-center text-lg-left wow animate__fadeIn">
                         <span class="alt-font font-weight-500 text-salmon-rose text-uppercase d-block margin-20px-bottom md-margin-10px-bottom">영양성분</span>
@@ -353,7 +376,7 @@
                 <div class="row justify-content-center">
                     <div class="col-12 text-center overlap-section">
                         <div class="overlap-section-inner">
-                            <h3 class="alt-font text-salmon-rose title-extra-large letter-spacing-minus-3px font-weight-700 mb-0">Healthy Food</h3>
+                            <h3  class="alt-font text-salmon-rose title-extra-large letter-spacing-minus-3px font-weight-700 mb-0">Healthy Food</h3>
                         </div>
                     </div>
                 </div>
@@ -361,12 +384,12 @@
         </section>
         <!-- end section -->
         <section class="pt-0 bg-very-light-desert-storm ">
-            <div class="container">
+            <div class="container" id="recipeInfo">
                 <div class="row justify-content-center text-center">
                     <div class="col-12 text-center">
                     		<video id=video width="1000" height="300" class="video-js" controls>
                     			<!-- 여기 밑에 src에다가 recipe db에서 경로 가져와서 붙여넣기만 해주시면 댑니다. -->
-								<source src="https://d3gr4nmrit7xq0.cloudfront.net/ohgu2.mp4" type="video/mp4">
+								
 							</video>
                     </div>
                 </div>
@@ -378,72 +401,9 @@
                 </div>
                 <div class="row justify-content-center text-center">
                 	<div class="col-12 text-center">
-                		<div class="blog-list blog-side-image">
+                		<div class="blog-list blog-side-image" id="stepRecipe">
                             <!-- start blog item --> 
-                            <div class="blog-post bg-white box-shadow-medium margin-30px-bottom wow animate__fadeIn">
-                                <div class="d-flex flex-column flex-md-row align-items-center">
-                                    <div class="blog-post-image sm-margin-25px-bottom">
-                                        <a href="blog-post-layout-01.html" title=""><img src="https://placehold.it/1200x840" alt="" /></a>
-                                    </div>
-                                    <div class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding">
-                                        <a href="blog-masonry.html" class="alt-font text-small text-gradient-light-purple-light-red font-weight-500 text-uppercase d-inline-block margin-15px-bottom sm-margin-10px-bottom">18 March 2020</a>
-                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-large text-extra-dark-gray d-block margin-20px-bottom sm-margin-10px-bottom">Recognizing the need the primary condition design</a>
-                                        <p class="margin-seventeen-bottom sm-margin-25px-bottom">Lorem ipsum is simply dummy text of the printing and typesetting industry lorem ipsum has been dummy text...</p>
-                                        <div class="alt-font text-extra-small text-uppercase d-flex align-items-center sm-margin-10px-bottom">
-                                            <img class="avtar-image" src="https://placehold.it/149x149" alt="">
-                                            <span>
-                                                <span class="d-inline-block">By <a href="blog-masonry.html" class="text-extra-dark-gray">Joe sparano</a></span>
-                                                <span class="separator bg-medium-gray"></span>
-                                                <span class="d-inline-block">In <a href="blog-masonry.html" class="text-extra-dark-gray">Creative</a></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end blog item -->
-                           <!-- start blog item --> 
-                            <div class="blog-post bg-white box-shadow-medium margin-30px-bottom wow animate__fadeIn">
-                                <div class="d-flex flex-column flex-md-row align-items-center">
-                                    <div class="blog-post-image sm-margin-25px-bottom">
-                                        <a href="blog-post-layout-01.html" title=""><img src="https://placehold.it/1200x840" alt="" /></a>
-                                    </div>
-                                    <div class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding">
-                                        <a href="blog-masonry.html" class="alt-font text-small text-gradient-light-purple-light-red font-weight-500 text-uppercase d-inline-block margin-15px-bottom sm-margin-10px-bottom">18 March 2020</a>
-                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-large text-extra-dark-gray d-block margin-20px-bottom sm-margin-10px-bottom">Recognizing the need the primary condition design</a>
-                                        <p class="margin-seventeen-bottom sm-margin-25px-bottom">Lorem ipsum is simply dummy text of the printing and typesetting industry lorem ipsum has been dummy text...</p>
-                                        <div class="alt-font text-extra-small text-uppercase d-flex align-items-center sm-margin-10px-bottom">
-                                            <img class="avtar-image" src="https://placehold.it/149x149" alt="">
-                                            <span>
-                                                <span class="d-inline-block">By <a href="blog-masonry.html" class="text-extra-dark-gray">Joe sparano</a></span>
-                                                <span class="separator bg-medium-gray"></span>
-                                                <span class="d-inline-block">In <a href="blog-masonry.html" class="text-extra-dark-gray">Creative</a></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end blog item -->
-                            <!-- start blog item --> 
-                            <div class="blog-post bg-white box-shadow-medium margin-30px-bottom wow animate__fadeIn">
-                                <div class="d-flex flex-column flex-md-row align-items-center">
-                                    <div class="blog-post-image sm-margin-25px-bottom">
-                                        <a href="blog-post-layout-01.html" title=""><img src="https://placehold.it/1200x840" alt="" /></a>
-                                    </div>
-                                    <div class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding">
-                                        <a href="blog-masonry.html" class="alt-font text-small text-gradient-light-purple-light-red font-weight-500 text-uppercase d-inline-block margin-15px-bottom sm-margin-10px-bottom">18 March 2020</a>
-                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-large text-extra-dark-gray d-block margin-20px-bottom sm-margin-10px-bottom">Recognizing the need the primary condition design</a>
-                                        <p class="margin-seventeen-bottom sm-margin-25px-bottom">Lorem ipsum is simply dummy text of the printing and typesetting industry lorem ipsum has been dummy text...</p>
-                                        <div class="alt-font text-extra-small text-uppercase d-flex align-items-center sm-margin-10px-bottom">
-                                            <img class="avtar-image" src="https://placehold.it/149x149" alt="">
-                                            <span>
-                                                <span class="d-inline-block">By <a href="blog-masonry.html" class="text-extra-dark-gray">Joe sparano</a></span>
-                                                <span class="separator bg-medium-gray"></span>
-                                                <span class="d-inline-block">In <a href="blog-masonry.html" class="text-extra-dark-gray">Creative</a></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <!-- end blog item -->
                         </div>
                 	</div>
@@ -454,7 +414,7 @@
         
         <!-- start section -->
         <section class="big-section bg-very-light-desert-storm overlap-height" style="margin-top:-120px;">
-            <div class="container">
+            <div class="container" id="relatedPost">
                 <div class="row margin-6-rem-bottom md-margin-5-rem-bottom ">
                     <div class="col-12 col-lg-6 text-center text-lg-left wow animate__fadeIn">
                         <span class="alt-font font-weight-500 text-salmon-rose text-uppercase d-block margin-20px-bottom md-margin-10px-bottom">관련글</span>
@@ -550,99 +510,6 @@
             </div>
         </section>
         <!-- end section -->
-        <!-- start section -->
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 mx-auto wow animate__fadeIn">
-                        <ul class="blog-comment">
-                            <li>
-                                <div class="d-block d-md-flex w-100 align-items-center align-items-md-start ">
-                                    <div class="w-75px sm-w-50px sm-margin-10px-bottom">
-                                        <img src="https://placehold.it/125x125" class="rounded-circle w-95 sm-w-100" alt=""/>
-                                    </div>
-                                    <div class="w-100 padding-25px-left last-paragraph-no-margin sm-no-padding-left">
-                                        <a href="#" class="text-extra-dark-gray text-fast-blue-hover alt-font font-weight-500 text-medium">Herman Miller</a>
-                                        <a href="#comments" class="btn-reply text-medium-gray text-uppercase section-link">Reply</a>
-                                        <div class="text-medium text-medium-gray margin-15px-bottom">17 July 2020, 6:05 PM</div>
-                                        <p class="w-85">Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the make a type specimen book.</p>
-                                    </div>
-                                </div>
-                                <ul class="child-comment">
-                                    <li>
-                                        <div class="d-block d-md-flex w-100 align-items-center align-items-md-start ">
-                                            <div class="w-75px sm-w-50px sm-margin-10px-bottom">
-                                                <img src="https://placehold.it/125x125" class="rounded-circle w-95 sm-w-100" alt=""/>
-                                            </div>
-                                            <div class="w-100 padding-25px-left last-paragraph-no-margin sm-no-padding-left">
-                                                <a href="#" class="text-extra-dark-gray text-fast-blue-hover alt-font font-weight-500 text-medium">Wilbur Haddock</a>
-                                                <a href="#comments" class="btn-reply text-medium-gray text-uppercase section-link">Reply</a>
-                                                <div class="text-medium text-medium-gray margin-15px-bottom">18 July 2020, 10:19 PM</div>
-                                                <p class="w-85">Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since.</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-block d-md-flex w-100 align-items-center align-items-md-start border-radius-5px padding-40px-all md-padding-30px-all sm-padding-20px-all bg-light-gray">
-                                            <div class="w-75px sm-w-50px sm-margin-10px-bottom">
-                                                <img src="https://placehold.it/125x125" class="rounded-circle w-95 sm-w-100" alt=""/>
-                                            </div>
-                                            <div class="w-100 padding-25px-left last-paragraph-no-margin sm-no-padding-left">
-                                                <a href="#" class="text-extra-dark-gray text-fast-blue-hover alt-font font-weight-500 text-medium">Colene Landin</a>
-                                                <a href="#comments" class="btn-reply text-medium-gray text-uppercase section-link">Reply</a>
-                                                <div class="text-medium text-medium-gray margin-15px-bottom">18 July 2020, 12:39 PM</div>
-                                                <p class="w-85">Lorem ipsum is simply dummy text of the printing and typesetting industry. Ipsum has been the industry's standard dummy text ever since.</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <div class="d-block d-md-flex w-100 align-items-center align-items-md-start ">
-                                    <div class="w-75px sm-w-50px sm-margin-10px-bottom">
-                                        <img src="https://placehold.it/125x125" class="rounded-circle w-95 sm-w-100" alt=""/>
-                                    </div>
-                                    <div class="w-100 padding-25px-left last-paragraph-no-margin sm-no-padding-left">
-                                        <a href="#" class="text-extra-dark-gray text-fast-blue-hover alt-font font-weight-500 text-medium">Jennifer Freeman</a>
-                                        <a href="#comments" class="btn-reply text-medium-gray text-uppercase section-link">Reply</a>
-                                        <div class="text-medium text-medium-gray margin-15px-bottom">19 July 2020, 8:25 PM</div>
-                                        <p class="w-85">Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the make a type specimen book.</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul> 
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
-        <!-- start section -->
-        <section id="comments" class="pt-0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-lg-6 text-center text-lg-left wow animate__fadeIn">
-                        <span class="alt-font font-weight-500 text-salmon-rose text-uppercase d-block margin-20px-bottom md-margin-10px-bottom">댓글</span>
-                        <h5 class="alt-font font-weight-600 text-dark-purple line-height-46px letter-spacing-minus-1px m-lg-0 d-inline-block md-line-height-36px md-w-60 xs-w-100">여러분의 의견을 남겨주세요!</h5>
-                    </div>
-                </div>
-                <div class="row justify-content-center" style="margin-top:20px">
-                    <div class="col-12 wow animate__fadeIn">
-                        <form action="#" method="post">
-                            <div class="row align-items-center">
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <textarea class="medium-textarea border-radius-4px bg-white h-120px margin-2-half-rem-bottom" rows="6" name="comment" placeholder="Enter your comment"></textarea>
-                                </div>
-                                <div class="col-12 sm-margin-20px-bottom text-right">
-                                    <input type="hidden" name="redirect" value="">
-                                    <input class="btn btn-medium btn-dark-gray mb-0 btn-round-edge-small submit" type="submit" name="submit" value="댓글 작성">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
         <!-- start footer -->
         
         <!-- end footer -->
@@ -671,88 +538,187 @@
         <script type="text/javascript" src="revolution/js/extensions/revolution.extension.parallax.min.js"></script>
         <script type="text/javascript" src="revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
         <script type="text/javascript" src="revolution/js/extensions/revolution.extension.video.min.js"></script> -->
+        
+	<link
+		href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+		rel="stylesheet" type="text/css" />
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript"
+		src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	
         <script type="text/javascript">
-            var revapi263,
-                    tpj;
-            (function () {
-                if (!/loaded|interactive|complete/.test(document.readyState))
-                    document.addEventListener("DOMContentLoaded", onLoad);
-                else
-                    onLoad();
-                function onLoad() {
-                    if (tpj === undefined) {
-                        tpj = jQuery;
-                        if ("off" == "on")
-                            tpj.noConflict();
-                    }
-                    if (tpj("#rev_slider_26_1").revolution == undefined) {
-                        revslider_showDoubleJqueryError("#rev_slider_26_1");
-                    } else {
-                        revapi263 = tpj("#rev_slider_26_1").show().revolution({
-                            sliderType: "standard",
-                            jsFileLocation: "revolution/js/",
-                            sliderLayout: "fullscreen",
-                            dottedOverlay: "none",
-                            delay: 9000,
-                            navigation: {
-                                keyboardNavigation: "on",
-                                keyboard_direction: "horizontal",
-                                mouseScrollNavigation: "off",
-                                mouseScrollReverse: "default",
-                                onHoverStop: "off",
-                                touch: {
-                                    touchenabled: "on",
-                                    touchOnDesktop: "on",
-                                    swipe_threshold: 75,
-                                    swipe_min_touches: 1,
-                                    swipe_direction: "horizontal",
-                                    drag_block_vertical: false
-                                },
-                            },
-                            parallax: {
-                                type: "mouse",
-                                origo: "slidercenter",
-                                speed: 2000,
-                                levels: [2, 3, 4, 5, 6, 7, 12, 16, 10, 50, 46, 47, 48, 49, 50, 55],
-                                type: "mouse",
-                                disable_onmobile: "on"
-                            },
-                            responsiveLevels: [1240, 1025, 778, 480],
-                            visibilityLevels: [1920, 1500, 1025, 768],
-                            gridwidth: [1200, 991, 778, 480],
-                            gridheight: [1025, 1366, 1025, 868],
-                            lazyType: "none",
-                            shadow: 0,
-                            spinner: "spinner4",
-                            stopLoop: "on",
-                            stopAfterLoops: 0,
-                            stopAtSlide: 1,
-                            shuffle: "off",
-                            autoHeight: "on",
-                            fullScreenAutoWidth: "on",
-                            fullScreenAlignForce: "off",
-                            fullScreenOffsetContainer: "",
-                            fullScreenOffset: "128px",
-                            disableProgressBar: "on",
-                            hideThumbsOnMobile: "off",
-                            hideSliderAtLimit: 0,
-                            hideCaptionAtLimit: 0,
-                            hideAllCaptionAtLimit: 0,
-                            debugMode: false,
-                            fallbacks: {
-                                simplifyAll: "off",
-                                nextSlideOnWindowFocus: "off",
-                                disableFocusListener: false,
-                            }
-                        });
-                    }
-                    ; /* END OF revapi call */
-
-                    RsTypewriterAddOn(jQuery, revapi263);
-
-                }
-                ; /* END OF ON LOAD FUNCTION */
-            }()); /* END OF WRAPPING FUNCTION */
+        $(window).load(function() {
+    	    $('#load').hide();
+    	    
+    	    
+    	});
+        
+        $(document).ready(function() {
+        	console.log(${no});
+        	$.ajax({
+    			url: "${pageContext.request.contextPath}/recipeDetail",
+    			type: "post",
+    			dataType: "text",
+    			data : {
+					"no" : ${no}
+				}, 
+    			success: function(data) {
+    				var results = JSON.parse(data);
+    				console.log(results);
+    				var str = '<h1 class="alt-font font-weight-600 letter-spacing-minus-3px text-white margin-3-half-rem-bottom sm-margin-20px-bottom xs-letter-spacing-minus-1-half">'+results.title+'</h1>';
+    				$("#title").append(str);
+    				
+    				$("#writer").append(results.id);
+    				$("#views").append(results.views);
+    				$("#likes").append(results.likes);
+    				$("#foodname").append(results.foodname);
+    				$("#explanation").append(results.explanation);
+    				$("#howmuch").append(results.howmuch+'인분');
+    				$("#cookingtime").append(results.cookingtime+'분');
+    				document.getElementById("thumb").setAttribute("src", results.thumbnail.replace(/(\s*)/g, ''));
+    				document.getElementById("bgback").style.backgroundImage = "url('"+results.thumbnail.replace(/(\s*)/g, '')+"')";
+    				var str ='<source id="videof" src="'+results.viedofile.replace( /(\s*)/g, "")+'" type="video/mp4">'
+    				$("#video").append(str);
+    			}
+    				
+    		});
+        	
+        	$.ajax({
+    			url: "${pageContext.request.contextPath}/recipeDetailStep",
+    			type: "post",
+    			dataType: "text",
+    			data : {
+					"no" : ${no}
+				}, 
+    			success: function(data) {
+    				var results = JSON.parse(data);
+    				console.log(results);
+    				for(var i = 0; i<results.length; i++)
+    				{
+    					var str = '';
+    					str += '<div class="blog-post bg-white box-shadow-medium margin-30px-bottom wow animate__fadeIn">'
+    						+ '<div class="d-flex flex-column flex-md-row align-items-center">'
+    						+ '<div class="blog-post-image sm-margin-25px-bottom">'
+    						+ '<a href="blog-post-layout-01.html" title=""><img src="'+results[i].step_img.replace(/(\s*)/g, '')+'" alt="" /></a>'
+    						+ '</div>'
+    						+ '<div class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding">'
+    						+ '<a href="blog-masonry.html" class="alt-font text-small text-salmon-rose font-weight-500 text-uppercase d-inline-block margin-15px-bottom sm-margin-10px-bottom">'+(i+1)+'번째 단계</a>'
+    						+ '<a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-large text-extra-dark-gray d-block margin-20px-bottom sm-margin-10px-bottom">'+results[i].step_title+'</a>'
+    						+ '<p class="margin-seventeen-bottom sm-margin-25px-bottom">'+results[i].step_explanation+'</p>'
+    						+ '<div class="alt-font text-extra-small text-uppercase d-flex align-items-center sm-margin-10px-bottom">'
+    						+ '<img class="avtar-image" src="https://placehold.it/149x149" alt=""></div></div></div></div>'
+    					$("#stepRecipe").append(str);
+    					
+                              
+    				}
+    			}
+    				
+    		});
+        	
+        	$.ajax({
+    			url: "${pageContext.request.contextPath}/recipeIngredients",
+    			type: "post",
+    			dataType: "text",
+    			data : {
+					"no" : ${no}
+				}, 
+    			success: function(data) {
+    				var results = JSON.parse(data);
+    				console.log(results);
+    				for(var i = 0; i<results.length; i++)
+    				{
+    					var str = '';
+    					str += '<li class="padding-15px-tb border-bottom border-color-medium-gray"><i class="feather icon-feather-check text-large text-salmon-rose margin-10px-right"></i>'+results[i].name+' ('+results[i].howmuch.toString()+'g)</li>'
+    					$("#ingredients_howmuch").append(str);   
+    				}
+    			}
+    				
+    		});
+        	
+        	$(document).on(
+					"click",
+					"#likeBtn",
+					function(e) {
+						console.log($(this).attr('value'));
+						if($(this).attr('value') == "possible")
+						{
+	    					$.ajax({
+	    		    			url: "${pageContext.request.contextPath}/Insertlike",
+	    		    			type: "post",
+	    		    			dataType: "text",
+	    		    			data : {
+	    							"no" : ${no}
+	    						}, 
+	    		    			success: function(data) {
+	    		    				console.log("insert like");
+	    		    			}
+	    		    				
+	    		    		});
+	    					document.getElementById("likeBtn").setAttribute("value", "impossible");
+	    					$("#likeBtn").removeClass("text-salmon-rose");
+	    					$("#liketext").removeClass("text-salmon-rose");
+	    					$("#likeBtn").addClass("text-white");
+	    					$("#liketext").addClass("text-white");
+						}
+						else{
+	    					$.ajax({
+	    		    			url: "${pageContext.request.contextPath}/Deletelike",
+	    		    			type: "post",
+	    		    			dataType: "text",
+	    		    			data : {
+	    							"no" : ${no}
+	    						}, 
+	    		    			success: function(data) {
+	    		    				console.log("delete like");
+	    		    			}
+	    		    				
+	    		    		});
+						}
+						document.getElementById("likeBtn").setAttribute("value", "possible");
+						$("#likeBtn").removeClass("text-white");
+    					$("#liketext").removeClass("text-white");
+    					$("#likeBtn").addClass("text-salmon-rose");
+    					$("#liketext").addClass("text-salmon-rose");
+					});
+        	
+        	$.ajax({
+    			url: "${pageContext.request.contextPath}/likeschk",
+    			type: "post",
+    			dataType: "text",
+    			data : {
+					"no" : ${no}
+				}, 
+    			success: function(data) {
+    				console.log(data);
+    				if(data == 'NO')
+    				{
+    					document.getElementById("likeBtn").setAttribute("value", "possible");
+    					$("#likeBtn").removeClass("text-white");
+    					$("#liketext").removeClass("text-white");
+    					$("#likeBtn").addClass("text-salmon-rose");
+    					$("#liketext").addClass("text-salmon-rose");
+    
+    				}
+    				else{
+    					
+    					document.getElementById("likeBtn").setAttribute("value", "impossible");
+    					$("#likeBtn").removeClass("text-salmon-rose");
+    					$("#liketext").removeClass("text-salmon-rose");
+    					$("#likeBtn").addClass("text-white");
+    					$("#liketext").addClass("text-white");
+    					
+    				}
+    			}
+    				
+    		});
+        	
+        });
+        
+      
+        
+         
         </script>
     </body>
 </html>
