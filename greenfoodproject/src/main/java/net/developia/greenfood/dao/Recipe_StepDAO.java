@@ -14,4 +14,6 @@ public interface Recipe_StepDAO {
 
 	void updateStep(Recipe_StepDTO rsdto) throws SQLException;
 
+	List<Recipe_StepDTO> findRecipeStepNo(Recipe_StepDTO rsdto) throws SQLException;
+
 }

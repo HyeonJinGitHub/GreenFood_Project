@@ -3,15 +3,19 @@ package net.developia.greenfood.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,6 +39,7 @@ import net.developia.greenfood.dto.IngredientsDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
 import net.developia.greenfood.dto.Recipe_StepDTO;
+import net.developia.greenfood.dto.Recipe_likesDTO;
 import net.developia.greenfood.service.AwsService;
 import net.developia.greenfood.service.RecipeService;
 
@@ -50,10 +55,15 @@ public class RecipeController {
 	int recipe_no = 0;
 	int step_start = 1;
 	int step_last = 1;
-	@RequestMapping(value = "/recipe", method = RequestMethod.GET)
-	public String home2() {
+	
+	@ResponseBody
+	@RequestMapping(value = "/recipe/{recipe_no}", method = RequestMethod.GET)
+	public ModelAndView recipe(HttpSession session, @PathVariable long recipe_no) {
 		System.out.println("recipe page start");
-		return "recipePage2";
+		ModelAndView mav = new ModelAndView("recipePage2");
+		mav.addObject("id", session.getAttribute("id"));
+		mav.addObject("no", recipe_no);
+		return mav;
 	}
 
 	@RequestMapping(value = "/recipePost", method = RequestMethod.GET)
@@ -141,11 +151,20 @@ public class RecipeController {
 	}
 
 	@PostMapping(value = "/postRecipe", produces = "application/text; charset=utf8")
-	public @ResponseBody String insertRecipe(@RequestParam(value = "ingredientsArr[]") List<String> ingredientsArr,
+	public @ResponseBody String insertRecipe(HttpSession session, @RequestParam(value = "ingredientsArr[]") List<String> ingredientsArr,
 			@RequestParam(value = "ingredientssizeArr[]") List<String> ingredientssizeArr,
 			@RequestParam(value = "hashtagArr[]") List<String> hashtagArr, @RequestParam(value = "title") String title, //
 			@RequestParam(value = "steptitleArr[]") List<String> steptitleArr,
 			@RequestParam(value = "stepsubscriptArr[]") List<String> stepsubscriptArr,
+			@RequestParam(value = "calorieArr[]") List<String> calorieArr,
+			@RequestParam(value = "carbohydrateArr[]") List<String> carbohydrateArr,
+			@RequestParam(value = "proteinArr[]") List<String> proteinArr,
+			@RequestParam(value = "fatArr[]") List<String> fatArr,
+			@RequestParam(value = "saccharideArr[]") List<String> saccharideArr,
+			@RequestParam(value = "sodiumArr[]") List<String> sodiumArr,
+			@RequestParam(value = "cholesterolArr[]") List<String> cholesterolArr,
+			@RequestParam(value = "fattyacidArr[]") List<String> fattyacidArr,
+			@RequestParam(value = "servingArr[]") List<String> servingArr,
 			@RequestParam(value = "subscript") String subscript, //
 			@RequestParam(value = "foodname") String foodname, //
 			@RequestParam(value = "howmuch") String howmuch, //
@@ -158,7 +177,7 @@ public class RecipeController {
 		log.info("글번호" + cat_no);
 		ArticleDTO adto = new ArticleDTO();
 		adto.setTitle(title);
-		adto.setId("eunna8675");
+		adto.setId((String) session.getAttribute("id"));
 		adto.setExplanation(subscript);
 		adto.setCookingtime(Integer.parseInt(foodtime));
 		adto.setFoodname(foodname);
@@ -201,7 +220,8 @@ public class RecipeController {
 		// ingredients
 		
 		List<IngredientsDTO> ingredients_list = recipeService.findIngredients(); 
-		for(String iga : ingredientsArr) { 
+		for(int j = 0; j< ingredientsArr.size(); j++) {
+			String iga = ingredientsArr.get(j);
 			boolean chk = false; 
 			int ino = 0; 
 			int isize =0; 
@@ -216,6 +236,16 @@ public class RecipeController {
 			
 			IngredientsDTO idto = new IngredientsDTO();
 			idto.setName(iga);
+			idto.setCalorie(Integer.parseInt(calorieArr.get(j)));
+			idto.setCarbohydrate(Integer.parseInt(carbohydrateArr.get(j)));
+			idto.setProtein(Integer.parseInt(proteinArr.get(j)));
+			idto.setFat(Integer.parseInt(fatArr.get(j)));
+			idto.setSaccharide(Integer.parseInt(saccharideArr.get(j)));
+			idto.setSodium(Integer.parseInt(sodiumArr.get(j)));
+			idto.setCholesterol(Integer.parseInt(cholesterolArr.get(j)));
+			idto.setFattyacid(Integer.parseInt(fattyacidArr.get(j)));
+			idto.setHowmuch(Integer.parseInt(servingArr.get(j)));
+			
 			if(chk == false) {
 		 	   recipeService.insertIngredients(idto); 
 		 	} 
@@ -253,7 +283,7 @@ public class RecipeController {
 //		formData.append("thumb", $("#product_image")[0].files[0]);
 //		formData.append("recipe_no", retVal);
 		
-		String profile_img = awsService.s3FileUploadThumbnail(thumb, "eunna8675" , Integer.toString(recipe_no));
+		String profile_img = awsService.s3FileUploadThumbnail(thumb, (String) session.getAttribute("id") , Integer.toString(recipe_no));
 		log.info(recipe_no+"글번호입니다");
 		ArticleDTO adto = new ArticleDTO();
 		adto.setThumbnail(profile_img);
@@ -264,21 +294,260 @@ public class RecipeController {
 		
 	}
 	
-	@PostMapping("/VideoUpdate.do")
+	@PostMapping("/VideoUpdate")
 	public void VideoUpdate(HttpSession session, @ModelAttribute MultipartFile recipev) throws Exception {
 		
 		//updateRecipeViedofile
 		//awsService.s3VideoUpload(f, "recipe")
-		String profile_img = awsService.s3FileUploadVideo(recipev, "eunna8675" , Integer.toString(recipe_no));
+		String profile_img = awsService.s3FileUploadVideo(recipev, (String) session.getAttribute("id") , Integer.toString(recipe_no));
 		
 		ArticleDTO adto = new ArticleDTO();
 		adto.setViedofile(profile_img);
 		adto.setNo(recipe_no);
 		recipeService.updateRecipeViedofile(adto);
 		
-	
+	/*	ModelAndView mav = new ModelAndView("result");
+		mav.addObject("url", "/greenfood/main");
+		return mav;*/
 		
 	}
+	
+	
+	@PostMapping(value = "/recipeDetail", produces = "application/text; charset=utf8")
+	public @ResponseBody String recipeDetail(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		String noDetail = request.getParameter("no");
+		
+		log.info("recipe datail load");
+		log.info(noDetail);
+		
+		
+		ArticleDTO adto = new ArticleDTO();
+		ArticleDTO adtotmp = new ArticleDTO();
+		adtotmp.setNo(Integer.parseInt(noDetail));
+		adto = recipeService.findRecipeNo(adtotmp);
+	
+		String json = new Gson().toJson(adto);
+		return json;
+	}
+
+	@PostMapping(value = "/recipeDetailStep", produces = "application/text; charset=utf8")
+	public @ResponseBody String recipeDetailStep(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		String noDetail = request.getParameter("no");
+		List<Recipe_StepDTO> rslist = new ArrayList<>();
+		
+		Recipe_StepDTO rsdto = new Recipe_StepDTO();
+		rsdto.setRecipe_no(Integer.valueOf(noDetail));
+		rslist = recipeService.findRecipeStepNo(rsdto);
+		
+		String json = new Gson().toJson(rslist);
+		return json;
+	}
+	
+	@PostMapping(value = "/recipeIngredients", produces = "application/text; charset=utf8")
+	public @ResponseBody String recipeIngredients(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		String noDetail = request.getParameter("no");
+		List<Recipe_IngredientsDTO> rilist = new ArrayList<>();
+		
+		Recipe_IngredientsDTO ridto = new Recipe_IngredientsDTO();
+		ridto.setRecipe_no(Integer.valueOf(noDetail));
+		rilist = recipeService.findRecipeIngredients(ridto);
+		
+		for(int i =0; i< rilist.size(); i++)
+		{
+			IngredientsDTO idto = new IngredientsDTO();
+			idto.setNo(rilist.get(i).getIngredients_no());
+			String name = recipeService.findIngreName(idto);
+			rilist.get(i).setName(name);
+		}
+		
+		
+		String json = new Gson().toJson(rilist);
+		return json;
+	}
+	
+	@PostMapping(value = "/recipeIngredientsInfo", produces = "application/text; charset=utf8")
+	public @ResponseBody String recipeIngredientsInfo(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		String noDetail = request.getParameter("no");
+		List<Recipe_IngredientsDTO> rilist = new ArrayList<>();
+		List<IngredientsDTO> ilist = new ArrayList<>();
+		
+		
+		Recipe_IngredientsDTO ridto = new Recipe_IngredientsDTO();
+		ridto.setRecipe_no(Integer.valueOf(noDetail));
+		rilist = recipeService.findRecipeIngredients(ridto);
+		
+		for(int i =0; i< rilist.size(); i++)
+		{
+			int ino = rilist.get(i).getNo();
+			IngredientsDTO idto = new IngredientsDTO();
+			idto.setNo(ino);
+			IngredientsDTO idtotmp = recipeService.findIngredientsSelect(idto);
+			ilist.add(idtotmp);
+		}
+		
+		ArticleDTO adto = new ArticleDTO();
+		adto.setNo(Integer.parseInt(noDetail));
+		int people = recipeService.findHowMany(adto);
+		
+		
+		IngredientsDTO iresult = new IngredientsDTO();
+		int calorie = 0;
+		int carbohydrate = 0;
+		int protein = 0;
+		int fat = 0;
+		int saccharide = 0;
+		int sodium = 0;
+		int cholesterol = 0;
+		int fattyacid = 0;
+		for(int i = 0; i<ilist.size(); i++)
+		{
+			int serving = rilist.get(i).getHowmuch();
+			int howmuch = ilist.get(i).getHowmuch();
+			
+			int weserving = serving/howmuch;
+			calorie += ilist.get(i).getCalorie()*weserving;
+			carbohydrate += ilist.get(i).getCarbohydrate()*weserving;
+			protein += ilist.get(i).getProtein()*weserving;
+			fat += ilist.get(i).getFat()*weserving;
+			saccharide += ilist.get(i).getSaccharide()*weserving;
+			sodium += ilist.get(i).getSodium()*weserving;
+			cholesterol += ilist.get(i).getCholesterol()*weserving;
+			fattyacid += ilist.get(i).getFattyacid()*weserving;
+			
+		}
+		
+		calorie = (int) (calorie/(1987.7*people)*100);
+		carbohydrate = (int) (carbohydrate/(287.9*people)*100);
+		protein = (int) (protein/(72.4*people)*100);
+		fat = (int) (fat/(49.5*people)*100);
+		saccharide = (int) (saccharide/(60.2*people)*100);
+		sodium = (int) (sodium/(3255.0*people)*100);
+		cholesterol = (int) (cholesterol/(260.4*people)*100);
+		fattyacid = (int) (fattyacid/(16.6*people)*100);
+		
+		iresult.setCalorie(calorie);
+		iresult.setCarbohydrate(carbohydrate);
+		iresult.setCholesterol(cholesterol);
+		iresult.setFat(fat);
+		iresult.setFattyacid(fattyacid);
+		iresult.setProtein(protein);
+		iresult.setSaccharide(saccharide);
+		iresult.setSodium(sodium);
+		
+		
+		String json = new Gson().toJson(iresult);
+		return json;
+	}
+	
+	
+	@PostMapping(value = "/likeschk", produces = "application/text; charset=utf8")
+	public @ResponseBody String likeschk(HttpSession session, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		String noDetail = request.getParameter("no");
+		Recipe_likesDTO rldto = new Recipe_likesDTO();
+		rldto.setRecipe_no(Integer.parseInt(noDetail));
+		rldto.setMember_id((String) session.getAttribute("id"));
+		int chk = recipeService.chkMyLikeRecipe(rldto);
+		
+		String result = "";
+		if(chk > 0)
+		{
+			result = "YES";
+		}
+		else
+		{
+			result = "NO";
+		}
+		
+		return result;
+	}
+	
+	@PostMapping(value = "/Insertlike", produces = "application/text; charset=utf8")
+	public @ResponseBody String Insertlike(HttpSession session, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		String noDetail = request.getParameter("no");
+		Recipe_likesDTO rldto = new Recipe_likesDTO();
+		rldto.setRecipe_no(Integer.parseInt(noDetail));
+		rldto.setMember_id((String) session.getAttribute("id"));
+		recipeService.InsertMyLikeRecipe(rldto);
+		
+		ArticleDTO adto = new ArticleDTO();
+		adto.setNo(Integer.parseInt(noDetail));
+		recipeService.InsertMyLikeToRecipe(adto);
+		int likescnt = recipeService.countMyLikes(adto);
+		
+		
+		return Integer.toString(likescnt);
+		
+	}
+	
+	@PostMapping(value = "/Deletelike", produces = "application/text; charset=utf8")
+	public @ResponseBody String Deletelike(HttpSession session, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		String noDetail = request.getParameter("no");
+		Recipe_likesDTO rldto = new Recipe_likesDTO();
+		rldto.setRecipe_no(Integer.parseInt(noDetail));
+		rldto.setMember_id((String) session.getAttribute("id"));
+		recipeService.DelMyLikeRecipe(rldto);
+		
+		ArticleDTO adto = new ArticleDTO();
+		adto.setNo(Integer.parseInt(noDetail));
+		recipeService.DelMyLikeToRecipe(adto);
+		int likescnt = recipeService.countMyLikes(adto);
+		
+		
+		return Integer.toString(likescnt);
+		
+	}
+	
+	@PostMapping(value = "/UpdateViews", produces = "application/text; charset=utf8")
+	public @ResponseBody String UpdateViews(HttpSession session, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		String noDetail = request.getParameter("no");
+		ArticleDTO adto = new ArticleDTO();
+		adto.setNo(Integer.parseInt(noDetail));
+		String id = (String) session.getAttribute("id");
+		
+
+	    Cookie cookies[] = request.getCookies();
+	    Map map = new HashMap();
+	    if(request.getCookies() != null){
+		    for (int i = 0; i < cookies.length; i++) {
+			    Cookie obj = cookies[i];
+			    map.put(obj.getName(),obj.getValue());
+		    }
+	    }
+
+	    // 저장된 쿠키중에 read_count 만 불러오기
+	    String readCount = (String) map.get("read_count");
+	     // 저장될 새로운 쿠키값 생성
+	    String newReadCount = "|" + noDetail;
+
+	    // 저장된 쿠키에 새로운 쿠키값이 존재하는 지 검사
+	    if ( StringUtils.indexOfIgnoreCase(readCount, newReadCount) == -1 ) {
+	          // 없을 경우 쿠키 생성
+	          Cookie cookie = new Cookie("read_count", readCount + newReadCount);
+	         
+	          response.addCookie(cookie);
+	          recipeService.UpdateMyView(adto);
+	    }
+	    
+		int viewscnt = recipeService.chkMyView(adto);
+		return Integer.toString(viewscnt);
+	}
+	
 	
 	
 	@PostMapping("/StepUpdate.do")
@@ -286,7 +555,7 @@ public class RecipeController {
 		
 		int start = step_start;
 		for(MultipartFile multipartFile : stepimage) {
-			String profile_img = awsService.s3FileUploadStep(multipartFile, "eunna8675" , Integer.toString(recipe_no), Integer.toString(start));
+			String profile_img = awsService.s3FileUploadStep(multipartFile, (String) session.getAttribute("id"), Integer.toString(recipe_no), Integer.toString(start));
 			Recipe_StepDTO rsdto = new Recipe_StepDTO();
 			rsdto.setRecipe_no(recipe_no);
 			rsdto.setStep_no(start);

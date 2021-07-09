@@ -72,7 +72,7 @@
                                     <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="recipePost" class="nav-link">레시피 등록</a>
+                                    <a href="${pageContext.request.contextPath}/recipePost" class="nav-link">레시피 등록</a>
                                     <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                 </li>
                                 <li class="nav-item dropdown megamenu">

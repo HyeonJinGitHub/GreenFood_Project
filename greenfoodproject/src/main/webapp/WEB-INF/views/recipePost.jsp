@@ -9,7 +9,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-<title>Litho – The Multipurpose HTML5 Template</title>
+<title>건강식 포스팅</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="author" content="ThemeZaa">
@@ -31,11 +31,34 @@
 .stepimage_size{height:100%; font-size:0;}  
 .stepimage_size:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
 .stepimage_size img{vertical-align:middle;}
+
+#load {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: block;
+    opacity: 0.8;
+    background: white;
+    z-index: 99;
+    text-align: center;
+}
+
+#load > img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+}
 </style>
 <body data-mobile-nav-style="classic">
+<div id="load">
+    <img src="${images}/Iphone.gif" alt="loading">
+</div>
 	<!-- start header -->
-
-	<!-- end header -->
+        	<jsp:include page='/WEB-INF/views/layout/header.jsp' />
+        <!-- end header -->
 	<!-- start info banner item -->
     <div class="col bg-very-light-pink padding-5-rem-tb padding-eight-lr xl-padding-six-lr lg-padding-three-lr md-padding-eight-lr wow animate__fadeIn">
          <div class="row align-items-center">
@@ -974,119 +997,9 @@
 	      </div>
 	    </div>
 	  </div></div></div>
-	<!-- start footer -->
-	<footer class="footer-dark bg-slate-blue">
-		<div
-			class="footer-top padding-five-tb lg-padding-eight-tb md-padding-50px-tb">
-			<div class="container">
-				<div class="row">
-					<!-- start footer column -->
-					<div
-						class="col-12 col-lg-3 col-sm-6 md-margin-40px-bottom xs-margin-25px-bottom">
-						<span
-							class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">Company</span>
-						<ul>
-							<li><a href="about-us.html">About company</a></li>
-							<li><a href="our-services.html">Company services</a></li>
-							<li><a href="our-team.html">Job opportunities</a></li>
-							<li><a href="contact-us-classic.html">Contact us</a></li>
-						</ul>
-					</div>
-					<!-- end footer column -->
-					<!-- start footer column -->
-					<div
-						class="col-12 col-lg-3 col-sm-6 md-margin-40px-bottom xs-margin-25px-bottom">
-						<span
-							class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">Customer</span>
-						<ul>
-							<li><a href="faq.html">Client support</a></li>
-							<li><a href="pricing-packages.html">Pricing packages</a></li>
-							<li><a href="our-story.html">Company history</a></li>
-							<li><a href="our-process.html">Our process</a></li>
-						</ul>
-					</div>
-					<!-- end footer column -->
-					<!-- start footer column -->
-					<div class="col-12 col-lg-3 col-sm-6 xs-margin-25px-bottom">
-						<span
-							class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">Get
-							in touch</span>
-						<p class="w-85 margin-15px-bottom">27 Eden walk eden centre,
-							Orchard view, Paris, France</p>
-						<div>
-							<i
-								class="feather icon-feather-phone-call icon-very-small margin-10px-right text-white"></i>+1
-							234 567 8910
-						</div>
-						<div>
-							<i
-								class="feather icon-feather-mail icon-very-small margin-10px-right text-white"></i><a
-								href="#">info@yourdomain.com</a>
-						</div>
-					</div>
-					<!-- end footer column -->
-					<!-- start footer column -->
-					<div class="col-12 col-lg-3 col-sm-6">
-						<span
-							class="alt-font font-weight-500 d-block text-white margin-20px-bottom">Follow
-							us on Instagram</span>
-						<div class="w-100 d-inline-block margin-10px-top">
-							<ul
-								class="instafeed-grid instafeed-wrapper grid grid-3col xl-grid-3col lg-grid-3col md-grid-3col sm-grid-3col xs-grid-3col gutter-small"
-								data-total="3">
-								<li class="grid-item"><figure>
-										<a href="#" data-href="{{link}}" target="_blank"><img
-											src="#" data-src="{{image}}" class="insta-image" alt="" /><span
-											class="insta-counts"><i class="fab fa-instagram"></i>{{likes}}</span></a>
-									</figure></li>
-							</ul>
-							<a
-								class="alt-font text-extra-small text-uppercase font-weight-500 margin-20px-top d-inline-block"
-								href="https://www.instagram.com/" target="_blank"><i
-								class="fab fa-instagram icon-extra-small align-middle margin-10px-right text-gradient-light-purple-light-orange"></i><span
-								class="d-inline-block align-middle">Follow instagram</span></a>
-						</div>
-					</div>
-					<!-- end footer column -->
-				</div>
-			</div>
-		</div>
-		<div
-			class="footer-bottom padding-40px-tb border-top border-color-white-transparent">
-			<div class="container">
-				<div class="row align-items-center">
-					<div
-						class="col-12 col-md-3 text-center text-md-left sm-margin-20px-bottom">
-						<a href="index.html" class="footer-logo"><img
-							src="${images}/logo-white.png" data-at2x="${images}/logo-white@2x.png"
-							alt=""></a>
-					</div>
-					<div
-						class="col-12 col-md-6 text-center last-paragraph-no-margin sm-margin-20px-bottom">
-						<p>
-							&copy; 2021 Litho is Proudly Powered by <a
-								href="https://www.themezaa.com/" target="_blank">ThemeZaa</a>
-						</p>
-					</div>
-					<div class="col-12 col-md-3 text-center text-md-right">
-						<div class="social-icon-style-12">
-							<ul class="extra-small-icon light">
-								<li><a class="facebook" href="https://www.facebook.com/"
-									target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a class="dribbble" href="http://www.dribbble.com"
-									target="_blank"><i class="fab fa-dribbble"></i></a></li>
-								<li><a class="twitter" href="http://www.twitter.com"
-									target="_blank"><i class="fab fa-twitter"></i></a></li>
-								<li><a class="instagram" href="http://www.instagram.com"
-									target="_blank"><i class="fab fa-instagram"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- end footer -->
+	 <!-- start footer -->
+        	<jsp:include page='/WEB-INF/views/layout/footer.jsp' />
+        <!-- end footer -->
 	<!-- start scroll to top -->
 	<a class="scroll-top-arrow" href="javascript:void(0);"><i
 		class="feather icon-feather-arrow-up"></i></a>
@@ -1114,6 +1027,11 @@
 	<script>
 	var count = 1;
 	var icount = 1;
+	$(window).load(function() {
+	    $('#load').hide();
+	});
+	 
+
 	document.getElementById("nowPage").setAttribute("value", 1);
 		$(document)
 				.ready(
@@ -2000,6 +1918,7 @@
 			                      + '</span></div></div>'
 			                $('#foodIngredientInputinfo').append(ftemp);
 						} 
+			
 						/* 
 						
 					}
@@ -2132,12 +2051,29 @@
 			var howmuch = $("input[name=howmuch]").val();
 			var ingredientsArr = [];
 			var ingredientssizeArr = [];
-				
+			var calorieArr = [];
+			var carbohydrateArr=[];
+			var proteinArr=[];
+			var fatArr=[];
+			var saccharideArr=[];
+			var sodiumArr=[];
+			var cholesterolArr=[];
+			var fattyacidArr=[];
+			var servingArr=[];
+			
 			$("#sortable1").children().each(function(){ 
 					var t = $(this).attr("value"); 
 					ingredientsArr.push($("input[name=ingredients"+t+"]").val());
 					ingredientssizeArr.push($("input[name=ingredientssize"+t+"]").val());
-						
+					calorieArr.push(parseInt($("input[name=NUTR_CONT1_i"+t+"]").val()));
+					carbohydrateArr.push(parseInt($("input[name=NUTR_CONT2_i"+t+"]").val()));
+					proteinArr.push(parseInt($("input[name=NUTR_CONT3_i"+t+"]").val()));
+					fatArr.push(parseInt($("input[name=NUTR_CONT4_i"+t+"]").val()));
+					saccharideArr.push(parseInt($("input[name=NUTR_CONT5_i"+t+"]").val()));
+					sodiumArr.push(parseInt($("input[name=NUTR_CONT6_i"+t+"]").val()));
+					cholesterolArr.push(parseInt($("input[name=NUTR_CONT7_i"+t+"]").val()));
+					fattyacidArr.push(parseInt($("input[name=NUTR_CONT8_i"+t+"]").val()));
+					servingArr.push(parseInt($("input[id=SERVING_SIZE_i"+t+"]").val()));
 		   });
 			
 			var foodtime = $("input[name=foodtime]").val();
@@ -2174,7 +2110,16 @@
 				   "stepsubscriptArr" : stepsubscriptArr,
 				   "foodtime" : foodtime,
 				   "foodcategory" : foodcategory,
-				   "hashtagArr" : hashtagArr
+				   "hashtagArr" : hashtagArr,
+				   "calorieArr" : calorieArr,
+				   "carbohydrateArr" : carbohydrateArr,
+				   "proteinArr" : proteinArr,
+				   "fatArr" : fatArr,
+				   "saccharideArr" :saccharideArr,
+				   "sodiumArr" :sodiumArr,
+				   "cholesterolArr" :cholesterolArr,
+				   "fattyacidArr" :fattyacidArr,
+				   "servingArr" : servingArr
 	           };
 		   
 		   $.ajax({
@@ -2186,11 +2131,13 @@
 					console.log("insert 실행");
 					console.log(retVal);
 					setthumbfunc(retVal);
+					document.getElementById("nowPage").setAttribute("value", retVal);
 	           },
 	           error	:	function(retVal){
 	        	   console.log("e insert 실행");
 	        	   console.log(retVal);
 	        	   setthumbfunc(retVal);
+	        	   document.getElementById("nowPage").setAttribute("value", retVal);
 	           }
 	       });
 		   
@@ -2202,6 +2149,8 @@
 				  icon: 'success',
 				  confirmButtonText: '확인'
 				}) */
+				
+				
 		}
 		
 	}
@@ -2279,13 +2228,14 @@
 			processData : false,
 			 success     :   function(retVal){
 					console.log("v insert 실행");
+					location.replace("${pageContext.request.contextPath}/recipe/"+$("#nowPage").attr("value"));
 	           },
 	           error	:	function(retVal){
 	        	   console.log("ve insert 실행");
+	        	   location.replace("${pageContext.request.contextPath}/recipe/"+$("#nowPage").attr("value"));
 	           }
 		 });
 	}
-	
 	
 		/** 아이템 체크 */
 		function validateItem() {

@@ -43,11 +43,51 @@
 		where no = #{no}
 	</update>
 	
+	<update id="InsertMyLikeToRecipe" parameterType="ArticleDTO">
+		update recipe 
+		set likes = likes + 1
+		where no = #{no}
+	</update>
+	<update id="DelMyLikeToRecipe" parameterType="ArticleDTO">
+		update recipe 
+		set likes = likes - 1
+		where no = #{no}
+	</update>
+	<update id="UpdateMyView" parameterType="ArticleDTO">
+		update recipe 
+		set views = views + 1
+		where no = #{no}
+	</update>
+	
+	
+	<select id="findHowMany" parameterType="ArticleDTO" resultType="Integer">
+		select howmuch
+		from recipe
+		where no = #{no}
+	</select>
 	
 	<select id="findRecipe" parameterType="ArticleDTO" resultType="Integer">
 		select no
 		from recipe
 		where title like #{title} and explanation like #{explanation}  and foodname like #{foodname} and id like #{id}
 	</select>
+	
+	<select id="countMyLikes" parameterType="ArticleDTO" resultType="Integer">
+		select likes
+		from recipe
+		where no = #{no}
+	</select>
+	<select id="chkMyView" parameterType="ArticleDTO" resultType="Integer">
+		select views
+		from recipe
+		where no = #{no}
+	</select>
+	
+	<select id="findRecipeNo" parameterType="ArticleDTO" resultType="ArticleDTO">
+		select *
+		from recipe
+		where no = #{no}
+	</select>
+	
 	
 </mapper>

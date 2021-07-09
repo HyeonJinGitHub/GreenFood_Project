@@ -5,6 +5,15 @@
 <resultMap id="IngredientsDTO" type="IngredientsDTO">
     <result property="no" column="no"/>
     <result property="name" column="name"/>
+    <result property="calorie" column="calorie"/>
+    <result property="carbohydrate" column="carbohydrate"/>
+    <result property="protein" column="protein"/>
+    <result property="fat" column="fat"/>
+    <result property="saccharide" column="saccharide"/>
+    <result property="sodium" column="sodium"/>
+    <result property="cholesterol" column="cholesterol"/>
+    <result property="fattyacid" column="fattyacid"/>
+    <result property="howmuch" column="howmuch"/>
 </resultMap>
 
 	<select id="findIngredients"  parameterType="String" resultType="IngredientsDTO">
@@ -13,7 +22,8 @@
 	</select>
 	
 	<insert id="insertIngredients"  parameterType="IngredientsDTO">
-		Insert into ingredients (name) values (#{name})
+		Insert into ingredients (name, calorie, carbohydrate, protein, fat, saccharide, sodium, cholesterol, fattyacid, howmuch) 
+		values (#{name},#{calorie}, #{carbohydrate}, #{protein}, #{fat}, #{saccharide}, #{sodium}, #{cholesterol}, #{fattyacid}, #{howmuch})
 	</insert>
 	
 	<select id="findIngredientsOne" parameterType="IngredientsDTO" resultType="Integer">
@@ -21,5 +31,19 @@
 		from ingredients
 		where name like #{name}
 	</select>
+	
+	<select id="findIngreName" parameterType="IngredientsDTO" resultType="String">
+		select name
+		from ingredients
+		where no = #{no}
+	</select>
+	
+	
+	<select id="findIngredientsSelect" parameterType="IngredientsDTO" resultType="IngredientsDTO">
+		select *
+		from ingredients
+		where no = #{no}
+	</select>
+	
 	
 </mapper>

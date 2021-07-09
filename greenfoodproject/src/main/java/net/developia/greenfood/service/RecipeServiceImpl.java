@@ -13,6 +13,7 @@ import net.developia.greenfood.dao.IngredientsDAO;
 import net.developia.greenfood.dao.RecipeDAO;
 import net.developia.greenfood.dao.Recipe_IngredientsDAO;
 import net.developia.greenfood.dao.Recipe_StepDAO;
+import net.developia.greenfood.dao.Recipe_likesDAO;
 import net.developia.greenfood.dto.ArticleDTO;
 import net.developia.greenfood.dto.Article_HashDTO;
 import net.developia.greenfood.dto.Article_My_HashDTO;
@@ -20,6 +21,7 @@ import net.developia.greenfood.dto.IngredientsDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
 import net.developia.greenfood.dto.Recipe_StepDTO;
+import net.developia.greenfood.dto.Recipe_likesDTO;
 
 
 @Service
@@ -53,6 +55,11 @@ public class RecipeServiceImpl implements RecipeService {
 	@Autowired
 	@Resource(name="Recipe_StepDAO")
 	private Recipe_StepDAO recipe_stepDAO;
+	
+	@Autowired
+	@Resource(name="Recipe_likesDAO")
+	private Recipe_likesDAO recipe_likesDAO;
+
 
 	@Override
 	public List<RecipeDTO> getHashtagList() throws Exception {
@@ -139,6 +146,84 @@ public class RecipeServiceImpl implements RecipeService {
 	@Override
 	public void updateRecipeViedofile(ArticleDTO adto) throws Exception {
 		articleDAO.updateRecipeViedofile(adto);
+	}
+
+	@Override
+	public ArticleDTO findRecipeNo(ArticleDTO adtotmp) throws Exception {
+		return articleDAO.findRecipeNo(adtotmp);
+	}
+
+	@Override
+	public List<Recipe_StepDTO> findRecipeStepNo(Recipe_StepDTO rsdto) throws Exception {
+		return recipe_stepDAO.findRecipeStepNo(rsdto);
+	}
+
+	@Override
+	public List<Recipe_IngredientsDTO> findRecipeIngredients(Recipe_IngredientsDTO ridto) throws Exception {
+		// TODO Auto-generated method stub
+		return recipe_ingredientsDAO.findRecipeIngredients(ridto);
+	}
+
+	@Override
+	public String findIngreName(IngredientsDTO idto) throws Exception {
+		// TODO Auto-generated method stub
+		return ingredientsDAO.findIngreName(idto);
+	}
+
+	@Override
+	public int chkMyLikeRecipe(Recipe_likesDTO rldto) throws Exception {
+		// TODO Auto-generated method stub
+		return recipe_likesDAO.chkMyLikeRecipe(rldto);
+	}
+
+	@Override
+	public void InsertMyLikeToRecipe(ArticleDTO adto) throws Exception {
+		articleDAO.InsertMyLikeToRecipe(adto);
+	}
+
+	@Override
+	public void InsertMyLikeRecipe(Recipe_likesDTO rldto) throws Exception {
+		recipe_likesDAO.InsertMyLikeRecipe(rldto);
+	}
+
+	@Override
+	public void DelMyLikeToRecipe(ArticleDTO adto) throws Exception {
+		articleDAO.DelMyLikeToRecipe(adto);
+	}
+
+	@Override
+	public void DelMyLikeRecipe(Recipe_likesDTO rldto) throws Exception {
+		recipe_likesDAO.DelMyLikeRecipe(rldto);
+	}
+
+	@Override
+	public int countMyLikes(ArticleDTO adto) throws Exception {
+		// TODO Auto-generated method stub
+		return articleDAO.countMyLikes(adto);
+	}
+
+	@Override
+	public void UpdateMyView(ArticleDTO adto) throws Exception {
+		// TODO Auto-generated method stub
+		articleDAO.UpdateMyView(adto);
+	}
+
+	@Override
+	public int chkMyView(ArticleDTO adto) throws Exception {
+		// TODO Auto-generated method stub
+		return articleDAO.chkMyView(adto);
+	}
+
+	@Override
+	public IngredientsDTO findIngredientsSelect(IngredientsDTO idto) throws Exception {
+		// TODO Auto-generated method stub
+		return ingredientsDAO.findIngredientsSelect(idto);
+	}
+
+	@Override
+	public int findHowMany(ArticleDTO adto) throws Exception {
+		// TODO Auto-generated method stub
+		return articleDAO.findHowMany(adto);
 	}
 
 }

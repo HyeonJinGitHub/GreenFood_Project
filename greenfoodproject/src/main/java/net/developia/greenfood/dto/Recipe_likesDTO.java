@@ -9,10 +9,8 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-public class Recipe_IngredientsDTO{
+public class Recipe_likesDTO{
 	private int no;
-	private int ingredients_no;
 	private int recipe_no;
-	private int howmuch;
-	private String name;
+	private String member_id;
 }

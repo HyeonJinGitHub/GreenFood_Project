@@ -14,4 +14,5 @@ public class IngredientDTO implements Serializable {
 	private int no;
 	private String name;
 	private int mainIngredientNo;
+	
 }

@@ -11,4 +11,6 @@ public interface Recipe_IngredientsDAO {
 
 	void InsertRecipe_Ingredients(Recipe_IngredientsDTO ridto) throws SQLException;
 
+	List<Recipe_IngredientsDTO> findRecipeIngredients(Recipe_IngredientsDTO ridto) throws SQLException;
+
 }

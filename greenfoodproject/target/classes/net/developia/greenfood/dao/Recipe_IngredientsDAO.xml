@@ -17,4 +17,11 @@
 					#{howmuch})
 	</insert>
 	
+	<select id="findRecipeIngredients" parameterType="Recipe_IngredientsDTO" resultType="Recipe_IngredientsDTO">
+		select *
+		from recipe_ingredients
+		where recipe_no = #{recipe_no}
+	</select>
+	
+	
 </mapper>
