@@ -60,7 +60,7 @@ public class RecipeController {
 	@RequestMapping(value = "/recipe/{recipe_no}", method = RequestMethod.GET)
 	public ModelAndView recipe(HttpSession session, @PathVariable long recipe_no) {
 		System.out.println("recipe page start");
-		ModelAndView mav = new ModelAndView("recipePage2");
+		ModelAndView mav = new ModelAndView("recipePage");
 		mav.addObject("id", session.getAttribute("id"));
 		mav.addObject("no", recipe_no);
 		return mav;
