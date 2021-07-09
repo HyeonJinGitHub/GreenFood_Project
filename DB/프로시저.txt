@@ -12,7 +12,34 @@ CREATE TABLE member (
 
 ALTER TABLE member ADD CONSTRAINT member_pk PRIMARY KEY ( id );
 
-select * from member;
+
+DROP TABLE product CASCADE CONSTRAINTS;
+
+DROP TABLE product_images CASCADE CONSTRAINTS;
+
+CREATE TABLE product (
+    no                  NUMBER(5) NOT NULL,
+    name                VARCHAR2(100) NOT NULL,
+    price               NUMBER(10) NOT NULL,
+    description         VARCHAR2(1000) NOT NULL,
+    detail_description  VARCHAR2(1000) NOT NULL,
+    category            VARCHAR2(100) NOT NULL,
+    sku                 VARCHAR2(500) NOT NULL
+);
+
+ALTER TABLE product ADD CONSTRAINT product_pk PRIMARY KEY ( no );
+
+CREATE TABLE product_images (
+    product_no  NUMBER(5) NOT NULL,
+    path        VARCHAR2(1000) NOT NULL
+);
+
+ALTER TABLE product_images ADD CONSTRAINT product_images_pk PRIMARY KEY ( path,
+                                                                          product_no );
+
+ALTER TABLE product_images
+    ADD CONSTRAINT product_images_product_fk FOREIGN KEY ( product_no )
+        REFERENCES product ( no );
 
 drop package member_pkg;
 
@@ -121,3 +148,57 @@ is
     end update_profile;
     
 end member_pkg;
+
+drop package product_pkg;
+
+create or replace package product_pkg
+is
+    procedure select_product(res_cur out sys_refcursor);
+    
+    procedure select_productimage(input_no in number,
+    res_cur out sys_refcursor);
+end product_pkg;
+
+create or replace package body product_pkg
+is
+    procedure select_product(res_cur out sys_refcursor)
+    as
+    begin
+        open res_cur for
+        select *
+        from product;
+    end select_product;
+    
+    procedure select_productimage(input_no in number,
+    res_cur out sys_refcursor)
+    as
+    begin
+        open res_cur for
+        select path
+        from product_images
+        where input_no = product_no;
+    end select_productimage;
+end product_pkg;
+
+insert into product
+values(1, '콩국수', 68000, '맛있는 콩국수입니다~', '콩국수는 몸에 정말 좋아요 많이 드세요.', '국수', '1234567');
+
+
+insert into product
+values(2, '쌀국수', 34000, '맛없는 쌀국수입니다~', '쌀국수는 몸에 좋아요. 많이많이 드세요.', '국수', '1234565');
+
+insert into product_images
+values(2, 'https://d3gr4nmrit7xq0.cloudfront.net/%EC%8C%80%EA%B5%AD%EC%88%981.jpg');
+
+insert into product_images
+values(2, 'https://d3gr4nmrit7xq0.cloudfront.net/%EC%8C%80%EA%B5%AD%EC%88%982.jpg');
+
+insert into product_images
+values(1, 'https://d3gr4nmrit7xq0.cloudfront.net/%EC%BD%A9%EA%B5%AD%EC%88%981.jpg');
+
+insert into product_images
+values(1, 'https://d3gr4nmrit7xq0.cloudfront.net/%EC%BD%A9%EA%B5%AD%EC%88%982.jpg');
+commit;
+
+select * from member;
+select * from product_images;
