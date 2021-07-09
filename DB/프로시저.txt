@@ -31,10 +31,10 @@ ALTER TABLE product ADD CONSTRAINT product_pk PRIMARY KEY ( no );
 
 CREATE TABLE product_images (
     product_no  NUMBER(5) NOT NULL,
-    path        VARCHAR2(1000) NOT NULL
+    image_path        VARCHAR2(1000) NOT NULL
 );
 
-ALTER TABLE product_images ADD CONSTRAINT product_images_pk PRIMARY KEY ( path,
+ALTER TABLE product_images ADD CONSTRAINT product_images_pk PRIMARY KEY ( image_path,
                                                                           product_no );
 
 ALTER TABLE product_images
@@ -174,7 +174,7 @@ is
     as
     begin
         open res_cur for
-        select path
+        select *
         from product_images
         where input_no = product_no;
     end select_productimage;
@@ -199,6 +199,3 @@ values(1, 'https://d3gr4nmrit7xq0.cloudfront.net/%EC%BD%A9%EA%B5%AD%EC%88%981.jp
 insert into product_images
 values(1, 'https://d3gr4nmrit7xq0.cloudfront.net/%EC%BD%A9%EA%B5%AD%EC%88%982.jpg');
 commit;
-
-select * from member;
-select * from product_images;
