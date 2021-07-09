@@ -222,6 +222,7 @@
 		var ingredientIds = document.getElementById('selectedIngredientList').children;
 		var arryId = new Array(); // id 를 담은 array
 		
+		
 		// 반복문을 통해 모든 id 탐색
 		for (i = 0; i <= ingredientIds.length - 1; i++) {
 			var obj = {
@@ -229,11 +230,11 @@
 					};
 			
 			obj.no=ingredientIds[i].id;
+			
 			arryId.push(obj);
 		}
 		
 		var jsonData = JSON.stringify(arryId) ;
-		
 		
 		$.ajax({
     		url:'${pageContext.request.contextPath}/getSelectedIngredient',		    	      
