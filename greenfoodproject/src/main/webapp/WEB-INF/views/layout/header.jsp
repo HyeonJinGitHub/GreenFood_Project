@@ -110,7 +110,7 @@
                             <a href="javascript:void(0);"><i class="feather icon-feather-globe"></i></a>
                             <ul class="dropdown-menu alt-font">
                                 <li><a href="login" title="로그인"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>로그인</a></li>
-                                <li><a href="register" title="회원가입"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>회원가입</a></li>
+                                <li><a href="${pageContext.request.contextPath}/register" title="회원가입"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>회원가입</a></li>
                             </ul>
                         </div>
                         <div class="header-cart-icon dropdown">

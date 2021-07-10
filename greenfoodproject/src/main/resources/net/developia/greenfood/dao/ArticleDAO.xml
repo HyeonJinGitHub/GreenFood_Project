@@ -89,5 +89,11 @@
 		where no = #{no}
 	</select>
 	
+	<select id="findAllrecipe" resultType="ArticleDTO">
+		select *
+		from recipe
+		order by likes desc, views desc
+	</select>
+	
 	
 </mapper>

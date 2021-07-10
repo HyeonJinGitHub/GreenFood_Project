@@ -9,6 +9,7 @@ import net.developia.greenfood.dto.IngredientsDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
 import net.developia.greenfood.dto.Recipe_StepDTO;
+import net.developia.greenfood.dto.Recipe_ViewsDTO;
 import net.developia.greenfood.dto.Recipe_likesDTO;
 
 public interface RecipeService {
@@ -43,4 +44,8 @@ public interface RecipeService {
 	int chkMyView(ArticleDTO adto)throws Exception;
 	IngredientsDTO findIngredientsSelect(IngredientsDTO idto)throws Exception;
 	int findHowMany(ArticleDTO adto)throws Exception;
+	List<ArticleDTO> findAllrecipe()throws Exception;
+	void InsertViewLog(Recipe_ViewsDTO rvdto)throws Exception;
+	List<Recipe_likesDTO> findAllrecipeLikes(Recipe_likesDTO tmp1)throws Exception;
+	List<Recipe_ViewsDTO> findAllrecipeViews(Recipe_ViewsDTO tmp2)throws Exception;
 }

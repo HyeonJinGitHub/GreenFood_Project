@@ -25,6 +25,7 @@
         <link rel="stylesheet" type="text/css" href="${css}/theme-vendors.min.css">
         <link rel="stylesheet" type="text/css" href="${css}/style.css" />
         <link rel="stylesheet" type="text/css" href="${css}/responsive.css" />
+		<!-- bower install tui-chart -->
     </head>
     <body data-mobile-nav-style="classic">
        <!-- start header -->
@@ -43,98 +44,64 @@
     </div>
         <!-- end page title -->
        <!-- start section -->
-        <section class="shopping-left-side-bar pt-0" style="margin-top:100px">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-lg-9 col-md-8 shopping-content padding-55px-left md-padding-15px-left sm-margin-30px-bottom">
-                        <ul class="product-listing shop-wrapper grid grid-loading grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-large text-center">
-                            <!-- start shop item -->
-                            <li class="grid-item wow animate__fadeIn">
-                                <div class="product-box margin-25px-bottom xs-margin-15px-bottom">
-                                    <!-- start product image -->
-                                    <div class="product-image border-radius-6px">
-                                        <a href="single-product.html">
-                                            <img class="default-image" src="https://placehold.it/600x765" alt=""/>
-                                            <img class="hover-image" src="https://placehold.it/600x765" alt=""/>
-                                        </a>
-                                        <div class="product-overlay bg-gradient-extra-midium-gray-transparent"></div>
-                                        <div class="product-hover-bottom text-center padding-30px-tb">
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to cart"><i class="feather icon-feather-shopping-cart"></i></a>
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to wishlist"><i class="feather icon-feather-heart"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- end product image -->
-                                    <!-- start product footer -->
-                                    <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray font-weight-500 d-inline-block">Merlon Jeans</a>
-                                        <div class="product-price text-medium">$470.00</div>
-                                    </div>
-                                    <!-- end product footer -->
-                                </div>
-                            </li>
-                            <!-- end shop item -->
+      <section class="big-section">
+         <div class="container">
+         	<div class="row" style="width:100%">
+         		<div class="col-lg-12" style="width:100%">
+         			 차트섹션
+         		</div>
+         	</div>
+         </div>
+     </section>
+     <section class="big-section">
+         <div class="container">
+         	<div class="row" style="width:100%">
+         		<div class="col-lg-12" style="width:100%">
+         			<ul class="list-style-03" style="width:100%">
+         				<li class="border-bottom border-top border-right border-left border-color-black-transparent bg-color-white box-shadow-small" style="width:100%;margin:0 ; padding:0; border-radius:10px; padding-left:10px; padding-right:10px;">
+						<div class="row" style="width:100%; padding-bottom:10px; padding-top:10px">
+						<div class="col-1" style="width:5%; text-align:center">
+							<input class="d-inline w-auto mb-0 mr-2 mt-1" type="checkbox" id="allChk">
+						</div>
+						<div class="col-4" style="width:35%; text-align:center">
+						<div class="font-weight-500 text-extra-medium text-extra-medium-gray">레시피 제목</div>
+						</div>
+						<div class="col-3" style="width:25%; text-align:center">
+						<div class="font-weight-500 text-extra-medium text-extra-medium-gray">음식이름</div>
+						</div>
+						<div sclass="col-2" style="width:15%; text-align:center">
+						<div class="font-weight-500 text-extra-medium text-extra-medium-gray"><i class="feather icon-feather-thumbs-up margin-10px-right"></i>좋아요</div>
+						</div>
+						<div sclass="col-2" style="width:15%; text-align:center">
+						<div class="font-weight-500 text-extra-medium text-extra-medium-gray"><i class="feather icon-feather-monitor margin-10px-right"></i>조회수</div>
+						</div>
+						</div>
+					 	</li>
+         			</ul>
+         		</div>
+         	</div>
+         	<div class="row" style="width:100%; margin-top:30px;">
+         		<div class="col-lg-12" style="width:100%;">
+         		 	<div class="panel-group accordion-event accordion-style-04" id="accordion4" data-active-icon="icon-feather-minus" data-inactive-icon="icon-feather-plus">
+         				<ul id="recipeList" class="list-style-03" style="width:100%">
+         					<li>
+         						 <!-- start accordion item -->
                            
-                        </ul>
-                    </div>
-                    <!-- start sidebar -->
-                    <aside class="col-12 col-lg-3 col-md-4 shopping-sidebar">
-                        <div class="border-bottom border-color-medium-gray padding-3-rem-bottom margin-3-rem-bottom wow animate__fadeIn">
-                            <span class="shop-title alt-font font-weight-500 text-extra-dark-gray d-block margin-20px-bottom">Filter by category</span>
-                            <ul class="list-style-07 filter-category">
-                                <li><a href="#"><span class="product-cb product-category-cb"></span>Casual shirts</a><span class="item-qty">25</span></li>
-                                <li><a href="#"><span class="product-cb product-category-cb"></span>Leather bags</a><span class="item-qty">05</span></li>
-                                <li><a href="#"><span class="product-cb product-category-cb"></span>Men's shorts</a><span class="item-qty">36</span></li>
-                                <li><a href="#"><span class="product-cb product-category-cb"></span>Polo t-shirts</a><span class="item-qty">05</span></li>
-                                <li><a href="#"><span class="product-cb product-category-cb"></span>Short skirts</a><span class="item-qty">09</span></li>
-                                <li><a href="#"><span class="product-cb product-category-cb"></span>Winter jackets</a><span class="item-qty">12</span></li>
-                            </ul>
-                        </div>
-                        <div class="border-bottom border-color-medium-gray padding-3-rem-bottom margin-3-rem-bottom wow animate__fadeIn">
-                            <span class="shop-title alt-font font-weight-500 text-extra-dark-gray d-block margin-20px-bottom">Filter by color</span>
-                            <ul class="list-style-07 filter-color">
-                                <li><a href="#"><span class="product-cb paroduct-color-cb" style="background-color: #363636"></span>Carbon black</a><span class="item-qty">25</span></li>
-                                <li><a href="#"><span class="product-cb paroduct-color-cb" style="background-color:#657fa8"></span>Prussian blue</a><span class="item-qty">03</span></li>
-                                <li><a href="#"><span class="product-cb paroduct-color-cb" style="background-color:#936f5e"></span>Light brown</a><span class="item-qty">15</span></li>
-                                <li><a href="#"><span class="product-cb paroduct-color-cb" style="background-color:#97a27f"></span>Parrot green</a><span class="item-qty">40</span></li>
-                                <li><a href="#"><span class="product-cb paroduct-color-cb" style="background-color:#b95b5b"></span>Dark orange</a><span class="item-qty">29</span></li>
-                                <li><a href="#"><span class="product-cb paroduct-color-cb" style="background-color:#b7b5b5"></span>Slate blue</a><span class="item-qty">35</span></li>
-                            </ul>
-                        </div>
-                        <div class="border-bottom border-color-medium-gray padding-3-rem-bottom margin-3-rem-bottom wow animate__fadeIn">
-                            <span class="shop-title alt-font font-weight-500 text-extra-dark-gray d-block margin-20px-bottom">Filter by price</span>
-                            <span class="price-filter d-block margin-10px-top"></span>
-                            <div class="price-filter-details">
-                                <button type="submit" class="btn-filter btn">Filter</button>
-                                <span class="price-filter-amount">
-                                    <label class="mb-0" for="price-amount">Price:</label>
-                                    <input type="text" class="price-amount mb-0" id="price-amount" readonly>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="border-bottom border-color-medium-gray padding-3-rem-bottom margin-3-rem-bottom wow animate__fadeIn">
-                            <span class="shop-title alt-font font-weight-500 text-extra-dark-gray d-block margin-20px-bottom">Filter by rating</span>
-                            <ul class="list-style-07">
-                                <li><a href="#" class="letter-spacing-2px"><i class="fas fa-star icon-very-small text-golden-yellow"></i><i class="fas fa-star icon-very-small text-golden-yellow"></i><i class="fas fa-star icon-very-small text-golden-yellow"></i><i class="fas fa-star icon-very-small text-golden-yellow"></i><i class="fas fa-star icon-very-small text-golden-yellow"></i></a><span class="item-qty">19</span></li>
-                                <li><a href="#" class="letter-spacing-2px"><i class="fas fa-star icon-very-small text-golden-yellow"></i><i class="fas fa-star icon-very-small text-golden-yellow"></i><i class="fas fa-star icon-very-small text-golden-yellow"></i><i class="fas fa-star icon-very-small text-golden-yellow"></i><i class="far fa-star icon-very-small text-golden-yellow"></i></a><span class="item-qty">08</span></li>
-                                <li><a href="#" class="letter-spacing-2px"><i class="fas fa-star icon-very-small text-golden-yellow"></i><i class="fas fa-star icon-very-small text-golden-yellow"></i><i class="fas fa-star icon-very-small text-golden-yellow"></i><i class="far fa-star icon-very-small text-golden-yellow"></i><i class="far fa-star icon-very-small text-golden-yellow"></i></a><span class="item-qty">06</span></li>
-                            </ul>
-                        </div>
-                        <div class="wow animate__fadeIn">
-                            <span class="shop-title alt-font font-weight-500 text-extra-dark-gray d-block margin-20px-bottom">Product tags</span>
-                            <div class="tag-cloud d-inline-block margin-10px-top">
-                                <a href="shop-wide.html">Coats</a>
-                                <a href="shop-wide.html">Cotton</a>
-                                <a href="shop-wide.html">Dresses</a>
-                                <a href="shop-wide.html">Jackets</a>
-                                <a href="shop-wide.html">Polyester</a>
-                            </div>
-                        </div>
-                    </aside>
-                    <!-- end sidebar -->
-                </div>
-            </div>
-        </section>
+                            <!-- end accordion item -->
+         					</li>
+         				</ul>
+         			</div>
+         		</div>
+         	</div>
+         	<div class="row" style="width:100%; margin-top:30px;">
+         		<div class="col-lg-12" style="width:100%; text-align:right">
+         			<button class="section-link btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge " onclick="submitProcess()" style="margin-right:10px"><span class="line-height-25px">상품 등록</span></button>
+         			<button class="section-link btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge " onclick="deleteProcess()"><span class="line-height-25px">레시피 삭제</span></button>
+         		</div>
+         	</div>
+         </div>
+     </section>
+
         <!-- end section -->
         <!-- start footer -->
          <!-- start footer -->
@@ -148,5 +115,199 @@
         <script type="text/javascript" src="${js}/jquery.min.js"></script>
         <script type="text/javascript" src="${js}/theme-vendors.min.js"></script>
         <script type="text/javascript" src="${js}/main.js"></script>
+        <script src="https://kit.fontawesome.com/1cd4016a85.js"
+		crossorigin="anonymous"></script>
+		<link
+			href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+			rel="stylesheet" type="text/css" />
+		<script type="text/javascript"
+			src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript"
+			src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<link rel="stylesheet" href="https://uicdn.toast.com/chart/latest/toastui-chart.min.css" />
+		<script src="https://uicdn.toast.com/chart/latest/toastui-chart.min.js"></script>
+	    <script type="text/javascript">
+	    
+        
+        $(document).ready(function() {
+        $.ajax({
+			url: "${pageContext.request.contextPath}/RecomendRecipeList",
+			type: "post",
+			dataType: "text",
+			success: function(data) {
+				console.log("recipe list");
+				var results = JSON.parse(data);
+				var cnt = 1;
+				for(var i = 0; i<results.length; i++)
+				{
+					
+					var str = '';
+				 	str += '<li class="border-bottom border-top border-right border-left border-color-black-transparent bg-color-white box-shadow-small" style="width:100%; margin:0 ; padding:0; margin-bottom: 5px;border-radius:10px; padding-left:10px; padding-right:10px;">'
+						+ '<div class="panel border-color-black-transparent" style="width:100%">'
+				 		+ '<div class="panel-heading" style="width:100%">'
+				 		+ '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion4" href="#accordion-style-4-'+cnt+'" style="width:100%">'
+						+ '<div class="row align-items-center" style="width:100%; margin:0; padding:0 ;padding-bottom:10px; padding-top:10px;  display: flex">'
+						+ '<div class="col-1" style="width:5%; text-align:center"><input class="d-inline w-auto mb-0 mr-2 mt-1" type="checkbox" value="'+results[i].no+'" id="recipeChk"></div>'
+						+ '<div class="col-1" style="width:5%; text-align:center"><img id="thumb" src="'+results[i].thumbnail.replace(/(\s*)/g, '')+'" class="overflow-hidden border-radius-4px" style="width:100%" alt="" /></div>'
+						+ '<div class="col-3" style="text-align:center">'
+						+ '<div class="font-weight-500 text-extra-medium text-extra-medium-gray">'+results[i].title+'</div>'
+						+ '</div>'
+						+ '<div class="col-3" style="text-align:center">'
+						+ '<div class="font-weight-500 text-extra-medium text-extra-medium-gray">'+results[i].foodname+'</div>'
+						+ '</div>'
+						+ '<div sclass="col-2" style="width:15%; text-align:center">'
+						+ '<div class="font-weight-500 text-extra-medium text-extra-medium-gray">'+results[i].likes+'</div>'
+						+ '</div>'
+						+ '<div sclass="col-2" style="width:15%; text-align:center">'
+						+ '<div class="font-weight-500 text-extra-medium text-extra-medium-gray">'+results[i].views+'</div>'
+						+ '</div>'
+						+ '</div>'
+						+ '</a></div>'
+						+ '<div id="accordion-style-4-'+cnt+'" class="panel-collapse collapse" data-parent="#accordion4" style="margin-bottom:20px">'
+						+ '<div class="panel-body" id="chart'+cnt+'"></div>'
+						+ '</div></div>'
+					 	+ '</li>'
+
+					
+	            	$("#recipeList").append(str);	
+					$("#chart"+cnt.toString()).append("[30일 간, 좋아요 및 조회수 분포]");
+					makeChart(results[i].no, cnt);
+	            	cnt += 1;
+				}
+			}
+				
+		});
+        
+        function makeChart(no, cnt){
+        	 $.ajax({
+     			url: "${pageContext.request.contextPath}/charList",
+     			type: "post",
+     			dataType: "text",
+     			data : {
+     				"rno" : no
+     			},
+     			success: function(data) {
+     			   console.log("chart list");
+     			   var results = JSON.parse(data);
+   	               var dateArr = [];
+   	               var lArr = [];
+				   var vArr = [];
+				   
+     				for(var i = 0; i<results.length; i++)
+     				{
+     				   if(results[i].flag == 1)
+	     			   {
+     					  dateArr.push(results[i].like_date);
+	       				   lArr.push(results[i].lcount);
+	       				   vArr.push(0);
+	     			   }
+     				   else if(results[i].flag == 2)
+     				   {
+     					  dateArr.push(results[i].view_date);
+	       				   lArr.push(0);
+	       				   vArr.push(results[i].vcount);
+     				   }
+     				   else if(results[i].flag == 3)
+     				   {
+        				   dateArr.push(results[i].view_date);
+        				   lArr.push(results[i].lcount);
+        				   vArr.push(results[i].vcount);
+     				   }
+     				 
+     	               
+     				}
+     				
+     				data = {
+        	                 categories: dateArr,
+        	                 series: [
+        	                     {
+        	                         name: 'like',
+        	                         data: lArr,
+        	                       },
+        	                       {
+        	                         name: 'view',
+        	                         data: vArr,
+        	                       },
+        	                 ],
+        	               };
+        	               const options = {
+        	                 chart: { width: 800, height: 500 },
+        	                 xAxis: {
+        	                   title: 'Date',
+        	                 },
+        	                 yAxis: {
+        	                   title: 'Likes&View',
+        	                 },
+        	                 tooltip: {
+        	                   formatter: (value) => `${value}°C`,
+        	                 },
+        	                 legend: {
+        	                   align: 'bottom',
+        	                 },
+        	               };
+
+        	               const el = document.getElementById('chart'+cnt.toString());
+        	               const chart = toastui.Chart.lineChart({ el, data, options });
+     			}
+     				
+     		});
+        	
+        }
+       
+        
+    	
+		$(document).on(
+				"click",
+				"#allChk",
+				function(e) {
+					var checked = $('#allChk').is(':checked');
+					
+					if(checked)
+						$('input:checkbox').prop('checked',true);
+					else
+						$('input:checkbox').prop('checked',false);
+		});
+        
+        });
+        
+        function deleteProcess()
+        {
+        	console.log("delete");
+        	$("input:checkbox[id=recipeChk]").each(function() {
+        		if($(this).is(":checked") == true) {
+          		  console.log($(this).attr('value'));
+          		}
+        	});
+        }
+        
+        function submitProcess()
+        {
+        	console.log("add");
+        	var cnt = 0;
+        	var no = '';
+        	$("input:checkbox[id=recipeChk]").each(function() {
+        		if($(this).is(":checked") == true) {
+        			cnt += 1;
+            		no += $(this).attr('value');
+            	}
+        	});
+        	console.log(cnt);
+        	if(cnt > 1)
+        	{
+        		Swal.fire({
+  				  title: '앗!',
+  				  text: '한번에 한 상품만 등록할 수 있습니다',
+  				  icon: 'error',
+  				  confirmButtonText: '확인'
+  				})
+        	}
+        	else
+        	{
+        		console.log(no);
+        	}
+        }
+        
+        </script>
     </body>
 </html>

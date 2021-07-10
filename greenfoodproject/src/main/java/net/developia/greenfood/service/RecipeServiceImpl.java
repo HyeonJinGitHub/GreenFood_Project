@@ -13,6 +13,7 @@ import net.developia.greenfood.dao.IngredientsDAO;
 import net.developia.greenfood.dao.RecipeDAO;
 import net.developia.greenfood.dao.Recipe_IngredientsDAO;
 import net.developia.greenfood.dao.Recipe_StepDAO;
+import net.developia.greenfood.dao.Recipe_ViewsDAO;
 import net.developia.greenfood.dao.Recipe_likesDAO;
 import net.developia.greenfood.dto.ArticleDTO;
 import net.developia.greenfood.dto.Article_HashDTO;
@@ -21,6 +22,7 @@ import net.developia.greenfood.dto.IngredientsDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
 import net.developia.greenfood.dto.Recipe_StepDTO;
+import net.developia.greenfood.dto.Recipe_ViewsDTO;
 import net.developia.greenfood.dto.Recipe_likesDTO;
 
 
@@ -60,6 +62,9 @@ public class RecipeServiceImpl implements RecipeService {
 	@Resource(name="Recipe_likesDAO")
 	private Recipe_likesDAO recipe_likesDAO;
 
+	@Autowired
+	@Resource(name="Recipe_ViewsDAO")
+	private Recipe_ViewsDAO recipe_viewsDAO;
 
 	@Override
 	public List<RecipeDTO> getHashtagList() throws Exception {
@@ -225,5 +230,29 @@ public class RecipeServiceImpl implements RecipeService {
 		// TODO Auto-generated method stub
 		return articleDAO.findHowMany(adto);
 	}
+
+	@Override
+	public List<ArticleDTO> findAllrecipe() throws Exception {
+		// TODO Auto-generated method stub
+		return articleDAO.findAllrecipe();
+	}
+
+	@Override
+	public void InsertViewLog(Recipe_ViewsDTO rvdto) throws Exception {
+		recipe_viewsDAO.InsertViewLog(rvdto);
+	}
+
+	@Override
+	public List<Recipe_likesDTO> findAllrecipeLikes(Recipe_likesDTO tmp1) throws Exception {
+		// TODO Auto-generated method stub
+		return recipe_likesDAO.findAllrecipeLikes(tmp1);
+	}
+
+	@Override
+	public List<Recipe_ViewsDTO> findAllrecipeViews(Recipe_ViewsDTO tmp2) throws Exception {
+		// TODO Auto-generated method stub
+		return recipe_viewsDAO.findAllrecipeViews(tmp2);
+	}
+
 
 }
