@@ -157,6 +157,14 @@ is
     
     procedure select_productimage(input_no in number,
     res_cur out sys_refcursor);
+    
+    procedure select_productdetail(input_no in number,
+    res_cur out sys_refcursor);
+    
+    procedure select_productdetailbycategory(input_no in number,
+    input_category in varchar2,
+    res_cur out sys_refcursor);
+    
 end product_pkg;
 
 create or replace package body product_pkg
@@ -178,6 +186,27 @@ is
         from product_images
         where input_no = product_no;
     end select_productimage;
+    
+    procedure select_productdetail(input_no in number,
+    res_cur out sys_refcursor)
+    as
+    begin
+        open res_cur for
+        select *
+        from product
+        where no = input_no;
+    end select_productdetail;
+
+    procedure select_productdetailbycategory(input_no in number,
+    input_category in varchar2,
+    res_cur out sys_refcursor)
+    as
+    begin
+        open res_cur for
+        select *
+        from product
+        where category = input_category and no != input_no;
+    end select_productdetailbycategory;
 end product_pkg;
 
 insert into product
