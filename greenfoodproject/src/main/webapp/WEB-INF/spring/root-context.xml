@@ -96,6 +96,13 @@
 		p:mapperInterface="net.developia.greenfood.dao.Recipe_ViewsDAO"
 		/>
 		
+	<bean
+		id="RecipeTrendDAO" 
+		class="org.mybatis.spring.mapper.MapperFactoryBean" 
+		p:sqlSessionFactory-ref="RecipeSqlSession"
+		p:mapperInterface="net.developia.greenfood.dao.RecipeTrendDAO"
+		/>
+		
 		
 	<!--  recupeDAO end -->
 	<!-- 작성자: 이효범작성일자: 2021/07/05 15:31 -->

@@ -7,6 +7,7 @@ import net.developia.greenfood.dto.Article_HashDTO;
 import net.developia.greenfood.dto.Article_My_HashDTO;
 import net.developia.greenfood.dto.IngredientsDTO;
 import net.developia.greenfood.dto.RecipeDTO;
+import net.developia.greenfood.dto.RecipeTrendDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
 import net.developia.greenfood.dto.Recipe_StepDTO;
 import net.developia.greenfood.dto.Recipe_ViewsDTO;
@@ -48,4 +49,6 @@ public interface RecipeService {
 	void InsertViewLog(Recipe_ViewsDTO rvdto)throws Exception;
 	List<Recipe_likesDTO> findAllrecipeLikes(Recipe_likesDTO tmp1)throws Exception;
 	List<Recipe_ViewsDTO> findAllrecipeViews(Recipe_ViewsDTO tmp2)throws Exception;
+	int findMyScore(RecipeTrendDTO rtdto)throws Exception;
+	List<Article_My_HashDTO> findAllMyHash(Article_My_HashDTO amhdto)throws Exception;
 }

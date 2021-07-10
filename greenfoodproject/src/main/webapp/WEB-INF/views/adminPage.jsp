@@ -44,7 +44,7 @@
     </div>
         <!-- end page title -->
        <!-- start section -->
-      <section class="big-section">
+      <!-- <section class="big-section">
          <div class="container">
          	<div class="row" style="width:100%">
          		<div class="col-lg-12" style="width:100%">
@@ -52,7 +52,7 @@
          		</div>
          	</div>
          </div>
-     </section>
+     </section> -->
      <section class="big-section">
          <div class="container">
          	<div class="row" style="width:100%">
@@ -60,20 +60,23 @@
          			<ul class="list-style-03" style="width:100%">
          				<li class="border-bottom border-top border-right border-left border-color-black-transparent bg-color-white box-shadow-small" style="width:100%;margin:0 ; padding:0; border-radius:10px; padding-left:10px; padding-right:10px;">
 						<div class="row" style="width:100%; padding-bottom:10px; padding-top:10px">
-						<div class="col-1" style="width:5%; text-align:center">
+						<div class="col-1" style="width:5%; text-align:center; margin-left:20px">
 							<input class="d-inline w-auto mb-0 mr-2 mt-1" type="checkbox" id="allChk">
 						</div>
 						<div class="col-4" style="width:35%; text-align:center">
-						<div class="font-weight-500 text-extra-medium text-extra-medium-gray">레시피 제목</div>
+						<div class="font-weight-600 text-extra-medium text-extra-medium-gray">레시피 제목</div>
 						</div>
 						<div class="col-3" style="width:25%; text-align:center">
-						<div class="font-weight-500 text-extra-medium text-extra-medium-gray">음식이름</div>
+						<div class="font-weight-600 text-extra-medium text-extra-medium-gray">음식이름</div>
 						</div>
-						<div sclass="col-2" style="width:15%; text-align:center">
-						<div class="font-weight-500 text-extra-medium text-extra-medium-gray"><i class="feather icon-feather-thumbs-up margin-10px-right"></i>좋아요</div>
+						<div sclass="col-2" style="width:10%; text-align:center">
+						<div class="font-weight-600 text-extra-medium text-extra-medium-gray"><i class="feather icon-feather-thumbs-up margin-10px-right"></i>좋아요</div>
 						</div>
-						<div sclass="col-2" style="width:15%; text-align:center">
-						<div class="font-weight-500 text-extra-medium text-extra-medium-gray"><i class="feather icon-feather-monitor margin-10px-right"></i>조회수</div>
+						<div sclass="col-2" style="width:10%; text-align:center">
+						<div class="font-weight-600 text-extra-medium text-extra-medium-gray"><i class="feather icon-feather-monitor margin-10px-right"></i>조회수</div>
+						</div>
+						<div sclass="col-2" style="width:10%; text-align:center">
+						<div class="font-weight-600 text-extra-medium text-extra-medium-gray"><i class="feather icon-feather-bar-chart margin-10px-right"></i>관련도</div>
 						</div>
 						</div>
 					 	</li>
@@ -148,7 +151,7 @@
 				 		+ '<div class="panel-heading" style="width:100%">'
 				 		+ '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion4" href="#accordion-style-4-'+cnt+'" style="width:100%">'
 						+ '<div class="row align-items-center" style="width:100%; margin:0; padding:0 ;padding-bottom:10px; padding-top:10px;  display: flex">'
-						+ '<div class="col-1" style="width:5%; text-align:center"><input class="d-inline w-auto mb-0 mr-2 mt-1" type="checkbox" value="'+results[i].no+'" id="recipeChk"></div>'
+						+ '<div class="col-1" style="width:5%; text-align:left"><input class="d-inline w-auto mb-0 mr-2 mt-1" type="checkbox" value="'+results[i].no+'" id="recipeChk"></div>'
 						+ '<div class="col-1" style="width:5%; text-align:center"><img id="thumb" src="'+results[i].thumbnail.replace(/(\s*)/g, '')+'" class="overflow-hidden border-radius-4px" style="width:100%" alt="" /></div>'
 						+ '<div class="col-3" style="text-align:center">'
 						+ '<div class="font-weight-500 text-extra-medium text-extra-medium-gray">'+results[i].title+'</div>'
@@ -156,30 +159,35 @@
 						+ '<div class="col-3" style="text-align:center">'
 						+ '<div class="font-weight-500 text-extra-medium text-extra-medium-gray">'+results[i].foodname+'</div>'
 						+ '</div>'
-						+ '<div sclass="col-2" style="width:15%; text-align:center">'
+						+ '<div sclass="col-2" style="width:10%; text-align:center">'
 						+ '<div class="font-weight-500 text-extra-medium text-extra-medium-gray">'+results[i].likes+'</div>'
 						+ '</div>'
-						+ '<div sclass="col-2" style="width:15%; text-align:center">'
+						+ '<div sclass="col-2" style="width:10%; text-align:center">'
 						+ '<div class="font-weight-500 text-extra-medium text-extra-medium-gray">'+results[i].views+'</div>'
+						+ '</div>'
+						+ '<div sclass="col-2" style="width:10%; text-align:center">'
+						+ '<div class="font-weight-500 text-extra-medium text-extra-medium-gray">'+results[i].relation_score+'</div>'
 						+ '</div>'
 						+ '</div>'
 						+ '</a></div>'
 						+ '<div id="accordion-style-4-'+cnt+'" class="panel-collapse collapse" data-parent="#accordion4" style="margin-bottom:20px">'
 						+ '<div class="panel-body" id="chart'+cnt+'"></div>'
-						+ '</div></div>'
+						+ '</div>'
+						+ '</div>'
 					 	+ '</li>'
 
 					
 	            	$("#recipeList").append(str);	
-					$("#chart"+cnt.toString()).append("[30일 간, 좋아요 및 조회수 분포]");
-					makeChart(results[i].no, cnt);
+					$("#chart"+cnt.toString()).append("[날짜 별, 좋아요 및 조회수 분포]");
+					makeChart1(results[i].no, cnt);
+					makeChart2(results[i].no, cnt);
 	            	cnt += 1;
 				}
 			}
 				
 		});
         
-        function makeChart(no, cnt){
+        function makeChart1(no, cnt){
         	 $.ajax({
      			url: "${pageContext.request.contextPath}/charList",
      			type: "post",
@@ -254,6 +262,65 @@
      		});
         	
         }
+        
+        
+        function makeChart2(no, cnt){
+       	 $.ajax({
+    			url: "${pageContext.request.contextPath}/charList1",
+    			type: "post",
+    			dataType: "text",
+    			data : {
+    				"rno" : no
+    			},
+    			success: function(data) {
+    			   console.log("chart list");
+    			   var results = JSON.parse(data);
+    			   if(results.length > 0)
+    			   {
+    				   var kArr = [];
+    				   var vArr = [];
+    				   var total = [];
+        			   for(var i = 0; i<results.length; i++)
+        				{
+        				   kArr.push(results[i].like_date);
+        				   var tmp = {
+           					    name: results[i].like_date,
+           					    data: results[i].lcount,
+           					  };
+        				   total.push(tmp);
+        	               
+        				}
+        			   
+        			   
+        				data = {
+           	                 categories:['Keyword'],
+           	                 series: total,
+           	               };
+           	               const options = {
+           	                 chart: { width: 800, height: 500 },
+	           	              series: {
+	           	               selectable: true,
+		           	            radiusRange: {
+		           	             inner: '40%',
+		           	             outer: '100%',
+		           	           },
+		           	        	clockwise: false,
+		           	        	dataLabels: {
+				           	           visible: true,
+				           	           anchor: 'outer'
+				           	         },
+	           	             },
+           	               };
+           	               $("#chart"+cnt.toString()).append("[트렌드 적합도 판별 키워드]");
+           	               const el = document.getElementById('chart'+cnt.toString());
+           	               const chart = toastui.Chart.pieChart({ el, data, options });
+    			   }
+  	               
+    			} 
+    				
+    		});
+       	
+       }
        
         
     	

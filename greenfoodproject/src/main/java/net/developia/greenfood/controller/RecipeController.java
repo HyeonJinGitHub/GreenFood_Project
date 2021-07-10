@@ -1,8 +1,10 @@
 package net.developia.greenfood.controller;
 
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +41,7 @@ import net.developia.greenfood.dto.Article_HashDTO;
 import net.developia.greenfood.dto.Article_My_HashDTO;
 import net.developia.greenfood.dto.IngredientsDTO;
 import net.developia.greenfood.dto.RecipeDTO;
+import net.developia.greenfood.dto.RecipeTrendDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
 import net.developia.greenfood.dto.Recipe_Likes_ViewsDTO;
 import net.developia.greenfood.dto.Recipe_StepDTO;
@@ -94,7 +97,43 @@ public class RecipeController {
 			throws Exception {
 		List<ArticleDTO> alist = new ArrayList<>();
 		alist = recipeService.findAllrecipe();
-
+		
+		for(int i =0; i< alist.size(); i++)
+		{
+			Map<String, Boolean> mp = new HashMap<>();
+			int score = 0;
+			int rno = alist.get(i).getNo();
+			RecipeTrendDTO rtdto = new RecipeTrendDTO();
+			rtdto.setKeyword(alist.get(i).getFoodname());
+			mp.put(alist.get(i).getFoodname(), true);
+			score += recipeService.findMyScore(rtdto);
+			String t = alist.get(i).getTitle();
+			String[] st = t.split(" ");
+			for(int j =0; j < st.length; j++)
+			{
+				if(mp.containsKey(st[j])) continue;
+				rtdto.setKeyword(st[j]);
+				score += recipeService.findMyScore(rtdto);
+				mp.put(st[j], true);
+			}
+			Article_My_HashDTO amhdto = new Article_My_HashDTO();
+			amhdto.setRecipe_no(rno);
+			List<Article_My_HashDTO> amhlist = recipeService.findAllMyHash(amhdto);
+			
+			for(int j = 0; j< amhlist.size(); j++)
+			{
+				if(mp.containsKey(amhlist.get(j).getTitle())) continue;
+				rtdto.setKeyword(amhlist.get(j).getTitle());
+				score += recipeService.findMyScore(rtdto);
+				mp.put(amhlist.get(j).getTitle(), true);
+			}
+			alist.get(i).setRscore(score);
+			DecimalFormat df = new DecimalFormat("0.000");
+			String sscore = df.format(score * 0.000001);
+			alist.get(i).setRelation_score(sscore);
+		}
+		
+		Collections.sort(alist, new ArticleDTO.SortByLikePlusViewPlusScore());
 		String json = new Gson().toJson(alist);
 		return json;
 	}
@@ -175,6 +214,76 @@ public class RecipeController {
 		return json;
 	}
 	
+	
+	@PostMapping(value = "/charList1", produces = "application/text; charset=utf8")
+	public @ResponseBody String charList1(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		int rno = Integer.parseInt(request.getParameter("rno"));
+		ArticleDTO atmp = new ArticleDTO();
+		atmp.setNo(rno);
+		ArticleDTO adto = recipeService.findRecipeNo(atmp);
+		
+		Map<String, Integer> mp = new HashMap<>();
+		int score = 0;
+		
+		
+		RecipeTrendDTO rtdto = new RecipeTrendDTO();
+		rtdto.setKeyword(adto.getFoodname());
+		
+		score += recipeService.findMyScore(rtdto);
+		if(score != 0)
+		{
+			mp.put(adto.getFoodname(), 1);
+		}
+		String t = adto.getTitle();
+		String[] st = t.split(" ");
+		for(int j =0; j < st.length; j++)
+		{
+			if(mp.containsKey(st[j]))
+			{
+				mp.put(st[j], mp.get(st[j]) +1);
+				continue;
+			}
+			rtdto.setKeyword(st[j]);
+			int tscore = recipeService.findMyScore(rtdto);
+			if(tscore != 0)
+			{
+				mp.put(st[j], 1);
+				score += tscore;
+			}
+		}
+		Article_My_HashDTO amhdto = new Article_My_HashDTO();
+		amhdto.setRecipe_no(rno);
+		List<Article_My_HashDTO> amhlist = recipeService.findAllMyHash(amhdto);
+		
+		for(int j = 0; j< amhlist.size(); j++)
+		{
+			if(mp.containsKey(amhlist.get(j).getTitle()))
+			{
+				mp.put(amhlist.get(j).getTitle(), mp.get(amhlist.get(j).getTitle()) +1);
+				continue;
+			}
+			rtdto.setKeyword(amhlist.get(j).getTitle());
+			int tscore = recipeService.findMyScore(rtdto);
+			if(tscore != 0)
+			{
+				mp.put(amhlist.get(j).getTitle(), 1);
+				score += tscore;
+			}
+		}
+		
+		List <Recipe_Likes_ViewsDTO> mlist = new ArrayList<>();
+		for(String s : mp.keySet())
+		{
+			Recipe_Likes_ViewsDTO tmpdto = new Recipe_Likes_ViewsDTO();
+			tmpdto.setLike_date(s);
+			tmpdto.setLcount(mp.get(s));
+			mlist.add(tmpdto);
+		}
+		
+		String json = new Gson().toJson(mlist);
+		return json;
+	}
 	
 
 	@RequestMapping(value = "/recipePost", method = RequestMethod.GET)
