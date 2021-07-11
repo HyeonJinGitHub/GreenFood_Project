@@ -51,4 +51,7 @@ public interface RecipeService {
 	List<Recipe_ViewsDTO> findAllrecipeViews(Recipe_ViewsDTO tmp2)throws Exception;
 	int findMyScore(RecipeTrendDTO rtdto)throws Exception;
 	List<Article_My_HashDTO> findAllMyHash(Article_My_HashDTO amhdto)throws Exception;
+	List<Article_HashDTO> findAllHash(Article_HashDTO ahdto)throws Exception;
+	String findHashName(RecipeDTO rdto)throws Exception;
+	List<RecipeTrendDTO> findTop10Trend()throws Exception;
 }

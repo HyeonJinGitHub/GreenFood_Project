@@ -17,4 +17,12 @@
 		where keyword LIKE '%'||#{keyword}||'%'
 	</select>
 	
+	<select id="findTop10Trend" parameterType="RecipeTrendDTO" resultType="RecipeTrendDTO">
+		select *
+		from recipeTrend
+		order by relationScore desc
+	</select>
+	
+	
+	
 </mapper>

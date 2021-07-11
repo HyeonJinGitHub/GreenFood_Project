@@ -299,6 +299,39 @@ public class RecipeController {
 
 		return json;
 	}
+	
+	
+	@PostMapping(value = "/relationTags", produces = "application/text; charset=utf8")
+	public @ResponseBody String relationTags(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int no = Integer.parseInt(request.getParameter("no"));
+		Article_My_HashDTO amhdto = new Article_My_HashDTO();
+		amhdto.setRecipe_no(no);
+		List<Article_My_HashDTO> amhlist = recipeService.findAllMyHash(amhdto);
+		
+		Article_HashDTO ahdto = new Article_HashDTO();
+		ahdto.setRecipe_no(no);
+		List<Article_HashDTO> ahlist = recipeService.findAllHash(ahdto);
+		
+		List<String> slist = new ArrayList<>();
+		for(int i =0; i< amhlist.size(); i++)
+		{
+			slist.add(amhlist.get(i).getTitle());
+		}
+		for(int i =0; i< ahlist.size(); i++)
+		{
+			RecipeDTO rdto = new RecipeDTO();
+			rdto.setNo(ahlist.get(i).getHashtag_no());
+			String name = recipeService.findHashName(rdto);
+			slist.add(name);
+		}
+		
+		String json = new Gson().toJson(slist);
+
+		return json;
+	}
+	
+	
+	
 
 	@PostMapping(value = "/catlist", produces = "application/text; charset=utf8")
 	public @ResponseBody String getFoodcategoryList() throws Exception {
@@ -551,6 +584,19 @@ public class RecipeController {
 		String json = new Gson().toJson(adto);
 		return json;
 	}
+	
+	
+	@PostMapping(value = "/hotKeywordList", produces = "application/text; charset=utf8")
+	public @ResponseBody String hotKeywordList(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		List<RecipeTrendDTO> rtlist = recipeService.findTop10Trend();
+		
+		String json = new Gson().toJson(rtlist);
+		return json;
+	}
+	
+	
 
 	@PostMapping(value = "/recipeDetailStep", produces = "application/text; charset=utf8")
 	public @ResponseBody String recipeDetailStep(HttpServletRequest request, HttpServletResponse response)

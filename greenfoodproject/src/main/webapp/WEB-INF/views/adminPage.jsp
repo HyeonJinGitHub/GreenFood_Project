@@ -44,16 +44,28 @@
     </div>
         <!-- end page title -->
        <!-- start section -->
-      <!-- <section class="big-section">
+   <section class="big-section" style="margin-top : -100px">
          <div class="container">
          	<div class="row" style="width:100%">
-         		<div class="col-lg-12" style="width:100%">
-         			 차트섹션
+         		<div class="col-lg-8 border-radius-10px" style="width:100px; height:100px" id="googleTrendChart">
+         			<div class="border-radius-10px">
+				      <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/1386_RC02/embed_loader.js"></script> <script type="text/javascript"> trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"요리법","geo":"KR","time":"today 1-m"},{"keyword":"레시피","geo":"KR","time":"today 1-m"}],"category":0,"property":""}, {"exploreQuery":"date=today%201-m&geo=KR&q=%EC%9A%94%EB%A6%AC%EB%B2%95","guestPath":"https://trends.google.co.kr:443/trends/embed/"});</script>     
+				    </div>
+         		</div>
+         		<div class="col-lg-4 btn-gradient-tan-geraldine padding-20px-bottom border-radius-10px" style="width:100%">
+                       <h6 class="text-extra-dark-gray letter-spacing-minus-1 w-100"><i class="fas fa-quote-left text-white icon-extra-medium margin-10px-bottom margin-20px-right margin-20px-top"></i>Hot Keyword</h6>
+                       <div class="row justify-content-center bg-white border-radius-10px" style="width:100%; margin-left:1px">
+	                    <div class="col-12">
+	                        <ul  class="list-style-01 text-extra-dark-gray" id="hotKeyword">
+	                        </ul>
+	                    </div>
+	                </div>
+	                <div class="font-weight-600 text-extra-dark-gray" style="text-align:center; margin-top:10px; margin-bottom:-3px" id="toggle_np_btn">다음 5개 항목 보기<i class="feather icon-feather-arrow-right-circle margin-10px-left"></i></div>
          		</div>
          	</div>
          </div>
-     </section> -->
-     <section class="big-section">
+     </section>
+     <section class="big-section" style="margin-top : -270px">
          <div class="container">
          	<div class="row" style="width:100%">
          		<div class="col-lg-12" style="width:100%">
@@ -130,10 +142,12 @@
 		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<link rel="stylesheet" href="https://uicdn.toast.com/chart/latest/toastui-chart.min.css" />
 		<script src="https://uicdn.toast.com/chart/latest/toastui-chart.min.js"></script>
+		<script src="https://ssl.gstatic.com/trends_nrtr/2578_RC02/embed_loader.js"></script>
 	    <script type="text/javascript">
 	    
         
         $(document).ready(function() {
+        	
         $.ajax({
 			url: "${pageContext.request.contextPath}/RecomendRecipeList",
 			type: "post",
@@ -170,7 +184,7 @@
 						+ '</div>'
 						+ '</div>'
 						+ '</a></div>'
-						+ '<div id="accordion-style-4-'+cnt+'" class="panel-collapse collapse" data-parent="#accordion4" style="margin-bottom:20px">'
+						+ '<div id="accordion-style-4-'+cnt+'" class="panel-collapse collapse  border-top border-color-black-transparent" data-parent="#accordion4" style="margin-bottom:20px; padding-top:30px">'
 						+ '<div class="panel-body" id="chart'+cnt+'"></div>'
 						+ '</div>'
 						+ '</div>'
@@ -180,13 +194,82 @@
 	            	$("#recipeList").append(str);	
 					$("#chart"+cnt.toString()).append("[날짜 별, 좋아요 및 조회수 분포]");
 					makeChart1(results[i].no, cnt);
-					makeChart2(results[i].no, cnt);
+					
 	            	cnt += 1;
 				}
+				//makeGoogleChart();
 			}
 				
 		});
         
+        
+		$.ajax({
+			url: "${pageContext.request.contextPath}/hotKeywordList",
+			type: "post",
+			dataType: "text",
+			success: function(data) {
+				var results = JSON.parse(data);
+				for(var i = 0; i<10; i++)
+				{
+					var str = '';
+					if(i >= 5)
+					{
+						str += '<li class="d-none" id="over5">'
+					}
+					else
+					{
+						str += '<li class="d-none" id="under5">'
+					}
+					str += '<span class="text-black font-weight-600" style="margin-right: 10px; margin-left: -10px" >'+(i+1)+'</span>'+results[i].keyword + ' (' + results[i].relationScore + '점)'
+						+ '<span class="list-hover bg-white box-shadow-small border-radius-5px"></span>'
+                		+ '</li>'
+					
+					$("#hotKeyword").append(str);
+                	//document.getElementById("under5").removeClass("d-none");
+                	$("li[id=under5]").removeClass("d-none");
+				}
+				
+			}
+		});
+		
+		
+		function makeGoogleChart(){
+			
+			var divelem = document.getElementById("#googleTrendChart");
+			trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"요리법","geo":"KR","time":"today 12-m"}, 
+																											{"keyword":"레시피","geo":"KR","time":"today 12-m"}],
+																						"category":0,"property":""}, 
+																						{"exploreQuery":"q=%EC%9A%94%EB%A6%AC%EB%B2%95&geo=KR&date=today 12-m",
+																						"guestPath":"https://trends.google.co.kr:443/trends/embed/"});
+		}
+		
+		 $(document).on(
+					"click",
+					"#toggle_np_btn",
+					function(e) {
+						if($("li[id=under5]").hasClass("d-none"))
+						{
+							$("li[id=under5]").removeClass("d-none");
+							$("li[id=over5]").addClass("d-none");	
+							
+							$("#toggle_np_btn").empty();
+							var str = '다음 5개 항목 보기<i class="feather icon-feather-arrow-right-circle margin-10px-left"></i>'
+							$("#toggle_np_btn").append(str);
+						}
+						else
+						{
+							$("li[id=under5]").addClass("d-none");
+							$("li[id=over5]").removeClass("d-none");
+							
+							$("#toggle_np_btn").empty();
+							var str = '<i class="feather icon-feather-arrow-left-circle margin-10px-right"></i>이전 5개 항목 보기'
+							$("#toggle_np_btn").append(str);
+						}
+						
+					});
+	        
+		
+		
         function makeChart1(no, cnt){
         	 $.ajax({
      			url: "${pageContext.request.contextPath}/charList",
@@ -201,26 +284,32 @@
    	               var dateArr = [];
    	               var lArr = [];
 				   var vArr = [];
+				   var lsum = 0;
+				   var vsum = 0;
 				   
      				for(var i = 0; i<results.length; i++)
      				{
      				   if(results[i].flag == 1)
 	     			   {
      					  dateArr.push(results[i].like_date);
-	       				   lArr.push(results[i].lcount);
-	       				   vArr.push(0);
+     					  lsum += results[i].lcount;
+	       				   lArr.push(lsum);
+	       				   vArr.push(vsum);
 	     			   }
      				   else if(results[i].flag == 2)
      				   {
      					  dateArr.push(results[i].view_date);
-	       				   lArr.push(0);
-	       				   vArr.push(results[i].vcount);
+     					  vsum += results[i].vcount
+	       				   lArr.push(lsum);
+	       				   vArr.push(vsum);
      				   }
      				   else if(results[i].flag == 3)
      				   {
         				   dateArr.push(results[i].view_date);
-        				   lArr.push(results[i].lcount);
-        				   vArr.push(results[i].vcount);
+        				   lsum += results[i].lcount;
+        				   vsum += results[i].vcount
+        				   lArr.push(lsum);
+        				   vArr.push(vsum);
      				   }
      				 
      	               
@@ -257,12 +346,14 @@
 
         	               const el = document.getElementById('chart'+cnt.toString());
         	               const chart = toastui.Chart.lineChart({ el, data, options });
+        	               makeChart2(no, cnt);
      			}
      				
      		});
         	
         }
         
+       
         
         function makeChart2(no, cnt){
        	 $.ajax({

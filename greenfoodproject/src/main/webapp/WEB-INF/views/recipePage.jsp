@@ -212,11 +212,11 @@
             <div class="container">
                 <div class="row margin-6-rem-bottom md-margin-5-rem-bottom ">
                     <div class="col-12 col-lg-6 text-center text-lg-left wow animate__fadeIn">
-                        <span class="alt-font font-weight-500 text-salmon-rose text-uppercase d-block margin-20px-bottom md-margin-10px-bottom">관련태그</span>
+                        <span class="alt-font font-weight-500 text-salmon-rose text-uppercase d-block">관련태그</span>
                         </div>
                    </div>
-                <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2 justify-content-center">
-                   <div class="col-lg-12">
+                <div class="row justify-content-center">
+                   <div class="col-lg-12" id="relationTag" style="text-align:center">
                    </div>
                </div>
             </div>
@@ -521,6 +521,28 @@
     					var str = '';
     					str += '<li class="padding-15px-tb border-bottom border-color-medium-gray"><i class="feather icon-feather-check text-large text-salmon-rose margin-10px-right"></i>'+results[i].name+' ('+results[i].howmuch.toString()+'g)</li>'
     					$("#ingredients_howmuch").append(str);   
+    				}
+    			}
+    				
+    		});
+        	
+        	$.ajax({
+    			url: "${pageContext.request.contextPath}/relationTags",
+    			type: "post",
+    			dataType: "text",
+    			data : {
+					"no" : ${no}
+				}, 
+    			success: function(data) {
+    				var results = JSON.parse(data);
+    				console.log(results);
+    				for(var i = 0; i<results.length; i++)
+    				{
+    					var str = '';
+    					str += '<a href="${pageContext.request.contextPath}/recipe?keyword='+results[i]+'" id="tagSelect" class="btn btn-large  btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block md-margin-auto-lr" style="margin-bottom: 20px; margin-right:15px;">'
+							+ results[i]
+							+ '<span class="bg-black"></span></a>'
+						$("#relationTag").append(str);   
     				}
     			}
     				

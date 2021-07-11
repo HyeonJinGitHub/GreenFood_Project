@@ -10,4 +10,6 @@ import net.developia.greenfood.dto.RecipeTrendDTO;
 
 public interface RecipeTrendDAO {
 	int findMyScore(RecipeTrendDTO rtdto) throws SQLException;
+
+	List<RecipeTrendDTO> findTop10Trend() throws SQLException;
 }

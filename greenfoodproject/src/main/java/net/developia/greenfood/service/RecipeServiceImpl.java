@@ -272,6 +272,24 @@ public class RecipeServiceImpl implements RecipeService {
 		return article_my_hashDAO.findAllMyHash(amhdto);
 	}
 
+	@Override
+	public List<Article_HashDTO> findAllHash(Article_HashDTO ahdto) throws Exception {
+		// TODO Auto-generated method stub
+		return article_hashDAO.findAllHash(ahdto);
+	}
+
+	@Override
+	public String findHashName(RecipeDTO rdto) throws Exception {
+		// TODO Auto-generated method stub
+		return recipeDAO.findHashName(rdto);
+	}
+
+	@Override
+	public List<RecipeTrendDTO> findTop10Trend() throws Exception {
+		// TODO Auto-generated method stub
+		return recipeTrendDAO.findTop10Trend();
+	}
+
 
 
 }
