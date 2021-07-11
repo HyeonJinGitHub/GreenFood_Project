@@ -14,4 +14,4 @@ default tablespace users;
 grant connect, resource to green;
 
 alter user green
-quota unlimited on users;
+quota unlimited on users
