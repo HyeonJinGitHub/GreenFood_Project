@@ -71,6 +71,13 @@ is
     procedure update_profile(input_id in varchar2,
     input_nickname in varchar2,
     input_image in varchar2);
+    
+    procedure login_google(input_id in varchar2,
+    input_name in varchar2,
+    input_email in varchar2,
+    input_nickname in varchar2,
+    input_image in varchar2,
+    res_cur out sys_refcursor);
 end member_pkg;
 
 
@@ -146,6 +153,30 @@ is
         where id = input_id;
         commit;
     end update_profile;
+    
+    procedure login_google(input_id in varchar2,
+    input_name in varchar2,
+    input_email in varchar2,
+    input_nickname in varchar2,
+    input_image in varchar2,
+    res_cur out sys_refcursor)
+    as
+        cnt number(5) := 0;
+    begin
+        select count(*) into cnt
+        from member
+        where id = input_id;
+        
+        if cnt = 0 then
+            insert into member(id, password, name, email, phone, profile_img, nickname)
+            values(input_id, null, input_name, input_email, null, input_image, input_nickname);
+            commit;
+        end if;
+        open res_cur for
+        select * 
+        from member
+        where id = input_id;
+    end login_google;
     
 end member_pkg;
 
