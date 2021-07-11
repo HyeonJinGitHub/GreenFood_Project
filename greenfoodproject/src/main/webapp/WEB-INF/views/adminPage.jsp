@@ -463,6 +463,7 @@
         	else
         	{
         		console.log(no);
+        		location.href("${pageContext.request.contextPath}/productInsert));
         	}
         }
         

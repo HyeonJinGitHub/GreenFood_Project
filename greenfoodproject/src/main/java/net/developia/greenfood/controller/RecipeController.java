@@ -75,13 +75,31 @@ public class RecipeController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/adminPage", method = RequestMethod.GET)
-	public ModelAndView recipe(HttpSession session) {
+	public ModelAndView admin(HttpSession session) {
 		System.out.println("admin page start");
 		ModelAndView mav = new ModelAndView();
 		log.info(session.getAttribute("id") +" 아이디");
 		if(session.getAttribute("id").equals("admin"))
 		{
 			mav = new ModelAndView("adminPage");
+		}
+		else
+		{
+			mav = new ModelAndView("main");
+		}
+		
+		return mav;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/productInsert", method = RequestMethod.GET)
+	public ModelAndView productInsert(HttpSession session) {
+		System.out.println("product insert page start");
+		ModelAndView mav = new ModelAndView();
+		log.info(session.getAttribute("id") +" 아이디");
+		if(session.getAttribute("id").equals("admin"))
+		{
+			mav = new ModelAndView("productInsert");
 		}
 		else
 		{
