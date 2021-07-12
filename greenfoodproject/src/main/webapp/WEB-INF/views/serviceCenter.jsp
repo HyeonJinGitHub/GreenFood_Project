@@ -55,7 +55,7 @@
         <!-- end page title -->
         <!-- start section -->
         <section class="bg-light-gray">
-            <div class="container">
+            <div class="container" id ="consulting">
                 <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 justify-content-center">
                     <!-- start fancy text box item -->
                     <div class="col col-sm-8 md-margin-30px-bottom xs-margin-15px-bottom">

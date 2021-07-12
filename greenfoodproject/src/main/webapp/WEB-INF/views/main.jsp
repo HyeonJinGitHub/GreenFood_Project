@@ -716,8 +716,18 @@
                                         <a href="blog-post-layout-01.html"><img src="${item.profile_img}" alt="resources/images/user.png"/></a>
                                     </div>
                                     <div class="post-details">
+                                    <c:set var="name" value="${item.nickname }"></c:set>
+                                    <c:choose>
+                                    	<c:when test="${name != null}">
                                         <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"><c:out value="${item.nickname}" /></a>
                                         <p class="w-95">#해시태그1 #해시태그2 #해시태그3 #해시태그4</p>
+                                        </c:when>
+                                        
+                                        <c:when test="${name == null}">
+                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"><c:out value="${item.id}" /></a>
+                                        <p class="w-95">#해시태그1 #해시태그2 #해시태그3 #해시태그4</p>
+                                        </c:when>
+                                     </c:choose>
                                     </div>
                                 </div>
                             </li>
