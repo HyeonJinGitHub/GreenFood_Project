@@ -277,21 +277,19 @@
 				
 				for(var i = shownCount * recipeShowCount ; i < ( shownCount * recipeShowCount ) + length ; i++){
 					
-					
                     recipeListHtml += '<li class="grid-item wow animate__fadeIn" style = "float:left;">                                                                                                                                         ';
                     recipeListHtml += '<div class="blog-post border-radius-5px bg-white box-shadow-medium">                                                                                                               ';
                     recipeListHtml += '    <div class="blog-post-image bg-medium-slate-blue">                                                                                                                             ';
-                    recipeListHtml += '        <a href="blog-post-layout-01.html" title=""><img src="resources/images/c.jpg" alt=""></a>                                                                                  ';
-                    recipeListHtml += '        <a href="blog-masonry.html" class="blog-category alt-font">Creative</a>                                                                                                    ';
+                    recipeListHtml += '        <a href="/greenfood/recipe/'+ recipeList[i].no + '" title=""><img src="' + (recipeList[i].thumbnail).replace(/\s/gi, "") + '" alt=""></a>                                                                                  ';
+                    recipeListHtml += '        <a href="/greenfood/recipe/foodCategory/' + recipeList[i].foodCategoryNo + '" class="blog-category alt-font">' + recipeList[i].foodCategoryTitle + '</a>                                                                                                    ';
                     recipeListHtml += '    </div>                                                                                                                                                                         ';
                     recipeListHtml += '    <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">                                                                                                              ';
-                    recipeListHtml += '        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">18 February 2020</a>                                                             ';
-                    recipeListHtml += '        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">' + recipeList[i].title + '</a>  ';
-                    recipeListHtml += '        <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>                                                                            ';
+                    recipeListHtml += '        <a href="/greenfood/recipe/'+ recipeList[i].no + '" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">' + recipeList[i].title + '</a>  ';
+                    recipeListHtml += '        <p>' + recipeList[i].explanation + '</p>                                                                            ';
                     recipeListHtml += '        <div class="d-flex align-items-center">                                                                                                                                    ';
                     recipeListHtml += '            <img class="avtar-image" src="https://placehold.it/125x125" alt=""/>                                                                                                   ';
-                    recipeListHtml += '            <span class="alt-font text-small mr-auto">By <a href="blog-masonry.html">Torrie asai</a></span>                                                                        ';
-                    recipeListHtml += '            <a href="blog-post-layout-01.html" class="blog-like alt-font text-extra-small"><i class="solid-icon-Preview icon-medium-ksy align-middle text-fast-black-ksy"></i><span>28</span></a>                                         ';
+                    recipeListHtml += '            <span class="alt-font text-small mr-auto">By <a href="blog-masonry.html">'+ recipeList[i].memberName + '</a></span>                                                                        ';
+                    recipeListHtml += '            <i class="solid-icon-Preview icon-medium-ksy align-middle text-fast-black-ksy"></i><span>' + recipeList[i].views + '</span>                                         ';
                     recipeListHtml += '        </div>                                                                                                                                                                     ';
                     recipeListHtml += '    </div>                                                                                                                                                                         ';
                     recipeListHtml += '</div>                                                                                                                                                                             ';
