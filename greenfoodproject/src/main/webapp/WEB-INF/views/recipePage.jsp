@@ -44,7 +44,7 @@
 				height: 100vh;
 			}
 			
-/* 			#load {
+ 			#load {
 			    width: 100%;
 			    height: 100%;
 			    top: 0;
@@ -62,13 +62,16 @@
 			    top: 50%;
 			    left: 50%;
 			    z-index: 100;
-			} */
+			} 
 			
 		</style>
 		<script src="https://vjs.zencdn.net/7.8.2/video.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
     </head>
     <body data-mobile-nav-style="classic" style="overflow-x:hidden">
+     <div id="load">
+    <img src="${images}/Iphone.gif" alt="loading">
+</div>
 <!-- start header -->
         	<jsp:include page='/WEB-INF/views/layout/header.jsp' />
         <!-- end header -->

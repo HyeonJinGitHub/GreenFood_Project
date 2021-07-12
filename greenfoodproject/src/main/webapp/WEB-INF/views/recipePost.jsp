@@ -255,7 +255,7 @@
 													style="margin: 0; padding: 0; width: 100%; text-align: right">
 													<div class="col-lg-12 sm-margin-25px-bottom"
 														style="margin: 0; padding: 0; width: 100%; text-align: right">
-														<a href="#" id="addIngredient"
+														<a id="addIngredient"
 															class="btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge margin-10px-bottom">재료
 															추가</a>
 													</div>
@@ -364,7 +364,7 @@
 																	</li>
 																</ul>
 															</div>
-															<a href="#" id="addItem"
+															<a id="addItem"
 																class="btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge margin-10px-bottom"
 																style="margin-left: auto; margin-right: 15px;">과정 추가</a>
 														</div>
@@ -1050,7 +1050,7 @@
 										for (var i = 0; i < results.length; i++) {
 											var category = results[i].title;
 											var str = '';
-											str += '<a href="#" id="tagSelect" class="btn btn-large  btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" style="margin-bottom: 20px">'
+											str += '<a id="tagSelect" class="btn btn-large  btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" style="margin-bottom: 20px">'
 												+ results[i].tagname
 												+ '<span class="bg-black"></span></a>'
 											if(category =="상황별 요리")
@@ -1183,7 +1183,7 @@
 												if (res.length != 0) {
 													for (var i = 0; i < res.length; i++) {
 														var str = '';
-														str += '<a href="#" id="tagSelect" class="btn btn-large  btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" style="margin-bottom: 20px">'
+														str += '<a id="tagSelect" class="btn btn-large  btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" style="margin-bottom: 20px">'
 															+ res[i]
 															+ '<span class="bg-black"></span></a>'
 														$('#myFood').append(str);
@@ -1490,7 +1490,7 @@
 											"#tagSelect",
 											function(e) {
 												var str = '';
-												str += '<a id="selectedTag" href="#" class="btn btn-large btn-dark-gray btn-round-edge d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" style="margin-right : 10px; margin-bottom : 10px">'
+												str += '<a id="selectedTag" class="btn btn-large btn-dark-gray btn-round-edge d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" style="margin-right : 10px; margin-bottom : 10px">'
 														+ $(this).text()
 														+ '</a>'
 												$('#myTag').append(str)
