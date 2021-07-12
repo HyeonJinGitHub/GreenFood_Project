@@ -2,19 +2,14 @@ package net.developia.greenfood.controller;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItem;
-import org.apache.commons.io.IOUtils;
+import org.apache.maven.shared.invoker.SystemOutHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +18,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import com.amazonaws.services.athena.model.GetNamedQueryRequest;
 
+import com.google.gson.Gson;
+
+import net.developia.greenfood.dto.MemberDTO;
 import net.developia.greenfood.service.AwsService;
 import net.developia.greenfood.service.MemberService;
 
@@ -44,6 +42,27 @@ public class MemberController {
 
 	private static Logger logger = LoggerFactory.getLogger(MemberController.class);
 
+	@RequestMapping(value="/selectMember", method=RequestMethod.POST, produces = "application/text; charset=UTF-8")
+	@ResponseBody
+	public String selectMember(HttpSession session) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		System.out.println("IDÎäî " + session.getAttribute("id"));
+		map.put("ID", session.getAttribute("id"));
+		try {
+			memberService.selectMemberById(map);
+			List<MemberDTO> data = (List) map.get("MemberList");
+			MemberDTO dto = data.get(0);
+			System.out.println(dto.toString());
+			String json = new Gson().toJson(dto);
+			System.out.println("jsonÏùÄ : " + json);
+			return json;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
 	@GetMapping("/test")
 	public ModelAndView home2() {
 		System.out.println("test controller start");
@@ -154,7 +173,7 @@ public class MemberController {
 		String profile_img;
 		ModelAndView mav = new ModelAndView("result");
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		logger.info(images+" ¿ÃπÃ¡ˆ ≥ªøÎ");
+		logger.info(images+" ÔøΩÃπÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ");
 		try {
 			map.put("ID", session.getAttribute("id"));
 			if (flag.equals("0")) {
@@ -170,7 +189,7 @@ public class MemberController {
 			} else if (flag.equals("1")) {
 				profile_img = awsService.s3FileUpload(images, session.getAttribute("id").toString());
 			} else {
-				profile_img = "https://greenfood-bucket.s3.us-east-2.amazonaws.com/default_profile.png";
+				profile_img = "https://d3gr4nmrit7xq0.cloudfront.net/default_profile.png";
 			}
 			map.put("NICKNAME", nickname);
 			map.put("PROFILE_IMG", profile_img);
@@ -185,16 +204,29 @@ public class MemberController {
 
 	}
 
+	@GetMapping("/logout")
+	public ModelAndView lougout(HttpSession session) {
+		ModelAndView mav = new ModelAndView("result");
+		session.invalidate();
+		mav.addObject("url", "/greenfood");
+		return mav;
+	}
+	
 	@PostMapping("/contact")
 	public ModelAndView move_contact_get() {
 		return new ModelAndView("contact");
 	}
-
+	
 	@GetMapping("/test2")
 	public ModelAndView move_test() {
 		return new ModelAndView("test2");
 	}
 
+	@GetMapping("/test3")
+	public ModelAndView move_test3() {
+		return new ModelAndView("test3");
+	}
+	
 	@PostMapping("/uploadtest")
 	public ModelAndView upload_test(HttpSession session, @ModelAttribute MultipartFile videos) throws IOException {
 		System.out.println("ÎπÑÎîîÏò§ ÌÖåÏä§Ìä∏ Îì§Ïñ¥ÏôîÏñ¥Ïöî.");

@@ -124,4 +124,15 @@
 		<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="MainDAO" p:mapperInterface="net.developia.greenfood.dao.MainDAO" p:sqlSessionFactory-ref="MainSqlSession"/>
 
 <!-- MainDAO end -->
+	<!-- productDAO start -->
+	<bean id="ProductSqlSession"
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource"
+		p:typeAliasesPackage="net.developia.greenfood.dto" />
+
+	<bean id="ProductDAO"
+		class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="ProductSqlSession"
+		p:mapperInterface="net.developia.greenfood.dao.ProductDAO" />
+	<!-- productDAO end -->
 </beans>
