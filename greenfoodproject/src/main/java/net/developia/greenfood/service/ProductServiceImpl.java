@@ -7,12 +7,18 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import net.developia.greenfood.dao.ProductDAO;
+import net.developia.greenfood.dao.ProductImageDAO;
+import net.developia.greenfood.dto.ProductDTO;
+import net.developia.greenfood.dto.ProductImageDTO;
 
 @Slf4j
 @Service
 public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductDAO productDAO;
+	
+	@Autowired
+	private ProductImageDAO productimageDAO;
 
 	@Override
 	public void selectProduct(HashMap<String, Object> map) throws Exception {
@@ -83,6 +89,23 @@ public class ProductServiceImpl implements ProductService {
 			log.info(e.getMessage());
 			throw e;
 		}
+	}
+
+	@Override
+	public void postProduct(ProductDTO pdto) throws Exception {
+		productDAO.postProduct(pdto);
+	}
+
+	@Override
+	public int findMyProduct(ProductDTO pdto) throws Exception {
+		// TODO Auto-generated method stub
+		return productDAO.findMyProduct(pdto);
+	}
+
+	@Override
+	public void InsertProductImg(ProductImageDTO pidto) throws Exception {
+		// TODO Auto-generated method stub
+		productimageDAO.InsertProductImg(pidto);
 	}
 
 }

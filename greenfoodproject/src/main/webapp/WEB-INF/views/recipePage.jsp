@@ -449,7 +449,6 @@
     	});
         
         $(document).ready(function() {
-        	console.log(${no});
         	$.ajax({
     			url: "${pageContext.request.contextPath}/recipeDetail",
     			type: "post",
@@ -459,7 +458,6 @@
 				}, 
     			success: function(data) {
     				var results = JSON.parse(data);
-    				console.log(results);
     				var str = '<h1 class="alt-font font-weight-600 letter-spacing-minus-3px text-white margin-3-half-rem-bottom sm-margin-20px-bottom xs-letter-spacing-minus-1-half">'+results.title+'</h1>';
     				$("#title").append(str);
     				
@@ -486,7 +484,6 @@
 				}, 
     			success: function(data) {
     				var results = JSON.parse(data);
-    				console.log(results);
     				for(var i = 0; i<results.length; i++)
     				{
     					var str = '';
@@ -518,7 +515,6 @@
 				}, 
     			success: function(data) {
     				var results = JSON.parse(data);
-    				console.log(results);
     				for(var i = 0; i<results.length; i++)
     				{
     					var str = '';
@@ -538,7 +534,6 @@
 				}, 
     			success: function(data) {
     				var results = JSON.parse(data);
-    				console.log(results);
     				for(var i = 0; i<results.length; i++)
     				{
     					var str = '';
@@ -668,7 +663,6 @@
 					"click",
 					"#likeBtn",
 					function(e) {
-						console.log($(this).attr('value'));
 						if($(this).attr('value') == "possible")
 						{
 	    					$.ajax({
@@ -679,7 +673,6 @@
 	    							"no" : ${no}
 	    						}, 
 	    		    			success: function(data) {
-	    		    				console.log("insert like");
 	    		    				$("#likes").empty();
 	    		    				$("#likes").append(data);
 	    		    			}
@@ -701,7 +694,6 @@
 	    							"no" : ${no}
 	    						}, 
 	    		    			success: function(data) {
-	    		    				console.log("delete like");
 	    		    				$("#likes").empty();
 	    		    				$("#likes").append(data);
 	    		    			}
@@ -724,7 +716,6 @@
 					"no" : ${no}
 				}, 
     			success: function(data) {
-    				console.log(data);
     				if(data == 'NO')
     				{
     					document.getElementById("likeBtn").setAttribute("value", "possible");
@@ -756,7 +747,6 @@
 					"no" : ${no}
 				}, 
     			success: function(data) {
-    				console.log("update view");
     				$("#views").append(data);
     			}
     				

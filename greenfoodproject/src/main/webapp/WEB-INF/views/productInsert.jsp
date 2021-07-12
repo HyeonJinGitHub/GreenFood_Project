@@ -135,7 +135,7 @@
 													<div class="col-lg-5 sm-margin-25px-bottom">
 														<input
 															class="medium-input bg-white margin-25px-bottom required"
-															type="text" name="sku" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="SKU(고유번호)를 입력하세요">
+															type="text" name="sku" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="6" minlength="6" placeholder="SKU(고유번호)를 입력하세요">
 													</div>
 												</div>
 												<div class="row row-cols-1 row-cols-md-2">
@@ -178,10 +178,10 @@
 																	<div class="col-lg-12 sm-margin-25px-bottom">
 																		<div class="form-group" id="photoGroup">
 																			<input type="file" class="" 
-																			name="product_image1" id="product_image" accept="image/*" value="음식사진 선택" required>
+																			name="product_image1" id="product_image" accept="image/*" value="1" required>
 																			<div id="image_container1" style="margin-bottom:30px"></div>
 																			<input type="file" class="" 
-																			name="product_image2" id="product_image" accept="image/*" value="음식사진 선택" required>
+																			name="product_image2" id="product_image" accept="image/*" value="2" required>
 																			<div id="image_container2" style="margin-bottom:30px"></div>
 																		</div>
 																	</div>
@@ -237,7 +237,7 @@
 											<div class="row row-cols-1 row-cols-md-2">
 													<div class="col-lg-12 sm-margin-25px-bottom" style="margin-top:10px">
 														<div class="col md-margin-40px-bottom wow animate__fadeIn" style="text-align:center" data-wow-delay="0.2s">
-									                     	<a href="" id="productPost" class="btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge margin-10px-bottom">상품 등록</a>
+									                     	<a id="productPost" class="btn btn-fancy btn-small btn-gradient-tan-geraldine btn-round-edge margin-10px-bottom">상품 등록</a>
 									                    </div>
 													</div>
 												</div>
@@ -290,36 +290,84 @@
 	 
 	$(document).on(
 			"click",
-			"productPost",
+			"#productPost",
 			function(e) {
+				console.log("상품등록!!");
 				 var title = document.getElementsByName("title")[0].value;
 				 var price = document.getElementsByName("price")[0].value;
 				 var sku = document.getElementsByName("sku")[0].value;
 				 var category = document.getElementsByName("category")[0].value;
 				 var subscription = document.getElementsByName("subscription")[0].value;
 				 var detailsubscription = document.getElementsByName("detailsubscription")[0].value;
+				 var product_image1 = document.getElementsByName("product_image1")[0].value;
+				 var product_image2 = document.getElementsByName("product_image2")[0].value;
 				 
-				 var objParams = {
-						   "title" :title,
-						   "price" :price,
-						   "sku" : sku,
-						   "category" : category,
-						   "subscription" : subscription,
-						   "detailsubscription" : detailsubscription
-			           };
-				   
-				   $.ajax({
-			           url         :   "${pageContext.request.contextPath}/postProduct",
-			           type        :   "post",
-			           dataType    :   "json",
-			           data        :   objParams,
-			           success     :   function(retVal){
-			        	   console.log(postProduct);
-			           }
-			       });
+				 
+				 
+				 if(title == '' || price == '' || sku == '' || category == '' || subscription ==''|| detailsubscription=='' ||product_image2 == '' || product_image1 =='')
+				{
+						Swal.fire({
+							  title: '앗!',
+							  text: '모든 입력창이 채워졌는지 확인해주세요',
+							  icon: 'error',
+							  confirmButtonText: '확인'
+							})
+				}
+				 else
+				{
+					 var objParams = {
+							   "title" :title,
+							   "price" :price,
+							   "sku" : sku,
+							   "category" : category,
+							   "subscription" : subscription,
+							   "detailsubscription" : detailsubscription
+				           };
+					   
+					   $.ajax({
+				           url         :   "${pageContext.request.contextPath}/postProduct",
+				           type        :   "post",
+				           dataType    :   "json",
+				           data        :   objParams,
+				           success     :   function(retVal){
+				        	   setimgfunc(retVal);
+				           }
+				       });
+				}
+				 
 				 
 			});
 
+	function setimgfunc(pno){
+		var formData = new FormData();
+       $("#photoGroup").children().each(function(){ 
+    	   var click_id = $(this).attr('id');
+    	   if(click_id == 'product_image')
+    		{
+    		   var i = $(this).attr("value"); 
+	           	console.log(i);
+	           	console.log($("input[name=product_image"+i+"]")[0].files[0]);
+	           	formData.append("product_image", $("input[name=product_image"+i+"]")[0].files[0]);   
+    		}
+        	
+        });
+       
+		
+		 $.ajax({
+			url : "${pageContext.request.contextPath}/setimgfunc",
+			type : "post",
+			data : formData,
+			contentType : false,
+			processData : false,
+			 success     :   function(retVal){
+				 location.replace("${pageContext.request.contextPath}/product");
+	           },
+	           error	:	function(retVal){
+	        	   location.replace("${pageContext.request.contextPath}/product");
+	           }
+		});
+	}
+	
 	$(document).on("change","#product_image",function(event){
 		var reader = new FileReader();
 		var cnt = $(this).attr('name').split('product_image')[1];
@@ -342,7 +390,7 @@
 				function(e) {
 					console.log("add photo");
 					var str = '';
-					str += '<input type="file" class="" name="product_image'+pcount+'" id="product_image" accept="image/*" value="음식사진 선택" required>'
+					str += '<input type="file" class="" name="product_image'+pcount+'" id="product_image" accept="image/*" value="'+pcount+'" required>'
 							+ '<div id="image_container'+pcount+'" style="margin-bottom:30px"></div>'
 					$('#photoGroup').append(str);
 					pcount += 1;

@@ -166,4 +166,25 @@
           }
        ]]>
 	</select>
+	
+	<insert id="postProduct" parameterType="ProductDTO">
+		Insert into product (no, name, price, description, detail_description, category, sku) 
+		values (PRODUCT_SEQ.NEXTVAL,
+				#{name},
+				#{price},
+				#{description},
+				#{detail_description},
+				#{category},
+				#{sku})
+	</insert>
+	
+	<select id="findMyProduct" parameterType="ProductDTO" resultType="Integer">
+		select no
+		from product 
+		where sku = #{sku} 
+	</select>
+	
+	
+	
+	
 </mapper>

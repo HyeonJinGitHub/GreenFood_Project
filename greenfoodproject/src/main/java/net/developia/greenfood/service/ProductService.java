@@ -2,6 +2,9 @@ package net.developia.greenfood.service;
 
 import java.util.HashMap;
 
+import net.developia.greenfood.dto.ProductDTO;
+import net.developia.greenfood.dto.ProductImageDTO;
+
 public interface ProductService {
 
 	void selectProduct(HashMap<String, Object> map) throws Exception;
@@ -17,5 +20,11 @@ public interface ProductService {
 	void selectcart(HashMap<String, Object> map) throws Exception;
 
 	void quantityUpdate(HashMap<String, Object> map) throws Exception;
+
+	void postProduct(ProductDTO pdto) throws Exception;
+
+	int findMyProduct(ProductDTO pdto) throws Exception;
+
+	void InsertProductImg(ProductImageDTO pidto) throws Exception;
 
 }

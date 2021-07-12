@@ -78,7 +78,6 @@ public class RecipeController {
 	public ModelAndView admin(HttpSession session) {
 		System.out.println("admin page start");
 		ModelAndView mav = new ModelAndView();
-		log.info(session.getAttribute("id") +" 아이디");
 		if(session.getAttribute("id").equals("admin"))
 		{
 			mav = new ModelAndView("adminPage");
@@ -91,23 +90,7 @@ public class RecipeController {
 		return mav;
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/productInsert", method = RequestMethod.GET)
-	public ModelAndView productInsert(HttpSession session) {
-		System.out.println("product insert page start");
-		ModelAndView mav = new ModelAndView();
-		log.info(session.getAttribute("id") +" 아이디");
-		if(session.getAttribute("id").equals("admin"))
-		{
-			mav = new ModelAndView("productInsert");
-		}
-		else
-		{
-			mav = new ModelAndView("main");
-		}
-		
-		return mav;
-	}
+
 	
 	
 	@PostMapping(value = "/RecomendRecipeList", produces = "application/text; charset=utf8")
@@ -174,7 +157,6 @@ public class RecipeController {
 		Map<String, Integer> vmp = new HashMap<>();
 		for(int j =0; j< rllist.size(); j++)
 		{
-			log.info(rllist.get(j).getLike_date()+"날짜");
 			SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 			String to = transFormat.format(rllist.get(j).getLike_date());
 			if(lmp.containsKey(to))
@@ -421,21 +403,7 @@ public class RecipeController {
 		return json;
 	}
 	
-	@PostMapping(value = "/postProduct", produces = "application/text; charset=utf8")
-	public @ResponseBody String postProduct(HttpSession session,
-			@RequestParam(value = "title") String title , //
-			@RequestParam(value = "price") String price , //
-			@RequestParam(value = "sku") String sku , //
-			@RequestParam(value = "category") String category , //
-			@RequestParam(value = "subscription") String subscription,
-			@RequestParam(value = "detailsubscription") String detailsubscription) throws Exception {
 
-		
-		//int cat_no = recipeService.findCategory(rdto);
-	
-		
-		return Integer.toString(recipe_no);
-	}
 
 	@PostMapping(value = "/postRecipe", produces = "application/text; charset=utf8")
 	public @ResponseBody String insertRecipe(HttpSession session, @RequestParam(value = "ingredientsArr[]") List<String> ingredientsArr,
@@ -461,7 +429,6 @@ public class RecipeController {
 		RecipeDTO rdto = new RecipeDTO();
 		rdto.setTitle(foodcategory);
 		int cat_no = recipeService.findCategory(rdto);
-		log.info("글번호" + cat_no);
 		ArticleDTO adto = new ArticleDTO();
 		adto.setTitle(title);
 		adto.setId((String) session.getAttribute("id"));
@@ -474,7 +441,6 @@ public class RecipeController {
 		adto.setLikes(0);
 		recipeService.insertRecipe(adto);
 		recipe_no = recipeService.findRecipe(adto);
-		log.info("글번호" + recipe_no);
 
 		// recipe_hashtag
 
@@ -485,7 +451,6 @@ public class RecipeController {
 			 if(existchk != 0)
 			 {
 				 int hashno = recipeService.findHashtag(rtmp);
-				 log.info(hashno +"해쉬코드 번호");
 				 Article_HashDTO ahdto = new Article_HashDTO(); 
 				 ahdto.setHashtag_no(hashno);
 				 ahdto.setRecipe_no(recipe_no); 
@@ -538,8 +503,6 @@ public class RecipeController {
 		 	} 
 			int ingredients_no =recipeService.findIngredientsOne(idto); 
 			int howm =Integer.parseInt(ingredientssizeArr.get(j)); 
-			log.info(ingredients_no+"재료번호");
-			log.info(howm +"재료양");
 			Recipe_IngredientsDTO ridto = new Recipe_IngredientsDTO(); 
 			ridto.setHowmuch(howm);
 		    ridto.setIngredients_no(ingredients_no); 
@@ -557,7 +520,6 @@ public class RecipeController {
 			rsdto.setStep_explanation(f);
 			rsdto.setStep_no(i+1);
 			recipeService.InsertStep(rsdto);
-			log.info(s);
 		}
 		step_last = steptitleArr.size();
 		
@@ -571,7 +533,6 @@ public class RecipeController {
 //		formData.append("recipe_no", retVal);
 		
 		String profile_img = awsService.s3FileUploadThumbnail(thumb, (String) session.getAttribute("id") , Integer.toString(recipe_no));
-		log.info(recipe_no+"글번호입니다");
 		ArticleDTO adto = new ArticleDTO();
 		adto.setThumbnail(profile_img);
 		adto.setNo(recipe_no);
@@ -606,8 +567,6 @@ public class RecipeController {
 		
 		String noDetail = request.getParameter("no");
 		
-		log.info("recipe datail load");
-		log.info(noDetail);
 		
 		
 		ArticleDTO adto = new ArticleDTO();
@@ -693,7 +652,6 @@ public class RecipeController {
 			IngredientsDTO idtotmp = recipeService.findIngredientsSelect(idto);
 			if(idtotmp != null )
 			{
-				log.info(idtotmp.getName()+" 번호");
 				ilist.add(idtotmp);
 			}
 			
@@ -717,7 +675,6 @@ public class RecipeController {
 		{
 			int serving = rilist.get(i).getHowmuch();
 			int howmuch = ilist.get(i).getHowmuch();
-			log.info(ilist.get(i).getName() + serving +" "+ howmuch);
 			
 			int weserving = serving/howmuch;
 			calorie += ilist.get(i).getCalorie()*weserving;
@@ -877,7 +834,6 @@ public class RecipeController {
 		 }
 		
 	
-		log.info("step update");
 		
 	}
 

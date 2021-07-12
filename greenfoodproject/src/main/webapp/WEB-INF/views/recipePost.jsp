@@ -1144,7 +1144,6 @@
 								dataType: "text",
 								success: function(data) {
 									var results = JSON.parse(data);
-									console.log(results);
 									if (results.length != 0) {
 										for (var i = 0; i < results.length; i++) {
 											var category = results[i].title;
@@ -1179,7 +1178,6 @@
 											}, // 서블릿으로 넘어가는 파라미터값
 											success : function(data) {
 												var res = JSON.parse(data);
-												console.log(res);
 												if (res.length != 0) {
 													for (var i = 0; i < res.length; i++) {
 														var str = '';
@@ -1229,8 +1227,6 @@
 								reader.onload = function(event){
 									var img = document.createElement("img");
 									img.setAttribute("src", event.target.result);
-									console.log("스텝이미지");
-									console.log(event.target.result);
 									img.setAttribute("class", "col-lg-12");
 									var container_name= "div#stepimage_container" + cnt;
 									
@@ -1255,7 +1251,6 @@
 									"click",
 									"#searchFoodName",
 									function(e) {
-										console.log("search");
 										 $('#searchResults').empty();
 										 var foodname = document.getElementsByName("foodnamesearch")[0].value;
 										 $("input[name=foodname]").val(foodname);
@@ -1291,7 +1286,6 @@
 									"click",
 									"#foodsearchbuttonf",
 									function(e) {
-										console.log("search");
 										 $('#searchResults').empty();
 										 var foodname = document.getElementsByName("foodname")[0].value;
 										 $("input[name=foodnamesearch]").val(foodname);
@@ -1361,11 +1355,9 @@
 									"#searchiNameResults",
 									function(e) {
 										var num = $(this).attr('iid').split('searchiNameResults')[1];
-										console.log(num);
 										var foodname =$(this).attr('name');
 										$("input[name=ingredients"+num+"]").val(foodname);
 										$("input[name=ingredientssize"+num+"]").val($(this).attr('data9'));
-										console.log($(this).attr('data1'));
 										document.getElementById("FOOD_CD_i"+num).setAttribute("value", $(this).attr('data'));
 										document.getElementById("NUTR_CONT1_i"+num).setAttribute("value", $(this).attr('data1'));
 										document.getElementById("NUTR_CONT2_i"+num).setAttribute("value", $(this).attr('data2'));
@@ -1389,7 +1381,6 @@
 										var foodname =$(this).attr('name');
 										 $("input[name=foodname]").val(foodname);
 										 document.getElementById("FOOD_CD").setAttribute("value", $(this).attr('data'));
-										console.log($(this).attr('name'));
 										$("#closeforce").trigger("click");
 									});
 							
@@ -1593,7 +1584,6 @@
               	var stepsubscript = document.getElementsByName("stepimage"+i)[0].value;
 				if(steptitle == '' || stepimage == '' || stepsubscript=='')
 				{
-					console.log('empty');	
 					$( '#videoText' ).empty();
 					document.getElementById("videoText").innerText = '레시피 정보';
 					var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
@@ -1636,11 +1626,9 @@
 			 
 			var chk = false;
 			
-			 console.log( $("#myTag").children().length);
 			
 			 if( $("#myTag").children().length == 0)
 			{
-				 console.log("태그없음")
 				 $( '#hashtagText' ).empty();
 					document.getElementById("hashtagText").innerText = '해쉬태그 설정';
 					var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
@@ -1674,7 +1662,6 @@
 					
 					if($("input[name=ingredients"+t+"]").val() == '' || $("input[name=ingredientssize"+t+"]").val() == '')
 					{
-						console.log('empty');	
 						$( '#titleText' ).empty();
 						document.getElementById("titleText").innerText = '기본설명';
 						var str= '<i class="text-red feather icon-feather-alert-circle" style="margin-left:5px"></i>'
@@ -1760,7 +1747,6 @@
 				$('#inputVideo').append(str); 	
 				const video = document.getElementById("videoTagpre"); 
 				const videourl = URL.createObjectURL(file); 
-				console.log(videourl);
 				video.setAttribute("src", videourl); video.play();
 			}
 			var strli ='';
@@ -1995,7 +1981,6 @@
 				var i = $(this).attr("value"); 
 				var steptitle = document.getElementsByName("steptitle"+i)[0].value;
 	 	    	if(steptitle != ''){
-	 	    	console.log(i);
 		    	var contents = '';
 				contents += '<li style="width:100%">'
 						+ '<div class="blog-pos margin-30px-bottom wow animate__fadeIn border-right border-top border-bottom border-left border-color-medium-gray" style="width:100%">'
@@ -2099,7 +2084,6 @@
 		        	var i = $(this).attr("value"); 
 		        	var steptitle = document.getElementsByName("steptitle"+i)[0].value;
 		        	var stepsubscript = document.getElementsByName("stepsubscript"+i)[0].value;
-		        	console.log(steptitle);
 		        	steptitleArr.push(steptitle);
 		        	stepsubscriptArr.push(stepsubscript);
 		        });
@@ -2110,7 +2094,6 @@
 		   	
 		   $("#myTag").children().each(function(){ 
 	       	var i = $(this).text();
-	       	console.log(i);
 	       	hashtagArr.push(i);
 	       });
 				
@@ -2144,14 +2127,10 @@
 	           dataType    :   "json",
 	           data        :   objParams,
 	           success     :   function(retVal){
-					console.log("insert 실행");
-					console.log(retVal);
 					setthumbfunc(retVal);
 					document.getElementById("nowPage").setAttribute("value", retVal);
 	           },
 	           error	:	function(retVal){
-	        	   console.log("e insert 실행");
-	        	   console.log(retVal);
 	        	   setthumbfunc(retVal);
 	        	   document.getElementById("nowPage").setAttribute("value", retVal);
 	           }
@@ -2195,11 +2174,9 @@
 			contentType : false,
 			processData : false,
 			 success     :   function(retVal){
-					console.log("s insert 실행");
 					setstepfunc();
 	           },
 	           error	:	function(retVal){
-	        	   console.log("se insert 실행");
 	        	   setstepfunc();
 	           }
 		});
@@ -2207,7 +2184,6 @@
 	
 	function setstepfunc(){
 		var formData = new FormData();
-		console.log("실행실행실행");
        $("#sortable").children().each(function(){ 
         	var i = $(this).attr("value"); 
         	formData.append("stepimage", $("input[name=stepimage"+i+"]")[0].files[0]);
@@ -2221,11 +2197,9 @@
 			contentType : false,
 			processData : false,
 			 success     :   function(retVal){
-					console.log("s insert 실행");
 					setvfunc();
 	           },
 	           error	:	function(retVal){
-	        	   console.log("se insert 실행");
 	        	   setvfunc();
 	           }
 		});
@@ -2243,11 +2217,9 @@
 			contentType : false,
 			processData : false,
 			 success     :   function(retVal){
-					console.log("v insert 실행");
 					location.replace("${pageContext.request.contextPath}/recipe/"+$("#nowPage").attr("value"));
 	           },
 	           error	:	function(retVal){
-	        	   console.log("ve insert 실행");
 	        	   location.replace("${pageContext.request.contextPath}/recipe/"+$("#nowPage").attr("value"));
 	           }
 		 });

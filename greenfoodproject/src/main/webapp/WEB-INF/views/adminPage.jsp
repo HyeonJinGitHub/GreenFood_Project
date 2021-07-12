@@ -176,7 +176,6 @@
 			type: "post",
 			dataType: "text",
 			success: function(data) {
-				console.log("recipe list");
 				var results = JSON.parse(data);
 				var cnt = 1;
 				for(var i = 0; i<results.length; i++)
@@ -307,7 +306,6 @@
      				"rno" : no
      			},
      			success: function(data) {
-     			   console.log("chart list");
      			   var results = JSON.parse(data);
    	               var dateArr = [];
    	               var lArr = [];
@@ -392,7 +390,6 @@
     				"rno" : no
     			},
     			success: function(data) {
-    			   console.log("chart list");
     			   var results = JSON.parse(data);
     			   if(results.length > 0)
     			   {
@@ -460,7 +457,6 @@
         
         function deleteProcess()
         {
-        	console.log("delete");
         	$("input:checkbox[id=recipeChk]").each(function() {
         		if($(this).is(":checked") == true) {
           		  console.log($(this).attr('value'));
@@ -479,7 +475,6 @@
             		no += $(this).attr('value');
             	}
         	});
-        	console.log(cnt);
         	if(cnt > 1)
         	{
         		Swal.fire({
@@ -491,7 +486,6 @@
         	}
         	else
         	{
-        		console.log(no);
         		location.replace("${pageContext.request.contextPath}/productInsert");
         	}
         }

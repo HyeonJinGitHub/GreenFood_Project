@@ -46,7 +46,8 @@
            <div class="row justify-content-center">
                <div class="col-12 col-lg-7 col-md-9 d-flex flex-column justify-content-center align-items-center small-screen">
                    <div class="page-title-large text-center margin-40px-bottom">
-                       <h1 class="alt-font text-darkgrey font-weight-500 letter-spacing-minus-1 mb-0">검색결과 : <c:out value="${keyword }" /></h1>
+	                   <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>검색을 완료했습니다!</span>
+	                	<h2 class="alt-font text-extra-dark-gray letter-spacing-minus-1px"><span class="font-weight-600">"<c:out value="${keyword }" />"</span> 검색결과</h2>
                    </div>
                    <div class="newsletter-style-02 position-relative w-100">
                        <form action="${app}/reciep" method="get">
