@@ -71,7 +71,7 @@
                                     	<c:forEach var="item" items="${items}">
                                 		   	<tr> 
 	                                            <td class="product-remove">
-	                                                <a href="#" class="btn-default text-large">&times;</a>
+	                                                <a href="#" id="${item.value.no}" class="btn-default text-large product_remove">&times;</a>
 	                                            </td>
 	                                            <td class="product-thumbnail"><a href="${contextPath}/productDetail?no=${item.value.no}"><img class="cart-product-image" src="${item.value.image }" alt=""></a></td>
 	                                            <td class="product-name">
@@ -82,7 +82,7 @@
 	                                                <div class="quantity" >
 	                                                    <label class="screen-reader-text">수량</label>
 	                                                    <input type="button" id="quantity_minus_${item.value.no}" name="${item.value.no}" value="-" class="qty-minus qty-btn quantity_minus" data-quantity="minus" data-field="quantity">
-	                                                    <input class="input-text qty-text" id="quantity_${item.value.no}" type="number" name="quantity" value="${item.value.quantity}">
+	                                                    <input class="quantity_value input-text qty-text" id="quantity_${item.value.no}" type="number" name="quantity" value="${item.value.quantity}">
 	                                                    <input type="button" id="quantity_plus_${item.value.no}" name="${item.value.no}" value="+" class="qty-plus qty-btn quantity_plus" data-quantity="plus" data-field="quantity">
 	                                                </div>
 	                                            </td> 
@@ -143,6 +143,135 @@
         <script type="text/javascript" src="resources/js/main.js"></script>
         
         <script>
+        	$(document).ready(function() {
+        		$(document).on('keyup', '.quantity_value', function() {
+        			var before_no = $(this).attr('id').substring(9);
+        			var before_cnt = $(this).val();
+	        		var new_page = '';
+	        		var new_total_page = '';
+	        		var total = 0;
+	        		$.ajax({
+	    				async: false,
+	    				type: 'POST',
+	    				data : {"no": before_no,
+	    					"cnt": before_cnt},
+	    				url : '/greenfood/quantityUpdate',
+	    				success : function(data) {
+	    					var new_data = JSON.parse(data);
+	    					console.log(new_data);
+	    					for(var i=0;i<new_data.length;i++) {
+	    						var quantity = parseInt(new_data[i].quantity);
+	    						var price = parseInt(new_data[i].price);
+	    						total += (quantity * price);
+	    						new_page += '<tr>'
+	    							+ '<td class="product-remove">'
+	    							+ '<a href="#" class="btn-default text-large">&times;</a>'
+	    							+ '</td>'
+	    							+ '<td class="product-thumbnail"><a href="${contextPath}/productDetail?no='+new_data[i].no+'"><img class="cart-product-image" src="'+new_data[i].image+'" alt=""></a></td>'
+	    							+ '<td class="product-name">'
+	    							+ '<a href="${contextPath}/productDetail?no='+new_data[i].no+'">'+new_data[i].name+'</a>'
+	    							+ '</td>'
+	    							+ '<td class="product-price" data-title="Price">￦ '+new_data[i].price+'</td>'
+	    							+ '<td class="product-quantity" data-title="Quantity">'
+	    							+ '<div class="quantity">'
+	    							+ '<label class="screen-reader-text">수량</label>'
+	    							+ '<input type="button" id="quantity_minus_'+new_data[i].no+'" name="'+new_data[i].no+'" value="-" class="qty-minus qty-btn quantity_minus" data-quantity="minus" data-field="quantity">'
+	    							+ '<input class="quantity_value input-text qty-text" id="quantity_'+new_data[i].no+'" type="number" name="quantity" value="'+new_data[i].quantity+'">'
+	    							+ '<input type="button" id="quantity_plus_'+new_data[i].no+'" name="'+new_data[i].no+'"  value="+" class="qty-plus qty-btn quantity_plus" data-quantity="plus" data-field="quantity">'
+	    							+ '</div>'
+	    							+ '</td>'
+	    							+ '<td class="product-subtotal" data-title="Total">￦ '+quantity * price+'</td>'
+	    							+ '</tr>';
+	    					}
+	    					$("#mytbody").html(new_page);
+	    					var delivery_included = total + 2500;
+    						new_total_page += '<tr>'
+								+ '<th class="w-50 font-weight-500 text-extra-dark-gray">총 상품가격</th>'
+								+ '<td class="text-extra-dark-gray">￦ '+total+'</td>'
+								+ '</tr>'
+								+ '<tr class="shipping">'
+								+ '<th class="font-weight-500 text-extra-dark-gray">배송비</th>'
+								+ '<td class="text-extra-dark-gray">￦ 2500</td>'
+								+ '</tr>'
+								+ '<tr class="total-amount">'
+								+ '<th class="font-weight-500 text-extra-dark-gray">총 주문금액</th>'
+								+ '<td data-title="Total">'
+								+ '<h6 class="d-block font-weight-500 mb-0 text-extra-dark-gray">￦ '+ delivery_included +'</h6>'
+								+ '</td>'
+								+ '</tr>';
+	    					$("#totaltbody").html(new_total_page);
+	    				},
+	    				error : function(error) {
+	    					alert('error : ' + JSON.stringify(error));
+	    				}
+	    			});
+        		});
+        	});
+        
+        	 $(document).ready(function() {
+        		$(document).on('click', '.product_remove', function() {
+        			var no = $(this).attr('id');
+	        		var new_page = '';
+	        		var new_total_page = '';
+	        		var total = 0;
+        			$.ajax({
+        				async: false,
+	    				type: 'POST',
+	    				data : {"no": no},
+	    				url : '/greenfood/removeProduct',
+	    				success: function(data) {
+	    					var new_data = JSON.parse(data);
+	    					console.log(new_data);
+	    					for(var i=0;i<new_data.length;i++) {
+	    						var quantity = parseInt(new_data[i].quantity);
+	    						var price = parseInt(new_data[i].price);
+	    						total += (quantity * price);
+	    						new_page += '<tr>'
+	    							+ '<td class="product-remove">'
+	    							+ '<a href="#" class="btn-default text-large">&times;</a>'
+	    							+ '</td>'
+	    							+ '<td class="product-thumbnail"><a href="${contextPath}/productDetail?no='+new_data[i].no+'"><img class="cart-product-image" src="'+new_data[i].image+'" alt=""></a></td>'
+	    							+ '<td class="product-name">'
+	    							+ '<a href="${contextPath}/productDetail?no='+new_data[i].no+'">'+new_data[i].name+'</a>'
+	    							+ '</td>'
+	    							+ '<td class="product-price" data-title="Price">￦ '+new_data[i].price+'</td>'
+	    							+ '<td class="product-quantity" data-title="Quantity">'
+	    							+ '<div class="quantity">'
+	    							+ '<label class="screen-reader-text">수량</label>'
+	    							+ '<input type="button" id="quantity_minus_'+new_data[i].no+'" name="'+new_data[i].no+'" value="-" class="qty-minus qty-btn quantity_minus" data-quantity="minus" data-field="quantity">'
+	    							+ '<input class="quantity_value input-text qty-text" id="quantity_'+new_data[i].no+'" type="number" name="quantity" value="'+new_data[i].quantity+'">'
+	    							+ '<input type="button" id="quantity_plus_'+new_data[i].no+'" name="'+new_data[i].no+'"  value="+" class="qty-plus qty-btn quantity_plus" data-quantity="plus" data-field="quantity">'
+	    							+ '</div>'
+	    							+ '</td>'
+	    							+ '<td class="product-subtotal" data-title="Total">￦ '+quantity * price+'</td>'
+	    							+ '</tr>';
+	    					}
+	    					$("#mytbody").html(new_page);
+	    					var delivery_included = total + 2500;
+    						new_total_page += '<tr>'
+								+ '<th class="w-50 font-weight-500 text-extra-dark-gray">총 상품가격</th>'
+								+ '<td class="text-extra-dark-gray">￦ '+total+'</td>'
+								+ '</tr>'
+								+ '<tr class="shipping">'
+								+ '<th class="font-weight-500 text-extra-dark-gray">배송비</th>'
+								+ '<td class="text-extra-dark-gray">￦ 2500</td>'
+								+ '</tr>'
+								+ '<tr class="total-amount">'
+								+ '<th class="font-weight-500 text-extra-dark-gray">총 주문금액</th>'
+								+ '<td data-title="Total">'
+								+ '<h6 class="d-block font-weight-500 mb-0 text-extra-dark-gray">￦ '+ delivery_included +'</h6>'
+								+ '</td>'
+								+ '</tr>';
+	    					$("#totaltbody").html(new_total_page);
+	    				}, 
+	    				error : function(error) {
+	    					alert('error : ' + JSON.stringify(error));
+	    				}
+        			});
+        		});
+        	});
+
+        
 	         $(document).ready(function() {
 	        	$(document).on('click', '.quantity_plus', function() {
 	        		var before_no = $(this).attr('name');
@@ -176,7 +305,7 @@
 	    							+ '<div class="quantity">'
 	    							+ '<label class="screen-reader-text">수량</label>'
 	    							+ '<input type="button" id="quantity_minus_'+new_data[i].no+'" name="'+new_data[i].no+'" value="-" class="qty-minus qty-btn quantity_minus" data-quantity="minus" data-field="quantity">'
-	    							+ '<input class="input-text qty-text" id="quantity_'+new_data[i].no+'" type="number" name="quantity" value="'+new_data[i].quantity+'">'
+	    							+ '<input class="quantity_value input-text qty-text" id="quantity_'+new_data[i].no+'" type="number" name="quantity" value="'+new_data[i].quantity+'">'
 	    							+ '<input type="button" id="quantity_plus_'+new_data[i].no+'" name="'+new_data[i].no+'"  value="+" class="qty-plus qty-btn quantity_plus" data-quantity="plus" data-field="quantity">'
 	    							+ '</div>'
 	    							+ '</td>'
@@ -200,7 +329,6 @@
 								+ '</td>'
 								+ '</tr>';
 	    					$("#totaltbody").html(new_total_page);
-	    					$(subtotal).val(delivery_included);
 	    				},
 	    				error : function(error) {
 	    					alert('error : ' + JSON.stringify(error));
@@ -242,7 +370,7 @@
 	    							+ '<div class="quantity">'
 	    							+ '<label class="screen-reader-text">수량</label>'
 	    							+ '<input type="button" id="quantity_minus_'+new_data[i].no+'" name="'+new_data[i].no+'" value="-" class="qty-minus qty-btn quantity_minus" data-quantity="minus" data-field="quantity">'
-	    							+ '<input class="input-text qty-text" id="quantity_'+new_data[i].no+'" type="number" name="quantity" value="'+new_data[i].quantity+'">'
+	    							+ '<input class="quantity_value input-text qty-text" id="quantity_'+new_data[i].no+'" type="number" name="quantity" value="'+new_data[i].quantity+'">'
 	    							+ '<input type="button" id="quantity_plus_'+new_data[i].no+'" name="'+new_data[i].no+'"  value="+" class="qty-plus qty-btn quantity_plus" data-quantity="plus" data-field="quantity">'
 	    							+ '</div>'
 	    							+ '</td>'
@@ -266,7 +394,6 @@
 								+ '</td>'
 								+ '</tr>';
 	    					$("#totaltbody").html(new_total_page);
-	    					$(subtotal).val(delivery_included);
 	    				},
 	    				error : function(error) {
 	    					alert('error : ' + JSON.stringify(error));
