@@ -30,4 +30,9 @@ public class IngredientServiceImpl implements IngredientService {
 		return ingredientDAO.getRecipeList(hm);
 	}
 
+	@Override
+	public List<RecipeDTO> getAllRecipeList() throws Exception {
+		return ingredientDAO.getAllRecipeList();
+	}
+
 }

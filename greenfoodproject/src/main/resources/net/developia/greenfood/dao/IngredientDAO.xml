@@ -19,7 +19,7 @@
          FROM RECIPE,
 			  (WITH TEMP AS (
                                SELECT recipe_no, ingredients_no, recipe_no as tempcol
-                               FROM recipe_ingr
+                               FROM RECIPE_INGREDIENTS
                             )
                SELECT tempcol
                FROM TEMP
@@ -41,6 +41,15 @@
      <![CDATA[
                          ) RECIPEID
           WHERE RECIPEID.tempcol = RECIPE.no
+       ]]>
+	</select>
+	
+	<select id="getAllRecipeList" parameterType="map" resultType="RecipeDTO">
+	<![CDATA[
+        SELECT  RECIPE.TITLE, RECIPE.EXPLANATION, MEMBER.NAME, RECIPE.VIEWS
+		FROM RECIPE
+		JOIN MEMBER
+		ON RECIPE.ID = MEMBER.ID
        ]]>
 	</select>
 </mapper>
