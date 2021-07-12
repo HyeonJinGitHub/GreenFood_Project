@@ -41,9 +41,10 @@
 <script type="text/javascript">
 
 	// 시작 시 modal 띄움
-	$(document).ready(function(){                                                 
-		 $("#ingredientModal").modal("show");
+	$(document).ready(function(){    
 		 getIngred();
+		 $("#ingredientModal").modal("show");
+
 	});
 
 	var revapi263, tpj;
@@ -220,13 +221,14 @@
 	}
 	
 	var recipeListSize = 0;
-	let recipeShowCount = 2; // 한 번에 보여주는 레시피의 갯수.
+	let recipeShowCount = 4; // 한 번에 보여주는 레시피의 갯수.
 	var shownCount = 0; // 보여준 횟수
 	
 	// 선택한 재료의 id 들(selectedIngredientList id 인 div 안의 id들) 모두 가져오기 & 검색
-	function getElementIdAndSearch() {
+	function getElementIdAndSearch(isShowMoreClicked) {
 		var ingredientIds = document.getElementById('selectedIngredientList').children;
 		var jsonArry = new Array(); 
+		var showMoreClicked = showMoreClicked;
 		
 		
 		// 반복문을 통해 모든 id 탐색
@@ -242,6 +244,15 @@
 		
 		var jsonData = JSON.stringify(jsonArry) ;
 		
+		
+		// showmore 버튼 클릭이 아닌 경우, 검색 결과가 존재하면 자식 요소들 삭제.
+		var removalTarget = document.getElementById("recipeListHtml");
+		console.log(isShowMoreClicked);
+		if((isShowMoreClicked==="notShowMoreClicked") && (removalTarget !== null)){
+			$(removalTarget).empty();
+			shownCount=0;
+		} 
+		
 		$.ajax({
     		url:'${pageContext.request.contextPath}/getSelectedIngredient',		    	      
     		type:'post',
@@ -251,6 +262,7 @@
 				var recipeList = data.recipeList;
 				recipeListSize = data.recipeList.length;
 				var recipeListHtml = '';
+				var showMoreButtonHtml = '';
 				
 				// 보여줘야 하는 횟수. recipeListSize / recipeShowCount 의 결과가 저장됨.
 				var toShowCount = recipeListSize / recipeShowCount; 
@@ -265,40 +277,43 @@
 				}
 				
 				for(var i = shownCount * recipeShowCount ; i < ( shownCount * recipeShowCount ) + length ; i++){
-					recipeListHtml += ' <li class="grid-item wow animate__fadeIn">';
-	                recipeListHtml += ' <div class="blog-post border-radius-5px bg-white box-shadow-medium">';
-	                recipeListHtml += '     <div class="blog-post-image bg-medium-slate-blue">';
-	                recipeListHtml += '         <a href="blog-post-layout-01.html" title=""><img src="resources/images/c.jpg" alt=""></a>';
-	                recipeListHtml += '         <a href="blog-masonry.html" class="blog-category alt-font">Creative</a>';
-	                recipeListHtml += '     </div>';
-	                recipeListHtml += '     <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">';
-	                recipeListHtml += '         <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">18 February 2020</a>';
-	                recipeListHtml += '         <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">' + recipeList[i].title + '</a>';
-	                recipeListHtml += '         <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>';
-	                recipeListHtml += '         <div class="d-flex align-items-center">';
-	                recipeListHtml += '             <img class="avtar-image" src="https://placehold.it/125x125" alt=""/>';
-	                recipeListHtml += '             <span class="alt-font text-small mr-auto">By <a href="blog-masonry.html">Torrie asai</a></span>';
-	                recipeListHtml += '             <a href="blog-post-layout-01.html" class="blog-like alt-font text-extra-small"><i class="far fa-heart"></i><span>28</span></a>';
-	                recipeListHtml += '         </div>';
-	                recipeListHtml += '     </div>';
-	                recipeListHtml += ' </div>';
-	                recipeListHtml += ' </li>';
+					
+					
+                    recipeListHtml += '<li class="grid-item wow animate__fadeIn" style = "float:left;">                                                                                                                                         ';
+                    recipeListHtml += '<div class="blog-post border-radius-5px bg-white box-shadow-medium">                                                                                                               ';
+                    recipeListHtml += '    <div class="blog-post-image bg-medium-slate-blue">                                                                                                                             ';
+                    recipeListHtml += '        <a href="blog-post-layout-01.html" title=""><img src="resources/images/c.jpg" alt=""></a>                                                                                  ';
+                    recipeListHtml += '        <a href="blog-masonry.html" class="blog-category alt-font">Creative</a>                                                                                                    ';
+                    recipeListHtml += '    </div>                                                                                                                                                                         ';
+                    recipeListHtml += '    <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">                                                                                                              ';
+                    recipeListHtml += '        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">18 February 2020</a>                                                             ';
+                    recipeListHtml += '        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">' + recipeList[i].title + '</a>  ';
+                    recipeListHtml += '        <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>                                                                            ';
+                    recipeListHtml += '        <div class="d-flex align-items-center">                                                                                                                                    ';
+                    recipeListHtml += '            <img class="avtar-image" src="https://placehold.it/125x125" alt=""/>                                                                                                   ';
+                    recipeListHtml += '            <span class="alt-font text-small mr-auto">By <a href="blog-masonry.html">Torrie asai</a></span>                                                                        ';
+                    recipeListHtml += '            <a href="blog-post-layout-01.html" class="blog-like alt-font text-extra-small"><i class="far fa-heart"></i><span>28</span></a>                                         ';
+                    recipeListHtml += '        </div>                                                                                                                                                                     ';
+                    recipeListHtml += '    </div>                                                                                                                                                                         ';
+                    recipeListHtml += '</div>                                                                                                                                                                             ';
+                	recipeListHtml += '</li>                                                                                                                                                                              ';
 				}
 				
 				shownCount++;
 				
 				// 아직 보여줄 레시피가 더 있는 경우
 				if(shownCount * recipeShowCount < recipeListSize){
-					recipeListHtml += '<button id="showMore" type="button" class="btn btn-primary-ksy" onclick="getElementIdAndSearch()"> Show More</button>';
+					showMoreButtonHtml += '<button id="showMoreBtn" type="button" class="btn btn-primary-ksy" onclick="getElementIdAndSearch(\'showMoreClicked\')"> Show More</button>';
 				}
 				
-				var removalTarget = document.getElementById("showMore");
+				var removalTarget = document.getElementById("showMoreBtn");
 				
 				if(removalTarget !== null){
 					removalTarget.remove();
 				}
 				
 				$("#recipeListHtml").append(recipeListHtml);
+				$("#showMoreButtonHtml").append(showMoreButtonHtml);
 	 		}
 	   	})
 	}
@@ -343,35 +358,25 @@
                </div>
            </div>
        </div>
-       
-       
-       
-       <!-- start section --> 
-       <section class="padding-8-half-rem-lr border-top border-width-1px border-color-medium-gray xl-padding-3-rem-lr md-no-padding-lr">
+    </div>
+    <!-- end info banner item -->
+    
+    
+    
+    
+    <section class="padding-eleven-lr xl-padding-two-lr xs-no-padding-lr bg-light-gray" id="down-section">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 filter-content">
-                        <ul class="blog-grid blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
-                            
-                            	<!-- start blog item -->
-                            	<div id="recipeListHtml" ></div>
-                            	<!-- end blog item -->
-                            
+                    <div class="col-12 blog-content">
+                        <ul id = "recipeListHtml" class="blog-grid blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
+                            <li class="grid-sizer"></li>
                         </ul>
                     </div>
                 </div>
+                
+                <div id="showMoreButtonHtml" style = "display: flex; align-items: center; justify-content: center;"></div>
             </div>
-        </section>
-        <!-- end section -->
-       
-       
-       
-       
-       
-       
-       
-    </div>
-    <!-- end info banner item -->
+    </section>
        
 
 		<!-- Modal -->
@@ -398,7 +403,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal" style="z-index: 1;">닫기</button>
-					<button type="button" class="btn btn-primary-ksy" data-dismiss="modal" onclick="getElementIdAndSearch()" style="z-index: 1;">검색하기</button>
+					<button type="button" class="btn btn-primary-ksy" data-dismiss="modal" onclick="getElementIdAndSearch('notShowMoreClicked')" style="z-index: 1;">검색하기</button>
 				</div>
 			</div>
 		</div>
