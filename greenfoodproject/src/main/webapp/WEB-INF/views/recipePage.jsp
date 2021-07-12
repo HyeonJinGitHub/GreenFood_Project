@@ -539,7 +539,7 @@
     				for(var i = 0; i<results.length; i++)
     				{
     					var str = '';
-    					str += '<a href="${pageContext.request.contextPath}/recipe?keyword='+results[i]+'" id="tagSelect" class="btn btn-large  btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block md-margin-auto-lr" style="margin-bottom: 20px; margin-right:15px;">'
+    					str += '<a href="${pageContext.request.contextPath}/reciep?keyword='+results[i]+'" id="tagSelect" class="btn btn-large  btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block md-margin-auto-lr" style="margin-bottom: 20px; margin-right:15px;">'
 							+ results[i]
 							+ '<span class="bg-black"></span></a>'
 						$("#relationTag").append(str);   

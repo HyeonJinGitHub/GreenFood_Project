@@ -142,10 +142,10 @@
                                 <li><a href="${pageContext.request.contextPath}/register" title="회원가입"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>회원가입</a></li>
                             <% }else if(session.getAttribute("id").equals("admin")){%>
                             	<li><a href="${pageContext.request.contextPath}/adminPage" title="관리자페이지"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>관리자페이지</a></li>
-                                <li><a href="register" title="로그아웃"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>로그아웃</a></li>
+                                <li><a href="${pageContext.request.contextPath}/login" title="로그아웃"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>로그아웃</a></li>
                             <%}else if(session.getAttribute("id") != null){ %>
                             	<li><a href="${pageContext.request.contextPath}/myinfo" title="마이페이지"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>마이페이지</a></li>
-                                <li><a href="register" title="로그아웃"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>로그아웃</a></li>
+                                <li><a href="${pageContext.request.contextPath}/login" title="로그아웃"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>로그아웃</a></li>
                             <%} %>
                             </ul>
                         </div>

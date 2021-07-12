@@ -420,6 +420,22 @@ public class RecipeController {
 		String json = new Gson().toJson(taglist);
 		return json;
 	}
+	
+	@PostMapping(value = "/postProduct", produces = "application/text; charset=utf8")
+	public @ResponseBody String postProduct(HttpSession session,
+			@RequestParam(value = "title") String title , //
+			@RequestParam(value = "price") String price , //
+			@RequestParam(value = "sku") String sku , //
+			@RequestParam(value = "category") String category , //
+			@RequestParam(value = "subscription") String subscription,
+			@RequestParam(value = "detailsubscription") String detailsubscription) throws Exception {
+
+		
+		//int cat_no = recipeService.findCategory(rdto);
+	
+		
+		return Integer.toString(recipe_no);
+	}
 
 	@PostMapping(value = "/postRecipe", produces = "application/text; charset=utf8")
 	public @ResponseBody String insertRecipe(HttpSession session, @RequestParam(value = "ingredientsArr[]") List<String> ingredientsArr,
@@ -521,7 +537,7 @@ public class RecipeController {
 		 	   recipeService.insertIngredients(idto); 
 		 	} 
 			int ingredients_no =recipeService.findIngredientsOne(idto); 
-			int howm =Integer.parseInt(ingredientssizeArr.get(isize)); 
+			int howm =Integer.parseInt(ingredientssizeArr.get(j)); 
 			log.info(ingredients_no+"재료번호");
 			log.info(howm +"재료양");
 			Recipe_IngredientsDTO ridto = new Recipe_IngredientsDTO(); 
@@ -670,11 +686,17 @@ public class RecipeController {
 		
 		for(int i =0; i< rilist.size(); i++)
 		{
-			int ino = rilist.get(i).getNo();
+			int ino = rilist.get(i).getIngredients_no();
 			IngredientsDTO idto = new IngredientsDTO();
 			idto.setNo(ino);
+			
 			IngredientsDTO idtotmp = recipeService.findIngredientsSelect(idto);
-			ilist.add(idtotmp);
+			if(idtotmp != null )
+			{
+				log.info(idtotmp.getName()+" 번호");
+				ilist.add(idtotmp);
+			}
+			
 		}
 		
 		ArticleDTO adto = new ArticleDTO();
@@ -695,6 +717,7 @@ public class RecipeController {
 		{
 			int serving = rilist.get(i).getHowmuch();
 			int howmuch = ilist.get(i).getHowmuch();
+			log.info(ilist.get(i).getName() + serving +" "+ howmuch);
 			
 			int weserving = serving/howmuch;
 			calorie += ilist.get(i).getCalorie()*weserving;
