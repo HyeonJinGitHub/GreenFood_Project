@@ -66,6 +66,11 @@
                     <div class="col-12 blog-content">
                         <ul class="blog-grid blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
                             <li class="grid-sizer"></li>
+                            <!-- start dataFlag -->
+                            <c:if test="${dataFlag == 0}">
+                        			<h4 class="alt-font font-weight-600 text-extra-dark-gray mb-0 ">해당 결과가 없습니다.</h4>
+                            </c:if>
+                            <!-- end dataFlag -->
                             <!-- start blog item -->
                             <c:forEach var="item" items="${RecipeSearchDTO }" >
                             <li class="grid-item wow animate__fadeIn">

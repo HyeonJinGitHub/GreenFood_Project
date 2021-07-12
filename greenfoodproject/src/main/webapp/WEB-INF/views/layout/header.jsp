@@ -31,7 +31,7 @@
                         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                             <ul class="navbar-nav alt-font">
                                <li class="nav-item dropdown megamenu">
-                                    <a href="#" class="nav-link">카테고리</a>
+                                    <a href="#" class="nav-link" style="pointer-events: none;">카테고리</a>
                                     <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                     <div class="menu-back-div dropdown-menu megamenu-content" role="menu">
                                         <div class="d-lg-flex justify-content-center">
@@ -49,7 +49,7 @@
                                                 <li value="10"><a href="${app}/recipe/foodCategory/10">조림류</a></li>
                                                 <li value="11"><a href="${app}/recipe/foodCategory/11">튀김류</a></li>
                                                 <li value="12"><a href="${app}/recipe/foodCategory/12">나물 및 숙채류</a></li>
-                                                <li value="13"><a href="${app}/recipe/foodCategory13">생채 및 무침류</a></li>
+                                                <li value="13"><a href="${app}/recipe/foodCategory/13">생채 및 무침류</a></li>
                                                 <li value="14"><a href="${app}/recipe/foodCategory/14">장 및 앙념류</a></li>
                                             </ul>
                                             <ul class="d-lg-inline-block">
@@ -75,14 +75,13 @@
                                             </ul>
                                             <ul class="d-lg-inline-block">
                                                 <li class="dropdown-header">고객센터</li>
-                                                <li><a href="home-furniture-shop.html">상담</a></li>
-                                                <li><a href="home-fashion-shop.html">찾아오시는 길</a></li>
+                                                <li><a href="${app }/serviceCenter">상담/찾아오시는 길</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="#" class="nav-link">레시피 카테고리</a>
+                                    <a href="${app }/recipe/foodCategory/all" class="nav-link">레시피 카테고리</a>
                                     <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
@@ -135,7 +134,7 @@
                         
                         
                         <div class="header-language dropdown d-lg-inline-block">
-                            <a href="javascript:void(0);"><i class="feather icon-feather-globe"></i></a>
+                            <a href="javascript:void(0);"><i class="feather icon-feather-users"></i></a>
                             <ul class="dropdown-menu alt-font">
                             <% if(session.getAttribute("id") == null){ %>
                                 <li><a href="${app}/login"  title="로그인"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>로그인</a></li>
@@ -155,7 +154,7 @@
                                 <li class="cart-item align-items-center">
                                     <a href="javascript:void(0);" class="alt-font close">×</a>
                                     <div class="product-image">
-                                        <a href="single-product.html"><img src="resources/images/c.jpg"" class="cart-thumb" alt="" /></a>
+                                        <a href="single-product.html"><img src="${app }/resources/images/c.jpg"" class="cart-thumb" alt="" /></a>
                                     </div>
                                     <div class="product-detail alt-font">
                                         <a href="single-product.html">치킨 샐러드</a>
@@ -165,7 +164,7 @@
                                 <li class="cart-item align-items-center">
                                     <a href="javascript:void(0);" class="alt-font close">×</a>
                                     <div class="product-image">
-                                        <a href="single-product.html"><img src="resources/images/c.jpg"" class="cart-thumb" alt="" /></a>
+                                        <a href="single-product.html"><img src="${app }/resources/images/c.jpg"" class="cart-thumb" alt="" /></a>
                                     </div>
                                     <div class="product-detail alt-font">
                                         <a href="single-product.html">치킨 샐러드</a>

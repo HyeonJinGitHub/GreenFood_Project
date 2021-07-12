@@ -48,7 +48,7 @@
            <div class="row justify-content-center">
                <div class="col-12 col-lg-7 col-md-9 d-flex flex-column justify-content-center align-items-center small-screen">
                    <div class="page-title-large text-center margin-40px-bottom">
-                       <h1 class="alt-font text-darkgrey font-weight-500 letter-spacing-minus-1 mb-0">카테고리 : <c:out value="${categoryTitle }" /></h1>
+                       <h1 class="alt-font text-darkgrey font-weight-500 letter-spacing-minus-1 mb-0">카테고리 : ALL</h1>
                    </div>
                    <div class="newsletter-style-02 position-relative w-100">
                       	<!--  <form action="${app}/reciep" method="get">
@@ -77,9 +77,9 @@
                             <!-- start blog item -->
                             <c:forEach var="item" items="${categoryFoodDTO }" >
                             <li class="grid-item wow animate__fadeIn">
-                                <div class="blog-post border-radius-5px bg-white box-shadow-medium">
+                                <div class="blog-post border-radius-5px bg-white box-shadow-medium" >
                                     <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="${app }/recipe/${item.no}" title=""><img src="${item.thumbnail}" alt=""></a>
+                                        <a href="${app }/recipe/${item.no}" title="" ><img src="${item.thumbnail}" alt=""  style="width: 300px;height:300px"></a>
                                         <a href="${app }/recipe/foodCategory/${item.foodcategoryno }" class="blog-category alt-font"><c:out value="${item.categoryTitle}" /></a>
                                     </div>
                                     <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
