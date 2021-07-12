@@ -174,7 +174,11 @@
                                 </li>
                                 <li class="cart-item cart-total">
                                     <div class="alt-font margin-15px-bottom"><span class="w-50 d-inline-block text-medium text-uppercase">합계:</span><span class="w-50 d-inline-block text-right text-medium font-weight-500">19,999원</span></div>
+                                    <% if(session.getAttribute("id") == null){ %>
+                                    <a href="${app}/login"  class="btn btn-small btn-dark-gray">장바구니</a>
+                                    <%}else if(session.getAttribute("id") != null){ %>
                                     <a href="${app}/shoppingcart"  class="btn btn-small btn-dark-gray">장바구니</a>
+                                    <%} %>
                                 </li>
                             </ul>
                         </div>

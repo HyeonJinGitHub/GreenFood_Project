@@ -73,9 +73,9 @@
 	                                            <td class="product-remove">
 	                                                <a href="#" class="btn-default text-large">&times;</a>
 	                                            </td>
-	                                            <td class="product-thumbnail"><a href="${contextPath}/${item.value.no}"><img class="cart-product-image" src="${item.value.image }" alt=""></a></td>
+	                                            <td class="product-thumbnail"><a href="${contextPath}/productDetail?no=${item.value.no}"><img class="cart-product-image" src="${item.value.image }" alt=""></a></td>
 	                                            <td class="product-name">
-	                                                <a href="${contextPath}/${item.value.no}">${item.value.name }</a>
+	                                                <a href="${contextPath}/productDetail?no=${item.value.no}">${item.value.name }</a>
 	                                            </td>
 	                                            <td class="product-price" data-title="Price">￦ ${item.value.price }</td>
 	                                            <td class="product-quantity" data-title="Quantity">
@@ -150,7 +150,6 @@
 	        		var new_page = '';
 	        		var new_total_page = '';
 	        		var total = 0;
-	        		console.log('여기 들어왔나요?' + before_no + "     으악   " + before_cnt);
 	    			$.ajax({
 	    				async: false,
 	    				type: 'POST',
@@ -218,7 +217,6 @@
 	        		var new_page = '';
 	        		var new_total_page = '';
 	        		var total = 0;
-	        		console.log('여기 들어왔나요?');
 	    			$.ajax({
 	    				async: false,
 	    				type: 'POST',
@@ -329,7 +327,7 @@
 						 'phone':휴대폰소액결제
 						 */
 						merchant_uid : 'merchant_' + new Date().getTime(),
-						name : name + '님의 주문',
+						name : name + ' 님의 주문',
 						//결제창에서 보여질 이름
 						amount : totalprice,
 						//가격

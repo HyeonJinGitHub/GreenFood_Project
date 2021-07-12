@@ -112,9 +112,9 @@
         <a class="scroll-top-arrow" href="javascript:void(0);"><i class="feather icon-feather-arrow-up"></i></a>
         <!-- end scroll to top -->
         <!-- javascript -->
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/theme-vendors.min.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.min.js"></script>
+        <script type="text/javascript" src="resources/js/theme-vendors.min.js"></script>
+        <script type="text/javascript" src="resources/js/main.js"></script>
         
         <script>
         	function move_contact() {
