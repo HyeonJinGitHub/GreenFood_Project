@@ -2523,6 +2523,20 @@ a.btn.disabled, fieldset:disabled a.btn {
 	border-color: #0062cc
 }
 
+/* ksy button start */
+.btn-primary-ksy {
+	color: #fff;
+	background-color: #b98f5f;
+	border-color: #b98f5f
+}
+
+.btn-primary-ksy:hover {
+	color: #fff;
+	background-color: #cc802a;
+	border-color: #cc802a
+}
+/* ksy button end */
+
 .btn-primary.focus, .btn-primary:focus {
 	color: #fff;
 	background-color: #0069d9;

@@ -384,12 +384,12 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body-ksy">
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-lg-6 modal-col-height-ksy">
 							<div id="ingredientList" class="modal-color-ksy modal-scroll-ksy" ></div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-lg-6 modal-col-height-ksy">
 							<div id="selectedIngredientList" class="modal-color-selected-ksy modal-scroll-ksy"" >
 							
 							</div>
@@ -397,8 +397,8 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-					<button type="button" class="btn btn-primary-ksy" data-dismiss="modal" onclick="getElementIdAndSearch()">검색하기</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal" style="z-index: 1;">닫기</button>
+					<button type="button" class="btn btn-primary-ksy" data-dismiss="modal" onclick="getElementIdAndSearch()" style="z-index: 1;">검색하기</button>
 				</div>
 			</div>
 		</div>
