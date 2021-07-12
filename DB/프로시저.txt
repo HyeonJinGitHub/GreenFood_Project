@@ -97,6 +97,9 @@ is
     input_nickname in varchar2,
     input_image in varchar2,
     res_cur out sys_refcursor);
+    
+    procedure select_memberbyid(input_id in varchar2,
+    res_cur out sys_refcursor);
 end member_pkg;
 
 
@@ -197,6 +200,16 @@ is
         where id = input_id;
     end login_google;
     
+    procedure select_memberbyid(input_id in varchar2,
+    res_cur out sys_refcursor)
+    as
+    begin
+        open res_cur for
+        select *
+        from member
+        where id = input_id;
+    end select_memberbyid;
+    
 end member_pkg;
 
 drop package product_pkg;
@@ -228,6 +241,14 @@ is
     procedure quantityUpdate(input_id in varchar2,
     input_no in number,
     input_cnt in number,
+    res_cur out sys_refcursor);
+    
+    procedure removeProduct(input_id in varchar2,
+    input_no in number,
+    res_cur out sys_refcursor);
+    
+    procedure selectProductByNo(
+    input_no in number,
     res_cur out sys_refcursor);
 end product_pkg;
 
@@ -323,6 +344,31 @@ is
         from shoppingcart
         where member_id = input_id;
     end quantityUpdate;
+    
+    procedure removeProduct(input_id in varchar2,
+    input_no in number,
+    res_cur out sys_refcursor)
+    as
+    begin
+        delete from shoppingcart
+        where member_id = input_id and no = input_no;
+        commit;
+        
+        open res_cur for
+        select *
+        from shoppingcart
+        where member_id = input_id;
+    end removeProduct;
+    
+    procedure selectProductByNo(input_no in number,
+    res_cur out sys_refcursor)
+    as
+    begin
+        open res_cur for
+        select *
+        from product
+        where no = input_no;
+    end selectProductByNo;
 end product_pkg;
 
 insert into product
