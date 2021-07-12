@@ -1,6 +1,10 @@
 package net.developia.greenfood.controller;
 
+import java.sql.Date;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,8 +41,11 @@ import net.developia.greenfood.dto.Article_HashDTO;
 import net.developia.greenfood.dto.Article_My_HashDTO;
 import net.developia.greenfood.dto.IngredientsDTO;
 import net.developia.greenfood.dto.RecipeDTO;
+import net.developia.greenfood.dto.RecipeTrendDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
+import net.developia.greenfood.dto.Recipe_Likes_ViewsDTO;
 import net.developia.greenfood.dto.Recipe_StepDTO;
+import net.developia.greenfood.dto.Recipe_ViewsDTO;
 import net.developia.greenfood.dto.Recipe_likesDTO;
 import net.developia.greenfood.service.AwsService;
 import net.developia.greenfood.service.RecipeService;
@@ -60,11 +67,242 @@ public class RecipeController {
 	@RequestMapping(value = "/recipe/{recipe_no}", method = RequestMethod.GET)
 	public ModelAndView recipe(HttpSession session, @PathVariable long recipe_no) {
 		System.out.println("recipe page start");
-		ModelAndView mav = new ModelAndView("recipePage2");
+		ModelAndView mav = new ModelAndView("recipePage");
 		mav.addObject("id", session.getAttribute("id"));
 		mav.addObject("no", recipe_no);
 		return mav;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/adminPage", method = RequestMethod.GET)
+	public ModelAndView admin(HttpSession session) {
+		System.out.println("admin page start");
+		ModelAndView mav = new ModelAndView();
+		log.info(session.getAttribute("id") +" 아이디");
+		if(session.getAttribute("id").equals("admin"))
+		{
+			mav = new ModelAndView("adminPage");
+		}
+		else
+		{
+			mav = new ModelAndView("main");
+		}
+		
+		return mav;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/productInsert", method = RequestMethod.GET)
+	public ModelAndView productInsert(HttpSession session) {
+		System.out.println("product insert page start");
+		ModelAndView mav = new ModelAndView();
+		log.info(session.getAttribute("id") +" 아이디");
+		if(session.getAttribute("id").equals("admin"))
+		{
+			mav = new ModelAndView("productInsert");
+		}
+		else
+		{
+			mav = new ModelAndView("main");
+		}
+		
+		return mav;
+	}
+	
+	
+	@PostMapping(value = "/RecomendRecipeList", produces = "application/text; charset=utf8")
+	public @ResponseBody String RecomendRecipeList(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		List<ArticleDTO> alist = new ArrayList<>();
+		alist = recipeService.findAllrecipe();
+		
+		for(int i =0; i< alist.size(); i++)
+		{
+			Map<String, Boolean> mp = new HashMap<>();
+			int score = 0;
+			int rno = alist.get(i).getNo();
+			RecipeTrendDTO rtdto = new RecipeTrendDTO();
+			rtdto.setKeyword(alist.get(i).getFoodname());
+			mp.put(alist.get(i).getFoodname(), true);
+			score += recipeService.findMyScore(rtdto);
+			String t = alist.get(i).getTitle();
+			String[] st = t.split(" ");
+			for(int j =0; j < st.length; j++)
+			{
+				if(mp.containsKey(st[j])) continue;
+				rtdto.setKeyword(st[j]);
+				score += recipeService.findMyScore(rtdto);
+				mp.put(st[j], true);
+			}
+			Article_My_HashDTO amhdto = new Article_My_HashDTO();
+			amhdto.setRecipe_no(rno);
+			List<Article_My_HashDTO> amhlist = recipeService.findAllMyHash(amhdto);
+			
+			for(int j = 0; j< amhlist.size(); j++)
+			{
+				if(mp.containsKey(amhlist.get(j).getTitle())) continue;
+				rtdto.setKeyword(amhlist.get(j).getTitle());
+				score += recipeService.findMyScore(rtdto);
+				mp.put(amhlist.get(j).getTitle(), true);
+			}
+			alist.get(i).setRscore(score);
+			DecimalFormat df = new DecimalFormat("0.000");
+			String sscore = df.format(score * 0.000001);
+			alist.get(i).setRelation_score(sscore);
+		}
+		
+		Collections.sort(alist, new ArticleDTO.SortByLikePlusViewPlusScore());
+		String json = new Gson().toJson(alist);
+		return json;
+	}
+	
+	@PostMapping(value = "/charList", produces = "application/text; charset=utf8")
+	public @ResponseBody String charList(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		List<Recipe_Likes_ViewsDTO>rlvlist = new ArrayList<>();
+		int notmp = Integer.parseInt(request.getParameter("rno"));
+		List<Recipe_likesDTO> rllist = new ArrayList<>();
+		Recipe_likesDTO tmp1 = new Recipe_likesDTO();
+		tmp1.setRecipe_no(notmp);
+		rllist = recipeService.findAllrecipeLikes(tmp1);
+		
+		List<Recipe_ViewsDTO> rvlist = new ArrayList<>();
+		Recipe_ViewsDTO tmp2 = new Recipe_ViewsDTO();
+		tmp2.setRecipe_no(notmp);
+		rvlist = recipeService.findAllrecipeViews(tmp2);
+		Map<String, Integer> lmp = new HashMap<>();
+		Map<String, Integer> vmp = new HashMap<>();
+		for(int j =0; j< rllist.size(); j++)
+		{
+			log.info(rllist.get(j).getLike_date()+"날짜");
+			SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+			String to = transFormat.format(rllist.get(j).getLike_date());
+			if(lmp.containsKey(to))
+			{
+				lmp.put(to, lmp.get(to)+1);
+			}
+			else
+			{
+				lmp.put(to, 1);
+			}
+		}
+		for(int j =0; j< rvlist.size(); j++)
+		{
+			SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+			String to = transFormat.format(rvlist.get(j).getView_date());
+			if(vmp.containsKey(to))
+			{
+				vmp.put(to, vmp.get(to)+1);
+			}
+			else
+			{
+				vmp.put(to, 1);
+			}
+		}
+		
+		for(String k : lmp.keySet())
+		{
+			Recipe_Likes_ViewsDTO rlvdto = new Recipe_Likes_ViewsDTO();
+			rlvdto.setFlag(1);
+			rlvdto.setLike_date(k);
+			rlvdto.setLcount(lmp.get(k));
+			if(vmp.containsKey(k))
+			{
+				if(vmp.get(k) > 0)
+				{
+					rlvdto.setView_date(k);
+					rlvdto.setVcount(vmp.get(k));
+					rlvdto.setFlag(3);
+					vmp.put(k, 0);
+				}
+			}
+			rlvlist.add(rlvdto);
+		}
+		for(String k : vmp.keySet())
+		{
+			if(vmp.get(k) == 0) continue;
+			Recipe_Likes_ViewsDTO rlvdto = new Recipe_Likes_ViewsDTO();
+			rlvdto.setFlag(2);
+			rlvdto.setView_date(k);
+			rlvdto.setVcount(vmp.get(k));
+			rlvlist.add(rlvdto);
+		}
+		
+		String json = new Gson().toJson(rlvlist);
+		return json;
+	}
+	
+	
+	@PostMapping(value = "/charList1", produces = "application/text; charset=utf8")
+	public @ResponseBody String charList1(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		int rno = Integer.parseInt(request.getParameter("rno"));
+		ArticleDTO atmp = new ArticleDTO();
+		atmp.setNo(rno);
+		ArticleDTO adto = recipeService.findRecipeNo(atmp);
+		
+		Map<String, Integer> mp = new HashMap<>();
+		int score = 0;
+		
+		
+		RecipeTrendDTO rtdto = new RecipeTrendDTO();
+		rtdto.setKeyword(adto.getFoodname());
+		
+		score += recipeService.findMyScore(rtdto);
+		if(score != 0)
+		{
+			mp.put(adto.getFoodname(), 1);
+		}
+		String t = adto.getTitle();
+		String[] st = t.split(" ");
+		for(int j =0; j < st.length; j++)
+		{
+			if(mp.containsKey(st[j]))
+			{
+				mp.put(st[j], mp.get(st[j]) +1);
+				continue;
+			}
+			rtdto.setKeyword(st[j]);
+			int tscore = recipeService.findMyScore(rtdto);
+			if(tscore != 0)
+			{
+				mp.put(st[j], 1);
+				score += tscore;
+			}
+		}
+		Article_My_HashDTO amhdto = new Article_My_HashDTO();
+		amhdto.setRecipe_no(rno);
+		List<Article_My_HashDTO> amhlist = recipeService.findAllMyHash(amhdto);
+		
+		for(int j = 0; j< amhlist.size(); j++)
+		{
+			if(mp.containsKey(amhlist.get(j).getTitle()))
+			{
+				mp.put(amhlist.get(j).getTitle(), mp.get(amhlist.get(j).getTitle()) +1);
+				continue;
+			}
+			rtdto.setKeyword(amhlist.get(j).getTitle());
+			int tscore = recipeService.findMyScore(rtdto);
+			if(tscore != 0)
+			{
+				mp.put(amhlist.get(j).getTitle(), 1);
+				score += tscore;
+			}
+		}
+		
+		List <Recipe_Likes_ViewsDTO> mlist = new ArrayList<>();
+		for(String s : mp.keySet())
+		{
+			Recipe_Likes_ViewsDTO tmpdto = new Recipe_Likes_ViewsDTO();
+			tmpdto.setLike_date(s);
+			tmpdto.setLcount(mp.get(s));
+			mlist.add(tmpdto);
+		}
+		
+		String json = new Gson().toJson(mlist);
+		return json;
+	}
+	
 
 	@RequestMapping(value = "/recipePost", method = RequestMethod.GET)
 	public String recipePost() {
@@ -79,6 +317,39 @@ public class RecipeController {
 
 		return json;
 	}
+	
+	
+	@PostMapping(value = "/relationTags", produces = "application/text; charset=utf8")
+	public @ResponseBody String relationTags(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int no = Integer.parseInt(request.getParameter("no"));
+		Article_My_HashDTO amhdto = new Article_My_HashDTO();
+		amhdto.setRecipe_no(no);
+		List<Article_My_HashDTO> amhlist = recipeService.findAllMyHash(amhdto);
+		
+		Article_HashDTO ahdto = new Article_HashDTO();
+		ahdto.setRecipe_no(no);
+		List<Article_HashDTO> ahlist = recipeService.findAllHash(ahdto);
+		
+		List<String> slist = new ArrayList<>();
+		for(int i =0; i< amhlist.size(); i++)
+		{
+			slist.add(amhlist.get(i).getTitle());
+		}
+		for(int i =0; i< ahlist.size(); i++)
+		{
+			RecipeDTO rdto = new RecipeDTO();
+			rdto.setNo(ahlist.get(i).getHashtag_no());
+			String name = recipeService.findHashName(rdto);
+			slist.add(name);
+		}
+		
+		String json = new Gson().toJson(slist);
+
+		return json;
+	}
+	
+	
+	
 
 	@PostMapping(value = "/catlist", produces = "application/text; charset=utf8")
 	public @ResponseBody String getFoodcategoryList() throws Exception {
@@ -331,6 +602,19 @@ public class RecipeController {
 		String json = new Gson().toJson(adto);
 		return json;
 	}
+	
+	
+	@PostMapping(value = "/hotKeywordList", produces = "application/text; charset=utf8")
+	public @ResponseBody String hotKeywordList(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		List<RecipeTrendDTO> rtlist = recipeService.findTop10Trend();
+		
+		String json = new Gson().toJson(rtlist);
+		return json;
+	}
+	
+	
 
 	@PostMapping(value = "/recipeDetailStep", produces = "application/text; charset=utf8")
 	public @ResponseBody String recipeDetailStep(HttpServletRequest request, HttpServletResponse response)
@@ -518,9 +802,7 @@ public class RecipeController {
 		String noDetail = request.getParameter("no");
 		ArticleDTO adto = new ArticleDTO();
 		adto.setNo(Integer.parseInt(noDetail));
-		String id = (String) session.getAttribute("id");
-		
-
+	
 	    Cookie cookies[] = request.getCookies();
 	    Map map = new HashMap();
 	    if(request.getCookies() != null){
@@ -542,6 +824,9 @@ public class RecipeController {
 	         
 	          response.addCookie(cookie);
 	          recipeService.UpdateMyView(adto);
+	          Recipe_ViewsDTO rvdto = new Recipe_ViewsDTO();
+	          rvdto.setRecipe_no(Integer.parseInt(noDetail));
+	          recipeService.InsertViewLog(rvdto);
 	    }
 	    
 		int viewscnt = recipeService.chkMyView(adto);

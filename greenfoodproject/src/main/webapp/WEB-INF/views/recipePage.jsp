@@ -128,10 +128,10 @@
                         </div>
                     </div>
                 </div>
-                <div id="foodInfo" class="row align-items-center justify-content-center" style="margin-top:50px">
+                <div id="foodInfo" class="row align-items-center justify-content-center" style="margin-top:50px; width:100%">
                     <div class="col-12 col-lg-5 md-margin-5-rem-bottom xs-margin-5-rem-top wow animate__fadeIn">
-                        <span class="alt-font font-weight-500 text-salmon-rose text-uppercase d-block margin-20px-bottom md-margin-10px-bottom">기본설명</span>
-                        <h5 class="alt-font font-weight-600 text-dark-purple line-height-46px margin-4-rem-bottom w-85 letter-spacing-minus-1px lg-w-100 md-margin-10px-bottom xs-line-height-30px" id="foodname"></h5>
+                        <span class="alt-font font-weight-500 text-salmon-rose text-uppercase d-block margin-20px-bottom md-margin-10px-bottom" style="margin-left:-50px">기본설명</span>
+                        <h5 class="alt-font font-weight-600 text-dark-purple line-height-46px margin-4-rem-bottom w-85 letter-spacing-minus-1px lg-w-100 md-margin-10px-bottom xs-line-height-30px" id="foodname" style="margin-left:-50px"></h5>
                         <div class="panel-group accordion-event accordion-style-02 w-85 lg-w-100" id="accordion1" data-active-icon="icon-feather-minus" data-inactive-icon="icon-feather-plus">
                             <!-- start accordion item -->
                             <div class="panel bg-transparent">
@@ -208,7 +208,19 @@
             </div>
         </section>
         <!-- end section -->
-        
+        <section id="classes" class="overlap-height bg-very-light-desert-storm" style="margin-top:-200px; margin-bottom:-20px">
+            <div class="container">
+                <div class="row margin-6-rem-bottom md-margin-5-rem-bottom ">
+                    <div class="col-12 col-lg-6 text-center text-lg-left wow animate__fadeIn">
+                        <span class="alt-font font-weight-500 text-salmon-rose text-uppercase d-block">관련태그</span>
+                        </div>
+                   </div>
+                <div class="row justify-content-center">
+                   <div class="col-lg-12" id="relationTag" style="text-align:center">
+                   </div>
+               </div>
+            </div>
+        </section>
           <!-- start section -->
         <section id="classes" class="overlap-height" style="margin-top:-50px; margin-bottom:-20px">
             <div class="container" id="ingredientsInfo">
@@ -217,7 +229,7 @@
                         <span class="alt-font font-weight-500 text-salmon-rose text-uppercase d-block margin-20px-bottom md-margin-10px-bottom">영양성분</span>
                         <h5 class="alt-font font-weight-600 text-dark-purple line-height-46px letter-spacing-minus-1px m-lg-0 d-inline-block md-line-height-36px md-w-60 xs-w-100">영양성분을 알아볼까요?</h5>
                     </div>
-                     <p class="alt-font font-weight-500 text-middle-gray d-block text-uppercase text-right margin-100px-top" style="margin-bottom: -50px; width :100%">성인 1일 영양소 권장량 기준</p>
+                     <p class="alt-font font-weight-500 text-middle-gray d-block text-uppercase text-right margin-100px-top" style="margin-bottom: -50px; width :100%">성인남녀 평균 1일 영양소 권장량 기준 (1990Kcal)</p>
 						
                 </div>
                 <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2 justify-content-center">
@@ -387,6 +399,7 @@
             </div>
         </section>
         <!-- end section -->
+        
          <!-- start footer -->
         <jsp:include page='/WEB-INF/views/layout/footer.jsp' />
         <!-- end footer -->
@@ -514,6 +527,28 @@
     		});
         	
         	$.ajax({
+    			url: "${pageContext.request.contextPath}/relationTags",
+    			type: "post",
+    			dataType: "text",
+    			data : {
+					"no" : ${no}
+				}, 
+    			success: function(data) {
+    				var results = JSON.parse(data);
+    				console.log(results);
+    				for(var i = 0; i<results.length; i++)
+    				{
+    					var str = '';
+    					str += '<a href="${pageContext.request.contextPath}/recipe?keyword='+results[i]+'" id="tagSelect" class="btn btn-large  btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block md-margin-auto-lr" style="margin-bottom: 20px; margin-right:15px;">'
+							+ results[i]
+							+ '<span class="bg-black"></span></a>'
+						$("#relationTag").append(str);   
+    				}
+    			}
+    				
+    		});
+        	
+        	$.ajax({
     			url: "${pageContext.request.contextPath}/recipeIngredientsInfo",
     			type: "post",
     			dataType: "text",
@@ -530,6 +565,7 @@
     				var str6 ='';
     				var str7 ='';
     				var str8 ='';
+    				
     				str1 += '<div class="col sm-margin-40px-bottom">'
     					+ '<div class="chart-percent">'
     					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.calorie +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
@@ -538,7 +574,7 @@
                 		+ '</div>'
                 		+ '<div class="chart-text text-center">'
                 		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
-                		+ '칼로리'
+                		+ '칼로리 (' + parseInt(results.calorie * 19.877) +'kcal)'
                 		+ '</span></div></div>'
            		str2 += '<div class="col sm-margin-40px-bottom">'
    					+ '<div class="chart-percent">'
@@ -548,7 +584,7 @@
                		+ '</div>'
                		+ '<div class="chart-text text-center">'
                		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
-               		+ '탄수화물'
+               		+ '탄수화물 ('+parseInt(results.carbohydrate * 2.879)+'g)'
                		+ '</span></div></div>'
            		str3 += '<div class="col sm-margin-40px-bottom">'
    					+ '<div class="chart-percent">'
@@ -558,7 +594,7 @@
                		+ '</div>'
                		+ '<div class="chart-text text-center">'
                		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
-               		+ '단백질'
+               		+ '단백질 ('+parseInt(results.protein * 0.724) +'g)'
                		+ '</span></div></div>'
            		str4 += '<div class="col sm-margin-40px-bottom">'
    					+ '<div class="chart-percent">'
@@ -568,7 +604,7 @@
                		+ '</div>'
                		+ '<div class="chart-text text-center">'
                		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
-               		+ '지방'
+               		+ '지방 (' +parseInt(results.fat *0.495)+'g)'
                		+ '</span></div></div>'
                		
            		str5 += '<div class="col sm-margin-40px-bottom">'
@@ -579,7 +615,7 @@
                		+ '</div>'
                		+ '<div class="chart-text text-center">'
                		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
-               		+ '당류'
+               		+ '당류 ('+parseInt(results.saccharide *0.602) +'g)'
                		+ '</span></div></div>'
            		str6 += '<div class="col sm-margin-40px-bottom">'
    					+ '<div class="chart-percent">'
@@ -589,7 +625,7 @@
                		+ '</div>'
                		+ '<div class="chart-text text-center">'
                		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
-               		+ '나트륨'
+               		+ '나트륨 ('+parseInt(results.sodium * 32.550) + 'mg)'
                		+ '</span></div></div>'
            		str7 += '<div class="col sm-margin-40px-bottom">'
    					+ '<div class="chart-percent">'
@@ -599,7 +635,7 @@
                		+ '</div>'
                		+ '<div class="chart-text text-center">'
                		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
-               		+ '콜레스테롤'
+               		+ '콜레스테롤 ('+parseInt(results.cholesterol*2.604)+ 'mg)'
                		+ '</span></div></div>'
            		str8 += '<div class="col sm-margin-40px-bottom">'
    					+ '<div class="chart-percent">'
@@ -609,7 +645,7 @@
                		+ '</div>'
                		+ '<div class="chart-text text-center">'
                		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
-               		+ '포화지방산'
+               		+ '포화지방산 (' + parseInt(results.fattyacid*0.166) +'g)'
                		+ '</span></div></div>'
                    
     				$("#ingreInfo").append(str1);

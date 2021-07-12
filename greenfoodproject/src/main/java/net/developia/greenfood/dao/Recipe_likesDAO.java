@@ -16,4 +16,7 @@ public interface Recipe_likesDAO {
 
 	void DelMyLikeRecipe(Recipe_likesDTO rldto) throws SQLException;
 
+	List<Recipe_likesDTO> findAllrecipeLikes(Recipe_likesDTO tmp1) throws SQLException;
+
+
 }

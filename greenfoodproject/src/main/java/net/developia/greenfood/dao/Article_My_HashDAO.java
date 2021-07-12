@@ -13,4 +13,6 @@ public interface Article_My_HashDAO {
 
 	void insertMyHash(Article_My_HashDTO amhdto) throws SQLException;
 
+	List<Article_My_HashDTO> findAllMyHash(Article_My_HashDTO amhdto) throws SQLException;
+
 }

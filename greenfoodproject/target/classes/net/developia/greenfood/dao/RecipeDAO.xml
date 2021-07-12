@@ -13,6 +13,13 @@
 		from hashtag
 	</select>
 	
+	<select id="findHashName" parameterType="RecipeDTO" resultType="String">
+		select tagname 
+		from hashtag
+		where no = #{no}
+	</select>
+	
+	
 	<select id="getFoodcategoryList" resultType="RecipeDTO">
 		select no, title
 		from foodcategory

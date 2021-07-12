@@ -11,4 +11,6 @@ import net.developia.greenfood.dto.RecipeDTO;
 public interface Article_HashDAO {
 
 	void insertHash_Recipe(Article_HashDTO ahdto) throws SQLException;
+
+	List<Article_HashDTO> findAllHash(Article_HashDTO ahdto) throws SQLException;
 }

@@ -10,9 +10,8 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-public class Recipe_likesDTO{
+public class Recipe_ViewsDTO{
 	private int no;
 	private int recipe_no;
-	private String member_id;
-	private Date like_date;
+	private Date view_date;
 }

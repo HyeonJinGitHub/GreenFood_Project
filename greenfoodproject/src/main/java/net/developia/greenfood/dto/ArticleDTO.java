@@ -1,6 +1,7 @@
 package net.developia.greenfood.dto;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -22,5 +23,15 @@ public class ArticleDTO{
 	private String thumbnail;
 	private int views;
 	private int likes;
+	private String relation_score;
+	private int rscore;
 	
+	public static class SortByLikePlusViewPlusScore implements Comparator<ArticleDTO> {
+		@Override
+		public int compare(ArticleDTO o1, ArticleDTO o2) {
+			int tmp1 = (int) (o1.getViews() + o1.getLikes() + o1.getRscore()*0.000001);
+			int tmp2 = (int) (o2.getViews() + o2.getLikes() + o2.getRscore()*0.000001);
+			return tmp2 - tmp1;
+		}
+    }
 }

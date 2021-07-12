@@ -804,7 +804,7 @@
 																<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-20px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>영양정보</span>
 															</div>
 															<div class="col-lg-10 sm-margin-25px-bottom text-center" style="width:100%; padding:0; margin-top:-60px">
-															<p class="alt-font font-weight-500 text-middle-gray d-block text-uppercase text-right margin-100px-top" style="margin-bottom: -100px">성인 1일 영양소 권장량 기준</p>
+															<p class="alt-font font-weight-500 text-middle-gray d-block text-uppercase text-right margin-100px-top" style="margin-bottom: -100px">성인남녀 평균 1일 영양소 권장량 기준 (1990Kcal)</p>
 												                <div class="row row-cols-1 "  style="width:100%; padding:0; margin:0">
 												                    <!-- start pie charts item -->
 												                     <div style="visibility:hidden;">
@@ -1903,19 +1903,35 @@
 						
 						var people = document.getElementsByName("howmuch")[0].value;
 			 			var farr = ['열량', '탄수화물', '단백질', '지방', '당류','나트륨', '콜레스테롤', '포화지방산']; 
+			 			
 						var iarr = [parseInt(ig1/(1987.7*people)*100), parseInt(ig2/(287.9*people)*100), parseInt(ig3/(72.4*people)*100), parseInt(ig4/(49.5*people)*100), parseInt(ig5/(60.2*people)*100),parseInt(ig6/(3255.0*people)*100), parseInt(ig7/(260.4*people)*100), parseInt(ig8/(16.6*people)*100)]; 
+						var warr = [parseInt(ig1/people), parseInt(ig2/people), parseInt(ig3/people), parseInt(ig4/people), parseInt(ig5/people),parseInt(ig6/people), parseInt(ig7/people), parseInt(ig8/people)]; 
 						for(var k = 0; k< 8; k++)
 						{
 							var ftemp = '';
 							ftemp += '<div class="col-lg-3"><div class="chart-percent">'
-			                      + '<span class="pie-chart-style-02" data-line-width="6" data-percent="'
+			                      + '<span class="pie-chart-style-02" data-line-width="12" data-percent="'
 			                      + iarr[k]
-			                      + '" data-track-color="#f5f5f5" data-start-color="#fc9297" data-end-color="#be85f5">'
+			                      + '" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
 			                      + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
 			                      + '</div><div class="last-paragraph-no-margin wow animate__fadeIn" data-wow-duration="0.2" style="margin-top: 10px; margin-bottom: 10px;">'
 			                      + '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block">'
-			                      + farr[k]
+			                      + farr[k] 
+	                       if(k == 0)
+			                {
+			                	ftemp += ' ('+ warr[k] +'kcal)'
+			                		+ '</span></div></div>'
+			                }
+	                       else if(k == 5 || k == 6)
+			                {
+			                	ftemp += ' ('+ warr[k] +'mg)'
+			                		+ '</span></div></div>'
+			                }
+			                else
+			                {
+			                     ftemp +=' ('+ warr[k] +'g)'
 			                      + '</span></div></div>'
+			                }
 			                $('#foodIngredientInputinfo').append(ftemp);
 						} 
 			

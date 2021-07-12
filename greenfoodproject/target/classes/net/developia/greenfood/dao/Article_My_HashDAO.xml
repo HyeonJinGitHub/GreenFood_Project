@@ -15,4 +15,10 @@
 				#{title})
 	</insert>
 	
+	<select id="findAllMyHash" parameterType="Article_My_HashDTO" resultType="Article_My_HashDTO">
+		select *
+		from recipe_my_hashtag
+		where recipe_no =#{recipe_no}
+	</select>
+	
 </mapper>

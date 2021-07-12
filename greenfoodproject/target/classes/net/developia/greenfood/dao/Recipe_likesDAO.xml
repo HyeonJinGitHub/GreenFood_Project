@@ -6,6 +6,7 @@
     <result property="no" column="no"/>
     <result property="recipe_no" column="recipe_no"/>
     <result property="member_id" column="member_id"/>
+    <result property="like_date" column="like_date"/>
 </resultMap>
 
 	<select id="chkMyLikeRecipe" parameterType="Recipe_likesDTO" resultType="Integer">
@@ -24,5 +25,12 @@
 		from recipe_likes 
 		where recipe_no = #{recipe_no} and member_id = #{member_id}
 	</delete>
+	
+	<select id="findAllrecipeLikes" parameterType="Recipe_likesDTO" resultType="Recipe_likesDTO">
+		select *
+		from recipe_likes
+		where recipe_no = #{recipe_no}
+		order by like_date asc
+	</select>
 
 </mapper>

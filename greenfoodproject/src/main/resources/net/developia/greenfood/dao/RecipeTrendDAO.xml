@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.developia.greenfood.dao.RecipeTrendDAO">
+<resultMap id="RecipeTrendDTO" type="RecipeTrendDTO">
+    <result property="no" column="no"/>
+    <result property="keyword" column="keyword"/>
+    <result property="relationScore" column="relationScore"/>
+    <result property="searchTotal" column="searchTotal"/>
+    <result property="blogTotal" column="blogTotal"/>
+    <result property="counts" column="counts"/>
+</resultMap>
+
+	<select id="findMyScore" parameterType="RecipeTrendDTO" resultType="Integer">
+		select NVL(sum(relationScore), 0)
+		from recipeTrend
+		where keyword LIKE '%'||#{keyword}||'%'
+	</select>
+	
+	<select id="findTop10Trend" parameterType="RecipeTrendDTO" resultType="RecipeTrendDTO">
+		select *
+		from recipeTrend
+		order by relationScore desc
+	</select>
+	
+	
+	
+</mapper>
