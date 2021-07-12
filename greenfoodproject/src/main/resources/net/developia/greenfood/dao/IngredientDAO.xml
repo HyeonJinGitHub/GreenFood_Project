@@ -43,4 +43,36 @@
           WHERE RECIPEID.tempcol = RECIPE.no
        ]]>
 	</select>
+	
+	
+	<select id="countRecipe" parameterType="map" resultType="int">
+	<![CDATA[
+         SELECT  COUNT(*)
+         FROM RECIPE,
+			  (WITH TEMP AS (
+                               SELECT recipe_no, ingredients_no, recipe_no as tempcol
+                               FROM recipe_ingr
+                            )
+               SELECT tempcol
+               FROM TEMP
+                    PIVOT(
+                            avg(recipe_no)
+                            FOR ingredients_no
+                            IN 
+       ]]>
+                               <foreach collection="ingredientList" item="item" index="index" separator="," open="(" close=")">
+			                      ${item}
+		                       </foreach>
+     <![CDATA[                        
+                         )
+                    WHERE
+       ]]>
+                          <foreach collection="ingredientList" item="item" index="index" separator=" AND " open="" close="">
+			                       "${item}" IS NOT NULL
+		                  </foreach>
+     <![CDATA[
+                         ) RECIPEID
+          WHERE RECIPEID.tempcol = RECIPE.no
+       ]]>
+	</select>
 </mapper>

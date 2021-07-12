@@ -30,4 +30,9 @@ public class IngredientServiceImpl implements IngredientService {
 		return ingredientDAO.getRecipeList(hm);
 	}
 
+	@Override
+	public int countRecipe(Map<String, Object> hm) throws Exception {
+		return ingredientDAO.countRecipe(hm);
+	}
+
 }

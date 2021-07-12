@@ -13,4 +13,6 @@ public interface IngredientService {
 
 	List<RecipeDTO> getRecipeList(Map<String, Object> hm) throws Exception;
 
+	int countRecipe(Map<String, Object> hm) throws Exception;
+
 }

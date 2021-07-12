@@ -6,9 +6,8 @@
 <c:url var="email-templates" value='/resources/email-templates' />
 
 <c:set var="app" value="${pageContext.request.contextPath}" />
-<c:set var="RecipeSearchDTO" value="${RecipeSearchDTO }" />
+<c:set var="recipeList" value="${recipeList }" />
 <c:set var="pagingVO" value="${pagingVO }" />
-<c:set var="keyword" value="${keyword }" />
 
 <c:url var="js" value='/resources/js' />
 <!doctype html>

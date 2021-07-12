@@ -25,12 +25,12 @@ import net.developia.greenfood.service.IngredientService;
 
 @Controller
 @RequestMapping
-public class SrchIngrController {
+public class IngredientController {
 
 	@Autowired
 	private IngredientService ingredientService;
 
-	private static Logger logger = LoggerFactory.getLogger(SrchIngrController.class);
+	private static Logger logger = LoggerFactory.getLogger(IngredientController.class);
 
 	@GetMapping("/searchIngredient")
 	public String searchIngredient() {
@@ -57,10 +57,12 @@ public class SrchIngrController {
 	// 입력받은 재료를 프런트에서 받아옴
 	@ResponseBody
 	@PostMapping(value = { "/getSelectedIngredient" })
-	public void getSelectedIngredient(@RequestBody String httpParam) {
+	public Map<String, Object> getSelectedIngredient(@RequestBody String httpParam) {
 
 		JSONParser jsonParser = new JSONParser();
 		JSONArray insertParam = null;
+
+		Map<String, Object> result = new HashMap<String, Object>();
 
 		// parsing
 		try {
@@ -68,6 +70,7 @@ public class SrchIngrController {
 
 			List<Integer> ingredientList = new ArrayList<>();
 
+			// 재료 no 들 가져옴
 			for (int i = 0; i < insertParam.size(); i++) {
 				JSONObject insertData = (JSONObject) insertParam.get(i);
 				ingredientList.add(Integer.parseInt((String) insertData.get("no")));
@@ -76,13 +79,11 @@ public class SrchIngrController {
 			Map<String, Object> hm = new HashMap<>();
 			hm.put("ingredientList", ingredientList);
 
+			// 재료 기반 레시피 검색 결과 저장
 			List<RecipeDTO> recipeList = ingredientService.getRecipeList(hm);
 
-			for (RecipeDTO r : recipeList) {
-				System.out.println(r.getNo());
-				System.out.println(r.getTitle());
-				System.out.println(r.getTagname());
-			}
+			result.put("recipeList", recipeList);
+			result.put("ingredientList", ingredientList);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -90,5 +91,7 @@ public class SrchIngrController {
 			e.printStackTrace();
 		}
 
+		return result;
 	}
+
 }

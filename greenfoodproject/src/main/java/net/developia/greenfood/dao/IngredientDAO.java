@@ -14,4 +14,6 @@ public interface IngredientDAO {
 
 	public List<RecipeDTO> getRecipeList(Map<String, Object> hm) throws SQLException;
 
+	public int countRecipe(Map<String, Object> hm) throws SQLException;
+
 }

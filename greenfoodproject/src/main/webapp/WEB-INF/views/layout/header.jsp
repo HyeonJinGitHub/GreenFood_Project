@@ -105,7 +105,19 @@
                                 </form>
                             </div>
                             <!-- end search input --> 
+                            
+                          
+                            
                         </div>
+                        
+                        <!-- search with ingredients button start-->
+                        <div class="header-search-icon search-form-wrapper">
+                        	<div>
+                         	   <a href="${app}/searchIngredient"><i class="feather icon-feather-grid icon-medium-ksy align-middle text-fast-black-ksy"></i></a>
+                        	</div>
+                        </div>
+                        <!-- search with ingredients button ends-->
+                        
                         <div class="header-language dropdown d-lg-inline-block">
                             <a href="javascript:void(0);"><i class="feather icon-feather-globe"></i></a>
                             <ul class="dropdown-menu alt-font">

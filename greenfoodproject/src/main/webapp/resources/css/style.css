@@ -478,6 +478,14 @@ h6 {
 	color: #0038e3;
 }
 
+/* ksy search ingredient main button start*/
+.text-fast-black-ksy, .btn-link.text-fast-blue, a.text-fast-blue-hover:hover
+	{
+	color: #232323;
+}
+/* ksy search ingredient main button start*/
+
+
 .text-neon-blue, .btn-link.text-neon-blue, a.text-neon-blue-hover:hover
 	{
 	color: #3452ff;
@@ -2918,6 +2926,11 @@ input[type="radio"]:checked+label span:after {
 
 .btn.btn-rounded.btn-large-ksy.btn-expand-ltr span {
 	width: 46px;
+}
+
+.modal-scroll-ksy {
+	overflow-y:scroll;
+	height:40%;
 }
 
 /* ksy modal css end */
@@ -9873,6 +9886,12 @@ input.btn:focus {
 .icon-medium {
 	font-size: 40px;
 }
+
+/* ksy search ingredient main button start*/
+.icon-medium-ksy {
+	font-size: 17px;
+}
+/* ksy search ingredient main button start*/
 
 .icon-very-medium {
 	font-size: 35px;
