@@ -38,33 +38,21 @@ public class OauthController {
 	public void socialLoginType(@PathVariable(name = "socialLoginType") SocialLoginType loginType) {
 		oauthService.request(loginType);
 	}
-	
-//	@GetMapping("/{socialLoginType}/callback")
-//	public JSONObject CallbackSocialLogin(@PathVariable(name = "socialLoginType") SocialLoginType loginType, @RequestParam(name = "code") String code) throws ParseException {
-//		System.out.println("hello Oauth login call back!");
-//		
-//		JSONParser parser = new JSONParser();
-//		
-//		Object obj = parser.parse(oauthService.requestAccessToken(loginType, code));
-//		
-//		JSONObject jobj = (JSONObject) obj;
-////		return oauthService.requestAccessToken(loginType, code);
-//		return jobj;
-//	}
-//	
+
 	@GetMapping("/{socialLoginType}/callback")
 	public ModelAndView CallbackSocialLogin(HttpSession session,  @PathVariable(name = "socialLoginType") SocialLoginType loginType, @RequestParam(name = "code") String code) throws ParseException {
 		System.out.println("hello Oauth login call back!");
 		String tokens = oauthService.requestAccessToken(loginType, code);
 		
 		JSONObject jobj = oauthService.getAuthInfo(loginType, tokens);
-		
-		return checkController.GoogleLogin(session, jobj);
-		//JSONObject jobj = oauthService.getAuthInfo(loginType, accessToken);
-		
-		//Object obj = parser.parse(oauthService.requestAccessToken(loginType, code));
-		
-		//return jobj;
+		switch(loginType) {
+		case google:
+			return checkController.GoogleLogin(session, jobj);
+		case naver:
+			return checkController.NaverLogin(session, jobj);
+		}
+		return null;
+
 	}
 	
 	

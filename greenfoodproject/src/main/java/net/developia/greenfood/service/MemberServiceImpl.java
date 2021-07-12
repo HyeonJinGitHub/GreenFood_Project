@@ -138,4 +138,15 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 
+	@Override
+	public void loginByNaver(HashMap<String, Object> map) throws Exception {
+		try {
+			memberDAO.loginByNaver(map);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+		
+	}
+
 }
