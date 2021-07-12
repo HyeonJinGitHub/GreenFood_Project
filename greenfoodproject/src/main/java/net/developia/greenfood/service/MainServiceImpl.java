@@ -7,7 +7,11 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import net.developia.greenfood.dao.MainDAO;
+import net.developia.greenfood.dto.ArticleDTO;
+import net.developia.greenfood.dto.CategoryFoodDTO;
+import net.developia.greenfood.dto.FoodCategoryDTO;
 import net.developia.greenfood.dto.MemberDTO;
+import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.RecipeSearchDTO;
 
 @Service
@@ -30,12 +34,18 @@ public class MainServiceImpl  implements MainService{
 		return list;
 	}
 
+
 	@Override
-	public List<RecipeSearchDTO> getRecipe(RecipeSearchDTO recipeSearchDTO) throws Exception {
-		
-		List<RecipeSearchDTO> list;
+	public int countRecipe(String keyword) throws Exception {
+		int cnt = mainDAO.countRecipe(keyword);
+		return cnt;
+	}
+
+	@Override
+	public List<ArticleDTO> getRecipe() throws Exception {
+		List<ArticleDTO> list;
 		try {
-			list = mainDAO.getRecipe(recipeSearchDTO);
+			list = mainDAO.getRecipe();
 		} catch (Exception e) {
 			log.info(e.getMessage());
 			throw e;
@@ -45,22 +55,54 @@ public class MainServiceImpl  implements MainService{
 	}
 
 	@Override
-	public int countRecipe(String keyword) throws Exception {
-		int cnt = mainDAO.countRecipe(keyword);
+	public List<RecipeSearchDTO> getSearchRecipe(RecipeSearchDTO recipeSearchDTO) throws Exception {
+		
+		List<RecipeSearchDTO> list;
+		try {
+			list = mainDAO.getSearchRecipe(recipeSearchDTO);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+		
+		return list;
+	}
+
+
+	@Override
+	public List<FoodCategoryDTO> getCategory() throws Exception {
+		List<FoodCategoryDTO> list;
+		
+		try {
+			list = mainDAO.getCategory();
+			
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+		
+		return list;
+	}
+
+
+	@Override
+	public int countCategoryFood(CategoryFoodDTO categoryFoodDTO) throws Exception {
+		int cnt = mainDAO.countCategoryFood(categoryFoodDTO);
 		return cnt;
 	}
 
-//	@Override
-//	public List<RecipeSearchDTO> getRecipe2(String keyword) throws Exception {
-//		List<RecipeSearchDTO> list;
-//		try {
-//			list = mainDAO.getRecipe(keyword);
-//		} catch (Exception e) {
-//			log.info(e.getMessage());
-//			throw e;
-//		}
-//		
-//		return list;
-//	}
+
+	@Override
+	public List<CategoryFoodDTO> getCategoryFood(CategoryFoodDTO categoryFoodDTO) throws Exception {
+		List<CategoryFoodDTO> list;
+		
+		try {
+			list = mainDAO.getCategoryFood(categoryFoodDTO);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+		return list;
+	}
 
 }
