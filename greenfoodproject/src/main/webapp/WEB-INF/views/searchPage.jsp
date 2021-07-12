@@ -247,7 +247,6 @@
 		
 		// showmore 버튼 클릭이 아닌 경우, 검색 결과가 존재하면 자식 요소들 삭제.
 		var removalTarget = document.getElementById("recipeListHtml");
-		console.log(isShowMoreClicked);
 		if((isShowMoreClicked==="notShowMoreClicked") && (removalTarget !== null)){
 			$(removalTarget).empty();
 			shownCount=0;
@@ -292,7 +291,7 @@
                     recipeListHtml += '        <div class="d-flex align-items-center">                                                                                                                                    ';
                     recipeListHtml += '            <img class="avtar-image" src="https://placehold.it/125x125" alt=""/>                                                                                                   ';
                     recipeListHtml += '            <span class="alt-font text-small mr-auto">By <a href="blog-masonry.html">Torrie asai</a></span>                                                                        ';
-                    recipeListHtml += '            <a href="blog-post-layout-01.html" class="blog-like alt-font text-extra-small"><i class="far fa-heart"></i><span>28</span></a>                                         ';
+                    recipeListHtml += '            <a href="blog-post-layout-01.html" class="blog-like alt-font text-extra-small"><i class="solid-icon-Preview icon-medium-ksy align-middle text-fast-black-ksy"></i><span>28</span></a>                                         ';
                     recipeListHtml += '        </div>                                                                                                                                                                     ';
                     recipeListHtml += '    </div>                                                                                                                                                                         ';
                     recipeListHtml += '</div>                                                                                                                                                                             ';
@@ -389,13 +388,13 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body-ksy">
+				<div class="modal-body">
 					<div class="row">
-						<div class="col-lg-6 modal-col-height-ksy">
+						<div class="col-lg-6">
 							<div id="ingredientList" class="modal-color-ksy modal-scroll-ksy" ></div>
 						</div>
-						<div class="col-lg-6 modal-col-height-ksy">
-							<div id="selectedIngredientList" class="modal-color-selected-ksy modal-scroll-ksy"" >
+						<div class="col-lg-6">
+							<div id="selectedIngredientList" class="modal-color-selected-ksy modal-scroll-ksy" >
 							
 							</div>
 						</div>
