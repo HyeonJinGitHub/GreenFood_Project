@@ -19,4 +19,10 @@ public interface ProductDAO {
 
 	void quantityUpdate(HashMap<String, Object> map) throws SQLException;
 
+	void removeProduct(HashMap<String, Object> map) throws SQLException;
+
+	void productAddcart(HashMap<String, Object> map) throws SQLException;
+
+	void selectProductByNo(HashMap<String, Object> map) throws SQLException;
+
 }

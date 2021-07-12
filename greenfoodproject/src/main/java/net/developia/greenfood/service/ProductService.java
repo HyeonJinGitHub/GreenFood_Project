@@ -18,4 +18,8 @@ public interface ProductService {
 
 	void quantityUpdate(HashMap<String, Object> map) throws Exception;
 
+	void removeProduct(HashMap<String, Object> map) throws Exception;
+
+	void productAddcart(HashMap<String, Object> map) throws Exception;
+
 }

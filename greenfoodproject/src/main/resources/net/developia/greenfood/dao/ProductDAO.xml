@@ -75,7 +75,7 @@
 		<parameter property="ProductDetailByCategoryList" jdbcType="CURSOR"
 			mode="OUT" resultMap="ProductDetailByCategoryResultMap"/>
 	</parameterMap>
-		<resultMap type="ProductDTO" id="ProductDetailByCategoryResultMap">
+	<resultMap type="ProductDTO" id="ProductDetailByCategoryResultMap">
 		<result property="no" column="no" />
 		<result property="name" column="name" />
 		<result property="price" column="price" />
@@ -166,4 +166,56 @@
           }
        ]]>
 	</select>
+	
+	<parameterMap type="java.util.HashMap" id="removeProductParam">
+		<parameter property="ID" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="NO" jdbcType="NUMERIC" mode="IN" />
+		<parameter property="CartList" jdbcType="CURSOR"
+			mode="OUT" resultMap="removeProductResultMap"/>
+	</parameterMap>
+	<resultMap type="CartDTO" id="removeProductResultMap">
+		<result property="member_id" column="member_id" />
+		<result property="no" column="no" />
+		<result property="name" column="name" />
+		<result property="price" column="price" />
+		<result property="quantity" column="quantity" />
+		<result property="image" column="image" />
+	</resultMap>
+	<select id="removeProduct" statementType="CALLABLE"
+		parameterMap="removeProductParam" resultMap="removeProductResultMap">
+	<![CDATA[
+          {
+             call product_pkg.removeProduct(
+				?, ?, ?
+			)
+          }
+       ]]>
+	</select>
+	
+	
+	<parameterMap type="java.util.HashMap" id="selectProductByIdParam">
+		<parameter property="NO" jdbcType="NUMERIC" mode="IN" />
+		<parameter property="ProductList" jdbcType="CURSOR"
+			mode="OUT" resultMap="selectProductByIdResultMap"/>
+	</parameterMap>
+	<resultMap type="ProductDTO" id="selectProductByIdResultMap">
+		<result property="no" column="no" />
+		<result property="name" column="name" />
+		<result property="price" column="price" />
+		<result property="description" column="description" />
+		<result property="detail_description" column="detail_description" />
+		<result property="category" column="category" />
+		<result property="sku" column="sku" />
+	</resultMap>
+	<select id="selectProductByNo" statementType="CALLABLE"
+		parameterMap="selectProductByIdParam" resultMap="selectProductByIdResultMap">
+	<![CDATA[
+          {
+             call product_pkg.selectProductByNo(
+				?, ?
+			)
+          }
+       ]]>
+	</select>
+	
 </mapper>

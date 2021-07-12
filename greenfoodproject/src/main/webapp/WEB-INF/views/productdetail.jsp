@@ -190,7 +190,7 @@
                                     <input type="button" value="+" class="qty-plus qty-btn" data-quantity="plus" data-field="quantity">
                                 </div>
                                 <a href="#modal-popup2" onclick="addCart()" class="modal-popup btn btn-dark-gray btn-medium">Add to cart</a>
-                                <div id="modal-popup2" class="white-popup-block mfp-hide w-20 mx-auto position-relative bg-white modal-popup-main padding-5-rem-all xl-w-70 md-w-80 md-padding-4-rem-all xs-w-95 xs-padding-3-rem-all">
+                                <div id="modal-popup2" class="white-popup-block mfp-hide w-15 mx-auto position-relative bg-white modal-popup-main padding-5-rem-all xl-w-70 md-w-80 md-padding-4-rem-all xs-w-95 xs-padding-3-rem-all">
                                         <label class="table-style-01">장바구니에 담겼습니다.</label>
                                         <form action="${contextPath}/shoppingcart">
                                         	<button type="submit" class="btn btn-medium btn-fancy btn-dark-gray">장바구니로 이동</button>
@@ -242,10 +242,6 @@
                                 <p>${productDTO.description }</p>
                                 <ul class="list-style-03">
                                     <li>${productDTO.detail_description }</li>
-                    <!--                 <li>Front and back yoke seams allow a full range of motion</li>
-                                    <li>Comfortable nylon-bound elastic cuffs seal in warmth</li> 
-                                    <li>Hem adjusts by pulling cord in handwarmer pockets</li> 
-                                    <li>Interior storm flap and zipper garage at chin for comfort</li>  -->
                                 </ul>
                             </div>
                             <div class="col-12 col-lg-6 offset-xl-1">

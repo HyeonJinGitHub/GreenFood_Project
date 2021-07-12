@@ -53,7 +53,7 @@
                 <div class="row">
                     <div class="col-12 col-lg-6 md-margin-15px-bottom">
                         <div class="bg-white padding-40px-all sm-padding-30px-all last-paragraph-no-margin box-shadow-small">
-                            <h6 class="text-extra-dark-gray">찍먹부먹 프로필</h6>
+                            <h6 class="text-extra-dark-gray">${name } 님의 프로필</h6>
 									<div class="swiper-slide box-shadow-small box-shadow-extra-large-hover">
 									<br>
 									<div class="box" >

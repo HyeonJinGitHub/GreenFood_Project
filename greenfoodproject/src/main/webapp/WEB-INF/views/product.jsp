@@ -59,7 +59,13 @@
 	                                        </a>
 	                                        <div class="product-overlay bg-gradient-extra-midium-gray-transparent"></div>
 	                                        <div class="product-hover-bottom text-center padding-30px-tb">
-	                                            <a href="장바구니 넣기" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to cart"><i class="feather icon-feather-shopping-cart"></i></a>
+	                                            <a href="#modal-popup2" id="${item.value[0]}" name="${item.value[7]}" class="modal-popup add_cart product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to cart"><i class="feather icon-feather-shopping-cart"></i></a>
+                                                  	<div id="modal-popup2" class="white-popup-block mfp-hide w-15 mx-auto position-relative bg-white modal-popup-main padding-5-rem-all xl-w-70 md-w-80 md-padding-4-rem-all xs-w-95 xs-padding-3-rem-all">
+                                        				<label class="table-style-01">장바구니에 담겼습니다.</label>
+                                        				<form action="${contextPath}/shoppingcart">
+                                        				<button type="submit" class="btn btn-medium btn-fancy btn-dark-gray">장바구니로 이동</button>
+                                        				</form>
+                                    				</div>
 	                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
 	                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to wishlist"><i class="feather icon-feather-heart"></i></a>
 	                                        </div>
@@ -91,5 +97,31 @@
         <script type="text/javascript" src="resources/js/jquery.min.js"></script>
         <script type="text/javascript" src="resources/js/theme-vendors.min.js"></script>
         <script type="text/javascript" src="resources/js/main.js"></script>
+        
+        <script>
+        	$(document).ready(function() {
+        		$(document).on('click', '.add_cart', function() {
+        			var no = $(this).attr('id');
+        			var image = $(this).attr('name');
+        			$.ajax({
+        				async: false,
+	    				type: 'POST',
+	    				data : {"no": no,
+	    					"image": image},
+	    				url : '/greenfood/productAddcart',
+	    				success : function(data) {
+	    					if(data == true) {
+	    						
+	    					} else {
+	    						alert('장바구니 담기에 실패하였습니다.');
+	    					}
+	    				},
+	    				error : function(error) {
+	    					alert('error : ' + JSON.stringify(error));
+	    				}
+        			});
+        		});
+        	});
+        </script>
     </body>
 </html>
