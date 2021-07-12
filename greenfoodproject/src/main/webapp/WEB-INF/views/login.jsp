@@ -68,6 +68,8 @@
                             <button class="btn btn-medium btn-fancy btn-dark-gray w-100" type="submit">Login</button>
                             <p class="text-right margin-20px-top mb-0"><a href="#" class="btn btn-link  btn-medium text-extra-dark-gray">Lost your password?</a></p>
                             <a href="/greenfood/auth/google"><img src="resources/images/btn_google_signin_dark_normal_web.png"></a>
+                            <br><br>
+                            <a href="/greenfood/auth/naver"><img src="resources/images/btnG_all.png"></a>
                         </form>
                     </div>
                 </div>

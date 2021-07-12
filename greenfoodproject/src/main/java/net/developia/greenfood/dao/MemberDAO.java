@@ -22,4 +22,7 @@ public interface MemberDAO {
 	public void loginByGoogle(HashMap<String, Object> map) throws SQLException;
 
 	public void selectMemberById(HashMap<String, Object> map) throws SQLException;
+
+	public void loginByNaver(HashMap<String, Object> map) throws SQLException;
+
 }

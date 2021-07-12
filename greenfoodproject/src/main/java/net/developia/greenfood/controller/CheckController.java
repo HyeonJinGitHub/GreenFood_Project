@@ -1,6 +1,7 @@
 package net.developia.greenfood.controller;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -175,6 +176,36 @@ public class CheckController {
 			session.setAttribute("name", masking.maskingName(dto.getName()));
 			session.setAttribute("email", masking.maskingEmail(dto.getEmail()));
 			session.setAttribute("phone", "알 수 없음");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("CheckController##=>" + jobj.toString());
+		return mav;
+	}
+
+	public ModelAndView NaverLogin(HttpSession session, JSONObject original_jobj) {
+		ModelAndView mav = new ModelAndView("result");
+		LinkedHashMap jobj = (LinkedHashMap) original_jobj.get("response");
+		mav.addObject("jobj", jobj);
+		mav.addObject("url", "/greenfood/");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("ID", jobj.get("id"));
+		map.put("NAME", jobj.get("name"));
+		map.put("EMAIL", jobj.get("email"));
+		map.put("NICKNAME", jobj.get("nickname"));
+		map.put("IMAGE", jobj.get("profile_image").toString().replace("\\", ""));
+		map.put("PHONE", jobj.get("mobile"));
+		try {
+			memberService.loginByNaver(map);
+			List<MemberDTO> output = (List) map.get("MemberList");
+			MemberDTO dto = output.get(0);
+			IdFormatterUtil masking = new IdFormatterUtil();
+			session.setAttribute("id", dto.getId());
+			session.setAttribute("name", masking.maskingName(dto.getName()));
+			session.setAttribute("email", masking.maskingEmail(dto.getEmail()));
+			session.setAttribute("phone", masking.maskingPhone(dto.getPhone()));
 			
 		} catch (Exception e) {
 			e.printStackTrace();
