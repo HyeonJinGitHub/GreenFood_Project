@@ -4,6 +4,8 @@
 <c:set var="app" value="${pageContext.request.contextPath}" />
 
 <c:set var="memberDTO" value="${memberDTO }"></c:set>
+<c:set var="recipeDTO" value="${recipeDTO }"></c:set>
+<c:set var="categoryDTO" value="${categoryDTO }"></c:set>
 
 
 <!doctype html>
@@ -584,39 +586,12 @@
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-6 text-center margin-5-half-rem-bottom md-margin-3-rem-bottom wow animate__fadeIn">
                         <span class="alt-font font-weight-500 text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom">음식 카테고리</span>
-                        <h4 class="alt-font font-weight-600 text-extra-dark-gray mb-0 letter-spacing-minus-1px">오늘은 이 레시피 어떠세요?</h4>
+                        <h4 class="alt-font font-weight-600 text-extra-dark-gray mb-0 letter-spacing-minus-1px">오늘은 이 음식 어떠세요?</h4>
                     </div>
                 </div>
                 <div class="row row-cols-1 row-cols-xl-3 row-cols-lg-2 justify-content-center margin-3-rem-tb md-no-margin-tb">
                     <!-- start category item -->
-                    <div class="col col-md-6 col-sm-10 shop-category-style-02 lg-margin-4-rem-bottom sm-margin-6-rem-bottom">
-                        <div class="shop-product align-items-center d-flex padding-30px-lr xs-no-padding-lr">
-                            <div class="shop-product-image text-center d-flex justify-content-center align-items-center wow animate__zoomIn">
-                                <img src="resources/images/c.jpg" alt=""/>
-                                <a href="shop-wide.html" class="d-inline-block line-height-65px rounded-circle bg-extra-dark-gray box-shadow-extra-large h-60px w-60px position-absolute product-view-link"><i class="feather icon-feather-arrow-right text-white icon-extra-small"></i></a>
-                            </div>
-                            <div class="shop-product-overlay position-relative wow animate__fadeIn" data-wow-delay="0.2s">
-                                <span class="alt-font font-weight-500 margin-10px-bottom d-inline-block text-uppercase letter-spacing-1px text-dark-orange text-dark-orange-hover xs-margin-5px-bottom">음식 카테고리1</span>
-                                <h4 class="alt-font text-extra-dark-gray mb-0 letter-spacing-minus-1px line-height-40px sm-line-height-30px">음식 <span class="font-weight-600">카테고리1</span></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end category item -->
-                    <!-- start category item -->
-                    <div class="col col-md-6 col-sm-10 shop-category-style-02 lg-margin-4-rem-bottom sm-margin-6-rem-bottom">
-                        <div class="shop-product align-items-center d-flex padding-30px-lr xs-no-padding-lr">
-                            <div class="shop-product-image text-center d-flex justify-content-center align-items-center wow animate__zoomIn" data-wow-delay="0.4s">
-                                <img src="resources/images/c.jpg" alt=""/>
-                                <a href="shop-wide.html" class="d-inline-block line-height-65px rounded-circle bg-extra-dark-gray box-shadow-extra-large h-60px w-60px position-absolute product-view-link"><i class="feather icon-feather-arrow-right text-white icon-extra-small"></i></a>
-                            </div>
-                            <div class="shop-product-overlay position-relative wow animate__fadeIn" data-wow-delay="0.5s">
-                                <span class="alt-font font-weight-500 margin-10px-bottom d-inline-block text-uppercase letter-spacing-1px text-dark-orange text-dark-orange-hover xs-margin-5px-bottom">음식 카테고리2</span>
-                                <h4 class="alt-font text-extra-dark-gray mb-0 letter-spacing-minus-1px line-height-40px sm-line-height-30px">음식 <span class="font-weight-600">카테고리2</span></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end category item -->
-                    <!-- start category item -->
+                    <c:forEach var="item" items="${categoryDTO }" >
                     <div class="col col-md-6 col-sm-10 shop-category-style-02">
                         <div class="shop-product align-items-center d-flex padding-30px-lr xs-no-padding-lr">
                             <div class="shop-product-image text-center d-flex justify-content-center align-items-center wow animate__zoomIn" data-wow-delay="0.7s">
@@ -624,11 +599,12 @@
                                 <a href="shop-wide.html" class="d-inline-block line-height-65px rounded-circle bg-extra-dark-gray box-shadow-extra-large h-60px w-60px position-absolute product-view-link"><i class="feather icon-feather-arrow-right text-white icon-extra-small"></i></a>
                             </div>
                             <div class="shop-product-overlay position-relative wow animate__fadeIn" data-wow-delay="0.8s">
-                                <span class="alt-font font-weight-500 margin-10px-bottom d-inline-block text-uppercase letter-spacing-1px text-dark-orange text-dark-orange-hover xs-margin-5px-bottom">음식 카테고리3</span>
-                                <h4 class="alt-font text-extra-dark-gray mb-0 letter-spacing-minus-1px line-height-40px sm-line-height-30px">음식 <span class="font-weight-600">카테고리3</span></h4>
+                                <span class="alt-font font-weight-500 margin-10px-bottom d-inline-block text-uppercase letter-spacing-1px text-dark-orange text-dark-orange-hover xs-margin-5px-bottom">음식카테고리</span>
+                                <h4 class="alt-font text-extra-dark-gray mb-0 letter-spacing-minus-1px line-height-40px sm-line-height-30px">  <span class="font-weight-600"><c:out value="${item.title}" /></span></h4>
                             </div>
                         </div>
                     </div>
+                    </c:forEach>
                     <!-- end category item -->
                 </div>
             </div>
@@ -651,6 +627,7 @@
                             <li class="grid-sizer"></li>
                             
                             <!-- start product item -->
+                            <c:forEach var="item" items="${recipeDTO }" >
                             <li class="grid-item wow animate__fadeIn">
                                 <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
                                     <div class="product-image">
@@ -666,103 +643,12 @@
                                         </div>
                                     </div>
                                     <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">치킨 샐러드</a>
-                                        <div class="product-price text-medium"><del>14,000원</del> 12,000원</div>
+                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block"><c:out value="${item.title}" /></a>
+                                        <div class="product-price text-medium"><c:out value="${item.foodname}" /></div>
                                     </div>
                                 </div>
                             </li>
-                            <!-- end product item -->
-                            <!-- start product item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.2s">
-                                <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
-                                    <div class="product-image">
-                                        <a href="single-product.html">
-                                            <img src="resources/images/c.jpg" alt=""/>
-                                            <img class="hover-img" src="resources/images/b.jpg" alt=""/>
-                                        </a>
-                                        <div class="product-hover-details">
-                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>레시피 살펴보기</a>
-                                        </div>
-                                        <div class="product-hover-right padding-20px-tb padding-15px-right w-65px">
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to wishlist"><i class="feather icon-feather-heart"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">치킨 샐러드</a>
-                                        <div class="product-price text-medium">41,000원</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end product item -->
-                            <!-- start product item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.4s">
-                                <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
-                                    <div class="product-image">
-                                        <a href="single-product.html">
-                                            <img src="resources/images/c.jpg" alt=""/>
-                                            <img class="hover-img" src="resources/images/b.jpg" alt=""/>
-                                        </a>
-                                        <div class="product-hover-details">
-                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>레시피 살펴보기</a>
-                                        </div>
-                                        <div class="product-hover-right padding-20px-tb padding-15px-right w-65px">
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to wishlist"><i class="feather icon-feather-heart"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">치킨 샐러드</a>
-                                        <div class="product-price text-medium">25,000원</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end product item -->
-                            <!-- start product item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.6s">
-                                <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
-                                    <div class="product-image">
-                                        <a href="single-product.html">
-                                            <img src="resources/images/c.jpg" alt=""/>
-                                            <img class="hover-img" src="resources/images/b.jpg" alt=""/>
-                                        </a>
-                                        <div class="product-hover-details">
-                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>레시피 살펴보기</a>
-                                        </div>
-                                        <div class="product-hover-right padding-20px-tb padding-15px-right w-65px">
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to wishlist"><i class="feather icon-feather-heart"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">치킨 샐러드</a>
-                                        <div class="product-price text-medium">15,500원</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end product item -->
-                            <!-- start product item -->
-                            <li class="grid-item wow animate__fadeIn" data-wow-delay="0.8s">
-                                <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
-                                    <div class="product-image">
-                                        <a href="single-product.html">
-                                            <img src="resources/images/c.jpg" alt=""/>
-                                            <img class="hover-img" src="resources/images/b.jpg" alt=""/>
-                                        </a>
-                                        <div class="product-hover-details">
-                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>레시피 살펴보기</a>
-                                        </div>
-                                        <div class="product-hover-right padding-20px-tb padding-15px-right w-65px">
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick shop"><i class="feather icon-feather-zoom-in"></i></a>
-                                            <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to wishlist"><i class="feather icon-feather-heart"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block">치킨 샐러드</a>
-                                        <div class="product-price text-medium">7,000원</div>
-                                    </div>
-                                </div>
-                            </li>
+                            </c:forEach>
                             <!-- end product item -->
                         </ul>
                     </div>
@@ -827,7 +713,7 @@
                             <li class="grid-item wow animate__fadeIn">
                                 <div class="blog-post">
                                     <div class="blog-post-image margin-40px-bottom md-margin-35px-bottom xs-margin-25px-bottom">
-                                        <a href="blog-post-layout-01.html"><img src="${item.profile_img}" alt=""/></a>
+                                        <a href="blog-post-layout-01.html"><img src="resources/images/user.png" alt="${item.profile_img}"/></a>
                                     </div>
                                     <div class="post-details">
                                         <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"><c:out value="${item.nickname}" /></a>
