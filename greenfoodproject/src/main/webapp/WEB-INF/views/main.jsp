@@ -713,7 +713,7 @@
                             <li class="grid-item wow animate__fadeIn">
                                 <div class="blog-post">
                                     <div class="blog-post-image margin-40px-bottom md-margin-35px-bottom xs-margin-25px-bottom">
-                                        <a href="blog-post-layout-01.html"><img src="resources/images/user.png" alt="${item.profile_img}"/></a>
+                                        <a href="blog-post-layout-01.html"><img src="${item.profile_img}" alt="resources/images/user.png"/></a>
                                     </div>
                                     <div class="post-details">
                                         <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"><c:out value="${item.nickname}" /></a>
