@@ -107,35 +107,17 @@ public class MemberServiceImpl implements MemberService {
 	}
 	@Override
 	public void shellCmd(String command) throws Exception {
+		System.out.println("명령어 실행되었어요~");
 		Runtime runtime = Runtime.getRuntime();
 		Process process = runtime.exec(command);
 		InputStream is = process.getInputStream();
 		InputStreamReader isr = new InputStreamReader(is);
 		BufferedReader br = new BufferedReader(isr);
 		String line;
+		System.out.println("명령어 여기까지 왔어요");
 //		while ((line = br.readLine()) != null) {
 //			System.out.println(line + "무한루프 중?");
 //		}
-	}
-
-	@Override
-	public void loginByGoogle(HashMap<String, Object> map) throws Exception {
-		try {
-			memberDAO.loginByGoogle(map);
-		} catch (Exception e) {
-			log.info(e.getMessage());
-			throw e;
-		}
-	}
-
-	@Override
-	public void selectMemberById(HashMap<String, Object> map) throws Exception {
-		try {
-			memberDAO.selectMemberById(map);
-		} catch (Exception e) {
-			log.info(e.getMessage());
-			throw e;
-		}
 	}
 
 }

@@ -18,8 +18,4 @@ public interface MemberDAO {
 	public void selectProfile(HashMap<String, Object> map) throws SQLException;
 
 	public void updateProfile(HashMap<String, Object> map) throws SQLException;
-
-	public void loginByGoogle(HashMap<String, Object> map) throws SQLException;
-
-	public void selectMemberById(HashMap<String, Object> map) throws SQLException;
 }

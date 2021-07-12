@@ -19,8 +19,4 @@ public interface MemberService {
 
 	public void shellCmd(String command) throws Exception;
 
-	public void loginByGoogle(HashMap<String, Object> map) throws Exception;
-
-	public void selectMemberById(HashMap<String, Object> map) throws Exception;
-
 }

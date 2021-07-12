@@ -2,9 +2,6 @@
     pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="app" value="${pageContext.request.contextPath}" />
-<%
-	String id = (String)session.getAttribute("id");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +12,7 @@
         <!-- start header -->
         <header>
             <!-- start navigation -->
-            <nav class="navbar top-space navbar-expand-lg navbar-boxed navbar-light bg-transparent header-light fixed-top header-reverse-scroll">
+            <nav class="navbar navbar-expand-lg navbar-boxed navbar-light bg-transparent header-light fixed-top header-reverse-scroll">
                 <div class="container-fluid nav-header-container">
                     <div class="col-auto col-sm-6 col-lg-2 mr-auto pl-lg-0">
                         <a class="navbar-brand" href="index.html">
@@ -112,13 +109,8 @@
                         <div class="header-language dropdown d-lg-inline-block">
                             <a href="javascript:void(0);"><i class="feather icon-feather-globe"></i></a>
                             <ul class="dropdown-menu alt-font">
-                             	<% if (id == null || id == "") { %>
-                                	<li><a href="${app}/login" title="로그인"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>로그인</a></li>
-                                	<li><a href="${app}/register" title="회원가입"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>회원가입</a></li>
-                             	<% } else { %>
-                             		<li><a href="${app}/myinfo" title="마이페이지"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>마이페이지</a></li>
-                               		<li><a href="${app}/logout" title="로그아웃"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>로그아웃</a></li>
-                               	<% } %>
+                                <li><a href="login" title="로그인"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>로그인</a></li>
+                                <li><a href="register" title="회원가입"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>회원가입</a></li>
                             </ul>
                         </div>
                         <div class="header-cart-icon dropdown">
@@ -146,7 +138,7 @@
                                 </li>
                                 <li class="cart-item cart-total">
                                     <div class="alt-font margin-15px-bottom"><span class="w-50 d-inline-block text-medium text-uppercase">합계:</span><span class="w-50 d-inline-block text-right text-medium font-weight-500">19,999원</span></div>
-                                    <a href="${app}/shoppingcart" class="btn btn-small btn-dark-gray">장바구니</a>
+                                    <a href="shopping-cart.html" class="btn btn-small btn-dark-gray">장바구니</a>
                                     <a href="checkout.html" class="btn btn-small btn-neon-orange">결제하기</a>
                                 </li>
                             </ul>

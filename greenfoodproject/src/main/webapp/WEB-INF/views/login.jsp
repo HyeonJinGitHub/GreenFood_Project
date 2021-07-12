@@ -64,7 +64,6 @@
                             <div id="login-ck" style="color:red; font-size:90%;" class="margin-15px-bottom">가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.</div>
                             <button class="btn btn-medium btn-fancy btn-dark-gray w-100" type="submit">Login</button>
                             <p class="text-right margin-20px-top mb-0"><a href="#" class="btn btn-link  btn-medium text-extra-dark-gray">Lost your password?</a></p>
-                            <a href="/greenfood/auth/google"><img src="resources/images/btn_google_signin_dark_normal_web.png"></a>
                         </form>
                     </div>
                 </div>
