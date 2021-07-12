@@ -1,27 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:url var="images" value='/resources/images' />
+<c:url var="css" value='/resources/css' />
+<c:url var="email-templates" value='/resources/email-templates' />
+
+<c:set var="app" value="${pageContext.request.contextPath}" />
+
+
+<c:url var="js" value='/resources/js' />
+<!doctype html>
+<html class="no-js" lang="en">
 <head>
-<title>Litho – The Multipurpose HTML5 Template</title>
+<title>오구의 레시피 - 오구오구</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="author" content="ThemeZaa">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
-<meta name="description" content="Litho is a clean and modern design, BootStrap 4 responsive, business and portfolio multipurpose HTML5 template with 36+ ready homepage demos.">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+<meta name="description"
+	content="Litho is a clean and modern design, BootStrap 4 responsive, business and portfolio multipurpose HTML5 template with 36+ ready homepage demos.">
 <!-- favicon icon -->
-<link rel="shortcut icon" href="resources/images/favicon.png">
-<link rel="apple-touch-icon" href="resources/images/apple-touch-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="72x72" href="resources/images/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="resources/images/apple-touch-icon-114x114.png">
-<!-- style sheets and font icons  -->
-<link rel="stylesheet" type="text/css" href="resources/css/font-icons.min.css">
-<link rel="stylesheet" type="text/css" href="resources/css/theme-vendors.min.css">
-<link rel="stylesheet" type="text/css" href="resources/css/style.css" />
-<link rel="stylesheet" type="text/css" href="resources/css/responsive.css" />
-<!-- revolution slider -->
-<link rel="stylesheet" type="text/css" href="resources/revolution/css/settings.css">
-<link rel="stylesheet" type="text/css" href="resources/revolution/css/layers.css">
-<link rel="stylesheet" type="text/css" href="resources/revolution/css/navigation.css">
+<link rel="shortcut icon" href="${images}/favicon.png">
+<link rel="apple-touch-icon" href="${images}/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="72x72"
+	href="${images}/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114"
+	href="${images}/apple-touch-icon-114x114.png">
 
 <!-- javascript -->
 <script type="text/javascript" src="resources/js/jquery.min.js"></script>
@@ -32,18 +37,15 @@
 <script type="text/javascript" src="revolution/js/jquery.themepunch.tools.min.js"></script>
 <script type="text/javascript" src="revolution/js/jquery.themepunch.revolution.min.js"></script>
 
-<!-- slider revolution 5.0 extensions (load extensions only on local file systems ! the following part can be removed on server for on demand loading) -->
-<!-- <script type="text/javascript" src="revolution/js/extensions/revolution.extension.actions.min.js"></script>
-        <script type="text/javascript" src="revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-        <script type="text/javascript" src="revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-        <script type="text/javascript" src="revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-        <script type="text/javascript" src="revolution/js/extensions/revolution.extension.migration.min.js"></script>
-        <script type="text/javascript" src="revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-        <script type="text/javascript" src="revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-        <script type="text/javascript" src="revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-        <script type="text/javascript" src="revolution/js/extensions/revolution.extension.video.min.js"></script> -->
 
 <script type="text/javascript">
+
+	// 시작 시 modal 띄움
+	$(document).ready(function(){                                                 
+		 $("#ingredientModal").modal("show");
+		 getIngred();
+	});
+
 	var revapi263, tpj;
 	(function() {
 		if (!/loaded|interactive|complete/.test(document.readyState))
@@ -217,10 +219,14 @@
 	    }
 	}
 	
+	var recipeListSize = 0;
+	let recipeShowCount = 2; // 한 번에 보여주는 레시피의 갯수.
+	var shownCount = 0; // 보여준 횟수
+	
 	// 선택한 재료의 id 들(selectedIngredientList id 인 div 안의 id들) 모두 가져오기 & 검색
 	function getElementIdAndSearch() {
 		var ingredientIds = document.getElementById('selectedIngredientList').children;
-		var arryId = new Array(); // id 를 담은 array
+		var jsonArry = new Array(); 
 		
 		
 		// 반복문을 통해 모든 id 탐색
@@ -231,10 +237,10 @@
 			
 			obj.no=ingredientIds[i].id;
 			
-			arryId.push(obj);
+			jsonArry.push(obj);
 		}
 		
-		var jsonData = JSON.stringify(arryId) ;
+		var jsonData = JSON.stringify(jsonArry) ;
 		
 		$.ajax({
     		url:'${pageContext.request.contextPath}/getSelectedIngredient',		    	      
@@ -242,7 +248,57 @@
 			contentType:'application/json; charset=UTF-8',
 	   		data:jsonData,
 			success:function(data){
-				 location.href='${pageContext.request.contextPath}/searchIngredient';
+				var recipeList = data.recipeList;
+				recipeListSize = data.recipeList.length;
+				var recipeListHtml = '';
+				
+				// 보여줘야 하는 횟수. recipeListSize / recipeShowCount 의 결과가 저장됨.
+				var toShowCount = recipeListSize / recipeShowCount; 
+				
+				// recipeList 의 인덱스 길이 제한 변수
+				var length;
+				
+				if (recipeListSize - shownCount * recipeShowCount < recipeShowCount){
+					length = recipeListSize - shownCount * recipeShowCount;
+				} else{
+					length = recipeShowCount;
+				}
+				
+				for(var i = shownCount * recipeShowCount ; i < ( shownCount * recipeShowCount ) + length ; i++){
+					recipeListHtml += ' <li class="grid-item wow animate__fadeIn">';
+	                recipeListHtml += ' <div class="blog-post border-radius-5px bg-white box-shadow-medium">';
+	                recipeListHtml += '     <div class="blog-post-image bg-medium-slate-blue">';
+	                recipeListHtml += '         <a href="blog-post-layout-01.html" title=""><img src="resources/images/c.jpg" alt=""></a>';
+	                recipeListHtml += '         <a href="blog-masonry.html" class="blog-category alt-font">Creative</a>';
+	                recipeListHtml += '     </div>';
+	                recipeListHtml += '     <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">';
+	                recipeListHtml += '         <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">18 February 2020</a>';
+	                recipeListHtml += '         <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">' + recipeList[i].title + '</a>';
+	                recipeListHtml += '         <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>';
+	                recipeListHtml += '         <div class="d-flex align-items-center">';
+	                recipeListHtml += '             <img class="avtar-image" src="https://placehold.it/125x125" alt=""/>';
+	                recipeListHtml += '             <span class="alt-font text-small mr-auto">By <a href="blog-masonry.html">Torrie asai</a></span>';
+	                recipeListHtml += '             <a href="blog-post-layout-01.html" class="blog-like alt-font text-extra-small"><i class="far fa-heart"></i><span>28</span></a>';
+	                recipeListHtml += '         </div>';
+	                recipeListHtml += '     </div>';
+	                recipeListHtml += ' </div>';
+	                recipeListHtml += ' </li>';
+				}
+				
+				shownCount++;
+				
+				// 아직 보여줄 레시피가 더 있는 경우
+				if(shownCount * recipeShowCount < recipeListSize){
+					recipeListHtml += '<button id="showMore" type="button" class="btn btn-primary-ksy" onclick="getElementIdAndSearch()"> Show More</button>';
+				}
+				
+				var removalTarget = document.getElementById("showMore");
+				
+				if(removalTarget !== null){
+					removalTarget.remove();
+				}
+				
+				$("#recipeListHtml").append(recipeListHtml);
 	 		}
 	   	})
 	}
@@ -250,13 +306,75 @@
 	
 </script>
 
+
+
+
 </head>
+<style>
+.stepimage_size{height:100%; font-size:0;}  
+.stepimage_size:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
+.stepimage_size img{vertical-align:middle;}
+</style>
 <body data-mobile-nav-style="classic">
+	<!-- start header -->
+		<jsp:include page='/WEB-INF/views/layout/header.jsp' />
+	<!-- end header -->
+	
+	
+	
+	
 
-	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ingredientModal" onclick="getIngred()">Launch demo modal</button>
+	
+	
+	
+	
+	<!-- start info banner item -->
+    <div class="col bg-very-light-pink padding-5-rem-tb padding-eight-lr xl-padding-six-lr lg-padding-three-lr md-padding-eight-lr wow animate__fadeIn"> 
+	 <div class="container">
+           <div class="row justify-content-center">
+            	
+				
+               <div class="col-12 col-lg-7 col-md-9 d-flex flex-column justify-content-center align-items-center small-screen">
+               
+               <!-- Button trigger modal -->
+				<button type="button" class="btn btn-primary-ksy" data-toggle="modal" data-target="#ingredientModal" onclick="getIngred()">재료로 검색하기</button>
 
-	<!-- Modal -->
+                  
+               </div>
+           </div>
+       </div>
+       
+       
+       
+       <!-- start section --> 
+       <section class="padding-8-half-rem-lr border-top border-width-1px border-color-medium-gray xl-padding-3-rem-lr md-no-padding-lr">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 filter-content">
+                        <ul class="blog-grid blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
+                            
+                            	<!-- start blog item -->
+                            	<div id="recipeListHtml" ></div>
+                            	<!-- end blog item -->
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+       
+       
+       
+       
+       
+       
+       
+    </div>
+    <!-- end info banner item -->
+       
+
+		<!-- Modal -->
 	<div class="modal fade" id="ingredientModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content-ingredient">
@@ -269,10 +387,10 @@
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<div id="ingredientList" class="modal-color-ksy" style="overflow:scroll; height:40%;"></div>
+							<div id="ingredientList" class="modal-color-ksy modal-scroll-ksy" ></div>
 						</div>
 						<div class="col-lg-6">
-							<div id="selectedIngredientList" class="modal-color-selected-ksy " style="overflow:auto; height:40%;" >
+							<div id="selectedIngredientList" class="modal-color-selected-ksy modal-scroll-ksy"" >
 							
 							</div>
 						</div>
@@ -280,12 +398,41 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-					<button type="button" class="btn btn-primary" onclick="getElementIdAndSearch()">검색하기</button>
+					<button type="button" class="btn btn-primary-ksy" data-dismiss="modal" onclick="getElementIdAndSearch()">검색하기</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 
+
+	<!-- start footer -->
+		<jsp:include page='/WEB-INF/views/layout/footer.jsp' />
+	<!-- end footer -->
+	<!-- start scroll to top -->
+	<a class="scroll-top-arrow" href="javascript:void(0);"><i
+		class="feather icon-feather-arrow-up"></i></a>
+	<!-- end scroll to top -->
+	<!-- javascript -->
+	<script type="text/javascript" src="${js}/theme-vendors.min.js"></script>
+	<script type="text/javascript" src="${js}/main.js"></script>
+	<script src="https://kit.fontawesome.com/1cd4016a85.js"
+		crossorigin="anonymous"></script>
+	<link
+		href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+		rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript"
+		src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<!-- style sheets and font icons  -->
+	<link rel="stylesheet" type="text/css" href="${css }/font-icons.min.css">
+	<link rel="stylesheet" type="text/css" href="${css }/theme-vendors.min.css">
+	<link rel="stylesheet" type="text/css" href="${css }/style.css" />
+	<link rel="stylesheet" type="text/css" href="${css }/responsive.css" />
+	
+	<script>
+	
+		
+	
+	</script>
 </body>
-</html>
