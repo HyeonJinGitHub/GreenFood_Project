@@ -50,10 +50,11 @@
                        <h1 class="alt-font text-darkgrey font-weight-500 letter-spacing-minus-1 mb-0">카테고리 : <c:out value="${categoryNo }" /></h1>
                    </div>
                    <div class="newsletter-style-02 position-relative w-100">
-                       <form action="${app}/reciep" method="get">
+                      	<!--  <form action="${app}/reciep" method="get">
                            <input class="search-input large-input border-radius-4px m-0 border-0" name="keyword" placeholder="검색어를 입력해주세요." type="text">
                            <button type="submit" class="btn btn-medium text-extra-dark-gray border-left border-0 border-color-extra-medium-gray font-weight-600 py-0 search-button"><i class="fas fa-search text-fast-blue margin-10px-right"></i>search</button>
                        </form>
+                       --> 
                    </div>
                </div>
            </div>
@@ -68,21 +69,23 @@
                         <ul class="blog-grid blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
                             <li class="grid-sizer"></li>
                             <!-- start blog item -->
-                            <c:forEach var="item" items="${RecipeSearchDTO }" >
+                            <c:set var="no" value="${categoryFoodDTO.no }" />
+                            <c:if test="${no eq null }">
+                            	<h1>해당 카테고리 레시피가 존재하지 않습니다.</h1>
+                            </c:if>
+                            <c:forEach var="item" items="${categoryFoodDTO }" >
                             <li class="grid-item wow animate__fadeIn">
                                 <div class="blog-post border-radius-5px bg-white box-shadow-medium">
                                     <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="blog-post-layout-01.html" title=""><img src="resources/images/c.jpg" alt=""></a>
-                                        <a href="blog-masonry.html" class="blog-category alt-font">Creative</a>
+                                        <a href="${app }/recipe/${item.no}" title=""><img src="${item.thumbnail}" alt=""></a>
+                                        <a href="${app }/recipe/foodCategory/${item.foodcategoryno }" class="blog-category alt-font"><c:out value="${item.categoryTitle}" /></a>
                                     </div>
                                     <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
-                                        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">18 February 2020</a>
-                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block"><c:out value="${item.title}" /></a>
-                                        <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>
+                                        <a href="${app }/recipe/${item.no}" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block"><c:out value="${item.title}" /></a>
+                                        <p><c:out value="${item.explanation }"></c:out></p>
                                         <div class="d-flex align-items-center">
-                                            <img class="avtar-image" src="https://placehold.it/125x125" alt=""/>
-                                            <span class="alt-font text-small mr-auto">By <a href="blog-masonry.html">Torrie asai</a></span>
-                                            <a href="blog-post-layout-01.html" class="blog-like alt-font text-extra-small"><i class="far fa-heart"></i><span>28</span></a>
+                                            <span class="alt-font text-small mr-auto">By <a><c:out value="${item.name}" /></a></span>
+                                            <a class="blog-like alt-font text-extra-small"><i class="far fa-heart"></i><span><c:out value="${item.views}" /></span></a>
                                         </div>
                                     </div>
                                 </div>

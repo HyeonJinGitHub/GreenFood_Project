@@ -1,5 +1,6 @@
 package net.developia.greenfood.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,7 @@ public class MainContoller {
 			List<MemberDTO> memberList = mainService.getMember();
 			//recipe
 			List<ArticleDTO> recipeList = mainService.getRecipe();
+			List<ArticleDTO> recipeList2 = new ArrayList<ArticleDTO>();
 			//product
 //			List<ProductDTO> productList = mainService.getProduct();
 			//category
@@ -55,8 +57,16 @@ public class MainContoller {
 			System.out.println("recipeList : " + recipeList);
 //			System.out.println("productList : " + productList);
 			System.out.println("categoryList : " + categoryList);
+			
+			for(ArticleDTO i : recipeList) {
+				String imgurl = i.getThumbnail().replace(" ", "");
+				i.setThumbnail(imgurl);
+				recipeList2.add(i);
+			}
+			
+			
 			mav.addObject("memberDTO", memberList);
-			mav.addObject("recipeDTO", recipeList);
+			mav.addObject("recipeDTO", recipeList2);
 //			mav.addObject("productDTO", productList);
 			mav.addObject("categoryDTO", categoryList);
 			mav.setViewName("main");
@@ -106,8 +116,20 @@ public class MainContoller {
 			recipeSearchDTO.setPagingVO(vo);
 
 			List<RecipeSearchDTO> list = mainService.getSearchRecipe(recipeSearchDTO);
-			System.out.println(list);
-			mav.addObject("RecipeSearchDTO", list);
+			List<RecipeSearchDTO> list2 = new ArrayList<RecipeSearchDTO>();
+			
+			
+			for(RecipeSearchDTO i : list) {
+				String imgurl = i.getThumbnail().replace(" ", "");
+				i.setThumbnail(imgurl);
+				i.setPagingVO(vo);
+				list2.add(i);
+				
+			}
+			System.out.println(list2);
+			
+			
+			mav.addObject("RecipeSearchDTO", list2);
 			mav.addObject("pagingVO", vo);
 			mav.addObject("keyword", recipeSearchDTO.getKeyword());
 			mav.setViewName("searchrecipe");
@@ -158,8 +180,17 @@ public class MainContoller {
 			System.out.println("categoryNo2 : " + categoryFoodDTO.getNo());
 			
 			List<CategoryFoodDTO> categoryFoodList = mainService.getCategoryFood(categoryFoodDTO);
-			System.out.println(categoryFoodList);
-			mav.addObject("categoryFoodDTO", categoryFoodList);
+			List<CategoryFoodDTO> categoryFoodList2 = new ArrayList<CategoryFoodDTO>();
+			System.out.println("categoryFoodList2 : " + categoryFoodList2);
+			
+			for(CategoryFoodDTO i : categoryFoodList) {
+				String imgurl = i.getThumbnail().replace(" ", "");
+				i.setThumbnail(imgurl);
+				i.setPagingVO(vo);
+				categoryFoodList2.add(i);
+				
+			}
+			mav.addObject("categoryFoodDTO", categoryFoodList2);
 			mav.addObject("categoryNo", categoryNo);
 			mav.addObject("pagingVO", vo);
 			mav.setViewName("foodCategory");
