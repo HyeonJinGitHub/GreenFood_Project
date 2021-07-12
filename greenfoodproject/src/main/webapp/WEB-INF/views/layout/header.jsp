@@ -16,9 +16,9 @@
                 <div class="container-fluid nav-header-container">
                     <div class="col-auto col-sm-6 col-lg-2 mr-auto pl-lg-0">
                         <a class="navbar-brand" href="${app }/">
-                            <img src="resources/images/logo-black.png" data-at2x="resources/images/logo-black@2x.png" alt="" class="default-logo">
-                            <img src="resources/images/logo-neon-orange.png" data-at2x="resources/images/logo-neon-orange@2x.png" alt="" class="alt-logo">
-                            <img src="resources/images/logo-neon-orange.png" data-at2x="resources/images/logo-neon-orange@2x.png" class="mobile-logo" alt="">
+                            <img src="${app }/resources/images/logo-black.png" data-at2x="resources/images/logo-black@2x.png" alt="" class="default-logo">
+                            <img src="${app }/resources/images/logo-neon-orange.png" data-at2x="resources/images/logo-neon-orange@2x.png" alt="" class="alt-logo">
+                            <img src="${app }/resources/images/logo-neon-orange.png" data-at2x="resources/images/logo-neon-orange@2x.png" class="mobile-logo" alt="">
                         </a>
                     </div>
                     <div class="col-auto menu-order px-lg-0">
@@ -138,14 +138,14 @@
                             <a href="javascript:void(0);"><i class="feather icon-feather-globe"></i></a>
                             <ul class="dropdown-menu alt-font">
                             <% if(session.getAttribute("id") == null){ %>
-                                <li><a href="${app}/login"  title="로그인"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>로그인</a></li>
-                                <li><a href="${app}/register" title="회원가입"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>회원가입</a></li>
+                                <li><a href="${app}/login"  title="로그인"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>로그인</a></li>
+                                <li><a href="${app}/register" title="회원가입"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>회원가입</a></li>
                             <% }else if(session.getAttribute("id").equals("admin")){%>
-                            	<li><a href="login" title="관리자페이지"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>관리자페이지</a></li>
-                                <li><a href="${app}/logout"  title="로그아웃"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>로그아웃</a></li>
+                            	<li><a href="login" title="관리자페이지"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>관리자페이지</a></li>
+                                <li><a href="${app}/logout"  title="로그아웃"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>로그아웃</a></li>
                             <%}else if(session.getAttribute("id") != null){ %>
-                            	<li><a href="${app}/myinfo"  title="마이페이지"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>마이페이지</a></li>
-                                <li><a href="${app}/logout"  title="로그아웃"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>로그아웃</a></li>
+                            	<li><a href="${app}/myinfo"  title="마이페이지"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>마이페이지</a></li>
+                                <li><a href="${app}/logout"  title="로그아웃"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>로그아웃</a></li>
                             <%} %>
                             </ul>
                         </div>

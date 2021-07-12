@@ -71,17 +71,15 @@
                             <li class="grid-item wow animate__fadeIn">
                                 <div class="blog-post border-radius-5px bg-white box-shadow-medium">
                                     <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="blog-post-layout-01.html" title=""><img src="resources/images/c.jpg" alt=""></a>
-                                        <a href="blog-masonry.html" class="blog-category alt-font">Creative</a>
+                                        <a href="${app }/recipe/${item.no}" title=""><img src="${item.thumbnail}" alt=""></a>
+                                        <a href="${app }/recipe/foodCategory/${item.foodcategoryno }" class="blog-category alt-font"><c:out value="${item.categoryTitle}" /></a>
                                     </div>
                                     <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
-                                        <a href="blog-masonry.html" class="alt-font text-small d-inline-block margin-10px-bottom">18 February 2020</a>
-                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block"><c:out value="${item.title}" /></a>
-                                        <p>Lorem ipsum is simply dummy text printing typesetting industry lorem ipsum been dummy...</p>
+                                        <a href="${app }/recipe/${item.no}" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block"><c:out value="${item.title}" /></a>
+                                        <p><c:out value="${item.explanation }"></c:out></p>
                                         <div class="d-flex align-items-center">
-                                            <img class="avtar-image" src="https://placehold.it/125x125" alt=""/>
-                                            <span class="alt-font text-small mr-auto">By <a href="blog-masonry.html">Torrie asai</a></span>
-                                            <a href="blog-post-layout-01.html" class="blog-like alt-font text-extra-small"><i class="far fa-heart"></i><span>28</span></a>
+                                            <span class="alt-font text-small mr-auto">By <a><c:out value="${item.name}" /></a></span>
+                                            <a class="blog-like alt-font text-extra-small"><i class="far fa-heart"></i><span><c:out value="${item.views}" /></span></a>
                                         </div>
                                     </div>
                                 </div>
