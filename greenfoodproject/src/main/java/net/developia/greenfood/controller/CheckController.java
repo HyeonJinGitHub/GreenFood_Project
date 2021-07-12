@@ -3,9 +3,11 @@ package net.developia.greenfood.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import net.developia.greenfood.dto.MemberDTO;
 import net.developia.greenfood.service.MemberService;
@@ -25,13 +28,13 @@ import net.developia.greenfood.util.IdFormatterUtil;
 public class CheckController {
 	@Autowired
 	private MemberService memberService;
-	
+
 	private static Logger logger = LoggerFactory.getLogger(MemberController.class);
-	
+
 	@PostMapping("/idcheck")
 	@ResponseBody
 	public int idcheck(@RequestParam(required = true) String id) {
-		if(id.equals("")) {
+		if (id.equals("")) {
 			return 2;
 		}
 		try {
@@ -44,11 +47,11 @@ public class CheckController {
 			return 1;
 		}
 	}
-	
+
 	@PostMapping("/emailcheck")
 	@ResponseBody
 	public int emailcheck(@RequestParam(required = true) String email) {
-		if(email.equals("")) {
+		if (email.equals("")) {
 			return 2;
 		}
 		try {
@@ -61,11 +64,11 @@ public class CheckController {
 			return 1;
 		}
 	}
-	
+
 	@PostMapping("/phonecheck")
 	@ResponseBody
 	public int phonecheck(@RequestParam(required = true) String phone) {
-		if(phone.equals("")) {
+		if (phone.equals("")) {
 			return 2;
 		}
 		try {
@@ -78,11 +81,11 @@ public class CheckController {
 			return 1;
 		}
 	}
-	
+
 	@PostMapping("/sendSMS.do")
 	@ResponseBody
 	@Transactional
-    public String sendSms(@RequestParam(required = true) String phone) throws Exception {
+	public String sendSms(@RequestParam(required = true) String phone) throws Exception {
 //
 //      String api_key = "NCSNMVSIIENHF4CW";
 //      String api_secret = "8LJLY5E24LEPFMQZOX1KOHAUKKNKAGNN";
@@ -126,24 +129,25 @@ public class CheckController {
 //        System.out.println(result.get("message")); // 에러메시지
 //        return false;
 //      }
-       return "1234";
-    }
-	
+		return "1234";
+	}
+
 	@PostMapping("/logincheck")
 	@ResponseBody
-	public boolean logincheck(HttpSession session, @RequestParam(required = true) String id, @RequestParam(required = true) String pwd) {
+	public boolean logincheck(HttpSession session, @RequestParam(required = true) String id,
+			@RequestParam(required = true) String pwd) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("ID", id);
 		map.put("PASSWORD", DigestUtils.sha512Hex(pwd));
 		try {
 			memberService.login(map);
-			List<MemberDTO> output = (List)map.get("MemberList");
+			List<MemberDTO> output = (List) map.get("MemberList");
 			MemberDTO memberDTO = output.get(0);
 			IdFormatterUtil masking = new IdFormatterUtil();
-			
-			session.setAttribute("id", memberDTO.getId()); 
+
+			session.setAttribute("id", memberDTO.getId());
 			session.setAttribute("name", masking.maskingName(memberDTO.getName()));
-			session.setAttribute("email", masking.maskingEmail(memberDTO.getEmail())); 
+			session.setAttribute("email", masking.maskingEmail(memberDTO.getEmail()));
 			session.setAttribute("phone", masking.maskingPhone(memberDTO.getPhone()));
 			return true;
 		} catch (Exception e) {
@@ -151,5 +155,33 @@ public class CheckController {
 			return false;
 		}
 	}
-	
+
+	public ModelAndView GoogleLogin(HttpSession session,  JSONObject jobj) {
+		ModelAndView mav = new ModelAndView("result");
+		mav.addObject("jobj", jobj);
+		mav.addObject("url", "/greenfood/");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("ID", jobj.get("id"));
+		map.put("NAME", jobj.get("name"));
+		map.put("EMAIL", jobj.get("email"));
+		map.put("NICKNAME", jobj.get("given_name"));
+		map.put("IMAGE", jobj.get("picture").toString().replace("\\", ""));
+		try {
+			memberService.loginByGoogle(map);
+			List<MemberDTO> output = (List) map.get("MemberList");
+			MemberDTO dto = output.get(0);
+			IdFormatterUtil masking = new IdFormatterUtil();
+			session.setAttribute("id", dto.getId());
+			session.setAttribute("name", masking.maskingName(dto.getName()));
+			session.setAttribute("email", masking.maskingEmail(dto.getEmail()));
+			session.setAttribute("phone", "알 수 없음");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("CheckController##=>" + jobj.toString());
+		return mav;
+	}
+
 }
