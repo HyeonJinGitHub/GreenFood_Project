@@ -7,20 +7,20 @@
 			select b.*
 			from(
 			        select * 
-			        from testMember
+			        from member
 			    )b
 			where rownum <= 4
 		]]>
 	</select>
 	  
-	<select id="getRecipe"  resultType="RecipeSearchDTO" parameterType="RecipeSearchDTO">
+	<select id="getSearchRecipe"  resultType="RecipeSearchDTO" parameterType="RecipeSearchDTO">
 		<![CDATA[
 				SELECT * 
 				FROM (
 					SELECT ROWNUM RN, A.* 
 						FROM (
 								SELECT * 
-								FROM TestRecipe 
+								FROM recipe 
 								where title like '%' || #{keyword} || '%'
 								) A
 						)
@@ -32,9 +32,51 @@
 	<select id="countRecipe"  resultType="int" parameterType="String">
 		<![CDATA[
 			select count(*)
-			from TestRecipe
+			from recipe
 			where title like '%' || #{keyword} || '%'
 			
+		]]>
+	</select>
+	
+	<select id="getRecipe"  resultType="ArticleDTO">
+	<![CDATA[
+		select b.*
+		from(
+		        select * 
+		        from recipe
+		    )b
+		where rownum <= 5
+		
+	]]>
+	</select>
+	
+	<select id="getCategory"  resultType="FoodCategoryDTO">
+	<![CDATA[
+	
+		select * 
+		from  (select * from foodcategory
+			   order by dbms_random.value
+			  )
+        where rownum <= 3
+		
+	]]>
+	</select>
+	
+	<select id="countCategoryFood"  resultType="int" parameterType="CategoryFoodDTO">
+		<![CDATA[
+		
+			select count(*)
+			from recipe r, foodCategory b
+			where r.foodcategoryno = b.no and b.no = #{no}
+			
+		]]>
+	</select>
+	
+	<select id="getCategoryFood"  resultType="CategoryFoodDTO" parameterType="CategoryFoodDTO" >
+		<![CDATA[
+			select r.*
+			from recipe r, foodCategory b
+			where r.foodcategoryno = b.no and b.no = #{no}
 		]]>
 	</select>
 	

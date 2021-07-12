@@ -6,9 +6,10 @@
 <c:url var="email-templates" value='/resources/email-templates' />
 
 <c:set var="app" value="${pageContext.request.contextPath}" />
-<c:set var="RecipeSearchDTO" value="${RecipeSearchDTO }" />
+<c:set var="categoryFoodDTO" value="${categoryFoodDTO }" />
 <c:set var="pagingVO" value="${pagingVO }" />
-<c:set var="keyword" value="${keyword }" />
+<c:set var="categoryNo" value="${categoryNo }" />
+
 
 <c:url var="js" value='/resources/js' />
 <!doctype html>
@@ -46,7 +47,7 @@
            <div class="row justify-content-center">
                <div class="col-12 col-lg-7 col-md-9 d-flex flex-column justify-content-center align-items-center small-screen">
                    <div class="page-title-large text-center margin-40px-bottom">
-                       <h1 class="alt-font text-darkgrey font-weight-500 letter-spacing-minus-1 mb-0">검색결과 : <c:out value="${keyword }" /></h1>
+                       <h1 class="alt-font text-darkgrey font-weight-500 letter-spacing-minus-1 mb-0">카테고리 : <c:out value="${categoryNo }" /></h1>
                    </div>
                    <div class="newsletter-style-02 position-relative w-100">
                        <form action="${app}/reciep" method="get">

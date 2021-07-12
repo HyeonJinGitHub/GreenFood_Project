@@ -14,60 +14,60 @@
                     <div class="row justify-content-center">
                         <!-- start footer column -->
                         <div class="col-12 col-lg col-md-3 col-sm-4 md-margin-40px-bottom xs-margin-25px-bottom">
-                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">현대백화점</span>
+                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">현대백화점 그룹사</span>
                             <ul>
-                                <li><a href="shop-wide.html">For men</a></li>
-                                <li><a href="shop-wide.html">For woman</a></li>
-                                <li><a href="shop-wide.html">Accessories</a></li>
-                                <li><a href="shop-wide.html">Collections</a></li>
+                                <li><a href="https://www.ehyundai.com/newPortal/index.do">현대백화점</a></li>
+                                <li><a href="https://hyundaigreenfood.com/po/INDEX.hgc">현대그린푸드</a></li>
+                                <li><a href="https://www.hmall.com/p/index.do">현대홈쇼핑</a></li>
+                                <li><a href="https://www.hddfs.com/shop/dm/main.do">현대백화점면세점</a></li>
                             </ul>
                         </div>
                         <!-- end footer column -->
                         <!-- start footer column -->
                         <div class="col-12 col-lg col-md-3 col-sm-4 md-margin-40px-bottom xs-margin-25px-bottom">
-                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">현대그린푸드</span>
+                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">　</span>
                             <ul>
-                                <li><a href="about-us.html">About company</a></li>
-                                <li><a href="our-services.html">Our services</a></li>
-                                <li><a href="blog-grid.html">Latest blogs</a></li>
-                                <li><a href="contact-us-classic.html">Contact us</a></li>
+                                <li><a href="http://www.hyundaicatering.co.kr/">현대캐이터링서비스</a></li>
+                                <li><a href="http://www.cnsfoodsystem.co.kr/">C&S푸드시스템</a></li>
+                                <li><a href="https://www.handsome.co.kr/ko/main.do">한섬</a></li>
+                                <li><a href="https://www.hyundailivart.co.kr/index">현대리바트</a></li>
                             </ul>
                         </div>
                         <!-- end footer column -->
                         <!-- start footer column -->
                         <div class="col-12 col-lg col-md-3 col-sm-4 md-margin-40px-bottom xs-margin-25px-bottom">
-                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">현대홈쇼핑</span>
+                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">　</span>
                             <ul>                           
-                                <li><a href="faq.html">Theme guide</a></li>
-                                <li><a href="faq.html">Support desk</a></li>
-                                <li><a href="faq.html">What we offer</a></li>
-                                <li><a href="faq.html">Return</a></li>
+                                <li><a href="https://www.hyundaimedia.com/mpp/index.hcn">현대미디어</a></li>
+                                <li><a href="https://www.hcn.co.kr/corp/index.do">현대HCN</a></li>
+                                <li><a href="https://www.hyundaieverdigm.com/">에버다임</a></li>
+                                <li><a href="http://www.hyundai-ite.com/index.jsp">현대IT&E</a></li>
                             </ul>
                         </div>
                         <!-- end footer column -->
                         <!-- start footer column -->
                         <div class="col-12 col-lg col-md-3 col-sm-6 xs-margin-25px-bottom">
-                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">현대면세점</span>
+                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">쇼핑몰 사이트</span>
                             <ul>
-                                <li><a href="faq.html">Free delivery</a></li>
-                                <li><a href="faq.html">100 days refund</a></li>
-                                <li><a href="faq.html">Multiple payments</a></li>
-                                <li><a href="faq.html">Sustainable</a></li>
+                                <li><a href="https://www.thehyundai.com/Home.html">더 현대닷컴</a></li>
+                                <li><a href="http://esuper.ehyundai.com/">E수퍼마켓</a></li>
+                                <li><a href="https://www.hmall.com/p/index.do">현대Hmall</a></li>
+                                <li><a href="https://www.h-vrstation.com/main">VR STATION</a></li>
                             </ul>
                         </div>
-                        <!-- end footer column -->     
-                        <div class="col-12 col-lg-3 col-sm-6 order-5 order-lg-0 text-md-center text-lg-left">
-                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">Subscribe to newsletter</span>
-                            <p>Enter your email address for receiving valuable newsletters.</p>
-                            <form action="email-templates/subscribe-newsletter.php" method="post">
-                                <div class="newsletter-style-03 position-relative margin-25px-bottom xs-margin-15px-bottom">
-                                    <input class="medium-input bg-white m-0 border-radius-4px required" name="email" placeholder="Enter your email address" type="email">
-                                    <input type="hidden" name="redirect" value="">
-                                    <button class="btn no-border text-medium submit"><i class="feather icon-feather-mail m-0"></i></button>
-                                    <div class="form-results border-radius-4px position-absolute d-none"></div>
-                                </div>
-                            </form>
+                        <!-- end footer column -->
+                         <!-- start footer column -->
+                        <div class="col-12 col-lg col-md-3 col-sm-6 xs-margin-25px-bottom">
+                            <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">　</span>
+                            <ul>
+                                <li><a href="https://www.hddfs.com/shop/dm/main.do?ptnrChlCd=00003014">현대백화점 DUTY FREE</a></li>
+                                <li><a href="https://mall.hyundailivart.co.kr/index">현대리바트몰</a></li>
+                                <li><a href="https://www.hfashionmall.com/main">H패션몰</a></li>
+                                <li><a href="http://www.thehandsome.com/ko/?gclid=Cj0KCQjwraqHBhDsARIsAKuGZeHgO8RBqwL2cId8R_37_3xRpxb79BAADLVxJqdBBaR8fR7qu5-2zQAaAildEALw_wcB">더한섬</a></li>
+                            </ul>
                         </div>
+                        <!-- end footer column -->        
+                    
                     </div>
                 </div>
             </div>
