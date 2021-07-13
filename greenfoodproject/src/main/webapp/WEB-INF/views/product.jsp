@@ -4,6 +4,7 @@
     %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -74,7 +75,7 @@
 	                                    <!-- start product footer -->
 	                                    <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
 	                                        <a href="${contextPath}/productDetail?no=${item.value[0]}" class="text-extra-dark-gray font-weight-500 d-inline-block">${item.value[1] }</a>
-	                                        <div class="product-price text-medium">￦ ${item.value[2] }</div>
+	                                        <div class="product-price text-medium">￦ <f:formatNumber value="${item.value[2] }" pattern="#,###,###"></f:formatNumber></div>
 	                                    </div>
 	                                    <!-- end product footer -->
 	                                </div>

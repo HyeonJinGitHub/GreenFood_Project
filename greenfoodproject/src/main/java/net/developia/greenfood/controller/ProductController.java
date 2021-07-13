@@ -299,15 +299,29 @@ public class ProductController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("ID", session.getAttribute("id"));
 		map.put("ORDER_DATE", order_date);
-		System.out.println("order map : " + map.toString());
 		try {
 			productService.insertOrderlist(map);
-			System.out.println("�뿬湲곌퉴吏��뒗 �꽦怨�~");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("insertOrder �꽌鍮꾩뒪 �샇異쒗븯�뒗 寃껋뿉�꽌 �뿉�윭");
 		return false;
 	}
+	
+	@RequestMapping(value="/selectshoppingcart", method=RequestMethod.POST, produces = "application/text; charset=UTF-8")
+	@ResponseBody
+	public String selectshoppingcart(HttpSession session) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("ID", session.getAttribute("id"));
+		try {
+			productService.selectshoppingcart(map);
+			List<CartDTO> data = (List) map.get("CartList");
+			String json = new Gson().toJson(data);
+			return json;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 }

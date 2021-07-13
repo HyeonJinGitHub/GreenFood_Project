@@ -4,6 +4,7 @@
     %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -75,7 +76,7 @@
 	                                            <td class="product-name">
 	                                                <a href="${contextPath}/productDetail?no=${item.value.no}">${item.value.name }</a>
 	                                            </td>
-	                                            <td class="product-price" data-title="Price">￦ ${item.value.price }</td>
+	                                            <td class="product-price" data-title="Price">￦ <f:formatNumber value="${item.value.price }" pattern="#,###,###"></f:formatNumber></td>
 	                                            <td class="product-quantity" data-title="Quantity">
 	                                                <div class="quantity" >
 	                                                    <label class="screen-reader-text">수량</label>
@@ -84,7 +85,7 @@
 	                                                    <input type="button" id="quantity_plus_${item.value.no}" name="${item.value.no}" value="+" class="qty-plus qty-btn quantity_plus" data-quantity="plus" data-field="quantity">
 	                                                </div>
 	                                            </td> 
-	                                            <td class="product-subtotal" data-title="Total">￦ ${item.value.quantity * item.value.price}</td> 
+	                                            <td class="product-subtotal" data-title="Total">￦ <f:formatNumber value="${item.value.quantity * item.value.price}" pattern="#,###,###"></f:formatNumber></td> 
 	                                            <td class="product-name" data-title="Price"> ${item.value.order_date}</td> 
                                         	</tr>
                                     	</c:forEach>

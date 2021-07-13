@@ -7,6 +7,7 @@
 <head>
 <link rel="icon" type="image/png" sizes="" href="">
 <meta charset="UTF-8">
+<script type="text/javascript" src="resources/js/jquery.min.js"></script>
 </head>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap');
@@ -127,13 +128,15 @@ body{
                             <%} %>
                             </ul>
                         </div>
+
                         <div class="header-cart-icon dropdown margin-10px-right">
                             <a href="javascript:void(0);"><i class="feather icon-feather-shopping-bag font-weight-600"></i><span class="cart-count alt-font bg-dark-orange text-white">2</span></a>
-                            <ul class="dropdown-menu cart-item-list">
+                            <ul id="myul" class="dropdown-menu cart-item-list">
+
                             <% if(session.getAttribute("id") != null){ %>
                                 <li class="cart-item align-items-center">
                                     <div class="product-image">
-                                        <a href="single-product.html"><img src="${app }/resources/images/c.jpg"" class="cart-thumb" alt="" /></a>
+                                        <a href="single-product.html"><img src="${app }/resources/images/c.jpg" class="cart-thumb" alt="" /></a>
                                     </div>
                                     <div class="product-detail alt-font">
                                         <a href="single-product.html">치킨 샐러드</a>
@@ -142,7 +145,7 @@ body{
                                 </li>
                    			<%} %>
                                 <li class="cart-item cart-total">
-                                    <div class="alt-font margin-15px-bottom"><span class="w-50 d-inline-block text-medium text-uppercase">합계:</span><span class="w-50 d-inline-block text-right text-medium font-weight-500">19,999원</span></div>
+                                    <div class="alt-font margin-15px-bottom"><span class="w-50 d-inline-block text-medium text-uppercase">합계:</span><span class="w-50 d-inline-block text-right text-medium font-weight-500">0원</span></div>
                                     <% if(session.getAttribute("id") == null){ %>
                                     <a href="${app}/login"  class="btn btn-small btn-dark-gray">로그인</a>
                                     <%}else if(session.getAttribute("id") != null){ %>
@@ -156,5 +159,42 @@ body{
             </nav>
         </header>
         <!-- end header -->
+    <script>
+		$(document).ready(function() {
+			var id = '${id}';
+			var new_page = '';
+			var total = 0;
+			if(id != null && id) {
+				$.ajax({
+					async: false,
+					type: 'POST',
+					url : '/greenfood/selectshoppingcart',
+					success : function(data) {
+						var new_data = JSON.parse(data);
+						for(var i=0;i<new_data.length;i++) {
+							total += parseInt(new_data[i].price);
+							new_page += '<li class="cart-item align-items-center">'
+								+ '<div class="product-image">'
+								+ '<a href="${contextPath}/productDetail?no='+new_data[i].no+'"><img src="'+new_data[i].image+'" class="cart-thumb" alt="" /></a>'
+								+ '</div>'
+								+ '<div class="product-detail alt-font">'
+								+ '<a href="${contextPath}/productDetail?no='+new_data[i].no+'">'+new_data[i].name+'</a>'
+								+ '<span class="item-ammount">'+new_data[i].price.toLocaleString()+'원</span>'		
+								+ '</div>'
+								+ '</li>';
+						}
+						new_page += '<li class="cart-item cart-total">'
+							+ '<div class="alt-font margin-15px-bottom"><span class="w-50 d-inline-block text-medium text-uppercase">합계:</span><span class="w-50 d-inline-block text-right text-medium font-weight-500">'+total.toLocaleString()+'원</span></div>'
+							+ '<a href="${app}/shoppingcart"  class="btn btn-small btn-dark-gray">장바구니</a>'
+							+ '</li>';
+						$("#myul").html(new_page);
+					},
+					error : function(error) {
+						alert('error : ' + JSON.stringify(error));
+					}
+				});
+			}
+		});
+	</script>
 </body>
 </html>

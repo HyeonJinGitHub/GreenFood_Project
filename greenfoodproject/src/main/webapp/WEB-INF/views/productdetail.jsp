@@ -4,6 +4,7 @@
     %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -77,7 +78,7 @@
                             <div class="d-flex align-items-center margin-3-half-rem-tb md-margin-1-half-rem-tb">
                                 <div class="flex-grow-1">
                                     <div class="text-extra-dark-gray font-weight-500 text-extra-large alt-font margin-5px-bottom">${productDTO.name}</div>
-                                    <span class="product-price text-extra-medium"><del>￦${productDTO.price + 6000}</del> -> ￦${productDTO.price }</span>
+                                    <span class="product-price text-extra-medium"><del>￦ <f:formatNumber value="${productDTO.price + 6000}" pattern="#,###,###"></f:formatNumber></del> -> ￦ <f:formatNumber value="${productDTO.price }" pattern="#,###,###"></f:formatNumber> </span>
                                 </div>
                                 <div class="text-right line-height-30px">
                                     <div><a href="#" class="letter-spacing-3px"><i class="fas fa-star text-very-small text-golden-yellow"></i><i class="fas fa-star text-very-small text-golden-yellow"></i><i class="fas fa-star text-very-small text-golden-yellow"></i><i class="fas fa-star text-very-small text-golden-yellow"></i><i class="fas fa-star text-very-small text-golden-yellow"></i></a></div>
