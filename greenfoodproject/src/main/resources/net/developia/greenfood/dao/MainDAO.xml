@@ -6,8 +6,11 @@
 		<![CDATA[
 			select b.*
 			from(
-			        select * 
-			        from member
+			        select   m.nickname, sum(likes) likes, sum(views) views ,m.profile_img,m.id
+					from member m,recipe r 
+					where r.id = m.id 
+					group by m.nickname,m.profile_img,m.id
+					order by likes+views desc
 			    )b
 			where rownum <= 4
 		]]>
@@ -41,9 +44,10 @@
 	<![CDATA[
 		select b.*
 		from(
-		        select *
-                from recipe
-                order by views + likes desc
+            select r.* , rs.step_img
+            from recipe r,recipe_step rs
+            where r.no = rs.recipe_no and rs.step_no = 1
+            order by r.views + r.likes desc
 		    )b
 		where rownum <= 5
 		
@@ -105,7 +109,7 @@
 		]]>
 	</select>
 	
-		<select id="getCategoryFoodAll"  resultType="CategoryFoodDTO" parameterType="CategoryFoodDTO" >
+	<select id="getCategoryFoodAll"  resultType="CategoryFoodDTO" parameterType="CategoryFoodDTO" >
 		<![CDATA[
 				SELECT * 
 				FROM (
@@ -119,5 +123,29 @@
 				WHERE RN BETWEEN #{pagingVO.start} AND #{pagingVO.end}
 		]]>
 	</select>
+	
+	<select id="getProduct"  resultType="ProductDTO"  >
+		<![CDATA[
+			select b.*
+			from(
+                    select * 
+                    from product
+			    )b
+			where rownum <= 5
+		]]>
+	</select>
+	
+		<select id="getShoppingCart"  resultType="ShoppingCartDTO"  >
+		<![CDATA[
+			select b.*
+			from(
+                    select * 
+                    from shoppingcart
+                    where member_id = #{id}
+			    )b
+			where rownum <= 2
+		]]>
+	</select>
+	
 	
 </mapper>

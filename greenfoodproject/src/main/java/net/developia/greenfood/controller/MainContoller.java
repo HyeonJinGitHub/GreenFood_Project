@@ -3,6 +3,8 @@ package net.developia.greenfood.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.amazonaws.services.appstream.model.Session;
+
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.developia.greenfood.dto.ArticleDTO;
@@ -21,8 +25,10 @@ import net.developia.greenfood.dto.CategoryFoodDTO;
 import net.developia.greenfood.dto.FoodCategoryDTO;
 import net.developia.greenfood.dto.MemberDTO;
 import net.developia.greenfood.dto.PagingVO;
+import net.developia.greenfood.dto.ProductDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.RecipeSearchDTO;
+import net.developia.greenfood.dto.ShoppingCartDTO;
 import net.developia.greenfood.service.MainService;
 
 @Controller
@@ -35,9 +41,12 @@ public class MainContoller {
 	/*
 	 * @ 작성자 : 이효범
 	 * @ 작성일자 : 210705
+	 * @ 메모 : 메인에 뿌려주는 데이터
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView Main() {
+	public ModelAndView Main(
+			HttpSession session
+			) {
 		System.out.println("Main Controller");
 
 		ModelAndView mav = new ModelAndView();
@@ -49,25 +58,50 @@ public class MainContoller {
 			List<ArticleDTO> recipeList = mainService.getRecipe();
 			List<ArticleDTO> recipeList2 = new ArrayList<ArticleDTO>();
 			//product
-//			List<ProductDTO> productList = mainService.getProduct();
+			List<ProductDTO> productList = mainService.getProduct();
+			List<ProductDTO> productList1 = new ArrayList<ProductDTO>();
+			List<ProductDTO> productList2 = new ArrayList<ProductDTO>();
+			List<ProductDTO> productList3 = new ArrayList<ProductDTO>();
+			List<ProductDTO> productList4 = new ArrayList<ProductDTO>();
+			List<ProductDTO> productList5 = new ArrayList<ProductDTO>();
+			
 			//category
 			List<FoodCategoryDTO> categoryList = mainService.getCategory();
 			
+			//cart
+			if(session.getAttribute("id") != null) {
+				System.out.println("쇼핑카트진입");
+				String id = (String) session.getAttribute("id");
+				List<ShoppingCartDTO> shoppingCartList = mainService.getShoppingCart(id);
+				List<ShoppingCartDTO> shoppingCartList2 = new ArrayList<ShoppingCartDTO>();
+				System.out.println("shoppingCartList : " + shoppingCartList);
+				for(ShoppingCartDTO i : shoppingCartList) {
+					String imgurl = i.getImage().replace(" ", "");
+					i.setImage(imgurl);
+					shoppingCartList2.add(i);
+				}
+				mav.addObject("shoppingCartDTO", shoppingCartList2);
+			}
+			
+			
+			
 			System.out.println("memberList : " + memberList);
 			System.out.println("recipeList : " + recipeList);
-//			System.out.println("productList : " + productList);
+			System.out.println("productList : " + productList);
 			System.out.println("categoryList : " + categoryList);
 			
 			for(ArticleDTO i : recipeList) {
 				String imgurl = i.getThumbnail().replace(" ", "");
 				i.setThumbnail(imgurl);
+				String step_img = i.getStep_img().replace(" ", "");
+				i.setStep_img(step_img);
 				recipeList2.add(i);
 			}
 			
 			
 			mav.addObject("memberDTO", memberList);
 			mav.addObject("recipeDTO", recipeList2);
-//			mav.addObject("productDTO", productList);
+			mav.addObject("productDTO", productList);
 			mav.addObject("categoryDTO", categoryList);
 			mav.setViewName("main");
 		} catch (Exception e) {
