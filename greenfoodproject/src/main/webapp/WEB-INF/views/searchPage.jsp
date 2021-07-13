@@ -386,7 +386,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body ksy-modal-body-additional-css">
 					<div class="row">
 						<div class="col-lg-6">
 							<div id="ingredientList" class="modal-color-ksy modal-scroll-ksy" ></div>
