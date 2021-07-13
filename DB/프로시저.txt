@@ -1,3 +1,11 @@
+create sequence ordering_no_seq
+increment by 1
+start with 1
+minvalue 1
+maxvalue 100
+nocycle
+nocache;
+
 DROP TABLE member CASCADE CONSTRAINTS;
 
 CREATE TABLE member (
@@ -59,6 +67,24 @@ ALTER TABLE shoppingcart
     ADD CONSTRAINT shoppingcart_member_fk FOREIGN KEY ( member_id )
         REFERENCES member ( id );
 
+DROP TABLE ordering CASCADE CONSTRAINTS;
+
+CREATE TABLE ordering (
+    ordering_no  NUMBER(10) NOT NULL,
+    member_id    VARCHAR2(1000) NOT NULL,
+    no           NUMBER(5) NOT NULL,
+    name         VARCHAR2(100) NOT NULL,
+    price        NUMBER(10) NOT NULL,
+    quantity     NUMBER(5) NOT NULL,
+    image        VARCHAR2(1000) NOT NULL,
+    order_date   VARCHAR2(100) NOT NULL
+);
+
+ALTER TABLE ordering ADD CONSTRAINT ordering_pk PRIMARY KEY ( ordering_no );
+
+ALTER TABLE ordering
+    ADD CONSTRAINT ordering_member_fk FOREIGN KEY ( member_id )
+        REFERENCES member ( id );
 
 drop package member_pkg;
 
@@ -282,6 +308,12 @@ is
     procedure selectProductByNo(
     input_no in number,
     res_cur out sys_refcursor);
+    
+    procedure insertOrderlist(input_id in varchar2,
+    input_order_date in varchar2);
+    
+    procedure select_ordering(input_id in varchar2,
+    res_cur out sys_refcursor);
 end product_pkg;
 
 create or replace package body product_pkg
@@ -401,6 +433,40 @@ is
         from product
         where no = input_no;
     end selectProductByNo;
+    
+    procedure insertOrderlist(input_id in varchar2,
+    input_order_date in varchar2)
+    as
+        V_SHOPPINGCART_ROW shoppingcart%ROWTYPE;
+        CURSOR now_cur is
+            select * from shoppingcart
+            where member_id = input_id;
+    begin        
+        open now_cur;
+        loop
+            fetch now_cur into V_SHOPPINGCART_ROW;
+            EXIT WHEN now_cur%NOTFOUND;
+            insert into ordering
+            values(ordering_no_seq.nextval, 
+            V_SHOPPINGCART_ROW.member_id, V_SHOPPINGCART_ROW.no,
+            V_SHOPPINGCART_ROW.name, V_SHOPPINGCART_ROW.price,
+            V_SHOPPINGCART_ROW.quantity, V_SHOPPINGCART_ROW.image,
+            input_order_date);
+        end loop;    
+        delete from shoppingcart
+        where member_id = input_id;
+        commit;
+    end insertOrderlist;
+    
+    procedure select_ordering(input_id in varchar2,
+    res_cur out sys_refcursor)
+    as
+    begin
+        open res_cur for
+        select *
+        from ordering
+        where member_id = input_id;
+    end select_ordering;
 end product_pkg;
 
 insert into product
@@ -426,3 +492,4 @@ commit;
 select * from member;
 select * from product;
 select * from shoppingcart;
+select * from ordering;
