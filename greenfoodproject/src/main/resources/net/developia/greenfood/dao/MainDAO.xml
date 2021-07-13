@@ -22,7 +22,7 @@
 				FROM (
 					SELECT ROWNUM RN, A.* 
 						FROM (
-                                select r.*,m.name,f.title categoryTitle
+                                select r.*,m.name,f.title categoryTitle,m.nickname
                                 from recipe r, member m, foodcategory f
                                 where (r.id = m.id and r.foodcategoryno = f.no) and r.title like '%' || #{keyword} || '%'
 								) A
@@ -82,7 +82,7 @@
 				FROM (
 					SELECT ROWNUM RN, A.* 
 						FROM (
-                                select r.*,m.name,f.title categoryTitle
+                                select r.*,m.name,m.nickname, f.title categoryTitle
                                 from recipe r, member m, foodcategory f
                                 where (r.id = m.id and r.foodcategoryno = f.no) and f.no = #{no}
 								) A
@@ -115,7 +115,7 @@
 				FROM (
 					SELECT ROWNUM RN, A.* 
 						FROM (
-                                select r.*,m.name,f.title categoryTitle
+                                select r.*,m.name,f.title categoryTitle,m.nickname
                                 from recipe r, member m, foodcategory f
                                 where (r.id = m.id and r.foodcategoryno = f.no) 
 								) A
