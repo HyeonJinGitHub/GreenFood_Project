@@ -1,7 +1,7 @@
 DROP TABLE member CASCADE CONSTRAINTS;
 
 CREATE TABLE member (
-    id        VARCHAR2(30) NOT NULL,
+    id        VARCHAR2(1000) NOT NULL,
     password  VARCHAR2(1000),
     name      VARCHAR2(50) NOT NULL,
     email     VARCHAR2(50) NOT NULL,
@@ -96,6 +96,17 @@ is
     input_email in varchar2,
     input_nickname in varchar2,
     input_image in varchar2,
+    res_cur out sys_refcursor);
+    
+    procedure select_memberbyid(input_id in varchar2,
+    res_cur out sys_refcursor);
+    
+    procedure login_naver(input_id in varchar2,
+    input_name in varchar2,
+    input_email in varchar2,
+    input_phone in varchar2,
+    input_image in varchar2,
+    input_nickname in varchar2,
     res_cur out sys_refcursor);
 end member_pkg;
 
@@ -197,6 +208,40 @@ is
         where id = input_id;
     end login_google;
     
+    procedure select_memberbyid(input_id in varchar2,
+    res_cur out sys_refcursor)
+    as
+    begin
+        open res_cur for
+        select *
+        from member
+        where id = input_id;
+    end select_memberbyid;
+    
+    procedure login_naver(input_id in varchar2,
+    input_name in varchar2,
+    input_email in varchar2,
+    input_phone in varchar2,
+    input_image in varchar2,
+    input_nickname in varchar2,
+    res_cur out sys_refcursor)
+    as
+        cnt number(5) := 0;
+    begin
+        select count(*) into cnt
+        from member
+        where id = input_id;
+        
+        if cnt = 0 then
+            insert into member(id, password, name, email, phone, profile_img, nickname)
+            values(input_id, null, input_name, input_email, input_phone, input_image, input_nickname);
+            commit;
+        end if;
+        open res_cur for
+        select * 
+        from member
+        where id = input_id;
+    end login_naver;
 end member_pkg;
 
 drop package product_pkg;
@@ -228,6 +273,14 @@ is
     procedure quantityUpdate(input_id in varchar2,
     input_no in number,
     input_cnt in number,
+    res_cur out sys_refcursor);
+    
+    procedure removeProduct(input_id in varchar2,
+    input_no in number,
+    res_cur out sys_refcursor);
+    
+    procedure selectProductByNo(
+    input_no in number,
     res_cur out sys_refcursor);
 end product_pkg;
 
@@ -323,6 +376,31 @@ is
         from shoppingcart
         where member_id = input_id;
     end quantityUpdate;
+    
+    procedure removeProduct(input_id in varchar2,
+    input_no in number,
+    res_cur out sys_refcursor)
+    as
+    begin
+        delete from shoppingcart
+        where member_id = input_id and no = input_no;
+        commit;
+        
+        open res_cur for
+        select *
+        from shoppingcart
+        where member_id = input_id;
+    end removeProduct;
+    
+    procedure selectProductByNo(input_no in number,
+    res_cur out sys_refcursor)
+    as
+    begin
+        open res_cur for
+        select *
+        from product
+        where no = input_no;
+    end selectProductByNo;
 end product_pkg;
 
 insert into product
@@ -346,4 +424,5 @@ values(1, 'https://d3gr4nmrit7xq0.cloudfront.net/%EC%BD%A9%EA%B5%AD%EC%88%982.jp
 commit;
 
 select * from member;
+select * from product;
 select * from shoppingcart;

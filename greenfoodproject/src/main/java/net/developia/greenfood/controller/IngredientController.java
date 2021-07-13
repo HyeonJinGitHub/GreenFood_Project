@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.developia.greenfood.dto.IngredientDTO;
-import net.developia.greenfood.dto.RecipeDTO;
+import net.developia.greenfood.dto.IngredientSearchRecipeDTO;
 import net.developia.greenfood.service.IngredientService;
 
 @Controller
@@ -79,8 +79,14 @@ public class IngredientController {
 			Map<String, Object> hm = new HashMap<>();
 			hm.put("ingredientList", ingredientList);
 
+			List<IngredientSearchRecipeDTO> recipeList;
+
 			// 재료 기반 레시피 검색 결과 저장
-			List<RecipeDTO> recipeList = ingredientService.getRecipeList(hm);
+			if (ingredientList.size() == 0) {
+				recipeList = ingredientService.getAllRecipeList();
+			} else {
+				recipeList = ingredientService.getRecipeList(hm);
+			}
 
 			result.put("recipeList", recipeList);
 			result.put("ingredientList", ingredientList);

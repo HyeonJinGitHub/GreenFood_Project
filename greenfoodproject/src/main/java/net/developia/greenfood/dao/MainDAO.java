@@ -32,4 +32,10 @@ public interface MainDAO {
 	public int countCategoryFood(CategoryFoodDTO categoryFoodDTO) throws SQLException;
 	
 	public List<CategoryFoodDTO> getCategoryFood(CategoryFoodDTO categoryFoodDTO) throws SQLException;
+	
+	public String getCategoryTitle(int categoryNo) throws SQLException;
+	
+	public int countCategoryFoodAll() throws SQLException;
+	
+	public List<CategoryFoodDTO> getCategoryFoodAll(CategoryFoodDTO categoryFoodDTO) throws SQLException;
 }

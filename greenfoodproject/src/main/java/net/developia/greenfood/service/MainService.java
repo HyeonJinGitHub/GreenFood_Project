@@ -26,4 +26,10 @@ public interface MainService {
 	public int countCategoryFood(CategoryFoodDTO categoryFoodDTO) throws Exception;
 	
 	public List<CategoryFoodDTO> getCategoryFood(CategoryFoodDTO categoryFoodDTO) throws Exception;
+	
+	public String getCategoryTitle(int categoryNo) throws Exception;
+	
+	public int countCategoryFoodAll() throws Exception;
+	
+	public List<CategoryFoodDTO> getCategoryFoodAll(CategoryFoodDTO categoryFoodDTO) throws Exception;
 }

@@ -27,4 +27,8 @@ public interface ProductService {
 
 	void InsertProductImg(ProductImageDTO pidto) throws Exception;
 
+	void removeProduct(HashMap<String, Object> map) throws Exception;
+
+	void productAddcart(HashMap<String, Object> map) throws Exception;
+
 }

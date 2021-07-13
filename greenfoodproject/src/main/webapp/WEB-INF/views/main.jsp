@@ -599,8 +599,8 @@
                                 <a href="shop-wide.html" class="d-inline-block line-height-65px rounded-circle bg-extra-dark-gray box-shadow-extra-large h-60px w-60px position-absolute product-view-link"><i class="feather icon-feather-arrow-right text-white icon-extra-small"></i></a>
                             </div>
                             <div class="shop-product-overlay position-relative wow animate__fadeIn" data-wow-delay="0.8s">
+                            	<a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block"><c:out value="${item.title}" /></a>
                                 <span class="alt-font font-weight-500 margin-10px-bottom d-inline-block text-uppercase letter-spacing-1px text-dark-orange text-dark-orange-hover xs-margin-5px-bottom">음식카테고리</span>
-                                <h4 class="alt-font text-extra-dark-gray mb-0 letter-spacing-minus-1px line-height-40px sm-line-height-30px">  <span class="font-weight-600"><c:out value="${item.title}" /></span></h4>
                             </div>
                         </div>
                     </div>
@@ -632,7 +632,7 @@
                                 <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
                                     <div class="product-image">
                                         <a href="single-product.html">
-                                            <img src="resources/images/c.jpg" alt=""/>
+                                            <img src="${item.thumbnail }" alt=""  style="width:1000px; height:300px"   / >
                                             <img class="hover-img" src="resources/images/b.jpg" alt=""/>
                                         </a>
                                         <div class="product-hover-details">
@@ -716,8 +716,18 @@
                                         <a href="blog-post-layout-01.html"><img src="${item.profile_img}" alt="resources/images/user.png"/></a>
                                     </div>
                                     <div class="post-details">
+                                    <c:set var="name" value="${item.nickname }"></c:set>
+                                    <c:choose>
+                                    	<c:when test="${name != null}">
                                         <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"><c:out value="${item.nickname}" /></a>
                                         <p class="w-95">#해시태그1 #해시태그2 #해시태그3 #해시태그4</p>
+                                        </c:when>
+                                        
+                                        <c:when test="${name == null}">
+                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"><c:out value="${item.id}" /></a>
+                                        <p class="w-95">#해시태그1 #해시태그2 #해시태그3 #해시태그4</p>
+                                        </c:when>
+                                     </c:choose>
                                     </div>
                                 </div>
                             </li>

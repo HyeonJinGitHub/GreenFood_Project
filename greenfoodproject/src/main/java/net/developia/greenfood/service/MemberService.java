@@ -23,4 +23,6 @@ public interface MemberService {
 
 	public void selectMemberById(HashMap<String, Object> map) throws Exception;
 
+	public void loginByNaver(HashMap<String, Object> map) throws Exception;
+
 }

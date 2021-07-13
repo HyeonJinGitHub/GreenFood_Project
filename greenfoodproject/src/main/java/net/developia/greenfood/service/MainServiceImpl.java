@@ -105,4 +105,32 @@ public class MainServiceImpl  implements MainService{
 		return list;
 	}
 
+
+	@Override
+	public String getCategoryTitle(int categoryNo) throws Exception {
+		String categoryTitle = mainDAO.getCategoryTitle(categoryNo);
+		return categoryTitle;
+	}
+
+
+	@Override
+	public int countCategoryFoodAll() throws Exception {
+		int cnt = mainDAO.countCategoryFoodAll();
+		return cnt;
+	}
+
+
+	@Override
+	public List<CategoryFoodDTO> getCategoryFoodAll(CategoryFoodDTO categoryFoodDTO) throws Exception {
+		List<CategoryFoodDTO> list;
+		
+		try {
+			list = mainDAO.getCategoryFoodAll(categoryFoodDTO);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+		return list;
+	}
+
 }

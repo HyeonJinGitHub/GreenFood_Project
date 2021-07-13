@@ -1,6 +1,7 @@
 package net.developia.greenfood.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import net.developia.greenfood.dao.ProductDAO;
 import net.developia.greenfood.dao.ProductImageDAO;
 import net.developia.greenfood.dto.ProductDTO;
 import net.developia.greenfood.dto.ProductImageDTO;
+import net.developia.greenfood.dto.CartDTO;
 
 @Slf4j
 @Service
@@ -89,23 +91,6 @@ public class ProductServiceImpl implements ProductService {
 			log.info(e.getMessage());
 			throw e;
 		}
-	}
-
-	@Override
-	public void postProduct(ProductDTO pdto) throws Exception {
-		productDAO.postProduct(pdto);
-	}
-
-	@Override
-	public int findMyProduct(ProductDTO pdto) throws Exception {
-		// TODO Auto-generated method stub
-		return productDAO.findMyProduct(pdto);
-	}
-
-	@Override
-	public void InsertProductImg(ProductImageDTO pidto) throws Exception {
-		// TODO Auto-generated method stub
-		productimageDAO.InsertProductImg(pidto);
 	}
 
 }

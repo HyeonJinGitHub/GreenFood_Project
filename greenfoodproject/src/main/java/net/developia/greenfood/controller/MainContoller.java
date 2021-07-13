@@ -1,5 +1,6 @@
 package net.developia.greenfood.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,7 @@ public class MainContoller {
 			List<MemberDTO> memberList = mainService.getMember();
 			//recipe
 			List<ArticleDTO> recipeList = mainService.getRecipe();
+			List<ArticleDTO> recipeList2 = new ArrayList<ArticleDTO>();
 			//product
 //			List<ProductDTO> productList = mainService.getProduct();
 			//category
@@ -55,8 +57,16 @@ public class MainContoller {
 			System.out.println("recipeList : " + recipeList);
 //			System.out.println("productList : " + productList);
 			System.out.println("categoryList : " + categoryList);
+			
+			for(ArticleDTO i : recipeList) {
+				String imgurl = i.getThumbnail().replace(" ", "");
+				i.setThumbnail(imgurl);
+				recipeList2.add(i);
+			}
+			
+			
 			mav.addObject("memberDTO", memberList);
-			mav.addObject("recipeDTO", recipeList);
+			mav.addObject("recipeDTO", recipeList2);
 //			mav.addObject("productDTO", productList);
 			mav.addObject("categoryDTO", categoryList);
 			mav.setViewName("main");
@@ -106,10 +116,29 @@ public class MainContoller {
 			recipeSearchDTO.setPagingVO(vo);
 
 			List<RecipeSearchDTO> list = mainService.getSearchRecipe(recipeSearchDTO);
-			System.out.println(list);
-			mav.addObject("RecipeSearchDTO", list);
+			List<RecipeSearchDTO> list2 = new ArrayList<RecipeSearchDTO>();
+			
+			
+			for(RecipeSearchDTO i : list) {
+				String imgurl = i.getThumbnail().replace(" ", "");
+				i.setThumbnail(imgurl);
+				i.setPagingVO(vo);
+				list2.add(i);
+				
+			}
+			System.out.println(list2);
+			
+			//데이터가 없으면 0, 있으면 1;
+			int dataFlag = 0;
+			if(!list2.isEmpty()) {
+				dataFlag = 1;
+			}
+			
+			
+			mav.addObject("RecipeSearchDTO", list2);
 			mav.addObject("pagingVO", vo);
 			mav.addObject("keyword", recipeSearchDTO.getKeyword());
+			mav.addObject("dataFlag", dataFlag);
 			mav.setViewName("searchrecipe");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -136,7 +165,6 @@ public class MainContoller {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("categoryNo1 : " + categoryNo);
 
-		
 		try {
 			int total = mainService.countCategoryFood(categoryFoodDTO);
 			
@@ -158,10 +186,30 @@ public class MainContoller {
 			System.out.println("categoryNo2 : " + categoryFoodDTO.getNo());
 			
 			List<CategoryFoodDTO> categoryFoodList = mainService.getCategoryFood(categoryFoodDTO);
-			System.out.println(categoryFoodList);
-			mav.addObject("categoryFoodDTO", categoryFoodList);
-			mav.addObject("categoryNo", categoryNo);
+			List<CategoryFoodDTO> categoryFoodList2 = new ArrayList<CategoryFoodDTO>();
+			String categoryTitle = mainService.getCategoryTitle(categoryNo);
+			
+			
+			for(CategoryFoodDTO i : categoryFoodList) {
+				String imgurl = i.getThumbnail().replace(" ", "");
+				i.setThumbnail(imgurl);
+				i.setPagingVO(vo);
+				categoryFoodList2.add(i);
+			}
+			
+			//데이터가 없으면 0, 있으면 1;
+			int dataFlag = 0;
+			if(!categoryFoodList2.isEmpty()) {
+				dataFlag = 1;
+			}
+			
+			
+			System.out.println("categoryTitle : " + categoryTitle);
+			System.out.println("categoryFoodList2 : " + categoryFoodList2);
+			mav.addObject("categoryFoodDTO", categoryFoodList2);
+			mav.addObject("categoryTitle",categoryTitle);
 			mav.addObject("pagingVO", vo);
+			mav.addObject("dataFlag", dataFlag);
 			mav.setViewName("foodCategory");
 			
 		} catch (Exception e) {
@@ -179,6 +227,69 @@ public class MainContoller {
 	@RequestMapping(value="/serviceCenter")
 	public String serviceCenter() {
 		return "serviceCenter";
+	}
+	
+	/*
+	 * @ 작성자 : 이효범
+	 * @ 작성일자 : 2107013
+	 * @ 모든카테고리 
+	 */
+	@RequestMapping(value = "/recipe/foodCategory/all", method = RequestMethod.GET)
+	public ModelAndView foodCategoryAll(
+			@RequestParam(value = "nowPage",  required=false) String nowPage,
+			@RequestParam(value = "cntPerPage",required=false) String cntPerPage,
+			PagingVO vo
+			) {
+		CategoryFoodDTO categoryFoodDTO = new CategoryFoodDTO();
+		ModelAndView mav = new ModelAndView();
+		
+		try {
+			int total = mainService.countCategoryFoodAll();
+			
+			if(nowPage==null && cntPerPage==null) {
+				nowPage ="1";
+				cntPerPage = "8";
+			}else if (nowPage == null) {
+				nowPage = "1";
+			} else if (cntPerPage == null) { 
+				cntPerPage = "8";
+			}
+			
+			int IntNowPage = Integer.parseInt(nowPage);
+			int IntCntPerPage = Integer.parseInt(cntPerPage);
+			
+			vo = new PagingVO(total, IntNowPage, IntCntPerPage);
+			categoryFoodDTO.setPagingVO(vo);
+			
+			List<CategoryFoodDTO> categoryFoodList = mainService.getCategoryFoodAll(categoryFoodDTO);
+			List<CategoryFoodDTO> categoryFoodList2 = new ArrayList<CategoryFoodDTO>();
+			
+			
+			for(CategoryFoodDTO i : categoryFoodList) {
+				String imgurl = i.getThumbnail().replace(" ", "");
+				i.setThumbnail(imgurl);
+				i.setPagingVO(vo);
+				categoryFoodList2.add(i);
+			}
+			
+			//데이터가 없으면 0, 있으면 1;
+			int dataFlag = 0;
+			if(!categoryFoodList2.isEmpty()) {
+				dataFlag = 1;
+			}
+			
+			
+			System.out.println("categoryFoodList2 : " + categoryFoodList2);
+			mav.addObject("categoryFoodDTO", categoryFoodList2);
+			mav.addObject("pagingVO", vo);
+			mav.addObject("dataFlag", dataFlag);
+			mav.setViewName("foodCategoryAll");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return mav;
 	}
 	
 

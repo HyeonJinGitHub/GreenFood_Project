@@ -19,13 +19,12 @@
 				FROM (
 					SELECT ROWNUM RN, A.* 
 						FROM (
-								SELECT * 
-								FROM recipe 
-								where title like '%' || #{keyword} || '%'
+                                select r.*,m.name,f.title categoryTitle
+                                from recipe r, member m, foodcategory f
+                                where (r.id = m.id and r.foodcategoryno = f.no) and r.title like '%' || #{keyword} || '%'
 								) A
 						)
 				WHERE RN BETWEEN #{pagingVO.start} AND #{pagingVO.end}
-			
 		]]>
 	</select>
 	
@@ -42,8 +41,9 @@
 	<![CDATA[
 		select b.*
 		from(
-		        select * 
-		        from recipe
+		        select *
+                from recipe
+                order by views + likes desc
 		    )b
 		where rownum <= 5
 		
@@ -74,9 +74,49 @@
 	
 	<select id="getCategoryFood"  resultType="CategoryFoodDTO" parameterType="CategoryFoodDTO" >
 		<![CDATA[
-			select r.*
+				SELECT * 
+				FROM (
+					SELECT ROWNUM RN, A.* 
+						FROM (
+                                select r.*,m.name,f.title categoryTitle
+                                from recipe r, member m, foodcategory f
+                                where (r.id = m.id and r.foodcategoryno = f.no) and f.no = #{no}
+								) A
+						)
+				WHERE RN BETWEEN #{pagingVO.start} AND #{pagingVO.end}
+		]]>
+	</select>
+	
+	<select id="getCategoryTitle"  resultType="String" parameterType="int" >
+		<![CDATA[
+			select title
+			from foodcategory
+			where no = #{categoryNo}
+		]]>
+	</select>
+	
+	<select id="countCategoryFoodAll"  resultType="int" >
+		<![CDATA[
+		
+			select count(*)
 			from recipe r, foodCategory b
-			where r.foodcategoryno = b.no and b.no = #{no}
+			where r.foodcategoryno = b.no
+			
+		]]>
+	</select>
+	
+		<select id="getCategoryFoodAll"  resultType="CategoryFoodDTO" parameterType="CategoryFoodDTO" >
+		<![CDATA[
+				SELECT * 
+				FROM (
+					SELECT ROWNUM RN, A.* 
+						FROM (
+                                select r.*,m.name,f.title categoryTitle
+                                from recipe r, member m, foodcategory f
+                                where (r.id = m.id and r.foodcategoryno = f.no) 
+								) A
+						)
+				WHERE RN BETWEEN #{pagingVO.start} AND #{pagingVO.end}
 		]]>
 	</select>
 	

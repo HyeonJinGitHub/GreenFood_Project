@@ -188,7 +188,7 @@ public class ProductController {
 			productService.quantityUpdate(map);
 			List<CartDTO> data = (List) map.get("CartList");
 			String json = new Gson().toJson(data);
-			System.out.println("�뾽�뜲�씠�듃 �썑 : " + json);
+			System.out.println("업데이트 후 : " + json);
 			return json;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -221,6 +221,40 @@ public class ProductController {
 			@RequestParam(value = "category") String category , //
 			@RequestParam(value = "subscription") String subscription,
 			@RequestParam(value = "detailsubscription") String detailsubscription) throws Exception {
+	
+	@RequestMapping(value="/removeProduct", method=RequestMethod.POST, produces = "application/text; charset=UTF-8")
+	@ResponseBody
+	public String removeProduct(HttpSession session, @RequestParam(required = true) String no) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("ID", session.getAttribute("id"));
+		map.put("NO", no);
+		try {
+			productService.removeProduct(map);
+			List<CartDTO> data = (List) map.get("CartList");
+			String json = new Gson().toJson(data);
+			return json;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@PostMapping("/productAddcart")
+	@ResponseBody
+	public boolean productAddcart(HttpSession session, @RequestParam(required = true) String no,
+			@RequestParam(required = true) String image) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("ID", session.getAttribute("id"));
+		map.put("NO", no);
+		map.put("IMAGE", image);
+		try {
+			productService.productAddcart(map);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 		ProductDTO pdto = new ProductDTO();
 		pdto.setName(title);
