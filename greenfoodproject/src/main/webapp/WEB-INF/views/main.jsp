@@ -11,7 +11,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
-        <title>Vecipe | 메인페이지</title>
+        <title>Vecipe | 메인</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="author" content="ThemeZaa">
@@ -49,15 +49,17 @@
             <div class="swiper-container slider-blog-banner black-move one-third-screen sm-h-450px" data-slider-options='{ "centeredSlides": true, "spaceBetween": 18, "loop": true, "pagination": { "el": ".swiper-pagination", "clickable": true }, "navigation": { "nextEl": ".swiper-button-next-nav", "prevEl": ".swiper-button-previous-nav" }, "autoplay": { "delay": "4500", "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "991": { "slidesPerView": 2 }, "767": { "slidesPerView": 1 } }, "effect": "slide" }'>
                 <div class="swiper-wrapper">
                     <!-- start slider item -->
-                    <div class="swiper-slide w-60 cover-background" style="background-image: url('https://placehold.it/1368x801')">
+                    <c:forEach var="item" items="${plist }" >
+                    <div class="swiper-slide w-60 cover-background" style="background-image: url('${item.main_img}')">
                         <div class="swiper-bottom-content d-flex align-items-center position-relative align-items-lg-end h-100">
                             <div class="w-60 mx-auto text-center bg-white box-shadow-extra-large margin-6-half-rem-bottom padding-5-rem-all xl-padding-2-rem-lr lg-w-70 lg-padding-2-half-rem-lr sm-w-75 sm-padding-2-rem-lr md-no-margin-bottom">
-                                <a href="blog-grid.html" class="btn btn-fancy btn-small btn-transparent-gradient-sky-blue-pink margin-30px-bottom">Branding</a>
-                                <h5><a href="blog-post-layout-01.html" class="text-extra-dark-gray text-black-hover alt-font text-extra-dark-gray font-weight-500 letter-spacing-minus-1px margin-30px-bottom">Be happy for this moment this moment is your life</a></h5>
-                                <div class="alt-font text-medium text-uppercase"><a href="blog-grid.html" class="text-medium-gray text-medium-gray-hover d-block d-sm-inline-block">22 October 2020</a> <span class="margin-10px-lr text-extra-large opacity-6 top-2px position-relative d-none d-sm-inline-block">•</span> <a href="blog-grid.html" class="text-medium-gray text-medium-gray-hover">Jay benjamin</a></div>
+                                <a href="${pageContext.request.contextPath}/productDetail?no=${item.no}" class="btn btn-fancy btn-small btn-gradient-tan-geraldine margin-30px-bottom">이달의 상품</a>
+                                <h5><a href="${pageContext.request.contextPath}/productDetail?no=${item.no}" class="text-extra-dark-gray text-black-hover alt-font text-extra-dark-gray font-weight-500 letter-spacing-minus-1px margin-30px-bottom" style="font-family: 'Noto Sans KR', sans-serif;">${item.name}</a></h5>
+                                <div class="alt-font text-medium text-uppercase"><a href=""${pageContext.request.contextPath}/productDetail?no=${item.no}" class="text-medium-gray text-medium-gray-hover d-block d-sm-inline-block">${item.description}</a></div>
                             </div>
                         </div>
                     </div>
+                    </c:forEach>
                     <!-- end slider item -->
                 </div>
                 <!-- start slider pagination -->
@@ -88,7 +90,7 @@
                             
                             <!-- start product item -->
                             <c:forEach var="item" items="${recipeDTO }" >
-                            <li class="grid-item wow animate__fadeIn">
+                            <li class="grid-item wow animate__fadeIn border-radius-6px" style="margin-top: -10px; margin-bottom:-10px;">
                                 <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
                                     <div class="product-image  border-radius-5px">
                                         <a href="${pageContext.request.contextPath}/recipe/${item.no}">
@@ -119,76 +121,7 @@
             </div>
         </section>
         <!-- end section -->
-            <!-- start section -->
-        <section class="bg-very-light-pink">
-            <div class="container ">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-6 text-center margin-5-half-rem-bottom md-margin-3-rem-bottom wow animate__fadeIn">
-                        <span class="alt-font text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom font-weight-400" style="font-family: 'Noto Sans KR', sans-serif; ">레시퍼</span>
-                        <h5 class="alt-font  font-weight-400 text-extra-dark-gray mb-0 letter-spacing-minus-1px font-weight-500" style="font-family: 'Noto Sans KR', sans-serif;">인기 레시퍼</h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 blog-content px-sm-0">
-                        <ul class="blog-classic blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
-                            <li class="grid-sizer"></li>
-                            <!-- start blog item -->
-                            <c:forEach var="item" items="${memberDTO }" >
-                            <li class="grid-item wow animate__fadeIn">
-                                <div class="blog-post">
-                                    <div class="blog-post-image margin-40px-bottom md-margin-35px-bottom xs-margin-25px-bottom  border-radius-5px">
-                                        <a href="blog-post-layout-01.html"><img src="${item.profile_img}" alt="resources/images/user.png" /></a>
-                                    </div>
-                                    <div style="text-align:center; margin-top:-20px">
-                                    	<a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"><c:out value="${item.nickname}" /></a>
-                                    </div>
-                                    <div class="post-details" style="text-align:center">
-                                        <i class="feather icon-feather-monitor margin-5px-right text-large"></i> 조회수 <c:out value="${item.views }"></c:out>
-                                        <i class="feather icon-feather-thumbs-up margin-5px-right margin-20px-left"> 좋아요 </i><c:out value="${item.likes }"></c:out>
-                                    </div>
-                                </div>
-                            </li>
-                            </c:forEach>
-                            <!-- end blog item   --> 
-                            
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
-        <!-- start section -->
-        <section class="padding-8-half-rem-lr xl-padding-3-rem-lr lg-no-padding-lr">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-6 text-center margin-5-half-rem-bottom md-margin-3-rem-bottom wow animate__fadeIn">
-                        <span class="alt-font text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom font-weight-400" style="font-family: 'Noto Sans KR', sans-serif;">음식 카테고리</span>
-                        <h5 class="alt-font font-weight-400 text-extra-dark-gray mb-0 letter-spacing-minus-1px font-weight-500" style="font-family: 'Noto Sans KR', sans-serif;">오늘은 이 음식 어때요?</h5>
-                    </div>
-                </div>
-                <div class="row row-cols-1 row-cols-xl-3 row-cols-lg-2 justify-content-center margin-3-rem-tb md-no-margin-tb">
-                    <!-- start category item -->
-                    <c:set var="imgcnt" value="1" />
-                    <c:forEach var="item" items="${categoryDTO }" >
-                    <div class="col col-md-6 col-sm-10 shop-category-style-02">
-                        <div class="shop-product align-items-center d-flex padding-30px-lr xs-no-padding-lr">
-                            <div class="shop-product-image text-center d-flex justify-content-center align-items-center wow animate__zoomIn" data-wow-delay="0.7s">
-                                <img src="resources/images/foodCategory/${imgcnt}.png" alt=""/>
-                                <a href="${app }/recipe/foodCategory/${item.no}" class="d-inline-block line-height-65px rounded-circle bg-extra-dark-gray box-shadow-extra-large h-60px w-60px position-absolute product-view-link"><i class="feather icon-feather-arrow-right text-white icon-extra-small"></i></a>
-                           		<c:set var="imgcnt" value="${imgcnt + 1}" />
-                            </div>
-                            <div class="shop-product-overlay position-relative wow animate__fadeIn" data-wow-delay="0.8s" style="width: 100%">
-                           		<h6 class="alt-font text-extra-dark-gray mb-0 letter-spacing-minus-1px line-height-40px sm-line-height-30px font-weight-500" style="font-family: 'Noto Sans KR', sans-serif; margin-left:35px"><c:out value="${item.title }"></c:out></h6>
-                            </div>
-                        </div>
-                    </div>
-                    </c:forEach>
-                    <!-- end category item -->
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
-          <!-- start section -->
+           <!-- start section -->
         <section class="p-0">
             <div class="container-fluid">
                 <div class="row row-cols-1 row-cols-lg-2">
@@ -220,6 +153,76 @@
                         </div>
                     </div>
                     <!-- end info banner item -->
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+       
+            <!-- start section -->
+        <section class="">
+            <div class="container ">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6 text-center margin-5-half-rem-bottom md-margin-3-rem-bottom wow animate__fadeIn">
+                        <span class="alt-font text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom font-weight-400" style="font-family: 'Noto Sans KR', sans-serif; ">레시퍼</span>
+                        <h5 class="alt-font  font-weight-400 text-extra-dark-gray mb-0 letter-spacing-minus-1px font-weight-500" style="font-family: 'Noto Sans KR', sans-serif;">인기 레시퍼</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 blog-content px-sm-0">
+                        <ul class="blog-classic blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
+                            <li class="grid-sizer"></li>
+                            <!-- start blog item -->
+                            <c:forEach var="item" items="${memberDTO }" >
+                            <li class="grid-item wow animate__fadeIn">
+                                <div class="blog-post">
+                                    <div class="blog-post-image margin-40px-bottom md-margin-35px-bottom xs-margin-25px-bottom  border-radius-5px">
+                                        <a href="${pageContext.request.contextPath}/myRecipe/${item.id}"><img src="${item.profile_img}" alt="resources/images/user.png" /></a>
+                                    </div>
+                                    <div style="text-align:center; margin-top:-20px">
+                                    	<a href="${pageContext.request.contextPath}/myRecipe/${item.id}" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"><c:out value="${item.nickname}" /></a>
+                                    </div>
+                                    <div class="post-details" style="text-align:center">
+                                        <i class="feather icon-feather-monitor margin-5px-right text-large"></i> 조회수 <c:out value="${item.views }"></c:out>
+                                        <i class="feather icon-feather-thumbs-up margin-5px-right margin-20px-left"> 좋아요 </i><c:out value="${item.likes }"></c:out>
+                                    </div>
+                                </div>
+                            </li>
+                            </c:forEach>
+                            <!-- end blog item   --> 
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+        <!-- start section -->
+        <section class="padding-8-half-rem-lr xl-padding-3-rem-lr lg-no-padding-lr bg-very-light-orange">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6 text-center margin-5-half-rem-bottom md-margin-3-rem-bottom wow animate__fadeIn">
+                        <span class="alt-font text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom font-weight-400" style="font-family: 'Noto Sans KR', sans-serif;">음식 카테고리</span>
+                        <h5 class="alt-font font-weight-400 text-extra-dark-gray mb-0 letter-spacing-minus-1px font-weight-500" style="font-family: 'Noto Sans KR', sans-serif;">오늘은 이 음식 어때요?</h5>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-xl-3 row-cols-lg-2 justify-content-center margin-3-rem-tb md-no-margin-tb">
+                    <!-- start category item -->
+                    <c:set var="imgcnt" value="1" />
+                    <c:forEach var="item" items="${categoryDTO }" >
+                    <div class="col col-md-6 col-sm-10 shop-category-style-02">
+                        <div class="shop-product align-items-center d-flex padding-30px-lr xs-no-padding-lr">
+                            <div class="shop-product-image text-center d-flex justify-content-center align-items-center wow animate__zoomIn" data-wow-delay="0.7s">
+                                <img src="resources/images/foodCategory/${imgcnt}.png" alt=""/>
+                                <a href="${app }/recipe/foodCategory/${item.no}" class="d-inline-block line-height-65px rounded-circle bg-extra-dark-gray box-shadow-extra-large h-60px w-60px position-absolute product-view-link"><i class="feather icon-feather-arrow-right text-white icon-extra-small"></i></a>
+                           		<c:set var="imgcnt" value="${imgcnt + 1}" />
+                            </div>
+                            <div class="shop-product-overlay position-relative wow animate__fadeIn" data-wow-delay="0.8s" style="width: 100%">
+                           		<h6 class="alt-font text-extra-dark-gray mb-0 letter-spacing-minus-1px line-height-40px sm-line-height-30px font-weight-500" style="font-family: 'Noto Sans KR', sans-serif; margin-left:35px"><c:out value="${item.title }"></c:out></h6>
+                            </div>
+                        </div>
+                    </div>
+                    </c:forEach>
+                    <!-- end category item -->
                 </div>
             </div>
         </section>

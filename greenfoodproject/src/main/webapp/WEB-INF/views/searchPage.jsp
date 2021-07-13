@@ -12,7 +12,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-<title>오구의 레시피 - 오구오구</title>
+<title>Vecipe | 레시피검색</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="author" content="ThemeZaa">
@@ -39,14 +39,11 @@
 
 
 <script type="text/javascript">
-
 	// 시작 시 modal 띄움
 	$(document).ready(function(){    
 		 getIngred();
 		 $("#ingredientModal").modal("show");
-
 	});
-
 	var revapi263, tpj;
 	(function() {
 		if (!/loaded|interactive|complete/.test(document.readyState))
@@ -97,7 +94,6 @@
 							tmp : ''
 						},
 						arrows : {
-
 							enable : true,
 							style : 'uranus',
 							tmp : '',
@@ -122,7 +118,6 @@
 								h_offset : 64,
 								v_offset : 0
 							}
-
 						}
 					},
 					responsiveLevels : [ 1240, 1025, 778, 480 ],
@@ -158,11 +153,8 @@
 		}
 		; /* END OF ON LOAD FUNCTION */
 	}());/* END OF WRAPPING FUNCTION */
-
 	// 재료를 가져오는 메소드
 	function getIngred() {
-
-
 		$.ajax({
 			type : 'POST',
 			url : '${pageContext.request.contextPath}/getIngredient',
@@ -171,18 +163,15 @@
 			success : function(data) {
 				var ingredientList = data.ingredientList;
 				var ingredientInnerHTML = '';
-
 				$.each(ingredientList, function(key, value) {
 					ingredientInnerHTML += '<div  id="subIngredient' + value.no + '" class = "btn btn-large-ksy btn-dark-gray border-radius-6px d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" onclick="isIngredientAlreadyExists(' + value.no + ', \''+ value.name +'\')" style="margin-right:10px; margin-bottom:10px"> '+ value.name;
 					ingredientInnerHTML += '</div>';
 				});
 				
 				
-
 				$("#ingredientList").html(ingredientInnerHTML);
 			}
 		});
-
 	}
 	
 	// 재료를 선택하는 메소드
@@ -279,7 +268,7 @@
 				
 				for(var i = shownCount * recipeShowCount ; i < ( shownCount * recipeShowCount ) + length ; i++){
 					
-                    recipeListHtml += '<li class="grid-item wow animate__fadeIn" style = "float:left; width:320px; height: 460px; margin-bottom: 20px">                                                                   ';
+                    recipeListHtml += '<li class="grid-item wow animate__fadeIn margin-30px-right" style = "float:left; width:320px; height: 460px; margin-bottom: 20px">                                                                   ';
                     recipeListHtml += '<div class="blog-post border-radius-5px bg-white box-shadow-medium" style="width:320px; height: 460px">                                                                            ';
                     recipeListHtml += '    <div class="blog-post-image bg-medium-slate-blue">                                                                                                                             ';
                     recipeListHtml += '        <a href="/greenfood/recipe/'+ recipeList[i].no + '" title=""><img src="' + (recipeList[i].thumbnail).replace(/\s/gi, "") + '" alt="" style="width:320px; height: 200px"></a>   ';
@@ -316,7 +305,6 @@
 	 		}
 	   	})
 	}
-
 	
 </script>
 
@@ -328,11 +316,8 @@
 .stepimage_size{height:100%; font-size:0;}  
 .stepimage_size:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
 .stepimage_size img{vertical-align:middle;}
-
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
-
 body{
-
 font-family: 'Noto Sans KR', sans-serif;
 }
 </style>

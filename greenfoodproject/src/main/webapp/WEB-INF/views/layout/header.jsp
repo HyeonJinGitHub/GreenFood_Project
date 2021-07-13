@@ -11,7 +11,9 @@
 </head>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap');
-
+body{
+	font-family: 'Noto Sans KR', sans-serif
+}
 </style>
 <body>
         <!-- start header -->
@@ -113,16 +115,16 @@
                             <a href="javascript:void(0);"><i class="feather icon-feather-user  font-weight-600 "></i></a>
                             <ul class="dropdown-menu alt-font">
                             <% if(session.getAttribute("id") == null){ %>
-                                <li><a href="${app}/login"  title="로그인"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>로그인</a></li>
-                                <li><a href="${app}/register" title="회원가입"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>회원가입</a></li>
+                                <li><a href="${app}/login"  title="로그인"><span class="icon-country"></span>로그인</a></li>
+                                <li><a href="${app}/register" title="회원가입"><span class="icon-country"></span>회원가입</a></li>
                             <% }else if(session.getAttribute("id").equals("admin")){%>
-                            	<li><a href="${pageContext.request.contextPath}/adminPage" title="관리자페이지"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>관리자페이지</a></li>
-                                <li><a href="${app}/logout"  title="로그아웃"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>로그아웃</a></li>
+                            	<li><a href="${pageContext.request.contextPath}/adminPage" title="관리자페이지"><span class="icon-country"></span>관리자페이지</a></li>
+                                <li><a href="${app}/logout"  title="로그아웃"><span class="icon-country"></span>로그아웃</a></li>
                             <%}else if(session.getAttribute("id") != null){ %>
-                             	<li><a href="${app}/myRecipe">나의 레시피</a></li>
-                            	<li><a href="${app}/myinfo"  title="마이페이지"><span class="icon-country"><i class="feather icon-feather-user-check font-weight-600"></i></span>마이페이지</a></li>
-                            	<li><a href="${app}/orderlist"  title="결제내역"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>결제내역</a></li>
-                                <li><a href="${app}/logout"  title="로그아웃"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>로그아웃</a></li>
+                             	<li><a href="${app}/myRecipe" title="나의 레시피"><span class="icon-country "></span>나의 레시피</a></li>
+                            	<li><a href="${app}/myinfo"  title="마이페이지"><span class="icon-country"></span>마이페이지</a></li>
+                            	<li><a href="${app}/orderlist"  title="결제내역"><span class="icon-country"></span>결제내역</a></li>
+                                <li><a href="${app}/logout"  title="로그아웃"><span class="icon-country"></span>로그아웃</a></li>
                             <%} %>
                             </ul>
                         </div>
