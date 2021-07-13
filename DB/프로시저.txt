@@ -314,6 +314,9 @@ is
     
     procedure select_ordering(input_id in varchar2,
     res_cur out sys_refcursor);
+    
+    procedure selectshoppingcart(input_id in varchar2,
+    res_cur out sys_refcursor);
 end product_pkg;
 
 create or replace package body product_pkg
@@ -467,6 +470,16 @@ is
         from ordering
         where member_id = input_id;
     end select_ordering;
+    
+    procedure selectshoppingcart(input_id in varchar2,
+    res_cur out sys_refcursor)
+    as
+    begin
+        open res_cur for
+        select *
+        from shoppingcart
+        where member_id = input_id;
+    end selectshoppingcart;
 end product_pkg;
 
 insert into product
