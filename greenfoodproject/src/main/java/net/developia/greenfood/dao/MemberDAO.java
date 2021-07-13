@@ -29,4 +29,6 @@ public interface MemberDAO {
 
 	public String findMyNick(MemberDTO mdto) throws SQLException;
 
+	public void selectOrderList(HashMap<String, Object> map) throws SQLException;
+
 }

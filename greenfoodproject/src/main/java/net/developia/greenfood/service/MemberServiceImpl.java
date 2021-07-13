@@ -146,7 +146,16 @@ public class MemberServiceImpl implements MemberService {
 			log.info(e.getMessage());
 			throw e;
 		}
-		
+	}
+
+	@Override
+	public void selectOrderList(HashMap<String, Object> map) throws Exception {
+		try {
+			memberDAO.selectOrderList(map);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}		
 	}
 
 	@Override

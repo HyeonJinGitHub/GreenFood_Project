@@ -79,15 +79,15 @@
                             <li class="grid-item wow animate__fadeIn">
                                 <div class="blog-post border-radius-5px bg-white box-shadow-medium" >
                                     <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="${app }/recipe/${item.no}" title="" ><img src="${item.thumbnail}" alt=""  style="width: 300px;height:300px"></a>
+                                        <a href="${app }/recipe/${item.no}" title="" ><img src="${item.thumbnail}" alt=""  ></a>
                                         <a href="${app }/recipe/foodCategory/${item.foodcategoryno }" class="blog-category alt-font"><c:out value="${item.categoryTitle}" /></a>
                                     </div>
                                     <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
                                         <a href="${app }/recipe/${item.no}" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block"><c:out value="${item.title}" /></a>
                                         <p><c:out value="${item.explanation }"></c:out></p>
                                         <div class="d-flex align-items-center">
-                                            <span class="alt-font text-small mr-auto">By <a><c:out value="${item.name}" /></a></span>
-                                            <a class="blog-like alt-font text-extra-small"><i class="far fa-heart"></i><span><c:out value="${item.views}" /></span></a>
+                                            <span class="alt-font text-small mr-auto">By <a><c:out value="${item.nickname}" /></a></span>
+                                            <a class="blog-like alt-font text-extra-small"><i class="solid-icon-Preview icon-medium-ksy align-middle text-fast-black-ksy"></i><span><c:out value="${item.views}" /></span></a>
                                         </div>
                                     </div>
                                 </div>

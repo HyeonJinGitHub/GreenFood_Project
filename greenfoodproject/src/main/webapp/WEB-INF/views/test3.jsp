@@ -20,7 +20,8 @@
 	<button id="check_module" type="button">아임 서포트 결제 모듈 테스트 해보기</button>
 
 	<script>
-		$("#check_module").click(function() {
+		$("#check_module").click(function(e) {
+			e.preventDefault();
 			var IMP = window.IMP; // 생략가능
 			IMP.init("imp59175231");
 			// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -64,7 +65,7 @@
 				buyer_tel : '010-1234-5678',
 				buyer_addr : '서울특별시 강남구 삼성동',
 				buyer_postcode : '123-456',
-				m_redirect_url : '${contextPath}/myinfo'
+				m_redirect_url : 'http://localhost:8080/greenfood/orderlist'
 			/*
 			 모바일 결제시,
 			 결제가 끝나고 랜딩되는 URL을 지정
@@ -83,6 +84,7 @@
 					msg += '에러내용 : ' + rsp.error_msg;
 				}
 				alert(msg);
+				location.href='http://localhost:8080/greenfood/orderlist';
 			});
 		});
 	</script>

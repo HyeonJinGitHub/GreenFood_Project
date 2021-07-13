@@ -36,36 +36,6 @@
         <!-- start header -->
         	<jsp:include page='/WEB-INF/views/layout/header.jsp' />
         <!-- end header -->
-        
-        <!-- start subscription popup
-        <div id="subscribe-popup" class="mfp-hide subscribe-popup">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-lg-8 col-md-10 bg-white modal-popup-main">
-                        <div class="row">
-                            <div class="col-12 col-sm-7 order-2 order-sm-1 newsletter-popup padding-6-rem-all lg-padding-4-rem-all xs-padding-3-rem-all">
-                                <span class="text-extra-large font-weight-500 text-extra-dark-gray d-block margin-10px-bottom">Subscribe to newsletter</span>
-                                <p class="margin-30px-bottom xs-margin-20px-bottom">Subscribe to our newsletters and don't miss new arrivals the latest updates and our latest promotions.</p>
-                                <form action="email-templates/subscribe-newsletter.php" method="post">
-                                    <div class="newsletter-style-03 position-relative margin-25px-bottom xs-margin-15px-bottom">
-                                        <input class="medium-input bg-white m-0 required" name="email" placeholder="Enter your email address" type="email">
-                                        <input type="hidden" name="redirect" value="">
-                                        <button class="btn no-border text-medium submit" type="submit"><i class="feather icon-feather-mail m-0"></i></button>
-                                        <div class="form-results position-absolute d-none"></div>
-                                    </div>
-                                </form>
-                                <input id="newsletter-off" class="d-none" type="checkbox" name="newsletter-off" />
-                                <label for="newsletter-off" class="text-small"><span></span>Don't show this popup again</label>
-                            </div>
-                            <div class="col-12 col-sm-5 cover-background order-1 order-sm-2 xs-h-150px" style="background-image:url('https://placehold.it/600x802');">
-                                <button title="Close (Esc)" type="button" class="mfp-close">×</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-         end subscription popup -->
          
         <!-- SLIDER EXAMPLE -->
         <section class="p-0 home-furniture-shop">
@@ -74,173 +44,6 @@
                     <!-- START REVOLUTION SLIDER 5.4.1 fullscreen mode -->
                     <div id="rev_slider_34_1" class="rev_slider fullscreenbanner tiny_bullet_slider" style="display:none;" data-version="5.4.1">
                         <ul>	<!-- SLIDE  -->
-                            <li data-index="rs-73" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="300"  data-thumb="http://works.themepunch.com/revolution_5_3/wp-content/"  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                                <!-- MAIN IMAGE -->
-                                <img src="resources/images/shop-slide-01.jpg" alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
-                                <!-- LAYERS -->
-                                <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme rs-parallaxlevel-10"
-                                     data-x="['center','center','center','center']" data-hoffset="['980','800','0','0']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['200','220','900','850']"  
-                                     data-width="1500"
-                                     data-height="1500"
-                                     data-whitespace="nowrap"
-                                     data-type="shape" 
-                                     data-responsive_offset="on" 
-                                     data-frames='[{"delay":300,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['inherit','inherit','inherit','inherit']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 5;background:linear-gradient(180deg, rgba(255,219,214,1) 0%, rgba(255,229,225,1) 100%);border-radius:100%;">
-                                    <div class="rs-looped rs-wave"  data-speed="10" data-angle="0" data-radius="10px" data-origin="50% 50%"> </div></div>
-
-                                <!-- LAYER NR. 3 -->
-                                <div class="tp-caption tp-resizeme alt-font text-extra-dark-gray font-weight-500"
-                                     data-x="['left','left','center','center']" data-hoffset="['0','102','0','0']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-185','-120','-410','-300']" 
-                                     data-width="none"
-                                     data-height="none"
-                                     data-whitespace="nowrap"
-                                     data-type="text" 
-                                     data-responsive_offset="on" 
-                                     data-frames='[{"delay":600,"speed":1000,"frame":"0","from":"x:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:[-100%];y:0px;s:inherit;e:inherit;","to":"o:0.7;","ease":"Power4.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['left','left','left','left']"
-                                     data-paddingtop="[10,10,10,10]"
-                                     data-paddingright="[20,20,20,20]"
-                                     data-paddingbottom="[10,10,10,10]"
-                                     data-paddingleft="[20,20,20,20]"
-                                     style="z-index: 7; text-transform: uppercase; letter-spacing: 2px;">치킨</div>
-
-                                <!-- LAYER NR. 4 -->
-                                <div class="tp-caption alt-font text-extra-dark-gray"
-                                     data-x="['left','left','center','center']" data-hoffset="['0','100','0','0']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-40','-10','-290','-220']" 
-                                     data-fontsize="['100','70','70','50']"
-                                     data-lineheight="['90','70','70','50']"
-                                     data-width="auto"
-                                     data-height="none"
-                                     data-whitespace="nowrap"
-                                     data-type="text" 
-                                     data-responsive="on"
-                                     data-responsive_offset="on" 
-                                     data-frames='[{"delay":900,"speed":1000,"frame":"0","from":"x:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:[-100%];y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power4.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['left','left','center','center']"
-                                     data-paddingtop="[20,20,20,20]"
-                                     data-paddingright="[20,20,20,20]"
-                                     data-paddingbottom="[30,30,30,30]"
-                                     data-paddingleft="[20,20,20,20]"
-                                     style="z-index: 8;letter-spacing: -3px;"><strong>치킨</strong> <br/> 로스팅구이</div>    
-
-                                <!-- LAYER NR. 1 -->
-                                <a class="tp-caption tp-resizeme btn btn-medium btn-white btn-box-shadow lg-margin-15px-bottom md-no-margin-bottom md-margin-auto-lr"
-                                   href="shop-wide.html"
-                                   data-x="['left','left','center','center']" data-hoffset="['24','122','0','0']" 
-                                   data-y="['middle','middle','middle','middle']" data-voffset="['115','120','-160','-110']" 
-                                   data-width="none"
-                                   data-height="none"
-                                   data-fontsize="['14','14','14','13']"
-                                   data-whitespace="nowrap"
-                                   data-type="button" 
-                                   data-responsive_offset="on"
-                                   data-responsive="on"
-                                   data-frames='[{"delay":1200,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                                   data-textAlign="['inherit','inherit','inherit','inherit']"
-                                   data-paddingtop="[11,10,10,10]"
-                                   data-paddingright="[27,25,25,22]"
-                                   data-paddingbottom="[11,10,10,10]"
-                                   data-paddingleft="[27,25,25,22]"
-                                   style="z-index: 6;box-shadow: 0 0 15px rgba(0,0,0,.1);">자세히 보기</a>
-
-                                <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme rs-parallaxlevel-10"
-                                     data-x="['center','center','center','center']" data-hoffset="['300','190','0','0']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['0','20','150','150']"  
-                                     data-width="['670','600','540','430']"
-                                     data-height="['670','600','540','430']"
-                                     data-whitespace="nowrap"
-                                     data-type="shape" 
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":1500,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['inherit','inherit','inherit','inherit']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 5;background: rgba(173,157,148,0.1);border-radius:100%;">
-                                    <div class="rs-looped rs-wave"  data-speed="10" data-angle="0" data-radius="10px" data-origin="50% 50%"> </div></div>
-
-                                <!-- LAYER NR. 2 -->
-                                <div class="tp-caption tp-resizeme rs-parallaxlevel-2"
-                                     data-x="['center','center','center','center']" data-hoffset="['300','200','0','0']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['40','20','180','150']" 
-                                     data-width="none"
-                                     data-height="none"
-                                     data-whitespace="nowrap"
-                                     data-type="image" 
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":1800,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['inherit','inherit','inherit','inherit']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 6;"><img src="resources/images/c.jpg" alt="" data-ww="['529px','420px','420px','290px']" data-hh="['auto','auto','auto','auto']" width="529" height="594" data-no-retina></div>
-
-                                <!-- LAYER NR. 32 -->
-                                <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme rs-parallaxlevel-1"
-                                     data-x="['center','center','center','center']" data-hoffset="['540','420','200','150']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-230','-190','-70','0']" 
-                                     data-width="['120','100','110','90']"
-                                     data-height="['120','100','110','90']"
-                                     data-whitespace="nowrap"
-                                     data-type="shape" 
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":2100,"speed":1000,"frame":"0","from":"x:0px;y:50px;rX:0deg;rY:0deg;rZ:0deg;sX:0.5;sY:0.5;opacity:0;","to":"o:1;","ease":"Back.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['inherit','inherit','inherit','inherit']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 19;background:rgba(240,111,66,1);border-radius:100%;"></div>
-
-                                <!-- LAYER NR. 37 -->
-                                <div class="tp-caption tp-resizeme text-white rs-parallaxlevel-1 alt-font text-extra-medium"
-                                     data-x="['center','center','center','center']" data-hoffset="['540','420','200','150']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-250','-205','-85','-10']" 
-                                     data-fontsize="['16','16','16','15']"
-                                     data-width="['201','150','150','120']"
-                                     data-height="none"
-                                     data-whitespace="['normal','nowrap','nowrap','nowrap']"
-                                     data-type="text" 
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":2400,"speed":1000,"frame":"0","from":"y:30px;sX:0.5;sY:0.5;opacity:0;","to":"o:1;","ease":"Back.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['center','center','center','center']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 24; text-transform: uppercase;">only</div>
-
-                                <!-- LAYER NR. 33 -->
-                                <div class="tp-caption tp-resizeme rs-parallaxlevel-1 text-white alt-font"
-                                     data-x="['center','center','center','center']" data-hoffset="['540','420','200','150']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-220','-178','-55','10']" 
-                                     data-fontsize="['37','30','30','25']"
-                                     data-lineheight="['40','30','30','25']"
-                                     data-width="['201','150','150','120']"
-                                     data-height="none"
-                                     data-whitespace="['normal','nowrap','nowrap','nowrap']"
-                                     data-type="text" 
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":2700,"speed":1000,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.8;sY:0.8;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['center','center','center','center']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 20; letter-spacing: -2px;">8,900원</div>
-                            </li>
-
                             <li data-index="rs-74" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="300"  data-thumb="http://works.themepunch.com/revolution_5_3/wp-content/"  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
                                 <!-- MAIN IMAGE -->
                                 <img src="resources/images/shop-slide-02.jpg" alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
@@ -301,7 +104,7 @@
 
                                 <!-- LAYER NR. 1 -->
                                 <a class="tp-caption tp-resizeme btn btn-medium btn-white btn-box-shadow lg-margin-15px-bottom md-no-margin-bottom md-margin-auto-lr" 
-                                   href="shop-wide.html"
+                                   href="${app }/productDetail?no=11"
                                    data-x="['left','left','center','center']" data-hoffset="['24','122','0','0']" 
                                    data-y="['middle','middle','middle','middle']" data-voffset="['115','120','-160','-110']" 
                                    data-width="none"
@@ -466,7 +269,7 @@
 
                                 <!-- LAYER NR. 1 -->
                                 <a class="tp-caption tp-resizeme btn btn-medium btn-white btn-box-shadow lg-margin-15px-bottom md-no-margin-bottom md-margin-auto-lr"
-                                   href="shop-wide.html"
+                                   href="${app }/productDetail?no=11"
                                    data-x="['left','left','center','center']" data-hoffset="['24','122','0','0']" 
                                    data-y="['middle','middle','middle','middle']" data-voffset="['115','130','-160','-110']" 
                                    data-width="none"
@@ -595,12 +398,12 @@
                     <div class="col col-md-6 col-sm-10 shop-category-style-02">
                         <div class="shop-product align-items-center d-flex padding-30px-lr xs-no-padding-lr">
                             <div class="shop-product-image text-center d-flex justify-content-center align-items-center wow animate__zoomIn" data-wow-delay="0.7s">
-                                <img src="resources/images/c.jpg" alt=""/>
-                                <a href="shop-wide.html" class="d-inline-block line-height-65px rounded-circle bg-extra-dark-gray box-shadow-extra-large h-60px w-60px position-absolute product-view-link"><i class="feather icon-feather-arrow-right text-white icon-extra-small"></i></a>
+                                <img src="resources/images/foodCategory/${item.title }.jpg" alt=""/>
+                                <a href="${app }/recipe/foodCategory/${item.no}" class="d-inline-block line-height-65px rounded-circle bg-extra-dark-gray box-shadow-extra-large h-60px w-60px position-absolute product-view-link"><i class="feather icon-feather-arrow-right text-white icon-extra-small"></i></a>
                             </div>
                             <div class="shop-product-overlay position-relative wow animate__fadeIn" data-wow-delay="0.8s">
-                            	<a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block"><c:out value="${item.title}" /></a>
-                                <span class="alt-font font-weight-500 margin-10px-bottom d-inline-block text-uppercase letter-spacing-1px text-dark-orange text-dark-orange-hover xs-margin-5px-bottom">음식카테고리</span>
+                                <span class="alt-font font-weight-500 margin-10px-bottom d-inline-block text-uppercase letter-spacing-1px text-dark-orange text-dark-orange-hover xs-margin-5px-bottom">카테고리</span>
+                           		<h4 class="alt-font text-extra-dark-gray mb-0 letter-spacing-minus-1px line-height-40px sm-line-height-30px"><c:out value="${item.title }"></c:out><span class="font-weight-600"></span></h4>
                             </div>
                         </div>
                     </div>
@@ -716,20 +519,9 @@
                                         <a href="blog-post-layout-01.html"><img src="${item.profile_img}" alt="resources/images/user.png"/></a>
                                     </div>
                                     <div class="post-details">
-                                    <c:set var="nickname" value="${item.nickname }"></c:set>
-                                    <c:choose>
-                                    	<c:when test="${nickname != null}">
                                         <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"><c:out value="${item.nickname}" /></a>
                                         <p class="w-95">레시퍼 조회수 : <c:out value="${item.views }"></c:out></p>
                                         <p class="w-95">레시퍼 좋아요 수 : <c:out value="${item.likes }"></c:out></p>
-                                        </c:when>
-                                        
-                                        <c:when test="${nickname == null}">
-                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"><c:out value="${item.id}" /></a>
-                                         <p class="w-95">레시퍼 조회수 : <c:out value="${item.views }"></c:out></p>
-                                        <p class="w-95">레시퍼 좋아요 수 : <c:out value="${item.likes }"></c:out></p>
-                                        </c:when>
-                                     </c:choose>
                                     </div>
                                 </div>
                             </li>

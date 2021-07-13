@@ -106,7 +106,7 @@
                                 <form id="search-form" role="search" method="get" class="search-form text-left" action="${app}/reciep">
                                     <div class="search-form-box">
                                         <span class="search-label alt-font text-small text-uppercase text-medium-gray">어떤 레시피가 궁금하신가요?</span>
-                                        <input class="search-input alt-font" id="search-form-input5e219ef164995" placeholder="검색어를 입력해 주세요." name="keyword" value="" type="text" autocomplete="off">
+                                        <input class="search-input alt-font" id="search-form-input5e219ef164995" placeholder="검색어를 입력해 주세요." name="keyword" value="" type="text" autocomplete="on">
                                         <button type="submit" class="search-button">
                                             <i class="feather icon-feather-search" aria-hidden="true"></i>
                                         </button>
@@ -137,6 +137,7 @@
                                 <li><a href="${app}/logout"  title="로그아웃"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>로그아웃</a></li>
                             <%}else if(session.getAttribute("id") != null){ %>
                             	<li><a href="${app}/myinfo"  title="마이페이지"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>마이페이지</a></li>
+                            	<li><a href="${app}/orderlist"  title="결제내역"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>결제내역</a></li>
                                 <li><a href="${app}/logout"  title="로그아웃"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>로그아웃</a></li>
                             <%} %>
                             </ul>

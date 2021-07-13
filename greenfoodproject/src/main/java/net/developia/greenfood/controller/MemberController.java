@@ -26,7 +26,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 
+import net.developia.greenfood.dto.CartDTO;
 import net.developia.greenfood.dto.MemberDTO;
+import net.developia.greenfood.dto.OrderingDTO;
 import net.developia.greenfood.service.AwsService;
 import net.developia.greenfood.service.MemberService;
 
@@ -46,15 +48,12 @@ public class MemberController {
 	@ResponseBody
 	public String selectMember(HttpSession session) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		System.out.println("ID는 " + session.getAttribute("id"));
 		map.put("ID", session.getAttribute("id"));
 		try {
 			memberService.selectMemberById(map);
 			List<MemberDTO> data = (List) map.get("MemberList");
 			MemberDTO dto = data.get(0);
-			System.out.println(dto.toString());
 			String json = new Gson().toJson(dto);
-			System.out.println("json은 : " + json);
 			return json;
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -216,6 +215,27 @@ public class MemberController {
 	public ModelAndView move_contact_get() {
 		return new ModelAndView("contact");
 	}
+	
+	@GetMapping("/orderlist")
+	public ModelAndView orderlist(HttpSession session) {
+		ModelAndView mav = new ModelAndView("/orderlist");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("ID", session.getAttribute("id"));
+		try {
+			memberService.selectOrderList(map);
+			HashMap<String, Object> order_map = new HashMap<String, Object>();
+			List<OrderingDTO> data = (List) map.get("OrderList");
+			for(OrderingDTO dto : data) {
+				long order_no = dto.getOrdering_no();
+				order_map.put(Long.toString(order_no), dto);
+			}
+			mav.addObject("items", order_map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
 	
 	@GetMapping("/test2")
 	public ModelAndView move_test() {

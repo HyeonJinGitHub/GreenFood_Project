@@ -29,4 +29,6 @@ public interface MemberService {
 
 	public String findMyNick(MemberDTO mdto) throws Exception;
 
+	public void selectOrderList(HashMap<String, Object> map) throws Exception;
+
 }

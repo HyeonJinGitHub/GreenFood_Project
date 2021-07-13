@@ -31,4 +31,6 @@ public interface ProductService {
 
 	void productAddcart(HashMap<String, Object> map) throws Exception;
 
+	void insertOrderlist(HashMap<String, Object> map) throws Exception;
+
 }

@@ -292,4 +292,22 @@ public class ProductController {
 	}
 	
 
+	
+	@RequestMapping(value="/insertOrderlist", method=RequestMethod.POST, produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public boolean insertOrderlist(HttpSession session, @RequestParam(required = true) String order_date) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("ID", session.getAttribute("id"));
+		map.put("ORDER_DATE", order_date);
+		System.out.println("order map : " + map.toString());
+		try {
+			productService.insertOrderlist(map);
+			System.out.println("여기까지는 성공~");
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("insertOrder 서비스 호출하는 것에서 에러");
+		return false;
+	}
 }

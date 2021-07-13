@@ -31,4 +31,6 @@ public interface ProductDAO {
 
 	void selectProductByNo(HashMap<String, Object> map) throws SQLException;
 
+	void insertOrderlist(HashMap<String, Object> map) throws SQLException;
+
 }

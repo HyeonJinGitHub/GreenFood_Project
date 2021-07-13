@@ -239,4 +239,19 @@
 	
 	
 	
+	<parameterMap type="java.util.HashMap" id="insertOrderlistParam">
+		<parameter property="ID" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ORDER_DATE" jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<select id="insertOrderlist" statementType="CALLABLE"
+		parameterMap="insertOrderlistParam" >
+	<![CDATA[
+          {
+             call product_pkg.insertOrderlist(
+				?, ?
+			)
+          }
+       ]]>
+	</select>
+	
 </mapper>
