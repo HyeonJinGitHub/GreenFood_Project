@@ -15,7 +15,7 @@
 
 	<select id="getRecipeList" parameterType="map" resultType="IngredientSearchRecipeDTO">
 	<![CDATA[
-         SELECT  recipe.no no, recipe.title title, recipe.explanation explanation, recipe.views views, recipe.thumbnail thumbnail, member.name memberName, foodcategory.title foodCategoryTitle, foodcategory.no foodCategoryNo
+         SELECT  recipe.no no, recipe.title title, recipe.explanation explanation, recipe.views views, recipe.thumbnail thumbnail, member.nickname memberNickName, foodcategory.title foodCategoryTitle, foodcategory.no foodCategoryNo
          FROM 
 			  (WITH TEMP AS (
                                SELECT recipe_no, ingredients_no, recipe_no as tempcol
@@ -51,7 +51,7 @@
 	
 	<select id="getAllRecipeList" parameterType="map" resultType="IngredientSearchRecipeDTO">
 	<![CDATA[
-        SELECT  recipe.no no, recipe.title title, recipe.explanation explanation, recipe.views views, recipe.thumbnail thumbnail, member.name memberName, foodcategory.title foodCategoryTitle, foodcategory.no foodCategoryNo
+        SELECT  recipe.no no, recipe.title title, recipe.explanation explanation, recipe.views views, recipe.thumbnail thumbnail, member.nickname memberNickName, foodcategory.title foodCategoryTitle, foodcategory.no foodCategoryNo
 		FROM RECIPE
 		JOIN member
 		ON recipe.id = member.id

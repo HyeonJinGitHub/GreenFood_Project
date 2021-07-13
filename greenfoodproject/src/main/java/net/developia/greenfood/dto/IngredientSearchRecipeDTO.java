@@ -15,7 +15,7 @@ public class IngredientSearchRecipeDTO {
 	private String explanation;
 	private int views;
 	private String thumbnail;
-	private String memberName;
+	private String memberNickName;
 	private String foodCategoryTitle;
 	private int foodCategoryNo;
 }

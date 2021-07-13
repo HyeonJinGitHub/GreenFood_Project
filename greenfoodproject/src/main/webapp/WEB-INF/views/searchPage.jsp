@@ -288,7 +288,7 @@
                     recipeListHtml += '        <p>' + recipeList[i].explanation + '</p>                                                                            ';
                     recipeListHtml += '        <div class="d-flex align-items-center">                                                                                                                                    ';
                     recipeListHtml += '            <img class="avtar-image" src="https://placehold.it/125x125" alt=""/>                                                                                                   ';
-                    recipeListHtml += '            <span class="alt-font text-small mr-auto">By <a href="blog-masonry.html">'+ recipeList[i].memberName + '</a></span>                                                                        ';
+                    recipeListHtml += '            <span class="alt-font text-small mr-auto">By '+ recipeList[i].memberNickName + '</span>                                                                        ';
                     recipeListHtml += '            <i class="solid-icon-Preview icon-medium-ksy align-middle text-fast-black-ksy"></i><span>' + recipeList[i].views + '</span>                                         ';
                     recipeListHtml += '        </div>                                                                                                                                                                     ';
                     recipeListHtml += '    </div>                                                                                                                                                                         ';
