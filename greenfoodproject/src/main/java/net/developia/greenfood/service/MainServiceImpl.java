@@ -66,7 +66,7 @@ public class MainServiceImpl  implements MainService{
 			log.info(e.getMessage());
 			throw e;
 		}
-		
+		System.out.println("serviceImpl : " + list);
 		return list;
 	}
 
@@ -173,6 +173,29 @@ public class MainServiceImpl  implements MainService{
 			log.info(e.getMessage());
 			throw e;
 		}
+		return list;
+	}
+
+
+	@Override
+	public int countSerchHashTag(String keyword) throws Exception {
+		int cnt = mainDAO.countSerchHashTag(keyword);
+		return cnt;
+	}
+
+
+	@Override
+	public List<RecipeSearchDTO> getSerchHashTag(RecipeSearchDTO recipeSearchDTO) throws Exception {
+		
+		List<RecipeSearchDTO> list;
+		try {
+			list = mainDAO.getSerchHashTag(recipeSearchDTO);
+			System.out.println("serviceImpl : " + list);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+		
 		return list;
 	}
 

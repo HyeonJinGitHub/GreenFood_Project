@@ -40,4 +40,8 @@ public interface MainService {
 	public List<ProductDTO> getProduct() throws Exception;
 
 	public List<ShoppingCartDTO> getShoppingCart(String id) throws Exception;
+	
+	public int countSerchHashTag(String keyword) throws Exception;
+	
+	public List<RecipeSearchDTO> getSerchHashTag(RecipeSearchDTO recipeSearchDTO) throws Exception;
 }

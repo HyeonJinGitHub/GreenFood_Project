@@ -46,4 +46,8 @@ public interface MainDAO {
 	public List<ProductDTO> getProduct() throws SQLException;
 	
 	public List<ShoppingCartDTO> getShoppingCart(String id) throws SQLException;
+	
+	public int countSerchHashTag(String keyword) throws SQLException;
+	
+	public List<RecipeSearchDTO> getSerchHashTag(RecipeSearchDTO recipeSearchDTO) throws SQLException;
 }
