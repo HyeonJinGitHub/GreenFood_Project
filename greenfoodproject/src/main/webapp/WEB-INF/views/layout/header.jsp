@@ -8,6 +8,10 @@
 <link rel="icon" type="image/png" sizes="" href="">
 <meta charset="UTF-8">
 </head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap');
+
+</style>
 <body>
         <!-- start header -->
         <header>
@@ -31,13 +35,14 @@
                         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                             <ul class="navbar-nav alt-font">
                                <li class="nav-item dropdown megamenu">
-                                    <a href="#" class="nav-link" style="pointer-events: none;">카테고리</a>
+                                    <a href="#" class="nav-link" style="pointer-events: none; font-size:17px; font-family: 'Noto Sans KR', sans-serif;"><i class="feather icon-feather-menu margin-10px-right text-salmon-rose"></i>
+                                    전체 카테고리</a>
                                     <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                     <div class="menu-back-div dropdown-menu megamenu-content" role="menu">
                                         <div class="d-lg-flex justify-content-center">
                                             <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">레시피 카테고리</li>
-                                                <li value="0"><a href="${app}/recipe/foodCategory/all">ALL</a></li>
+                                                <li class="dropdown-header" style="font-size:17px; font-family: 'Noto Sans KR', sans-serif;">레시피 카테고리</li>
+                                                <li class="font-weight-500" value="0"><a href="${app}/recipe/foodCategory/all">ALL</a></li>
                                                 <li value="1"><a href="${app}/recipe/foodCategory/1">밥류</a></li>
                                                 <li value="2"><a href="${app}/recipe/foodCategory/2">면 및 만두류</a></li>
                                                 <li value="3"><a href="${app}/recipe/foodCategory/3">죽 및 스프류</a></li>
@@ -54,61 +59,38 @@
                                                 <li value="14"><a href="${app}/recipe/foodCategory/14">장 및 앙념류</a></li>
                                             </ul>
                                             <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">레시피</li>
-                                                <% if(session.getAttribute("id") == null){ %>
-                                                <li><a href="login">나의 레시피 보기</a></li>
-                                                <%}else if(session.getAttribute("id") != null){ %>
-                                                <li><a href="login">나의 레시피 보기</a></li>
-                                                <%} %>
-                                            </ul>
-                                            <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">레시피 상품</li>
-                                                <li><a href="home-design-agency.html">상품 목록 보기</a></li>
+                                                <li class="dropdown-header"  style="font-size:17px; font-family: 'Noto Sans KR', sans-serif;">레시피 상품</li>
+                                                <li><a href="${pageContext.request.contextPath}/product">상품 목록 보기</a></li>
                                        
-                                            </ul>
-                                            <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">고객센터</li>
-                                                <li><a href="${app }/serviceCenter">상담/찾아오시는 길</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
-                                    <a href="${app }/recipe/foodCategory/all" class="nav-link">레시피 카테고리</a>
-                                    <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                </li>
-                                <li class="nav-item dropdown simple-dropdown">
                                 <% if(session.getAttribute("id") == null){ %>
-                                    <a href="${pageContext.request.contextPath}/login" class="nav-link">레시피 등록</a>
+                                    <a href="${pageContext.request.contextPath}/login" class="nav-link" style=" font-size:17px; font-family: 'Noto Sans KR', sans-serif;">레시피 등록</a>
                                     <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                 <% }else if(session.getAttribute("id") != null){ %>
-                                	<a href="${pageContext.request.contextPath}/recipePost" class="nav-link">레시피 등록</a>
+                                	<a href="${pageContext.request.contextPath}/recipePost" class="nav-link" style=" font-size:17px; font-family: 'Noto Sans KR', sans-serif;">레시피 등록</a>
                                     <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                 <%} %>
-                                </li>
-                                <li class="nav-item dropdown megamenu">
-                                    <a href="javascript:void(0);" class="nav-link">레시피 상품</a>
-                                    <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-                                </li>
-                                <li class="nav-item dropdown simple-dropdown">
-                                    <a href="${app}/serviceCenter" class="nav-link">고객센터</a>
-                                    <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-auto text-right pr-0 font-size-0">
-                        <div class="header-search-icon search-form-wrapper">
-                            <a href="javascript:void(0)" class="search-form-icon header-search-form"><i class="feather icon-feather-search"></i></a>
+                    <div class="col-auto text-right pr-0 font-size-0 ">
+                        <div class="header-search-icon search-form-wrapper margin-10px-right">
+                            <a href="javascript:void(0)" class="search-form-icon header-search-form"><i class="feather icon-feather-search font-weight-600 "></i></a>
                             <!-- start search input --> 
                             <div class="form-wrapper">
                                 <button title="Close" type="button" class="search-close alt-font">×</button>
                                 <form id="search-form" role="search" method="get" class="search-form text-left" action="${app}/reciep">
                                     <div class="search-form-box">
-                                        <span class="search-label alt-font text-small text-uppercase text-medium-gray">어떤 레시피가 궁금하신가요?</span>
-                                        <input class="search-input alt-font" id="search-form-input5e219ef164995" placeholder="검색어를 입력해 주세요." name="keyword" value="" type="text" autocomplete="on">
+                                        <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"  style="font-family: 'Noto Sans KR', sans-serif;"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>어떤 레시피가 궁금하신가요?</span>
+	                					<h5 class="alt-font text-extra-dark-gray letter-spacing-minus-1px" style="font-family: 'Noto Sans KR', sans-serif;">원하는 <span class="font-weight-600">키워드</span>로 검색해보세요!</h5>
+                                        <input class="search-input alt-font" id="search-form-input5e219ef164995" placeholder="검색어를 입력해 주세요." name="keyword" value="" type="text" autocomplete="on"  style="font-family: 'Noto Sans KR', sans-serif;">
                                         <button type="submit" class="search-button">
-                                            <i class="feather icon-feather-search" aria-hidden="true"></i>
+                                            <i class="feather icon-feather-search " aria-hidden="true" ></i>
                                         </button>
                                     </div>
                                     
@@ -118,32 +100,33 @@
                         </div>
                         
                           <!-- search with ingredients button start-->
-                        <div class="header-search-icon search-form-wrapper">
+                        <div class="header-search-icon search-form-wrapper margin-10px-right">
                         	<div>
-                         	   <a href="${app}/searchIngredient"><i class="feather icon-feather-grid icon-medium-ksy align-middle text-fast-black-ksy"></i></a>
+                         	   <a href="${app}/searchIngredient"><i class="fas fa-concierge-bell icon-medium-ksy align-middle text-fast-black-ksy  font-weight-600"></i></a>
                         	</div>
                         </div>
                         <!-- search with ingredients button ends-->                      
                         
                         
-                        <div class="header-language dropdown d-lg-inline-block">
-                            <a href="javascript:void(0);"><i class="feather icon-feather-users"></i></a>
+                        <div class="header-language dropdown d-lg-inline-block margin-10px-right">
+                            <a href="javascript:void(0);"><i class="feather icon-feather-user  font-weight-600 "></i></a>
                             <ul class="dropdown-menu alt-font">
                             <% if(session.getAttribute("id") == null){ %>
                                 <li><a href="${app}/login"  title="로그인"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>로그인</a></li>
                                 <li><a href="${app}/register" title="회원가입"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>회원가입</a></li>
                             <% }else if(session.getAttribute("id").equals("admin")){%>
-                            	<li><a href="login" title="관리자페이지"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>관리자페이지</a></li>
+                            	<li><a href="${pageContext.request.contextPath}/adminPage" title="관리자페이지"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>관리자페이지</a></li>
                                 <li><a href="${app}/logout"  title="로그아웃"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>로그아웃</a></li>
                             <%}else if(session.getAttribute("id") != null){ %>
-                            	<li><a href="${app}/myinfo"  title="마이페이지"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>마이페이지</a></li>
+                             	<li><a href="${app}/myRecipe">나의 레시피</a></li>
+                            	<li><a href="${app}/myinfo"  title="마이페이지"><span class="icon-country"><i class="feather icon-feather-user-check font-weight-600"></i></span>마이페이지</a></li>
                             	<li><a href="${app}/orderlist"  title="결제내역"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>결제내역</a></li>
                                 <li><a href="${app}/logout"  title="로그아웃"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>로그아웃</a></li>
                             <%} %>
                             </ul>
                         </div>
-                        <div class="header-cart-icon dropdown">
-                            <a href="javascript:void(0);"><i class="feather icon-feather-shopping-bag"></i><span class="cart-count alt-font bg-dark-orange text-white">2</span></a>
+                        <div class="header-cart-icon dropdown margin-10px-right">
+                            <a href="javascript:void(0);"><i class="feather icon-feather-shopping-bag font-weight-600"></i><span class="cart-count alt-font bg-dark-orange text-white">2</span></a>
                             <ul class="dropdown-menu cart-item-list">
                             <% if(session.getAttribute("id") != null){ %>
                                 <li class="cart-item align-items-center">

@@ -72,6 +72,13 @@
 		where title like #{title} and explanation like #{explanation}  and foodname like #{foodname} and id like #{id}
 	</select>
 	
+	<select id="findRecipeById" parameterType="ArticleDTO" resultType="ArticleDTO">
+		select *
+		from recipe
+		where id like #{id}
+	</select>
+	
+	
 	<select id="countMyLikes" parameterType="ArticleDTO" resultType="Integer">
 		select likes
 		from recipe
