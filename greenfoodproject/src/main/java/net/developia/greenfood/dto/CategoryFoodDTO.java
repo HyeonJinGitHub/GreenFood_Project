@@ -26,6 +26,8 @@ public class CategoryFoodDTO {
 //	private String tagname;
 	
 	private String name;
+	private String nickname;
+	
 	private String categoryTitle;
 	
 	

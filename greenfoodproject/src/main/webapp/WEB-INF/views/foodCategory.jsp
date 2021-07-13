@@ -86,8 +86,8 @@
                                         <a href="${app }/recipe/${item.no}" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block"><c:out value="${item.title}" /></a>
                                         <p><c:out value="${item.explanation }"></c:out></p>
                                         <div class="d-flex align-items-center">
-                                            <span class="alt-font text-small mr-auto">By <a><c:out value="${item.name}" /></a></span>
-                                            <a class="blog-like alt-font text-extra-small"><i class="far fa-heart"></i><span><c:out value="${item.views}" /></span></a>
+                                            <span class="alt-font text-small mr-auto">By <a><c:out value="${item.nickname}" /></a></span>
+                                            <a class="blog-like alt-font text-extra-small"><i class="solid-icon-Preview icon-medium-ksy align-middle text-fast-black-ksy"></i><span><c:out value="${item.views}" /></span></a>
                                         </div>
                                     </div>
                                 </div>
