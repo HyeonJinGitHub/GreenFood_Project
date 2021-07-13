@@ -11,8 +11,10 @@ import net.developia.greenfood.dto.ArticleDTO;
 import net.developia.greenfood.dto.CategoryFoodDTO;
 import net.developia.greenfood.dto.FoodCategoryDTO;
 import net.developia.greenfood.dto.MemberDTO;
+import net.developia.greenfood.dto.ProductDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.RecipeSearchDTO;
+import net.developia.greenfood.dto.ShoppingCartDTO;
 
 @Service
 @Slf4j
@@ -126,6 +128,33 @@ public class MainServiceImpl  implements MainService{
 		
 		try {
 			list = mainDAO.getCategoryFoodAll(categoryFoodDTO);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+		return list;
+	}
+
+
+	@Override
+	public List<ProductDTO> getProduct() throws Exception {
+		List<ProductDTO> list;
+		try {
+			list = mainDAO.getProduct();
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+		return list;
+	}
+
+
+
+	@Override
+	public List<ShoppingCartDTO> getShoppingCart(String id) throws Exception {
+		List<ShoppingCartDTO> list;
+		try {
+			list = mainDAO.getShoppingCart(id);
 		} catch (Exception e) {
 			log.info(e.getMessage());
 			throw e;

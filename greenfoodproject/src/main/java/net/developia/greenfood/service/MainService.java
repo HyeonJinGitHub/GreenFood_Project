@@ -8,8 +8,10 @@ import net.developia.greenfood.dto.CategoryFoodDTO;
 import net.developia.greenfood.dto.FoodCategoryDTO;
 import net.developia.greenfood.dto.MemberDTO;
 import net.developia.greenfood.dto.PagingVO;
+import net.developia.greenfood.dto.ProductDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.RecipeSearchDTO;
+import net.developia.greenfood.dto.ShoppingCartDTO;
 
 public interface MainService {
 
@@ -32,4 +34,8 @@ public interface MainService {
 	public int countCategoryFoodAll() throws Exception;
 	
 	public List<CategoryFoodDTO> getCategoryFoodAll(CategoryFoodDTO categoryFoodDTO) throws Exception;
+	
+	public List<ProductDTO> getProduct() throws Exception;
+
+	public List<ShoppingCartDTO> getShoppingCart(String id) throws Exception;
 }
