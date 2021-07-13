@@ -13,13 +13,13 @@
 	</select>
 
 
-	<select id="getRecipeList" parameterType="map" resultType="IngredientSearchRecipeDTO">
+	<select id="getRecipeList" parameterType="map" resultType="RecipeDTO">
 	<![CDATA[
-         SELECT  recipe.no no, recipe.title title, recipe.explanation explanation, recipe.views views, recipe.thumbnail thumbnail, member.nickname memberNickName, foodcategory.title foodCategoryTitle, foodcategory.no foodCategoryNo
-         FROM 
+         SELECT  recipe.no, recipe.title
+         FROM RECIPE,
 			  (WITH TEMP AS (
                                SELECT recipe_no, ingredients_no, recipe_no as tempcol
-                               FROM RECIPE_INGREDIENTS
+                               FROM recipe_ingr
                             )
                SELECT tempcol
                FROM TEMP
@@ -40,23 +40,7 @@
 		                  </foreach>
      <![CDATA[
                          ) RECIPEID
-            JOIN recipe
-			ON recipeid.tempcol = recipe.no
-			JOIN member
-			ON recipe.id = member.id
-			JOIN foodcategory
-			ON foodcategory.no = recipe.foodcategoryno
-       ]]>
-	</select>
-	
-	<select id="getAllRecipeList" parameterType="map" resultType="IngredientSearchRecipeDTO">
-	<![CDATA[
-        SELECT  recipe.no no, recipe.title title, recipe.explanation explanation, recipe.views views, recipe.thumbnail thumbnail, member.nickname memberNickName, foodcategory.title foodCategoryTitle, foodcategory.no foodCategoryNo
-		FROM RECIPE
-		JOIN member
-		ON recipe.id = member.id
-		JOIN foodcategory
-		ON foodcategory.no = recipe.foodcategoryno
+          WHERE RECIPEID.tempcol = RECIPE.no
        ]]>
 	</select>
 </mapper>

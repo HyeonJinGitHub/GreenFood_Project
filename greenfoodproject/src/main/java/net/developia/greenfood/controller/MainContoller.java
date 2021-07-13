@@ -39,9 +39,9 @@ public class MainContoller {
 	private MainService mainService;
 	
 	/*
-	 * @ �옉�꽦�옄 : �씠�슚踰�
-	 * @ �옉�꽦�씪�옄 : 210705
-	 * @ 硫붾え : 硫붿씤�뿉 肉뚮젮二쇰뒗 �뜲�씠�꽣
+	 * @ 작성자 : 이효범
+	 * @ 작성일자 : 210705
+	 * @ 메모 : 메인에 뿌려주는 데이터
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView Main(
@@ -70,7 +70,7 @@ public class MainContoller {
 			
 			//cart
 			if(session.getAttribute("id") != null) {
-				System.out.println("�눥�븨移댄듃吏꾩엯");
+				System.out.println("쇼핑카트진입");
 				String id = (String) session.getAttribute("id");
 				List<ShoppingCartDTO> shoppingCartList = mainService.getShoppingCart(id);
 				List<ShoppingCartDTO> shoppingCartList2 = new ArrayList<ShoppingCartDTO>();
@@ -113,9 +113,9 @@ public class MainContoller {
 	}
 
 	/*
-	 * @ �옉�꽦�옄 : �씠�슚踰�
-	 * @ �옉�꽦�씪�옄 : 210706
-	 * @ 硫붾え : 寃��깋寃곌낵�럹�씠吏�蹂댁뿬二쇰뒗 硫붿냼�뱶
+	 * @ 작성자 : 이효범
+	 * @ 작성일자 : 210706
+	 * @ 메모 : 검색결과페이지보여주는 메소드
 	 */
 	@RequestMapping(value = "/reciep", method = RequestMethod.GET)
 	public ModelAndView searchresult(
@@ -162,7 +162,7 @@ public class MainContoller {
 			}
 			System.out.println(list2);
 			
-			//�뜲�씠�꽣媛� �뾾�쑝硫� 0, �엳�쑝硫� 1;
+			//데이터가 없으면 0, 있으면 1;
 			int dataFlag = 0;
 			if(!list2.isEmpty()) {
 				dataFlag = 1;
@@ -184,9 +184,9 @@ public class MainContoller {
 	
 	
 	/*
-	 * @ �옉�꽦�옄 : �씠�슚踰�
-	 * @ �옉�꽦�씪�옄 : 210710
-	 * @ 硫붾え : foodCategory蹂� �젅�떆�뵾 蹂댁뿬二쇰뒗 硫붿냼�뱶
+	 * @ 작성자 : 이효범
+	 * @ 작성일자 : 210710
+	 * @ 메모 : foodCategory별 레시피 보여주는 메소드
 	 */
 	@RequestMapping(value="/recipe/foodCategory/{categoryNo}")
 	public ModelAndView foodCategory(
@@ -231,7 +231,7 @@ public class MainContoller {
 				categoryFoodList2.add(i);
 			}
 			
-			//�뜲�씠�꽣媛� �뾾�쑝硫� 0, �엳�쑝硫� 1;
+			//데이터가 없으면 0, 있으면 1;
 			int dataFlag = 0;
 			if(!categoryFoodList2.isEmpty()) {
 				dataFlag = 1;
@@ -242,7 +242,6 @@ public class MainContoller {
 			System.out.println("categoryFoodList2 : " + categoryFoodList2);
 			mav.addObject("categoryFoodDTO", categoryFoodList2);
 			mav.addObject("categoryTitle",categoryTitle);
-			mav.addObject("categoryNo",categoryNo);
 			mav.addObject("pagingVO", vo);
 			mav.addObject("dataFlag", dataFlag);
 			mav.setViewName("foodCategory");
@@ -255,9 +254,9 @@ public class MainContoller {
 	}
 		
 	/*
-	 * @ �옉�꽦�옄 : �씠�슚踰�
-	 * @ �옉�꽦�씪�옄 : 2107012
-	 * @ 怨좉컼�꽱�꽣
+	 * @ 작성자 : 이효범
+	 * @ 작성일자 : 2107012
+	 * @ 고객센터
 	 */
 	@RequestMapping(value="/serviceCenter")
 	public String serviceCenter() {
@@ -265,9 +264,9 @@ public class MainContoller {
 	}
 	
 	/*
-	 * @ �옉�꽦�옄 : �씠�슚踰�
-	 * @ �옉�꽦�씪�옄 : 2107013
-	 * @ 紐⑤뱺移댄뀒怨좊━ 
+	 * @ 작성자 : 이효범
+	 * @ 작성일자 : 2107013
+	 * @ 모든카테고리 
 	 */
 	@RequestMapping(value = "/recipe/foodCategory/all", method = RequestMethod.GET)
 	public ModelAndView foodCategoryAll(
@@ -307,7 +306,7 @@ public class MainContoller {
 				categoryFoodList2.add(i);
 			}
 			
-			//�뜲�씠�꽣媛� �뾾�쑝硫� 0, �엳�쑝硫� 1;
+			//데이터가 없으면 0, 있으면 1;
 			int dataFlag = 0;
 			if(!categoryFoodList2.isEmpty()) {
 				dataFlag = 1;

@@ -41,8 +41,6 @@ public interface MainDAO {
 	
 	public List<CategoryFoodDTO> getCategoryFoodAll(CategoryFoodDTO categoryFoodDTO) throws SQLException;
 
-	public List<RecipeSearchDTO> getSearchMyRecipe(RecipeSearchDTO recipeSearchDTO) throws SQLException;
-
 	public List<ProductDTO> getProduct() throws SQLException;
 	
 	public List<ShoppingCartDTO> getShoppingCart(String id) throws SQLException;

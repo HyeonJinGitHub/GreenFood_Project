@@ -137,20 +137,6 @@ public class MainServiceImpl  implements MainService{
 
 
 	@Override
-	public List<RecipeSearchDTO> getSearchMyRecipe(RecipeSearchDTO recipeSearchDTO) throws Exception {
-		List<RecipeSearchDTO> list;
-		try {
-			list = mainDAO.getSearchMyRecipe(recipeSearchDTO);
-		} catch (Exception e) {
-			log.info(e.getMessage());
-			throw e;
-		}
-		
-		return list;
-	}
-
-
-	@Override
 	public List<ProductDTO> getProduct() throws Exception {
 		List<ProductDTO> list;
 		try {

@@ -42,7 +42,7 @@
      <!-- start header -->
     	<jsp:include page='/WEB-INF/views/layout/header.jsp' />
      <!-- end header -->
-       <!-- start section -->
+        <!-- start section -->
         <section class="big-section bg-light-gray">
             <div class="container">
                 <div class="row justify-content-center">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-lg-6 margin-15px-bottom">
+                    <div class="col-12 col-lg-6 md-margin-15px-bottom">
                         <div class="bg-white padding-40px-all sm-padding-30px-all last-paragraph-no-margin box-shadow-small">
                             <h6 class="text-extra-dark-gray">${name } 님의 프로필</h6>
 									<div class="swiper-slide box-shadow-small box-shadow-extra-large-hover">
@@ -69,7 +69,7 @@
                                 </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-6 margin-15px-bottom">
+                    <div class="col-12 col-lg-6 md-margin-15px-bottom">
                         <div class="bg-white padding-40px-all sm-padding-30px-all last-paragraph-no-margin box-shadow-small">
                             <h6 class="text-extra-dark-gray">연락처</h6>
 									<div class="swiper-slide box-shadow-small box-shadow-extra-large-hover">
@@ -86,7 +86,7 @@
                     </div>
                 </div>
                  <div class="row">
-                    <div class="col-12 col-lg-6 margin-15px-bottom">
+                    <div class="col-12 col-lg-6 md-margin-15px-bottom">
                        <div class="bg-white padding-40px-all sm-padding-30px-all last-paragraph-no-margin box-shadow-small">
                             <h6 class="text-extra-dark-gray">비밀번호</h6>
 							 		<div class="swiper-slide box-shadow-small box-shadow-extra-large-hover">
@@ -120,9 +120,6 @@
         	function move_contact() {
         		location.href="${contextPath}/contact";
         	}
-        	
-       	 
-        	
         </script>
     </body>
 </html>

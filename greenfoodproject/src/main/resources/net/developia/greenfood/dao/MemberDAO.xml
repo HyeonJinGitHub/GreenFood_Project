@@ -249,14 +249,4 @@
        ]]>
 	</select>
 	
-	<select id="findMyNick" parameterType="MemberDTO" resultType="String">
-		select nickname
-		from member
-		where id like #{id}
-	</select>
-	
-	
-	
-	
-	
 </mapper>

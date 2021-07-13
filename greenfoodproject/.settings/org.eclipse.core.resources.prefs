@@ -1,7 +1,3 @@
 eclipse.preferences.version=1
-encoding//src/main/java/net/developia/greenfood/controller/MainContoller.java=UTF-8
-encoding//src/main/java/net/developia/greenfood/controller/ProductController.java=UTF-8
-encoding//src/main/java/net/developia/greenfood/controller/RecipeController.java=UTF-8
 encoding//src/main/java/net/developia/greenfood/service/AwsServiceImpl.java=UTF-8
-encoding//src/main/java/net/developia/greenfood/service/MemberServiceImpl.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/home.jsp=UTF-8

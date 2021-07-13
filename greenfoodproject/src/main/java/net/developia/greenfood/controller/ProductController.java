@@ -5,8 +5,6 @@ import com.google.gson.Gson;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
@@ -15,20 +13,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.developia.greenfood.dto.CartDTO;
 import net.developia.greenfood.dto.ProductDTO;
 import net.developia.greenfood.dto.ProductImageDTO;
-import net.developia.greenfood.dto.Recipe_StepDTO;
-import net.developia.greenfood.service.AwsService;
 import net.developia.greenfood.service.ProductService;
 
 @Controller
@@ -37,13 +31,8 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	@Autowired
-	private AwsService awsService;
-	
 	private static Logger logger = LoggerFactory.getLogger(MemberController.class);
-	
-	int prodNo = 0;
-	
+
 	@GetMapping("/productDetail")
 	public ModelAndView move_productDetail_get(@RequestParam(required = true) String no) {
 		ModelAndView mav = new ModelAndView("productdetail");
@@ -59,7 +48,7 @@ public class ProductController {
 			List<ProductImageDTO> image_data = (List) map.get("ProductImageList");
 			List<String> list = new ArrayList<String>();
 			for (ProductImageDTO dto : image_data) {
-				list.add(dto.getImage_path().replaceAll(" ", ""));
+				list.add(dto.getImage_path());
 			}
 			mav.addObject("productDTO", productDTO);
 			mav.addObject("images", list);
@@ -83,7 +72,7 @@ public class ProductController {
 				new_list.add(dto.getCategory());
 				new_list.add(dto.getSku());
 				for (int i = 0; i < 2; i++) {
-					String image_path = new_image_data.get(i).getImage_path().replaceAll(" ", "");
+					String image_path = new_image_data.get(i).getImage_path();
 					new_list.add(image_path);
 				}
 				product_image_map.put(Long.toString(dto.getNo()), new_list);
@@ -119,7 +108,7 @@ public class ProductController {
 				list.add(dto.getCategory());
 				list.add(dto.getSku());
 				for (int i = 0; i < 2; i++) {
-					String image_path = image_data.get(i).getImage_path().replaceAll(" ", "");
+					String image_path = image_data.get(i).getImage_path();
 					list.add(image_path);
 				}
 				product_image_map.put(Long.toString(dto.getNo()), list);
@@ -188,55 +177,11 @@ public class ProductController {
 			productService.quantityUpdate(map);
 			List<CartDTO> data = (List) map.get("CartList");
 			String json = new Gson().toJson(data);
-			System.out.println("업데이트 후 : " + json);
 			return json;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "/productInsert", method = RequestMethod.GET)
-	public ModelAndView productInsert(HttpSession session) {
-		System.out.println("product insert page start");
-		ModelAndView mav = new ModelAndView();
-		if(session.getAttribute("id").equals("admin"))
-		{
-			mav = new ModelAndView("productInsert");
-		}
-		else
-		{
-			mav = new ModelAndView("main");
-		}
-		
-		return mav;
-	}
-	
-	@PostMapping(value = "/postProduct", produces = "application/text; charset=utf8")
-	public @ResponseBody String postProduct(HttpSession session,
-			@RequestParam(value = "title") String title , //
-			@RequestParam(value = "price") String price , //
-			@RequestParam(value = "sku") String sku , //
-			@RequestParam(value = "category") String category , //
-			@RequestParam(value = "subscription") String subscription,
-			@RequestParam(value = "detailsubscription") String detailsubscription) throws Exception {
-
-		ProductDTO pdto = new ProductDTO();
-		pdto.setName(title);
-		pdto.setPrice(Integer.parseInt(price));
-		pdto.setSku(sku);
-		pdto.setCategory(category);
-		pdto.setDescription(subscription);
-		pdto.setDetail_description(detailsubscription);
-		
-		productService.postProduct(pdto);
-		int pno = productService.findMyProduct(pdto);
-		
-		prodNo = pno;
-		return Integer.toString(pno);
-	
-		
 	}
 	
 	@RequestMapping(value="/removeProduct", method=RequestMethod.POST, produces = "application/text; charset=UTF-8")
@@ -272,26 +217,6 @@ public class ProductController {
 		}
 		return false;
 	}
-
-		
-	
-	@PostMapping("/setimgfunc")
-	public void setimgfunc(HttpSession session, HttpServletRequest request, HttpServletResponse response, @ModelAttribute MultipartFile[] product_image) throws Exception {
-		
-		int start = 1;
-		for(MultipartFile multipartFile : product_image) {
-			String profile_img = awsService.s3FileUploadStep(multipartFile, "product", Integer.toString(prodNo), Integer.toString(start));
-			ProductImageDTO pidto = new ProductImageDTO();
-			pidto.setImage_path(profile_img);
-			pidto.setProduct_no(prodNo);
-			productService.InsertProductImg(pidto);
-		 }
-		
-	
-		
-	}
-	
-
 	
 	@RequestMapping(value="/insertOrderlist", method=RequestMethod.POST, produces = "application/json; charset=UTF-8")
 	@ResponseBody

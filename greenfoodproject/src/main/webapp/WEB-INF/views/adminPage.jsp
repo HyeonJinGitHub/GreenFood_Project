@@ -9,7 +9,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
-        <title>Vecipe | 관리자 페이지</title>
+        <title>관리자 페이지</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="author" content="ThemeZaa">
@@ -27,31 +27,7 @@
         <link rel="stylesheet" type="text/css" href="${css}/responsive.css" />
 		<!-- bower install tui-chart -->
     </head>
-    <style>
-    	#load {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    display: block;
-    opacity: 0.8;
-    background: white;
-    z-index: 99;
-    text-align: center;
-}
-
-#load > img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 100;
-}
-    </style>
     <body data-mobile-nav-style="classic">
-    <div id="load">
-    <img src="${images}/Iphone.gif" alt="loading">
-</div>
        <!-- start header -->
         	<jsp:include page='/WEB-INF/views/layout/header.jsp' />
         <!-- end header -->
@@ -123,6 +99,11 @@
          		<div class="col-lg-12" style="width:100%;">
          		 	<div class="panel-group accordion-event accordion-style-04" id="accordion4" data-active-icon="icon-feather-minus" data-inactive-icon="icon-feather-plus">
          				<ul id="recipeList" class="list-style-03" style="width:100%">
+         					<li>
+         						 <!-- start accordion item -->
+                           
+                            <!-- end accordion item -->
+         					</li>
          				</ul>
          			</div>
          		</div>
@@ -163,19 +144,16 @@
 		<script src="https://uicdn.toast.com/chart/latest/toastui-chart.min.js"></script>
 		<script src="https://ssl.gstatic.com/trends_nrtr/2578_RC02/embed_loader.js"></script>
 	    <script type="text/javascript">
-		$(window).load(function() {
-		   // $('#load').hide();
-		});
-		 
+	    
         
         $(document).ready(function() {
-        	
         	
         $.ajax({
 			url: "${pageContext.request.contextPath}/RecomendRecipeList",
 			type: "post",
 			dataType: "text",
 			success: function(data) {
+				console.log("recipe list");
 				var results = JSON.parse(data);
 				var cnt = 1;
 				for(var i = 0; i<results.length; i++)
@@ -185,15 +163,11 @@
 				 	str += '<li class="border-bottom border-top border-right border-left border-color-black-transparent bg-color-white box-shadow-small" style="width:100%; margin:0 ; padding:0; margin-bottom: 5px;border-radius:10px; padding-left:10px; padding-right:10px;">'
 						+ '<div class="panel border-color-black-transparent" style="width:100%">'
 				 		+ '<div class="panel-heading" style="width:100%">'
-				 		+ '<div class="row">'
-				 		+ '<div class="col-1" style="margin-top:25px; ">'
-				 		+ '<input class="d-inline w-auto mb-0 mr-2 mt-1" type="checkbox" value="'+results[i].no+'" id="recipeChk"></input>'
-				 		+ '</div>'
-				 		+ '<div class="col-11">'
-				 		+ '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion4" id="detailRecipe" href="#accordion-style-4-'+cnt+'" style="width:100%">'
+				 		+ '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion4" href="#accordion-style-4-'+cnt+'" style="width:100%">'
 						+ '<div class="row align-items-center" style="width:100%; margin:0; padding:0 ;padding-bottom:10px; padding-top:10px;  display: flex">'
+						+ '<div class="col-1" style="width:5%; text-align:left"><input class="d-inline w-auto mb-0 mr-2 mt-1" type="checkbox" value="'+results[i].no+'" id="recipeChk"></div>'
 						+ '<div class="col-1" style="width:5%; text-align:center"><img id="thumb" src="'+results[i].thumbnail.replace(/(\s*)/g, '')+'" class="overflow-hidden border-radius-4px" style="width:100%" alt="" /></div>'
-						+ '<div class="col-4" style="text-align:center">'
+						+ '<div class="col-3" style="text-align:center">'
 						+ '<div class="font-weight-500 text-extra-medium text-extra-medium-gray">'+results[i].title+'</div>'
 						+ '</div>'
 						+ '<div class="col-3" style="text-align:center">'
@@ -209,7 +183,7 @@
 						+ '<div class="font-weight-500 text-extra-medium text-extra-medium-gray">'+results[i].relation_score+'</div>'
 						+ '</div>'
 						+ '</div>'
-						+ '</a></div></div></div>'
+						+ '</a></div>'
 						+ '<div id="accordion-style-4-'+cnt+'" class="panel-collapse collapse  border-top border-color-black-transparent" data-parent="#accordion4" style="margin-bottom:20px; padding-top:30px">'
 						+ '<div class="panel-body" id="chart'+cnt+'"></div>'
 						+ '</div>'
@@ -219,7 +193,6 @@
 					
 	            	$("#recipeList").append(str);	
 					$("#chart"+cnt.toString()).append("[날짜 별, 좋아요 및 조회수 분포]");
-					 $('#load').hide();
 					makeChart1(results[i].no, cnt);
 					
 	            	cnt += 1;
@@ -306,6 +279,7 @@
      				"rno" : no
      			},
      			success: function(data) {
+     			   console.log("chart list");
      			   var results = JSON.parse(data);
    	               var dateArr = [];
    	               var lArr = [];
@@ -390,6 +364,7 @@
     				"rno" : no
     			},
     			success: function(data) {
+    			   console.log("chart list");
     			   var results = JSON.parse(data);
     			   if(results.length > 0)
     			   {
@@ -430,7 +405,6 @@
            	               $("#chart"+cnt.toString()).append("[트렌드 적합도 판별 키워드]");
            	               const el = document.getElementById('chart'+cnt.toString());
            	               const chart = toastui.Chart.pieChart({ el, data, options });
-           	           // $('#load').hide();
     			   }
   	               
     			} 
@@ -457,6 +431,7 @@
         
         function deleteProcess()
         {
+        	console.log("delete");
         	$("input:checkbox[id=recipeChk]").each(function() {
         		if($(this).is(":checked") == true) {
           		  console.log($(this).attr('value'));
@@ -475,6 +450,7 @@
             		no += $(this).attr('value');
             	}
         	});
+        	console.log(cnt);
         	if(cnt > 1)
         	{
         		Swal.fire({
@@ -486,7 +462,8 @@
         	}
         	else
         	{
-        		location.replace("${pageContext.request.contextPath}/productInsert");
+        		console.log(no);
+        		//location.href("${pageContext.request.contextPath}/productInsert));
         	}
         }
         
