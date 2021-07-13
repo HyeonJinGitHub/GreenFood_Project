@@ -3,6 +3,8 @@ package net.developia.greenfood.dao;
 import java.sql.SQLException;
 import java.util.HashMap;
 
+import net.developia.greenfood.dto.ProductDTO;
+
 public interface ProductDAO {
 
 	void selectProduct(HashMap<String, Object> map) throws SQLException;
@@ -18,6 +20,10 @@ public interface ProductDAO {
 	void selectcart(HashMap<String, Object> map) throws SQLException;
 
 	void quantityUpdate(HashMap<String, Object> map) throws SQLException;
+
+	void postProduct(ProductDTO pdto) throws SQLException;
+
+	int findMyProduct(ProductDTO pdto) throws SQLException;
 
 	void removeProduct(HashMap<String, Object> map) throws SQLException;
 

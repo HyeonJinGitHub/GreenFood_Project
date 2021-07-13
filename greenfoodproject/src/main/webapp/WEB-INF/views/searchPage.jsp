@@ -173,7 +173,7 @@
 				var ingredientInnerHTML = '';
 
 				$.each(ingredientList, function(key, value) {
-					ingredientInnerHTML += '<div  id="subIngredient' + value.no + '" class = "btn btn-large-ksy btn-dark-gray btn-rounded d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" onclick="isIngredientAlreadyExists(' + value.no + ', \''+ value.name +'\')"> '+ value.name;
+					ingredientInnerHTML += '<div  id="subIngredient' + value.no + '" class = "btn btn-large-ksy btn-dark-gray border-radius-6px d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" onclick="isIngredientAlreadyExists(' + value.no + ', \''+ value.name +'\')" style="margin-right:10px; margin-bottom:10px"> '+ value.name;
 					ingredientInnerHTML += '</div>';
 				});
 				
@@ -191,7 +191,7 @@
 		var selectedIngredientName = name;
 		var selectedIngredientInnerHTML = '';
 		
-		selectedIngredientInnerHTML += '<div  id="' + selectedIngredientNo + '" class = "btn btn-large-ksy btn-dark-gray btn-rounded d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" onclick="removeIngredient(' + selectedIngredientNo + ', \''+ selectedIngredientName +'\')"> '+ selectedIngredientName;
+		selectedIngredientInnerHTML += '<div  id="' + selectedIngredientNo + '" class = "btn btn-large-ksy btn-white border-color-dark-gray border-radius-6px d-table d-lg-inline-block lg-margin-15px-bottom md-margin-auto-lr" onclick="removeIngredient(' + selectedIngredientNo + ', \''+ selectedIngredientName +'\')" style="margin-right:10px; margin-bottom:10px"> '+ selectedIngredientName;
 		selectedIngredientInnerHTML += '</div>';
 		
 		$("#selectedIngredientList").append(selectedIngredientInnerHTML);
@@ -230,6 +230,7 @@
 		var jsonArry = new Array(); 
 		var showMoreClicked = showMoreClicked;
 		
+		console.log("검색시작");
 		
 		// 반복문을 통해 모든 id 탐색
 		for (i = 0; i <= ingredientIds.length - 1; i++) {
@@ -258,6 +259,7 @@
 			contentType:'application/json; charset=UTF-8',
 	   		data:jsonData,
 			success:function(data){
+				console.log(data);
 				var recipeList = data.recipeList;
 				recipeListSize = data.recipeList.length;
 				var recipeListHtml = '';
@@ -277,19 +279,19 @@
 				
 				for(var i = shownCount * recipeShowCount ; i < ( shownCount * recipeShowCount ) + length ; i++){
 					
-                    recipeListHtml += '<li class="grid-item wow animate__fadeIn" style = "float:left;">                                                                                                                                         ';
-                    recipeListHtml += '<div class="blog-post border-radius-5px bg-white box-shadow-medium">                                                                                                               ';
+                    recipeListHtml += '<li class="grid-item wow animate__fadeIn" style = "float:left; width:320px; height: 460px; margin-bottom: 20px">                                                                   ';
+                    recipeListHtml += '<div class="blog-post border-radius-5px bg-white box-shadow-medium" style="width:320px; height: 460px">                                                                            ';
                     recipeListHtml += '    <div class="blog-post-image bg-medium-slate-blue">                                                                                                                             ';
-                    recipeListHtml += '        <a href="/greenfood/recipe/'+ recipeList[i].no + '" title=""><img src="' + (recipeList[i].thumbnail).replace(/\s/gi, "") + '" alt=""></a>                                                                                  ';
-                    recipeListHtml += '        <a href="/greenfood/recipe/foodCategory/' + recipeList[i].foodCategoryNo + '" class="blog-category alt-font">' + recipeList[i].foodCategoryTitle + '</a>                                                                                                    ';
+                    recipeListHtml += '        <a href="/greenfood/recipe/'+ recipeList[i].no + '" title=""><img src="' + (recipeList[i].thumbnail).replace(/\s/gi, "") + '" alt="" style="width:320px; height: 200px"></a>   ';
+                    recipeListHtml += '        <a href="/greenfood/recipe/foodCategory/' + recipeList[i].foodCategoryNo + '" class="blog-category alt-font">' + recipeList[i].foodCategoryTitle + '</a>                       ';
                     recipeListHtml += '    </div>                                                                                                                                                                         ';
                     recipeListHtml += '    <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">                                                                                                              ';
                     recipeListHtml += '        <a href="/greenfood/recipe/'+ recipeList[i].no + '" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">' + recipeList[i].title + '</a>  ';
                     recipeListHtml += '        <p>' + recipeList[i].explanation + '</p>                                                                            ';
                     recipeListHtml += '        <div class="d-flex align-items-center">                                                                                                                                    ';
                     recipeListHtml += '            <img class="avtar-image" src="https://placehold.it/125x125" alt=""/>                                                                                                   ';
-                    recipeListHtml += '            <span class="alt-font text-small mr-auto">By '+ recipeList[i].memberNickName + '</span>                                                                        ';
-                    recipeListHtml += '            <i class="solid-icon-Preview icon-medium-ksy align-middle text-fast-black-ksy"></i><span>' + recipeList[i].views + '</span>                                         ';
+                    recipeListHtml += '            <span class="alt-font text-small mr-auto">By '+ recipeList[i].memberNickName + '</span>                                                                                ';
+                    recipeListHtml += '            <i class="feather icon-feather-monitor margin-10px-right"></i><span>' + recipeList[i].views + '</span>                                                                 ';
                     recipeListHtml += '        </div>                                                                                                                                                                     ';
                     recipeListHtml += '    </div>                                                                                                                                                                         ';
                     recipeListHtml += '</div>                                                                                                                                                                             ';
@@ -326,6 +328,13 @@
 .stepimage_size{height:100%; font-size:0;}  
 .stepimage_size:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
 .stepimage_size img{vertical-align:middle;}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+
+body{
+
+font-family: 'Noto Sans KR', sans-serif;
+}
 </style>
 <body data-mobile-nav-style="classic">
 	<!-- start header -->
@@ -334,36 +343,26 @@
 	
 	
 	
-	
-
-	
-	
-	
-	
-	<!-- start info banner item -->
-    <div class="col bg-very-light-pink padding-5-rem-tb padding-eight-lr xl-padding-six-lr lg-padding-three-lr md-padding-eight-lr wow animate__fadeIn"> 
+        <div class="col bg-very-light-pink padding-5-rem-tb padding-eight-lr xl-padding-six-lr lg-padding-three-lr md-padding-eight-lr wow animate__fadeIn"> 
 	 <div class="container">
-           <div class="row justify-content-center">
-            	
-				
+           <div class="row justify-content-center" style="margin-bottom:-100px">
                <div class="col-12 col-lg-7 col-md-9 d-flex flex-column justify-content-center align-items-center small-screen">
-               
-               <!-- Button trigger modal -->
-				<button type="button" class="btn btn-primary-ksy" data-toggle="modal" data-target="#ingredientModal" onclick="getIngred()">재료로 검색하기</button>
-
-                  
+                   <div class="page-title-large text-center margin-40px-bottom">
+	                   <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>재료로 레시피를 검색해보세요!</span>
+	                	<h2 class="alt-font text-extra-dark-gray letter-spacing-minus-1px"><span class="font-weight-600">재료</span>로 레시피 검색하기</h2>
+	                	<button type="button" class="btn btn-gradient-tan-geraldine border-radius-6px" data-toggle="modal" data-target="#ingredientModal" onclick="getIngred()" style="margin-top:30px">검색하기</button>
+	                	
+                   </div>
                </div>
            </div>
        </div>
     </div>
-    <!-- end info banner item -->
-    
     
     
     
     <section class="padding-eleven-lr xl-padding-two-lr xs-no-padding-lr bg-light-gray" id="down-section">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row" style="margin-top:-50px">
                     <div class="col-12 blog-content">
                         <ul id = "recipeListHtml" class="blog-grid blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
                             <li class="grid-sizer"></li>
@@ -377,30 +376,52 @@
        
 
 		<!-- Modal -->
-	<div class="modal fade" id="ingredientModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
+	<div class="modal fade" id="ingredientModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+		<div class="modal-dialog" role="document" >
 			<div class="modal-content-ingredient">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">재료 선택으로 레시피 추천받기</h5>
+				<div class="modal-header" style="text-align:center; border:0px">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body ksy-modal-body-additional-css">
+				<span class="alt-font font-weight-300 text-dark-orange d-block margin-15px-bottom text-uppercase text-align-center"  style="text-align:center; font-family: 'Noto Sans KR', sans-serif;"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>냉장고에 있는 재료를 선택해보세요!</span>
+					
+				<h5 class="alt-font text-extra-dark-gray letter-spacing-minus-1px" style="font-family: 'Noto Sans KR', sans-serif;text-align:center; margin-left:15px; margin-top:-20px">원하는 <span class="font-weight-600">재료</span> 검색해보세요!</h5>
+	         
+				<div class="modal-body ksy-modal-body-additional-css" style="padding:0; margin-left:20px; margin-right:20px">
 					<div class="row">
 						<div class="col-lg-6">
-							<div id="ingredientList" class="modal-color-ksy modal-scroll-ksy" ></div>
+							<div class="row">
+								<div class="col-lg-12">
+									<h6 class="alt-font letter-spacing-minus-1px" style="font-family: 'Noto Sans KR', sans-serif; font-size:18px">재료 목록</h6>
+								</div>
+							</div>
+							<div class="row" style="margin-top:-15px">
+								<div class="col-lg-12">
+									<div id="ingredientList" class="modal-scroll-ksy border-color-medium-gray" style="height:480px; border-style: solid; border-width: thin; padding:5px"></div>
+								</div>
+							</div>
 						</div>
 						<div class="col-lg-6">
-							<div id="selectedIngredientList" class="modal-color-selected-ksy modal-scroll-ksy" >
 							
+							<div class="row">
+								<div class="col-lg-12">
+									<h6 class="alt-font letter-spacing-minus-1px" style="font-family: 'Noto Sans KR', sans-serif;  font-size:18px">선택된 재료</h6>
+								</div>
+							</div>
+							<div class="row" style="margin-top:-15px">
+								<div class="col-lg-12">
+									<div id="selectedIngredientList" class="modal-scroll-ksy border-color-medium-gray" style="height:500px; border-style: solid; border-width: thin; padding:5px">
+							
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal" style="z-index: 1;">닫기</button>
-					<button type="button" class="btn btn-primary-ksy" data-dismiss="modal" onclick="getElementIdAndSearch('notShowMoreClicked')" style="z-index: 1;">검색하기</button>
+					<button type="button" class="btn btn-secondary border-radius-6px" data-dismiss="modal" style="z-index: 1;">닫기</button>
+					<button type="button" class="btn btn-gradient-tan-geraldine border-radius-6px" data-dismiss="modal" onclick="getElementIdAndSearch('notShowMoreClicked')" style="z-index: 1;">검색하기</button>
 				</div>
 			</div>
 		</div>

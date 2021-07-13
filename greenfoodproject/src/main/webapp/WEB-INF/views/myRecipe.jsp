@@ -5,16 +5,11 @@
 <c:url var="css" value='/resources/css' />
 <c:url var="email-templates" value='/resources/email-templates' />
 
-<c:set var="app" value="${pageContext.request.contextPath}" />
-<c:set var="RecipeSearchDTO" value="${RecipeSearchDTO }" />
-<c:set var="pagingVO" value="${pagingVO }" />
-<c:set var="keyword" value="${keyword }" />
-
 <c:url var="js" value='/resources/js' />
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-<title>오구의 레시피 - 오구오구</title>
+<title>Vecipe | 개인레시피 페이지</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="author" content="ThemeZaa">
@@ -35,8 +30,6 @@
 .stepimage_size{height:100%; font-size:0;}  
 .stepimage_size:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
 .stepimage_size img{vertical-align:middle;}
-
-
 		#load {
 			    width: 100%;
 			    height: 100%;
@@ -58,7 +51,7 @@
 			} 
 </style>
 <body data-mobile-nav-style="classic">
-   <div id="load">
+     <div id="load">
     <img src="${images}/Iphone.gif" alt="loading">
 </div>
 	<!-- start header -->
@@ -67,17 +60,19 @@
 	<!-- start info banner item -->
     <div class="col bg-very-light-pink padding-5-rem-tb padding-eight-lr xl-padding-six-lr lg-padding-three-lr md-padding-eight-lr wow animate__fadeIn"> 
 	 <div class="container">
-           <div class="row justify-content-center">
+           <div class="row justify-content-center" style="margin-bottom:-100px">
                <div class="col-12 col-lg-7 col-md-9 d-flex flex-column justify-content-center align-items-center small-screen">
                    <div class="page-title-large text-center margin-40px-bottom">
-	                   <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>검색을 완료했습니다!</span>
-	                	<h2 class="alt-font text-extra-dark-gray letter-spacing-minus-1px"><span class="font-weight-600">"<c:out value="${keyword }" />"</span> 검색결과</h2>
-                   </div>
-                   <div class="newsletter-style-02 position-relative w-100">
-                       <form action="${app}/reciep" method="get">
-                           <input class="search-input large-input border-radius-4px m-0 border-0" name="keyword" placeholder="검색어를 입력해주세요." type="text">
-                           <button type="submit" class="btn btn-medium text-extra-dark-gray border-left border-0 border-color-extra-medium-gray font-weight-600 py-0 search-button"><i class="fas fa-search text-fast-blue margin-10px-right"></i>search</button>
-                       </form>
+	                   
+	                	<c:if test="${member_id == ''}">
+	                		<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>나의 레시피를 관리해보세요!</span>
+                        	<h2 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">나의 <span class="font-weight-600">레시피</span></h2>      
+             			</c:if>
+             			<c:if test="${member_id != ''}">
+             				<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>다른 레시퍼의 레시피를 따라해보세요!</span>
+                        	<h2 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">${member_nickname }님의 <span class="font-weight-600">레시피</span></h2>      
+             			</c:if>
+	                	
                    </div>
                </div>
            </div>
@@ -89,28 +84,23 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 blog-content">
-                        <ul class="blog-grid blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
+                        <ul class="blog-grid blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large" id="myRecipeView">
                             <li class="grid-sizer"></li>
-                            <!-- start dataFlag -->
-                            <c:if test="${dataFlag == 0}">
-                        		<h6 class="alt-font text-medium-gray letter-spacing-minus-1px" style="text-align:center"><span class="font-weight-600">검색조건</span>을 만족하는 데이터가 없습니다.</h6>
-                            	
-                            </c:if>
-                            <!-- end dataFlag -->
+                          
                             <!-- start blog item -->
-                            <c:forEach var="item" items="${RecipeSearchDTO }" >
-                            <li class="grid-item wow animate__fadeIn" style="width:320px; height: 460px; margin-bottom: 20px">
-                                <div class="blog-post border-radius-5px bg-white box-shadow-medium" style="width:320px; height: 460px">
+                            <c:forEach var="myRecipe" items="${myRecipe }" >
+                            <li class="grid-item wow animate__fadeIn"  style="width:320px; height: 460px; margin-bottom: 20px">
+                                <div class="blog-post border-radius-5px bg-white box-shadow-medium"  style="width:320px; height: 460px">
                                     <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="${app }/recipe/${item.no}" title=""><img src="${item.thumbnail}" alt="" style="width:320px; height: 200px"></a>
-                                        <a href="${app }/recipe/foodCategory/${item.foodcategoryno }" class="blog-category alt-font"><c:out value="${item.categoryTitle}" /></a>
+                                        <a href="${pageContext.request.contextPath}/recipe/${myRecipe.no}" title=""><img src="${myRecipe.thumbnail}" alt="" style="width:320px; height: 200px"></a>
+                                       <%--  <a href="${pageContext.request.contextPath}/recipe/foodCategory/${item.foodcategoryno }" class="blog-category alt-font"><c:out value="${item.categoryTitle}" /></a> --%>
                                     </div>
                                     <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
-                                        <a href="${app }/recipe/${item.no}" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block"><c:out value="${item.title}" /></a>
-                                        <p><c:out value="${item.explanation }"></c:out></p>
+                                        <a href="${pageContext.request.contextPath}/recipe/${myRecipe.no}" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block"><c:out value="${myRecipe.title}" /></a>
+                                        <p><c:out value="${myRecipe.explanation }"></c:out></p>
                                         <div class="d-flex align-items-center">
-                                            <span class="alt-font text-small mr-auto">By <a><c:out value="${item.name}" /></a></span>
-                                            <a class="blog-like alt-font text-extra-small"><i class="far fa-heart"></i><span><c:out value="${item.views}" /></span></a>
+                                            <span class="alt-font text-small mr-auto">By <a><c:out value="${myRecipe.nickname}" /></a></span>
+                                            <a class="blog-like alt-font text-extra-small"><i class="feather icon-feather-monitor margin-10px-right"></i><span><c:out value="${myRecipe.views}" /></span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -118,45 +108,7 @@
                             </c:forEach>
                             <!-- end blog item -->
                         </ul>
-                         <c:if test="${dataFlag != 0}">
-                        		<div class="col-12 d-flex justify-content-center margin-7-half-rem-top md-margin-5-rem-top wow animate__fadeIn">
-                            <ul class="pagination pagination-style-01 text-small font-weight-500 align-items-center">
-                            
-                            	<!-- Previous -->
-                            	<c:if test="${pagingVO.start == 1}" >	
-                                <li class="page-item"><a class="page-link"><i class="feather icon-feather-arrow-left icon-extra-small d-xs-none"></i></a></li>
-                                </c:if>
-                                
-                                <c:if test="${pagingVO.start != 1}">
-                                <li class="page-item"><a class="page-link" href="/greenfood/searchresult?keyword=${keyword }&nowPage=${pagingVO.startPage - 1}&cntPerPage=${pagingVO.cntPerPage}"><i class="feather icon-feather-arrow-left icon-extra-small d-xs-none"></i></a></li>
-                                </c:if>
-                                
-                                <!-- page -->
-                                <c:forEach var="i" begin="${pagingVO.startPage }" end="${pagingVO.endPage }">
-								<c:if test="${pagingVO.nowPage == i}">
-								<li class="page-item active"><a class="page-link" >${i }</a></li>
-								</c:if>
-								
-								<c:if test="${pagingVO.nowPage != i}">
-								<li class="page-item active"><a class="page-link" href="/greenfood/searchresult?keyword=${keyword }&nowPage=${i }&cntPerPage=${pagingVO.cntPerPage }">${i }</a></li>
-								</c:if>
-								</c:forEach>
-
-                                                                
-                                <!-- NEXT -->
-                                <c:if test="${pagingVO.lastPage == pagingVO.total}">
-								<li class="page-item"><a class="page-link"><i class="feather icon-feather-arrow-right icon-extra-small  d-xs-none"></i></a></li>
-								</c:if>
-								
-								<c:if test="${pagingVO.lastPage != pagingVO.total}">
-								<li class="page-item"><a class="page-link" href="/greenfood/searchresult?keyword=${keyword }&nowPage=${pagingVO.endPage +1 }&cntPerPage=${pagingVO.cntPerPage}"><i class="feather icon-feather-arrow-right icon-extra-small  d-xs-none"></i></a></li>
-								</c:if>
-                            </ul>
-                        </div>
-                        </c:if>
-                        <!-- start pagination -->
-                        
-                        <!-- end pagination -->
+                       
                     </div>
                 </div>
             </div>
@@ -219,12 +171,11 @@
 	<link rel="stylesheet" type="text/css" href="${css }/responsive.css" />
 	
 	<script>
-	 $(window).load(function() {
-		    $('#load').hide();
-		    
-		    
-		});
-		
+    $(window).load(function() {
+	    $('#load').hide();
+	    
+	    
+	});
 	
 	</script>
 </body>

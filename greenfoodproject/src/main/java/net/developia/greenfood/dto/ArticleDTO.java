@@ -25,6 +25,7 @@ public class ArticleDTO{
 	private int likes;
 	private String relation_score;
 	private int rscore;
+	private String nickname;
 	private String step_img;
 	
 	public static class SortByLikePlusViewPlusScore implements Comparator<ArticleDTO> {

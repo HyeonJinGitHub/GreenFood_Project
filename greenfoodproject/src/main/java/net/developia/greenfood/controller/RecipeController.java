@@ -40,6 +40,7 @@ import net.developia.greenfood.dto.ArticleDTO;
 import net.developia.greenfood.dto.Article_HashDTO;
 import net.developia.greenfood.dto.Article_My_HashDTO;
 import net.developia.greenfood.dto.IngredientsDTO;
+import net.developia.greenfood.dto.MemberDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.RecipeTrendDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
@@ -48,6 +49,7 @@ import net.developia.greenfood.dto.Recipe_StepDTO;
 import net.developia.greenfood.dto.Recipe_ViewsDTO;
 import net.developia.greenfood.dto.Recipe_likesDTO;
 import net.developia.greenfood.service.AwsService;
+import net.developia.greenfood.service.MemberService;
 import net.developia.greenfood.service.RecipeService;
 
 @Controller
@@ -58,6 +60,9 @@ public class RecipeController {
 	private RecipeService recipeService;
 	@Autowired
 	private AwsService awsService;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	int recipe_no = 0;
 	int step_start = 1;
@@ -74,11 +79,73 @@ public class RecipeController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value = "/myRecipe", method = RequestMethod.GET)
+	public ModelAndView myRecipe(HttpSession session) throws Exception {
+		System.out.println("recipe page start");
+		ModelAndView mav = new ModelAndView("myRecipe");
+		mav.addObject("my_id", session.getAttribute("id"));
+		mav.addObject("member_id", "");
+		
+		String myId = (String) session.getAttribute("id");
+		
+		List<ArticleDTO> alist = new ArrayList<>();
+		ArticleDTO adto = new ArticleDTO();
+		adto.setId(myId);
+		alist = recipeService.findRecipeById(adto);
+		
+		MemberDTO mdto = new MemberDTO();
+		mdto.setId(myId);
+		String nick = memberService.findMyNick(mdto);
+		
+		
+	
+		for(int i =0; i<alist.size(); i++)
+		{
+			alist.get(i).setNickname(nick);
+			alist.get(i).setId(myId);
+			alist.get(i).setThumbnail(alist.get(i).getThumbnail().replaceAll(" ", ""));
+		}
+		
+		mav.addObject("myRecipe", alist);
+		return mav;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/myRecipe/{member_id}", method = RequestMethod.GET)
+	public ModelAndView myRecipe(HttpSession session, @PathVariable String member_id) throws Exception {
+		System.out.println("recipe page start");
+		ModelAndView mav = new ModelAndView("myRecipe");
+		mav.addObject("my_id", session.getAttribute("id"));
+		mav.addObject("member_id", member_id);
+		
+		List<ArticleDTO> alist = new ArrayList<>();
+		ArticleDTO adto = new ArticleDTO();
+		adto.setId(member_id);
+		alist = recipeService.findRecipeById(adto);
+		
+		MemberDTO mdto = new MemberDTO();
+		mdto.setId(member_id);
+		String nick = memberService.findMyNick(mdto);
+		mav.addObject("member_nickname", nick);
+		
+	
+		for(int i =0; i<alist.size(); i++)
+		{
+			alist.get(i).setNickname(nick);
+			alist.get(i).setId(member_id);
+			alist.get(i).setThumbnail(alist.get(i).getThumbnail().replaceAll(" ", ""));
+		}
+		
+		mav.addObject("myRecipe", alist);
+		return mav;
+	}
+	
+	
+	@ResponseBody
 	@RequestMapping(value = "/adminPage", method = RequestMethod.GET)
 	public ModelAndView admin(HttpSession session) {
 		System.out.println("admin page start");
 		ModelAndView mav = new ModelAndView();
-		log.info(session.getAttribute("id") +" ¾ÆÀÌµð");
 		if(session.getAttribute("id").equals("admin"))
 		{
 			mav = new ModelAndView("adminPage");
@@ -91,23 +158,7 @@ public class RecipeController {
 		return mav;
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/productInsert", method = RequestMethod.GET)
-	public ModelAndView productInsert(HttpSession session) {
-		System.out.println("product insert page start");
-		ModelAndView mav = new ModelAndView();
-		log.info(session.getAttribute("id") +" ¾ÆÀÌµð");
-		if(session.getAttribute("id").equals("admin"))
-		{
-			mav = new ModelAndView("productInsert");
-		}
-		else
-		{
-			mav = new ModelAndView("main");
-		}
-		
-		return mav;
-	}
+
 	
 	
 	@PostMapping(value = "/RecomendRecipeList", produces = "application/text; charset=utf8")
@@ -174,7 +225,6 @@ public class RecipeController {
 		Map<String, Integer> vmp = new HashMap<>();
 		for(int j =0; j< rllist.size(); j++)
 		{
-			log.info(rllist.get(j).getLike_date()+"³¯Â¥");
 			SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 			String to = transFormat.format(rllist.get(j).getLike_date());
 			if(lmp.containsKey(to))
@@ -374,13 +424,13 @@ public class RecipeController {
 	 * @RequestParam(value="foodname") String foodname,
 	 * 
 	 * @RequestParam(value="howmuch") String howmuch) throws Exception { String chk
-	 * = "1"; log.info("½ÇÇà");
+	 * = "1"; log.info("ï¿½ë–Žï¿½ë»¾");
 	 * 
 	 * 
 	 * //titleView
 	 * 
 	 * for(String is : ingredientssize) { if(is.equals("")) { chk = "0"; break; } }
-	 * for(String ig : ingredients) { if(ig.equals("")) { chk = "0"; break; } } //Àç·á
+	 * for(String ig : ingredients) { if(ig.equals("")) { chk = "0"; break; } } //ï¿½ì˜±çŒ·ï¿½
 	 * 
 	 * if(title.equals("") || subscript.equals("") || foodname.equals("") ||
 	 * howmuch.equals("")) { chk = "0"; }
@@ -420,6 +470,8 @@ public class RecipeController {
 		String json = new Gson().toJson(taglist);
 		return json;
 	}
+	
+
 
 	@PostMapping(value = "/postRecipe", produces = "application/text; charset=utf8")
 	public @ResponseBody String insertRecipe(HttpSession session, @RequestParam(value = "ingredientsArr[]") List<String> ingredientsArr,
@@ -445,7 +497,6 @@ public class RecipeController {
 		RecipeDTO rdto = new RecipeDTO();
 		rdto.setTitle(foodcategory);
 		int cat_no = recipeService.findCategory(rdto);
-		log.info("±Û¹øÈ£" + cat_no);
 		ArticleDTO adto = new ArticleDTO();
 		adto.setTitle(title);
 		adto.setId((String) session.getAttribute("id"));
@@ -458,7 +509,6 @@ public class RecipeController {
 		adto.setLikes(0);
 		recipeService.insertRecipe(adto);
 		recipe_no = recipeService.findRecipe(adto);
-		log.info("±Û¹øÈ£" + recipe_no);
 
 		// recipe_hashtag
 
@@ -469,7 +519,6 @@ public class RecipeController {
 			 if(existchk != 0)
 			 {
 				 int hashno = recipeService.findHashtag(rtmp);
-				 log.info(hashno +"ÇØ½¬ÄÚµå ¹øÈ£");
 				 Article_HashDTO ahdto = new Article_HashDTO(); 
 				 ahdto.setHashtag_no(hashno);
 				 ahdto.setRecipe_no(recipe_no); 
@@ -521,9 +570,7 @@ public class RecipeController {
 		 	   recipeService.insertIngredients(idto); 
 		 	} 
 			int ingredients_no =recipeService.findIngredientsOne(idto); 
-			int howm =Integer.parseInt(ingredientssizeArr.get(isize)); 
-			log.info(ingredients_no+"Àç·á¹øÈ£");
-			log.info(howm +"Àç·á¾ç");
+			int howm =Integer.parseInt(ingredientssizeArr.get(j)); 
 			Recipe_IngredientsDTO ridto = new Recipe_IngredientsDTO(); 
 			ridto.setHowmuch(howm);
 		    ridto.setIngredients_no(ingredients_no); 
@@ -541,7 +588,6 @@ public class RecipeController {
 			rsdto.setStep_explanation(f);
 			rsdto.setStep_no(i+1);
 			recipeService.InsertStep(rsdto);
-			log.info(s);
 		}
 		step_last = steptitleArr.size();
 		
@@ -555,9 +601,8 @@ public class RecipeController {
 //		formData.append("recipe_no", retVal);
 		
 		String profile_img = awsService.s3FileUploadThumbnail(thumb, (String) session.getAttribute("id") , Integer.toString(recipe_no));
-		log.info(recipe_no+"±Û¹øÈ£ÀÔ´Ï´Ù");
 		ArticleDTO adto = new ArticleDTO();
-		adto.setThumbnail(profile_img);
+		adto.setThumbnail(profile_img.replaceAll(" ", ""));
 		adto.setNo(recipe_no);
 		recipeService.updateRecipeThumbnail(adto);
 		
@@ -573,7 +618,7 @@ public class RecipeController {
 		String profile_img = awsService.s3FileUploadVideo(recipev, (String) session.getAttribute("id") , Integer.toString(recipe_no));
 		
 		ArticleDTO adto = new ArticleDTO();
-		adto.setViedofile(profile_img);
+		adto.setViedofile(profile_img.replaceAll(" ", ""));
 		adto.setNo(recipe_no);
 		recipeService.updateRecipeViedofile(adto);
 		
@@ -590,8 +635,6 @@ public class RecipeController {
 		
 		String noDetail = request.getParameter("no");
 		
-		log.info("recipe datail load");
-		log.info(noDetail);
 		
 		
 		ArticleDTO adto = new ArticleDTO();
@@ -602,6 +645,8 @@ public class RecipeController {
 		String json = new Gson().toJson(adto);
 		return json;
 	}
+	
+	
 	
 	
 	@PostMapping(value = "/hotKeywordList", produces = "application/text; charset=utf8")
@@ -670,11 +715,16 @@ public class RecipeController {
 		
 		for(int i =0; i< rilist.size(); i++)
 		{
-			int ino = rilist.get(i).getNo();
+			int ino = rilist.get(i).getIngredients_no();
 			IngredientsDTO idto = new IngredientsDTO();
 			idto.setNo(ino);
+			
 			IngredientsDTO idtotmp = recipeService.findIngredientsSelect(idto);
-			ilist.add(idtotmp);
+			if(idtotmp != null )
+			{
+				ilist.add(idtotmp);
+			}
+			
 		}
 		
 		ArticleDTO adto = new ArticleDTO();
@@ -812,14 +862,14 @@ public class RecipeController {
 		    }
 	    }
 
-	    // ÀúÀåµÈ ÄíÅ°Áß¿¡ read_count ¸¸ ºÒ·¯¿À±â
+	    // ï¿½ï¿½ï¿½ì˜£ï¿½ë§‚ è‘ì¢ê¶Žä»¥ë¬’ë¿‰ read_count ï§ï¿½ éºëˆìœ­ï¿½ì‚¤æ¹²ï¿½
 	    String readCount = (String) map.get("read_count");
-	     // ÀúÀåµÉ »õ·Î¿î ÄíÅ°°ª »ý¼º
+	     // ï¿½ï¿½ï¿½ì˜£ï¿½ë§† ï¿½ê¹‰æ¿¡ì’–ìŠ« è‘ì¢ê¶Žåª›ï¿½ ï¿½ê¹®ï¿½ê½¦
 	    String newReadCount = "|" + noDetail;
 
-	    // ÀúÀåµÈ ÄíÅ°¿¡ »õ·Î¿î ÄíÅ°°ªÀÌ Á¸ÀçÇÏ´Â Áö °Ë»ç
+	    // ï¿½ï¿½ï¿½ì˜£ï¿½ë§‚ è‘ì¢ê¶Žï¿½ë¿‰ ï¿½ê¹‰æ¿¡ì’–ìŠ« è‘ì¢ê¶Žåª›ë¯ªì”  è­°ëŒì˜±ï¿½ë¸¯ï¿½ë’— ï§žï¿½ å¯ƒï¿½ï¿½ê¶—
 	    if ( StringUtils.indexOfIgnoreCase(readCount, newReadCount) == -1 ) {
-	          // ¾øÀ» °æ¿ì ÄíÅ° »ý¼º
+	          // ï¿½ë¾¾ï¿½ì“£ å¯ƒìŽŒìŠ¦ è‘ì¢ê¶Ž ï¿½ê¹®ï¿½ê½¦
 	          Cookie cookie = new Cookie("read_count", readCount + newReadCount);
 	         
 	          response.addCookie(cookie);
@@ -844,7 +894,7 @@ public class RecipeController {
 			Recipe_StepDTO rsdto = new Recipe_StepDTO();
 			rsdto.setRecipe_no(recipe_no);
 			rsdto.setStep_no(start);
-			rsdto.setStep_img(profile_img);
+			rsdto.setStep_img(profile_img.replaceAll(" ", ""));
 			recipeService.updateStep(rsdto);
 			start += 1;
 			if(start > step_last)
@@ -854,7 +904,6 @@ public class RecipeController {
 		 }
 		
 	
-		log.info("step update");
 		
 	}
 
