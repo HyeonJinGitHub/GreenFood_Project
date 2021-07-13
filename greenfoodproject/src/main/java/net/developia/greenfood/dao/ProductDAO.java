@@ -27,4 +27,6 @@ public interface ProductDAO {
 
 	void insertOrderlist(HashMap<String, Object> map) throws SQLException;
 
+	void selectshoppingcart(HashMap<String, Object> map) throws SQLException;
+
 }

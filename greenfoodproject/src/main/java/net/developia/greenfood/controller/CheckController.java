@@ -3,8 +3,8 @@ package net.developia.greenfood.controller;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Random;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import net.developia.greenfood.dto.MemberDTO;
 import net.developia.greenfood.service.MemberService;
+import net.developia.greenfood.util.Coolsms;
 import net.developia.greenfood.util.IdFormatterUtil;
 
 @Controller
@@ -87,50 +88,46 @@ public class CheckController {
 	@ResponseBody
 	@Transactional
 	public String sendSms(@RequestParam(required = true) String phone) throws Exception {
-//
-//      String api_key = "NCSNMVSIIENHF4CW";
-//      String api_secret = "8LJLY5E24LEPFMQZOX1KOHAUKKNKAGNN";
-//
-//      Coolsms coolsms = new Coolsms(api_key, api_secret);
-//      Random rand  = new Random();
-//      String numStr = "";
-//      for(int i=0; i<4; i++) {
-//          String ran = Integer.toString(rand.nextInt(10));
-//          numStr+=ran;
-//      }
-//
-//      HashMap<String, String> set = new HashMap<String, String>();
-//      set.put("to", phone); // 수신번호
-//
-//      set.put("from", "010-2623-5755"); // 발신번호, jsp에서 전송한 발신번호를 받아 map에 저장한다.
-//      //set.put("text", (String)request.getParameter("text")); // 문자내용, jsp에서 전송한 문자내용을 받아 map에 저장한다.
-//      set.put("text", "[찍먹부먹] 인증번호" + "["+numStr+"]" + "를 입력해주세요.");
-//      set.put("type", "sms"); // 문자 타입
-//
-//      System.out.println(set);
-//      JSONObject result = coolsms.send(set); // 보내기&전송결과받기
 
-//      if ((boolean)result.get("status") == true) {
-//
-//        // 메시지 보내기 성공 및 전송결과 출력
-//        System.out.println("성공");
-//		/*
-//		 * System.out.println(result.get("group_id")); // 그룹아이디
-//		 * System.out.println(result.get("result_code")); // 결과코드
-//		 * System.out.println(result.get("result_message")); // 결과 메시지
-//		 * System.out.println(result.get("success_count")); // 메시지아이디
-//		 * System.out.println(result.get("error_count")); // 여러개 보낼시 오류난 메시지 수
-//		 */ 
-//        return true;
-//        } else {
-//
-//        // 메시지 보내기 실패
-//        System.out.println("실패");
-//        System.out.println(result.get("code")); // REST API 에러코드
-//        System.out.println(result.get("message")); // 에러메시지
-//        return false;
-//      }
-		return "1234";
+		String api_key = "NCSNMVSIIENHF4CW";
+		String api_secret = "8LJLY5E24LEPFMQZOX1KOHAUKKNKAGNN";
+		Coolsms coolsms = new Coolsms(api_key, api_secret);
+		Random rand = new Random();
+		String numStr = "";
+		for (int i = 0; i < 4; i++) {
+			String ran = Integer.toString(rand.nextInt(10));
+			numStr += ran;
+		}
+
+		HashMap<String, String> set = new HashMap<String, String>();
+		set.put("to", phone); // 수신번호
+
+		set.put("from", "010-2623-5755"); // 발신번호, jsp에서 전송한 발신번호를 받아 map에 저장한다.
+		// set.put("text", (String)request.getParameter("text")); // 문자내용, jsp에서 전송한
+		// 문자내용을 받아 map에 저장한다.
+		set.put("text", "[Vecipe] 인증번호" + "[" + numStr + "]" + "를 입력해주세요.");
+		set.put("type", "sms"); // 문자 타입
+
+		System.out.println(set);
+		JSONObject result = coolsms.send(set); // 보내기&전송결과받기
+
+		if ((boolean) result.get("status") == true) {
+
+			// 메시지 보내기 성공 및 전송결과 출력
+			System.out.println("성공");
+			System.out.println(result.get("group_id")); // 그룹아이디
+			System.out.println(result.get("result_code")); // 결과코드
+			System.out.println(result.get("result_message")); // 결과 메시지
+			System.out.println(result.get("success_count")); // 메시지아이디
+			System.out.println(result.get("error_count")); // 여러개 보낼시 오류난 메시지 수
+
+		} else {
+			// 메시지 보내기 실패
+			System.out.println("실패");
+			System.out.println(result.get("code")); // REST API 에러코드
+			System.out.println(result.get("message")); // 에러메시지
+		}
+		return numStr;
 	}
 
 	@PostMapping("/logincheck")
@@ -157,7 +154,7 @@ public class CheckController {
 		}
 	}
 
-	public ModelAndView GoogleLogin(HttpSession session,  JSONObject jobj) {
+	public ModelAndView GoogleLogin(HttpSession session, JSONObject jobj) {
 		ModelAndView mav = new ModelAndView("result");
 		mav.addObject("jobj", jobj);
 		mav.addObject("url", "/greenfood/");
@@ -176,11 +173,11 @@ public class CheckController {
 			session.setAttribute("name", masking.maskingName(dto.getName()));
 			session.setAttribute("email", masking.maskingEmail(dto.getEmail()));
 			session.setAttribute("phone", "알 수 없음");
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		System.out.println("CheckController##=>" + jobj.toString());
 		return mav;
 	}
@@ -206,11 +203,11 @@ public class CheckController {
 			session.setAttribute("name", masking.maskingName(dto.getName()));
 			session.setAttribute("email", masking.maskingEmail(dto.getEmail()));
 			session.setAttribute("phone", masking.maskingPhone(dto.getPhone()));
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		System.out.println("CheckController##=>" + jobj.toString());
 		return mav;
 	}
