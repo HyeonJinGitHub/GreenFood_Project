@@ -30,15 +30,37 @@
 .stepimage_size{height:100%; font-size:0;}  
 .stepimage_size:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
 .stepimage_size img{vertical-align:middle;}
+		#load {
+			    width: 100%;
+			    height: 100%;
+			    top: 0;
+			    left: 0;
+			    position: fixed;
+			    display: block;
+			    opacity: 0.8;
+			    background: white;
+			    z-index: 99;
+			    text-align: center;
+			}
+			
+			#load > img {
+			    position: absolute;
+			    top: 50%;
+			    left: 50%;
+			    z-index: 100;
+			} 
 </style>
 <body data-mobile-nav-style="classic">
+     <div id="load">
+    <img src="${images}/Iphone.gif" alt="loading">
+</div>
 	<!-- start header -->
 		<jsp:include page='/WEB-INF/views/layout/header.jsp' />
 	<!-- end header -->
 	<!-- start info banner item -->
     <div class="col bg-very-light-pink padding-5-rem-tb padding-eight-lr xl-padding-six-lr lg-padding-three-lr md-padding-eight-lr wow animate__fadeIn"> 
 	 <div class="container">
-           <div class="row justify-content-center">
+           <div class="row justify-content-center" style="margin-bottom:-100px">
                <div class="col-12 col-lg-7 col-md-9 d-flex flex-column justify-content-center align-items-center small-screen">
                    <div class="page-title-large text-center margin-40px-bottom">
 	                   <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>나의 레시피를 관리해보세요!</span>
@@ -59,15 +81,15 @@
                           
                             <!-- start blog item -->
                             <c:forEach var="myRecipe" items="${myRecipe }" >
-                            <li class="grid-item wow animate__fadeIn">
-                                <div class="blog-post border-radius-5px bg-white box-shadow-medium">
+                            <li class="grid-item wow animate__fadeIn"  style="width:320px; height: 460px; margin-bottom: 20px">
+                                <div class="blog-post border-radius-5px bg-white box-shadow-medium"  style="width:320px; height: 460px">
                                     <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="${pageContext.request.contextPath}/recipe/${myRecipe.no}" title=""><img src="${myRecipe.thumbnail}" alt="" style="height:250px"></a>
+                                        <a href="${pageContext.request.contextPath}/recipe/${myRecipe.no}" title=""><img src="${myRecipe.thumbnail}" alt="" style="width:320px; height: 200px"></a>
                                        <%--  <a href="${pageContext.request.contextPath}/recipe/foodCategory/${item.foodcategoryno }" class="blog-category alt-font"><c:out value="${item.categoryTitle}" /></a> --%>
                                     </div>
                                     <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
                                         <a href="${pageContext.request.contextPath}/recipe/${myRecipe.no}" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block"><c:out value="${myRecipe.title}" /></a>
-                                        <p><c:out value="${item.explanation }"></c:out></p>
+                                        <p><c:out value="${myRecipe.explanation }"></c:out></p>
                                         <div class="d-flex align-items-center">
                                             <span class="alt-font text-small mr-auto">By <a><c:out value="${myRecipe.nickname}" /></a></span>
                                             <a class="blog-like alt-font text-extra-small"><i class="feather icon-feather-monitor margin-10px-right"></i><span><c:out value="${myRecipe.views}" /></span></a>
@@ -141,7 +163,11 @@
 	<link rel="stylesheet" type="text/css" href="${css }/responsive.css" />
 	
 	<script>
-	
+    $(window).load(function() {
+	    $('#load').hide();
+	    
+	    
+	});
 	
 	</script>
 </body>

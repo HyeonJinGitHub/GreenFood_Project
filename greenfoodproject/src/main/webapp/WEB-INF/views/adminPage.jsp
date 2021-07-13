@@ -9,7 +9,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
-        <title>관리자 페이지</title>
+        <title>Vecipe | 관리자 페이지</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="author" content="ThemeZaa">
