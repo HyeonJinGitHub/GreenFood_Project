@@ -42,7 +42,7 @@
      <!-- start header -->
     	<jsp:include page='/WEB-INF/views/layout/header.jsp' />
      <!-- end header -->
-        <!-- start section -->
+       <!-- start section -->
         <section class="big-section bg-light-gray">
             <div class="container">
                 <div class="row justify-content-center">
@@ -102,15 +102,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12 md-margin-15px-bottom">
-                       <div class="bg-white padding-40px-all sm-padding-30px-all last-paragraph-no-margin box-shadow-small">
-                            <h6 class="text-extra-dark-gray">나의 레시피</h6>
-                            <div id="myRecipeView">
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
         <!-- end section -->
@@ -129,6 +120,9 @@
         	function move_contact() {
         		location.href="${contextPath}/contact";
         	}
+        	
+       	 
+        	
         </script>
     </body>
 </html>

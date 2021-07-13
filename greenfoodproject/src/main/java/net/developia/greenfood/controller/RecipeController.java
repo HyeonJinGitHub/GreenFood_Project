@@ -40,6 +40,7 @@ import net.developia.greenfood.dto.ArticleDTO;
 import net.developia.greenfood.dto.Article_HashDTO;
 import net.developia.greenfood.dto.Article_My_HashDTO;
 import net.developia.greenfood.dto.IngredientsDTO;
+import net.developia.greenfood.dto.MemberDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.RecipeTrendDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
@@ -48,6 +49,7 @@ import net.developia.greenfood.dto.Recipe_StepDTO;
 import net.developia.greenfood.dto.Recipe_ViewsDTO;
 import net.developia.greenfood.dto.Recipe_likesDTO;
 import net.developia.greenfood.service.AwsService;
+import net.developia.greenfood.service.MemberService;
 import net.developia.greenfood.service.RecipeService;
 
 @Controller
@@ -58,6 +60,9 @@ public class RecipeController {
 	private RecipeService recipeService;
 	@Autowired
 	private AwsService awsService;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	int recipe_no = 0;
 	int step_start = 1;
@@ -72,6 +77,39 @@ public class RecipeController {
 		mav.addObject("no", recipe_no);
 		return mav;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/myRecipe", method = RequestMethod.GET)
+	public ModelAndView myRecipe(HttpSession session) throws Exception {
+		System.out.println("recipe page start");
+		ModelAndView mav = new ModelAndView("myRecipe");
+		mav.addObject("id", session.getAttribute("id"));
+		
+		String myId = (String) session.getAttribute("id");
+		
+		List<ArticleDTO> alist = new ArrayList<>();
+		ArticleDTO adto = new ArticleDTO();
+		adto.setId(myId);
+		alist = recipeService.findRecipeById(adto);
+		
+		MemberDTO mdto = new MemberDTO();
+		mdto.setId(myId);
+		String nick = memberService.findMyNick(mdto);
+		
+		
+	
+		for(int i =0; i<alist.size(); i++)
+		{
+			alist.get(i).setNickname(nick);
+			alist.get(i).setId(myId);
+			alist.get(i).setThumbnail(alist.get(i).getThumbnail().replaceAll(" ", ""));
+		}
+		
+		mav.addObject("myRecipe", alist);
+		return mav;
+	}
+	
+	
 	
 	@ResponseBody
 	@RequestMapping(value = "/adminPage", method = RequestMethod.GET)
@@ -356,13 +394,13 @@ public class RecipeController {
 	 * @RequestParam(value="foodname") String foodname,
 	 * 
 	 * @RequestParam(value="howmuch") String howmuch) throws Exception { String chk
-	 * = "1"; log.info("½ÇÇà");
+	 * = "1"; log.info("ì‹¤í–‰");
 	 * 
 	 * 
 	 * //titleView
 	 * 
 	 * for(String is : ingredientssize) { if(is.equals("")) { chk = "0"; break; } }
-	 * for(String ig : ingredients) { if(ig.equals("")) { chk = "0"; break; } } //Àç·á
+	 * for(String ig : ingredients) { if(ig.equals("")) { chk = "0"; break; } } //ìž¬ë£Œ
 	 * 
 	 * if(title.equals("") || subscript.equals("") || foodname.equals("") ||
 	 * howmuch.equals("")) { chk = "0"; }
@@ -579,6 +617,8 @@ public class RecipeController {
 	}
 	
 	
+	
+	
 	@PostMapping(value = "/hotKeywordList", produces = "application/text; charset=utf8")
 	public @ResponseBody String hotKeywordList(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
@@ -792,14 +832,14 @@ public class RecipeController {
 		    }
 	    }
 
-	    // ÀúÀåµÈ ÄíÅ°Áß¿¡ read_count ¸¸ ºÒ·¯¿À±â
+	    // ì €ìž¥ëœ ì¿ í‚¤ì¤‘ì— read_count ë§Œ ë¶ˆëŸ¬ì˜¤ê¸°
 	    String readCount = (String) map.get("read_count");
-	     // ÀúÀåµÉ »õ·Î¿î ÄíÅ°°ª »ý¼º
+	     // ì €ìž¥ë  ìƒˆë¡œìš´ ì¿ í‚¤ê°’ ìƒì„±
 	    String newReadCount = "|" + noDetail;
 
-	    // ÀúÀåµÈ ÄíÅ°¿¡ »õ·Î¿î ÄíÅ°°ªÀÌ Á¸ÀçÇÏ´Â Áö °Ë»ç
+	    // ì €ìž¥ëœ ì¿ í‚¤ì— ìƒˆë¡œìš´ ì¿ í‚¤ê°’ì´ ì¡´ìž¬í•˜ëŠ” ì§€ ê²€ì‚¬
 	    if ( StringUtils.indexOfIgnoreCase(readCount, newReadCount) == -1 ) {
-	          // ¾øÀ» °æ¿ì ÄíÅ° »ý¼º
+	          // ì—†ì„ ê²½ìš° ì¿ í‚¤ ìƒì„±
 	          Cookie cookie = new Cookie("read_count", readCount + newReadCount);
 	         
 	          response.addCookie(cookie);

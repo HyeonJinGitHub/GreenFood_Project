@@ -221,6 +221,23 @@ public class ProductController {
 			@RequestParam(value = "category") String category , //
 			@RequestParam(value = "subscription") String subscription,
 			@RequestParam(value = "detailsubscription") String detailsubscription) throws Exception {
+
+		ProductDTO pdto = new ProductDTO();
+		pdto.setName(title);
+		pdto.setPrice(Integer.parseInt(price));
+		pdto.setSku(sku);
+		pdto.setCategory(category);
+		pdto.setDescription(subscription);
+		pdto.setDetail_description(detailsubscription);
+		
+		productService.postProduct(pdto);
+		int pno = productService.findMyProduct(pdto);
+		
+		prodNo = pno;
+		return Integer.toString(pno);
+	
+		
+	}
 	
 	@RequestMapping(value="/removeProduct", method=RequestMethod.POST, produces = "application/text; charset=UTF-8")
 	@ResponseBody
@@ -256,22 +273,7 @@ public class ProductController {
 		return false;
 	}
 
-		ProductDTO pdto = new ProductDTO();
-		pdto.setName(title);
-		pdto.setPrice(Integer.parseInt(price));
-		pdto.setSku(sku);
-		pdto.setCategory(category);
-		pdto.setDescription(subscription);
-		pdto.setDetail_description(detailsubscription);
 		
-		productService.postProduct(pdto);
-		int pno = productService.findMyProduct(pdto);
-		
-		prodNo = pno;
-		return Integer.toString(pno);
-	
-		
-	}
 	
 	@PostMapping("/setimgfunc")
 	public void setimgfunc(HttpSession session, HttpServletRequest request, HttpServletResponse response, @ModelAttribute MultipartFile[] product_image) throws Exception {

@@ -133,4 +133,18 @@ public class MainServiceImpl  implements MainService{
 		return list;
 	}
 
+
+	@Override
+	public List<RecipeSearchDTO> getSearchMyRecipe(RecipeSearchDTO recipeSearchDTO) throws Exception {
+		List<RecipeSearchDTO> list;
+		try {
+			list = mainDAO.getSearchMyRecipe(recipeSearchDTO);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+		
+		return list;
+	}
+
 }

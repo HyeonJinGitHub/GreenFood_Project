@@ -193,5 +193,45 @@
        ]]>
 	</select>
 	
+	<parameterMap type="java.util.HashMap" id="MemberNaverParam">
+		<parameter property="ID" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="NAME" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="EMAIL" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="PHONE" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="IMAGE" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="NICKNAME" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="MemberList" jdbcType="CURSOR"
+			mode="OUT" resultMap="MemberNaverResultMap" />
+	</parameterMap>
+	<resultMap type="MemberDTO" id="MemberNaverResultMap">
+		<result property="id" column="id" />
+		<result property="password" column="password" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="nickname" column="nickname" />
+		<result property="profile_img" column="profile_img" />
+	</resultMap>
+	<select id="loginByNaver" statementType="CALLABLE"
+		parameterMap="MemberNaverParam" resultMap="MemberNaverResultMap">
+	<![CDATA[
+          {
+             call member_pkg.login_naver(
+				?, ?, ?, ?, ?, ?, ?
+			)
+          }
+       ]]>
+	</select>
+	
+	
+	<select id="findMyNick" parameterType="MemberDTO" resultType="String">
+		select nickname
+		from member
+		where id like #{id}
+	</select>
+	
+	
+	
+	
 	
 </mapper>

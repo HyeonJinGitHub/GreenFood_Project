@@ -32,4 +32,6 @@ public interface MainService {
 	public int countCategoryFoodAll() throws Exception;
 	
 	public List<CategoryFoodDTO> getCategoryFoodAll(CategoryFoodDTO categoryFoodDTO) throws Exception;
+
+	public List<RecipeSearchDTO> getSearchMyRecipe(RecipeSearchDTO recipeSearchDTO) throws Exception;
 }

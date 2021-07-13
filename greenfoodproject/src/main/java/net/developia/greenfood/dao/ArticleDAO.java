@@ -20,4 +20,6 @@ public interface ArticleDAO {
 	int chkMyView(ArticleDTO adto) throws SQLException;
 	int findHowMany(ArticleDTO adto) throws SQLException;
 	List<ArticleDTO> findAllrecipe() throws SQLException;
+	List<ArticleDTO> findRecipeById(ArticleDTO adto) throws SQLException;
+	int countMyRecipe(ArticleDTO adto) throws SQLException;
 }

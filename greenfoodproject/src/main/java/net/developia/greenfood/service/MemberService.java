@@ -2,6 +2,8 @@ package net.developia.greenfood.service;
 
 import java.util.HashMap;
 
+import net.developia.greenfood.dto.MemberDTO;
+
 public interface MemberService {
 	public void selectMember(HashMap<String, Object> map) throws Exception;
 
@@ -24,5 +26,7 @@ public interface MemberService {
 	public void selectMemberById(HashMap<String, Object> map) throws Exception;
 
 	public void loginByNaver(HashMap<String, Object> map) throws Exception;
+
+	public String findMyNick(MemberDTO mdto) throws Exception;
 
 }

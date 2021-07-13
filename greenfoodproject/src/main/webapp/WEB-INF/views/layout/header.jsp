@@ -57,7 +57,7 @@
                                                 <% if(session.getAttribute("id") == null){ %>
                                                 <li><a href="login">나의 레시피 보기</a></li>
                                                 <%}else if(session.getAttribute("id") != null){ %>
-                                                <li><a href="login">나의 레시피 보기</a></li>
+                                                <li><a href="${app}/myinfo">나의 레시피 보기</a></li>
                                                 <%} %>
                                             </ul>
                                             <ul class="d-lg-inline-block">

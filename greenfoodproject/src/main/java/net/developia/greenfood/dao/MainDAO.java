@@ -38,4 +38,6 @@ public interface MainDAO {
 	public int countCategoryFoodAll() throws SQLException;
 	
 	public List<CategoryFoodDTO> getCategoryFoodAll(CategoryFoodDTO categoryFoodDTO) throws SQLException;
+
+	public List<RecipeSearchDTO> getSearchMyRecipe(RecipeSearchDTO recipeSearchDTO) throws SQLException;
 }
