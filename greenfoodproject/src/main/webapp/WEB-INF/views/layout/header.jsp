@@ -62,17 +62,9 @@
                                                 <%} %>
                                             </ul>
                                             <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">상품 카테고리</li>
-                                                <li><a href="home-design-agency.html">건강 반찬</a></li>
-                                                <li><a href="home-web-agency.html">밥/국</a></li>
-                                                <li><a href="home-web-agency.html">샐러드/샌드위치</a></li>
-                                                <li><a href="home-web-agency.html">죽/스프</a></li>
-                                                <li><a href="home-web-agency.html">키즈</a></li>
-                                                <li><a href="home-web-agency.html">베이커리</a></li>
-                                                <li><a href="home-web-agency.html">건강음료</a></li>
-                                                <li><a href="home-web-agency.html">간편식/간식</a></li>
-                                                <li><a href="home-web-agency.html">연화식</a></li>
-                                                <li><a href="home-web-agency.html">비건/라이프</a></li>
+                                                <li class="dropdown-header">레시피 상품</li>
+                                                <li><a href="home-design-agency.html">상품 목록 보기</a></li>
+                                       
                                             </ul>
                                             <ul class="d-lg-inline-block">
                                                 <li class="dropdown-header">고객센터</li>
@@ -95,7 +87,7 @@
                                 <%} %>
                                 </li>
                                 <li class="nav-item dropdown megamenu">
-                                    <a href="javascript:void(0);" class="nav-link">상품 카테고리</a>
+                                    <a href="javascript:void(0);" class="nav-link">레시피 상품</a>
                                     <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
