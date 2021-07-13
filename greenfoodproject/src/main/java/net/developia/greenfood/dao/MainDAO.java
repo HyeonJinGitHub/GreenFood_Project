@@ -14,8 +14,10 @@ import net.developia.greenfood.dto.CategoryFoodDTO;
 import net.developia.greenfood.dto.FoodCategoryDTO;
 import net.developia.greenfood.dto.MemberDTO;
 import net.developia.greenfood.dto.PagingVO;
+import net.developia.greenfood.dto.ProductDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.RecipeSearchDTO;
+import net.developia.greenfood.dto.ShoppingCartDTO;
 
 @Repository
 public interface MainDAO {
@@ -40,4 +42,8 @@ public interface MainDAO {
 	public List<CategoryFoodDTO> getCategoryFoodAll(CategoryFoodDTO categoryFoodDTO) throws SQLException;
 
 	public List<RecipeSearchDTO> getSearchMyRecipe(RecipeSearchDTO recipeSearchDTO) throws SQLException;
+
+	public List<ProductDTO> getProduct() throws SQLException;
+	
+	public List<ShoppingCartDTO> getShoppingCart(String id) throws SQLException;
 }

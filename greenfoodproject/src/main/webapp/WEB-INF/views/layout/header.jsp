@@ -37,6 +37,7 @@
                                         <div class="d-lg-flex justify-content-center">
                                             <ul class="d-lg-inline-block">
                                                 <li class="dropdown-header">레시피 카테고리</li>
+                                                <li value="0"><a href="${app}/recipe/foodCategory/all">ALL</a></li>
                                                 <li value="1"><a href="${app}/recipe/foodCategory/1">밥류</a></li>
                                                 <li value="2"><a href="${app}/recipe/foodCategory/2">면 및 만두류</a></li>
                                                 <li value="3"><a href="${app}/recipe/foodCategory/3">죽 및 스프류</a></li>
@@ -61,17 +62,9 @@
                                                 <%} %>
                                             </ul>
                                             <ul class="d-lg-inline-block">
-                                                <li class="dropdown-header">상품 카테고리</li>
-                                                <li><a href="home-design-agency.html">건강 반찬</a></li>
-                                                <li><a href="home-web-agency.html">밥/국</a></li>
-                                                <li><a href="home-web-agency.html">샐러드/샌드위치</a></li>
-                                                <li><a href="home-web-agency.html">죽/스프</a></li>
-                                                <li><a href="home-web-agency.html">키즈</a></li>
-                                                <li><a href="home-web-agency.html">베이커리</a></li>
-                                                <li><a href="home-web-agency.html">건강음료</a></li>
-                                                <li><a href="home-web-agency.html">간편식/간식</a></li>
-                                                <li><a href="home-web-agency.html">연화식</a></li>
-                                                <li><a href="home-web-agency.html">비건/라이프</a></li>
+                                                <li class="dropdown-header">레시피 상품</li>
+                                                <li><a href="home-design-agency.html">상품 목록 보기</a></li>
+                                       
                                             </ul>
                                             <ul class="d-lg-inline-block">
                                                 <li class="dropdown-header">고객센터</li>
@@ -94,7 +87,7 @@
                                 <%} %>
                                 </li>
                                 <li class="nav-item dropdown megamenu">
-                                    <a href="javascript:void(0);" class="nav-link">상품 카테고리</a>
+                                    <a href="javascript:void(0);" class="nav-link">레시피 상품</a>
                                     <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                 </li>
                                 <li class="nav-item dropdown simple-dropdown">
@@ -151,8 +144,8 @@
                         <div class="header-cart-icon dropdown">
                             <a href="javascript:void(0);"><i class="feather icon-feather-shopping-bag"></i><span class="cart-count alt-font bg-dark-orange text-white">2</span></a>
                             <ul class="dropdown-menu cart-item-list">
+                            <% if(session.getAttribute("id") != null){ %>
                                 <li class="cart-item align-items-center">
-                                    <a href="javascript:void(0);" class="alt-font close">×</a>
                                     <div class="product-image">
                                         <a href="single-product.html"><img src="${app }/resources/images/c.jpg"" class="cart-thumb" alt="" /></a>
                                     </div>
@@ -161,20 +154,11 @@
                                         <span class="item-ammount">10,000원</span> 
                                     </div>
                                 </li>
-                                <li class="cart-item align-items-center">
-                                    <a href="javascript:void(0);" class="alt-font close">×</a>
-                                    <div class="product-image">
-                                        <a href="single-product.html"><img src="${app }/resources/images/c.jpg"" class="cart-thumb" alt="" /></a>
-                                    </div>
-                                    <div class="product-detail alt-font">
-                                        <a href="single-product.html">치킨 샐러드</a>
-                                        <span class="item-ammount">9,999원</span> 
-                                    </div>
-                                </li>
+                   			<%} %>
                                 <li class="cart-item cart-total">
                                     <div class="alt-font margin-15px-bottom"><span class="w-50 d-inline-block text-medium text-uppercase">합계:</span><span class="w-50 d-inline-block text-right text-medium font-weight-500">19,999원</span></div>
                                     <% if(session.getAttribute("id") == null){ %>
-                                    <a href="${app}/login"  class="btn btn-small btn-dark-gray">장바구니</a>
+                                    <a href="${app}/login"  class="btn btn-small btn-dark-gray">로그인</a>
                                     <%}else if(session.getAttribute("id") != null){ %>
                                     <a href="${app}/shoppingcart"  class="btn btn-small btn-dark-gray">장바구니</a>
                                     <%} %>
