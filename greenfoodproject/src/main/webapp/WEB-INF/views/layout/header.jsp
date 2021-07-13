@@ -88,9 +88,16 @@ body{
                             <div class="form-wrapper">
                                 <button title="Close" type="button" class="search-close alt-font">×</button>
                                 <form id="search-form" role="search" method="get" class="search-form text-left" action="${app}/reciep">
+                                  
+                                    
                                     <div class="search-form-box">
+                                      
                                         <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"  style="font-family: 'Noto Sans KR', sans-serif;"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>어떤 레시피가 궁금하신가요?</span>
 	                					<h5 class="alt-font text-extra-dark-gray letter-spacing-minus-1px" style="font-family: 'Noto Sans KR', sans-serif;">원하는 <span class="font-weight-600">키워드</span>로 검색해보세요!</h5>
+	                					<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="option">
+										  <option selected value="title">레시피 제목</option>
+										  <option value="hashtag">해시태그</option>
+										</select>
                                         <input class="search-input alt-font" id="search-form-input5e219ef164995" placeholder="검색어를 입력해 주세요." name="keyword" value="" type="text" autocomplete="on"  style="font-family: 'Noto Sans KR', sans-serif;">
                                         <button type="submit" class="search-button">
                                             <i class="feather icon-feather-search " aria-hidden="true" ></i>

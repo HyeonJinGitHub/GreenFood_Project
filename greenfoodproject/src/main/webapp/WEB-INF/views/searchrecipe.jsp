@@ -14,7 +14,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-<title>Vecipe | 레시피검색</title>
+<title>오구의 레시피 - 오구오구</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="author" content="ThemeZaa">
@@ -75,6 +75,10 @@
                    </div>
                    <div class="newsletter-style-02 position-relative w-100">
                        <form action="${app}/reciep" method="get">
+                       <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="option">
+						  <option selected value="title">레시피 제목</option>
+						  <option value="hashtag">해시태그</option>
+						</select>
                            <input class="search-input large-input border-radius-4px m-0 border-0" name="keyword" placeholder="검색어를 입력해주세요." type="text">
                            <button type="submit" class="btn btn-medium text-extra-dark-gray border-left border-0 border-color-extra-medium-gray font-weight-600 py-0 search-button"><i class="fas fa-search text-fast-blue margin-10px-right"></i>search</button>
                        </form>
@@ -109,7 +113,7 @@
                                         <a href="${app }/recipe/${item.no}" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block"><c:out value="${item.title}" /></a>
                                         <p><c:out value="${item.explanation }"></c:out></p>
                                         <div class="d-flex align-items-center">
-                                            <span class="alt-font text-small mr-auto">By <a><c:out value="${item.name}" /></a></span>
+                                            <span class="alt-font text-small mr-auto">By <a><c:out value="${item.nickname}" /></a></span>
                                             <a class="blog-like alt-font text-extra-small"><i class="far fa-heart"></i><span><c:out value="${item.views}" /></span></a>
                                         </div>
                                     </div>

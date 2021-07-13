@@ -17,6 +17,7 @@ public class RecipeSearchDTO {
 	private String thumbnail;
 	private int views;
 	private int likes;
+	private String nickname;
 //	private String relation_score;
 //	private int rscore;
 	
