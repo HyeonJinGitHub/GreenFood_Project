@@ -259,6 +259,7 @@
 			contentType:'application/json; charset=UTF-8',
 	   		data:jsonData,
 			success:function(data){
+				console.log(data);
 				var recipeList = data.recipeList;
 				recipeListSize = data.recipeList.length;
 				var recipeListHtml = '';
@@ -278,19 +279,19 @@
 				
 				for(var i = shownCount * recipeShowCount ; i < ( shownCount * recipeShowCount ) + length ; i++){
 					
-                    recipeListHtml += '<li class="grid-item wow animate__fadeIn" style = "float:left; width:320px; height: 460px; margin-bottom: 20px">                                                                                                                                         ';
-                    recipeListHtml += '<div class="blog-post border-radius-5px bg-white box-shadow-medium" style="width:320px; height: 460px">                                                                                                               ';
+                    recipeListHtml += '<li class="grid-item wow animate__fadeIn" style = "float:left; width:320px; height: 460px; margin-bottom: 20px">                                                                   ';
+                    recipeListHtml += '<div class="blog-post border-radius-5px bg-white box-shadow-medium" style="width:320px; height: 460px">                                                                            ';
                     recipeListHtml += '    <div class="blog-post-image bg-medium-slate-blue">                                                                                                                             ';
-                    recipeListHtml += '        <a href="/greenfood/recipe/'+ recipeList[i].no + '" title=""><img src="' + (recipeList[i].thumbnail).replace(/\s/gi, "") + '" alt="" style="width:320px; height: 200px"></a>                                                                                  ';
-                    recipeListHtml += '        <a href="/greenfood/recipe/foodCategory/' + recipeList[i].foodCategoryNo + '" class="blog-category alt-font">' + recipeList[i].foodCategoryTitle + '</a>                                                                                                    ';
+                    recipeListHtml += '        <a href="/greenfood/recipe/'+ recipeList[i].no + '" title=""><img src="' + (recipeList[i].thumbnail).replace(/\s/gi, "") + '" alt="" style="width:320px; height: 200px"></a>   ';
+                    recipeListHtml += '        <a href="/greenfood/recipe/foodCategory/' + recipeList[i].foodCategoryNo + '" class="blog-category alt-font">' + recipeList[i].foodCategoryTitle + '</a>                       ';
                     recipeListHtml += '    </div>                                                                                                                                                                         ';
                     recipeListHtml += '    <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">                                                                                                              ';
                     recipeListHtml += '        <a href="/greenfood/recipe/'+ recipeList[i].no + '" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray margin-15px-bottom d-block">' + recipeList[i].title + '</a>  ';
                     recipeListHtml += '        <p>' + recipeList[i].explanation + '</p>                                                                            ';
                     recipeListHtml += '        <div class="d-flex align-items-center">                                                                                                                                    ';
                     recipeListHtml += '            <img class="avtar-image" src="https://placehold.it/125x125" alt=""/>                                                                                                   ';
-                    recipeListHtml += '            <span class="alt-font text-small mr-auto">By '+ recipeList[i].memberNickName + '</span>                                                                        ';
-                    recipeListHtml += '            <i class="solid-icon-Preview icon-medium-ksy align-middle text-fast-black-ksy"></i><span>' + recipeList[i].views + '</span>                                         ';
+                    recipeListHtml += '            <span class="alt-font text-small mr-auto">By '+ recipeList[i].memberNickName + '</span>                                                                                ';
+                    recipeListHtml += '            <i class="feather icon-feather-monitor margin-10px-right"></i><span>' + recipeList[i].views + '</span>                                                                 ';
                     recipeListHtml += '        </div>                                                                                                                                                                     ';
                     recipeListHtml += '    </div>                                                                                                                                                                         ';
                     recipeListHtml += '</div>                                                                                                                                                                             ';

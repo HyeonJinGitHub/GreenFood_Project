@@ -11,7 +11,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
-        <title>오구의 레시피 – 오구오구</title>
+        <title>Vecipe | 메인페이지</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="author" content="ThemeZaa">

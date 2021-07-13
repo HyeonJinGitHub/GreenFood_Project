@@ -9,7 +9,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-<title>오구의 레시피 - 오구오구</title>
+<title>Vecipe | 개인레시피 페이지</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="author" content="ThemeZaa">
@@ -63,8 +63,16 @@
            <div class="row justify-content-center" style="margin-bottom:-100px">
                <div class="col-12 col-lg-7 col-md-9 d-flex flex-column justify-content-center align-items-center small-screen">
                    <div class="page-title-large text-center margin-40px-bottom">
-	                   <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>나의 레시피를 관리해보세요!</span>
-	                	<h2 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">나의 <span class="font-weight-600">레시피</span></h2>
+	                   
+	                	<c:if test="${member_id == ''}">
+	                		<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>나의 레시피를 관리해보세요!</span>
+                        	<h2 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">나의 <span class="font-weight-600">레시피</span></h2>      
+             			</c:if>
+             			<c:if test="${member_id != ''}">
+             				<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>다른 레시퍼의 레시피를 따라해보세요!</span>
+                        	<h2 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">${member_nickname }님의 <span class="font-weight-600">레시피</span></h2>      
+             			</c:if>
+	                	
                    </div>
                </div>
            </div>
