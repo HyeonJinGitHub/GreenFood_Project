@@ -134,11 +134,5 @@
 		class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="ProductSqlSession"
 		p:mapperInterface="net.developia.greenfood.dao.ProductDAO" />
-		
-	<bean id="ProductImageDAO"
-		class="org.mybatis.spring.mapper.MapperFactoryBean"
-		p:sqlSessionFactory-ref="ProductSqlSession"
-		p:mapperInterface="net.developia.greenfood.dao.ProductImageDAO" />
-		
 	<!-- productDAO end -->
 </beans>

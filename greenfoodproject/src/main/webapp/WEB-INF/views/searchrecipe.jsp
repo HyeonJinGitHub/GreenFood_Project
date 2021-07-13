@@ -35,32 +35,8 @@
 .stepimage_size{height:100%; font-size:0;}  
 .stepimage_size:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
 .stepimage_size img{vertical-align:middle;}
-
-
-		#load {
-			    width: 100%;
-			    height: 100%;
-			    top: 0;
-			    left: 0;
-			    position: fixed;
-			    display: block;
-			    opacity: 0.8;
-			    background: white;
-			    z-index: 99;
-			    text-align: center;
-			}
-			
-			#load > img {
-			    position: absolute;
-			    top: 50%;
-			    left: 50%;
-			    z-index: 100;
-			} 
 </style>
 <body data-mobile-nav-style="classic">
-   <div id="load">
-    <img src="${images}/Iphone.gif" alt="loading">
-</div>
 	<!-- start header -->
 		<jsp:include page='/WEB-INF/views/layout/header.jsp' />
 	<!-- end header -->
@@ -70,8 +46,7 @@
            <div class="row justify-content-center">
                <div class="col-12 col-lg-7 col-md-9 d-flex flex-column justify-content-center align-items-center small-screen">
                    <div class="page-title-large text-center margin-40px-bottom">
-	                   <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>검색을 완료했습니다!</span>
-	                	<h2 class="alt-font text-extra-dark-gray letter-spacing-minus-1px"><span class="font-weight-600">"<c:out value="${keyword }" />"</span> 검색결과</h2>
+                       <h1 class="alt-font text-darkgrey font-weight-500 letter-spacing-minus-1 mb-0">검색결과 : <c:out value="${keyword }" /></h1>
                    </div>
                    <div class="newsletter-style-02 position-relative w-100">
                        <form action="${app}/reciep" method="get">
@@ -93,16 +68,15 @@
                             <li class="grid-sizer"></li>
                             <!-- start dataFlag -->
                             <c:if test="${dataFlag == 0}">
-                        		<h6 class="alt-font text-medium-gray letter-spacing-minus-1px" style="text-align:center"><span class="font-weight-600">검색조건</span>을 만족하는 데이터가 없습니다.</h6>
-                            	
+                        			<h4 class="alt-font font-weight-600 text-extra-dark-gray mb-0 ">해당 결과가 없습니다.</h4>
                             </c:if>
                             <!-- end dataFlag -->
                             <!-- start blog item -->
                             <c:forEach var="item" items="${RecipeSearchDTO }" >
-                            <li class="grid-item wow animate__fadeIn" style="width:320px; height: 460px; margin-bottom: 20px">
-                                <div class="blog-post border-radius-5px bg-white box-shadow-medium" style="width:320px; height: 460px">
+                            <li class="grid-item wow animate__fadeIn">
+                                <div class="blog-post border-radius-5px bg-white box-shadow-medium">
                                     <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="${app }/recipe/${item.no}" title=""><img src="${item.thumbnail}" alt="" style="width:320px; height: 200px"></a>
+                                        <a href="${app }/recipe/${item.no}" title=""><img src="${item.thumbnail}" alt=""></a>
                                         <a href="${app }/recipe/foodCategory/${item.foodcategoryno }" class="blog-category alt-font"><c:out value="${item.categoryTitle}" /></a>
                                     </div>
                                     <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
@@ -118,8 +92,8 @@
                             </c:forEach>
                             <!-- end blog item -->
                         </ul>
-                         <c:if test="${dataFlag != 0}">
-                        		<div class="col-12 d-flex justify-content-center margin-7-half-rem-top md-margin-5-rem-top wow animate__fadeIn">
+                        <!-- start pagination -->
+                        <div class="col-12 d-flex justify-content-center margin-7-half-rem-top md-margin-5-rem-top wow animate__fadeIn">
                             <ul class="pagination pagination-style-01 text-small font-weight-500 align-items-center">
                             
                             	<!-- Previous -->
@@ -153,9 +127,6 @@
 								</c:if>
                             </ul>
                         </div>
-                        </c:if>
-                        <!-- start pagination -->
-                        
                         <!-- end pagination -->
                     </div>
                 </div>
@@ -219,11 +190,7 @@
 	<link rel="stylesheet" type="text/css" href="${css }/responsive.css" />
 	
 	<script>
-	 $(window).load(function() {
-		    $('#load').hide();
-		    
-		    
-		});
+	
 		
 	
 	</script>

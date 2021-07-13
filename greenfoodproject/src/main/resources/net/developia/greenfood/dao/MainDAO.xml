@@ -124,21 +124,6 @@
 		]]>
 	</select>
 	
-		<select id="getSearchMyRecipe"  resultType="RecipeSearchDTO" parameterType="RecipeSearchDTO">
-		<![CDATA[
-				SELECT * 
-				FROM (
-					SELECT ROWNUM RN, A.* 
-						FROM (
-                                select r.*,m.name,f.title categoryTitle
-                                from recipe r, member m, foodcategory f
-                                where (r.id = m.id and r.foodcategoryno = f.no) and m.id '%' || #{id} || '%'
-								) A
-						)
-				WHERE RN BETWEEN #{pagingVO.start} AND #{pagingVO.end}
-		]]>
-	</select>
-	
 	<select id="getProduct"  resultType="ProductDTO"  >
 		<![CDATA[
 			select b.*

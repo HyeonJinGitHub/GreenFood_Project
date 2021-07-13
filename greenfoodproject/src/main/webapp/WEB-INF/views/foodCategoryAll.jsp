@@ -37,45 +37,18 @@
 .stepimage_size{height:100%; font-size:0;}  
 .stepimage_size:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
 .stepimage_size img{vertical-align:middle;}
-
-		#load {
-			    width: 100%;
-			    height: 100%;
-			    top: 0;
-			    left: 0;
-			    position: fixed;
-			    display: block;
-			    opacity: 0.8;
-			    background: white;
-			    z-index: 99;
-			    text-align: center;
-			}
-			
-			#load > img {
-			    position: absolute;
-			    top: 50%;
-			    left: 50%;
-			    z-index: 100;
-			} 
-			
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
-
 </style>
 <body data-mobile-nav-style="classic">
-  <div id="load">
-    <img src="${images}/Iphone.gif" alt="loading">
-</div>
 	<!-- start header -->
 		<jsp:include page='/WEB-INF/views/layout/header.jsp' />
 	<!-- end header -->
 	<!-- start info banner item -->
     <div class="col bg-very-light-pink padding-5-rem-tb padding-eight-lr xl-padding-six-lr lg-padding-three-lr md-padding-eight-lr wow animate__fadeIn"> 
 	 <div class="container">
-           <div class="row justify-content-center" style="margin-bottom:-130px">
+           <div class="row justify-content-center">
                <div class="col-12 col-lg-7 col-md-9 d-flex flex-column justify-content-center align-items-center small-screen">
                    <div class="page-title-large text-center margin-40px-bottom">
-                        <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>마음에 드는 레시피를 확인해보세요!</span>
-	                	<h2 class="alt-font text-extra-dark-gray letter-spacing-minus-1px"><span class="font-weight-600">"모든"</span> 카테고리</h2>
+                       <h1 class="alt-font text-darkgrey font-weight-500 letter-spacing-minus-1 mb-0">카테고리 : ALL</h1>
                    </div>
                    <div class="newsletter-style-02 position-relative w-100">
                       	<!--  <form action="${app}/reciep" method="get">
@@ -88,102 +61,25 @@
            </div>
        </div>
     </div>
-    <div class="overlap-section">
-                    <div class="box-shadow-large bg-white border-radius-6px padding-2-rem-tb padding-1-rem-lr">
-                        <div class="row d-flex align-items-center justify-content-center">
-                            <div class="col-12 col-lg-auto text-center text-lg-left md-margin-10px-bottom wow animate__fadeIn" style="margin-left:-50px; margin-right: 10px">
-                                <span class="alt-font text-extra-large font-weight-600 text-gradient-tan-geraldine text-uppercase">카테고리</span>
-                                <input type="hidden" id="nowPage" name="nowPage" value="">
-                            </div>
-                            <div class="col-12 col-lg-auto text-center text-lg-right padding-20px-lr lg-padding-10px-lr md-padding-15px-lr md-margin-20px-bottom wow animate__fadeIn">
-                                <ul class="nav justify-content-center text-center" style="margin-bottom:5px">
-             
-                                <li class="nav-item"><a href="${app}/recipe/foodCategory/all">
-                                <div class="padding-10px-lr font-weight-600 text-dark-orange" style="font-family: 'Noto Sans KR', sans-serif; font-size:20px; text-decoration: underline;">All</div>
-                                </a></li>
-                                
-                                 <li class="nav-item"><a href="${app}/recipe/foodCategory/1">
-                                <div class="padding-10px-lr " >밥류</div>
-                                </a></li>
-                                
-                                   <li class="nav-item"><a href="${app}/recipe/foodCategory/2">
-                                <div class="padding-10px-lr " >면 및 만두류</div>
-                                </a></li>
-                                
-                                    <li class="nav-item"><a href="${app}/recipe/foodCategory/3">
-                                <div class="padding-10px-lr " >죽 및 스프류</div>
-                                </a></li>
-                                
-                                     <li class="nav-item"><a href="${app}/recipe/foodCategory/4">
-                                <div class="padding-10px-lr m" >국 및 탕류</div>
-                                </a></li>
-                                
-                                     <li class="nav-item"><a href="${app}/recipe/foodCategory/5">
-                                <div class="padding-10px-lr " >찌개 및 전골류</div>
-                                </a></li>
-                              
-                                       <li class="nav-item"><a href="${app}/recipe/foodCategory/6">
-                                <div class="padding-10px-lr " >찜류</div>
-                                </a></li>
-                                </ul>
-                                 <ul class="nav justify-content-center text-center">
-                                        <li class="nav-item"><a href="${app}/recipe/foodCategory/7">
-                                <div class="padding-10px-lr " >구이류</div>
-                                </a></li>
-                                
-                                        <li class="nav-item"><a href="${app}/recipe/foodCategory/8">
-                                <div class="padding-10px-lr d-block d-sm-inline-block align-middle  lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom" >전 및 부침류</div>
-                                </a></li>
-                                
-                                         <li class="nav-item"><a href="${app}/recipe/foodCategory/9">
-                                <div class="padding-10px-lr d-block d-sm-inline-block align-middle  lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">볶음류</div>
-                                </a></li>
-                                
-                                
-                                         <li class="nav-item"><a href="${app}/recipe/foodCategory/10">
-                                <div class="padding-10px-lr d-block d-sm-inline-block align-middle  lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">조림류</div>
-                                </a></li>
-                                
-                                       <li class="nav-item"><a href="${app}/recipe/foodCategory/11">
-                                <div class="padding-10px-lr d-block d-sm-inline-block align-middle  lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom" >튀김류</div>
-                                </a></li>
-                                
-                                           <li class="nav-item"><a href="${app}/recipe/foodCategory/12">
-                                <div class="padding-10px-lr d-block d-sm-inline-block align-middle  lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">나물 및 숙채류</div>
-                                </a></li>
-                                
-                                               <li class="nav-item"><a href="${app}/recipe/foodCategory/13">
-                                <div class="padding-10px-lr d-block d-sm-inline-block align-middle  lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">생채 및 무침류</div>
-                                </a></li>
-                                
-                                                <li class="nav-item"><a href="${app}/recipe/foodCategory/14">
-                                <div class="padding-10px-lr d-block d-sm-inline-block align-middle  lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom" >장 및 앙념류</div>
-                                </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
     <!-- end info banner item -->
         <!-- start section --> 
         <section class="padding-eleven-lr xl-padding-two-lr xs-no-padding-lr bg-light-gray" id="down-section">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 blog-content">
-                        <ul class="blog-grid blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large"  style="margin-bottom: 60px">
+                        <ul class="blog-grid blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
                             <li class="grid-sizer"></li>
                             <!-- start dataFlag -->
                             <c:if test="${dataFlag == 0}">
-                            	<h6 class="alt-font text-medium-gray letter-spacing-minus-1px" style="text-align:center"><span class="font-weight-600">검색조건</span>을 만족하는 데이터가 없습니다.</h6>
-                            	
+                            	<h1>해당 검색 결과가 없습니다.</h1>
                             </c:if>
                             <!-- end dataFlag -->
                             <!-- start blog item -->
                             <c:forEach var="item" items="${categoryFoodDTO }" >
-                            <li class="grid-item wow animate__fadeIn" style="width:320px; height: 460px; margin-bottom: 20px">
-                                <div class="blog-post border-radius-5px bg-white box-shadow-medium" style="width:320px; height: 460px">
+                            <li class="grid-item wow animate__fadeIn">
+                                <div class="blog-post border-radius-5px bg-white box-shadow-medium" >
                                     <div class="blog-post-image bg-medium-slate-blue">
-                                        <a href="${app }/recipe/${item.no}" title="" ><img src="${item.thumbnail}" alt=""  style="width:320px; height: 200px"></a>
+                                        <a href="${app }/recipe/${item.no}" title="" ><img src="${item.thumbnail}" alt=""  ></a>
                                         <a href="${app }/recipe/foodCategory/${item.foodcategoryno }" class="blog-category alt-font"><c:out value="${item.categoryTitle}" /></a>
                                     </div>
                                     <div class="post-details padding-3-rem-lr padding-2-half-rem-tb">
@@ -191,7 +87,7 @@
                                         <p><c:out value="${item.explanation }"></c:out></p>
                                         <div class="d-flex align-items-center">
                                             <span class="alt-font text-small mr-auto">By <a><c:out value="${item.nickname}" /></a></span>
-                                            <a class="blog-like alt-font text-extra-small"><i class="feather icon-feather-monitor margin-10px-right"></i><span><c:out value="${item.views}" /></span></a>
+                                            <a class="blog-like alt-font text-extra-small"><i class="solid-icon-Preview icon-medium-ksy align-middle text-fast-black-ksy"></i><span><c:out value="${item.views}" /></span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -297,11 +193,7 @@
 	<link rel="stylesheet" type="text/css" href="${css }/responsive.css" />
 	
 	<script>
-    $(window).load(function() {
-	    $('#load').hide();
-	    
-	    
-	});
+	
 		
 	
 	</script>

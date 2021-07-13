@@ -44,7 +44,7 @@
 				height: 100vh;
 			}
 			
- 			#load {
+/* 			#load {
 			    width: 100%;
 			    height: 100%;
 			    top: 0;
@@ -62,16 +62,13 @@
 			    top: 50%;
 			    left: 50%;
 			    z-index: 100;
-			} 
+			} */
 			
 		</style>
 		<script src="https://vjs.zencdn.net/7.8.2/video.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
     </head>
     <body data-mobile-nav-style="classic" style="overflow-x:hidden">
-     <div id="load">
-    <img src="${images}/Iphone.gif" alt="loading">
-</div>
 <!-- start header -->
         	<jsp:include page='/WEB-INF/views/layout/header.jsp' />
         <!-- end header -->
@@ -449,6 +446,7 @@
     	});
         
         $(document).ready(function() {
+        	console.log(${no});
         	$.ajax({
     			url: "${pageContext.request.contextPath}/recipeDetail",
     			type: "post",
@@ -458,6 +456,7 @@
 				}, 
     			success: function(data) {
     				var results = JSON.parse(data);
+    				console.log(results);
     				var str = '<h1 class="alt-font font-weight-600 letter-spacing-minus-3px text-white margin-3-half-rem-bottom sm-margin-20px-bottom xs-letter-spacing-minus-1-half">'+results.title+'</h1>';
     				$("#title").append(str);
     				
@@ -484,6 +483,7 @@
 				}, 
     			success: function(data) {
     				var results = JSON.parse(data);
+    				console.log(results);
     				for(var i = 0; i<results.length; i++)
     				{
     					var str = '';
@@ -515,6 +515,7 @@
 				}, 
     			success: function(data) {
     				var results = JSON.parse(data);
+    				console.log(results);
     				for(var i = 0; i<results.length; i++)
     				{
     					var str = '';
@@ -534,10 +535,11 @@
 				}, 
     			success: function(data) {
     				var results = JSON.parse(data);
+    				console.log(results);
     				for(var i = 0; i<results.length; i++)
     				{
     					var str = '';
-    					str += '<a href="${pageContext.request.contextPath}/reciep?keyword='+results[i]+'" id="tagSelect" class="btn btn-large  btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block md-margin-auto-lr" style="margin-bottom: 20px; margin-right:15px;">'
+    					str += '<a href="${pageContext.request.contextPath}/recipe?keyword='+results[i]+'" id="tagSelect" class="btn btn-large  btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block md-margin-auto-lr" style="margin-bottom: 20px; margin-right:15px;">'
 							+ results[i]
 							+ '<span class="bg-black"></span></a>'
 						$("#relationTag").append(str);   
@@ -663,6 +665,7 @@
 					"click",
 					"#likeBtn",
 					function(e) {
+						console.log($(this).attr('value'));
 						if($(this).attr('value') == "possible")
 						{
 	    					$.ajax({
@@ -673,6 +676,7 @@
 	    							"no" : ${no}
 	    						}, 
 	    		    			success: function(data) {
+	    		    				console.log("insert like");
 	    		    				$("#likes").empty();
 	    		    				$("#likes").append(data);
 	    		    			}
@@ -694,6 +698,7 @@
 	    							"no" : ${no}
 	    						}, 
 	    		    			success: function(data) {
+	    		    				console.log("delete like");
 	    		    				$("#likes").empty();
 	    		    				$("#likes").append(data);
 	    		    			}
@@ -716,6 +721,7 @@
 					"no" : ${no}
 				}, 
     			success: function(data) {
+    				console.log(data);
     				if(data == 'NO')
     				{
     					document.getElementById("likeBtn").setAttribute("value", "possible");
@@ -747,6 +753,7 @@
 					"no" : ${no}
 				}, 
     			success: function(data) {
+    				console.log("update view");
     				$("#views").append(data);
     			}
     				

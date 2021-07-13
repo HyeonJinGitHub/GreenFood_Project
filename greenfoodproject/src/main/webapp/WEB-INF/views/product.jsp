@@ -32,9 +32,9 @@
         <section class="half-section parallax" data-parallax-background-ratio="0.5" style="background-image:url('resources/images/portfolio-bg.jpg');">
             <div class="container">
                 <div class="row align-items-stretch justify-content-center extra-small-screen">
-                    <div class="col-12 page-title-extra-small text-center d-flex justify-content-center flex-column">
-                     	<span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span>상품 목록</span>
-	                	<h2 class="alt-font text-extra-dark-gray letter-spacing-minus-1px"><span class="font-weight-600">모든 음식</span>을 지금 맛보세요!</h2>
+                    <div class="col-12 col-xl-6 col-lg-7 col-md-8 page-title-extra-small text-center d-flex justify-content-center flex-column">
+                        <h1 class="alt-font text-gradient-sky-blue-pink margin-15px-bottom d-inline-block">상품 목록</h1>
+                        <h2 class="text-extra-dark-gray alt-font font-weight-500 letter-spacing-minus-1px line-height-50 sm-line-height-45 xs-line-height-30 no-margin-bottom">모든 음식을 지금 맛보세요.</h2>
                     </div>
                 </div>
             </div>
@@ -54,8 +54,8 @@
 	                                    <!-- start product image -->
 	                                    <div class="product-image border-radius-6px">
 	                                        <a href="${contextPath}/productDetail?no=${item.value[0]}}">
-	                                            <img class="default-image" src="${item.value[7]}" alt="" style="width:320px; height:280px"/>
-	                                            <img class="hover-image" src="${item.value[8]}" alt="" style="width:320px; height:280px"/>
+	                                            <img class="default-image" src="${item.value[7]}" alt=""/>
+	                                            <img class="hover-image" src="${item.value[8]}" alt=""/>
 	                                        </a>
 	                                        <div class="product-overlay bg-gradient-extra-midium-gray-transparent"></div>
 	                                        <div class="product-hover-bottom text-center padding-30px-tb">
