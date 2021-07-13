@@ -25,4 +25,6 @@ public interface MemberService {
 
 	public void loginByNaver(HashMap<String, Object> map) throws Exception;
 
+	public void selectOrderList(HashMap<String, Object> map) throws Exception;
+
 }
