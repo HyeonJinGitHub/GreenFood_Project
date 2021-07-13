@@ -268,7 +268,7 @@
 				
 				for(var i = shownCount * recipeShowCount ; i < ( shownCount * recipeShowCount ) + length ; i++){
 					
-                    recipeListHtml += '<li class="grid-item wow animate__fadeIn" style = "float:left; width:320px; height: 460px; margin-bottom: 20px">                                                                   ';
+                    recipeListHtml += '<li class="grid-item wow animate__fadeIn margin-30px-right" style = "float:left; width:320px; height: 460px; margin-bottom: 20px">                                                                   ';
                     recipeListHtml += '<div class="blog-post border-radius-5px bg-white box-shadow-medium" style="width:320px; height: 460px">                                                                            ';
                     recipeListHtml += '    <div class="blog-post-image bg-medium-slate-blue">                                                                                                                             ';
                     recipeListHtml += '        <a href="/greenfood/recipe/'+ recipeList[i].no + '" title=""><img src="' + (recipeList[i].thumbnail).replace(/\s/gi, "") + '" alt="" style="width:320px; height: 200px"></a>   ';

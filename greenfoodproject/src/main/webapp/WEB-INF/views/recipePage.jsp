@@ -121,12 +121,12 @@
                                 <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
                                     <a href="#ingredientsInfo" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">영양성분</a> 
                                 </div>
-                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle border-right border-color-medium-gray lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
+                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle lg-padding-15px-lr xs-no-border-right xs-margin-10px-bottom">
                                     <a href="#recipeInfo" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">조리방법</a>
                                 </div>
-                                <div class="padding-30px-lr d-block d-sm-inline-block align-middle lg-padding-15px-lr">
+                           <!--      <div class="padding-30px-lr d-block d-sm-inline-block align-middle lg-padding-15px-lr">
                                     <a href="#relatedPost" class="alt-font font-weight-500 text-uppercase line-height-18px d-block ">관련글</a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -305,7 +305,7 @@
         
         
         <!-- start section -->
-        <section class="big-section bg-very-light-desert-storm overlap-height" style="margin-top:-120px;">
+      <!--   <section class="big-section bg-very-light-desert-storm overlap-height" style="margin-top:-120px;">
             <div class="container" id="relatedPost">
                 <div class="row margin-6-rem-bottom md-margin-5-rem-bottom ">
                     <div class="col-12 col-lg-6 text-center text-lg-left wow animate__fadeIn">
@@ -314,13 +314,13 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- end section -->
         <!-- start section -->
-        <section class="pt-lg-0 pb-0 overflow-visible bg-very-light-desert-storm">
+       <!--  <section class="pt-lg-0 pb-0 overflow-visible bg-very-light-desert-storm">
             <div class="container" style="padding-bottom: 150px">
                 <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 justify-content-center overlap-section">
-                    <!-- start rotate box item -->
+                    start rotate box item
                     <div class="col col-sm-8 md-margin-30px-bottom xs-margin-15px-bottom wow animate__flipInY" data-wow-delay="0.2s">
                         <div class="rm-rotate-box text-center">
                             <div class="flipper to-left">
@@ -345,8 +345,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end rotate box item -->
-                    <!-- start rotate box item -->
+                    end rotate box item
+                    start rotate box item
                     <div class="col col-sm-8 md-margin-30px-bottom xs-margin-15px-bottom wow animate__flipInY " data-wow-delay="0.4s">
                         <div class="rm-rotate-box text-center">
                             <div class="flipper to-left">
@@ -371,8 +371,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end rotate box item -->
-                    <!-- start rotate box item -->
+                    end rotate box item
+                    start rotate box item
                     <div class="col col-sm-8 wow animate__flipInY" data-wow-delay="0.6s">
                         <div class="rm-rotate-box text-center">
                             <div class="flipper to-left">
@@ -397,10 +397,10 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end rotate box item -->
+                    end rotate box item
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- end section -->
         
          <!-- start footer -->
