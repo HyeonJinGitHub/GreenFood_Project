@@ -2932,6 +2932,10 @@ input[type="radio"]:checked+label span:after {
 	height:40%;
 }
 
+.ksy-modal-body-additional-css{
+	max-height: 550px;
+}
+
 /* ksy modal css end */
 
 /* ksy 재료 button start */
