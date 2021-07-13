@@ -25,4 +25,6 @@ public interface MemberDAO {
 
 	public void loginByNaver(HashMap<String, Object> map) throws SQLException;
 
+	public void selectOrderList(HashMap<String, Object> map) throws SQLException;
+
 }

@@ -223,6 +223,30 @@
        ]]>
 	</select>
 	
-	
+	<parameterMap type="java.util.HashMap" id="selectOrderListParam">
+		<parameter property="ID" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="OrderList" jdbcType="CURSOR"
+			mode="OUT" resultMap="selectOrderListResultMap"/>
+	</parameterMap>
+	<resultMap type="OrderingDTO" id="selectOrderListResultMap">
+		<result property="ordering_no" column="ordering_no" />
+		<result property="member_id" column="member_id" />
+		<result property="no" column="no" />
+		<result property="name" column="name" />
+		<result property="price" column="price" />
+		<result property="quantity" column="quantity" />
+		<result property="image" column="image" />
+		<result property="order_date" column="order_date" />
+	</resultMap>
+	<select id="selectOrderList" statementType="CALLABLE"
+		parameterMap="selectOrderListParam" resultMap="selectOrderListResultMap">
+	<![CDATA[
+          {
+             call product_pkg.select_ordering(
+				?, ?
+			)
+          }
+       ]]>
+	</select>
 	
 </mapper>

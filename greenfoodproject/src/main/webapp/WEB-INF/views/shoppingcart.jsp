@@ -126,7 +126,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div><a href="#" id="purchase" class="btn btn-dark-gray btn-large d-block btn-fancy margin-15px-top">구매하기</a></div>
+                            <div><button id="purchase" class="btn btn-dark-gray btn-large d-block btn-fancy margin-15px-top">구매하기</button></div>
                         </div>
                     </div>
                 </div>
@@ -404,7 +404,8 @@
 	         
 	         
 	         
-	         $("#purchase").click(function() {
+	         $("#purchase").click(function(e) {
+	        	 e.preventDefault();
 	        	 var id;
 	        	 var name;
 	        	 var phone;
@@ -463,7 +464,7 @@
 						buyer_tel : phone,
 						buyer_addr : '서울특별시 강남구 삼성동',
 						buyer_postcode : '123-456',
-						m_redirect_url : '${contextPath}/myinfo'
+						m_redirect_url : 'http://localhost:8080/greenfood/orderlist'
 					/*
 					 모바일 결제시,
 					 결제가 끝나고 랜딩되는 URL을 지정
@@ -477,11 +478,32 @@
 							msg += '상점 거래ID : ' + rsp.merchant_uid;
 							msg += '결제 금액 : ' + rsp.paid_amount;
 							msg += '카드 승인번호 : ' + rsp.apply_num;
+							var date = new Date();
+							var purchase_date = date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2) + ":" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(); 
+					      	 $.ajax({
+				    				async: false,
+				    				type: 'POST',
+				    				data: {"order_date" : purchase_date},
+				    				url : '/greenfood/insertOrderlist',
+				    				success : function(data) {
+				    					if(data == true) {
+				    						
+				    						
+				    					} else {
+				    						alert('장바구니 지우기에 실패하였습니다.');
+				    					}
+				    				},
+				    				error : function(error) {
+				    					alert('여기서 에러남요');
+				    					alert('error : ' + JSON.stringify(error));
+				    				}
+				    			});
 						} else {
 							var msg = '결제에 실패하였습니다.';
 							msg += '에러내용 : ' + rsp.error_msg;
 						}
 						alert(msg);
+						location.href='http://localhost:8080/greenfood/orderlist';
 					});
 				});
        	</script>

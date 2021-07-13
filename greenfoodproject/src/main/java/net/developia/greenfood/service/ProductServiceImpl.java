@@ -113,4 +113,14 @@ public class ProductServiceImpl implements ProductService {
 			throw e;
 		}
 	}
+
+	@Override
+	public void insertOrderlist(HashMap<String, Object> map) throws Exception {
+		try {
+			productDAO.insertOrderlist(map);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+	}
 }
