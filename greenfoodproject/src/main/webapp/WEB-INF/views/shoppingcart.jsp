@@ -5,6 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="subtotal" value="0" />
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -77,7 +78,7 @@
 	                                            <td class="product-name">
 	                                                <a href="${contextPath}/productDetail?no=${item.value.no}">${item.value.name }</a>
 	                                            </td>
-	                                            <td class="product-price" data-title="Price">￦ ${item.value.price }</td>
+	                                            <td class="product-price" data-title="Price">￦ <f:formatNumber value="${item.value.price }" pattern="#,###,###"></f:formatNumber></td>
 	                                            <td class="product-quantity" data-title="Quantity">
 	                                                <div class="quantity" >
 	                                                    <label class="screen-reader-text">수량</label>
@@ -86,7 +87,7 @@
 	                                                    <input type="button" id="quantity_plus_${item.value.no}" name="${item.value.no}" value="+" class="qty-plus qty-btn quantity_plus" data-quantity="plus" data-field="quantity">
 	                                                </div>
 	                                            </td> 
-	                                            <td class="product-subtotal" data-title="Total">￦ ${item.value.quantity * item.value.price}</td> 
+	                                            <td class="product-subtotal" data-title="Total">￦ <f:formatNumber value="${item.value.quantity * item.value.price}" pattern="#,###,###"></f:formatNumber></td> 
 	                                            <c:set var="subtotal" value="${subtotal + item.value.quantity * item.value.price}"/>
                                         	</tr>
                                     	</c:forEach>
@@ -112,21 +113,21 @@
                                 <tbody id="totaltbody">
                                     <tr>
                                         <th class="w-50 font-weight-500 text-extra-dark-gray">총 상품가격</th>
-                                        <td class="text-extra-dark-gray">￦ ${subtotal }</td>
+                                        <td class="text-extra-dark-gray">￦ <f:formatNumber value="${subtotal}" pattern="#,###,###"></f:formatNumber> </td>
                                     </tr>
                                     <tr class="shipping">
                                         <th class="font-weight-500 text-extra-dark-gray">배송비</th>
-                                        <td class="text-extra-dark-gray">￦ 2500</td>
+                                        <td class="text-extra-dark-gray">￦ 2,500</td>
                                     </tr>
                                     <tr class="total-amount">
                                         <th class="font-weight-500 text-extra-dark-gray">총 주문금액</th>
                                         <td data-title="Total">
-                                            <h6 class="d-block font-weight-500 mb-0 text-extra-dark-gray">￦ ${subtotal + 2500 }</h6>
+                                            <h6 class="d-block font-weight-500 mb-0 text-extra-dark-gray">￦ <f:formatNumber value="${subtotal + 2500 }" pattern="#,###,###"></f:formatNumber> </h6>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div><button id="purchase" class="btn btn-dark-gray btn-large d-block btn-fancy margin-15px-top">구매하기</button></div>
+                            <div><a id="purchase" class="btn btn-dark-gray btn-large d-block btn-fancy margin-15px-top">구매하기</a></div>
                         </div>
                     </div>
                 </div>
@@ -143,6 +144,7 @@
         <script type="text/javascript" src="resources/js/main.js"></script>
         
         <script>
+        	var delivery_included = ${subtotal} + 2500;
         	$(document).ready(function() {
         		$(document).on('keyup', '.quantity_value', function() {
         			var before_no = $(this).attr('id').substring(9);
@@ -171,7 +173,7 @@
 	    							+ '<td class="product-name">'
 	    							+ '<a href="${contextPath}/productDetail?no='+new_data[i].no+'">'+new_data[i].name+'</a>'
 	    							+ '</td>'
-	    							+ '<td class="product-price" data-title="Price">￦ '+new_data[i].price+'</td>'
+	    							+ '<td class="product-price" data-title="Price">￦ '+new_data[i].price.toLocaleString()+'</td>'
 	    							+ '<td class="product-quantity" data-title="Quantity">'
 	    							+ '<div class="quantity">'
 	    							+ '<label class="screen-reader-text">수량</label>'
@@ -180,23 +182,23 @@
 	    							+ '<input type="button" id="quantity_plus_'+new_data[i].no+'" name="'+new_data[i].no+'"  value="+" class="qty-plus qty-btn quantity_plus" data-quantity="plus" data-field="quantity">'
 	    							+ '</div>'
 	    							+ '</td>'
-	    							+ '<td class="product-subtotal" data-title="Total">￦ '+quantity * price+'</td>'
+	    							+ '<td class="product-subtotal" data-title="Total">￦ '+(quantity * price).toLocaleString()+'</td>'
 	    							+ '</tr>';
 	    					}
 	    					$("#mytbody").html(new_page);
-	    					var delivery_included = total + 2500;
+	    					delivery_included = total + 2500;
     						new_total_page += '<tr>'
 								+ '<th class="w-50 font-weight-500 text-extra-dark-gray">총 상품가격</th>'
-								+ '<td class="text-extra-dark-gray">￦ '+total+'</td>'
+								+ '<td class="text-extra-dark-gray">￦ '+total.toLocaleString()+'</td>'
 								+ '</tr>'
 								+ '<tr class="shipping">'
 								+ '<th class="font-weight-500 text-extra-dark-gray">배송비</th>'
-								+ '<td class="text-extra-dark-gray">￦ 2500</td>'
+								+ '<td class="text-extra-dark-gray">￦ 2,500</td>'
 								+ '</tr>'
 								+ '<tr class="total-amount">'
 								+ '<th class="font-weight-500 text-extra-dark-gray">총 주문금액</th>'
 								+ '<td data-title="Total">'
-								+ '<h6 class="d-block font-weight-500 mb-0 text-extra-dark-gray">￦ '+ delivery_included +'</h6>'
+								+ '<h6 class="d-block font-weight-500 mb-0 text-extra-dark-gray">￦ '+ delivery_included.toLocaleString() +'</h6>'
 								+ '</td>'
 								+ '</tr>';
 	    					$("#totaltbody").html(new_total_page);
@@ -234,7 +236,7 @@
 	    							+ '<td class="product-name">'
 	    							+ '<a href="${contextPath}/productDetail?no='+new_data[i].no+'">'+new_data[i].name+'</a>'
 	    							+ '</td>'
-	    							+ '<td class="product-price" data-title="Price">￦ '+new_data[i].price+'</td>'
+	    							+ '<td class="product-price" data-title="Price">￦ '+new_data[i].price.toLocaleString()+'</td>'
 	    							+ '<td class="product-quantity" data-title="Quantity">'
 	    							+ '<div class="quantity">'
 	    							+ '<label class="screen-reader-text">수량</label>'
@@ -243,23 +245,23 @@
 	    							+ '<input type="button" id="quantity_plus_'+new_data[i].no+'" name="'+new_data[i].no+'"  value="+" class="qty-plus qty-btn quantity_plus" data-quantity="plus" data-field="quantity">'
 	    							+ '</div>'
 	    							+ '</td>'
-	    							+ '<td class="product-subtotal" data-title="Total">￦ '+quantity * price+'</td>'
+	    							+ '<td class="product-subtotal" data-title="Total">￦ '+(quantity * price).toLocaleString()+'</td>'
 	    							+ '</tr>';
 	    					}
 	    					$("#mytbody").html(new_page);
-	    					var delivery_included = total + 2500;
+	    					delivery_included = total + 2500;
     						new_total_page += '<tr>'
 								+ '<th class="w-50 font-weight-500 text-extra-dark-gray">총 상품가격</th>'
-								+ '<td class="text-extra-dark-gray">￦ '+total+'</td>'
+								+ '<td class="text-extra-dark-gray">￦ '+total.toLocaleString()+'</td>'
 								+ '</tr>'
 								+ '<tr class="shipping">'
 								+ '<th class="font-weight-500 text-extra-dark-gray">배송비</th>'
-								+ '<td class="text-extra-dark-gray">￦ 2500</td>'
+								+ '<td class="text-extra-dark-gray">￦ 2,500</td>'
 								+ '</tr>'
 								+ '<tr class="total-amount">'
 								+ '<th class="font-weight-500 text-extra-dark-gray">총 주문금액</th>'
 								+ '<td data-title="Total">'
-								+ '<h6 class="d-block font-weight-500 mb-0 text-extra-dark-gray">￦ '+ delivery_included +'</h6>'
+								+ '<h6 class="d-block font-weight-500 mb-0 text-extra-dark-gray">￦ '+ delivery_included.toLocaleString() +'</h6>'
 								+ '</td>'
 								+ '</tr>';
 	    					$("#totaltbody").html(new_total_page);
@@ -300,7 +302,7 @@
 	    							+ '<td class="product-name">'
 	    							+ '<a href="${contextPath}/productDetail?no='+new_data[i].no+'">'+new_data[i].name+'</a>'
 	    							+ '</td>'
-	    							+ '<td class="product-price" data-title="Price">￦ '+new_data[i].price+'</td>'
+	    							+ '<td class="product-price" data-title="Price">￦ '+new_data[i].price.toLocaleString()+'</td>'
 	    							+ '<td class="product-quantity" data-title="Quantity">'
 	    							+ '<div class="quantity">'
 	    							+ '<label class="screen-reader-text">수량</label>'
@@ -309,23 +311,23 @@
 	    							+ '<input type="button" id="quantity_plus_'+new_data[i].no+'" name="'+new_data[i].no+'"  value="+" class="qty-plus qty-btn quantity_plus" data-quantity="plus" data-field="quantity">'
 	    							+ '</div>'
 	    							+ '</td>'
-	    							+ '<td class="product-subtotal" data-title="Total">￦ '+quantity * price+'</td>'
+	    							+ '<td class="product-subtotal" data-title="Total">￦ '+(quantity * price).toLocaleString()+'</td>'
 	    							+ '</tr>';
 	    					}
 	    					$("#mytbody").html(new_page);
-	    					var delivery_included = total + 2500;
+	    					delivery_included = total + 2500;
     						new_total_page += '<tr>'
 								+ '<th class="w-50 font-weight-500 text-extra-dark-gray">총 상품가격</th>'
-								+ '<td class="text-extra-dark-gray">￦ '+total+'</td>'
+								+ '<td class="text-extra-dark-gray">￦ '+total.toLocaleString()+'</td>'
 								+ '</tr>'
 								+ '<tr class="shipping">'
 								+ '<th class="font-weight-500 text-extra-dark-gray">배송비</th>'
-								+ '<td class="text-extra-dark-gray">￦ 2500</td>'
+								+ '<td class="text-extra-dark-gray">￦ 2,500</td>'
 								+ '</tr>'
 								+ '<tr class="total-amount">'
 								+ '<th class="font-weight-500 text-extra-dark-gray">총 주문금액</th>'
 								+ '<td data-title="Total">'
-								+ '<h6 class="d-block font-weight-500 mb-0 text-extra-dark-gray">￦ '+ delivery_included +'</h6>'
+								+ '<h6 class="d-block font-weight-500 mb-0 text-extra-dark-gray">￦ '+ delivery_included.toLocaleString() +'</h6>'
 								+ '</td>'
 								+ '</tr>';
 	    					$("#totaltbody").html(new_total_page);
@@ -365,7 +367,7 @@
 	    							+ '<td class="product-name">'
 	    							+ '<a href="${contextPath}/productDetail?no='+new_data[i].no+'">'+new_data[i].name+'</a>'
 	    							+ '</td>'
-	    							+ '<td class="product-price" data-title="Price">￦ '+new_data[i].price+'</td>'
+	    							+ '<td class="product-price" data-title="Price">￦ '+new_data[i].price.toLocaleString()+'</td>'
 	    							+ '<td class="product-quantity" data-title="Quantity">'
 	    							+ '<div class="quantity">'
 	    							+ '<label class="screen-reader-text">수량</label>'
@@ -374,23 +376,23 @@
 	    							+ '<input type="button" id="quantity_plus_'+new_data[i].no+'" name="'+new_data[i].no+'"  value="+" class="qty-plus qty-btn quantity_plus" data-quantity="plus" data-field="quantity">'
 	    							+ '</div>'
 	    							+ '</td>'
-	    							+ '<td class="product-subtotal" data-title="Total">￦ '+quantity * price+'</td>'
+	    							+ '<td class="product-subtotal" data-title="Total">￦ '+(quantity * price).toLocaleString()+'</td>'
 	    							+ '</tr>';
 	    					}
 	    					$("#mytbody").html(new_page);
-	    					var delivery_included = total + 2500;
+	    					delivery_included = total + 2500;
     						new_total_page += '<tr>'
 								+ '<th class="w-50 font-weight-500 text-extra-dark-gray">총 상품가격</th>'
-								+ '<td class="text-extra-dark-gray">￦ '+total+'</td>'
+								+ '<td class="text-extra-dark-gray">￦ '+total.toLocaleString()+'</td>'
 								+ '</tr>'
 								+ '<tr class="shipping">'
 								+ '<th class="font-weight-500 text-extra-dark-gray">배송비</th>'
-								+ '<td class="text-extra-dark-gray">￦ 2500</td>'
+								+ '<td class="text-extra-dark-gray">￦ 2,500</td>'
 								+ '</tr>'
 								+ '<tr class="total-amount">'
 								+ '<th class="font-weight-500 text-extra-dark-gray">총 주문금액</th>'
 								+ '<td data-title="Total">'
-								+ '<h6 class="d-block font-weight-500 mb-0 text-extra-dark-gray">￦ '+ delivery_included +'</h6>'
+								+ '<h6 class="d-block font-weight-500 mb-0 text-extra-dark-gray">￦ '+ delivery_included.toLocaleString() +'</h6>'
 								+ '</td>'
 								+ '</tr>';
 	    					$("#totaltbody").html(new_total_page);
@@ -427,7 +429,7 @@
 	    				}
 	    			});
 	        	 
-	        	 	var totalprice = ${subtotal} + 2500;
+	        	 	
 					var IMP = window.IMP; // 생략가능
 					IMP.init("imp59175231");
 					// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -457,7 +459,7 @@
 						merchant_uid : 'merchant_' + new Date().getTime(),
 						name : name + ' 님의 주문',
 						//결제창에서 보여질 이름
-						amount : totalprice,
+						amount : delivery_included,
 						//가격
 						buyer_email : email,
 						buyer_name : name,
@@ -498,12 +500,14 @@
 				    					alert('error : ' + JSON.stringify(error));
 				    				}
 				    			});
+					      	alert(msg);
+					      	location.href='http://localhost:8080/greenfood/orderlist';
 						} else {
 							var msg = '결제에 실패하였습니다.';
 							msg += '에러내용 : ' + rsp.error_msg;
+							alert(msg);
+							location.href='http://localhost:8080/greenfood/shoppingcart';
 						}
-						alert(msg);
-						location.href='http://localhost:8080/greenfood/orderlist';
 					});
 				});
        	</script>

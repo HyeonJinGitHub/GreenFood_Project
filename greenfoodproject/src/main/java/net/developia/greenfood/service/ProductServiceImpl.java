@@ -113,6 +113,17 @@ public class ProductServiceImpl implements ProductService {
 			throw e;
 		}
 	}
+
+	@Override
+	public void selectshoppingcart(HashMap<String, Object> map) throws Exception {
+		try {
+			productDAO.selectshoppingcart(map);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+	}
+
 	@Override
 	public void InsertProductImg(ProductImageDTO pidto) throws Exception {
 		// TODO Auto-generated method stub
@@ -144,4 +155,5 @@ public class ProductServiceImpl implements ProductService {
 	         throw e;
 	      }
 	   }
+
 }
