@@ -137,6 +137,7 @@
                                 <li><a href="${app}/logout"  title="로그아웃"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>로그아웃</a></li>
                             <%}else if(session.getAttribute("id") != null){ %>
                             	<li><a href="${app}/myinfo"  title="마이페이지"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>마이페이지</a></li>
+                            	<li><a href="${app}/orderlist"  title="결제내역"><span class="icon-country"><img src="resources/images/user.png" alt=""></span>결제내역</a></li>
                                 <li><a href="${app}/logout"  title="로그아웃"><span class="icon-country"><img src="${app }/resources/images/user.png" alt=""></span>로그아웃</a></li>
                             <%} %>
                             </ul>
