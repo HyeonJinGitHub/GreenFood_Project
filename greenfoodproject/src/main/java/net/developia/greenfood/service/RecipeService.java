@@ -6,6 +6,7 @@ import net.developia.greenfood.dto.ArticleDTO;
 import net.developia.greenfood.dto.Article_HashDTO;
 import net.developia.greenfood.dto.Article_My_HashDTO;
 import net.developia.greenfood.dto.IngredientsDTO;
+import net.developia.greenfood.dto.MemberDTO;
 import net.developia.greenfood.dto.RecipeDTO;
 import net.developia.greenfood.dto.RecipeTrendDTO;
 import net.developia.greenfood.dto.Recipe_IngredientsDTO;
@@ -54,4 +55,6 @@ public interface RecipeService {
 	List<Article_HashDTO> findAllHash(Article_HashDTO ahdto)throws Exception;
 	String findHashName(RecipeDTO rdto)throws Exception;
 	List<RecipeTrendDTO> findTop10Trend()throws Exception;
+	List<ArticleDTO> findRecipeById(ArticleDTO adto)throws Exception;
+	
 }

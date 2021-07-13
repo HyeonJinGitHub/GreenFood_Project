@@ -26,7 +26,7 @@ public class MemberServiceImpl implements MemberService {
 			memberDAO.selectMember(map);
 			List<MemberDTO> output = (List) map.get("MemberList");
 			if (output.size() != 0) {
-				throw new RuntimeException("이미 사용 중인 아이디입니다. 다른 아이디를 입력해주세요.");
+				throw new RuntimeException("�씠誘� �궗�슜 以묒씤 �븘�씠�뵒�엯�땲�떎. �떎瑜� �븘�씠�뵒瑜� �엯�젰�빐二쇱꽭�슂.");
 			}
 		} catch (Exception e) {
 			log.info(e.getMessage());
@@ -50,7 +50,7 @@ public class MemberServiceImpl implements MemberService {
 			memberDAO.selectMemberByEmail(map);
 			List<MemberDTO> output = (List) map.get("MemberList");
 			if (output.size() != 0) {
-				throw new RuntimeException("이미 사용 중인 이메일입니다. 다른 이메일을 입력해주세요.");
+				throw new RuntimeException("�씠誘� �궗�슜 以묒씤 �씠硫붿씪�엯�땲�떎. �떎瑜� �씠硫붿씪�쓣 �엯�젰�빐二쇱꽭�슂.");
 			}
 		} catch (Exception e) {
 			log.info(e.getMessage());
@@ -64,7 +64,7 @@ public class MemberServiceImpl implements MemberService {
 			memberDAO.selectMemberByPhone(map);
 			List<MemberDTO> output = (List) map.get("MemberList");
 			if (output.size() != 0) {
-				throw new RuntimeException("이미 사용 중인 번호입니다. 다른 번호를 입력해주세요.");
+				throw new RuntimeException("�씠誘� �궗�슜 以묒씤 踰덊샇�엯�땲�떎. �떎瑜� 踰덊샇瑜� �엯�젰�빐二쇱꽭�슂.");
 			}
 		} catch (Exception e) {
 			log.info(e.getMessage());
@@ -78,7 +78,7 @@ public class MemberServiceImpl implements MemberService {
 			memberDAO.login(map);
 			List<MemberDTO> output = (List) map.get("MemberList");
 			if (output.size() == 0) {
-				throw new RuntimeException("아이디 혹은 비밀번호가 일치하지 않습니다.");
+				throw new RuntimeException("�븘�씠�뵒 �샊�� 鍮꾨�踰덊샇媛� �씪移섑븯吏� �븡�뒿�땲�떎.");
 			}
 		} catch (Exception e) {
 			log.info(e.getMessage());
@@ -114,7 +114,7 @@ public class MemberServiceImpl implements MemberService {
 		BufferedReader br = new BufferedReader(isr);
 		String line;
 //		while ((line = br.readLine()) != null) {
-//			System.out.println(line + "무한루프 중?");
+//			System.out.println(line + "臾댄븳猷⑦봽 以�?");
 //		}
 	}
 
@@ -156,6 +156,12 @@ public class MemberServiceImpl implements MemberService {
 			log.info(e.getMessage());
 			throw e;
 		}		
+	}
+
+	@Override
+	public String findMyNick(MemberDTO mdto) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDAO.findMyNick(mdto);
 	}
 
 }

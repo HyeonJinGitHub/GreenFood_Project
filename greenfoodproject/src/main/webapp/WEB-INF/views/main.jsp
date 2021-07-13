@@ -32,394 +32,51 @@
         <link rel="stylesheet" type="text/css" href="resources/revolution/css/layers.css">
         <link rel="stylesheet" type="text/css" href="resources/revolution/css/navigation.css">
     </head>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
+	
+	body{
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+	</style>
     <body data-mobile-nav-style="classic">
         <!-- start header -->
         	<jsp:include page='/WEB-INF/views/layout/header.jsp' />
         <!-- end header -->
          
-        <!-- SLIDER EXAMPLE -->
-        <section class="p-0 home-furniture-shop">
-            <article class="content">
-                <div id="rev_slider_34_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="mask-showcase" data-source="gallery" style="background:#ffffff;padding:0px;">
-                    <!-- START REVOLUTION SLIDER 5.4.1 fullscreen mode -->
-                    <div id="rev_slider_34_1" class="rev_slider fullscreenbanner tiny_bullet_slider" style="display:none;" data-version="5.4.1">
-                        <ul>	<!-- SLIDE  -->
-                            <li data-index="rs-74" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="300"  data-thumb="http://works.themepunch.com/revolution_5_3/wp-content/"  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                                <!-- MAIN IMAGE -->
-                                <img src="resources/images/shop-slide-02.jpg" alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
-                                <!-- LAYERS -->
-                                <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme rs-parallaxlevel-10" 
-                                     data-x="['center','center','center','center']" data-hoffset="['980','800','0','0']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['200','220','900','850']"   
-                                     data-width="1500"
-                                     data-height="1500"
-                                     data-whitespace="nowrap"
-                                     data-type="shape" 
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":300,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['inherit','inherit','inherit','inherit']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 5;background:linear-gradient(180deg, rgba(255,238,221,1) 0%, rgba(255,244,231,1) 100%);border-radius:100%;">
-                                    <div class="rs-looped rs-wave"  data-speed="10" data-angle="0" data-radius="10px" data-origin="50% 50%"> </div></div>
-
-                                <!-- LAYER NR. 3 -->
-                                <div class="tp-caption tp-resizeme alt-font text-extra-dark-gray text-medium font-weight-500"
-                                     data-x="['left','left','center','center']" data-hoffset="['0','102','0','0']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-185','-120','-410','-300']" 
-                                     data-width="none"
-                                     data-height="none"
-                                     data-whitespace="nowrap"
-                                     data-type="text" 
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":600,"speed":1000,"frame":"0","from":"x:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:[-100%];y:0px;s:inherit;e:inherit;","to":"o:0.7;","ease":"Power4.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['left','left','left','left']"
-                                     data-paddingtop="[10,10,10,10]"
-                                     data-paddingright="[20,20,20,20]"
-                                     data-paddingbottom="[10,10,10,10]"
-                                     data-paddingleft="[20,20,20,20]"
-
-                                     style="z-index: 7; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7;">치킨</div>
-
-                                <!-- LAYER NR. 4 -->
-                                <div class="tp-caption alt-font text-extra-dark-gray margin-auto-lr"
-                                     data-x="['left','left','center','center']" data-hoffset="['0','100','0','0']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-40','-10','-290','-220']" 
-                                     data-fontsize="['100','70','70','50']"
-                                     data-lineheight="['90','70','70','50']"
-                                     data-width="['650','450','620','280']"
-                                     data-height="none"
-                                     data-whitespace="normal"
-                                     data-type="text" 
-                                     data-responsive_offset="on" 
-                                     data-frames='[{"delay":900,"speed":1000,"frame":"0","from":"x:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:[-100%];y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power4.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['left','left','center','center']"
-                                     data-paddingtop="[20,20,20,20]"
-                                     data-paddingright="[20,20,20,20]"
-                                     data-paddingbottom="[30,30,30,30]"
-                                     data-paddingleft="[20,20,20,20]"
-                                     style="z-index: 8;letter-spacing: -3px;"><span class="font-weight-600 d-block">치킨</span> 샐러드</div>
-
-                                <!-- LAYER NR. 1 -->
-                                <a class="tp-caption tp-resizeme btn btn-medium btn-white btn-box-shadow lg-margin-15px-bottom md-no-margin-bottom md-margin-auto-lr" 
-                                   href="${app }/productDetail?no=11"
-                                   data-x="['left','left','center','center']" data-hoffset="['24','122','0','0']" 
-                                   data-y="['middle','middle','middle','middle']" data-voffset="['115','120','-160','-110']" 
-                                   data-width="none"
-                                   data-height="none"
-                                   data-fontsize="['14','14','14','13']"
-                                   data-whitespace="nowrap"
-                                   data-type="button" 
-                                   data-responsive_offset="on"
-                                   data-frames='[{"delay":1200,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                                   data-textAlign="['inherit','inherit','inherit','inherit']"
-                                   data-paddingtop="[11,10,10,10]"
-                                   data-paddingright="[27,25,25,22]"
-                                   data-paddingbottom="[11,10,10,10]"
-                                   data-paddingleft="[27,25,25,22]"
-                                   style="z-index: 6;box-shadow: 0 0 15px rgba(0,0,0,.1);">자세히 보기</a>
-
-                                <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme rs-parallaxlevel-10"
-                                     data-x="['center','center','center','center']" data-hoffset="['300','190','0','0']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['0','20','150','150']"  
-                                     data-width="['670','600','540','430']"
-                                     data-height="['670','600','540','430']"
-                                     data-whitespace="nowrap"
-                                     data-type="shape" 
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":1500,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['inherit','inherit','inherit','inherit']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 5;background: rgba(173,157,148,0.1);border-radius:100%;">
-                                    <div class="rs-looped rs-wave"  data-speed="10" data-angle="0" data-radius="10px" data-origin="50% 50%"> </div></div>
-                                <!-- LAYER NR. 2 -->
-                                <div class="tp-caption tp-resizeme rs-parallaxlevel-2"
-                                     data-x="['center','center','center','center']" data-hoffset="['300','200','0','0']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['40','20','180','150']"  
-                                     data-width="none"
-                                     data-height="none"
-                                     data-whitespace="nowrap"
-                                     data-type="image" 
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":1800,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['inherit','inherit','inherit','inherit']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-
-                                     style="z-index: 6;"><img src="resources/images/c.jpg" alt="" data-ww="['500px','420px','420px','279px']" data-hh="['auto','auto','auto','auto']" width="500" height="555"> </div>
-
-                                <!-- LAYER NR. 32 -->
-                                <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme rs-parallaxlevel-1"
-                                     data-x="['center','center','center','center']" data-hoffset="['540','420','200','150']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-230','-190','-70','0']" 
-                                     data-width="['120','100','110','90']"
-                                     data-height="['120','100','110','90']"
-                                     data-whitespace="nowrap"
-                                     data-type="shape" 
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":2100,"speed":1000,"frame":"0","from":"x:0px;y:50px;rX:0deg;rY:0deg;rZ:0deg;sX:0.5;sY:0.5;opacity:0;","to":"o:1;","ease":"Back.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['inherit','inherit','inherit','inherit']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 19;background:rgba(240,111,66,1);border-radius:100%;"> </div>
-
-                                <!-- LAYER NR. 37 -->
-                                <div class="tp-caption tp-resizeme text-white rs-parallaxlevel-1 alt-font text-extra-medium"
-                                     data-x="['center','center','center','center']" data-hoffset="['540','420','200','150']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-250','-205','-85','-10']" 
-                                     data-fontsize="['16','16','16','15']"
-                                     data-width="['201','150','150','120']"
-                                     data-height="none"
-                                     data-whitespace="['normal','nowrap','nowrap','nowrap']"
-                                     data-type="text" 
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":2400,"speed":1000,"frame":"0","from":"y:30px;sX:0.5;sY:0.5;opacity:0;","to":"o:1;","ease":"Back.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['center','center','center','center']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 24; text-transform: uppercase;">only</div>
-
-                                <!-- LAYER NR. 33 -->
-                                <div class="tp-caption tp-resizeme rs-parallaxlevel-1 text-white alt-font"
-                                     data-x="['center','center','center','center']" data-hoffset="['540','420','200','150']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-220','-178','-55','10']" 
-                                     data-fontsize="['37','30','30','25']"
-                                     data-lineheight="['40','30','30','25']"
-                                     data-width="['201','150','150','120']"
-                                     data-height="none"
-                                     data-whitespace="['normal','nowrap','nowrap','nowrap']"
-                                     data-type="text" 
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":2700,"speed":1000,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.8;sY:0.8;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['center','center','center','center']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 20; letter-spacing: -2px;">8,900원</div>
-                            </li>
-                            <li data-index="rs-75" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="300"  data-thumb="http://works.themepunch.com/revolution_5_3/wp-content/"  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                                <!-- MAIN IMAGE -->
-                                <img src="resources/images/shop-slide-03.jpg" alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
-                                <!-- LAYERS -->
-                                <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme rs-parallaxlevel-10"
-                                     data-x="['center','center','center','center']" data-hoffset="['980','800','0','0']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['200','220','900','850']"    
-                                     data-width="1500"
-                                     data-height="1500"
-                                     data-whitespace="nowrap"
-                                     data-type="shape" 
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":300,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['inherit','inherit','inherit','inherit']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 5;background:linear-gradient(180deg, rgba(255,231,217,1) 0%, rgba(254,236,225,1) 100%);border-radius:100%;">
-                                    <div class="rs-looped rs-wave"  data-speed="10" data-angle="0" data-radius="10px" data-origin="50% 50%"> </div></div>
-
-                                <!-- LAYER NR. 3 -->
-                                <div class="tp-caption tp-resizeme alt-font text-extra-dark-gray text-medium font-weight-500"
-                                     data-x="['left','left','center','center']" data-hoffset="['0','102','0','0']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-185','-130','-410','-300']" 
-                                     data-width="none"
-                                     data-height="none"
-                                     data-whitespace="nowrap"
-                                     data-type="text"
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":600,"speed":1000,"frame":"0","from":"x:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:[-100%];y:0px;s:inherit;e:inherit;","to":"o:0.7;","ease":"Power4.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['left','left','left','left']"
-                                     data-paddingtop="[10,10,10,10]"
-                                     data-paddingright="[20,20,20,20]"
-                                     data-paddingbottom="[10,10,10,10]"
-                                     data-paddingleft="[20,20,20,20]"
-
-                                     style="z-index: 7; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7;">치킨</div>
-
-                                <!-- LAYER NR. 4 -->
-                                <div class="tp-caption alt-font text-extra-dark-gray margin-auto-lr"
-                                     data-x="['left','left','center','center']" data-hoffset="['0','100','0','0']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-40','-10','-290','-220']" 
-                                     data-fontsize="['100','70','70','50']"
-                                     data-lineheight="['90','70','70','50']"
-                                     data-width="['650','450','580','340']"
-                                     data-height="none"
-                                     data-whitespace="normal"
-                                     data-type="text" 
-                                     data-responsive_offset="on" 
-                                     data-frames='[{"delay":900,"speed":1000,"frame":"0","from":"x:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:[-100%];y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power4.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['left','left','center','center']"
-                                     data-paddingtop="[20,20,20,20]"
-                                     data-paddingright="[20,20,20,20]"
-                                     data-paddingbottom="[30,30,30,30]"
-                                     data-paddingleft="[20,20,20,20]"
-                                     style="z-index: 8;letter-spacing: -3px;"><span class="font-weight-600 d-block">치킨</span> 샐러드</div>
-
-                                <!-- LAYER NR. 1 -->
-                                <a class="tp-caption tp-resizeme btn btn-medium btn-white btn-box-shadow lg-margin-15px-bottom md-no-margin-bottom md-margin-auto-lr"
-                                   href="${app }/productDetail?no=11"
-                                   data-x="['left','left','center','center']" data-hoffset="['24','122','0','0']" 
-                                   data-y="['middle','middle','middle','middle']" data-voffset="['115','130','-160','-110']" 
-                                   data-width="none"
-                                   data-height="none"
-                                   data-fontsize="['14','14','14','13']"
-                                   data-whitespace="nowrap"
-                                   data-type="button" 
-                                   data-responsive_offset="on"
-                                   data-frames='[{"delay":1200,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                                   data-textAlign="['inherit','inherit','inherit','inherit']"
-                                   data-paddingtop="[11,10,10,10]"
-                                   data-paddingright="[27,25,25,22]"
-                                   data-paddingbottom="[11,10,10,10]"
-                                   data-paddingleft="[27,25,25,22]"
-                                   style="z-index: 6;box-shadow: 0 0 15px rgba(0,0,0,.1);">자세히 보기</a>
-
-                                <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme rs-parallaxlevel-10"
-                                     data-x="['center','center','center','center']" data-hoffset="['300','190','0','0']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['0','20','150','150']"  
-                                     data-width="['670','600','540','430']"
-                                     data-height="['670','600','540','430']"
-                                     data-whitespace="nowrap"
-                                     data-type="shape" 
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":1500,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['inherit','inherit','inherit','inherit']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 5;background: rgba(173,157,148,0.1);border-radius:100%;">
-                                    <div class="rs-looped rs-wave"  data-speed="10" data-angle="0" data-radius="10px" data-origin="50% 50%"> </div></div>
-
-                                <!-- LAYER NR. 2 -->
-                                <div class="tp-caption tp-resizeme rs-parallaxlevel-2" 
-                                     id="slide-73-layer-1" 
-                                     data-x="['center','center','center','center']" data-hoffset="['300','200','0','0']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['40','0','170','130']"
-                                     data-width="none"
-                                     data-height="none"
-                                     data-whitespace="nowrap"
-                                     data-type="image" 
-                                     data-responsive_offset="on"
-                                     data-responsive="on"
-                                     data-frames='[{"delay":1800,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['inherit','inherit','inherit','inherit']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-
-                                     style="z-index: 6;"><img src="https://placehold.it/500x555" alt="" data-ww="['500px','404px','380px','280px']" data-hh="['auto','auto','auto','auto']" width="500" height="555" data-no-retina> </div>
-
-                                <!-- LAYER NR. 32 -->
-                                <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme rs-parallaxlevel-1"
-                                     data-x="['center','center','center','center']" data-hoffset="['540','420','200','150']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-230','-190','-70','0']" 
-                                     data-width="['120','100','110','90']"
-                                     data-height="['120','100','110','90']"
-                                     data-whitespace="nowrap"
-                                     data-type="shape" 
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":2100,"speed":1000,"frame":"0","from":"x:0px;y:50px;rX:0deg;rY:0deg;rZ:0deg;sX:0.5;sY:0.5;opacity:0;","to":"o:1;","ease":"Back.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['inherit','inherit','inherit','inherit']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 19;background:rgba(240,111,66,1);border-radius:100%;"> </div>
-
-                                <!-- LAYER NR. 37 -->
-                                <div class="tp-caption tp-resizeme text-white rs-parallaxlevel-1 alt-font text-extra-medium"
-                                     data-x="['center','center','center','center']" data-hoffset="['540','420','200','150']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-250','-205','-85','-10']" 
-                                     data-fontsize="['16','16','16','15']"
-                                     data-width="['201','150','150','120']"
-                                     data-height="none"
-                                     data-whitespace="['normal','nowrap','nowrap','nowrap']"
-                                     data-type="text" 
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":2400,"speed":1000,"frame":"0","from":"y:30px;sX:0.5;sY:0.5;opacity:0;","to":"o:1;","ease":"Back.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['center','center','center','center']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 24; text-transform: uppercase;">only</div>
-
-                                <!-- LAYER NR. 33 -->
-                                <div class="tp-caption tp-resizeme rs-parallaxlevel-1 text-white alt-font"
-                                     data-x="['center','center','center','center']" data-hoffset="['540','420','200','150']" 
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-220','-178','-55','10']" 
-                                     data-fontsize="['37','30','30','25']"
-                                     data-lineheight="['40','30','30','25']"
-                                     data-width="['201','150','150','120']"
-                                     data-height="none"
-                                     data-whitespace="['normal','nowrap','nowrap','nowrap']"
-                                     data-type="text"
-                                     data-responsive_offset="on"
-                                     data-frames='[{"delay":2700,"speed":1000,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.8;sY:0.8;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                                     data-textAlign="['center','center','center','center']"
-                                     data-paddingtop="[0,0,0,0]"
-                                     data-paddingright="[0,0,0,0]"
-                                     data-paddingbottom="[0,0,0,0]"
-                                     data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 20; letter-spacing: -2px;">8,900원</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </article>
-        </section>
-        <!-- end revolution slider -->
-        <!-- start section -->
-        <section class="padding-8-half-rem-lr xl-padding-3-rem-lr lg-no-padding-lr">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-6 text-center margin-5-half-rem-bottom md-margin-3-rem-bottom wow animate__fadeIn">
-                        <span class="alt-font font-weight-500 text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom">음식 카테고리</span>
-                        <h4 class="alt-font font-weight-600 text-extra-dark-gray mb-0 letter-spacing-minus-1px">오늘은 이 음식 어떠세요?</h4>
-                    </div>
-                </div>
-                <div class="row row-cols-1 row-cols-xl-3 row-cols-lg-2 justify-content-center margin-3-rem-tb md-no-margin-tb">
-                    <!-- start category item -->
-                    <c:forEach var="item" items="${categoryDTO }" >
-                    <div class="col col-md-6 col-sm-10 shop-category-style-02">
-                        <div class="shop-product align-items-center d-flex padding-30px-lr xs-no-padding-lr">
-                            <div class="shop-product-image text-center d-flex justify-content-center align-items-center wow animate__zoomIn" data-wow-delay="0.7s">
-                                <img src="resources/images/foodCategory/${item.title }.jpg" alt=""/>
-                                <a href="${app }/recipe/foodCategory/${item.no}" class="d-inline-block line-height-65px rounded-circle bg-extra-dark-gray box-shadow-extra-large h-60px w-60px position-absolute product-view-link"><i class="feather icon-feather-arrow-right text-white icon-extra-small"></i></a>
-                            </div>
-                            <div class="shop-product-overlay position-relative wow animate__fadeIn" data-wow-delay="0.8s">
-                                <span class="alt-font font-weight-500 margin-10px-bottom d-inline-block text-uppercase letter-spacing-1px text-dark-orange text-dark-orange-hover xs-margin-5px-bottom">카테고리</span>
-                           		<h4 class="alt-font text-extra-dark-gray mb-0 letter-spacing-minus-1px line-height-40px sm-line-height-30px"><c:out value="${item.title }"></c:out><span class="font-weight-600"></span></h4>
+        <!-- start slider section -->
+        <section class="py-0 position-relative">
+            <div class="swiper-container slider-blog-banner black-move one-third-screen sm-h-450px" data-slider-options='{ "centeredSlides": true, "spaceBetween": 18, "loop": true, "pagination": { "el": ".swiper-pagination", "clickable": true }, "navigation": { "nextEl": ".swiper-button-next-nav", "prevEl": ".swiper-button-previous-nav" }, "autoplay": { "delay": "4500", "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "991": { "slidesPerView": 2 }, "767": { "slidesPerView": 1 } }, "effect": "slide" }'>
+                <div class="swiper-wrapper">
+                    <!-- start slider item -->
+                    <div class="swiper-slide w-60 cover-background" style="background-image: url('https://placehold.it/1368x801')">
+                        <div class="swiper-bottom-content d-flex align-items-center position-relative align-items-lg-end h-100">
+                            <div class="w-60 mx-auto text-center bg-white box-shadow-extra-large margin-6-half-rem-bottom padding-5-rem-all xl-padding-2-rem-lr lg-w-70 lg-padding-2-half-rem-lr sm-w-75 sm-padding-2-rem-lr md-no-margin-bottom">
+                                <a href="blog-grid.html" class="btn btn-fancy btn-small btn-transparent-gradient-sky-blue-pink margin-30px-bottom">Branding</a>
+                                <h5><a href="blog-post-layout-01.html" class="text-extra-dark-gray text-black-hover alt-font text-extra-dark-gray font-weight-500 letter-spacing-minus-1px margin-30px-bottom">Be happy for this moment this moment is your life</a></h5>
+                                <div class="alt-font text-medium text-uppercase"><a href="blog-grid.html" class="text-medium-gray text-medium-gray-hover d-block d-sm-inline-block">22 October 2020</a> <span class="margin-10px-lr text-extra-large opacity-6 top-2px position-relative d-none d-sm-inline-block">•</span> <a href="blog-grid.html" class="text-medium-gray text-medium-gray-hover">Jay benjamin</a></div>
                             </div>
                         </div>
                     </div>
-                    </c:forEach>
-                    <!-- end category item -->
+                    <!-- end slider item -->
                 </div>
-            </div>
+                <!-- start slider pagination -->
+                <div class="swiper-pagination swiper-light-pagination d-sm-none d-block"></div>
+                <!-- end slider pagination -->
+                <!-- start slider navigation buttons -->
+                <div class="swiper-button-next-nav swiper-button-next rounded-circle slider-navigation-style-08 d-none d-sm-flex"><i class="feather icon-feather-arrow-right"></i></div>
+                <div class="swiper-button-previous-nav swiper-button-prev rounded-circle slider-navigation-style-08 d-none d-sm-flex"><i class="feather icon-feather-arrow-left"></i></div>
+                <!-- end slider navigation buttons -->
+            </div>  
         </section>
-        <!-- end section -->
-        <!-- start section -->
-        <section class="padding-8-half-rem-lr border-top border-width-1px border-color-medium-gray xl-padding-3-rem-lr md-no-padding-lr">
+        <!-- end slider section -->
+         <!-- start section -->
+        <section class="padding-8-half-rem-lr xl-padding-3-rem-lr md-no-padding-lr">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-6 text-center margin-5-half-rem-bottom md-margin-3-rem-bottom wow animate__fadeIn">
-                        <span class="alt-font font-weight-500 text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom">레시피</span>
-                        <h4 class="alt-font font-weight-600 text-extra-dark-gray mb-0 letter-spacing-minus-1px">HOT 레시피</h4>
+                        <span class="alt-font  text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom " style="font-family: 'Noto Sans KR', sans-serif;">인기레시피</span>
+                        <h5 class="alt-font  font-weight-400 text-extra-dark-gray mb-0 letter-spacing-minus-1px font-weight-500" style="font-family: 'Noto Sans KR', sans-serif;">HOT 레시피</h5>
                     </div>
                 </div>
             </div>
@@ -433,20 +90,20 @@
                             <c:forEach var="item" items="${recipeDTO }" >
                             <li class="grid-item wow animate__fadeIn">
                                 <div class="product-box margin-45px-bottom lg-margin-25px-bottom xs-no-margin-bottom">
-                                    <div class="product-image">
-                                        <a href="single-product.html">
-                                            <img src="${item.thumbnail }" alt=""  style="width:1000px; height:300px"   / >
-                                            <img class="hover-img" src="${item.step_img }" alt=""  style="width:1000px; height:300px" />
+                                    <div class="product-image  border-radius-5px">
+                                        <a href="${pageContext.request.contextPath}/recipe/${item.no}">
+                                            <img src="${item.thumbnail }" alt=""  style="width:300px; height:200px"   />
+                                            <img class="hover-img" src="${item.step_img }" alt=""  style="width:300px; height:200px" />
                                         </a>
                                         <div class="product-hover-details">
-                                            <a href="#" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>레시피 살펴보기</a>
+                                            <a href="${pageContext.request.contextPath}/recipe/${item.no}" class="alt-font text-white text-small font-weight-500 text-uppercase"><i class="feather icon-feather-shopping-bag margin-10px-right"></i>레시피 살펴보기</a>
                                         </div>
                                         <div class="product-hover-right padding-20px-tb padding-15px-right w-65px">
                                             <a href="#" class="product-link-icon move-top-bottom" data-toggle="tooltip" data-placement="left" title="" data-original-title="찜하기"><i class="feather icon-feather-heart"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-footer text-center padding-25px-top xs-padding-10px-top">
-                                        <a href="single-product.html" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block"><c:out value="${item.title}" /></a>
+                                        <a href="${pageContext.request.contextPath}/recipe/${item.no}" class="text-extra-dark-gray text-black-hover font-weight-500 d-inline-block"><c:out value="${item.title}" /></a>
                                         <div class="product-price text-medium"><c:out value="${item.foodname}" /></div>
                                     </div>
                                 </div>
@@ -456,13 +113,82 @@
                         </ul>
                     </div>
                     <div class="col-12 text-center margin-3-rem-top wow animate__fadeIn" data-wow-delay="0.2s">
-                        <a href="shop-left-sidebar.html" class="btn btn-medium btn-fancy btn-transparent-black">More recipe</a>
+                        <a href="${pageContext.request.contextPath}/recipe/foodCategory/all" class="btn btn-medium btn-fancy btn-transparent-black">More recipe</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+            <!-- start section -->
+        <section class="bg-very-light-pink">
+            <div class="container ">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6 text-center margin-5-half-rem-bottom md-margin-3-rem-bottom wow animate__fadeIn">
+                        <span class="alt-font text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom font-weight-400" style="font-family: 'Noto Sans KR', sans-serif; ">레시퍼</span>
+                        <h5 class="alt-font  font-weight-400 text-extra-dark-gray mb-0 letter-spacing-minus-1px font-weight-500" style="font-family: 'Noto Sans KR', sans-serif;">인기 레시퍼</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 blog-content px-sm-0">
+                        <ul class="blog-classic blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
+                            <li class="grid-sizer"></li>
+                            <!-- start blog item -->
+                            <c:forEach var="item" items="${memberDTO }" >
+                            <li class="grid-item wow animate__fadeIn">
+                                <div class="blog-post">
+                                    <div class="blog-post-image margin-40px-bottom md-margin-35px-bottom xs-margin-25px-bottom  border-radius-5px">
+                                        <a href="blog-post-layout-01.html"><img src="${item.profile_img}" alt="resources/images/user.png" /></a>
+                                    </div>
+                                    <div style="text-align:center; margin-top:-20px">
+                                    	<a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"><c:out value="${item.nickname}" /></a>
+                                    </div>
+                                    <div class="post-details" style="text-align:center">
+                                        <i class="feather icon-feather-monitor margin-5px-right text-large"></i> 조회수 <c:out value="${item.views }"></c:out>
+                                        <i class="feather icon-feather-thumbs-up margin-5px-right margin-20px-left"> 좋아요 </i><c:out value="${item.likes }"></c:out>
+                                    </div>
+                                </div>
+                            </li>
+                            </c:forEach>
+                            <!-- end blog item   --> 
+                            
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
         <!-- end section -->
         <!-- start section -->
+        <section class="padding-8-half-rem-lr xl-padding-3-rem-lr lg-no-padding-lr">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6 text-center margin-5-half-rem-bottom md-margin-3-rem-bottom wow animate__fadeIn">
+                        <span class="alt-font text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom font-weight-400" style="font-family: 'Noto Sans KR', sans-serif;">음식 카테고리</span>
+                        <h5 class="alt-font font-weight-400 text-extra-dark-gray mb-0 letter-spacing-minus-1px font-weight-500" style="font-family: 'Noto Sans KR', sans-serif;">오늘은 이 음식 어때요?</h5>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-xl-3 row-cols-lg-2 justify-content-center margin-3-rem-tb md-no-margin-tb">
+                    <!-- start category item -->
+                    <c:set var="imgcnt" value="1" />
+                    <c:forEach var="item" items="${categoryDTO }" >
+                    <div class="col col-md-6 col-sm-10 shop-category-style-02">
+                        <div class="shop-product align-items-center d-flex padding-30px-lr xs-no-padding-lr">
+                            <div class="shop-product-image text-center d-flex justify-content-center align-items-center wow animate__zoomIn" data-wow-delay="0.7s">
+                                <img src="resources/images/foodCategory/${imgcnt}.png" alt=""/>
+                                <a href="${app }/recipe/foodCategory/${item.no}" class="d-inline-block line-height-65px rounded-circle bg-extra-dark-gray box-shadow-extra-large h-60px w-60px position-absolute product-view-link"><i class="feather icon-feather-arrow-right text-white icon-extra-small"></i></a>
+                           		<c:set var="imgcnt" value="${imgcnt + 1}" />
+                            </div>
+                            <div class="shop-product-overlay position-relative wow animate__fadeIn" data-wow-delay="0.8s" style="width: 100%">
+                           		<h6 class="alt-font text-extra-dark-gray mb-0 letter-spacing-minus-1px line-height-40px sm-line-height-30px font-weight-500" style="font-family: 'Noto Sans KR', sans-serif; margin-left:35px"><c:out value="${item.title }"></c:out></h6>
+                            </div>
+                        </div>
+                    </div>
+                    </c:forEach>
+                    <!-- end category item -->
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+          <!-- start section -->
         <section class="p-0">
             <div class="container-fluid">
                 <div class="row row-cols-1 row-cols-lg-2">
@@ -474,7 +200,7 @@
                             </div>
                             <div class="col-12 col-sm-5 padding-ten-left xl-padding-three-left md-padding-nine-left xs-padding-15px-left">
                                 <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span> 최대 50% 할인</span>
-                                <h4 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">치킨 <span class="font-weight-600">샐러드</span></h4>
+                                <h5 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">치킨 <span class="font-weight-600">샐러드</span></h5>
                                 <a href="single-product.html" class="btn btn-small btn-fancy btn-box-shadow btn-white margin-5px-top">자세히 보기</a>
                             </div>
                         </div>
@@ -488,7 +214,7 @@
                             </div>
                             <div class="col-12 col-sm-5 padding-ten-left xl-padding-three-left md-padding-nine-left xs-padding-15px-left">
                                 <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span> 최대 50% 할인</span>
-                                <h4 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">치킨 <span class="font-weight-600"> 샐러드</span></h4>
+                                <h5 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">치킨 <span class="font-weight-600"> 샐러드</span></h5>
                                 <a href="single-product.html" class="btn btn-small btn-fancy btn-box-shadow btn-white margin-5px-top">자세히 보기</a>
                             </div>
                         </div>
@@ -498,42 +224,9 @@
             </div>
         </section>
         <!-- end section -->
-        <!-- start section -->
-        <section>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-6 text-center margin-5-half-rem-bottom md-margin-3-rem-bottom wow animate__fadeIn">
-                        <span class="alt-font font-weight-500 text-dark-orange text-uppercase letter-spacing-1px d-block margin-5px-bottom">레시퍼</span>
-                        <h4 class="alt-font font-weight-600 text-extra-dark-gray mb-0 letter-spacing-minus-1px">이 레시퍼의 레시피는 어떠세요?</h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 blog-content px-sm-0">
-                        <ul class="blog-classic blog-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
-                            <li class="grid-sizer"></li>
-                            <!-- start blog item -->
-                            <c:forEach var="item" items="${memberDTO }" >
-                            <li class="grid-item wow animate__fadeIn">
-                                <div class="blog-post">
-                                    <div class="blog-post-image margin-40px-bottom md-margin-35px-bottom xs-margin-25px-bottom">
-                                        <a href="blog-post-layout-01.html"><img src="${item.profile_img}" alt="resources/images/user.png"/></a>
-                                    </div>
-                                    <div class="post-details">
-                                        <a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"><c:out value="${item.nickname}" /></a>
-                                        <p class="w-95">레시퍼 조회수 : <c:out value="${item.views }"></c:out></p>
-                                        <p class="w-95">레시퍼 좋아요 수 : <c:out value="${item.likes }"></c:out></p>
-                                    </div>
-                                </div>
-                            </li>
-                            </c:forEach>
-                            <!-- end blog item   --> 
-                            
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
+       
+      
+    
         <!-- start footer -->
         	<jsp:include page='/WEB-INF/views/layout/footer.jsp' />
         <!-- end footer -->
