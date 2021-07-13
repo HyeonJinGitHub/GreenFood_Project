@@ -20,9 +20,9 @@
                 <div class="container-fluid nav-header-container">
                     <div class="col-auto col-sm-6 col-lg-2 mr-auto pl-lg-0">
                         <a class="navbar-brand" href="${app }/">
-                            <img src="${app }/resources/images/logo-black.png" data-at2x="resources/images/logo-black@2x.png" alt="" class="default-logo">
-                            <img src="${app }/resources/images/logo-neon-orange.png" data-at2x="resources/images/logo-neon-orange@2x.png" alt="" class="alt-logo">
-                            <img src="${app }/resources/images/logo-neon-orange.png" data-at2x="resources/images/logo-neon-orange@2x.png" class="mobile-logo" alt="">
+                            <img src="${app }/resources/images/vecipe.png" data-at2x="resources/images/logo-black@2x.png" alt="" class="default-logo">
+                            <img src="${app }/resources/images/vecipe.png" data-at2x="resources/images/logo-neon-orange@2x.png" alt="" class="alt-logo">
+                            <img src="${app }/resources/images/vecipe.png" data-at2x="resources/images/logo-neon-orange@2x.png" class="mobile-logo" alt="">
                         </a>
                     </div>
                     <div class="col-auto menu-order px-lg-0">

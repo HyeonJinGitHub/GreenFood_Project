@@ -83,7 +83,8 @@ public class RecipeController {
 	public ModelAndView myRecipe(HttpSession session) throws Exception {
 		System.out.println("recipe page start");
 		ModelAndView mav = new ModelAndView("myRecipe");
-		mav.addObject("id", session.getAttribute("id"));
+		mav.addObject("my_id", session.getAttribute("id"));
+		mav.addObject("member_id", "");
 		
 		String myId = (String) session.getAttribute("id");
 		
@@ -109,6 +110,35 @@ public class RecipeController {
 		return mav;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/myRecipe/{member_id}", method = RequestMethod.GET)
+	public ModelAndView myRecipe(HttpSession session, @PathVariable String member_id) throws Exception {
+		System.out.println("recipe page start");
+		ModelAndView mav = new ModelAndView("myRecipe");
+		mav.addObject("my_id", session.getAttribute("id"));
+		mav.addObject("member_id", member_id);
+		
+		List<ArticleDTO> alist = new ArrayList<>();
+		ArticleDTO adto = new ArticleDTO();
+		adto.setId(member_id);
+		alist = recipeService.findRecipeById(adto);
+		
+		MemberDTO mdto = new MemberDTO();
+		mdto.setId(member_id);
+		String nick = memberService.findMyNick(mdto);
+		mav.addObject("member_nickname", nick);
+		
+	
+		for(int i =0; i<alist.size(); i++)
+		{
+			alist.get(i).setNickname(nick);
+			alist.get(i).setId(member_id);
+			alist.get(i).setThumbnail(alist.get(i).getThumbnail().replaceAll(" ", ""));
+		}
+		
+		mav.addObject("myRecipe", alist);
+		return mav;
+	}
 	
 	
 	@ResponseBody
@@ -394,13 +424,13 @@ public class RecipeController {
 	 * @RequestParam(value="foodname") String foodname,
 	 * 
 	 * @RequestParam(value="howmuch") String howmuch) throws Exception { String chk
-	 * = "1"; log.info("실행");
+	 * = "1"; log.info("�떎�뻾");
 	 * 
 	 * 
 	 * //titleView
 	 * 
 	 * for(String is : ingredientssize) { if(is.equals("")) { chk = "0"; break; } }
-	 * for(String ig : ingredients) { if(ig.equals("")) { chk = "0"; break; } } //재료
+	 * for(String ig : ingredients) { if(ig.equals("")) { chk = "0"; break; } } //�옱猷�
 	 * 
 	 * if(title.equals("") || subscript.equals("") || foodname.equals("") ||
 	 * howmuch.equals("")) { chk = "0"; }
@@ -572,7 +602,7 @@ public class RecipeController {
 		
 		String profile_img = awsService.s3FileUploadThumbnail(thumb, (String) session.getAttribute("id") , Integer.toString(recipe_no));
 		ArticleDTO adto = new ArticleDTO();
-		adto.setThumbnail(profile_img);
+		adto.setThumbnail(profile_img.replaceAll(" ", ""));
 		adto.setNo(recipe_no);
 		recipeService.updateRecipeThumbnail(adto);
 		
@@ -588,7 +618,7 @@ public class RecipeController {
 		String profile_img = awsService.s3FileUploadVideo(recipev, (String) session.getAttribute("id") , Integer.toString(recipe_no));
 		
 		ArticleDTO adto = new ArticleDTO();
-		adto.setViedofile(profile_img);
+		adto.setViedofile(profile_img.replaceAll(" ", ""));
 		adto.setNo(recipe_no);
 		recipeService.updateRecipeViedofile(adto);
 		
@@ -832,14 +862,14 @@ public class RecipeController {
 		    }
 	    }
 
-	    // 저장된 쿠키중에 read_count 만 불러오기
+	    // ���옣�맂 荑좏궎以묒뿉 read_count 留� 遺덈윭�삤湲�
 	    String readCount = (String) map.get("read_count");
-	     // 저장될 새로운 쿠키값 생성
+	     // ���옣�맆 �깉濡쒖슫 荑좏궎媛� �깮�꽦
 	    String newReadCount = "|" + noDetail;
 
-	    // 저장된 쿠키에 새로운 쿠키값이 존재하는 지 검사
+	    // ���옣�맂 荑좏궎�뿉 �깉濡쒖슫 荑좏궎媛믪씠 議댁옱�븯�뒗 吏� 寃��궗
 	    if ( StringUtils.indexOfIgnoreCase(readCount, newReadCount) == -1 ) {
-	          // 없을 경우 쿠키 생성
+	          // �뾾�쓣 寃쎌슦 荑좏궎 �깮�꽦
 	          Cookie cookie = new Cookie("read_count", readCount + newReadCount);
 	         
 	          response.addCookie(cookie);
@@ -864,7 +894,7 @@ public class RecipeController {
 			Recipe_StepDTO rsdto = new Recipe_StepDTO();
 			rsdto.setRecipe_no(recipe_no);
 			rsdto.setStep_no(start);
-			rsdto.setStep_img(profile_img);
+			rsdto.setStep_img(profile_img.replaceAll(" ", ""));
 			recipeService.updateStep(rsdto);
 			start += 1;
 			if(start > step_last)

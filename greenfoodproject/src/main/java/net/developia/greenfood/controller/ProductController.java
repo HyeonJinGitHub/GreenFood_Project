@@ -188,7 +188,7 @@ public class ProductController {
 			productService.quantityUpdate(map);
 			List<CartDTO> data = (List) map.get("CartList");
 			String json = new Gson().toJson(data);
-			System.out.println("업데이트 후 : " + json);
+			System.out.println("�뾽�뜲�씠�듃 �썑 : " + json);
 			return json;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -282,7 +282,7 @@ public class ProductController {
 		for(MultipartFile multipartFile : product_image) {
 			String profile_img = awsService.s3FileUploadStep(multipartFile, "product", Integer.toString(prodNo), Integer.toString(start));
 			ProductImageDTO pidto = new ProductImageDTO();
-			pidto.setImage_path(profile_img);
+			pidto.setImage_path(profile_img.replaceAll(" ", ""));
 			pidto.setProduct_no(prodNo);
 			productService.InsertProductImg(pidto);
 		 }
@@ -302,12 +302,12 @@ public class ProductController {
 		System.out.println("order map : " + map.toString());
 		try {
 			productService.insertOrderlist(map);
-			System.out.println("여기까지는 성공~");
+			System.out.println("�뿬湲곌퉴吏��뒗 �꽦怨�~");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("insertOrder 서비스 호출하는 것에서 에러");
+		System.out.println("insertOrder �꽌鍮꾩뒪 �샇異쒗븯�뒗 寃껋뿉�꽌 �뿉�윭");
 		return false;
 	}
 }
