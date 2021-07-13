@@ -15,4 +15,5 @@ public class ProductDTO {
 	private String detail_description;
 	private String category;
 	private String sku;
+	private String main_img;
 }

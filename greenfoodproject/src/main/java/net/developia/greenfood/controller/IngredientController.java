@@ -37,7 +37,7 @@ public class IngredientController {
 		return "searchPage";
 	}
 
-	// DB에서 ingredient 를 가져온다
+	// DB�뿉�꽌 ingredient 瑜� 媛��졇�삩�떎
 	@ResponseBody
 	@PostMapping(value = { "/getIngredient" })
 	public Map<String, Object> getIngredient() {
@@ -54,7 +54,7 @@ public class IngredientController {
 		}
 	}
 
-	// 입력받은 재료를 프런트에서 받아옴
+	// �엯�젰諛쏆� �옱猷뚮�� �봽�윴�듃�뿉�꽌 諛쏆븘�샂
 	@ResponseBody
 	@PostMapping(value = { "/getSelectedIngredient" })
 	public Map<String, Object> getSelectedIngredient(@RequestBody String httpParam) {
@@ -70,7 +70,7 @@ public class IngredientController {
 
 			List<Integer> ingredientList = new ArrayList<>();
 
-			// 재료 no 들 가져옴
+			// �옱猷� no �뱾 媛��졇�샂
 			for (int i = 0; i < insertParam.size(); i++) {
 				JSONObject insertData = (JSONObject) insertParam.get(i);
 				ingredientList.add(Integer.parseInt((String) insertData.get("no")));
@@ -81,7 +81,7 @@ public class IngredientController {
 
 			List<IngredientSearchRecipeDTO> recipeList;
 
-			// 재료 기반 레시피 검색 결과 저장
+			// �옱猷� 湲곕컲 �젅�떆�뵾 寃��깋 寃곌낵 ���옣
 			if (ingredientList.size() == 0) {
 				recipeList = ingredientService.getAllRecipeList();
 			} else {

@@ -39,9 +39,9 @@ public class MainContoller {
 	private MainService mainService;
 	
 	/*
-	 * @ �옉�꽦�옄 : �씠�슚踰�
-	 * @ �옉�꽦�씪�옄 : 210705
-	 * @ 硫붾え : 硫붿씤�뿉 肉뚮젮二쇰뒗 �뜲�씠�꽣
+	 * @ 占쎌삂占쎄쉐占쎌쁽 : 占쎌뵠占쎌뒞甕곤옙
+	 * @ 占쎌삂占쎄쉐占쎌뵬占쎌쁽 : 210705
+	 * @ 筌롫뗀�걟 : 筌롫뗄�뵥占쎈퓠 �굢�슢�젻雅뚯눖�뮉 占쎈쑓占쎌뵠占쎄숲
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView Main(
@@ -70,7 +70,7 @@ public class MainContoller {
 			
 			//cart
 			if(session.getAttribute("id") != null) {
-				System.out.println("�눥�븨移댄듃吏꾩엯");
+				System.out.println("占쎈닪占쎈릅燁삳똾�뱜筌욊쑴�뿯");
 				String id = (String) session.getAttribute("id");
 				List<ShoppingCartDTO> shoppingCartList = mainService.getShoppingCart(id);
 				List<ShoppingCartDTO> shoppingCartList2 = new ArrayList<ShoppingCartDTO>();
@@ -98,11 +98,40 @@ public class MainContoller {
 				recipeList2.add(i);
 			}
 			
+			//eunna main부분 수정
+			ProductDTO pdto = new ProductDTO();
+			pdto.setMain_img("https://d3gr4nmrit7xq0.cloudfront.net/product/22/1/main1.jpg");
+			pdto.setName("[7월] 복날 삼계탕");
+			pdto.setDescription("지치기 쉬운 여름 원기회복을 위한 삼계탕이 상품화되었습니다!");
+			pdto.setNo(22);
+			pdto.setPrice(9900);
+			
+			ProductDTO pdto1 = new ProductDTO();
+			pdto1.setMain_img("https://d3gr4nmrit7xq0.cloudfront.net/product/23/1/main3.jpg");
+			pdto1.setName("[I like Eat] 베이컨 시저 샐러드");
+			pdto1.setDescription("짭조름한 감칠맛을 더해줄 베이컨칩과 바삭한 크루통이 어우러진 담백한 샐러드!");
+			pdto1.setNo(23);
+			pdto1.setPrice(4900);
+			
+			ProductDTO pdto2 = new ProductDTO();
+			pdto2.setMain_img("https://d3gr4nmrit7xq0.cloudfront.net/product/24/1/main5.jpg");
+			pdto2.setName("숙쌈 샘플러 & 우렁쌈장소스");
+			pdto2.setDescription("부드럽게 익힌 숙쌈에 뜨끈한 밥과 쌈장을 간단히 얹어 돌돌 싸먹으면 별미랍니다.");
+			pdto2.setNo(24);
+			pdto2.setPrice(4900);
+			
+			List<ProductDTO> plist = new ArrayList();
+			plist.add(pdto);
+			plist.add(pdto1);
+			plist.add(pdto2);
+			//
 			
 			mav.addObject("memberDTO", memberList);
 			mav.addObject("recipeDTO", recipeList2);
 			mav.addObject("productDTO", productList);
+			mav.addObject("plist", plist);
 			mav.addObject("categoryDTO", categoryList);
+			
 			mav.setViewName("main");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -113,9 +142,9 @@ public class MainContoller {
 	}
 
 	/*
-	 * @ �옉�꽦�옄 : �씠�슚踰�
-	 * @ �옉�꽦�씪�옄 : 210706
-	 * @ 硫붾え : 寃��깋寃곌낵�럹�씠吏�蹂댁뿬二쇰뒗 硫붿냼�뱶
+	 * @ 占쎌삂占쎄쉐占쎌쁽 : 占쎌뵠占쎌뒞甕곤옙
+	 * @ 占쎌삂占쎄쉐占쎌뵬占쎌쁽 : 210706
+	 * @ 筌롫뗀�걟 : 野껓옙占쎄퉳野껉퀗�궢占쎈읂占쎌뵠筌욑옙癰귣똻肉т틠�눖�뮉 筌롫뗄�꺖占쎈굡
 	 */
 	@RequestMapping(value = "/reciep", method = RequestMethod.GET)
 	public ModelAndView searchresult(
@@ -162,7 +191,7 @@ public class MainContoller {
 			}
 			System.out.println(list2);
 			
-			//�뜲�씠�꽣媛� �뾾�쑝硫� 0, �엳�쑝硫� 1;
+			//占쎈쑓占쎌뵠占쎄숲揶쏉옙 占쎈씨占쎌몵筌롳옙 0, 占쎌뿳占쎌몵筌롳옙 1;
 			int dataFlag = 0;
 			if(!list2.isEmpty()) {
 				dataFlag = 1;
@@ -184,9 +213,9 @@ public class MainContoller {
 	
 	
 	/*
-	 * @ �옉�꽦�옄 : �씠�슚踰�
-	 * @ �옉�꽦�씪�옄 : 210710
-	 * @ 硫붾え : foodCategory蹂� �젅�떆�뵾 蹂댁뿬二쇰뒗 硫붿냼�뱶
+	 * @ 占쎌삂占쎄쉐占쎌쁽 : 占쎌뵠占쎌뒞甕곤옙
+	 * @ 占쎌삂占쎄쉐占쎌뵬占쎌쁽 : 210710
+	 * @ 筌롫뗀�걟 : foodCategory癰귨옙 占쎌쟿占쎈뻻占쎈돗 癰귣똻肉т틠�눖�뮉 筌롫뗄�꺖占쎈굡
 	 */
 	@RequestMapping(value="/recipe/foodCategory/{categoryNo}")
 	public ModelAndView foodCategory(
@@ -231,7 +260,7 @@ public class MainContoller {
 				categoryFoodList2.add(i);
 			}
 			
-			//�뜲�씠�꽣媛� �뾾�쑝硫� 0, �엳�쑝硫� 1;
+			//占쎈쑓占쎌뵠占쎄숲揶쏉옙 占쎈씨占쎌몵筌롳옙 0, 占쎌뿳占쎌몵筌롳옙 1;
 			int dataFlag = 0;
 			if(!categoryFoodList2.isEmpty()) {
 				dataFlag = 1;
@@ -255,9 +284,9 @@ public class MainContoller {
 	}
 		
 	/*
-	 * @ �옉�꽦�옄 : �씠�슚踰�
-	 * @ �옉�꽦�씪�옄 : 2107012
-	 * @ 怨좉컼�꽱�꽣
+	 * @ 占쎌삂占쎄쉐占쎌쁽 : 占쎌뵠占쎌뒞甕곤옙
+	 * @ 占쎌삂占쎄쉐占쎌뵬占쎌쁽 : 2107012
+	 * @ �⑥쥒而쇽옙苑깍옙苑�
 	 */
 	@RequestMapping(value="/serviceCenter")
 	public String serviceCenter() {
@@ -265,9 +294,9 @@ public class MainContoller {
 	}
 	
 	/*
-	 * @ �옉�꽦�옄 : �씠�슚踰�
-	 * @ �옉�꽦�씪�옄 : 2107013
-	 * @ 紐⑤뱺移댄뀒怨좊━ 
+	 * @ 占쎌삂占쎄쉐占쎌쁽 : 占쎌뵠占쎌뒞甕곤옙
+	 * @ 占쎌삂占쎄쉐占쎌뵬占쎌쁽 : 2107013
+	 * @ 筌뤴뫀諭븀㎉�똾�믤�⑥쥓�봺 
 	 */
 	@RequestMapping(value = "/recipe/foodCategory/all", method = RequestMethod.GET)
 	public ModelAndView foodCategoryAll(
@@ -307,7 +336,7 @@ public class MainContoller {
 				categoryFoodList2.add(i);
 			}
 			
-			//�뜲�씠�꽣媛� �뾾�쑝硫� 0, �엳�쑝硫� 1;
+			//占쎈쑓占쎌뵠占쎄숲揶쏉옙 占쎈씨占쎌몵筌롳옙 0, 占쎌뿳占쎌몵筌롳옙 1;
 			int dataFlag = 0;
 			if(!categoryFoodList2.isEmpty()) {
 				dataFlag = 1;

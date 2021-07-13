@@ -9,7 +9,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
-        <title>건강식 레시피</title>
+        <title>Vecipe | 레시피상세</title>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
