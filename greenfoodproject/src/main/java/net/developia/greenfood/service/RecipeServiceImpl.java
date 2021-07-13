@@ -290,6 +290,12 @@ public class RecipeServiceImpl implements RecipeService {
 		return recipeTrendDAO.findTop10Trend();
 	}
 
+	@Override
+	public List<ArticleDTO> findRecipeById(ArticleDTO adto) throws Exception {
+		// TODO Auto-generated method stub
+		return articleDAO.findRecipeById(adto);
+	}
+
 
 
 }
