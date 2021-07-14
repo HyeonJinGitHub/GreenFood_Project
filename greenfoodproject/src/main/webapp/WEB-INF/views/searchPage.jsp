@@ -219,8 +219,6 @@
 		var jsonArry = new Array(); 
 		var showMoreClicked = showMoreClicked;
 		
-		console.log("검색시작");
-		
 		// 반복문을 통해 모든 id 탐색
 		for (i = 0; i <= ingredientIds.length - 1; i++) {
 			var obj = {
@@ -248,7 +246,7 @@
 			contentType:'application/json; charset=UTF-8',
 	   		data:jsonData,
 			success:function(data){
-				console.log(data);
+				
 				var recipeList = data.recipeList;
 				recipeListSize = data.recipeList.length;
 				var recipeListHtml = '';
