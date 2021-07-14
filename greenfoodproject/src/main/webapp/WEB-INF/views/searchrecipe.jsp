@@ -13,7 +13,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-<title>오구의 레시피 - 오구오구</title>
+<title>Vecipe | 레시피검색</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="author" content="ThemeZaa">
@@ -79,7 +79,7 @@
 						  <option value="hashtag">해시태그</option>
 						</select>
                            <input class="search-input large-input border-radius-4px m-0 border-0" name="keyword" placeholder="검색어를 입력해주세요." type="text">
-                           <button type="submit" class="btn btn-medium text-extra-dark-gray border-left border-0 border-color-extra-medium-gray font-weight-600 py-0 search-button"><i class="fas fa-search text-fast-blue margin-10px-right"></i>search</button>
+                           <button type="submit" class="btn btn-medium text-extra-dark-gray border-left border-0 border-color-extra-medium-gray font-weight-600 py-0 search-button margin-25px-top"><i class="fas fa-search text-fast-blue margin-10px-right"></i>search</button>
                        </form>
                    </div>
                </div>
