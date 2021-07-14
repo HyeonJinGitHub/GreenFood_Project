@@ -59,11 +59,11 @@ public class MainContoller {
 			List<ArticleDTO> recipeList2 = new ArrayList<ArticleDTO>();
 			//product
 			List<ProductDTO> productList = mainService.getProduct();
-			List<ProductDTO> productList1 = new ArrayList<ProductDTO>();
 			List<ProductDTO> productList2 = new ArrayList<ProductDTO>();
-			List<ProductDTO> productList3 = new ArrayList<ProductDTO>();
-			List<ProductDTO> productList4 = new ArrayList<ProductDTO>();
-			List<ProductDTO> productList5 = new ArrayList<ProductDTO>();
+			productList2.add(productList.get(0));
+			productList2.add(productList.get(2));
+
+
 			
 			//category
 			List<FoodCategoryDTO> categoryList = mainService.getCategory();
@@ -128,7 +128,7 @@ public class MainContoller {
 			
 			mav.addObject("memberDTO", memberList);
 			mav.addObject("recipeDTO", recipeList2);
-			mav.addObject("productDTO", productList);
+			mav.addObject("productDTO", productList2);
 			mav.addObject("plist", plist);
 			mav.addObject("categoryDTO", categoryList);
 			
