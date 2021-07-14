@@ -66,11 +66,11 @@
 		</style>
 		<script src="https://vjs.zencdn.net/7.8.2/video.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
+		<script type="text/javascript"
+		src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     </head>
     <body data-mobile-nav-style="classic" style="overflow-x:hidden">
-     <div id="load">
-    <img src="${images}/Iphone.gif" alt="loading">
-</div>
+
 <!-- start header -->
         	<jsp:include page='/WEB-INF/views/layout/header.jsp' />
         <!-- end header -->
@@ -433,329 +433,316 @@
         
 	<link
 		href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
-		rel="stylesheet" type="text/css" />
-	<script type="text/javascript"
-		src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		rel="stylesheet" type="text/css" >
+
 	<script type="text/javascript"
 		src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	
 	
         <script type="text/javascript">
-        $(window).load(function() {
-    	    $('#load').hide();
-    	    
-    	    
-    	});
-        
-        $(document).ready(function() {
-        	$.ajax({
-    			url: "${pageContext.request.contextPath}/recipeDetail",
-    			type: "post",
-    			dataType: "text",
-    			data : {
-					"no" : ${no}
-				}, 
-    			success: function(data) {
-    				var results = JSON.parse(data);
-    				var str = '<h1 class="alt-font font-weight-600 letter-spacing-minus-3px text-white margin-3-half-rem-bottom sm-margin-20px-bottom xs-letter-spacing-minus-1-half">'+results.title+'</h1>';
-    				$("#title").append(str);
-    				
-    				$("#writer").append(results.id);
-    				$("#likes").append(results.likes);
-    				$("#foodname").append(results.foodname);
-    				$("#explanation").append(results.explanation);
-    				$("#howmuch").append(results.howmuch+'인분');
-    				$("#cookingtime").append(results.cookingtime+'분');
-    				document.getElementById("thumb").setAttribute("src", results.thumbnail.replace(/(\s*)/g, ''));
-    				document.getElementById("bgback").style.backgroundImage = "url('"+results.thumbnail.replace(/(\s*)/g, '')+"')";
-    				var str ='<source id="videof" src="'+results.viedofile.replace( /(\s*)/g, "")+'" type="video/mp4">'
-    				$("#video").append(str);
-    			}
-    				
-    		});
-        	
-        	$.ajax({
-    			url: "${pageContext.request.contextPath}/recipeDetailStep",
-    			type: "post",
-    			dataType: "text",
-    			data : {
-					"no" : ${no}
-				}, 
-    			success: function(data) {
-    				var results = JSON.parse(data);
-    				for(var i = 0; i<results.length; i++)
-    				{
-    					var str = '';
-    					str += '<div class="blog-post bg-white box-shadow-medium margin-30px-bottom wow animate__fadeIn">'
-    						+ '<div class="d-flex flex-column flex-md-row align-items-center">'
-    						+ '<div class="blog-post-image sm-margin-25px-bottom">'
-    						+ '<a href="blog-post-layout-01.html" title=""><img src="'+results[i].step_img.replace(/(\s*)/g, '')+'" alt="" /></a>'
-    						+ '</div>'
-    						+ '<div class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding">'
-    						+ '<a href="blog-masonry.html" class="alt-font text-small text-salmon-rose font-weight-500 text-uppercase d-inline-block margin-15px-bottom sm-margin-10px-bottom">'+(i+1)+'번째 단계</a>'
-    						+ '<a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-large text-extra-dark-gray d-block margin-20px-bottom sm-margin-10px-bottom">'+results[i].step_title+'</a>'
-    						+ '<p class="margin-seventeen-bottom sm-margin-25px-bottom">'+results[i].step_explanation+'</p>'
-    						+ '<div class="alt-font text-extra-small text-uppercase d-flex align-items-center sm-margin-10px-bottom">'
-    						+ '<img class="avtar-image" src="https://placehold.it/149x149" alt=""></div></div></div></div>'
-    					$("#stepRecipe").append(str);
-    					
-                              
-    				}
-    			}
-    				
-    		});
-        	
-        	$.ajax({
-    			url: "${pageContext.request.contextPath}/recipeIngredients",
-    			type: "post",
-    			dataType: "text",
-    			data : {
-					"no" : ${no}
-				}, 
-    			success: function(data) {
-    				var results = JSON.parse(data);
-    				for(var i = 0; i<results.length; i++)
-    				{
-    					var str = '';
-    					str += '<li class="padding-15px-tb border-bottom border-color-medium-gray"><i class="feather icon-feather-check text-large text-salmon-rose margin-10px-right"></i>'+results[i].name+' ('+results[i].howmuch.toString()+'g)</li>'
-    					$("#ingredients_howmuch").append(str);   
-    				}
-    			}
-    				
-    		});
-        	
-        	$.ajax({
-    			url: "${pageContext.request.contextPath}/relationTags",
-    			type: "post",
-    			dataType: "text",
-    			data : {
-					"no" : ${no}
-				}, 
-    			success: function(data) {
-    				var results = JSON.parse(data);
-    				for(var i = 0; i<results.length; i++)
-    				{
-    					var str = '';
-    					str += '<a href="${pageContext.request.contextPath}/reciep?keyword='+results[i]+'" id="tagSelect" class="btn btn-large  btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block md-margin-auto-lr" style="margin-bottom: 20px; margin-right:15px;">'
-							+ results[i]
-							+ '<span class="bg-black"></span></a>'
-						$("#relationTag").append(str);   
-    				}
-    			}
-    				
-    		});
-        	
-        	$.ajax({
-    			url: "${pageContext.request.contextPath}/recipeIngredientsInfo",
-    			type: "post",
-    			dataType: "text",
-    			data : {
-					"no" : ${no}
-				}, 
-    			success: function(data) {
-    				var results = JSON.parse(data);
-    				var str1 ='';
-    				var str2 ='';
-    				var str3 ='';
-    				var str4 ='';
-    				var str5 ='';
-    				var str6 ='';
-    				var str7 ='';
-    				var str8 ='';
-    				
-    				str1 += '<div class="col sm-margin-40px-bottom">'
-    					+ '<div class="chart-percent">'
-    					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.calorie +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
-                        + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
-                    	+ '</span>'
-                		+ '</div>'
-                		+ '<div class="chart-text text-center">'
-                		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
-                		+ '칼로리 (' + parseInt(results.calorie * 19.877) +'kcal)'
-                		+ '</span></div></div>'
-           		str2 += '<div class="col sm-margin-40px-bottom">'
-   					+ '<div class="chart-percent">'
-   					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.carbohydrate +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
-                    + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
-                   	+ '</span>'
-               		+ '</div>'
-               		+ '<div class="chart-text text-center">'
-               		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
-               		+ '탄수화물 ('+parseInt(results.carbohydrate * 2.879)+'g)'
-               		+ '</span></div></div>'
-           		str3 += '<div class="col sm-margin-40px-bottom">'
-   					+ '<div class="chart-percent">'
-   					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.protein +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
-                    + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
-                   	+ '</span>'
-               		+ '</div>'
-               		+ '<div class="chart-text text-center">'
-               		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
-               		+ '단백질 ('+parseInt(results.protein * 0.724) +'g)'
-               		+ '</span></div></div>'
-           		str4 += '<div class="col sm-margin-40px-bottom">'
-   					+ '<div class="chart-percent">'
-   					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.fat +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
-                    + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
-                   	+ '</span>'
-               		+ '</div>'
-               		+ '<div class="chart-text text-center">'
-               		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
-               		+ '지방 (' +parseInt(results.fat *0.495)+'g)'
-               		+ '</span></div></div>'
-               		
-           		str5 += '<div class="col sm-margin-40px-bottom">'
-   					+ '<div class="chart-percent">'
-   					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.saccharide +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
-                    + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
-                   	+ '</span>'
-               		+ '</div>'
-               		+ '<div class="chart-text text-center">'
-               		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
-               		+ '당류 ('+parseInt(results.saccharide *0.602) +'g)'
-               		+ '</span></div></div>'
-           		str6 += '<div class="col sm-margin-40px-bottom">'
-   					+ '<div class="chart-percent">'
-   					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.sodium +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
-                    + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
-                   	+ '</span>'
-               		+ '</div>'
-               		+ '<div class="chart-text text-center">'
-               		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
-               		+ '나트륨 ('+parseInt(results.sodium * 32.550) + 'mg)'
-               		+ '</span></div></div>'
-           		str7 += '<div class="col sm-margin-40px-bottom">'
-   					+ '<div class="chart-percent">'
-   					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.cholesterol +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
-                    + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
-                   	+ '</span>'
-               		+ '</div>'
-               		+ '<div class="chart-text text-center">'
-               		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
-               		+ '콜레스테롤 ('+parseInt(results.cholesterol*2.604)+ 'mg)'
-               		+ '</span></div></div>'
-           		str8 += '<div class="col sm-margin-40px-bottom">'
-   					+ '<div class="chart-percent">'
-   					+ '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.fattyacid +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
-                    + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
-                   	+ '</span>'
-               		+ '</div>'
-               		+ '<div class="chart-text text-center">'
-               		+ '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
-               		+ '포화지방산 (' + parseInt(results.fattyacid*0.166) +'g)'
-               		+ '</span></div></div>'
-                   
-    				$("#ingreInfo").append(str1);
-    				$("#ingreInfo").append(str2);
-    				$("#ingreInfo").append(str3);
-    				$("#ingreInfo").append(str4);
-    				$("#ingreInfo").append(str5);
-    				$("#ingreInfo").append(str6);
-    				$("#ingreInfo").append(str7);
-    				$("#ingreInfo").append(str8);
-    				
-    			}
-    				
-    		});
-        	
-        	$(document).on(
-					"click",
-					"#likeBtn",
-					function(e) {
-						if($(this).attr('value') == "possible")
-						{
-	    					$.ajax({
-	    		    			url: "${pageContext.request.contextPath}/Insertlike",
-	    		    			type: "post",
-	    		    			dataType: "text",
-	    		    			data : {
-	    							"no" : ${no}
-	    						}, 
-	    		    			success: function(data) {
-	    		    				$("#likes").empty();
-	    		    				$("#likes").append(data);
-	    		    			}
-	    		    				
-	    		    		});
-	    					document.getElementById("likeBtn").setAttribute("value", "impossible");
-	    					$("#likeBtn").removeClass("text-salmon-rose");
-	    					$("#liketext").removeClass("text-salmon-rose");
-	    					$("#likeBtn").addClass("text-white");
-	    					$("#liketext").addClass("text-white");
-	    					window.location.reload();
-						}
-						else{
-	    					$.ajax({
-	    		    			url: "${pageContext.request.contextPath}/Deletelike",
-	    		    			type: "post",
-	    		    			dataType: "text",
-	    		    			data : {
-	    							"no" : ${no}
-	    						}, 
-	    		    			success: function(data) {
-	    		    				$("#likes").empty();
-	    		    				$("#likes").append(data);
-	    		    			}
-	    		    				
-	    		    		});
-						}
-						document.getElementById("likeBtn").setAttribute("value", "possible");
-						$("#likeBtn").removeClass("text-white");
-    					$("#liketext").removeClass("text-white");
-    					$("#likeBtn").addClass("text-salmon-rose");
-    					$("#liketext").addClass("text-salmon-rose");
-    					window.location.reload();
-					});
-        	
-        	$.ajax({
-    			url: "${pageContext.request.contextPath}/likeschk",
-    			type: "post",
-    			dataType: "text",
-    			data : {
-					"no" : ${no}
-				}, 
-    			success: function(data) {
-    				if(data == 'NO')
-    				{
-    					document.getElementById("likeBtn").setAttribute("value", "possible");
-    					$("#likeBtn").removeClass("text-white");
-    					$("#liketext").removeClass("text-white");
-    					$("#likeBtn").addClass("text-salmon-rose");
-    					$("#liketext").addClass("text-salmon-rose");
-    
-    				}
-    				else{
-    					
-    					document.getElementById("likeBtn").setAttribute("value", "impossible");
-    					$("#likeBtn").removeClass("text-salmon-rose");
-    					$("#liketext").removeClass("text-salmon-rose");
-    					$("#likeBtn").addClass("text-white");
-    					$("#liketext").addClass("text-white");
-    					
-    				}
-    			}
-    				
-    		});
-        	
-        	
-        	$.ajax({
-    			url: "${pageContext.request.contextPath}/UpdateViews",
-    			type: "post",
-    			dataType: "text",
-    			data : {
-					"no" : ${no}
-				}, 
-    			success: function(data) {
-    				$("#views").append(data);
-    			}
-    				
-    		});
-        	
-        });
-        
-      
-        
-         
+        $.ajax({
+            url: "${pageContext.request.contextPath}/recipeDetail",
+            type: "post",
+            dataType: "text",
+            data : {
+               "no" : ${no}
+            }, 
+            success: function(data) {
+               var results = JSON.parse(data);
+               var str = '<h1 class="alt-font font-weight-600 letter-spacing-minus-3px text-white margin-3-half-rem-bottom sm-margin-20px-bottom xs-letter-spacing-minus-1-half">'+results.title+'</h1>';
+               $("#title").append(str);
+               
+               $("#writer").append(results.id);
+               $("#likes").append(results.likes);
+               $("#foodname").append(results.foodname);
+               $("#explanation").append(results.explanation);
+               $("#howmuch").append(results.howmuch+'인분');
+               $("#cookingtime").append(results.cookingtime+'분');
+               document.getElementById("thumb").setAttribute("src", results.thumbnail.replace(/(\s*)/g, ''));
+               document.getElementById("bgback").style.backgroundImage = "url('"+results.thumbnail.replace(/(\s*)/g, '')+"')";
+               var str ='<source id="videof" src="'+results.viedofile.replace( /(\s*)/g, "")+'" type="video/mp4">'
+               $("#video").append(str);
+            }
+               
+         });
+          $.ajax({
+            url: "${pageContext.request.contextPath}/recipeDetailStep",
+            type: "post",
+            dataType: "text",
+            data : {
+               "no" : ${no}
+            }, 
+            success: function(data) {
+               var results = JSON.parse(data);
+               for(var i = 0; i<results.length; i++)
+               {
+                  var str = '';
+                  str += '<div class="blog-post bg-white box-shadow-medium margin-30px-bottom wow animate__fadeIn">'
+                     + '<div class="d-flex flex-column flex-md-row align-items-center">'
+                     + '<div class="blog-post-image sm-margin-25px-bottom">'
+                     + '<a href="blog-post-layout-01.html" title=""><img src="'+results[i].step_img.replace(/(\s*)/g, '')+'" alt="" /></a>'
+                     + '</div>'
+                     + '<div class="post-details padding-4-half-rem-lr md-padding-2-half-rem-lr sm-no-padding">'
+                     + '<a href="blog-masonry.html" class="alt-font text-small text-salmon-rose font-weight-500 text-uppercase d-inline-block margin-15px-bottom sm-margin-10px-bottom">'+(i+1)+'번째 단계</a>'
+                     + '<a href="blog-post-layout-01.html" class="alt-font font-weight-500 text-extra-large text-extra-dark-gray d-block margin-20px-bottom sm-margin-10px-bottom">'+results[i].step_title+'</a>'
+                     + '<p class="margin-seventeen-bottom sm-margin-25px-bottom">'+results[i].step_explanation+'</p>'
+                     + '<div class="alt-font text-extra-small text-uppercase d-flex align-items-center sm-margin-10px-bottom">'
+                     + '<img class="avtar-image" src="https://placehold.it/149x149" alt=""></div></div></div></div>'
+                  $("#stepRecipe").append(str);
+                  
+                             
+               }
+            }
+               
+         });
+          $.ajax({
+            url: "${pageContext.request.contextPath}/recipeIngredients",
+            type: "post",
+            dataType: "text",
+            data : {
+               "no" : ${no}
+            }, 
+            success: function(data) {
+               var results = JSON.parse(data);
+               for(var i = 0; i<results.length; i++)
+               {
+                  var str = '';
+                  str += '<li class="padding-15px-tb border-bottom border-color-medium-gray"><i class="feather icon-feather-check text-large text-salmon-rose margin-10px-right"></i>'+results[i].name+' ('+results[i].howmuch.toString()+'g)</li>'
+                  $("#ingredients_howmuch").append(str);   
+               }
+            }
+               
+         });
+          $.ajax({
+            url: "${pageContext.request.contextPath}/relationTags",
+            type: "post",
+            dataType: "text",
+            data : {
+               "no" : ${no}
+            }, 
+            success: function(data) {
+               var results = JSON.parse(data);
+               for(var i = 0; i<results.length; i++)
+               {
+                  var str = '';
+                  str += '<a href="${pageContext.request.contextPath}/reciep?option=hashtag&keyword='+results[i]+'" id="tagSelect" class="btn btn-large  btn-round-edge btn-transparent-black btn-slide-right-bg d-table d-lg-inline-block md-margin-auto-lr" style="margin-bottom: 20px; margin-right:15px;">'
+                     + results[i]
+                     + '<span class="bg-black"></span></a>'
+                  $("#relationTag").append(str);   
+               }
+            }
+               
+         });
+          $.ajax({
+            url: "${pageContext.request.contextPath}/recipeIngredientsInfo",
+            type: "post",
+            dataType: "text",
+            data : {
+               "no" : ${no}
+            }, 
+            success: function(data) {
+               var results = JSON.parse(data);
+               var str1 ='';
+               var str2 ='';
+               var str3 ='';
+               var str4 ='';
+               var str5 ='';
+               var str6 ='';
+               var str7 ='';
+               var str8 ='';
+               
+               str1 += '<div class="col sm-margin-40px-bottom">'
+                  + '<div class="chart-percent">'
+                  + '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.calorie +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
+                       + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+                      + '</span>'
+                     + '</div>'
+                     + '<div class="chart-text text-center">'
+                     + '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
+                     + '칼로리 (' + parseInt(results.calorie * 19.877) +'kcal)'
+                     + '</span></div></div>'
+                str2 += '<div class="col sm-margin-40px-bottom">'
+                  + '<div class="chart-percent">'
+                  + '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.carbohydrate +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
+                   + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+                     + '</span>'
+                    + '</div>'
+                    + '<div class="chart-text text-center">'
+                    + '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
+                    + '탄수화물 ('+parseInt(results.carbohydrate * 2.879)+'g)'
+                    + '</span></div></div>'
+                str3 += '<div class="col sm-margin-40px-bottom">'
+                  + '<div class="chart-percent">'
+                  + '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.protein +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
+                   + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+                     + '</span>'
+                    + '</div>'
+                    + '<div class="chart-text text-center">'
+                    + '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
+                    + '단백질 ('+parseInt(results.protein * 0.724) +'g)'
+                    + '</span></div></div>'
+                str4 += '<div class="col sm-margin-40px-bottom">'
+                  + '<div class="chart-percent">'
+                  + '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.fat +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
+                   + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+                     + '</span>'
+                    + '</div>'
+                    + '<div class="chart-text text-center">'
+                    + '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
+                    + '지방 (' +parseInt(results.fat *0.495)+'g)'
+                    + '</span></div></div>'
+                    
+                str5 += '<div class="col sm-margin-40px-bottom">'
+                  + '<div class="chart-percent">'
+                  + '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.saccharide +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
+                   + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+                     + '</span>'
+                    + '</div>'
+                    + '<div class="chart-text text-center">'
+                    + '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
+                    + '당류 ('+parseInt(results.saccharide *0.602) +'g)'
+                    + '</span></div></div>'
+                str6 += '<div class="col sm-margin-40px-bottom">'
+                  + '<div class="chart-percent">'
+                  + '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.sodium +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
+                   + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+                     + '</span>'
+                    + '</div>'
+                    + '<div class="chart-text text-center">'
+                    + '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
+                    + '나트륨 ('+parseInt(results.sodium * 32.550) + 'mg)'
+                    + '</span></div></div>'
+                str7 += '<div class="col sm-margin-40px-bottom">'
+                  + '<div class="chart-percent">'
+                  + '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.cholesterol +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
+                   + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+                     + '</span>'
+                    + '</div>'
+                    + '<div class="chart-text text-center">'
+                    + '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
+                    + '콜레스테롤 ('+parseInt(results.cholesterol*2.604)+ 'mg)'
+                    + '</span></div></div>'
+                str8 += '<div class="col sm-margin-40px-bottom">'
+                  + '<div class="chart-percent">'
+                  + '<span class="pie-chart-style-02" data-line-width="12" data-percent="'+ results.fattyacid +'" data-track-color="#f5f5f5" data-start-color="#f8a380" data-end-color="#fe8182">'
+                   + '<span class="percent alt-font font-weight-500 title-extra-small letter-spacing-minus-1px text-extra-dark-gray"></span>'
+                     + '</span>'
+                    + '</div>'
+                    + '<div class="chart-text text-center">'
+                    + '<span class="alt-font text-small text-uppercase font-weight-500 text-extra-dark-gray d-block margin-20px-top margin-40px-bottom"  style="font-size:16px">'
+                    + '포화지방산 (' + parseInt(results.fattyacid*0.166) +'g)'
+                    + '</span></div></div>'
+                  
+               $("#ingreInfo").append(str1);
+               $("#ingreInfo").append(str2);
+               $("#ingreInfo").append(str3);
+               $("#ingreInfo").append(str4);
+               $("#ingreInfo").append(str5);
+               $("#ingreInfo").append(str6);
+               $("#ingreInfo").append(str7);
+               $("#ingreInfo").append(str8);
+               
+            }
+               
+         });
+          $(document).on(
+               "click",
+               "#likeBtn",
+               function(e) {
+                  if($(this).attr('value') == "possible")
+                  {
+                      $.ajax({
+                          url: "${pageContext.request.contextPath}/Insertlike",
+                          type: "post",
+                          dataType: "text",
+                          data : {
+                            "no" : ${no}
+                         }, 
+                          success: function(data) {
+                             console.log(data);
+                             $("#likes").empty();
+                             $("#likes").append(data);
+                          }
+                             
+                       });
+                      document.getElementById("likeBtn").setAttribute("value", "impossible");
+                      $("#likeBtn").removeClass("text-salmon-rose");
+                      $("#liketext").removeClass("text-salmon-rose");
+                      $("#likeBtn").addClass("text-white");
+                      $("#liketext").addClass("text-white");
+                      window.location.reload();
+                  }
+                  else{
+                      $.ajax({
+                          url: "${pageContext.request.contextPath}/Deletelike",
+                          type: "post",
+                          dataType: "text",
+                          data : {
+                            "no" : ${no}
+                         }, 
+                          success: function(data) {
+                             console.log(data);
+                             $("#likes").empty();
+                             $("#likes").append(data);
+                          }
+                             
+                       });
+                      document.getElementById("likeBtn").setAttribute("value", "possible");
+                     $("#likeBtn").removeClass("text-white");
+                      $("#liketext").removeClass("text-white");
+                      $("#likeBtn").addClass("text-salmon-rose");
+                      $("#liketext").addClass("text-salmon-rose");
+                      window.location.reload();
+                  }
+                  
+               });
+          $.ajax({
+            url: "${pageContext.request.contextPath}/likeschk",
+            type: "post",
+            dataType: "text",
+            data : {
+               "no" : ${no}
+            }, 
+            success: function(data) {
+               if(data == 'NO')
+               {
+                  document.getElementById("likeBtn").setAttribute("value", "possible");
+                  $("#likeBtn").removeClass("text-white");
+                  $("#liketext").removeClass("text-white");
+                  $("#likeBtn").addClass("text-salmon-rose");
+                  $("#liketext").addClass("text-salmon-rose");
+
+               }
+               else{
+                  
+                  document.getElementById("likeBtn").setAttribute("value", "impossible");
+                  $("#likeBtn").removeClass("text-salmon-rose");
+                  $("#liketext").removeClass("text-salmon-rose");
+                  $("#likeBtn").addClass("text-white");
+                  $("#liketext").addClass("text-white");
+                  
+               }
+            }
+               
+         });
+          $.ajax({
+            url: "${pageContext.request.contextPath}/UpdateViews",
+            type: "post",
+            dataType: "text",
+            data : {
+               "no" : ${no}
+            }, 
+            success: function(data) {
+               $("#views").append(data);
+            }
+               
+         });
+           $(window).load(function() {
+              $('#load').hide();
+              
+              
+          });
+           
         </script>
     </body>
 </html>
