@@ -126,12 +126,12 @@
 	
 	<select id="getProduct"  resultType="ProductDTO"  >
 		<![CDATA[
-			select b.*
-			from(
-                    select * 
-                    from product
-			    )b
-			where rownum <= 5
+            select a.*, rownum
+            from (
+            select *
+            from product p, product_images pi
+            where p.no = pi.product_no) a
+            where rownum BETWEEN 1 and 3
 		]]>
 	</select>
 	

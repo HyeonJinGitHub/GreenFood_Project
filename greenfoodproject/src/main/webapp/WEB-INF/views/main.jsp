@@ -6,6 +6,7 @@
 <c:set var="memberDTO" value="${memberDTO }"></c:set>
 <c:set var="recipeDTO" value="${recipeDTO }"></c:set>
 <c:set var="categoryDTO" value="${categoryDTO }"></c:set>
+<c:set var="productDTO" value="${productDTO }"></c:set>
 
 
 <!doctype html>
@@ -126,33 +127,22 @@
             <div class="container-fluid">
                 <div class="row row-cols-1 row-cols-lg-2">
                     <!-- start info banner item -->
+                    <c:forEach var="item" items="${productDTO }" >
                     <div class="col bg-very-light-orange padding-5-rem-tb padding-eight-lr xl-padding-six-lr lg-padding-three-lr md-padding-eight-lr wow animate__fadeIn" data-wow-delay="0.2s">
                         <div class="row align-items-center">
                             <div class="col-12 col-sm-7 xs-margin-30px-bottom">
-                                <a href="single-product.html"><img src="resources/images/c.jpg" alt=""></a>
+                                <a href="${app }/productDetail?no=${item.no}"><img src="${item.image_path }" alt=""></a>
                             </div>
                             <div class="col-12 col-sm-5 padding-ten-left xl-padding-three-left md-padding-nine-left xs-padding-15px-left">
-                                <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span> 최대 50% 할인</span>
-                                <h5 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">치킨 <span class="font-weight-600">샐러드</span></h5>
-                                <a href="single-product.html" class="btn btn-small btn-fancy btn-box-shadow btn-white margin-5px-top">자세히 보기</a>
+                                <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span></span>
+                                <h5 class="alt-font text-extra-dark-gray letter-spacing-minus-1px"> <span class="font-weight-600"><c:out value="${item.name }"></c:out></span></h5>
+                                <a href="${app }/productDetail?no=${item.no}" class="btn btn-small btn-fancy btn-box-shadow btn-white margin-5px-top">자세히 보기</a>
                             </div>
                         </div>
                     </div>
+                    </c:forEach>
                     <!-- end info banner item -->
-                    <!-- start info banner item -->
-                    <div class="col bg-very-light-pink padding-5-rem-tb padding-eight-lr xl-padding-six-lr lg-padding-three-lr md-padding-eight-lr wow animate__fadeIn" data-wow-delay="0.4s">
-                        <div class="row align-items-center">
-                            <div class="col-12 col-sm-7 xs-margin-30px-bottom">
-                                <a href="single-product.html"><img src="resources/images/c.jpg" alt=""></a>
-                            </div>
-                            <div class="col-12 col-sm-5 padding-ten-left xl-padding-three-left md-padding-nine-left xs-padding-15px-left">
-                                <span class="alt-font font-weight-500 text-dark-orange d-block margin-15px-bottom text-uppercase"><span class="w-10px h-1px bg-dark-orange d-inline-block align-middle margin-5px-right"></span> 최대 50% 할인</span>
-                                <h5 class="alt-font text-extra-dark-gray letter-spacing-minus-1px">치킨 <span class="font-weight-600"> 샐러드</span></h5>
-                                <a href="single-product.html" class="btn btn-small btn-fancy btn-box-shadow btn-white margin-5px-top">자세히 보기</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end info banner item -->
+
                 </div>
             </div>
         </section>
