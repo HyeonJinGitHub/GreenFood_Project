@@ -24,7 +24,7 @@
 						FROM (
                                 select r.*,m.name,f.title categoryTitle,m.nickname
                                 from recipe r, member m, foodcategory f
-                                where (r.id = m.id and r.foodcategoryno = f.no) and r.title like '%' || #{keyword} || '%'
+                                where (r.id = m.id and r.foodcategoryno = f.no) and replace(r.title,' ', '') like '%' || #{keyword} || '%'
 								) A
 						)
 				WHERE RN BETWEEN #{pagingVO.start} AND #{pagingVO.end}
@@ -35,7 +35,7 @@
 		<![CDATA[
 			select count(*)
 			from recipe
-			where title like '%' || #{keyword} || '%'
+			where replace(title,' ', '') like '%' || #{keyword} || '%'
 			
 		]]>
 	</select>
@@ -124,33 +124,18 @@
 		]]>
 	</select>
 	
-		<select id="getSearchMyRecipe"  resultType="RecipeSearchDTO" parameterType="RecipeSearchDTO">
-		<![CDATA[
-				SELECT * 
-				FROM (
-					SELECT ROWNUM RN, A.* 
-						FROM (
-                                select r.*,m.name,f.title categoryTitle
-                                from recipe r, member m, foodcategory f
-                                where (r.id = m.id and r.foodcategoryno = f.no) and m.id '%' || #{id} || '%'
-								) A
-						)
-				WHERE RN BETWEEN #{pagingVO.start} AND #{pagingVO.end}
-		]]>
-	</select>
-	
 	<select id="getProduct"  resultType="ProductDTO"  >
 		<![CDATA[
-			select b.*
-			from(
-                    select * 
-                    from product
-			    )b
-			where rownum <= 5
+            select a.*, rownum
+            from (
+            select *
+            from product p, product_images pi
+            where p.no = pi.product_no) a
+            where rownum BETWEEN 1 and 3
 		]]>
 	</select>
 	
-		<select id="getShoppingCart"  resultType="ShoppingCartDTO"  >
+	<select id="getShoppingCart"  resultType="ShoppingCartDTO"  >
 		<![CDATA[
 			select b.*
 			from(
@@ -159,6 +144,53 @@
                     where member_id = #{id}
 			    )b
 			where rownum <= 2
+		]]>
+	</select>
+	
+	<select id="getSerchHashTag"  resultType="RecipeSearchDTO"  parameterType="RecipeSearchDTO">
+		<![CDATA[
+             SELECT * 
+				FROM (
+					SELECT ROWNUM RN, g.* 
+						FROM (
+                             select f.*, fo.title categoryTitle
+                            from foodCategory fo join(
+                                    select d.* ,m.nickname
+                                    from member m join
+                                    (
+                                    select c.*
+                                    from(
+                                        select b.no, b.title, b.explanation, b.foodname,b.foodcategoryno, b.thumbnail, b.views,b.id
+                                        from(
+                                            select r.* , a.tagname
+                                            from recipe r join 
+                                                              (select rh.recipe_no no , h.tagname
+                                                               from recipe_hashtag rh join hashtag h
+                                                                                        on rh.hashtag_no = h.no) a
+                                                            on r.no = a.no
+                                            where REPLACE(a.tagname,' ','') like '%' || #{keyword} || '%') b
+                                        group by b.no, b.title, b.explanation, b.foodname,b.foodcategoryno, b.thumbnail, b.views, b.id) c ) d
+                                        on d.id = m.id) f
+                                        on fo.no = f.foodcategoryno ) g
+						)
+				WHERE RN BETWEEN #{pagingVO.start} AND #{pagingVO.end}
+		]]>
+	</select>
+	
+	<select id="countSerchHashTag"  resultType="int"  parameterType="String">
+		<![CDATA[
+			select count(c.no) count
+			from(
+			    select b.no, b.title, b.explanation, b.foodname,b.foodcategoryno, b.thumbnail, b.views
+			    from(
+			        select r.* , a.tagname
+			        from recipe r join 
+			                          (select rh.recipe_no no , h.tagname
+			                           from recipe_hashtag rh join hashtag h
+			                                                    on rh.hashtag_no = h.no) a
+			                        on r.no = a.no
+			        where REPLACE(a.tagname,' ','') like '%' || #{keyword} || '%') b
+			    group by b.no, b.title, b.explanation, b.foodname,b.foodcategoryno, b.thumbnail, b.views) c
 		]]>
 	</select>
 	

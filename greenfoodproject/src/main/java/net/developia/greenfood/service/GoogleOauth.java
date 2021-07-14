@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -35,12 +36,17 @@ public class GoogleOauth implements SocialOauth{
 	private final String GOOGLE_SNS_BASE_URL = "https://accounts.google.com/o/oauth2/v2/auth";
     private final String GOOGLE_SNS_TOKEN_BASE_URL = "https://oauth2.googleapis.com/token";
     private final String GOOGLE_SNS_GET_USERINFO_BASE_URL = "https://www.googleapis.com/oauth2/v2/userinfo";
+    
+    @Value("${google.client_id}")
+    private String GoogleClient_id;
+    @Value("${google.client_secret}")
+    private String GoogleClient_secret;
 	@Override
 	public String getOauthRedirectURL() {
         Map<String, Object> params = new HashMap<>();
         params.put("scope", "email profile");
         params.put("response_type", "code");
-        params.put("client_id", "541273757157-h48qq7p6ev7fa0e95pj3gcup3ktk2ir7.apps.googleusercontent.com");
+        params.put("client_id", GoogleClient_id);
         params.put("redirect_uri", "http://localhost:8080/greenfood/auth/google/callback");
  
         String parameterString = params.entrySet().stream()
@@ -62,8 +68,8 @@ public class GoogleOauth implements SocialOauth{
 
             Map<String, Object> params = new HashMap<>();
             params.put("code", code);
-            params.put("client_id", "541273757157-h48qq7p6ev7fa0e95pj3gcup3ktk2ir7.apps.googleusercontent.com");
-            params.put("client_secret", "cU6KHsU2KVvyD6C5cluAa4cB");
+            params.put("client_id", GoogleClient_id);
+            params.put("client_secret", GoogleClient_secret);
             params.put("redirect_uri", "http://localhost:8080/greenfood/auth/google/callback");
             params.put("grant_type", "authorization_code");
 
@@ -100,8 +106,8 @@ public class GoogleOauth implements SocialOauth{
     	
     	Map<String, Object> params = new HashMap<>();
     	params.put("code", code);
-    	params.put("client_id", "541273757157-h48qq7p6ev7fa0e95pj3gcup3ktk2ir7.apps.googleusercontent.com");
-    	params.put("client_secret", "cU6KHsU2KVvyD6C5cluAa4cB");
+    	params.put("client_id", GoogleClient_id);
+    	params.put("client_secret", GoogleClient_secret);
     	params.put("redirect_uri", "http://localhost:8080/greenfood/auth/google/callback");
     	params.put("grant_type", "authorization_code");
     	

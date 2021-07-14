@@ -59,11 +59,11 @@ public class MainContoller {
 			List<ArticleDTO> recipeList2 = new ArrayList<ArticleDTO>();
 			//product
 			List<ProductDTO> productList = mainService.getProduct();
-			List<ProductDTO> productList1 = new ArrayList<ProductDTO>();
 			List<ProductDTO> productList2 = new ArrayList<ProductDTO>();
-			List<ProductDTO> productList3 = new ArrayList<ProductDTO>();
-			List<ProductDTO> productList4 = new ArrayList<ProductDTO>();
-			List<ProductDTO> productList5 = new ArrayList<ProductDTO>();
+			productList2.add(productList.get(0));
+			productList2.add(productList.get(2));
+
+
 			
 			//category
 			List<FoodCategoryDTO> categoryList = mainService.getCategory();
@@ -128,7 +128,7 @@ public class MainContoller {
 			
 			mav.addObject("memberDTO", memberList);
 			mav.addObject("recipeDTO", recipeList2);
-			mav.addObject("productDTO", productList);
+			mav.addObject("productDTO", productList2);
 			mav.addObject("plist", plist);
 			mav.addObject("categoryDTO", categoryList);
 			
@@ -151,57 +151,93 @@ public class MainContoller {
 			@RequestParam(value = "nowPage",  required=false) String nowPage,
 			@RequestParam(value = "cntPerPage",required=false) String cntPerPage,
 			@ModelAttribute("RecipeSearchDTO") RecipeSearchDTO recipeSearchDTO,
-			PagingVO vo
+			PagingVO vo,
+			@RequestParam(value ="option") String option,
+			@RequestParam(value = "keyword") String keyword
 			) {
-
+		
 		System.out.println("searchRecipe Controller");
 		log.info("***************************************************");
 		log.info(" " + recipeSearchDTO);
-		log.info(recipeSearchDTO.getKeyword());
 		log.info("***************************************************");
 		ModelAndView mav = new ModelAndView();
+		List<RecipeSearchDTO> RecipeSearchList = new ArrayList<RecipeSearchDTO>();
+		List<RecipeSearchDTO> RecipeSearchList2 = new ArrayList<RecipeSearchDTO>();
+		
 		try {
-			
-			int total = mainService.countRecipe(recipeSearchDTO.getKeyword());
-			if(nowPage==null && cntPerPage==null) {
-				nowPage ="1";
-				cntPerPage = "8";
-			}else if (nowPage == null) {
-				nowPage = "1";
-			} else if (cntPerPage == null) { 
-				cntPerPage = "8";
-			}
-			
-			int IntNowPage = Integer.parseInt(nowPage);
-			int IntCntPerPage = Integer.parseInt(cntPerPage);
-			
-			vo = new PagingVO(total, IntNowPage, IntCntPerPage);
-			recipeSearchDTO.setPagingVO(vo);
-
-			List<RecipeSearchDTO> list = mainService.getSearchRecipe(recipeSearchDTO);
-			List<RecipeSearchDTO> list2 = new ArrayList<RecipeSearchDTO>();
-			
-			
-			for(RecipeSearchDTO i : list) {
-				String imgurl = i.getThumbnail().replace(" ", "");
-				i.setThumbnail(imgurl);
-				i.setPagingVO(vo);
-				list2.add(i);
+			if(option.equals("title")) {
+				System.out.println(option + " 속 진입");
+				int total = mainService.countRecipe(keyword);
 				
+				if(nowPage==null && cntPerPage==null) {
+					nowPage ="1";
+					cntPerPage = "8";
+				}else if (nowPage == null) {
+					nowPage = "1";
+				} else if (cntPerPage == null) { 
+					cntPerPage = "8";
+				}
+				
+				int IntNowPage = Integer.parseInt(nowPage);
+				int IntCntPerPage = Integer.parseInt(cntPerPage);
+				
+				vo = new PagingVO(total, IntNowPage, IntCntPerPage);
+				
+				recipeSearchDTO.setPagingVO(vo);
+				RecipeSearchList = mainService.getSearchRecipe(recipeSearchDTO);
+				for(RecipeSearchDTO i : RecipeSearchList) {
+					String imgurl = i.getThumbnail().replace(" ", "");
+					i.setThumbnail(imgurl);
+					i.setPagingVO(vo);
+					RecipeSearchList2.add(i);
+					
+				}
+				System.out.println(RecipeSearchList2);
+				
+			}else if(option.equals("hashtag")) {
+				System.out.println(option + " 속 진입");
+				int total = mainService.countSerchHashTag(keyword);
+				
+				if(nowPage==null && cntPerPage==null) {
+					nowPage ="1";
+					cntPerPage = "8";
+				}else if (nowPage == null) {
+					nowPage = "1";
+				} else if (cntPerPage == null) { 
+					cntPerPage = "8";
+				}
+				
+				int IntNowPage = Integer.parseInt(nowPage);
+				int IntCntPerPage = Integer.parseInt(cntPerPage);
+				
+				vo = new PagingVO(total, IntNowPage, IntCntPerPage);
+				
+				recipeSearchDTO.setPagingVO(vo);
+				System.out.println(recipeSearchDTO);
+				RecipeSearchList = mainService.getSerchHashTag(recipeSearchDTO);
+				System.out.println("hash RecipeSearchList : " + RecipeSearchList);
+				for(RecipeSearchDTO i : RecipeSearchList) {
+					String imgurl = i.getThumbnail().replace(" ", "");
+					i.setThumbnail(imgurl);
+					i.setPagingVO(vo);
+					RecipeSearchList2.add(i);
+					
+				}
+				System.out.println(RecipeSearchList2);
 			}
-			System.out.println(list2);
 			
-			//占쎈쑓占쎌뵠占쎄숲揶쏉옙 占쎈씨占쎌몵筌롳옙 0, 占쎌뿳占쎌몵筌롳옙 1;
+			//�뜲�씠�꽣媛� �뾾�쑝硫� 0, �엳�쑝硫� 1;
 			int dataFlag = 0;
-			if(!list2.isEmpty()) {
+			if(!RecipeSearchList2.isEmpty()) {
 				dataFlag = 1;
 			}
 			
 			
-			mav.addObject("RecipeSearchDTO", list2);
+			mav.addObject("RecipeSearchDTO", RecipeSearchList2);
 			mav.addObject("pagingVO", vo);
-			mav.addObject("keyword", recipeSearchDTO.getKeyword());
-			mav.addObject("dataFlag", dataFlag);
+			mav.addObject("keyword", keyword);
+			mav.addObject("option", option);
+			mav.addObject("dataFlag",dataFlag);
 			mav.setViewName("searchrecipe");
 		} catch (Exception e) {
 			e.printStackTrace();

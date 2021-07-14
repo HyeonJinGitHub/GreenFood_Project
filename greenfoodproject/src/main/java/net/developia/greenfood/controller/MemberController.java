@@ -190,6 +190,7 @@ public class MemberController {
 			} else {
 				profile_img = "https://d3gr4nmrit7xq0.cloudfront.net/default_profile.png";
 			}
+			profile_img = profile_img.replaceAll(" ", "");
 			map.put("NICKNAME", nickname);
 			map.put("PROFILE_IMG", profile_img);
 			memberService.updateProfile(map);
