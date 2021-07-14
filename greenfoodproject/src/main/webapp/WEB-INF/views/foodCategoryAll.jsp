@@ -29,7 +29,8 @@
 	href="${images}/apple-touch-icon-72x72.png">
 <link rel="apple-touch-icon" sizes="114x114"
 	href="${images}/apple-touch-icon-114x114.png">
-
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <style>
 .stepimage_size{height:100%; font-size:0;}  
@@ -60,9 +61,6 @@
 
 </style>
 <body data-mobile-nav-style="classic">
-  <div id="load">
-    <img src="${images}/Iphone.gif" alt="loading">
-</div>
 	<!-- start header -->
 		<jsp:include page='/WEB-INF/views/layout/header.jsp' />
 	<!-- end header -->
@@ -284,8 +282,7 @@
 	<link
 		href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
 		rel="stylesheet" type="text/css" />
-	<script type="text/javascript"
-		src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 	<script type="text/javascript"
 		src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<!-- style sheets and font icons  -->

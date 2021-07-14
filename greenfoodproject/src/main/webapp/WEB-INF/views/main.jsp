@@ -166,7 +166,7 @@
                             <li class="grid-item wow animate__fadeIn">
                                 <div class="blog-post">
                                     <div class="blog-post-image margin-40px-bottom md-margin-35px-bottom xs-margin-25px-bottom  border-radius-5px">
-                                        <a href="${pageContext.request.contextPath}/myRecipe/${item.id}"><img src="${item.profile_img}" alt="resources/images/user.png" /></a>
+                                        <a href="${pageContext.request.contextPath}/myRecipe/${item.id}"><img src="${item.profile_img}" alt="resources/images/user.png" style="width:300px; height:300px"/></a>
                                     </div>
                                     <div style="text-align:center; margin-top:-20px">
                                     	<a href="${pageContext.request.contextPath}/myRecipe/${item.id}" class="alt-font font-weight-500 text-extra-medium text-extra-dark-gray text-dark-orange-hover d-block margin-20px-bottom xs-margin-10px-bottom"><c:out value="${item.nickname}" /></a>

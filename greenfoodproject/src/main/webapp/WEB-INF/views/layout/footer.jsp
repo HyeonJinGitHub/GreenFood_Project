@@ -78,7 +78,7 @@
                     <div class="row align-items-center">
                         <div class="bg-transparent-white3 margin-40px-bottom w-100 h-1px"></div>
                         <div class="col-12 col-lg-4 text-center text-lg-left md-margin-20px-bottom">
-                            <a href="index.html" class="footer-logo"><img src="${app }/resources/images/footer_logo.png" data-at2x="resources/images/logo-white@2x.png" alt=""></a>
+                            <a href="${app }/" class="footer-logo"><img src="${app }/resources/images/footer_logo.png" data-at2x="resources/images/footer_logo.png" alt=""></a>
                         </div>
                         <div class="col-12 col-lg-4 col-md-6 text-center text-md-left text-lg-center last-paragraph-no-margin sm-margin-20px-bottom">
                             <p>&copy; 2021 현대IT&E & KOSA Powered by NumberFive <a href="https://www.themezaa.com/" class="text-decoration-line-bottom" target="_blank">NumberFive</a></p>

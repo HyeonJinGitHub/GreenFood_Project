@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-12 col-xl-4 col-lg-6 breadcrumb justify-content-center justify-content-lg-end text-small alt-font md-margin-10px-top">
                         <ul class="xs-text-center">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="${contextPath}/">Home</a></li>
                             <li>My account</li>
                         </ul>
                     </div>

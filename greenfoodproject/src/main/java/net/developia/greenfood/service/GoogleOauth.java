@@ -47,7 +47,7 @@ public class GoogleOauth implements SocialOauth{
         params.put("scope", "email profile");
         params.put("response_type", "code");
         params.put("client_id", GoogleClient_id);
-        params.put("redirect_uri", "http://localhost:8080/greenfood/auth/google/callback");
+        params.put("redirect_uri", "http://vecipe.ga:8080/greenfood/auth/google/callback");
  
         String parameterString = params.entrySet().stream()
                 .map(x -> x.getKey() + "=" + x.getValue())
@@ -70,7 +70,7 @@ public class GoogleOauth implements SocialOauth{
             params.put("code", code);
             params.put("client_id", GoogleClient_id);
             params.put("client_secret", GoogleClient_secret);
-            params.put("redirect_uri", "http://localhost:8080/greenfood/auth/google/callback");
+            params.put("redirect_uri", "http://vecipe.ga:8080/greenfood/auth/google/callback");
             params.put("grant_type", "authorization_code");
 
             String parameterString = params.entrySet().stream()
@@ -108,7 +108,7 @@ public class GoogleOauth implements SocialOauth{
     	params.put("code", code);
     	params.put("client_id", GoogleClient_id);
     	params.put("client_secret", GoogleClient_secret);
-    	params.put("redirect_uri", "http://localhost:8080/greenfood/auth/google/callback");
+    	params.put("redirect_uri", "http://vecipe.ga:8080/greenfood/auth/google/callback");
     	params.put("grant_type", "authorization_code");
     	
     	ResponseEntity<String> responseEntity =

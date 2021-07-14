@@ -43,7 +43,7 @@ public class MainContoller {
 	 * @ 占쎌삂占쎄쉐占쎌뵬占쎌쁽 : 210705
 	 * @ 筌롫뗀�걟 : 筌롫뗄�뵥占쎈퓠 �굢�슢�젻雅뚯눖�뮉 占쎈쑓占쎌뵠占쎄숲
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/")
 	public ModelAndView Main(
 			HttpSession session
 			) {

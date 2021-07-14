@@ -23,9 +23,9 @@ body{
                 <div class="container-fluid nav-header-container">
                     <div class="col-auto col-sm-6 col-lg-2 mr-auto pl-lg-0">
                         <a class="navbar-brand" href="${app }/">
-                            <img src="${app }/resources/images/vecipe.png" data-at2x="resources/images/logo-black@2x.png" alt="" class="default-logo">
-                            <img src="${app }/resources/images/vecipe.png" data-at2x="resources/images/logo-neon-orange@2x.png" alt="" class="alt-logo">
-                            <img src="${app }/resources/images/vecipe.png" data-at2x="resources/images/logo-neon-orange@2x.png" class="mobile-logo" alt="">
+                            <img src="${app }/resources/images/vecipe.png" data-at2x="resources/images/vecipe.png" alt="" class="default-logo">
+                            <img src="${app }/resources/images/vecipe.png" data-at2x="resources/images/vecipe.png" alt="" class="alt-logo">
+                            <img src="${app }/resources/images/vecipe.png" data-at2x="resources/images/vecipe.png" class="mobile-logo" alt="">
                         </a>
                     </div>
                     <div class="col-auto menu-order px-lg-0">
@@ -139,18 +139,6 @@ body{
                         <div class="header-cart-icon dropdown margin-10px-right">
                             <a href="javascript:void(0);"><i class="feather icon-feather-shopping-bag font-weight-600"></i></a>
                             <ul id="myul" class="dropdown-menu cart-item-list">
-
-                            <% if(session.getAttribute("id") != null){ %>
-                                <li class="cart-item align-items-center">
-                                    <div class="product-image">
-                                        <a href="single-product.html"><img src="${app }/resources/images/c.jpg" class="cart-thumb" alt="" /></a>
-                                    </div>
-                                    <div class="product-detail alt-font">
-                                        <a href="single-product.html">치킨 샐러드</a>
-                                        <span class="item-ammount">10,000원</span> 
-                                    </div>
-                                </li>
-                   			<%} %>
                                 <li class="cart-item cart-total">
                                     <div class="alt-font margin-15px-bottom"><span class="w-50 d-inline-block text-medium text-uppercase">합계:</span><span class="w-50 d-inline-block text-right text-medium font-weight-500">0원</span></div>
                                     <% if(session.getAttribute("id") == null){ %>

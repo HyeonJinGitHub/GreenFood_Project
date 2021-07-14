@@ -112,10 +112,6 @@ public class MemberController {
 		return new ModelAndView("register");
 	}
 
-	@PostMapping("/")
-	public ModelAndView move_home_post() {
-		return new ModelAndView("main");
-	}
 
 	@GetMapping("/myinfo")
 	public ModelAndView move_myinfo(HttpSession session) {

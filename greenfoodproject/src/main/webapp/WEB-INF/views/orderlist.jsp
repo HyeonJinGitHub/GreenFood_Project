@@ -50,10 +50,10 @@
         <!-- start section -->
         <section class="wow animate__fadeIn">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 padding-70px-right lg-padding-30px-right md-padding-15px-right">
-                        <div class="row align-items-center">
-                            <div class="col-12">
+                <div class="row" style="width:100%">
+                    <div class="col-lg-12 padding-70px-right lg-padding-30px-right md-padding-15px-right" style="width:100%">
+                        <div class="row align-items-center" style="width:100%">
+                            <div class="col-12" style="width:100%">
                                 <table class="table cart-products margin-60px-bottom md-margin-40px-bottom sm-no-margin-bottom">
                                     <thead>
                                         <tr>
