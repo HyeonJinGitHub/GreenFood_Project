@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -33,13 +34,17 @@ public class NaverOauth implements SocialOauth{
     private final String NAVER_SNS_TOKEN_BASE_URL = "https://nid.naver.com/oauth2.0/token";
     private final String NAVER_SNS_GET_USERINFO_BASE_URL = "https://openapi.naver.com/v1/nid/me";
     private static Logger logger = LoggerFactory.getLogger(NaverOauth.class);
+    @Value("${naver.client_id}")
+    private String NaverClient_id;
+    @Value("${naver.client_secret}")
+    private String NaverClient_secret;
     
    @Override
    public String getOauthRedirectURL() {
         Map<String, Object> params = new HashMap<>();
            params.put("state", "ohgu");
            params.put("response_type", "code");
-           params.put("client_id", "eSZqJmbLJKPyM15tU5ZD");
+           params.put("client_id", NaverClient_id);
            params.put("redirect_uri", "http://localhost:8080/greenfood/auth/naver/callback");
     
            String parameterString = params.entrySet().stream()
@@ -60,8 +65,8 @@ public class NaverOauth implements SocialOauth{
       UriComponents uriComponents = UriComponentsBuilder.fromHttpUrl(NAVER_SNS_TOKEN_BASE_URL)
             .queryParam("grant_type", "authorization_code")
             .queryParam("code", code)
-            .queryParam("client_id", "eSZqJmbLJKPyM15tU5ZD")
-            .queryParam("client_secret", "95NDyy0iXp")
+            .queryParam("client_id", NaverClient_id)
+            .queryParam("client_secret", NaverClient_secret)
             .queryParam("state", "ohgu")
             .build(false);
       HttpHeaders httpHeaders = new HttpHeaders();
