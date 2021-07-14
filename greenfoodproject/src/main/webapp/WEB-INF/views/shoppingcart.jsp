@@ -466,7 +466,7 @@
 						buyer_tel : phone,
 						buyer_addr : '서울특별시 강남구 삼성동',
 						buyer_postcode : '123-456',
-						m_redirect_url : 'http://vecipe.ga:8080/greenfood/orderlist'
+						m_redirect_url : 'http://localhost:8080/greenfood/orderlist'
 					/*
 					 모바일 결제시,
 					 결제가 끝나고 랜딩되는 URL을 지정
@@ -500,12 +500,12 @@
 				    				}
 				    			});
 					      	alert(msg);
-					      	location.href='http://vecipe.ga:8080/greenfood/orderlist';
+					      	location.href='http://localhost:8080/greenfood/orderlist';
 						} else {
 							var msg = '결제에 실패하였습니다.';
 							msg += '에러내용 : ' + rsp.error_msg;
 							alert(msg);
-							location.href='http://vecipe.ga:8080/greenfood/shoppingcart';
+							location.href='http://localhost:8080/greenfood/shoppingcart';
 						}
 					});
 				});

@@ -45,7 +45,7 @@ public class NaverOauth implements SocialOauth{
            params.put("state", "ohgu");
            params.put("response_type", "code");
            params.put("client_id", NaverClient_id);
-           params.put("redirect_uri", "http://vecipe.ga:8080/greenfood/auth/naver/callback");
+           params.put("redirect_uri", "http://localhost:8080/greenfood/auth/naver/callback");
     
            String parameterString = params.entrySet().stream()
                    .map(x -> x.getKey() + "=" + x.getValue())
