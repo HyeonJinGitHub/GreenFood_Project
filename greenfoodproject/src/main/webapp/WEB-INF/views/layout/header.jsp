@@ -137,7 +137,7 @@ body{
                         </div>
 
                         <div class="header-cart-icon dropdown margin-10px-right">
-                            <a href="javascript:void(0);"><i class="feather icon-feather-shopping-bag font-weight-600"></i><span class="cart-count alt-font bg-dark-orange text-white">2</span></a>
+                            <a href="javascript:void(0);"><i class="feather icon-feather-shopping-bag font-weight-600"></i></a>
                             <ul id="myul" class="dropdown-menu cart-item-list">
 
                             <% if(session.getAttribute("id") != null){ %>

@@ -3,9 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:url var="images" value='/resources/images' />
 <c:url var="css" value='/resources/css' />
-<c:url var="email-templates" value='/resources/email-templates' />
 <c:url var="js" value='/resources/js' />
-<c:url var="revolution" value='/resources/revolution' />
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
@@ -259,16 +257,6 @@
 			}
 		});
 		
-		
-		function makeGoogleChart(){
-			
-			var divelem = document.getElementById("#googleTrendChart");
-			trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"요리법","geo":"KR","time":"today 12-m"}, 
-																											{"keyword":"레시피","geo":"KR","time":"today 12-m"}],
-																						"category":0,"property":""}, 
-																						{"exploreQuery":"q=%EC%9A%94%EB%A6%AC%EB%B2%95&geo=KR&date=today 12-m",
-																						"guestPath":"https://trends.google.co.kr:443/trends/embed/"});
-		}
 		
 		 $(document).on(
 					"click",
